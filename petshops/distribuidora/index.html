@@ -18,6 +18,27 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1347555500811145');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: location.pathname});
+
+// B2B — Lead al tocar un CTA de WhatsApp (contacto distribuidora)
+(function(){
+  var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i, hold=false;
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if(!a || !RE.test(a.href)) return;
+    if(hold) return; hold=true; setTimeout(function(){hold=false;}, 1500);
+    if(window.fbq) fbq('track','Lead',{content_name:'wa_dist'});
+  }, true);
+}());
+
+// B2B — reserva CONFIRMADA en Calendly = conversión de venta (north star CAMP_B)
+window.addEventListener('message', function(e){
+  if(e && e.data && e.data.event === 'calendly.event_scheduled'){
+    fbq('track','Schedule',{content_name:'agenda_distribuidora'});
+    // Optimización por valor (opcional): valor estimado de una llamada agendada, en ARS
+    // fbq('track','Purchase',{value:0,currency:'ARS',content_name:'agenda_distribuidora'});
+  }
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"
