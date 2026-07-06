@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1353730850059131');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1353730850059131&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <title>Imán — Vendé más con los clientes que ya tenés</title>
 <meta name="description" content="Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para cualquier comercio que venda al público.">
 
@@ -1464,7 +1481,7 @@ footer{
       document.dispatchEvent(new CustomEvent('iman:cta_click', {detail:{tipo:tipo, audiencia:audiencia}}));
       if(window.gtag){ window.gtag('event', 'cta_click', {tipo:tipo, audiencia:audiencia}); }
       if(window.dataLayer && window.dataLayer.push){ window.dataLayer.push({event:'cta_click', tipo:tipo, audiencia:audiencia}); }
-      if(window.fbq){ window.fbq('trackCustom', 'CtaClick', {tipo:tipo, audiencia:audiencia}); }
+      if(window.fbq){ window.fbq('track', 'Lead', {content_name:tipo}); window.fbq('trackCustom', 'CtaClick', {tipo:tipo, audiencia:audiencia}); }
     }catch(e){}
   }
   [['hero-cta-wa','wa_demo'],['cierre-cta-wa','wa_demo'],['sticky-cta-wa','wa_demo'],['otro-wa','wa_demo'],
