@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imán para negocios de limpieza y distribuidoras — vendé más con los clientes que ya tenés</title>
+<meta name="description" content="Imán mira tus ventas, arma los combos para tus clientes frecuentes y te deja los WhatsApp listos para mandar. Para negocios de limpieza, comercios de barrio y sus distribuidoras.">
+
+<!-- ============================================================
+     CONFIGURAR ANTES DE PUBLICAR:
+     1. Calendly → ya apunta a calendly.com/david-nomosdelta/30min
+        (solo vista distribuidora). Para cambiar el evento, editá el
+        data-url del div .calendly-inline-widget en #agenda.
+     2. WhatsApp → buscar "5493535189997" y reemplazar por tu
+        número real con código de país, sin + ni espacios.
+     3. URLs por vista: este archivo vive en limpieza/minorista/ y
+        se copia idéntico a limpieza/distribuidora/index.html.
+        Si editás este, volvé a copiar:
+        cp limpieza/minorista/index.html limpieza/distribuidora/index.html
+        OJO: limpieza/index.html es OTRA landing (la v1, de una sola
+        vista) — no la pises ni la reemplaces.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ SISTEMA BASE ============ */
+:root{
+  --celeste:#EAF3FF;
+  --tinta:#04123F;
+  --azul:#0345FC;
+  --azul-osc:#0233BF;
+  --lima:#C6F135;
+  --blanco:#FFFFFF;
+  --amarillo:#FFC53D;
+  --rojo:#E23D3D;
+  --verde-wa:#25D366;
+  --verde-wa-osc:#1DA851;
+  --sombra:0 12px 32px rgba(4,18,63,.10);
+  --radio:20px;
+  --display:'Bricolage Grotesque',sans-serif;
+  --cuerpo:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--cuerpo);
+  background:var(--celeste);
+  color:var(--tinta);
+  font-size:clamp(1rem,.95rem + .3vw,1.125rem);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:var(--display);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+section{position:relative;padding:clamp(3.5rem,8vw,6.5rem) 1.25rem}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+
+/* grain sutil sobre toda la página */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ VISIBILIDAD POR AUDIENCIA ============ */
+body[data-aud="min"] .solo-dist{display:none!important}
+body[data-aud="dist"] .solo-min{display:none!important}
+main{transition:opacity .22s ease,transform .22s ease}
+main.cambiando{opacity:0;transform:translateY(10px)}
+
+/* ============ UTILIDADES DE ANIMACIÓN ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}.rv-d3{transition-delay:.36s}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes flotar2{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+@keyframes titila{0%,100%{opacity:.15;transform:scale(.6) rotate(0deg)}50%{opacity:.9;transform:scale(1) rotate(20deg)}}
+.flota{animation:flotar 6s ease-in-out infinite}
+.flota2{animation:flotar2 7.5s ease-in-out infinite}
+.flota3{animation:flotar 9.5s ease-in-out infinite reverse}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============ MOTIVOS: BURBUJAS Y DESTELLOS ============ */
+.burbuja{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  border:2px solid rgba(3,69,252,.26);
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.95),rgba(255,255,255,.22) 46%,rgba(3,69,252,.08) 70%,rgba(3,69,252,.16));
+  box-shadow:inset -6px -8px 14px rgba(3,69,252,.08);
+}
+.burbuja::before{
+  content:"";position:absolute;top:14%;left:18%;width:30%;height:18%;
+  border-radius:50%;background:rgba(255,255,255,.9);transform:rotate(-25deg);
+}
+.burbuja.clara{
+  border-color:rgba(255,255,255,.45);box-shadow:none;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.75),rgba(255,255,255,.12) 50%,rgba(255,255,255,.04) 78%);
+}
+.destello{position:absolute;pointer-events:none;z-index:0;animation:titila 3.6s ease-in-out infinite;transform-origin:center}
+
+/* ============ BOTONES ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--display);font-weight:700;font-size:1.06rem;
+  padding:1rem 1.9rem;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
+  min-height:48px;
+}
+.btn:active{transform:scale(.96)}
+.btn-primario{
+  background:var(--azul);color:#fff;
+  box-shadow:0 6px 0 var(--azul-osc),0 14px 28px rgba(3,69,252,.35);
+}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--azul-osc),0 18px 34px rgba(3,69,252,.4)}
+.btn-primario.wa-solido{
+  background:var(--verde-wa);
+  box-shadow:0 6px 0 var(--verde-wa-osc),0 14px 26px rgba(37,211,102,.35);
+}
+.btn-primario.wa-solido:hover{box-shadow:0 9px 0 var(--verde-wa-osc),0 18px 32px rgba(37,211,102,.4)}
+.btn-wa{
+  background:transparent;color:var(--tinta);border:2.5px solid var(--tinta);
+  font-size:.98rem;padding:.85rem 1.5rem;
+}
+.btn-wa:hover{transform:translateY(-2px);background:var(--tinta);color:var(--celeste)}
+.btn-wa svg,.btn-primario svg{width:20px;height:20px;flex-shrink:0}
+
+/* ============ MARCA IMÁN ============ */
+.iman-marca{display:flex;align-items:center;gap:.55rem}
+.iman-nombre{font-family:var(--display);font-weight:800;font-size:1.45rem;color:var(--tinta);line-height:1}
+.iman-nombre i{font-style:normal;color:var(--azul)}
+.iman-svg{width:46px;height:auto;display:block;animation:imanFlota 5s ease-in-out infinite;transform-origin:50% 62%}
+@keyframes imanFlota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.iman-cuerpo-borde{fill:none;stroke:var(--tinta);stroke-width:34}
+.iman-cuerpo{fill:none;stroke:var(--azul);stroke-width:21}
+.iman-polo{fill:var(--blanco);stroke:var(--tinta);stroke-width:5}
+.iman-chispa{stroke:var(--tinta);stroke-width:5;stroke-linecap:round;fill:none}
+/* hero: escena protagonista con partículas atraídas */
+.iman-hero{grid-column:1/-1;margin-bottom:-.8rem;position:relative;z-index:3}
+.iman-escena{position:relative;width:52px;height:58px;flex-shrink:0}
+.iman-escena .iman-svg{width:100%;height:100%}
+.iman-part{
+  position:absolute;left:50%;top:42%;width:20px;height:20px;margin:-10px 0 0 -10px;
+  opacity:0;pointer-events:none;
+  animation:imanAtrae var(--dur,4.5s) infinite;animation-delay:var(--del,0s);
+}
+.iman-part svg{width:100%;height:100%;display:block}
+@keyframes imanAtrae{
+  0%{opacity:0;transform:translate(var(--x0),var(--y0)) scale(.5) rotate(var(--r0,0deg));animation-timing-function:ease-out}
+  12%{opacity:1}
+  55%{transform:translate(var(--x1),var(--y1)) scale(.8) rotate(0deg);animation-timing-function:cubic-bezier(.6,0,.9,.5)}
+  80%{opacity:1;transform:translate(0,0) scale(1.1) rotate(var(--r1,0deg))}
+  88%{transform:translate(0,0) scale(1.35) rotate(var(--r1,0deg))}
+  100%{opacity:0;transform:translate(0,0) scale(.1) rotate(var(--r1,0deg))}
+}
+.iman-part.p1{--x0:120px;--y0:-40px;--x1:60px;--y1:-34px;--r0:40deg;--r1:-10deg;--dur:4.4s;--del:0s}
+.iman-part.p2{--x0:140px;--y0:-34px;--x1:70px;--y1:-26px;--r0:-30deg;--r1:8deg;--dur:5s;--del:1.4s}
+.iman-part.p3{--x0:60px;--y0:-70px;--x1:26px;--y1:-44px;--r0:60deg;--r1:-6deg;--dur:4.7s;--del:2.5s}
+.iman-part.p4{--x0:-40px;--y0:-56px;--x1:-26px;--y1:-32px;--r0:-45deg;--r1:12deg;--dur:5.4s;--del:3.4s}
+.iman-part.p5{--x0:170px;--y0:-38px;--x1:88px;--y1:-30px;--r0:25deg;--r1:-14deg;--dur:5.8s;--del:4.2s}
+/* versión mínima: cierre y footer */
+.iman-mini{justify-content:center;margin-bottom:1.6rem}
+.cierre .iman-nombre{color:#fff}
+.cierre .iman-nombre i{color:var(--lima)}
+.cierre .iman-cuerpo{stroke:var(--lima)}
+.cierre .iman-cuerpo-borde{stroke:#fff}
+.cierre .iman-chispa{stroke:#fff}
+.iman-pie{justify-content:center;margin-bottom:.8rem}
+footer .iman-svg{width:32px}
+footer .iman-nombre{color:var(--celeste);font-size:1.1rem}
+footer .iman-nombre i{color:var(--lima)}
+footer .iman-cuerpo-borde{stroke:var(--celeste)}
+footer .iman-polo{fill:var(--tinta);stroke:var(--celeste)}
+footer .iman-chispa{stroke:var(--celeste)}
+/* CTA: pulso magnético ocasional en pantallas táctiles */
+@media (hover:none){.btn-primario{animation:imanPulso 7s ease-in-out 3s infinite}}
+@keyframes imanPulso{0%,86%,100%{scale:1}90%{scale:1.045}94%{scale:.99}97%{scale:1.015}}
+
+/* ============ SWITCH DE AUDIENCIA ============ */
+.switch-aud{
+  position:relative;display:inline-flex;background:var(--blanco);
+  border:2.5px solid var(--tinta);border-radius:999px;padding:.28rem;
+  box-shadow:var(--sombra);margin-bottom:1.6rem;
+}
+.switch-aud button{
+  position:relative;z-index:2;font-family:var(--display);font-weight:700;
+  font-size:.92rem;padding:.5rem 1rem;border:none;background:transparent;
+  border-radius:999px;cursor:pointer;color:var(--tinta);transition:color .25s;
+  min-height:44px;white-space:nowrap;
+}
+@media(max-width:420px){.switch-aud button{font-size:.8rem;padding:.5rem .7rem}}
+.switch-thumb{
+  position:absolute;top:.28rem;bottom:.28rem;left:0;width:0;border-radius:999px;
+  background:var(--azul);z-index:1;
+  transition:left .3s cubic-bezier(.34,1.56,.64,1),width .3s cubic-bezier(.34,1.56,.64,1);
+}
+body[data-aud="min"] .switch-aud .b-min{color:#fff}
+body[data-aud="dist"] .switch-aud .b-dist{color:#fff}
+
+/* ============ 1. HERO ============ */
+.hero{
+  min-height:92svh;display:flex;align-items:center;
+  padding-top:clamp(2.5rem,6vw,4rem);
+  background:var(--celeste);
+  overflow:hidden;
+}
+.hero .wrap{display:grid;gap:2.2rem;align-items:center}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr}}
+.hero-chip{
+  display:inline-block;font-weight:800;font-size:.82rem;letter-spacing:.06em;
+  text-transform:uppercase;background:var(--lima);color:var(--tinta);
+  padding:.4rem 1rem;border-radius:999px;transform:rotate(-2deg);margin-bottom:1.3rem;
+}
+.hero h1{
+  font-size:clamp(2.05rem,5vw,3.6rem);margin-bottom:1.2rem;
+}
+.hero h1 .marca{
+  color:var(--azul);padding:0 .06em;
+  background:linear-gradient(var(--lima),var(--lima)) 0 92% / 100% .26em no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+.hero p.sub{
+  font-size:clamp(1.05rem,1rem + .4vw,1.25rem);max-width:34rem;margin-bottom:2rem;
+  font-weight:600;color:#2C3E68;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero-nota{font-size:.85rem;margin-top:.9rem;color:#5A6B94;font-weight:600}
+.hero-arte{position:relative;display:flex;justify-content:center}
+.hero-arte .blob{position:absolute;z-index:0}
+.bidon-svg{width:min(74%,320px);position:relative;z-index:1}
+@media(max-width:899px){.hero-arte{margin-top:-.5rem;max-width:400px;margin-left:auto;margin-right:auto}.bidon-svg{width:min(58%,240px)}}
+
+/* ============ 2. BARRA DE DOLOR ============ */
+.dolor{background:var(--azul);color:var(--celeste);overflow:hidden}
+.dolor h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:2.5rem;color:var(--lima);max-width:30rem}
+.dolor-grid{display:grid;gap:1.2rem}
+@media(min-width:760px){.dolor-grid{grid-template-columns:repeat(3,1fr)}}
+.dolor-card{
+  background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.22);
+  border-radius:var(--radio);padding:1.7rem 1.5rem;position:relative;
+}
+.dolor-card:nth-child(2){transform:rotate(.6deg)}
+.dolor-card:nth-child(3){transform:rotate(-.6deg)}
+.dolor-card .num{
+  font-family:var(--display);font-size:2.4rem;font-weight:800;color:var(--lima);
+  line-height:1;margin-bottom:.7rem;
+}
+.dolor-card p{font-size:1.12rem;font-weight:700;line-height:1.45;color:#fff}
+
+/* ============ 3. DEMO / MOCKUPS ============ */
+.demo{background:var(--lima);overflow:hidden}
+.demo::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%230345FC'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.demo h2{font-size:clamp(1.7rem,4vw,2.6rem);color:var(--azul);max-width:36rem;margin-bottom:.8rem}
+.demo .baja{font-weight:700;color:var(--tinta);margin-bottom:2.6rem;max-width:34rem}
+.demo-pila{display:grid;gap:2.2rem;max-width:680px;margin:0 auto}
+.panel{
+  background:var(--blanco);border-radius:var(--radio);box-shadow:0 24px 60px rgba(4,18,63,.30);
+  overflow:hidden;border:3px solid var(--tinta);
+}
+.panel-top{display:flex;align-items:center;gap:.5rem;background:var(--tinta);padding:.7rem 1.1rem}
+.panel-top .dot{width:11px;height:11px;border-radius:50%}
+.panel-top .dot:nth-child(1){background:var(--azul)}
+.panel-top .dot:nth-child(2){background:var(--lima)}
+.panel-top .dot:nth-child(3){background:#7FA8FF}
+.panel-top span{color:var(--celeste);font-family:var(--display);font-weight:700;font-size:.85rem;margin-left:.6rem}
+.panel-tabs{display:flex;gap:.4rem;padding:1rem 1.1rem 0;flex-wrap:wrap}
+.panel-tab{font-size:.8rem;font-weight:800;padding:.42rem .95rem;border-radius:999px;background:#E5EEFB;color:#64759E}
+.panel-tab.activa{background:var(--azul);color:#fff}
+.panel-body{padding:1.1rem;display:grid;gap:.8rem}
+.alerta{
+  display:flex;gap:.9rem;align-items:flex-start;background:#F2F7FF;
+  border-radius:16px;padding:1rem;border:1.5px solid #D8E6FA;
+  opacity:0;transform:translateX(-18px);
+}
+.panel.andando .alerta{animation:entraAlerta .55s cubic-bezier(.22,1,.36,1) forwards}
+.panel.andando .alerta:nth-of-type(1){animation-delay:.3s}
+.panel.andando .alerta:nth-of-type(2){animation-delay:1.1s}
+.panel.andando .alerta:nth-of-type(3){animation-delay:1.9s}
+@keyframes entraAlerta{to{opacity:1;transform:none}}
+.alerta .avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;font-size:1.4rem;background:var(--lima);
+}
+.alerta .info{flex:1;min-width:0}
+.alerta .quien{font-weight:800;font-size:.95rem}
+.alerta .dato{font-size:.85rem;color:#3D4E78;font-weight:600}
+.alerta.destacada{background:var(--celeste);border:2px solid var(--azul)}
+.alerta .ciclo{height:8px;background:#D8E6FA;border-radius:99px;margin-top:.55rem;overflow:hidden}
+.alerta .ciclo i{display:block;height:100%;width:0;background:var(--azul);border-radius:99px}
+.panel.andando .alerta.destacada .ciclo i{animation:llena 1.2s ease-out 1.7s forwards}
+@keyframes llena{to{width:100%}}
+.alerta .etiqueta{
+  display:inline-block;font-size:.72rem;font-weight:800;background:var(--tinta);
+  color:var(--lima);padding:.18rem .6rem;border-radius:99px;margin-top:.5rem;
+}
+.alerta .etiqueta.optin{background:var(--azul);color:#fff}
+.btn-alerta{
+  font-family:var(--display);font-size:.82rem;font-weight:700;border:none;cursor:pointer;
+  background:var(--azul);color:#fff;padding:.55rem .95rem;border-radius:99px;
+  align-self:center;flex-shrink:0;white-space:nowrap;
+}
+.btn-alerta.wa{background:var(--verde-wa)}
+@media(max-width:560px){
+  .alerta{flex-wrap:wrap}
+  .alerta .info{flex:1 1 calc(100% - 60px)}
+  .btn-alerta{margin-left:56px;align-self:flex-start}
+}
+/* semáforo de cartera */
+.semaforo{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:.35rem}
+.semaforo.v{background:#35B36B}
+.semaforo.a{background:var(--amarillo)}
+.semaforo.r{background:var(--rojo)}
+/* barra de stock */
+.stockbar{height:10px;background:#D8E6FA;border-radius:99px;margin-top:.55rem;overflow:hidden}
+.stockbar i{display:block;height:100%;width:0;background:var(--rojo);border-radius:99px}
+.panel.andando .stockbar i{animation:stockBaja 1.1s ease-out 1.4s forwards}
+@keyframes stockBaja{to{width:18%}}
+.wa-preview{
+  margin:.2rem 0 .3rem auto;max-width:88%;background:#DCF8C6;border-radius:16px 16px 4px 16px;
+  padding:.85rem 1rem;font-size:.88rem;font-weight:600;color:#2b3a2b;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);opacity:0;transform:translateY(14px) scale(.96);
+  position:relative;
+}
+.panel.andando .wa-preview{animation:entraWa .5s cubic-bezier(.34,1.56,.64,1) 2.8s forwards}
+@keyframes entraWa{to{opacity:1;transform:none}}
+.wa-preview .hora{display:block;text-align:right;font-size:.68rem;color:#7a8f7a;margin-top:.3rem}
+.demo-leyenda{text-align:center;margin-top:1.6rem;font-weight:800;color:var(--tinta);font-size:.95rem}
+.panel-titulo{
+  font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--tinta);
+  margin:0 auto .6rem;max-width:680px;
+}
+
+/* ============ 4. CANAL (solo distribuidora) ============ */
+.canal{background:var(--celeste);overflow:hidden}
+.canal::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%23C6F135'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.canal h2{font-size:clamp(1.7rem,4vw,2.6rem);max-width:32rem;margin-bottom:.8rem}
+.canal .baja{font-weight:700;color:#5A6B94;margin-bottom:2.6rem;max-width:36rem}
+.circuito{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);
+  box-shadow:var(--sombra);padding:1.6rem 1.2rem;margin-bottom:1.8rem;overflow-x:auto;
+}
+.circuito svg{max-width:320px;width:100%;height:auto;display:block;margin:0 auto}
+.flujo{stroke:var(--azul);stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:2 14;animation:fluir 1.1s linear infinite}
+.flujo.retorno{stroke:var(--tinta);animation-duration:.9s}
+@keyframes fluir{to{stroke-dashoffset:-16}}
+.nodo-caja{fill:var(--celeste);stroke:var(--tinta);stroke-width:3}
+.nodo-texto{font-family:var(--cuerpo);font-weight:800;font-size:13px;fill:var(--tinta)}
+.nodo-sub{font-family:var(--cuerpo);font-weight:700;font-size:10.5px;fill:#5A6B94}
+.canal-grid{display:grid;gap:1.4rem;align-items:start}
+@media(min-width:820px){.canal-grid{grid-template-columns:1fr 1fr}}
+.canal-puntos{display:grid;gap:1rem}
+.canal-punto{display:flex;gap:.8rem;align-items:flex-start;font-weight:700;background:var(--blanco);border:2.5px solid var(--azul);border-radius:18px;padding:1.1rem 1.2rem;box-shadow:var(--sombra)}
+.canal-punto .ic{width:34px;height:34px;border-radius:10px;background:var(--lima);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.canal-punto small{display:block;font-weight:600;color:#5A6B94;font-size:.85rem}
+/* mini mockup marca blanca */
+.marca-blanca{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:26px;
+  box-shadow:var(--sombra);padding:1rem;max-width:320px;margin:0 auto;
+}
+.mb-top{background:var(--azul);border-radius:16px;padding:.8rem 1rem;color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:.5rem}
+.mb-top .logo-ph{background:#fff;color:var(--azul-osc);border-radius:8px;padding:.15rem .5rem;font-size:.72rem;font-weight:800}
+.mb-fila{display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;padding:.7rem .4rem;border-bottom:1.5px dashed #D8E6FA}
+.mb-fila small{color:#5A6B94;font-weight:600}
+.mb-pie{font-size:.72rem;font-weight:800;color:#5A6B94;text-align:center;padding-top:.7rem}
+
+/* ============ 5. GESTIÓN ============ */
+.gestion{background:var(--blanco)}
+.gestion h2{font-size:clamp(1.6rem,3.8vw,2.4rem);max-width:32rem;margin-bottom:.6rem}
+.gestion .baja{font-weight:700;color:#5A6B94;margin-bottom:2.4rem;max-width:34rem}
+.gestion-grid{display:grid;gap:1rem}
+@media(min-width:640px){.gestion-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.gestion-grid{grid-template-columns:repeat(5,1fr)}}
+.gestion-card{
+  background:var(--blanco);border:2.5px solid var(--azul);border-radius:18px;
+  padding:1.3rem 1.1rem;font-weight:700;font-size:.95rem;box-shadow:0 6px 0 var(--azul);
+}
+.gestion-card .ic{font-size:1.6rem;display:block;margin-bottom:.6rem}
+.gestion-card small{display:block;font-weight:600;color:#5A6B94;font-size:.82rem;margin-top:.3rem}
+
+/* ============ 6. PASOS ============ */
+.pasos{background:var(--celeste);overflow:hidden}
+.pasos::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%23FFFFFF'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.pasos h2{font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:.7rem;max-width:36rem}
+.pasos .baja{font-weight:700;color:#5A6B94;margin-bottom:2.8rem}
+.pasos-grid{display:grid;gap:1.4rem;counter-reset:paso}
+@media(min-width:760px){.pasos-grid{grid-template-columns:repeat(3,1fr)}}
+.paso{
+  background:var(--blanco);border-radius:var(--radio);padding:1.8rem 1.5rem;
+  border:2.5px solid var(--azul);box-shadow:var(--sombra);position:relative;
+}
+.paso:nth-child(1){transform:rotate(-1deg)}
+.paso:nth-child(3){transform:rotate(1deg)}
+.paso .icono{
+  width:58px;height:58px;border-radius:18px;display:flex;align-items:center;
+  justify-content:center;font-size:1.7rem;margin-bottom:1.1rem;
+}
+.paso:nth-child(1) .icono{background:var(--lima)}
+.paso:nth-child(2) .icono{background:var(--celeste)}
+.paso:nth-child(3) .icono{background:var(--azul)}
+.paso h3{font-size:1.25rem;margin-bottom:.5rem}
+.paso p{font-size:.98rem;color:#2C3E68;font-weight:600}
+.paso::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;top:-16px;right:18px;width:36px;height:36px;border-radius:50%;
+  background:var(--azul);color:#fff;font-family:var(--display);font-weight:800;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+}
+
+/* ============ 7. PRECIO ============ */
+.precio{background:var(--azul);overflow:hidden}
+.precio::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%23EAF3FF'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.precio .wrap{max-width:820px;text-align:center}
+.precio h2{font-size:clamp(1.9rem,4.6vw,3rem);margin-bottom:1rem;color:#fff}
+.precio .linea{font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:800;margin-bottom:2rem;color:var(--lima)}
+.precio-card{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);
+  padding:2.2rem 1.8rem;box-shadow:0 12px 0 var(--lima);text-align:left;
+  display:grid;gap:1rem;
+}
+@media(min-width:700px){.precio-card{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.precio-item{display:flex;gap:.7rem;align-items:flex-start;font-weight:700;font-size:1rem}
+.precio-item .tilde{
+  width:26px;height:26px;border-radius:50%;background:var(--lima);color:var(--tinta);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;
+  font-weight:800;margin-top:.1rem;
+}
+
+/* ============ 8. PRUEBA / GARANTÍA ============ */
+.prueba{background:var(--celeste);overflow:hidden}
+.prueba::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%230345FC'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.prueba h2{font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:.7rem;max-width:36rem}
+.prueba .baja{font-weight:700;color:#5A6B94;margin-bottom:2.6rem;max-width:34rem}
+.sim-tag{
+  display:inline-block;background:var(--tinta);color:var(--lima);font-weight:800;
+  font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;padding:.4rem 1rem;
+  border-radius:999px;margin-bottom:1.4rem;
+}
+.sim-grid{display:grid;gap:1.2rem;margin-bottom:2.4rem}
+@media(min-width:760px){.sim-grid{grid-template-columns:repeat(3,1fr)}}
+.sim-card{
+  background:var(--blanco);border:2.5px solid var(--azul);border-radius:var(--radio);
+  padding:1.7rem 1.4rem;text-align:center;box-shadow:var(--sombra);
+}
+.sim-card .cifra{
+  font-family:var(--display);font-size:clamp(2.4rem,5vw,3.2rem);font-weight:800;
+  color:var(--azul);line-height:1;
+}
+.sim-card p{font-weight:700;font-size:.92rem;color:#2C3E68;margin-top:.5rem}
+
+/* ============ 9. FAQ ============ */
+.faq{background:var(--celeste)}
+.faq .wrap{max-width:760px}
+.faq h2{font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:2.2rem}
+.faq details{
+  background:var(--blanco);border:2.5px solid var(--azul);border-radius:18px;
+  margin-bottom:.9rem;overflow:hidden;
+}
+.faq summary{
+  font-family:var(--display);font-weight:700;font-size:1.08rem;padding:1.2rem 3.2rem 1.2rem 1.4rem;
+  cursor:pointer;list-style:none;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);
+  font-size:1.6rem;font-weight:400;color:var(--azul);transition:transform .25s;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .resp{padding:0 1.4rem 1.3rem;font-weight:600;color:#2C3E68;font-size:.98rem}
+
+/* ============ 10. CIERRE ============ */
+.cierre{background:var(--azul);overflow:hidden}
+.cierre::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:clamp(34px,6vw,62px);z-index:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0,0H1440V22C1220,58,980,6,720,32C460,58,220,10,0,40Z' fill='%23EAF3FF'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.cierre h2{
+  font-size:clamp(2rem,5.2vw,3.4rem);color:#fff;text-align:center;max-width:38rem;
+  margin:0 auto 1rem;
+}
+.cierre .baja{text-align:center;color:#CBDCFF;font-weight:700;max-width:32rem;margin:0 auto 2.5rem}
+.cierre-min{display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.agenda-caja{
+  background:var(--blanco);border-radius:var(--radio);border:3px solid var(--tinta);
+  box-shadow:0 12px 0 var(--lima);max-width:820px;margin:0 auto;
+  padding:1rem;min-height:520px;
+}
+#cal-embed{width:100%;min-height:700px;border-radius:14px;overflow:hidden;position:relative}
+#cal-embed .calendly-inline-widget{position:relative;z-index:1}
+.agenda-cargando{
+  position:absolute;inset:0;z-index:0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:#5A6B94;flex-direction:column;gap:.8rem;text-align:center;padding:1rem;
+}
+.cierre-wa{text-align:center;margin-top:2rem}
+.cierre-wa p{color:#fff;font-weight:800;margin-bottom:1rem}
+.cierre-wa .btn-wa{border-color:#fff;color:#fff}
+.cierre-wa .btn-wa:hover{background:#fff;color:var(--azul)}
+footer{
+  background:var(--tinta);color:#8FA3D6;text-align:center;padding:2rem 1.25rem 6rem;
+  font-size:.85rem;font-weight:600;
+}
+@media(min-width:768px){footer{padding-bottom:2rem}}
+
+/* ============ STICKY CTA MOBILE ============ */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;padding:.7rem .9rem;
+  padding-bottom:calc(.7rem + env(safe-area-inset-bottom));
+  background:rgba(234,243,255,.93);backdrop-filter:blur(10px);
+  border-top:2.5px solid var(--azul);display:flex;gap:.6rem;
+  transform:translateY(110%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.sticky-cta.visible{transform:none}
+.sticky-cta .btn-primario{flex:1;font-size:.95rem;padding:.85rem 1rem;box-shadow:0 4px 0 var(--azul-osc)}
+.sticky-cta .btn-primario.wa-solido{box-shadow:0 4px 0 var(--verde-wa-osc)}
+@media(min-width:768px){.sticky-cta{display:none}}
+</style>
+</head>
+<body data-aud="min">
+<main id="main">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" id="hero">
+  <!-- burbujas y destellos decorativos -->
+  <div class="burbuja flota" style="top:12%;left:4%;width:64px;height:64px" aria-hidden="true"></div>
+  <div class="burbuja flota2" style="top:34%;left:12%;width:30px;height:30px" aria-hidden="true"></div>
+  <div class="burbuja flota3" style="bottom:14%;left:7%;width:44px;height:44px" aria-hidden="true"></div>
+  <div class="burbuja flota2" style="top:10%;right:8%;width:52px;height:52px" aria-hidden="true"></div>
+  <div class="burbuja flota" style="bottom:10%;right:5%;width:80px;height:80px" aria-hidden="true"></div>
+  <svg class="destello" style="top:58%;left:2.5%;width:26px" viewBox="0 0 100 100" fill="var(--azul)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <svg class="destello" style="bottom:22%;right:16%;width:20px;animation-delay:1.4s" viewBox="0 0 100 100" fill="var(--azul)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+
+  <div class="wrap">
+    <div class="iman-marca iman-hero" aria-label="Imán">
+      <div class="iman-escena" aria-hidden="true">
+        <span class="iman-part p1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="var(--azul)" stroke="var(--tinta)" stroke-width="1.6"/><circle cx="9" cy="9" r="2" fill="rgba(255,255,255,.85)"/></svg></span>
+        <span class="iman-part p2"><svg viewBox="0 0 24 24"><path d="M12 2 C13.2 8 16 10.8 22 12 C16 13.2 13.2 16 12 22 C10.8 16 8 13.2 2 12 C8 10.8 10.8 8 12 2 Z" fill="var(--lima)" stroke="var(--tinta)" stroke-width="1.2"/></svg></span>
+        <span class="iman-part p3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5" fill="var(--blanco)" stroke="var(--tinta)" stroke-width="1.6"/><path d="M7.4 10.2 A5.4 5.4 0 0 1 10.2 7.4" fill="none" stroke="var(--azul)" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <span class="iman-part p4"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.8" fill="var(--lima)" stroke="var(--tinta)" stroke-width="1.6"/><circle cx="9.6" cy="9.6" r="1.7" fill="var(--blanco)"/></svg></span>
+        <span class="iman-part p5"><svg viewBox="0 0 24 24"><path d="M12 2 C13.2 8 16 10.8 22 12 C16 13.2 13.2 16 12 22 C10.8 16 8 13.2 2 12 C8 10.8 10.8 8 12 2 Z" fill="var(--blanco)" stroke="var(--tinta)" stroke-width="1.2"/></svg></span>
+        <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+      </div>
+      <span class="iman-nombre">Im<i>á</i>n</span>
+    </div>
+
+    <div>
+      <!-- switch de audiencia -->
+      <div class="switch-aud" role="tablist" aria-label="Elegí tu tipo de negocio">
+        <span class="switch-thumb" aria-hidden="true"></span>
+        <button type="button" class="b-min" role="tab" aria-selected="true">🏪 Tengo un comercio</button>
+        <button type="button" class="b-dist" role="tab" aria-selected="false">🚚 Tengo una distribuidora</button>
+      </div>
+
+      <div class="solo-min">
+        <span class="hero-chip">Para negocios de limpieza y comercios de barrio</span>
+        <h1>Tus clientes de siempre pueden comprarte más. <span class="marca">Imán te arma la promo justa para cada uno.</span></h1>
+        <p class="sub">Imán mira las ventas de tu mostrador, arma los combos para tus clientes frecuentes y te deja los WhatsApp listos para mandar — también para los que hace rato no vienen.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primario wa-solido" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20un%20negocio%20de%20limpieza%20y%20quiero%20ver%20una%20demo%20de%20Im%C3%A1n." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+            Pedí tu demo por WhatsApp
+          </a>
+          <a class="btn btn-wa" href="#demo">Ver cómo funciona ↓</a>
+        </div>
+        <p class="hero-nota">Sin compromiso. Te mostramos Imán con TUS ventas.</p>
+      </div>
+
+      <div class="solo-dist">
+        <span class="hero-chip">Para distribuidoras de artículos de limpieza</span>
+        <h1>Premiá a los comercios que más te compran. <span class="marca">Recuperá a los que se enfrían.</span></h1>
+        <p class="sub">Imán analiza tu facturación, te muestra qué comercios bajaron sin avisar y a cuáles premiar — y te deja regalarles la herramienta con tu marca, para que nadie te los saque.</p>
+        <div class="hero-ctas">
+          <a href="#agenda" class="btn btn-primario">Agendá una llamada de 15 minutos</a>
+          <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20una%20distribuidora%20de%20art%C3%ADculos%20de%20limpieza%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20Im%C3%A1n." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+            Escribinos por WhatsApp
+          </a>
+        </div>
+        <p class="hero-nota">Sin compromiso. Analizamos tu cartera con TU facturación.</p>
+      </div>
+    </div>
+
+    <div class="hero-arte">
+      <svg class="blob flota2" style="width:110%;top:-6%" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="var(--lima)" d="M320 60c40 45 55 115 30 170s-90 95-155 92-125-50-148-108C24 156 42 88 92 52s188-37 228 8z" opacity=".85"/></svg>
+      <!-- bidón de lavandina con carácter -->
+      <svg class="bidon-svg flota" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="48" cy="72" r="16" fill="rgba(255,255,255,.55)" stroke="rgba(3,69,252,.35)" stroke-width="3"/>
+        <circle cx="262" cy="150" r="10" fill="rgba(255,255,255,.55)" stroke="rgba(3,69,252,.35)" stroke-width="3"/>
+        <circle cx="38" cy="200" r="8" fill="rgba(255,255,255,.55)" stroke="rgba(3,69,252,.35)" stroke-width="3"/>
+        <path d="M216 22c2.5 12 7 16.5 19 19-12 2.5-16.5 7-19 19-2.5-12-7-16.5-19-19 12-2.5 16.5-7 19-19z" fill="var(--azul)"/>
+        <rect x="122" y="10" width="56" height="32" rx="8" fill="var(--lima)" stroke="var(--tinta)" stroke-width="6"/>
+        <rect x="114" y="40" width="72" height="14" rx="6" fill="var(--tinta)"/>
+        <path d="M122 54h56v12q52 16 52 56v160q0 36-36 36h-88q-36 0-36-36V122q0-40 52-56Z" fill="var(--azul)" stroke="var(--tinta)" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M88 128q4-34 34-44" stroke="rgba(255,255,255,.55)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <rect x="92" y="150" width="116" height="106" rx="18" fill="#fff" stroke="var(--tinta)" stroke-width="5"/>
+        <path d="M150 160c6 10 6 16 0 18-6-2-6-8 0-18z" fill="var(--azul)"/>
+        <circle cx="128" cy="196" r="8" fill="var(--tinta)"/>
+        <circle cx="172" cy="196" r="8" fill="var(--tinta)"/>
+        <circle cx="131" cy="193" r="2.5" fill="#fff"/>
+        <circle cx="175" cy="193" r="2.5" fill="#fff"/>
+        <circle cx="112" cy="212" r="7" fill="#BFD9FF"/>
+        <circle cx="188" cy="212" r="7" fill="#BFD9FF"/>
+        <path d="M130 216q20 16 40 0" stroke="var(--tinta)" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. BARRA DE DOLOR ================= -->
+<section class="dolor">
+  <div class="burbuja clara flota" style="top:14%;right:6%;width:58px;height:58px" aria-hidden="true"></div>
+  <div class="burbuja clara flota2" style="bottom:12%;left:5%;width:38px;height:38px" aria-hidden="true"></div>
+  <svg class="destello" style="top:22%;left:14%;width:22px;animation-delay:.8s" viewBox="0 0 100 100" fill="var(--lima)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <div class="wrap">
+    <h2 class="rv">¿Te suena alguna de estas tres?</h2>
+    <div class="dolor-grid solo-min">
+      <div class="dolor-card rv"><div class="num">01</div><p>«El cliente viene una vez y la próxima compra la hace en el súper.»</p></div>
+      <div class="dolor-card rv rv-d1"><div class="num">02</div><p>«Tenés clientes de todas las semanas y nunca les armaste un combo.»</p></div>
+      <div class="dolor-card rv rv-d2"><div class="num">03</div><p>«Armás ofertas y las ve solo el que entra al local.»</p></div>
+    </div>
+    <div class="dolor-grid solo-dist">
+      <div class="dolor-card rv"><div class="num">01</div><p>«Los comercios que te compraban todas las semanas fueron bajando y no te diste cuenta.»</p></div>
+      <div class="dolor-card rv rv-d1"><div class="num">02</div><p>«Repartís la misma lista de precios a todos, compren mucho o poco.»</p></div>
+      <div class="dolor-card rv rv-d2"><div class="num">03</div><p>«No sabés qué productos tuyos rotan en cada comercio.»</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. DEMO / MOCKUPS ================= -->
+<section class="demo" id="demo">
+  <svg class="destello" style="top:18%;right:6%;width:30px" viewBox="0 0 100 100" fill="var(--azul)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <div class="burbuja clara flota3" style="bottom:8%;left:4%;width:52px;height:52px" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="solo-min">
+      <h2 class="rv">Los combos se arman solos con tus propias ventas.</h2>
+      <p class="baja rv rv-d1">Imán encuentra el grupo justo, escribe el mensaje y te lo deja listo para mandar por WhatsApp. Vos decidís si sale.</p>
+    </div>
+    <div class="solo-dist">
+      <h2 class="rv">Tu facturación ya sabe a quién premiar y a quién llamar.</h2>
+      <p class="baja rv rv-d1">Imán la lee y te lo pone en un tablero: tu cartera top, los que se enfrían y cómo rota lo tuyo en cada góndola.</p>
+    </div>
+
+    <!-- ===== mockups minorista ===== -->
+    <div class="demo-pila solo-min">
+      <div>
+        <p class="panel-titulo rv">1 · Promos para tus mejores clientes</p>
+        <div class="panel rv" data-panel>
+          <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Imán — Tu Negocio</span></div>
+          <div class="panel-tabs">
+            <span class="panel-tab activa">🎁 Promos sugeridas</span>
+            <span class="panel-tab">🔔 Por recuperar</span>
+            <span class="panel-tab">🧾 Mostrador</span>
+          </div>
+          <div class="panel-body">
+            <div class="alerta destacada">
+              <div class="avatar">🧴</div>
+              <div class="info">
+                <div class="quien">Clientes frecuentes de lavandina y suavizante · 19</div>
+                <div class="dato">Nunca les ofreciste nada → <strong>combo semanal con 10% off</strong>.</div>
+                <span class="etiqueta">Mensaje listo para enviar</span>
+              </div>
+              <button class="btn-alerta wa" type="button">Mandar por WhatsApp</button>
+            </div>
+            <div class="alerta">
+              <div class="avatar" style="background:#BFD9FF">🧼</div>
+              <div class="info">
+                <div class="quien">Frecuentes de jabón líquido fraccionado · 12</div>
+                <div class="dato">Llegó el bidón nuevo → avisarles solo a ellos.</div>
+              </div>
+              <button class="btn-alerta" type="button">Armar promo</button>
+            </div>
+            <div class="alerta">
+              <div class="avatar" style="background:var(--celeste)">🧺</div>
+              <div class="info">
+                <div class="quien">Clientes de todas las semanas · 8</div>
+                <div class="dato">Combo del mes reservado.</div>
+              </div>
+              <button class="btn-alerta" type="button" style="background:#93A8D6">Programado</button>
+            </div>
+            <div class="wa-preview">
+              Hola Susana! Tu combo de siempre (lavandina + suavizante) esta semana tiene <strong>10% off</strong> 🧼 ¿Te lo dejo preparado?
+              <span class="hora">Listo para enviar · lo mandás vos ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="panel-titulo rv">2 · Las que están por perderse</p>
+        <div class="panel rv" data-panel>
+          <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Imán — Tu Negocio</span></div>
+          <div class="panel-tabs">
+            <span class="panel-tab">🎁 Promos sugeridas</span>
+            <span class="panel-tab activa">🔔 Por recuperar</span>
+            <span class="panel-tab">🧾 Mostrador</span>
+          </div>
+          <div class="panel-body">
+            <div class="alerta destacada">
+              <div class="avatar">🧴</div>
+              <div class="info">
+                <div class="quien">Susana R. · lavandina + suavizante cada 15 días</div>
+                <div class="dato"><strong>Van 21 días.</strong> Se le terminó y todavía no vino.</div>
+                <div class="ciclo"><i></i></div>
+                <span class="etiqueta">⚠ Enviarle el combo con 10% off</span>
+              </div>
+              <button class="btn-alerta wa" type="button">Mandar combo</button>
+            </div>
+            <div class="alerta">
+              <div class="avatar" style="background:#BFD9FF">🧺</div>
+              <div class="info">
+                <div class="quien">Norma · compraba todas las semanas</div>
+                <div class="dato">No viene hace 32 días → mensaje «te extrañamos».</div>
+              </div>
+              <button class="btn-alerta" type="button">Recuperar</button>
+            </div>
+            <div class="wa-preview">
+              Hola Susana! Ya te debe estar quedando poca lavandina 😉 Tu combo de siempre tiene <strong>10% off</strong> esta semana. ¿Te lo preparo?
+              <span class="hora">Listo para enviar · lo mandás vos ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== mockups distribuidora ===== -->
+    <div class="demo-pila solo-dist">
+      <div>
+        <p class="panel-titulo rv">1 · Ofertas para tu cartera top</p>
+        <div class="panel rv" data-panel>
+          <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Imán — Tu Distribuidora</span></div>
+          <div class="panel-tabs">
+            <span class="panel-tab activa">🏆 Cartera top</span>
+            <span class="panel-tab">🚦 Semáforo</span>
+            <span class="panel-tab">📦 Stock en comercios</span>
+          </div>
+          <div class="panel-body">
+            <div class="alerta destacada">
+              <div class="avatar">🏆</div>
+              <div class="info">
+                <div class="quien">Los 12 comercios que más lavandina te compran</div>
+                <div class="dato">Concentran gran parte de tu facturación → <strong>condición especial de reposición</strong> antes de fin de mes.</div>
+                <span class="etiqueta">Propuesta lista para enviar</span>
+              </div>
+              <button class="btn-alerta wa" type="button">Mandar propuesta</button>
+            </div>
+            <div class="alerta">
+              <div class="avatar" style="background:#BFD9FF">🧴</div>
+              <div class="info">
+                <div class="quien">Compran suavizante todos los meses · 18 comercios</div>
+                <div class="dato">Llegó la línea nueva → promo de lanzamiento solo para ellos.</div>
+              </div>
+              <button class="btn-alerta" type="button">Armar promo</button>
+            </div>
+            <div class="wa-preview">
+              Hola! Por ser de los comercios que más nos acompañan, tienen <strong>condición especial de reposición</strong> en lavandina hasta el viernes. ¿Les armo el pedido de siempre con ese precio?
+              <span class="hora">Listo para enviar · lo mandás vos ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="panel-titulo rv">2 · El semáforo de tu cartera</p>
+        <div class="panel rv" data-panel>
+          <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Imán — Tu Distribuidora</span></div>
+          <div class="panel-tabs">
+            <span class="panel-tab">🏆 Cartera top</span>
+            <span class="panel-tab activa">🚦 Semáforo</span>
+            <span class="panel-tab">📦 Stock en comercios</span>
+          </div>
+          <div class="panel-body">
+            <div class="alerta">
+              <span class="semaforo v"></span>
+              <div class="info">
+                <div class="quien">Comercio San Justo</div>
+                <div class="dato">Pedidos estables hace 3 años. Tu comercio más fiel.</div>
+              </div>
+            </div>
+            <div class="alerta">
+              <span class="semaforo a"></span>
+              <div class="info">
+                <div class="quien">Limpiomax</div>
+                <div class="dato">Bajó 35% en 60 días → llamar antes de que sea rojo.</div>
+              </div>
+              <button class="btn-alerta" type="button">Ver detalle</button>
+            </div>
+            <div class="alerta destacada">
+              <span class="semaforo r"></span>
+              <div class="info">
+                <div class="quien">Don Limpio</div>
+                <div class="dato">Compraba todas las semanas · <strong>24 días sin pedido.</strong></div>
+                <div class="ciclo"><i></i></div>
+                <span class="etiqueta">⚠ Oferta de recuperación sugerida</span>
+              </div>
+              <button class="btn-alerta wa" type="button">Recuperar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="panel-titulo rv">3 · Lo tuyo, en su góndola</p>
+        <div class="panel rv" data-panel>
+          <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Imán — Tu Distribuidora</span></div>
+          <div class="panel-tabs">
+            <span class="panel-tab">🏆 Cartera top</span>
+            <span class="panel-tab">🚦 Semáforo</span>
+            <span class="panel-tab activa">📦 Stock en comercios</span>
+          </div>
+          <div class="panel-body">
+            <div class="alerta destacada">
+              <div class="avatar">📦</div>
+              <div class="info">
+                <div class="quien">Comercio San Justo · comparte stock de TUS productos</div>
+                <div class="dato">Lavandina 5 L: <strong>quedan 6 bidones</strong> · rotación 20/semana → se queda sin stock el miércoles.</div>
+                <div class="stockbar"><i></i></div>
+                <span class="etiqueta optin">El comercio eligió compartir · ves solo lo tuyo</span>
+              </div>
+              <button class="btn-alerta wa" type="button">Proponer reposición</button>
+            </div>
+            <div class="alerta">
+              <div class="avatar" style="background:#BFD9FF">📦</div>
+              <div class="info">
+                <div class="quien">Limpiomax · comparte stock de TUS productos</div>
+                <div class="dato">Detergente 750 ml: stock sano, rotación 15/semana. Sin acción.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-leyenda rv">👆 Pantallas ilustrativas. Los mensajes salen con tu nombre, por tu WhatsApp — nada se manda solo.</p>
+  </div>
+</section>
+
+<!-- ================= 4. CANAL (solo distribuidora) ================= -->
+<section class="canal solo-dist">
+  <div class="burbuja flota" style="top:16%;right:5%;width:54px;height:54px" aria-hidden="true"></div>
+  <svg class="destello" style="bottom:14%;left:4%;width:24px;animation-delay:.6s" viewBox="0 0 100 100" fill="var(--azul)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <div class="wrap">
+    <h2 class="rv">Regalales la herramienta. Quedate con la lealtad.</h2>
+    <p class="baja rv rv-d1">Le das a cada comercio su Imán con tu marca: ellos venden mejor en el mostrador, vos ves cómo rota lo tuyo y aparecés con la reposición antes del quiebre.</p>
+
+    <div class="circuito rv">
+      <svg viewBox="0 0 320 500" xmlns="http://www.w3.org/2000/svg" aria-label="Circuito: tu distribuidora le regala Imán al comercio, el comercio vende mejor al cliente final y te compra más">
+        <path class="flujo" d="M160 88 V190"/>
+        <path class="flujo" d="M160 262 V356"/>
+        <path class="flujo retorno" d="M270 392 C 305 392, 305 52, 270 52"/>
+        <rect class="nodo-caja" x="50" y="16" width="220" height="72" rx="16"/>
+        <text class="nodo-texto" x="160" y="48" text-anchor="middle">TU DISTRIBUIDORA</text>
+        <text class="nodo-sub" x="160" y="68" text-anchor="middle">le regalás Imán</text>
+        <rect class="nodo-caja" x="50" y="190" width="220" height="72" rx="16"/>
+        <text class="nodo-texto" x="160" y="222" text-anchor="middle">EL COMERCIO</text>
+        <text class="nodo-sub" x="160" y="242" text-anchor="middle">vende mejor con tu marca</text>
+        <rect class="nodo-caja" x="50" y="356" width="220" height="72" rx="16"/>
+        <text class="nodo-texto" x="160" y="388" text-anchor="middle">EL CLIENTE FINAL</text>
+        <text class="nodo-sub" x="160" y="408" text-anchor="middle">vuelve más seguido</text>
+        <text class="nodo-texto" x="160" y="468" text-anchor="middle" fill="var(--azul-osc)">→ el comercio te compra más ←</text>
+      </svg>
+    </div>
+
+    <div class="canal-grid">
+      <div class="canal-puntos">
+        <div class="canal-punto rv"><span class="ic">🏷️</span><div>La marca es tuya.<small>Tus comercios usan Imán con tu logo y tu nombre. El proveedor que les regaló la herramienta sos vos.</small></div></div>
+        <div class="canal-punto rv rv-d1"><span class="ic">🔒</span><div>El comercio elige qué compartir.<small>La visibilidad es opt-in: cada comercio decide si comparte, y aunque comparta, vos ves solo stock y rotación de TUS productos. Nada más.</small></div></div>
+        <div class="canal-punto rv rv-d2"><span class="ic">🔁</span><div>Reposición antes del quiebre.<small>Cuando lo tuyo se está por acabar en su góndola, Imán te avisa y le proponés el pedido antes que otro proveedor.</small></div></div>
+      </div>
+      <div class="marca-blanca rv rv-d1">
+        <div class="mb-top">🧲 Imán <span class="logo-ph">TU MARCA ACÁ</span></div>
+        <div class="mb-fila"><span>Comercio San Justo</span><small>mostrador</small></div>
+        <div class="mb-fila"><span>Venta rápida</span><small>✓ activa</small></div>
+        <div class="mb-fila"><span>Promos sugeridas</span><small>3 nuevas</small></div>
+        <div class="mb-fila"><span>Compartir stock con proveedor</span><small>✓ activado por el comercio</small></div>
+        <div class="mb-pie">Así ve Imán tu comercio: con tu marca arriba.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. GESTIÓN ================= -->
+<section class="gestion">
+  <div class="wrap">
+    <h2 class="rv solo-min">Y además, todo el mostrador en un solo lugar.</h2>
+    <h2 class="rv solo-dist">La herramienta que regalás resuelve el mostrador entero.</h2>
+    <p class="baja rv rv-d1 solo-min">Imán conoce tus ventas porque es donde vendés. No cargás nada extra: atendés como siempre y las promos salen solas.</p>
+    <p class="baja rv rv-d1 solo-dist">Por eso el comercio la usa todos los días — y por eso Imán conoce sus ventas sin que nadie cargue nada extra.</p>
+    <div class="gestion-grid">
+      <div class="gestion-card rv"><span class="ic">🧾</span>Venta rápida<small>Cobrás desde el mostrador en segundos, con o sin cliente asignado.</small></div>
+      <div class="gestion-card rv rv-d1"><span class="ic">💲</span>Listas de precios<small>Mostrador, mayorista o la que quieras, por cliente.</small></div>
+      <div class="gestion-card rv rv-d2"><span class="ic">📈</span>Aumentos en un clic<small>Llegó la lista nueva del proveedor: actualizás todo de una.</small></div>
+      <div class="gestion-card rv rv-d3"><span class="ic">📄</span>Comprobantes en PDF<small>Comprobantes internos listos para mandar por WhatsApp.</small></div>
+      <div class="gestion-card rv rv-d3"><span class="ic">📒</span>Cuenta corriente<small>Quién te debe y cuánto, sin cuaderno.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. CÓMO FUNCIONA ================= -->
+<section class="pasos">
+  <div class="burbuja flota2" style="top:16%;right:4%;width:46px;height:46px" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="rv">Arrancás esta semana, sin cambiar nada de lo que usás</h2>
+    <p class="baja rv rv-d1 solo-min">No hay que instalar nada raro ni aprender un sistema nuevo.</p>
+    <p class="baja rv rv-d1 solo-dist">El trabajo pesado lo hacemos nosotros con tu facturación.</p>
+    <div class="pasos-grid solo-min">
+      <div class="paso rv"><div class="icono">📦</div><h3>Cargás tus productos</h3><p>Te ayudamos con la lista de precios, venta suelta incluida. Si ya facturás con otro sistema, traemos tu historial.</p></div>
+      <div class="paso rv rv-d1"><div class="icono">🧾</div><h3>Vendés desde el mostrador</h3><p>Atendés como siempre. Cada venta le enseña a Imán quién compra qué y cada cuánto.</p></div>
+      <div class="paso rv rv-d2"><div class="icono">🎁</div><h3>Imán te dice a quién premiar</h3><p>Y a quién hacer volver. Promos y mensajes listos: vos solo apretás enviar.</p></div>
+    </div>
+    <div class="pasos-grid solo-dist">
+      <div class="paso rv"><div class="icono">📊</div><h3>Nos mandás tu facturación</h3><p>Excel o el reporte de tu sistema. Nosotros lo ordenamos.</p></div>
+      <div class="paso rv rv-d1"><div class="icono">🚦</div><h3>Vemos juntos tu cartera</h3><p>Top, estables y enfriándose: en la llamada te mostramos el semáforo con tus propios números.</p></div>
+      <div class="paso rv rv-d2"><div class="icono">🏷️</div><h3>Tus comercios reciben su copia</h3><p>Con tu marca. Ellos venden mejor y vos ves cómo rota lo tuyo donde eligieron compartir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. PRECIO ================= -->
+<section class="precio">
+  <div class="burbuja clara flota" style="top:18%;left:5%;width:52px;height:52px" aria-hidden="true"></div>
+  <svg class="destello" style="bottom:16%;right:7%;width:24px;animation-delay:1.2s" viewBox="0 0 100 100" fill="var(--lima)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <div class="wrap">
+    <div class="solo-min">
+      <h2 class="rv">Se paga solo con 3 clientes que vuelvan en el mes.</h2>
+      <p class="linea rv rv-d1">Y tu historial tiene muchas más que 3 esperando un mensaje.</p>
+    </div>
+    <div class="solo-dist">
+      <h2 class="rv">Un solo comercio recuperado paga el mes.</h2>
+      <p class="linea rv rv-d1">Y tu cartera tiene más de uno enfriándose ahora mismo.</p>
+    </div>
+    <div class="precio-card rv rv-d1">
+      <div class="precio-item"><span class="tilde">✓</span>Plan mensual fijo en pesos, sin permanencia ni letra chica</div>
+      <div class="precio-item"><span class="tilde">✓</span>Promos y mensajes ilimitados — siempre los mandás vos</div>
+      <div class="precio-item"><span class="tilde">✓</span>Puesta en marcha incluida: te cargamos el historial</div>
+      <div class="precio-item solo-min"><span class="tilde">✓</span>El mostrador completo incluido: ventas, precios, PDF y cuenta corriente</div>
+      <div class="precio-item solo-dist"><span class="tilde">✓</span>Las copias con tu marca para tus comercios van incluidas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. PRUEBA / GARANTÍA ================= -->
+<section class="prueba">
+  <div class="wrap">
+    <h2 class="rv solo-min">Los números de un comercio de barrio, con y sin Imán</h2>
+    <h2 class="rv solo-dist">Los números de una distribuidora zonal, con y sin Imán</h2>
+    <p class="baja rv rv-d1">Todavía no te vamos a mostrar testimonios inventados. Te mostramos la cuenta, tal cual es.</p>
+
+    <span class="sim-tag rv">Simulación ilustrativa — no es una promesa</span>
+    <div class="sim-grid solo-min">
+      <div class="sim-card rv"><div class="cifra" data-count="500">0</div><p>clientes con teléfono pasan por un negocio de barrio en un año</p></div>
+      <div class="sim-card rv rv-d1"><div class="cifra" data-count="200">0</div><p>de esos compran una sola vez y no vuelven</p></div>
+      <div class="sim-card rv rv-d2"><div class="cifra" data-count="10">0</div><p>recompras al mes recuperás con que vuelva solo el 5%</p></div>
+    </div>
+    <div class="sim-grid solo-dist">
+      <div class="sim-card rv"><div class="cifra" data-count="120">0</div><p>comercios tiene una cartera zonal típica</p></div>
+      <div class="sim-card rv rv-d1"><div class="cifra" data-count="30">0</div><p>de esos bajaron su compra en el último trimestre sin avisar</p></div>
+      <div class="sim-card rv rv-d2"><div class="cifra" data-count="3">0</div><p>comercios recuperados al mes con un llamado a tiempo cambian el trimestre</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. FAQ ================= -->
+<section class="faq">
+  <div class="wrap">
+    <h2 class="rv">Preguntas que nos hacen siempre</h2>
+
+    <details class="rv"><summary>¿Cuánto sale en pesos?</summary>
+      <p class="resp solo-min">Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu negocio y te lo damos en la demo. Como referencia: se cubre con las primeras recompras del mes.</p>
+      <p class="resp solo-dist">Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia, con las copias para tus comercios incluidas. El número exacto depende del tamaño de tu cartera y te lo damos en la llamada de 15 minutos.</p>
+    </details>
+    <details class="rv"><summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
+      <p class="resp">Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.</p>
+    </details>
+    <details class="rv solo-min"><summary>¿Mi proveedor ve mis datos?</summary>
+      <p class="resp">Solo si vos activás compartir — y aunque lo actives, ve únicamente SUS productos: cuánto stock te queda y cómo rotan. Tus clientes, tus precios y el resto de tus ventas no los ve nadie.</p>
+    </details>
+    <details class="rv solo-dist"><summary>¿Qué ve exactamente cada parte?</summary>
+      <p class="resp">El comercio ve todo lo suyo: sus ventas, sus clientes, sus precios. Vos ves stock y rotación solo de TUS productos, y solo en los comercios que eligieron compartir. Es opt-in del comercio, y así se lo decimos a ellos también: la confianza del canal es el negocio.</p>
+    </details>
+    <details class="rv"><summary>¿Cuánto tarda en estar funcionando?</summary>
+      <p class="resp solo-min">Cargás tus productos en una tarde (te ayudamos) y esa misma semana salen tus primeras promos.</p>
+      <p class="resp solo-dist">Desde que nos mandás tu facturación, tu semáforo de cartera está listo en 48 horas.</p>
+    </details>
+    <details class="rv"><summary>Uso Excel / otro sistema de facturación. ¿Me sirve igual?</summary>
+      <p class="resp solo-min">Sí. Si ya facturás con otro sistema, traemos tu historial desde un Excel o el reporte que exporte. Y si no usás nada, mejor: Imán te resuelve el mostrador desde el día uno.</p>
+      <p class="resp solo-dist">Sí. Trabajamos con tu facturación exportada: Excel, tu sistema o lo que uses. No cambiás nada de tu operación.</p>
+    </details>
+    <details class="rv"><summary>No sé nada de tecnología. ¿Voy a poder usarlo?</summary>
+      <p class="resp">Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ================= 10. CIERRE ================= -->
+<section class="cierre" id="agenda">
+  <div class="burbuja clara flota" style="top:10%;left:5%;width:60px;height:60px" aria-hidden="true"></div>
+  <div class="burbuja clara flota2" style="bottom:12%;right:6%;width:42px;height:42px" aria-hidden="true"></div>
+  <svg class="destello" style="top:14%;right:12%;width:24px;animation-delay:1s" viewBox="0 0 100 100" fill="var(--lima)" aria-hidden="true"><path d="M50 0C55 33 67 45 100 50 67 55 55 67 50 100 45 67 33 55 0 50 33 45 45 33 50 0Z"/></svg>
+  <div class="wrap">
+    <div class="iman-marca iman-mini" aria-label="Imán">
+      <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+      <span class="iman-nombre">Im<i>á</i>n</span>
+    </div>
+
+    <div class="solo-min">
+      <h2 class="rv">El próximo combo ya está en tus ventas de ayer.</h2>
+      <p class="baja rv rv-d1">Escribinos y te mostramos Imán con tus propios números. Demo de 15 minutos, por WhatsApp o videollamada.</p>
+      <div class="cierre-min rv rv-d1">
+        <a class="btn btn-primario wa-solido" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20un%20negocio%20de%20limpieza%20y%20quiero%20ver%20una%20demo%20de%20Im%C3%A1n." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+          Pedí tu demo por WhatsApp
+        </a>
+        <p class="hero-nota" style="color:#CBDCFF">Respondemos en el día. Sin compromiso.</p>
+      </div>
+    </div>
+
+    <div class="solo-dist">
+      <h2 class="rv">Tu cartera entera, en un tablero, en 15 minutos.</h2>
+      <p class="baja rv rv-d1">Elegí un horario y te mostramos el semáforo con tu propia facturación: quiénes son tus top y quiénes se están enfriando.</p>
+      <div class="agenda-caja rv rv-d1">
+        <!-- Embed inline de Calendly (solo se carga en vista distribuidora) -->
+        <div id="cal-embed">
+          <div class="agenda-cargando">
+            <span style="font-size:2rem">🗓️</span>
+            Cargando la agenda…<br>
+            <small style="font-weight:600;color:#8FA3D6">Si no carga, escribinos por WhatsApp y coordinamos por ahí.</small>
+          </div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/david-nomosdelta/30min?hide_gdpr_banner=1&amp;primary_color=0345FC&amp;utm_source=landing&amp;utm_campaign=limpieza-distribuidora" style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+      <div class="cierre-wa">
+        <p>¿Preferís chatear antes?</p>
+        <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20una%20distribuidora%20de%20art%C3%ADculos%20de%20limpieza%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20Im%C3%A1n." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+          Escribinos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="iman-marca iman-pie" aria-label="Imán">
+    <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+    <span class="iman-nombre">Im<i>á</i>n</span>
+  </div>
+  Hecho para el mundo de la limpieza: los que venden en el mostrador y los que lo abastecen. 🫧
+</footer>
+
+<!-- ================= STICKY CTA MOBILE ================= -->
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn btn-primario wa-solido solo-min" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20un%20negocio%20de%20limpieza%20y%20quiero%20ver%20una%20demo%20de%20Im%C3%A1n." target="_blank" rel="noopener">Pedí tu demo por WhatsApp</a>
+  <a href="#agenda" class="btn btn-primario solo-dist">Agendá tu llamada</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var body = document.body;
+  var main = document.getElementById('main');
+
+  /* ---- audiencia: inicial desde la URL ---- */
+  function audDesdeURL(){ return /distribuidora/.test(location.pathname) ? 'dist' : 'min'; }
+  body.dataset.aud = audDesdeURL();
+
+  /* ---- switch de audiencia con transición y pushState ---- */
+  var thumb = document.querySelector('.switch-thumb');
+  var btnMin = document.querySelector('.switch-aud .b-min');
+  var btnDist = document.querySelector('.switch-aud .b-dist');
+  function moverThumb(){
+    var act = body.dataset.aud === 'dist' ? btnDist : btnMin;
+    thumb.style.left = act.offsetLeft + 'px';
+    thumb.style.width = act.offsetWidth + 'px';
+    btnMin.setAttribute('aria-selected', body.dataset.aud === 'min');
+    btnDist.setAttribute('aria-selected', body.dataset.aud === 'dist');
+  }
+  function rutaPara(aud){
+    var base = location.pathname.replace(/(minorista|distribuidora)\/?(index\.html)?$/, '');
+    if(!/\/$/.test(base)) base += '/';
+    return base + (aud === 'dist' ? 'distribuidora/' : 'minorista/');
+  }
+  function setAud(aud, empujar){
+    if(aud === body.dataset.aud) return;
+    function aplicar(){
+      body.dataset.aud = aud;
+      moverThumb();
+      main.classList.remove('cambiando');
+      chequearCal();
+    }
+    if(empujar){
+      try{ history.pushState({aud:aud}, '', rutaPara(aud)); }catch(e){}
+    }
+    if(reduce){ aplicar(); }
+    else{
+      main.classList.add('cambiando');
+      setTimeout(aplicar, 230);
+    }
+  }
+  btnMin.addEventListener('click', function(){ setAud('min', true); });
+  btnDist.addEventListener('click', function(){ setAud('dist', true); });
+  window.addEventListener('popstate', function(){ setAud(audDesdeURL(), false); });
+  window.addEventListener('resize', moverThumb, {passive:true});
+  moverThumb();
+  setTimeout(moverThumb, 400); /* re-mide cuando cargan las fuentes */
+
+  /* ---- reveals al scrollear ---- */
+  var rv = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.18,rootMargin:'0px 0px -40px 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else {
+    rv.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- mockups: secuencia al entrar la sección demo ---- */
+  var demoSec = document.getElementById('demo');
+  var paneles = document.querySelectorAll('[data-panel]');
+  function arrancarPaneles(){ paneles.forEach(function(p){ p.classList.add('andando'); }); }
+  if(demoSec && 'IntersectionObserver' in window && !reduce){
+    var ioDemo = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ arrancarPaneles(); ioDemo.disconnect(); } });
+    },{threshold:.15});
+    ioDemo.observe(demoSec);
+  } else {
+    arrancarPaneles();
+  }
+
+  /* ---- count-up de cifras ---- */
+  var cifras = document.querySelectorAll('[data-count]');
+  function contar(el){
+    var fin = parseInt(el.getAttribute('data-count'),10), t0 = null, dur = 1600;
+    function paso(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0)/dur, 1);
+      p = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(fin * p);
+      if(p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if('IntersectionObserver' in window && !reduce){
+    var ioC = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ contar(e.target); ioC.unobserve(e.target); } });
+    },{threshold:.6});
+    cifras.forEach(function(el){ ioC.observe(el); });
+  } else {
+    cifras.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+
+  /* ---- sticky CTA mobile ---- */
+  var sticky = document.getElementById('sticky-cta');
+  var agenda = document.getElementById('agenda');
+  var pasoHero = false, enAgenda = false;
+  function actualizarSticky(){ sticky.classList.toggle('visible', pasoHero && !enAgenda); }
+  window.addEventListener('scroll', function(){
+    pasoHero = window.scrollY > window.innerHeight * .7;
+    actualizarSticky();
+  }, {passive:true});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ enAgenda = e.isIntersecting; actualizarSticky(); });
+    },{threshold:.15}).observe(agenda);
+  }
+
+  /* ---- Calendly: solo en vista distribuidora, cargado al acercarse ---- */
+  var calCargado = false, agendaCerca = false;
+  function chequearCal(){
+    if(calCargado || !agendaCerca || body.dataset.aud !== 'dist') return;
+    calCargado = true;
+    var s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es, o){
+      es.forEach(function(e){ if(e.isIntersecting){ agendaCerca = true; chequearCal(); if(calCargado) o.disconnect(); } });
+    },{rootMargin:'900px'}).observe(agenda);
+  } else {
+    agendaCerca = true; chequearCal();
+  }
+})();
+</script>
+</body>
+</html>

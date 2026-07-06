@@ -1,0 +1,13 @@
+# Solo las landings se despliegan en Vercel.
+# El producto Imán vive en otra carpeta/repo; campaign es material interno pesado.
+iman/
+campaign/
+
+# Notas internas y config local
+NOTAS.md
+.claude/
+.vercel/
+
+# macOS
+.DS_Store
+**/.DS_Store

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Landings por vertical</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#111;color:#eee;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.grid{display:grid;gap:1rem;width:min(680px,100%)}
+@media(min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+h1{grid-column:1/-1;font-size:1.4rem;margin-bottom:.5rem;font-weight:700}
+a.card{display:block;padding:1.6rem 1.4rem;border-radius:14px;text-decoration:none;font-weight:800;font-size:1.15rem;transition:transform .15s}
+a.card:hover{transform:translateY(-3px)}
+a.card small{display:block;font-weight:500;font-size:.85rem;margin-top:.35rem;opacity:.85}
+.pet{background:#FF6B35;color:#fff}
+.ropa{background:#E5006D;color:#fff}
+.limpieza{background:#0345FC;color:#fff}
+.repuestos{background:#FFD100;color:#111}
+.iman{background:#221d16;color:#faf6ef;grid-column:1/-1}
+.iman small{color:#e8dfd1}
+</style>
+</head>
+<body>
+<div class="grid">
+  <h1>Landing genérica (tráfico amplio)</h1>
+  <a class="card iman" href="../comercios/">🧲 /comercios — Selector de 6 rubros<small>Vendé más con los clientes que ya tenés · switch minorista/distribuidora combinado con rubro · flujo "Otro rubro" + evento de analytics</small></a>
+  <h1 style="margin-top:1rem">Landings por vertical</h1>
+  <a class="card pet" href="../pet/">🐾 Pet shops<small>Recompra matemática del alimento</small></a>
+  <a class="card ropa" href="../ropa/">🛍 Locales de ropa<small>Reactivación con venta caída</small></a>
+  <a class="card limpieza" href="../limpieza/">🫧 Artículos de limpieza<small>Consumo por ciclos</small></a>
+  <a class="card repuestos" href="../repuestos/">🔧 Casas de repuestos<small>Mantenimiento predecible</small></a>
+  <h1 style="margin-top:1rem">Landings duales Imán (minorista / distribuidora)</h1>
+  <a class="card pet" href="../petshops/minorista/">🐾 Pet · Minorista<small>Promos a los mejores + recuperar dormidos, con switch a distribuidora</small></a>
+  <a class="card pet" href="../petshops/distribuidora/">🚚 Pet · Distribuidora<small>Cartera top, semáforo, stock por comercio y marca blanca</small></a>
+  <a class="card limpieza" href="../limpieza/minorista/">🫧 Limpieza · Minorista<small>Combos para clientes frecuentes + recuperación</small></a>
+  <a class="card limpieza" href="../limpieza/distribuidora/">🚚 Limpieza · Distribuidora<small>Cartera top, semáforo, stock por comercio y marca blanca</small></a>
+</div>
+</body>
+</html>

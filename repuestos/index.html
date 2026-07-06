@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Que el service lo compren con vos, no con el de enfrente</title>
+<meta name="description" content="Analizamos las ventas de tu casa de repuestos, calculamos el ciclo de service de cada cliente y le avisamos por WhatsApp antes de que compre en otra casa.">
+
+<!-- ============================================================
+     CONFIGURAR ANTES DE PUBLICAR:
+     1. Calendly → ya apunta a calendly.com/david-nomosdelta/30min.
+        Para cambiar el evento, editá el data-url del div
+        .calendly-inline-widget en la sección #agenda.
+     2. WhatsApp → buscar "5493535189997" y reemplazar por tu
+        número real con código de país, sin + ni espacios.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ SISTEMA BASE ============ */
+:root{
+  --carbon:#17181C;
+  --negro:#0E0F12;
+  --amarillo:#FFD100;
+  --naranja:#FF6B00;
+  --gris:#9BA0A8;
+  --humo:#F2F3F5;
+  --claro:#C9CDD3;
+  --borde:#2C2F36;
+  --chapa:#1A1C21;
+  --verde-wa:#25D366;
+  --radio:6px;
+  --display:'Archivo Black',sans-serif;
+  --cond:'Oswald',sans-serif;
+  --cuerpo:'Barlow',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--cuerpo);
+  background:var(--carbon);
+  color:var(--humo);
+  font-size:clamp(1rem,.95rem + .3vw,1.125rem);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3{line-height:1.08}
+h2{font-family:var(--display);font-weight:400;letter-spacing:.01em}
+h3{font-family:var(--cond);font-weight:600}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+section{position:relative;padding:clamp(3.5rem,8vw,6.5rem) 1.25rem}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+
+/* grain sutil (metal) sobre toda la página */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.08;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* franjas de peligro amarillo/negro */
+.rayas{
+  background-image:linear-gradient(45deg,var(--amarillo) 25%,var(--negro) 25%,var(--negro) 50%,var(--amarillo) 50%,var(--amarillo) 75%,var(--negro) 75%);
+  background-size:32px 32px;
+}
+/* separador de peligro animado (loop lento, solo transform) */
+.franja{height:14px;overflow:hidden;position:relative;pointer-events:none}
+.franja i{
+  position:absolute;top:0;bottom:0;left:0;width:calc(100% + 96px);display:block;
+  background-image:linear-gradient(45deg,var(--amarillo) 25%,var(--negro) 25%,var(--negro) 50%,var(--amarillo) 50%,var(--amarillo) 75%,var(--negro) 75%);
+  background-size:48px 48px;
+  animation:cinta 5s linear infinite;
+}
+@keyframes cinta{to{transform:translateX(-48px)}}
+
+/* chevrones tipo señalética */
+.chevrones{display:flex;gap:.4rem;align-items:center}
+.chevrones svg{width:22px;height:34px;flex-shrink:0}
+.chevrones svg:nth-child(1){animation:titila 1.5s ease-in-out infinite}
+.chevrones svg:nth-child(2){animation:titila 1.5s ease-in-out .22s infinite}
+.chevrones svg:nth-child(3){animation:titila 1.5s ease-in-out .44s infinite}
+@keyframes titila{0%,100%{opacity:.15}50%{opacity:1}}
+
+/* ============ UTILIDADES DE ANIMACIÓN ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}.rv-d3{transition-delay:.36s}
+@keyframes flotar{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(8deg)}}
+@keyframes flotar2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(10px) rotate(-10deg)}}
+.flota{animation:flotar 7s ease-in-out infinite}
+.flota2{animation:flotar2 8.5s ease-in-out infinite}
+.deco{position:absolute;pointer-events:none;z-index:0}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============ BOTONES ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--cond);font-weight:600;font-size:1.02rem;
+  text-transform:uppercase;letter-spacing:.05em;
+  padding:1rem 1.8rem;border-radius:4px;border:none;cursor:pointer;
+  text-decoration:none;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
+  min-height:48px;
+}
+.btn:active{transform:scale(.96)}
+.btn-primario{
+  background:var(--amarillo);color:var(--negro);
+  box-shadow:0 5px 0 rgba(0,0,0,.85),0 14px 30px rgba(255,209,0,.22);
+}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(0,0,0,.85),0 18px 36px rgba(255,209,0,.3)}
+.btn-wa{
+  background:transparent;color:var(--humo);border:2px solid var(--humo);
+  font-size:.94rem;padding:.85rem 1.4rem;
+}
+.btn-wa:hover{transform:translateY(-2px);background:var(--humo);color:var(--negro)}
+.btn-wa svg{width:20px;height:20px;flex-shrink:0}
+
+/* ============ MARCA IMÁN ============ */
+.iman-marca{display:flex;align-items:center;gap:.55rem}
+.iman-nombre{font-family:var(--display);font-size:1.45rem;color:var(--humo);line-height:1}
+.iman-nombre i{font-style:normal;color:var(--amarillo)}
+.iman-svg{width:46px;height:auto;display:block;animation:imanFlota 5s ease-in-out infinite;transform-origin:50% 62%}
+@keyframes imanFlota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.iman-cuerpo-borde{fill:none;stroke:var(--negro);stroke-width:34}
+.iman-cuerpo{fill:none;stroke:var(--amarillo);stroke-width:21}
+.iman-polo{fill:var(--humo);stroke:var(--negro);stroke-width:5}
+.iman-chispa{stroke:var(--amarillo);stroke-width:5;stroke-linecap:round;fill:none}
+/* hero: escena protagonista con partículas atraídas */
+.iman-hero{grid-column:1/-1;margin-bottom:1.6rem}
+.iman-escena{position:relative;width:52px;height:58px;flex-shrink:0}
+.iman-escena .iman-svg{width:100%;height:100%}
+.iman-part{
+  position:absolute;left:50%;top:42%;width:20px;height:20px;margin:-10px 0 0 -10px;
+  opacity:0;pointer-events:none;
+  animation:imanAtrae var(--dur,4.5s) infinite;animation-delay:var(--del,0s);
+}
+.iman-part svg{width:100%;height:100%;display:block}
+@keyframes imanAtrae{
+  0%{opacity:0;transform:translate(var(--x0),var(--y0)) scale(.5) rotate(var(--r0,0deg));animation-timing-function:ease-out}
+  12%{opacity:1}
+  55%{transform:translate(var(--x1),var(--y1)) scale(.8) rotate(0deg);animation-timing-function:cubic-bezier(.6,0,.9,.5)}
+  80%{opacity:1;transform:translate(0,0) scale(1.1) rotate(var(--r1,0deg))}
+  88%{transform:translate(0,0) scale(1.35) rotate(var(--r1,0deg))}
+  100%{opacity:0;transform:translate(0,0) scale(.1) rotate(var(--r1,0deg))}
+}
+.iman-part.p1{--x0:120px;--y0:-40px;--x1:60px;--y1:-34px;--r0:40deg;--r1:-10deg;--dur:4.4s;--del:0s}
+.iman-part.p2{--x0:140px;--y0:-34px;--x1:70px;--y1:-26px;--r0:-30deg;--r1:8deg;--dur:5s;--del:1.4s}
+.iman-part.p3{--x0:60px;--y0:-70px;--x1:26px;--y1:-44px;--r0:60deg;--r1:-6deg;--dur:4.7s;--del:2.5s}
+.iman-part.p4{--x0:-40px;--y0:-56px;--x1:-26px;--y1:-32px;--r0:-45deg;--r1:12deg;--dur:5.4s;--del:3.4s}
+.iman-part.p5{--x0:170px;--y0:-38px;--x1:88px;--y1:-30px;--r0:25deg;--r1:-14deg;--dur:5.8s;--del:4.2s}
+/* versión mínima: cierre y footer (solo flotación, sin partículas).
+   El cierre es fondo negro: la paleta del hero ya contrasta, sin overrides. */
+.iman-mini{justify-content:center;margin-bottom:1.6rem}
+.iman-pie{justify-content:center;margin-bottom:.8rem}
+footer .iman-svg{width:32px}
+footer .iman-nombre{font-size:1.1rem}
+footer .iman-polo{fill:var(--claro)}
+/* CTA: pulso magnético ocasional en pantallas táctiles */
+@media (hover:none){.btn-primario{animation:imanPulso 7s ease-in-out 3s infinite}}
+@keyframes imanPulso{0%,86%,100%{scale:1}90%{scale:1.045}94%{scale:.99}97%{scale:1.015}}
+
+/* ============ 1. HERO ============ */
+.hero{
+  min-height:92svh;display:flex;align-items:center;
+  padding-top:clamp(2.5rem,6vw,4rem);
+  background:var(--carbon);overflow:hidden;
+}
+.hero::before{ /* textura metal: rayado diagonal muy tenue */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(242,243,245,.025) 0 2px,transparent 2px 16px);
+}
+.hero-borde{position:absolute;left:0;right:0;bottom:0;height:8px;z-index:1}
+.hero .wrap{max-width:940px}
+.hero-chip{
+  display:inline-block;font-family:var(--cond);font-weight:600;font-size:.85rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:var(--amarillo);color:var(--negro);padding:.42rem 1rem;
+  border-radius:3px;box-shadow:4px 4px 0 rgba(0,0,0,.7);margin-bottom:1.5rem;
+}
+.hero h1{
+  font-family:var(--cond);font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.7rem,8vw,5.4rem);line-height:1.08;letter-spacing:.01em;
+  margin-bottom:1.3rem;
+}
+.hero h1 .marca{
+  background:var(--amarillo);color:var(--negro);padding:.02em .14em;
+  border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  white-space:nowrap;
+}
+.hero p.sub{
+  font-size:clamp(1.05rem,1rem + .5vw,1.28rem);max-width:37rem;margin-bottom:2.1rem;
+  font-weight:600;color:var(--claro);
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero-nota{font-size:.85rem;margin-top:1rem;color:var(--gris);font-weight:600}
+.hero-chev{position:absolute;right:5%;bottom:18%;color:var(--amarillo);z-index:1}
+.hero-chev svg{width:30px;height:46px}
+@media(max-width:899px){.hero-chev{display:none}}
+
+/* ============ 2. BARRA DE DOLOR ============ */
+.dolor{background:var(--negro);overflow:hidden}
+.dolor h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:2.5rem;color:var(--amarillo);max-width:32rem}
+.dolor-grid{display:grid;gap:1.2rem}
+@media(min-width:760px){.dolor-grid{grid-template-columns:repeat(3,1fr)}}
+.dolor-card{
+  background:var(--carbon);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:0 1.5rem 1.7rem;position:relative;overflow:hidden;
+}
+.dolor-card::before{ /* filo de peligro arriba de cada tarjeta */
+  content:"";display:block;height:7px;margin:0 -1.5rem 1.5rem;
+  background-image:linear-gradient(45deg,var(--amarillo) 25%,var(--negro) 25%,var(--negro) 50%,var(--amarillo) 50%,var(--amarillo) 75%,var(--negro) 75%);
+  background-size:24px 24px;
+}
+.dolor-card .num{
+  font-family:var(--display);font-size:2.3rem;color:var(--naranja);
+  line-height:1;margin-bottom:.7rem;
+}
+.dolor-card p{font-size:1.1rem;font-weight:700;line-height:1.45;color:var(--humo)}
+
+/* ============ 3. DEMO / MOCKUP ============ */
+.demo{background:var(--amarillo);color:var(--negro);overflow:hidden}
+.demo h2{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--negro);max-width:36rem;margin-bottom:.8rem}
+.demo .baja{font-weight:700;color:rgba(14,15,18,.78);margin-bottom:2.6rem;max-width:36rem}
+
+/* panel mockup oscuro */
+.panel{
+  background:var(--carbon);border-radius:var(--radio);
+  box-shadow:10px 10px 0 rgba(14,15,18,.9);
+  max-width:680px;margin:0 auto;overflow:hidden;
+  border:3px solid var(--negro);
+}
+.panel-top{
+  display:flex;align-items:center;gap:.5rem;background:var(--negro);padding:.7rem 1.1rem;
+}
+.panel-top .dot{width:11px;height:11px;border-radius:50%}
+.panel-top .dot:nth-child(1){background:var(--naranja)}
+.panel-top .dot:nth-child(2){background:var(--amarillo)}
+.panel-top .dot:nth-child(3){background:var(--gris)}
+.panel-top span{
+  color:var(--amarillo);font-family:var(--cond);font-weight:600;font-size:.82rem;
+  letter-spacing:.08em;text-transform:uppercase;margin-left:.6rem;
+}
+.gauge{width:30px;height:20px;margin-left:auto;flex-shrink:0}
+.gauge line{transform-origin:16px 18px;animation:aguja 3.4s ease-in-out infinite}
+@keyframes aguja{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(18deg)}}
+.panel-tabs{display:flex;gap:.4rem;padding:1rem 1.1rem 0;flex-wrap:wrap}
+.panel-tab{
+  font-family:var(--cond);font-weight:500;font-size:.78rem;letter-spacing:.05em;
+  text-transform:uppercase;padding:.42rem .85rem;border-radius:4px;
+  background:#23252B;color:var(--gris);
+}
+.panel-tab.activa{background:var(--amarillo);color:var(--negro);font-weight:600}
+.panel-body{padding:1.1rem;display:grid;gap:.8rem}
+
+/* filas de alerta que entran en secuencia */
+.alerta{
+  display:flex;gap:.9rem;align-items:flex-start;background:#1E2026;
+  border-radius:var(--radio);padding:1rem;border:1px solid var(--borde);
+  opacity:0;transform:translateX(-18px);
+}
+.panel.andando .alerta{animation:entraAlerta .55s cubic-bezier(.22,1,.36,1) forwards}
+.panel.andando .alerta:nth-child(1){animation-delay:.3s}
+.panel.andando .alerta:nth-child(2){animation-delay:1.1s}
+.panel.andando .alerta:nth-child(3){animation-delay:1.9s}
+@keyframes entraAlerta{to{opacity:1;transform:none}}
+.alerta .avatar{
+  width:44px;height:44px;border-radius:4px;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;font-size:1.35rem;background:#23252B;
+}
+.alerta .info{flex:1;min-width:0}
+.alerta .quien{font-family:var(--cond);font-weight:600;font-size:1rem;letter-spacing:.03em;color:var(--humo)}
+.alerta .dato{font-size:.85rem;color:var(--gris);font-weight:600}
+.alerta .dato strong{color:var(--amarillo)}
+.alerta.destacada{background:rgba(255,107,0,.08);border:2px solid var(--naranja)}
+.alerta.destacada .avatar{background:rgba(255,107,0,.18)}
+.alerta .ciclo{
+  height:8px;background:#2C2F36;border-radius:2px;margin-top:.55rem;overflow:hidden;
+}
+.alerta .ciclo i{
+  display:block;height:100%;width:100%;border-radius:2px;
+  background:linear-gradient(90deg,var(--naranja),var(--amarillo));
+  transform:scaleX(0);transform-origin:left;
+}
+.panel.andando .alerta.destacada .ciclo i{animation:llena 1.2s ease-out 1.7s forwards}
+@keyframes llena{to{transform:scaleX(1)}}
+.alerta .etiqueta{
+  display:inline-block;font-family:var(--cond);font-size:.72rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;background:var(--naranja);
+  color:var(--negro);padding:.2rem .6rem;border-radius:3px;margin-top:.55rem;
+}
+.btn-alerta{
+  font-family:var(--cond);font-size:.78rem;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;border:none;cursor:pointer;
+  background:var(--amarillo);color:var(--negro);padding:.55rem .85rem;border-radius:4px;
+  align-self:center;flex-shrink:0;white-space:nowrap;
+}
+.btn-alerta.secundario{background:transparent;color:var(--claro);border:1.5px solid #3A3D45}
+@media(max-width:560px){
+  .alerta{flex-wrap:wrap}
+  .alerta .info{flex:1 1 calc(100% - 60px)}
+  .btn-alerta{margin-left:56px;align-self:flex-start}
+}
+/* burbuja whatsapp del mockup (modo oscuro) */
+.wa-preview{
+  margin:.2rem 0 .3rem auto;max-width:88%;background:#005C4B;border-radius:8px 8px 2px 8px;
+  padding:.85rem 1rem;font-size:.88rem;font-weight:600;color:#E7F5EF;
+  box-shadow:0 3px 10px rgba(0,0,0,.35);opacity:0;transform:translateY(14px) scale(.96);
+  position:relative;
+}
+.wa-preview strong{color:#fff}
+.panel.andando .wa-preview{animation:entraWa .5s cubic-bezier(.34,1.56,.64,1) 3s forwards}
+@keyframes entraWa{to{opacity:1;transform:none}}
+.wa-preview .hora{display:block;text-align:right;font-size:.68rem;color:#9BB8AE;margin-top:.3rem}
+.demo-leyenda{
+  text-align:center;margin-top:1.6rem;font-weight:700;color:var(--negro);
+  font-size:.95rem;
+}
+
+/* ============ 4. CÓMO FUNCIONA ============ */
+.pasos{background:var(--carbon)}
+.pasos h2{font-size:clamp(1.6rem,3.8vw,2.4rem);margin-bottom:.7rem;max-width:36rem}
+.pasos .baja{font-weight:700;color:var(--gris);margin-bottom:2.8rem}
+.pasos-grid{display:grid;gap:1.4rem;counter-reset:paso}
+@media(min-width:760px){.pasos-grid{grid-template-columns:repeat(3,1fr)}}
+.paso{
+  background:var(--chapa);border-radius:var(--radio);padding:1.8rem 1.5rem;
+  border:1px solid var(--borde);border-top:3px solid var(--amarillo);position:relative;
+}
+.paso .icono{
+  width:56px;height:56px;border-radius:4px;display:flex;align-items:center;
+  justify-content:center;margin-bottom:1.1rem;
+}
+.paso .icono svg{width:30px;height:30px}
+.paso:nth-child(1) .icono{background:var(--amarillo)}
+.paso:nth-child(2) .icono{background:var(--naranja)}
+.paso:nth-child(3) .icono{background:var(--humo)}
+.paso h3{font-size:1.3rem;letter-spacing:.02em;margin-bottom:.5rem;color:var(--humo)}
+.paso p{font-size:.98rem;color:var(--gris);font-weight:600}
+.paso::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;top:-15px;right:16px;width:34px;height:34px;border-radius:4px;
+  background:var(--amarillo);color:var(--negro);font-family:var(--cond);font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  border:2px solid var(--negro);
+}
+
+/* ============ 5. PRECIO ============ */
+.precio{background:var(--negro);overflow:hidden}
+.precio .wrap{max-width:820px;text-align:center}
+.precio h2{font-size:clamp(1.7rem,4.2vw,2.7rem);margin-bottom:1rem;color:var(--humo)}
+.precio .linea{font-size:clamp(1.05rem,2.4vw,1.3rem);font-weight:700;margin-bottom:2rem;color:var(--amarillo)}
+.precio-card{
+  background:var(--carbon);border:2px solid var(--amarillo);border-radius:var(--radio);
+  padding:2.2rem 1.8rem;box-shadow:10px 10px 0 rgba(255,209,0,.14);text-align:left;
+  display:grid;gap:1rem;
+}
+@media(min-width:700px){.precio-card{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.precio-item{display:flex;gap:.7rem;align-items:flex-start;font-weight:600;font-size:1rem;color:var(--humo)}
+.precio-item .tilde{
+  width:26px;height:26px;border-radius:3px;background:var(--amarillo);color:var(--negro);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;
+  font-weight:800;margin-top:.1rem;
+}
+
+/* ============ 6. PRUEBA / GARANTÍA ============ */
+.prueba{background:var(--carbon)}
+.prueba h2{font-size:clamp(1.6rem,3.8vw,2.4rem);margin-bottom:.7rem;max-width:38rem}
+.prueba .baja{font-weight:600;color:var(--claro);margin-bottom:2.6rem;max-width:36rem}
+.sim-tag{
+  display:inline-block;background:var(--amarillo);color:var(--negro);font-family:var(--cond);
+  font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.42rem 1rem;border-radius:3px;box-shadow:4px 4px 0 rgba(0,0,0,.7);margin-bottom:1.6rem;
+}
+.sim-grid{display:grid;gap:1.2rem;margin-bottom:2.4rem}
+@media(min-width:760px){.sim-grid{grid-template-columns:repeat(3,1fr)}}
+.sim-card{
+  background:var(--chapa);border:1px solid var(--borde);border-radius:var(--radio);
+  padding:1.7rem 1.4rem;text-align:center;
+}
+.sim-card .cifra{
+  font-family:var(--display);font-size:clamp(2.6rem,5.5vw,3.6rem);
+  color:var(--amarillo);line-height:1;
+}
+.sim-card p{font-weight:600;font-size:.92rem;color:var(--gris);margin-top:.5rem}
+
+/* ============ 7. FAQ ============ */
+.faq{background:var(--negro)}
+.faq .wrap{max-width:760px}
+.faq h2{font-size:clamp(1.6rem,3.8vw,2.4rem);margin-bottom:2.2rem}
+.faq details{
+  background:var(--carbon);border:1px solid var(--borde);border-left:4px solid var(--amarillo);
+  border-radius:var(--radio);margin-bottom:.9rem;overflow:hidden;
+}
+.faq summary{
+  font-family:var(--cond);font-weight:600;font-size:1.08rem;letter-spacing:.02em;
+  padding:1.15rem 3.2rem 1.15rem 1.4rem;cursor:pointer;list-style:none;position:relative;
+  color:var(--humo);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);
+  font-size:1.6rem;font-weight:500;color:var(--amarillo);transition:transform .25s;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .resp{padding:0 1.4rem 1.3rem;font-weight:400;color:var(--claro);font-size:.98rem}
+
+/* ============ 8. CIERRE + AGENDA ============ */
+.cierre{background:var(--negro);overflow:hidden}
+.cierre .chevrones{justify-content:center;color:var(--amarillo);margin-bottom:1.4rem}
+.cierre .chevrones svg{transform:rotate(90deg)}
+.cierre h2{
+  font-size:clamp(1.9rem,5vw,3.1rem);color:var(--humo);text-align:center;max-width:40rem;
+  margin:0 auto 1rem;
+}
+.cierre .baja{
+  text-align:center;color:var(--claro);font-weight:600;max-width:32rem;margin:0 auto 2.5rem;
+}
+.agenda-caja{
+  background:var(--carbon);border-radius:var(--radio);border:2px solid var(--amarillo);
+  box-shadow:10px 10px 0 rgba(255,209,0,.14);max-width:820px;margin:0 auto;
+  padding:1rem;min-height:520px;
+}
+#cal-embed{width:100%;min-height:700px;border-radius:4px;overflow:hidden;position:relative}
+#cal-embed .calendly-inline-widget{position:relative;z-index:1}
+.agenda-cargando{
+  position:absolute;inset:0;z-index:0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--gris);flex-direction:column;gap:.8rem;text-align:center;padding:1rem;
+}
+.cierre-wa{text-align:center;margin-top:2rem}
+.cierre-wa p{color:var(--humo);font-weight:700;margin-bottom:1rem}
+footer{
+  background:#0A0B0D;color:var(--gris);text-align:center;padding:2rem 1.25rem 6rem;
+  font-size:.85rem;font-weight:600;border-top:1px solid var(--borde);
+}
+@media(min-width:768px){footer{padding-bottom:2rem}}
+
+/* ============ STICKY CTA MOBILE ============ */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;padding:.7rem .9rem;
+  padding-bottom:calc(.7rem + env(safe-area-inset-bottom));
+  background:rgba(14,15,18,.94);backdrop-filter:blur(10px);
+  border-top:2px solid var(--amarillo);display:flex;gap:.6rem;
+  transform:translateY(110%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.sticky-cta.visible{transform:none}
+.sticky-cta .btn-primario{flex:1;font-size:.95rem;padding:.85rem 1rem;box-shadow:0 4px 0 rgba(0,0,0,.85)}
+.sticky-cta .btn-wa-mini{
+  width:52px;height:52px;border-radius:50%;background:var(--verde-wa);border:none;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;
+}
+.sticky-cta .btn-wa-mini svg{width:26px;height:26px;fill:#fff}
+@media(min-width:768px){.sticky-cta{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" id="hero">
+  <!-- tuercas decorativas -->
+  <svg class="deco flota" style="top:11%;right:6%;width:70px;color:var(--amarillo);opacity:.32" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M50 4 90 27 90 73 50 96 10 73 10 27Z"/><circle cx="50" cy="50" r="17"/></svg>
+  <svg class="deco flota2" style="bottom:16%;left:4%;width:44px;color:var(--gris);opacity:.2" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M50 4 90 27 90 73 50 96 10 73 10 27Z"/><circle cx="50" cy="50" r="17"/></svg>
+
+  <!-- chevrones señalética -->
+  <div class="chevrones hero-chev" aria-hidden="true">
+    <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+    <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+    <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+  </div>
+
+  <div class="wrap">
+    <div class="iman-marca iman-hero" aria-label="Imán">
+      <div class="iman-escena" aria-hidden="true">
+        <span class="iman-part p1"><svg viewBox="0 0 24 24"><path d="M12 2.6 L20.2 7.3 L20.2 16.7 L12 21.4 L3.8 16.7 L3.8 7.3 Z" fill="var(--amarillo)" stroke="var(--negro)" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="var(--carbon)" stroke="var(--negro)" stroke-width="1.6"/></svg></span>
+        <span class="iman-part p2"><svg viewBox="0 0 24 24"><g fill="var(--humo)" stroke="var(--negro)" stroke-width="1.5" stroke-linejoin="round"><rect x="10.6" y="1.8" width="2.8" height="2.6" rx="1"/><rect x="8" y="4.4" width="8" height="6.6" rx="1"/><rect x="9.4" y="11" width="5.2" height="5.4"/></g><path d="M9.4 12.6 h5.2 M9.4 14.4 h5.2" stroke="var(--negro)" stroke-width="1.3" fill="none"/><path d="M12 16.4 V20.2 H15" stroke="var(--negro)" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></span>
+        <span class="iman-part p3"><svg viewBox="0 0 24 24"><path d="M22.7 19.3l-8.6-8.6c.9-2.3.4-5-1.5-6.9C10.6 1.8 7.7 1.3 5.3 2.4l4 4-1.4 2.8-2.8 1.4-4-4c-1.1 2.4-.6 5.3 1.4 7.3 1.9 1.9 4.6 2.4 6.9 1.5l8.6 8.6c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z" fill="var(--amarillo)" stroke="var(--negro)" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+        <span class="iman-part p4"><svg viewBox="0 0 24 24"><path d="M12 2.6 L20.2 7.3 L20.2 16.7 L12 21.4 L3.8 16.7 L3.8 7.3 Z" fill="var(--claro)" stroke="var(--negro)" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="var(--carbon)" stroke="var(--negro)" stroke-width="1.6"/></svg></span>
+        <span class="iman-part p5"><svg viewBox="0 0 24 24"><path d="M22.7 19.3l-8.6-8.6c.9-2.3.4-5-1.5-6.9C10.6 1.8 7.7 1.3 5.3 2.4l4 4-1.4 2.8-2.8 1.4-4-4c-1.1 2.4-.6 5.3 1.4 7.3 1.9 1.9 4.6 2.4 6.9 1.5l8.6 8.6c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z" fill="var(--claro)" stroke="var(--negro)" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+        <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+      </div>
+      <span class="iman-nombre">Im<i>á</i>n</span>
+    </div>
+    <span class="hero-chip">Para casas de repuestos · Auto y moto</span>
+    <h1>Que el service lo compren <span class="marca">con vos</span>, no con el de enfrente.</h1>
+    <p class="sub">Aceite y filtros cada 5.000 km. Pastillas, bujías, kits. El sistema calcula el ciclo de cada cliente con tu historial de ventas y le avisa por WhatsApp cuando le toca — antes de que pase por otra casa.</p>
+    <div class="hero-ctas">
+      <a href="#agenda" class="btn btn-primario">Agendá una llamada de 15 minutos</a>
+      <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20una%20casa%20de%20repuestos%20y%20quiero%20saber%20c%C3%B3mo%20funcionan%20los%20recordatorios%20de%20service%20y%20la%20reactivaci%C3%B3n%20de%20clientes." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+        Escribinos por WhatsApp
+      </a>
+    </div>
+    <p class="hero-nota">Sin compromiso. Te mostramos cómo se ve con TUS ventas.</p>
+  </div>
+
+  <div class="hero-borde rayas" aria-hidden="true"></div>
+</section>
+
+<!-- ================= 2. BARRA DE DOLOR ================= -->
+<section class="dolor">
+  <div class="wrap">
+    <h2 class="rv">¿Te suena alguna de estas tres?</h2>
+    <div class="dolor-grid">
+      <div class="dolor-card rv"><div class="num">01</div><p>«El cliente hizo el cambio de aceite con vos una vez y no volvió.»</p></div>
+      <div class="dolor-card rv rv-d1"><div class="num">02</div><p>«Los talleres que te compraban todas las semanas fueron bajando y no te diste cuenta.»</p></div>
+      <div class="dolor-card rv rv-d2"><div class="num">03</div><p>«No tenés forma de avisarle a cada cliente cuándo le toca el próximo service.»</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- separador de peligro animado -->
+<div class="franja" aria-hidden="true"><i></i></div>
+
+<!-- ================= 3. DEMO / MOCKUP ================= -->
+<section class="demo">
+  <svg class="deco flota" style="top:9%;right:4%;width:90px;color:rgba(14,15,18,.14)" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M50 4 90 27 90 73 50 96 10 73 10 27Z"/><circle cx="50" cy="50" r="17"/></svg>
+  <svg class="deco flota2" style="bottom:6%;left:3%;width:64px;color:rgba(14,15,18,.12)" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19.3l-8.6-8.6c.9-2.3.4-5-1.5-6.9C10.6 1.8 7.7 1.3 5.3 2.4l4 4-1.4 2.8-2.8 1.4-4-4c-1.1 2.4-.6 5.3 1.4 7.3 1.9 1.9 4.6 2.4 6.9 1.5l8.6 8.6c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z"/></svg>
+
+  <div class="wrap">
+    <h2 class="rv">La rotura no avisa. El mantenimiento sí — y el sistema lleva la cuenta.</h2>
+    <p class="baja rv rv-d1">Con tu historial de ventas, el panel sabe qué compra cada cliente y cada cuánto. Cuando un taller baja el ritmo o a un particular le toca el service, te lo pone arriba de todo.</p>
+
+    <div class="panel rv rv-d1" id="panel-demo">
+      <div class="panel-top">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span>Panel de clientes — Tu Casa de Repuestos</span>
+        <svg class="gauge" viewBox="0 0 32 20" fill="none" aria-hidden="true">
+          <path d="M4 18 A12 12 0 0 1 28 18" stroke="var(--amarillo)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="16" y1="18" x2="23" y2="8" stroke="var(--naranja)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="panel-tabs">
+        <span class="panel-tab activa">⚠ Bajaron el ritmo</span>
+        <span class="panel-tab">🔧 Service por vencer</span>
+        <span class="panel-tab">📣 Campañas</span>
+      </div>
+      <div class="panel-body">
+
+        <div class="alerta destacada">
+          <div class="avatar">🔧</div>
+          <div class="info">
+            <div class="quien">Taller Del Valle</div>
+            <div class="dato">Compraba filtros y aceite todas las semanas · promedio $180.000/mes · <strong>van 19 días sin pedido</strong></div>
+            <div class="ciclo"><i></i></div>
+            <span class="etiqueta">⚠ Se está yendo a otra casa</span>
+          </div>
+          <button class="btn-alerta" type="button">Enviar oferta de reactivación</button>
+        </div>
+
+        <div class="alerta">
+          <div class="avatar">🛢️</div>
+          <div class="info">
+            <div class="quien">Marcos B. (particular)</div>
+            <div class="dato">Cambio de aceite + filtro hace 5 meses, hace ~9.000 km → <strong>le toca el service</strong></div>
+          </div>
+          <button class="btn-alerta secundario" type="button">Recordar service</button>
+        </div>
+
+        <div class="alerta">
+          <div class="avatar">⚙️</div>
+          <div class="info">
+            <div class="quien">Lubricentro Norte</div>
+            <div class="dato">Compra aceite suelto todos los meses, nunca llevó el kit completo → ofrecer kit aceite + filtros</div>
+          </div>
+          <button class="btn-alerta secundario" type="button">Ofrecer kit</button>
+        </div>
+
+        <div class="wa-preview">
+          Buenas! Hace 19 días que no recibimos pedido de ustedes 👀 Esta semana tenemos <strong>precio especial en filtros y lubricantes</strong> para los talleres de siempre. ¿Les armo un pedido como el del mes pasado?
+          <span class="hora">Enviado 10:32 ✓✓</span>
+        </div>
+
+      </div>
+    </div>
+    <p class="demo-leyenda rv">👆 Pantalla ilustrativa del panel. Los mensajes salen con tu nombre y tu tono.</p>
+  </div>
+</section>
+
+<!-- ================= 4. CÓMO FUNCIONA ================= -->
+<section class="pasos">
+  <div class="wrap">
+    <h2 class="rv">Arrancás esta semana, sin tocar nada de lo que usás</h2>
+    <p class="baja rv rv-d1">Nada que instalar, nada que aprender.</p>
+    <div class="pasos-grid">
+      <div class="paso rv">
+        <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0F12" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+        <h3>Nos mandás tus ventas</h3>
+        <p>Excel, tu sistema de facturación o lo que uses. Nosotros nos encargamos de ordenarlo.</p>
+      </div>
+      <div class="paso rv rv-d1">
+        <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0F12" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 18a9 9 0 0 1 16 0"/><line x1="12" y1="18" x2="16" y2="11"/><line x1="4" y1="18" x2="20" y2="18"/></svg></div>
+        <h3>Detectamos los ciclos</h3>
+        <p>Qué compra cada cliente, cada cuánto, y quién viene bajando el ritmo sin que lo notes.</p>
+      </div>
+      <div class="paso rv rv-d2">
+        <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0F12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 12h7"/></svg></div>
+        <h3>Tu primera campaña sale en 48 horas</h3>
+        <p>Recordatorios de service y ofertas por WhatsApp y email, con tu nombre y aprobados por vos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. PRECIO ================= -->
+<section class="precio">
+  <div class="wrap">
+    <h2 class="rv">Un cambio de aceite recuperado por semana y ya estás ganando.</h2>
+    <p class="linea rv rv-d1">Y un solo taller reactivado lo paga varios meses de una.</p>
+    <div class="precio-card rv rv-d1">
+      <div class="precio-item"><span class="tilde">✓</span>Plan mensual fijo en pesos, sin permanencia ni letra chica</div>
+      <div class="precio-item"><span class="tilde">✓</span>Recordatorios y campañas ilimitadas por WhatsApp y email</div>
+      <div class="precio-item"><span class="tilde">✓</span>Puesta en marcha incluida: nosotros cargamos tu historial</div>
+      <div class="precio-item"><span class="tilde">✓</span>Lo cancelás cuando quieras, tus datos siguen siendo tuyos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. PRUEBA / GARANTÍA ================= -->
+<section class="prueba">
+  <div class="wrap">
+    <h2 class="rv">Los números de una casa de repuestos de barrio, con y sin sistema</h2>
+    <p class="baja rv rv-d1">Todavía no te vamos a mostrar testimonios inventados. Te mostramos la cuenta, tal cual es.</p>
+
+    <span class="sim-tag rv">Simulación ilustrativa — no es una promesa</span>
+    <div class="sim-grid">
+      <div class="sim-card rv"><div class="cifra" data-count="250">0</div><p>clientes con teléfono duermen en un historial de ventas típico</p></div>
+      <div class="sim-card rv rv-d1"><div class="cifra" data-count="80">0</div><p>de esos no compran hace más de 90 días — talleres incluidos</p></div>
+      <div class="sim-card rv rv-d2"><div class="cifra" data-count="5">0</div><p>services al mes recuperás con que vuelva una parte chica de los dormidos</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. FAQ ================= -->
+<section class="faq">
+  <div class="wrap">
+    <h2 class="rv">Preguntas de mostrador</h2>
+
+    <details class="rv"><summary>¿Cuánto sale en pesos?</summary>
+      <p class="resp">Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu base de clientes, y te lo damos en la llamada de 15 minutos. Como referencia: menos que el margen de un par de services al mes.</p>
+    </details>
+    <details class="rv"><summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
+      <p class="resp">Tus ventas y los datos de tus clientes son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie — tampoco con otras casas de repuestos. Si te vas, te llevás todo.</p>
+    </details>
+    <details class="rv"><summary>¿Cuánto tarda en estar funcionando?</summary>
+      <p class="resp">Desde que nos mandás tus ventas, tu primera campaña sale en 48 horas. La llamada inicial es de 15 minutos y el trabajo pesado lo hacemos nosotros.</p>
+    </details>
+    <details class="rv"><summary>Uso Excel / un sistema de facturación viejo. ¿Me sirve igual?</summary>
+      <p class="resp">Sí. Trabajamos con lo que tengas: un Excel, el reporte que exporta tu sistema de facturación o una planilla armada a mano. Con el reporte de ventas alcanza.</p>
+    </details>
+    <details class="rv"><summary>No sé nada de tecnología. ¿Voy a poder usarlo?</summary>
+      <p class="resp">No operás ningún sistema. Las campañas te llegan armadas y las aprobás con un sí o un no. Si sabés contestar un WhatsApp, ya está.</p>
+    </details>
+  </div>
+</section>
+
+<!-- separador de peligro animado -->
+<div class="franja" aria-hidden="true"><i></i></div>
+
+<!-- ================= 8. CIERRE + AGENDA ================= -->
+<section class="cierre" id="agenda">
+  <svg class="deco flota" style="top:7%;left:5%;width:56px;color:var(--amarillo);opacity:.25" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M50 4 90 27 90 73 50 96 10 73 10 27Z"/><circle cx="50" cy="50" r="17"/></svg>
+  <svg class="deco flota2" style="bottom:9%;right:5%;width:48px;color:var(--gris);opacity:.18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19.3l-8.6-8.6c.9-2.3.4-5-1.5-6.9C10.6 1.8 7.7 1.3 5.3 2.4l4 4-1.4 2.8-2.8 1.4-4-4c-1.1 2.4-.6 5.3 1.4 7.3 1.9 1.9 4.6 2.4 6.9 1.5l8.6 8.6c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z"/></svg>
+
+  <div class="wrap">
+    <div class="iman-marca iman-mini" aria-label="Imán">
+      <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+      <span class="iman-nombre">Im<i>á</i>n</span>
+    </div>
+    <div class="chevrones" aria-hidden="true">
+      <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+      <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+      <svg viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="6"><path d="M5 3 19 18 5 33"/></svg>
+    </div>
+    <h2 class="rv">El próximo service se compra donde llegue el primer aviso.</h2>
+    <p class="baja rv rv-d1">Elegí un horario y en 15 minutos te mostramos qué talleres y clientes tuyos están bajando el ritmo ahora mismo.</p>
+
+    <div class="agenda-caja rv rv-d1">
+      <!-- Embed inline de Calendly. background/text_color se aplican solo si tu plan de Calendly lo permite. -->
+      <div id="cal-embed">
+        <div class="agenda-cargando">
+          <span style="font-size:2rem">🗓️</span>
+          Cargando la agenda…<br>
+          <small style="font-weight:600;color:#6d727b">Si no carga, escribinos por WhatsApp y coordinamos por ahí.</small>
+        </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/david-nomosdelta/30min?hide_gdpr_banner=1&amp;background_color=1d1e23&amp;text_color=f2f3f5&amp;primary_color=ffd100&amp;utm_source=landing&amp;utm_campaign=repuestos" style="min-width:320px;height:700px;"></div>
+      </div>
+    </div>
+
+    <div class="cierre-wa">
+      <p>¿Preferís chatear antes?</p>
+      <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20una%20casa%20de%20repuestos%20y%20quiero%20saber%20c%C3%B3mo%20funcionan%20los%20recordatorios%20de%20service%20y%20la%20reactivaci%C3%B3n%20de%20clientes." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+        Escribinos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="iman-marca iman-pie" aria-label="Imán">
+    <svg class="iman-svg" viewBox="0 0 120 132"><path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/><rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/><rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/><path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/></svg>
+    <span class="iman-nombre">Im<i>á</i>n</span>
+  </div>
+  Hecho para casas de repuestos que no le regalan ni un service al de enfrente. 🔩
+</footer>
+
+<!-- ================= STICKY CTA MOBILE ================= -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#agenda" class="btn btn-primario">Agendá tu llamada</a>
+  <a class="btn-wa-mini" aria-label="Escribinos por WhatsApp" href="https://wa.me/5493535189997?text=Hola!%20Tengo%20una%20casa%20de%20repuestos%20y%20quiero%20saber%20c%C3%B3mo%20funcionan%20los%20recordatorios%20de%20service%20y%20la%20reactivaci%C3%B3n%20de%20clientes." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.45 9.87-9.91 9.87M20.47 3.61A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.28"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- reveals al scrollear ---- */
+  var rv = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.18,rootMargin:'0px 0px -40px 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else {
+    rv.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- mockup: secuencia al entrar en viewport ---- */
+  var panel = document.getElementById('panel-demo');
+  if(panel && 'IntersectionObserver' in window && !reduce){
+    var ioPanel = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ panel.classList.add('andando'); ioPanel.disconnect(); } });
+    },{threshold:.35});
+    ioPanel.observe(panel);
+  } else if(panel){
+    panel.classList.add('andando');
+  }
+
+  /* ---- count-up de cifras ---- */
+  var cifras = document.querySelectorAll('[data-count]');
+  function contar(el){
+    var fin = parseInt(el.getAttribute('data-count'),10), t0 = null, dur = 1600;
+    function paso(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0)/dur, 1);
+      p = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(fin * p);
+      if(p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if('IntersectionObserver' in window && !reduce){
+    var ioC = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ contar(e.target); ioC.unobserve(e.target); } });
+    },{threshold:.6});
+    cifras.forEach(function(el){ ioC.observe(el); });
+  } else {
+    cifras.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+
+  /* ---- sticky CTA mobile: aparece pasado el hero, se esconde en la agenda ---- */
+  var sticky = document.getElementById('sticky-cta');
+  var agenda = document.getElementById('agenda');
+  var pasoHero = false, enAgenda = false;
+  function actualizarSticky(){ sticky.classList.toggle('visible', pasoHero && !enAgenda); }
+  window.addEventListener('scroll', function(){
+    pasoHero = window.scrollY > window.innerHeight * .7;
+    actualizarSticky();
+  }, {passive:true});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ enAgenda = e.isIntersecting; actualizarSticky(); });
+    },{threshold:.15}).observe(agenda);
+  }
+
+  /* ---- Calendly: embed inline, cargado recién cuando la agenda se acerca ---- */
+  var calCargado = false;
+  function cargarCal(){
+    if(calCargado) return; calCargado = true;
+    var s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es, o){
+      es.forEach(function(e){ if(e.isIntersecting){ cargarCal(); o.disconnect(); } });
+    },{rootMargin:'900px'}).observe(agenda);
+  } else {
+    cargarCal();
+  }
+
+  /* ---- Imán: CTAs magnéticos (solo desktop con mouse) ---- */
+  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce){
+    var imanBtns = [];
+    document.querySelectorAll('.btn-primario').forEach(function(b){ imanBtns.push({el:b, tx:0, ty:0}); });
+    var imanRaf = null, imanMx = 0, imanMy = 0, IMAN_R = 120;
+    function imanPaso(){
+      imanRaf = null;
+      var seguir = false;
+      imanBtns.forEach(function(m){
+        var r = m.el.getBoundingClientRect();
+        if(!r.width) return;
+        var dx = imanMx - (r.left + r.width/2 - m.tx);
+        var dy = imanMy - (r.top + r.height/2 - m.ty);
+        var d = Math.hypot(dx, dy), ox = 0, oy = 0;
+        if(d < IMAN_R && d > 0){ var f = (1 - d/IMAN_R) * .38; ox = dx*f; oy = dy*f; }
+        m.tx += (ox - m.tx) * .16; m.ty += (oy - m.ty) * .16;
+        if(ox !== 0 || Math.abs(m.tx) > .15 || Math.abs(m.ty) > .15) seguir = true;
+        m.el.style.translate = m.tx.toFixed(2) + 'px ' + m.ty.toFixed(2) + 'px';
+      });
+      if(seguir) imanRaf = requestAnimationFrame(imanPaso);
+    }
+    document.addEventListener('pointermove', function(e){
+      imanMx = e.clientX; imanMy = e.clientY;
+      if(!imanRaf) imanRaf = requestAnimationFrame(imanPaso);
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>
