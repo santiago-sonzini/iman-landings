@@ -80,6 +80,54 @@ window.addEventListener('message', function(e){
 });
 </script>
 <!-- End Google Ads conversión -->
+<!-- Iman: atribucion de origen (google/meta) en WhatsApp y Calendly -->
+<script>
+(function(){
+  function norm(s){
+    s=(s||'').toLowerCase();
+    if(/face|fb|insta|ig|meta/.test(s)) return 'meta';
+    if(/google|adwords|gads|youtube|\byt\b/.test(s)) return 'google';
+    return s;
+  }
+  function origen(){
+    try{
+      var p=new URLSearchParams(location.search), s=null;
+      try{ s=sessionStorage.getItem('iman_origen'); }catch(e){}
+      if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')) s='google';
+      else if(p.get('fbclid')) s='meta';
+      else if(p.get('utm_source')) s=norm(p.get('utm_source'));
+      s=s||'directo';
+      if(s!=='directo'){ try{ sessionStorage.setItem('iman_origen',s); }catch(e){} }
+      return s;
+    }catch(e){ return 'directo'; }
+  }
+  var SRC=origen();
+  function aplicar(){
+    var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href')||'';
+      if(!RE.test(href) || a.getAttribute('data-src-done') || href.indexOf('Origen:')!==-1) return;
+      try{
+        var extra=encodeURIComponent('\n\n(Origen: '+SRC+')');
+        if(/[?&]text=/.test(href)){ href=href.replace(/([?&]text=[^&#]*)/, '$1'+extra); }
+        else { href=href+(href.indexOf('?')===-1?'?':'&')+'text='+encodeURIComponent('(Origen: '+SRC+')'); }
+        a.setAttribute('href', href); a.setAttribute('data-src-done','1');
+      }catch(e){}
+    });
+    document.querySelectorAll('.calendly-inline-widget[data-url]').forEach(function(d){
+      try{
+        var u=new URL(d.getAttribute('data-url'));
+        u.searchParams.set('utm_source', SRC);
+        u.searchParams.set('utm_medium', SRC==='directo'?'organic':'cpc');
+        d.setAttribute('data-url', u.toString());
+      }catch(e){}
+    });
+  }
+  if(document.readyState!=='loading') aplicar();
+  else document.addEventListener('DOMContentLoaded', aplicar);
+})();
+</script>
+
 <title>Que nunca se le termine el alimento sin que vos aparezcas primero</title>
 <meta name="description" content="Analizamos las ventas de tu pet shop, calculamos cuándo se le termina la bolsa a cada cliente y le avisamos por WhatsApp antes que el súper.">
 <!-- Open Graph / WhatsApp preview -->
@@ -104,7 +152,7 @@ window.addEventListener('message', function(e){
 
 <!-- ============================================================
      CONFIGURAR ANTES DE PUBLICAR:
-     1. Calendly → ya apunta a calendly.com/david-nomosdelta/30min.
+     1. Calendly → ya apunta a calendly.com/david-iman/30min.
         Para cambiar el evento, editá el data-url del div
         .calendly-inline-widget en la sección #agenda.
      2. WhatsApp → buscar "5493535189997" y reemplazar por tu
@@ -740,7 +788,7 @@ footer{
           Cargando la agenda…<br>
           <small style="font-weight:600;color:#bfa893">Si no carga, escribinos por WhatsApp y coordinamos por ahí.</small>
         </div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/david-nomosdelta/30min?hide_gdpr_banner=1&amp;primary_color=FF6B35&amp;utm_source=landing&amp;utm_campaign=pet" style="min-width:320px;height:700px;"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/david-iman/30min?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;primary_color=FF6B35&amp;utm_source=landing&amp;utm_campaign=pet" style="min-width:320px;height:700px;"></div>
       </div>
     </div>
 

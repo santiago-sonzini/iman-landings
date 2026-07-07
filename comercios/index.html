@@ -80,6 +80,54 @@ window.addEventListener('message', function(e){
 });
 </script>
 <!-- End Google Ads conversión -->
+<!-- Iman: atribucion de origen (google/meta) en WhatsApp y Calendly -->
+<script>
+(function(){
+  function norm(s){
+    s=(s||'').toLowerCase();
+    if(/face|fb|insta|ig|meta/.test(s)) return 'meta';
+    if(/google|adwords|gads|youtube|\byt\b/.test(s)) return 'google';
+    return s;
+  }
+  function origen(){
+    try{
+      var p=new URLSearchParams(location.search), s=null;
+      try{ s=sessionStorage.getItem('iman_origen'); }catch(e){}
+      if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')) s='google';
+      else if(p.get('fbclid')) s='meta';
+      else if(p.get('utm_source')) s=norm(p.get('utm_source'));
+      s=s||'directo';
+      if(s!=='directo'){ try{ sessionStorage.setItem('iman_origen',s); }catch(e){} }
+      return s;
+    }catch(e){ return 'directo'; }
+  }
+  var SRC=origen();
+  function aplicar(){
+    var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href')||'';
+      if(!RE.test(href) || a.getAttribute('data-src-done') || href.indexOf('Origen:')!==-1) return;
+      try{
+        var extra=encodeURIComponent('\n\n(Origen: '+SRC+')');
+        if(/[?&]text=/.test(href)){ href=href.replace(/([?&]text=[^&#]*)/, '$1'+extra); }
+        else { href=href+(href.indexOf('?')===-1?'?':'&')+'text='+encodeURIComponent('(Origen: '+SRC+')'); }
+        a.setAttribute('href', href); a.setAttribute('data-src-done','1');
+      }catch(e){}
+    });
+    document.querySelectorAll('.calendly-inline-widget[data-url]').forEach(function(d){
+      try{
+        var u=new URL(d.getAttribute('data-url'));
+        u.searchParams.set('utm_source', SRC);
+        u.searchParams.set('utm_medium', SRC==='directo'?'organic':'cpc');
+        d.setAttribute('data-url', u.toString());
+      }catch(e){}
+    });
+  }
+  if(document.readyState!=='loading') aplicar();
+  else document.addEventListener('DOMContentLoaded', aplicar);
+})();
+</script>
+
 <title>Imán — Vendé más con los clientes que ya tenés</title>
 <meta name="description" content="Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para cualquier comercio que venda al público.">
 <!-- Open Graph / WhatsApp preview -->
@@ -104,7 +152,7 @@ window.addEventListener('message', function(e){
 
 <!-- ============================================================
      CONFIGURAR ANTES DE PUBLICAR:
-     1. Calendly → apunta a calendly.com/david-nomosdelta/30min
+     1. Calendly → apunta a calendly.com/david-iman/30min
         (vista distribuidora). El copy dice "30 minutos" y coincide con el
         evento real de 30 min. Si cambiás la duración del evento, ajustá el
         copy ("30 minutos" aparece en el CTA del hero dist, en el FAQ y en
@@ -368,6 +416,7 @@ body[data-aud="dist"] .switch-aud .b-dist{color:var(--acento-on)}
 .rc-indumentaria .ic{background:#FBE0EC}
 .rc-carniceria .ic{background:#F8DEDC}
 .rc-super .ic{background:#D9F3E6}
+.rc-dietetica .ic{background:#DFF3E6}
 .rc-otro .ic{background:#ECE9FF}
 
 /* panel "otro rubro" */
@@ -730,6 +779,7 @@ footer{
         <div class="rubro-card rc-indumentaria" data-rubro="indumentaria" tabindex="0" role="button"><span class="ic">👕</span><span>Indumentaria</span></div>
         <div class="rubro-card rc-carniceria" data-rubro="carniceria" tabindex="0" role="button"><span class="ic">🥩</span><span>Carnicería</span></div>
         <div class="rubro-card rc-super" data-rubro="super" tabindex="0" role="button"><span class="ic">🛒</span><span>Almacén / Súper</span></div>
+        <div class="rubro-card rc-dietetica" data-rubro="dietetica" tabindex="0" role="button"><span class="ic">🥗</span><span>Dietética</span></div>
         <div class="rubro-card rc-otro" data-rubro="otro" tabindex="0" role="button"><span class="ic">➕</span><span>Otro rubro</span></div>
       </div>
       <div class="otro-panel" id="otro-panel">
@@ -1033,7 +1083,7 @@ footer{
             Cargando la agenda…<br>
             <small style="font-weight:600;color:#bfa893">Si no carga, escribinos por WhatsApp y coordinamos por ahí.</small>
           </div>
-          <div class="calendly-inline-widget" data-url="https://calendly.com/david-nomosdelta/30min?hide_gdpr_banner=1&amp;primary_color=6C5CE7&amp;utm_source=landing&amp;utm_campaign=comercios-distribuidora" style="min-width:320px;height:700px;"></div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/david-iman/30min?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;primary_color=6C5CE7&amp;utm_source=landing&amp;utm_campaign=comercios-distribuidora" style="min-width:320px;height:700px;"></div>
         </div>
       </div>
       <div class="cierre-wa">
@@ -1307,6 +1357,40 @@ footer{
         precioLinea:'Y tu cartera tiene más de uno enfriándose ahora mismo.',
         pruebaH2:'Los números de una distribuidora mayorista zonal, con y sin Imán',
         sim:[{n:100,l:'almacenes tiene una cartera zonal típica'},{n:25,l:'de esos bajaron su compra en el último trimestre sin avisar'},{n:3,l:'almacenes recuperados al mes con un llamado a tiempo cambian el trimestre'}],
+        cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
+      }
+    },
+    dietetica:{
+      label:'Dietética', emoji:'🥗',
+      acento:{a:'#3DA35D',aOsc:'#2E7D46',aSuave:'#DFF3E6',aOn:'#fff',a2:'#F2994A',aDetalle:'#FFF6E9'},
+      min:{
+        chip:'Para dietéticas y casas de productos naturales',
+        h1:'Vendé más suplementos y granola <span class="marca">con los clientes que ya tenés.</span>',
+        sub:'Imán mira las ventas de tu mostrador, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar — también para los que hace rato no vuelven.',
+        waMsg:'Hola! Tengo una dietética y quiero ver una demo de Imán.',
+        dolor:['El cliente se lleva el suplemento una vez y la próxima lo compra por internet.','Tenés clientes que reponen todos los meses y nunca les ofreciste nada.','No sabés quién dejó de venir hasta que se le terminó el frasco hace rato.'],
+        destacada:{avatar:'🥗',quien:'Compran proteína y creatina todos los meses · 21',dato:'Nunca recibieron una promo → <strong>10% en su próxima reposición</strong>.',boton:'Mandar por WhatsApp'},
+        fila2:{avatar:'🥜',quien:'Lucía M. — proteína + almendras cada 30 días',dato:'<strong>Van 38 días.</strong> Se le terminó y todavía no vino.',boton:'Mandar recordatorio'},
+        waPreview:'Hola Lucía! Por las fechas, ya se te debe estar terminando la proteína 💪 Esta semana tenés 10% en tu reposición de siempre. ¿Te la preparo?',
+        precioH2:'Cuesta menos que un pote de proteína.',
+        precioLinea:'Lo recuperás con dos reposiciones que hoy se van a internet.',
+        pruebaH2:'Los números de una dietética de barrio, con y sin Imán',
+        sim:[{n:400,l:'clientes con teléfono duermen en un historial de ventas típico'},{n:130,l:'de esos no compran hace más de 60 días'},{n:7,l:'recompras al mes recuperás con que vuelva solo el 5% de los dormidos'}],
+        cierreH2:'La próxima reposición se compra donde llegue el primer mensaje.'
+      },
+      dist:{
+        chip:'Para distribuidoras de suplementos y productos naturales',
+        h1:'Premiá a las dietéticas que más te compran. <span class="marca">Recuperá a las que se enfrían.</span>',
+        sub:'Imán analiza tu facturación, te muestra qué dietéticas bajaron sin avisar y a cuáles premiar — y te deja regalarles la herramienta con tu marca, para que nadie te las saque.',
+        waMsg:'Hola! Tengo una distribuidora de suplementos y productos naturales y quiero saber cómo funciona Imán.',
+        dolor:['Las dietéticas que te compraban todos los meses fueron bajando y no te diste cuenta.','Repartís la misma lista de precios a todas, compren mucho o poco.','No sabés qué productos tuyos rotan en cada dietética.'],
+        destacada:{avatar:'🏆',quien:'Las 12 dietéticas que más suplementos te compran',dato:'Concentran gran parte de tu facturación → <strong>condición especial de reposición</strong> antes de fin de mes.',boton:'Mandar propuesta'},
+        fila2:{avatar:'🥗',quien:'Vida Sana — compraba todos los meses',dato:'<strong>28 días sin pedido.</strong> Se está yendo a otro proveedor.',boton:'Recuperar'},
+        waPreview:'Hola! Por ser de las dietéticas que más nos acompañan, tienen condición especial en suplementos hasta el viernes. ¿Les armo el pedido de siempre con ese precio?',
+        precioH2:'Una sola dietética recuperada paga el mes.',
+        precioLinea:'Y tu cartera tiene más de una enfriándose ahora mismo.',
+        pruebaH2:'Los números de una distribuidora de suplementos zonal, con y sin Imán',
+        sim:[{n:60,l:'dietéticas tiene una cartera zonal típica'},{n:16,l:'de esas bajaron su compra en el último trimestre sin avisar'},{n:2,l:'dietéticas recuperadas al mes con un llamado a tiempo cambian el trimestre'}],
         cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
       }
     }
