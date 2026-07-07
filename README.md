@@ -41,8 +41,8 @@ La raíz redirige a `/comercios/` vía `vercel.json` (y un fallback en
 
 ## Antes de publicar
 
-- **Calendly**: `comercios/` apunta a `calendly.com/david-nomosdelta/15min`.
-  Ese evento de 15 min debe existir (o revertir a `/30min` y ajustar el copy).
+- **Calendly**: todas las landings apuntan a `calendly.com/david-nomosdelta/30min`
+  y el copy dice "30 minutos" (coinciden). Si cambiás la duración del evento, ajustá el copy.
 - **WhatsApp**: ya configurado con `5493535189997` en todas las landings.
 - **Analytics**: conectar GA4 / Meta Pixel real (las landings ya emiten eventos
   `rubro_seleccionado` y `cta_click`; ver comentario de config en cada archivo).
