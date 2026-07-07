@@ -40,6 +40,37 @@ src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"
   gtag('config', 'AW-18305633425');
 </script>
 <!-- End Google tag -->
+
+<!-- Google Ads — conversión "Submit lead form" (contacto WhatsApp) -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE',
+      'value': 1.0,
+      'currency': 'ARS',
+      'event_callback': callback
+  });
+  return false;
+}
+// Auto-dispara la conversión al tocar un CTA de WhatsApp (una vez por click, sin
+// interferir con la navegación — usa beacon). Para otros botones podés llamar
+// gtag_report_conversion(url) manualmente en su onclick.
+(function(){
+  var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i, hold=false;
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if(!a || !RE.test(a.href)) return;
+    if(hold) return; hold=true; setTimeout(function(){hold=false;}, 1500);
+    if(window.gtag) gtag('event','conversion',{
+      send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS', transport_type:'beacon'
+    });
+  }, true);
+}());
+</script>
+<!-- End Google Ads conversión -->
 <title>Que nunca se le termine el alimento sin que vos aparezcas primero</title>
 <meta name="description" content="Analizamos las ventas de tu pet shop, calculamos cuándo se le termina la bolsa a cada cliente y le avisamos por WhatsApp antes que el súper.">
 
