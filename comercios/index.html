@@ -1656,7 +1656,18 @@ footer{
     el.addEventListener('click', function(){ trackCTA('agenda', selAud); });
   });
 
-  /* ============ 11. PRIMER RENDER (estado neutral) ============ */
+  /* ============ 11b. DEEP-LINK POR RUBRO: ?rubro=pet[&aud=dist] ============ */
+  (function(){
+    try{
+      var q = new URLSearchParams(location.search);
+      var av = (q.get('aud')||'').toLowerCase();
+      if(av === 'dist' || av === 'distribuidora'){ selAud = 'dist'; document.body.dataset.aud = 'dist'; moverThumb(); }
+      var rk = (q.get('rubro')||'').toLowerCase().trim();
+      if(rk && RUBROS[rk] && rk !== 'neutral'){ selRubro = rk; trackRubro(rk, selAud); }
+    }catch(e){}
+  })();
+
+  /* ============ 11. PRIMER RENDER (deep-link o estado neutral) ============ */
   render();
 })();
 </script>
