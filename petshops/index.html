@@ -69,10 +69,38 @@ function gtag_report_conversion(url) {
     });
   }, true);
 }());
+
+// GADS Calendly conversion listener: agendar CONFIRMADO en Calendly = misma conversión de lead que WhatsApp
+window.addEventListener('message', function(e){
+  if(e && e.data && e.data.event === 'calendly.event_scheduled'){
+    if(window.gtag) gtag('event','conversion',{
+      send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS'
+    });
+  }
+});
 </script>
 <!-- End Google Ads conversión -->
 <title>Imán para pet shops y distribuidoras — vendé más con los clientes que ya tenés</title>
 <meta name="description" content="Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para pet shops, forrajerías y sus distribuidoras.">
+<!-- Open Graph / WhatsApp preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Imán">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Imán para pet shops y distribuidoras — vendé más con los clientes que ya tenés">
+<meta property="og:description" content="Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para pet shops, forrajerías y sus distribuidoras.">
+<meta property="og:url" content="https://iman-landings.vercel.app/petshops/">
+<meta property="og:image" content="https://iman-landings.vercel.app/og.png">
+<meta property="og:image:secure_url" content="https://iman-landings.vercel.app/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Imán — vendé más con los clientes que ya tenés">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imán para pet shops y distribuidoras — vendé más con los clientes que ya tenés">
+<meta name="twitter:description" content="Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para pet shops, forrajerías y sus distribuidoras.">
+<meta name="twitter:image" content="https://iman-landings.vercel.app/og.png">
+<!-- End Open Graph -->
+
 
 <!-- ============================================================
      CONFIGURAR ANTES DE PUBLICAR:
