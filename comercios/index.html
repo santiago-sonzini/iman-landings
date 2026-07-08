@@ -417,6 +417,9 @@ body[data-aud="dist"] .switch-aud .b-dist{color:var(--acento-on)}
 .rc-carniceria .ic{background:#F8DEDC}
 .rc-super .ic{background:#D9F3E6}
 .rc-dietetica .ic{background:#DFF3E6}
+.rc-cosmetica .ic{background:#FBE0EA}
+.rc-peluqueria .ic{background:#D3F1F5}
+.rc-estetica .ic{background:#E5DBFF}
 .rc-otro .ic{background:#ECE9FF}
 
 /* panel "otro rubro" */
@@ -780,6 +783,9 @@ footer{
         <div class="rubro-card rc-carniceria" data-rubro="carniceria" tabindex="0" role="button"><span class="ic">🥩</span><span>Carnicería</span></div>
         <div class="rubro-card rc-super" data-rubro="super" tabindex="0" role="button"><span class="ic">🛒</span><span>Almacén / Súper</span></div>
         <div class="rubro-card rc-dietetica" data-rubro="dietetica" tabindex="0" role="button"><span class="ic">🥗</span><span>Dietética</span></div>
+        <div class="rubro-card rc-cosmetica" data-rubro="cosmetica" tabindex="0" role="button"><span class="ic">💄</span><span>Cosmética</span></div>
+        <div class="rubro-card rc-peluqueria" data-rubro="peluqueria" tabindex="0" role="button"><span class="ic">✂️</span><span>Peluquería</span></div>
+        <div class="rubro-card rc-estetica" data-rubro="estetica" tabindex="0" role="button"><span class="ic">💆</span><span>Salón de estética</span></div>
         <div class="rubro-card rc-otro" data-rubro="otro" tabindex="0" role="button"><span class="ic">➕</span><span>Otro rubro</span></div>
       </div>
       <div class="otro-panel" id="otro-panel">
@@ -1391,6 +1397,108 @@ footer{
         precioLinea:'Y tu cartera tiene más de una enfriándose ahora mismo.',
         pruebaH2:'Los números de una distribuidora de suplementos zonal, con y sin Imán',
         sim:[{n:60,l:'dietéticas tiene una cartera zonal típica'},{n:16,l:'de esas bajaron su compra en el último trimestre sin avisar'},{n:2,l:'dietéticas recuperadas al mes con un llamado a tiempo cambian el trimestre'}],
+        cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
+      }
+    },
+    cosmetica:{
+      label:'Cosmética', emoji:'💄',
+      acento:{a:'#D6336C',aOsc:'#A61E4D',aSuave:'#FBE0EA',aOn:'#fff',a2:'#17BEBB',aDetalle:'#FFF6E9'},
+      min:{
+        chip:'Para cosméticas, perfumerías y venta de maquillaje',
+        h1:'Vendé más cosmética y perfumería <span class="marca">con los clientes que ya tenés.</span>',
+        sub:'Imán mira las ventas de tu mostrador, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar — también para los que hace rato no vuelven.',
+        waMsg:'Hola! Tengo una cosmética / perfumería y quiero ver una demo de Imán.',
+        dolor:['El cliente compra la crema una vez y la próxima la busca por Instagram.','Tenés clientes que renuevan skincare todos los meses y nunca les ofreciste nada.','No sabés a quién se le está por terminar el perfume o la base.'],
+        destacada:{avatar:'💄',quien:'Compran skincare todos los meses · 24',dato:'Nunca recibieron una promo → <strong>10% en su próxima reposición</strong>.',boton:'Mandar por WhatsApp'},
+        fila2:{avatar:'🧴',quien:'Sofía R. — base + serum cada 35 días',dato:'<strong>Van 44 días.</strong> Se le terminó y todavía no volvió.',boton:'Mandar recordatorio'},
+        waPreview:'Hola Sofía! Por las fechas, ya se te debe estar terminando la base 💄 Esta semana tenés 10% en tu combo de siempre. ¿Te lo preparo?',
+        precioH2:'Cuesta menos que un labial de marca.',
+        precioLinea:'Lo recuperás con dos ventas que hoy se van a las tiendas online.',
+        pruebaH2:'Los números de una cosmética de barrio, con y sin Imán',
+        sim:[{n:450,l:'clientes con teléfono duermen en un historial de ventas típico'},{n:150,l:'de esos no compran hace más de 60 días'},{n:8,l:'recompras al mes recuperás con que vuelva solo el 5% de los dormidos'}],
+        cierreH2:'La próxima reposición se compra donde llegue el primer mensaje.'
+      },
+      dist:{
+        chip:'Para distribuidoras de cosmética y perfumería',
+        h1:'Premiá a las cosméticas que más te compran. <span class="marca">Recuperá a las que se enfrían.</span>',
+        sub:'Imán analiza tu facturación, te muestra qué comercios bajaron sin avisar y a cuáles premiar — y te deja regalarles la herramienta con tu marca, para que nadie te los saque.',
+        waMsg:'Hola! Tengo una distribuidora de cosméticos y quiero saber cómo funciona Imán.',
+        dolor:['Las cosméticas que te compraban todos los meses fueron bajando y no te diste cuenta.','Repartís la misma lista de precios a todas, compren mucho o poco.','No sabés qué líneas tuyas rotan en cada local.'],
+        destacada:{avatar:'🏆',quien:'Los 12 comercios que más maquillaje te compran',dato:'Concentran gran parte de tu facturación → <strong>condición especial de reposición</strong> antes de fin de mes.',boton:'Mandar propuesta'},
+        fila2:{avatar:'💄',quien:'Bazar Belleza — compraba todos los meses',dato:'<strong>30 días sin pedido.</strong> Se está yendo a otro proveedor.',boton:'Recuperar'},
+        waPreview:'Hola! Por ser de los comercios que más nos acompañan, tienen condición especial en maquillaje hasta el viernes. ¿Les armo el pedido de siempre con ese precio?',
+        precioH2:'Un solo comercio recuperado paga el mes.',
+        precioLinea:'Y tu cartera tiene más de uno enfriándose ahora mismo.',
+        pruebaH2:'Los números de una distribuidora de cosmética zonal, con y sin Imán',
+        sim:[{n:90,l:'comercios tiene una cartera zonal típica'},{n:24,l:'de esos bajaron su compra en el último trimestre sin avisar'},{n:3,l:'comercios recuperados al mes con un llamado a tiempo cambian el trimestre'}],
+        cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
+      }
+    },
+    peluqueria:{
+      label:'Peluquería', emoji:'✂️',
+      acento:{a:'#0C8599',aOsc:'#096C7D',aSuave:'#D3F1F5',aOn:'#fff',a2:'#FF922B',aDetalle:'#FFF6E9'},
+      min:{
+        chip:'Para peluquerías y barberías',
+        h1:'Llená la agenda de turnos <span class="marca">con los clientes que ya tenés.</span>',
+        sub:'Imán mira tu agenda de turnos, te avisa quién no volvió a cortarse y te arma el WhatsApp para que reserven el próximo — también para los que hace rato no aparecen.',
+        waMsg:'Hola! Tengo una peluquería y quiero ver una demo de Imán.',
+        dolor:['El cliente se corta una vez y no sabés cuándo (ni si) vuelve.','Tenés huecos en la agenda y clientes que hace 2 meses no aparecen.','Los recordatorios de turno los mandás a mano, uno por uno, cuando te acordás.'],
+        destacada:{avatar:'✂️',quien:'Se cortaban cada 30 días y hace rato no vienen · 18',dato:'Nunca les recordaste el turno → <strong>invitarlos a reservar</strong> esta semana.',boton:'Mandar por WhatsApp'},
+        fila2:{avatar:'💈',quien:'Nico F. — corte + barba cada 3 semanas',dato:'<strong>Van 47 días.</strong> Se pasó de su fecha y no reservó turno.',boton:'Ofrecer turno'},
+        waPreview:'Hola Nico! Ya te toca el corte 💈 Tengo un turno el jueves a las 18 o el sábado a las 11. ¿Te reservo alguno?',
+        precioH2:'Se paga con dos turnos que hoy se pierden.',
+        precioLinea:'Y tu agenda tiene muchos más huecos esperando un mensaje.',
+        pruebaH2:'Los números de una peluquería de barrio, con y sin Imán',
+        sim:[{n:300,l:'clientes con teléfono pasaron por tu sillón en un año'},{n:120,l:'de esos no vuelven hace más de 45 días'},{n:12,l:'turnos al mes recuperás con que vuelva solo el 10% de los dormidos'}],
+        cierreH2:'El próximo turno lo reserva quien recibe el primer mensaje.'
+      },
+      dist:{
+        chip:'Para distribuidoras de productos de peluquería',
+        h1:'Premiá a las peluquerías que más te compran. <span class="marca">Recuperá a las que se enfrían.</span>',
+        sub:'Imán analiza tu facturación, te muestra qué peluquerías bajaron sin avisar y a cuáles premiar — y te deja regalarles la herramienta con tu marca, para que nadie te las saque.',
+        waMsg:'Hola! Tengo una distribuidora de productos de peluquería y quiero saber cómo funciona Imán.',
+        dolor:['Las peluquerías que te compraban todos los meses fueron bajando y no te diste cuenta.','Repartís la misma lista de precios a todas, compren mucho o poco.','No sabés qué productos tuyos rotan en cada salón.'],
+        destacada:{avatar:'🏆',quien:'Las 10 peluquerías que más te compran',dato:'Concentran gran parte de tu facturación → <strong>condición especial de reposición</strong> antes de fin de mes.',boton:'Mandar propuesta'},
+        fila2:{avatar:'✂️',quien:'Studio Look — compraba todos los meses',dato:'<strong>26 días sin pedido.</strong> Se está yendo a otro proveedor.',boton:'Recuperar'},
+        waPreview:'Hola! Por ser de las peluquerías que más nos acompañan, tienen condición especial en color y shampoo hasta el viernes. ¿Les armo el pedido de siempre con ese precio?',
+        precioH2:'Una sola peluquería recuperada paga el mes.',
+        precioLinea:'Y tu cartera tiene más de una enfriándose ahora mismo.',
+        pruebaH2:'Los números de una distribuidora de productos de peluquería, con y sin Imán',
+        sim:[{n:70,l:'peluquerías tiene una cartera zonal típica'},{n:18,l:'de esas bajaron su compra en el último trimestre sin avisar'},{n:2,l:'peluquerías recuperadas al mes con un llamado a tiempo cambian el trimestre'}],
+        cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
+      }
+    },
+    estetica:{
+      label:'Salón de estética', emoji:'💆',
+      acento:{a:'#7950F2',aOsc:'#5F3DC4',aSuave:'#E5DBFF',aOn:'#fff',a2:'#FFB020',aDetalle:'#FFF6E9'},
+      min:{
+        chip:'Para salones de estética y spa',
+        h1:'Llená la agenda de turnos <span class="marca">con los clientes que ya tenés.</span>',
+        sub:'Imán mira tu agenda de turnos, te avisa a quién le toca volver por su tratamiento y te arma el WhatsApp para que reserven el próximo — también para los que hace rato no vuelven.',
+        waMsg:'Hola! Tengo un salón de estética y quiero ver una demo de Imán.',
+        dolor:['El cliente viene por un tratamiento y no reserva el siguiente.','Tenés huecos en la agenda y clientes que hace meses no vuelven.','Los recordatorios de turno los mandás a mano cuando te queda tiempo.'],
+        destacada:{avatar:'💆',quien:'Hacían limpieza facial cada 30 días · 16',dato:'No reservaron el próximo turno → <strong>invitarlos a reservar</strong> esta semana.',boton:'Mandar por WhatsApp'},
+        fila2:{avatar:'💅',quien:'Caro V. — tratamiento facial cada 4 semanas',dato:'<strong>Van 52 días.</strong> Se pasó de su fecha y no reservó turno.',boton:'Ofrecer turno'},
+        waPreview:'Hola Caro! Ya te toca tu limpieza facial ✨ Tengo turno el miércoles a las 17 o el viernes a las 10. ¿Te reservo alguno?',
+        precioH2:'Se paga con dos turnos que hoy se pierden.',
+        precioLinea:'Y tu agenda tiene muchos más huecos esperando un mensaje.',
+        pruebaH2:'Los números de un salón de estética, con y sin Imán',
+        sim:[{n:250,l:'clientes con teléfono pasaron por tu salón en un año'},{n:100,l:'de esos no vuelven hace más de 45 días'},{n:10,l:'turnos al mes recuperás con que vuelva solo el 10% de los dormidos'}],
+        cierreH2:'El próximo turno lo reserva quien recibe el primer mensaje.'
+      },
+      dist:{
+        chip:'Para distribuidoras de productos de estética y cosmetología',
+        h1:'Premiá a los salones que más te compran. <span class="marca">Recuperá a los que se enfrían.</span>',
+        sub:'Imán analiza tu facturación, te muestra qué salones bajaron sin avisar y a cuáles premiar — y te deja regalarles la herramienta con tu marca, para que nadie te los saque.',
+        waMsg:'Hola! Tengo una distribuidora de productos de estética y quiero saber cómo funciona Imán.',
+        dolor:['Los salones que te compraban todos los meses fueron bajando y no te diste cuenta.','Repartís la misma lista de precios a todos, compren mucho o poco.','No sabés qué insumos tuyos rotan en cada salón.'],
+        destacada:{avatar:'🏆',quien:'Los 10 salones que más insumos te compran',dato:'Concentran gran parte de tu facturación → <strong>condición especial de reposición</strong> antes de fin de mes.',boton:'Mandar propuesta'},
+        fila2:{avatar:'💆',quien:'Estética Bella — compraba todos los meses',dato:'<strong>28 días sin pedido.</strong> Se está yendo a otro proveedor.',boton:'Recuperar'},
+        waPreview:'Hola! Por ser de los salones que más nos acompañan, tienen condición especial en insumos hasta el viernes. ¿Les armo el pedido de siempre con ese precio?',
+        precioH2:'Un solo salón recuperado paga el mes.',
+        precioLinea:'Y tu cartera tiene más de uno enfriándose ahora mismo.',
+        pruebaH2:'Los números de una distribuidora de estética zonal, con y sin Imán',
+        sim:[{n:60,l:'salones tiene una cartera zonal típica'},{n:16,l:'de esos bajaron su compra en el último trimestre sin avisar'},{n:2,l:'salones recuperados al mes con un llamado a tiempo cambian el trimestre'}],
         cierreH2:'Tu cartera entera, en un tablero, en 30 minutos.'
       }
     }
