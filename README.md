@@ -11,6 +11,7 @@ landings de Imán. Se despliega como **un solo proyecto** en Vercel.
 | `/comercios/` | `comercios/index.html` | Landing genérica multi-rubro (tráfico amplio) |
 | `/hub/` | `hub/index.html` | Índice interno de todas las landings (`noindex`) |
 | `/pet/` `/ropa/` `/limpieza/` `/repuestos/` | `*/index.html` | Landings v1 por vertical |
+| `/transporte/` | `transporte/index.html` | Vertical transporte/reparto: seguimiento por etapas + avisos automáticos al cliente |
 | `/petshops/minorista/` `/petshops/distribuidora/` | `petshops/**` | Dual pet (switch por URL) |
 | `/limpieza/minorista/` `/limpieza/distribuidora/` | `limpieza/**` | Dual limpieza (switch por URL) |
 
@@ -41,8 +42,8 @@ La raíz redirige a `/comercios/` vía `vercel.json` (y un fallback en
 
 ## Antes de publicar
 
-- **Calendly**: todas las landings apuntan a `calendly.com/david-iman/30min`
+- **Calendly**: todas las landings apuntan a `calendly.com/santiago-iman/30min`
   y el copy dice "30 minutos" (coinciden). Si cambiás la duración del evento, ajustá el copy.
-- **WhatsApp**: ya configurado con `5493535189997` en todas las landings.
+- **WhatsApp**: ya configurado con `5493534797679` en todas las landings.
 - **Analytics**: conectar GA4 / Meta Pixel real (las landings ya emiten eventos
   `rubro_seleccionado` y `cta_click`; ver comentario de config en cada archivo).
