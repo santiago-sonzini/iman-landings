@@ -182,8 +182,8 @@ section{position:relative;z-index:2}
 }
 .hero-logo{width:clamp(84px,10vw,120px);height:auto;margin-bottom:2.6rem}
 #hero h1{
-  font-size:clamp(2rem,6.4vw,4.8rem);
-  font-weight:700;letter-spacing:.12em;line-height:1.14;color:var(--white);
+  font-size:clamp(3rem,10vw,7rem);
+  font-weight:700;letter-spacing:.24em;text-indent:.24em;line-height:1.1;color:var(--white);
 }
 #hero h1 .word{display:inline-block;white-space:pre}
 .hero-sub{
@@ -207,6 +207,10 @@ section{position:relative;z-index:2}
   45%{transform:scaleY(1);transform-origin:top}
   55%{transform:scaleY(1);transform-origin:bottom}
   100%{transform:scaleY(0);transform-origin:bottom}
+}
+@media(max-width:760px){
+  .hero-scroll{display:none}
+  #hero{padding-bottom:80px}
 }
 
 /* ---------- mayoristas ---------- */
@@ -352,7 +356,7 @@ footer{border-top:1px solid var(--line);padding:4rem 0 2.5rem;position:relative;
       <g mask="url(#lm-h2)"><g transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-bean"/></g></g>
     </g>
   </svg>
-  <h1 id="hero-title">GUARDA TU CASCO.<br>CUELGA TU EQUIPO.</h1>
+  <h1 id="hero-title">URBASE</h1>
   <p class="hero-sub reveal" data-anim="hero-sub">Soportes de pared impresos en 3D, diseñados para cuidar tu casco y ordenar tu equipo. Directo de fábrica, en Argentina.</p>
   <div class="hero-ctas reveal" data-anim="hero-ctas">
     <!-- EDITAR: número de WhatsApp -->
@@ -377,10 +381,6 @@ footer{border-top:1px solid var(--line);padding:4rem 0 2.5rem;position:relative;
           <li>
             <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
             <div><strong>Margen para revendedores</strong><span>Precio mayorista escalonado por cantidad. Rentabilidad desde la primera caja.</span></div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>
-            <div><strong>Exhibidor para tu mostrador</strong><span>Display listo para exhibir el soporte con un casco de muestra.</span></div>
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 19l7-7a4.95 4.95 0 0 0-7-7l-7 7 7 7Z"/><path d="M9 12l3 3"/></svg>
@@ -488,9 +488,7 @@ if(reduced || !window.gsap){
 /* ---------- hero: logo + titular palabra por palabra ---------- */
 const h1 = document.getElementById('hero-title');
 if(h1 && !reduced){
-  h1.innerHTML = h1.innerHTML.split('<br>').map(line=>
-    line.trim().split(/\s+/).map(w=>`<span class="word">${w} </span>`).join('')
-  ).join('<br>');
+  h1.innerHTML = h1.textContent.trim().split('').map(ch=>`<span class="word">${ch}</span>`).join('');
   gsap.set('#hero-title .word',{yPercent:110,opacity:0});
 }
 
