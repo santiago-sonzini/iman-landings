@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URBASE — Soportes de pared para cascos de moto</title>
+<meta name="description" content="Soportes de pared para cascos impresos en 3D. Guardá tu casco sin tocar la visera y colgá campera, guantes y llaves. Venta al público y por mayor para tiendas de motos.">
+<meta property="og:title" content="URBASE — Guardá tu casco. Colgá tu equipo.">
+<meta property="og:description" content="Soportes de pared para cascos impresos en 3D. Venta al público y por mayor.">
+<meta property="og:image" content="img/hero-casco.jpg">
+<meta name="theme-color" content="#0d0d0d">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-casco.jpg" fetchpriority="high">
+
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><g fill="none" stroke="white" stroke-width="16" stroke-linecap="round"><path d="M42 150 A88 88 0 1 1 196 65"/><path d="M72 151 C92 143 102 146 118 133 C134 120 140 103 162 91 A36 36 0 1 1 190 157 C166 172 122 185 84 181 A16 16 0 1 1 72 151 Z"/></g></svg>'>
+
+<style>
+:root{
+  --bg:#0d0d0d;
+  --bg-2:#141413;
+  --bg-3:#1b1b19;
+  --white:#ffffff;
+  --ink:#e8e6e1;
+  --muted:#8f8a81;
+  --accent:#b8b2a7;       /* gris cálido */
+  --line:rgba(255,255,255,.09);
+  --ease:cubic-bezier(.215,.61,.355,1); /* power3.out */
+  --font-d:'Inter Tight',system-ui,sans-serif;
+  --font-b:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-b);
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* textura sutil: grano + viñeta */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%25" height="100%25" filter="url(%23n)" opacity="0.05"/></svg>');
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 120% 90% at 50% 0%,transparent 55%,rgba(0,0,0,.45) 100%);
+}
+::selection{background:var(--white);color:var(--bg)}
+
+h1,h2,h3,.display{font-family:var(--font-d);text-transform:uppercase;font-weight:600}
+
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+section{position:relative;z-index:2}
+
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+
+.eyebrow{
+  font-family:var(--font-d);font-size:.72rem;font-weight:500;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--accent);
+}
+.section-title{
+  font-size:clamp(1.7rem,4.2vw,3.2rem);
+  letter-spacing:.14em;line-height:1.15;color:var(--white);
+  margin:.9rem 0 1.1rem;
+}
+.section-head{margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.section-head p.lead{max-width:46ch;color:var(--muted);font-size:1.02rem}
+
+/* ---------- preloader ---------- */
+#preloader{
+  position:fixed;inset:0;z-index:100;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+#preloader svg{width:72px;height:72px}
+
+/* logo: relleno real revelado por trazo animado en máscara */
+.logo-mark{color:var(--white);display:block}
+
+/* ---------- cursor ---------- */
+#cursor-dot,#cursor-ring{
+  position:fixed;top:0;left:0;z-index:99;pointer-events:none;
+  border-radius:50%;transform:translate(-50%,-50%);
+  display:none;
+}
+#cursor-dot{width:5px;height:5px;background:var(--white)}
+#cursor-ring{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.28);
+  transition:width .35s var(--ease),height .35s var(--ease),border-color .35s;
+}
+#cursor-ring.is-hover{width:56px;height:56px;border-color:rgba(255,255,255,.55)}
+@media(pointer:fine){
+  #cursor-dot,#cursor-ring{display:block}
+}
+
+/* ---------- nav ---------- */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .5s,border-color .5s,backdrop-filter .5s;
+  border-bottom:1px solid transparent;
+}
+#nav.is-solid{
+  background:rgba(13,13,13,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+#nav .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.nav-brand{display:flex;align-items:center;gap:.7rem}
+.nav-brand svg{width:34px;height:34px}
+.wordmark{
+  font-family:var(--font-d);font-weight:700;font-size:.95rem;
+  letter-spacing:.38em;color:var(--white);text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-links a{
+  font-family:var(--font-d);font-size:.72rem;font-weight:500;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--white)}
+@media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--font-d);font-size:.74rem;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;
+  padding:1.05rem 1.9rem;border:1px solid var(--white);
+  transition:background .4s var(--ease),color .4s var(--ease),transform .4s var(--ease);
+  cursor:pointer;white-space:nowrap;
+}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-solid{background:var(--white);color:#0d0d0d}
+.btn-solid:hover{background:transparent;color:var(--white)}
+.btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:var(--white)}
+.nav-links .btn{padding:.65rem 1.2rem;font-size:.66rem}
+
+/* ---------- hero ---------- */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:110px 4vw 60px;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg img{
+  width:100%;height:112%;object-fit:cover;object-position:center 30%;
+  opacity:.4;filter:grayscale(.25) contrast(1.05);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(13,13,13,.55),rgba(13,13,13,.25) 40%,var(--bg) 96%),
+    radial-gradient(ellipse 70% 55% at 50% 42%,transparent 30%,rgba(13,13,13,.72) 100%);
+}
+.hero-logo{width:clamp(84px,10vw,120px);height:auto;margin-bottom:2.6rem}
+#hero h1{
+  font-size:clamp(2rem,6.4vw,4.8rem);
+  font-weight:700;letter-spacing:.12em;line-height:1.14;color:var(--white);
+}
+#hero h1 .word{display:inline-block;white-space:pre}
+.hero-sub{
+  margin:1.6rem auto 2.6rem;max-width:46ch;
+  color:var(--muted);font-size:clamp(.95rem,1.4vw,1.1rem);
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--font-d);font-size:.6rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+}
+.hero-scroll::after{
+  content:"";width:1px;height:44px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  animation:scrollHint 2.2s var(--ease) infinite;
+}
+@keyframes scrollHint{
+  0%{transform:scaleY(0);transform-origin:top}
+  45%{transform:scaleY(1);transform-origin:top}
+  55%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* ---------- mayoristas ---------- */
+#mayoristas{padding:clamp(5rem,12vw,10rem) 0}
+.mayo-panel{
+  background:var(--bg-2);border:1px solid var(--line);
+  display:grid;grid-template-columns:1.1fr 1fr;gap:0;overflow:hidden;
+}
+@media(max-width:960px){.mayo-panel{grid-template-columns:1fr}}
+.mayo-copy{padding:clamp(2.2rem,5vw,4.5rem)}
+.mayo-copy .section-title{font-size:clamp(1.6rem,3.4vw,2.6rem)}
+.mayo-benefits{list-style:none;margin:2.2rem 0 2.8rem;display:grid;gap:1.4rem}
+.mayo-benefits li{display:flex;gap:1.1rem;align-items:flex-start}
+.mayo-benefits svg{width:22px;height:22px;flex:none;margin-top:.15rem;fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.mayo-benefits strong{
+  display:block;font-family:var(--font-d);font-weight:600;font-size:.8rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--white);margin-bottom:.2rem;
+}
+.mayo-benefits span{font-size:.86rem;color:var(--muted)}
+.mayo-media{
+  position:relative;display:grid;grid-template-rows:1fr 1fr;min-height:420px;
+  border-left:1px solid var(--line);
+}
+@media(max-width:960px){.mayo-media{border-left:0;border-top:1px solid var(--line);grid-template-rows:none;grid-template-columns:1fr 1fr;min-height:0}}
+.mayo-media figure{position:relative;overflow:hidden}
+.mayo-media figure+figure{border-top:1px solid var(--line)}
+@media(max-width:960px){.mayo-media figure+figure{border-top:0;border-left:1px solid var(--line)}}
+.mayo-media img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.mayo-media figcaption{
+  position:absolute;left:1.1rem;bottom:.9rem;z-index:2;
+  font-family:var(--font-d);font-size:.6rem;letter-spacing:.34em;
+  text-transform:uppercase;color:rgba(255,255,255,.75);
+}
+.mayo-media figure::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,13,13,.5),transparent 45%);
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:4rem 0 2.5rem;position:relative;z-index:2}
+.foot-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.foot-brand{display:flex;align-items:center;gap:1rem}
+.foot-brand svg{width:40px;height:40px}
+.foot-links{display:flex;gap:2rem;align-items:center}
+.foot-links a{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--font-d);font-size:.7rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);transition:color .3s;
+}
+.foot-links a:hover{color:var(--white)}
+.foot-links svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
+.foot-base{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.72rem;color:#5c5850;letter-spacing:.08em;
+}
+
+/* ---------- whatsapp flotante ---------- */
+#wa-float{
+  position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--white);color:#0d0d0d;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+  transition:transform .35s var(--ease),background .35s;
+}
+#wa-float:hover{transform:scale(1.08)}
+#wa-float svg{width:26px;height:26px;fill:currentColor}
+
+/* ---------- reveals genéricos ---------- */
+.reveal{opacity:0;transform:translateY(40px)}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  .hero-scroll::after{animation:none}
+  #cursor-dot,#cursor-ring{display:none!important}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- preloader -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="lp-shell" d="M6315 9644 c-517 -40 -860 -130 -1270 -335 -213 -107 -359 -199 -540 -343 -317 -252 -598 -577 -812 -941 -44 -75 -167 -318 -202 -400 -12 -27 -26 -59 -31 -70 -63 -140 -150 -421 -194 -625 -91 -425 -107 -835 -51 -1369 13 -126 22 -162 32 -133 12 33 127 196 197 280 l78 92 2 308 c3 325 13 426 62 672 45 223 98 405 171 585 51 127 181 394 218 449 14 20 25 39 25 42 0 8 188 282 231 337 205 260 476 507 743 676 596 379 1342 522 2026 390 266 -52 444 -111 675 -224 255 -125 483 -282 660 -454 l70 -68 85 -7 c107 -8 267 -23 344 -32 l60 -7 -24 34 c-85 121 -317 361 -474 488 -181 147 -448 308 -676 409 -261 114 -581 198 -883 232 -99 10 -445 20 -522 14z"/>
+    <path id="lp-bean" d="M7936 8220 c-135 -17 -263 -51 -406 -107 -241 -95 -488 -279 -677 -506 -69 -84 -212 -292 -265 -387 -88 -157 -221 -379 -281 -469 -320 -477 -646 -743 -1077 -876 -148 -46 -338 -81 -570 -105 -185 -19 -323 -41 -420 -67 -527 -139 -881 -588 -857 -1083 10 -192 36 -292 124 -465 97 -192 289 -376 488 -470 205 -96 443 -135 699 -115 297 24 573 128 1021 388 345 200 521 290 710 364 65 25 211 77 250 88 222 64 427 104 665 130 443 47 534 65 750 142 112 40 326 144 420 204 473 302 802 753 929 1274 90 368 76 791 -36 1120 -161 476 -551 823 -1038 925 -92 20 -327 28 -429 15z m372 -356 c380 -76 684 -362 797 -749 40 -138 56 -236 62 -395 13 -357 -90 -715 -295 -1020 -198 -295 -511 -546 -849 -681 -151 -61 -380 -109 -588 -124 -313 -23 -662 -92 -970 -194 -263 -87 -539 -219 -843 -402 -63 -38 -116 -69 -118 -69 -2 0 -23 -12 -45 -26 -65 -41 -286 -148 -397 -193 -173 -70 -277 -93 -440 -98 -216 -8 -341 16 -501 95 -193 96 -329 266 -392 492 -22 78 -17 253 10 340 74 245 247 416 516 513 68 24 250 60 370 72 341 36 507 65 689 120 512 155 904 462 1250 979 84 125 168 260 179 286 17 40 230 391 287 473 81 115 271 308 370 374 155 104 331 177 499 207 106 20 314 20 409 0z"/>
+  </defs>
+</svg>
+
+<div id="preloader" aria-hidden="true">
+  <svg class="logo-mark" viewBox="0 0 1254 1254">
+    <defs>
+      <mask id="lm-p1" x="0" y="0" width="1254" height="1254" maskUnits="userSpaceOnUse">
+        <path class="draw-p" d="M348 702 A310 310 0 0 1 876 410" fill="none" stroke="#fff" stroke-width="64" stroke-linecap="round"/>
+      </mask>
+      <mask id="lm-p2" x="0" y="0" width="1254" height="1254" maskUnits="userSpaceOnUse">
+        <path class="draw-p" d="M340 790 C339 770 365 739 380 724 C395 709 412 706 430 700 C448 694 470 695 490 690 C510 685 530 682 550 672 C570 662 590 652 610 630 C630 608 652 566 670 542 C688 518 703 500 720 486 C737 472 754 461 770 455 C786 449 803 448 818 448 C833 448 848 451 862 458 C876 465 888 474 900 488 C912 502 924 524 932 540 C940 556 950 567 948 585 C946 603 930 630 920 650 C910 670 902 689 890 704 C878 719 865 731 850 742 C835 753 817 762 800 768 C783 774 767 777 750 780 C733 783 717 783 700 786 C683 789 667 794 650 800 C633 806 617 813 600 821 C583 829 567 838 550 846 C533 854 516 866 500 872 C484 878 469 880 455 879 C441 878 427 874 415 868 C403 862 398 858 385 845 C372 832 341 810 340 790 Z" fill="none" stroke="#fff" stroke-width="64" stroke-linecap="round"/>
+      </mask>
+    </defs>
+    <g fill="currentColor">
+      <g mask="url(#lm-p1)"><g transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-shell"/></g></g>
+      <g mask="url(#lm-p2)"><g transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-bean"/></g></g>
+    </g>
+  </svg>
+</div>
+
+<!-- cursor -->
+<div id="cursor-dot"></div><div id="cursor-ring"></div>
+
+<!-- nav -->
+<header id="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="#hero" data-hover>
+      <svg class="logo-mark" viewBox="0 0 1254 1254" aria-hidden="true">
+        <g fill="currentColor" transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-shell"/><use href="#lp-bean"/></g>
+      </svg>
+      <span class="wordmark">Urbase</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#mayoristas" data-hover>Mayoristas</a>
+      <!-- EDITAR: número de WhatsApp -->
+      <a class="btn btn-solid" data-hover target="_blank" rel="noopener"
+         href="https://wa.me/5491112345678?text=Hola!%20Quiero%20pedir%20un%20soporte%20URBASE%20para%20mi%20casco.">Comprar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- hero -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="img/hero-casco.jpg" alt="Casco de moto colgado en un soporte URBASE de pared" fetchpriority="high" data-fallback data-parallax>
+  </div>
+  <svg class="hero-logo logo-mark" viewBox="0 0 1254 1254" role="img" aria-label="Logo URBASE">
+    <defs>
+      <mask id="lm-h1" x="0" y="0" width="1254" height="1254" maskUnits="userSpaceOnUse">
+        <path class="draw-p" d="M348 702 A310 310 0 0 1 876 410" fill="none" stroke="#fff" stroke-width="64" stroke-linecap="round"/>
+      </mask>
+      <mask id="lm-h2" x="0" y="0" width="1254" height="1254" maskUnits="userSpaceOnUse">
+        <path class="draw-p" d="M340 790 C339 770 365 739 380 724 C395 709 412 706 430 700 C448 694 470 695 490 690 C510 685 530 682 550 672 C570 662 590 652 610 630 C630 608 652 566 670 542 C688 518 703 500 720 486 C737 472 754 461 770 455 C786 449 803 448 818 448 C833 448 848 451 862 458 C876 465 888 474 900 488 C912 502 924 524 932 540 C940 556 950 567 948 585 C946 603 930 630 920 650 C910 670 902 689 890 704 C878 719 865 731 850 742 C835 753 817 762 800 768 C783 774 767 777 750 780 C733 783 717 783 700 786 C683 789 667 794 650 800 C633 806 617 813 600 821 C583 829 567 838 550 846 C533 854 516 866 500 872 C484 878 469 880 455 879 C441 878 427 874 415 868 C403 862 398 858 385 845 C372 832 341 810 340 790 Z" fill="none" stroke="#fff" stroke-width="64" stroke-linecap="round"/>
+      </mask>
+    </defs>
+    <g fill="currentColor">
+      <g mask="url(#lm-h1)"><g transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-shell"/></g></g>
+      <g mask="url(#lm-h2)"><g transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-bean"/></g></g>
+    </g>
+  </svg>
+  <h1 id="hero-title">GUARDA TU CASCO.<br>CUELGA TU EQUIPO.</h1>
+  <p class="hero-sub reveal" data-anim="hero-sub">Soportes de pared impresos en 3D, diseñados para cuidar tu casco y ordenar tu equipo. Directo de fábrica, en Argentina.</p>
+  <div class="hero-ctas reveal" data-anim="hero-ctas">
+    <!-- EDITAR: número de WhatsApp -->
+    <a class="btn btn-solid" data-hover target="_blank" rel="noopener"
+       href="https://wa.me/5491112345678?text=Hola!%20Quiero%20pedir%20un%20soporte%20URBASE%20para%20mi%20casco.">
+      Pedir por WhatsApp
+    </a>
+    <a class="btn btn-ghost" data-hover href="#mayoristas">Venta mayorista</a>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- mayoristas -->
+<section id="mayoristas">
+  <div class="wrap">
+    <div class="mayo-panel reveal">
+      <div class="mayo-copy">
+        <p class="eyebrow">Venta mayorista</p>
+        <h2 class="section-title">¿Tenés una tienda<br>de motos?</h2>
+        <p style="color:var(--muted);font-size:.95rem;max-width:44ch">Sumá URBASE a tu local. Un producto que se vende solo al lado de la caja, con margen real para vos.</p>
+        <ul class="mayo-benefits">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+            <div><strong>Margen para revendedores</strong><span>Precio mayorista escalonado por cantidad. Rentabilidad desde la primera caja.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>
+            <div><strong>Exhibidor para tu mostrador</strong><span>Display listo para exhibir el soporte con un casco de muestra.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 19l7-7a4.95 4.95 0 0 0-7-7l-7 7 7 7Z"/><path d="M9 12l3 3"/></svg>
+            <div><strong>El logo de tu local, grabado</strong><span>Personalizamos cada soporte con tu marca o las marcas que vendés.</span></div>
+          </li>
+        </ul>
+        <!-- EDITAR: número de WhatsApp -->
+        <a class="btn btn-solid" data-hover target="_blank" rel="noopener"
+           href="https://wa.me/5491112345678?text=Hola!%20Tengo%20una%20tienda%20de%20motos%20y%20quiero%20informaci%C3%B3n%20mayorista%20de%20URBASE.">
+          Quiero vender URBASE
+        </a>
+      </div>
+      <div class="mayo-media">
+        <figure>
+          <img src="img/grabado-yamaha.jpg" alt="Soporte URBASE negro con logo Yamaha grabado" loading="lazy" data-fallback data-parallax>
+          <figcaption>Grabado personalizado</figcaption>
+        </figure>
+        <figure>
+          <img src="img/grabado-honda.jpg" alt="Soporte URBASE negro con logo Honda grabado" loading="lazy" data-fallback data-parallax>
+          <figcaption>Las marcas que vendés</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg class="logo-mark" viewBox="0 0 1254 1254" aria-hidden="true">
+          <g fill="currentColor" transform="translate(0,1254) scale(0.1,-0.1)"><use href="#lp-shell"/><use href="#lp-bean"/></g>
+        </svg>
+        <span class="wordmark">Urbase</span>
+      </div>
+      <div class="foot-links">
+        <a href="https://instagram.com/urbase.vm" target="_blank" rel="noopener" data-hover>
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <!-- EDITAR: número de WhatsApp -->
+        <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20info%20de%20los%20soportes%20URBASE." target="_blank" rel="noopener" data-hover>
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 URBASE — Soportes impresos en 3D</span>
+      <span>Diseñado e impreso en Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<!-- whatsapp flotante — EDITAR: número -->
+<a id="wa-float" aria-label="Escribinos por WhatsApp" target="_blank" rel="noopener"
+   href="https://wa.me/5491112345678?text=Hola!%20Quiero%20pedir%20un%20soporte%20URBASE%20para%20mi%20casco.">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.2.5 2.5.8 3.8.8 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 21.8c-1.2 0-2.4-.3-3.5-.8l-.7-.4-4.9.9 1-4.7-.4-.7a9.7 9.7 0 0 1-1.4-5.1c0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.4 9.8-9.9 9.8Zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.7-.4Z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script defer>
+window.addEventListener('DOMContentLoaded',()=>{
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = matchMedia('(pointer: fine)').matches;
+
+/* fallback de imágenes que aún no existen */
+document.querySelectorAll('img[data-fallback]').forEach(img=>{
+  const swap=()=>{ img.src='img/placeholder.svg'; };
+  if(img.complete && img.naturalWidth===0) swap();
+  else img.addEventListener('error',swap,{once:true});
+});
+
+/* ---------- preloader + logo dibujado ---------- */
+const pre = document.getElementById('preloader');
+const drawPaths = svg => svg.querySelectorAll('path');
+document.querySelectorAll('.draw-p').forEach(p=>{
+  const len = p.getTotalLength();
+  p.style.strokeDasharray = len;
+  p.style.strokeDashoffset = len;
+});
+
+function killPreloader(fast){
+  if(!pre) return;
+  if(fast || !window.gsap){ pre.remove(); startHero(true); return; }
+  gsap.to(pre,{autoAlpha:0,duration:.6,ease:'power3.out',onComplete:()=>{pre.remove();startHero(false);}});
+}
+
+if(reduced || !window.gsap){
+  document.querySelectorAll('.draw-p').forEach(p=>{p.style.strokeDashoffset=0;});
+  killPreloader(true);
+}else{
+  gsap.to('#preloader .draw-p',{
+    strokeDashoffset:0,duration:1.1,ease:'power2.inOut',stagger:.18,
+    onComplete:()=>killPreloader(false)
+  });
+  /* red lenta: no bloquear más de 2.5s */
+  setTimeout(()=>{ if(document.getElementById('preloader')) killPreloader(false); },2500);
+}
+
+/* ---------- hero: logo + titular palabra por palabra ---------- */
+const h1 = document.getElementById('hero-title');
+if(h1 && !reduced){
+  h1.innerHTML = h1.innerHTML.split('<br>').map(line=>
+    line.trim().split(/\s+/).map(w=>`<span class="word">${w} </span>`).join('')
+  ).join('<br>');
+  gsap.set('#hero-title .word',{yPercent:110,opacity:0});
+}
+
+let heroStarted=false;
+function startHero(fast){
+  if(heroStarted) return; heroStarted=true;
+  if(reduced || !window.gsap || fast){
+    document.querySelectorAll('.hero-logo .draw-p').forEach(p=>p.style.strokeDashoffset=0);
+    if(window.gsap){ gsap.set('#hero-title .word',{yPercent:0,opacity:1}); gsap.set('[data-anim]',{opacity:1,y:0}); }
+    return;
+  }
+  const tl = gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to('.hero-logo .draw-p',{strokeDashoffset:0,duration:1.3,ease:'power2.inOut',stagger:.2})
+    .to('#hero-title .word',{yPercent:0,opacity:1,duration:.9,stagger:.08},'-=.7')
+    .to('[data-anim="hero-sub"]',{opacity:1,y:0,duration:.8},'-=.4')
+    .to('[data-anim="hero-ctas"]',{opacity:1,y:0,duration:.8},'-=.55');
+}
+
+/* ---------- cursor custom ---------- */
+if(finePointer && !reduced){
+  const dot=document.getElementById('cursor-dot'), ring=document.getElementById('cursor-ring');
+  let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y;
+  addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;
+    dot.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;});
+  (function loop(){
+    rx+=(x-rx)*.16; ry+=(y-ry)*.16;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,[data-hover]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('is-hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('is-hover'));
+  });
+}
+
+/* ---------- nav sólido al scrollear ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('is-solid',scrollY>40),{passive:true});
+
+if(!window.gsap){ document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';}); return; }
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- lenis smooth scroll ---------- */
+if(!reduced && window.Lenis){
+  const lenis=new Lenis({duration:1.15,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+  /* anclas internas via lenis */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const target=document.querySelector(a.getAttribute('href'));
+      if(target){e.preventDefault();lenis.scrollTo(target,{offset:-60});}
+    });
+  });
+}
+
+if(reduced){
+  gsap.set('.reveal',{opacity:1,y:0});
+}else{
+
+/* ---------- reveals genéricos ---------- */
+document.querySelectorAll('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 86%'}});
+});
+
+/* ---------- parallax leve ---------- */
+document.querySelectorAll('[data-parallax]').forEach(img=>{
+  gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
+    scrollTrigger:{trigger:img.closest('section,figure'),start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+} /* fin !reduced */
+
+});
+</script>
+</body>
+</html>
