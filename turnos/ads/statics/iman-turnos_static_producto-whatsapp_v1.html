@@ -1,0 +1,40 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>producto-whatsapp</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .stage{justify-content:flex-start}
+  h1{margin-top:40px}
+  .combo{position:relative;margin-top:52px;width:100%;display:flex;flex-direction:column;align-items:center;gap:22px}
+  .combo .crop{max-width:470px;width:100%}
+  .wa-mock{max-width:470px}
+  .p1080 .stage{justify-content:center}
+  .p1080 h1{font-size:60px}.p1080 .combo{margin-top:36px;gap:16px}
+  .p1080 .sheet-static{display:none}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:300px;height:300px;background:var(--acento-suave);top:-90px;right:-110px"></span>
+  <span class="shape star" style="font-size:56px;color:var(--acento);bottom:10%;right:9%">✦</span>
+  <div class="eyebrow eb-acento">💬 Sin escribir nada</div>
+  <h1 class="small on-light">El <span class="hl hl-amber">WhatsApp</span> ya<br>te queda armado</h1>
+  <div class="combo">
+    <div class="crop"><div class="sheet-static" style="border-radius:20px;border:2.5px solid var(--tinta);box-shadow:8px 8px 0 rgba(51,35,26,.22)">
+      <div class="sheet-head" style="padding-top:16px"><div style="flex:1"><h3>Llenar el hueco de las 15:00</h3>
+        <p>A estos clientes ya les toca volver.</p></div></div>
+      <div class="sheet-body"></div></div></div>
+    <div data-ui="wa-preview"></div>
+  </div>
+  <div class="foot">Vos lo revisás y lo mandás — nada se manda solo. · datos de ejemplo</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>
+  // insertar 1 cliente dentro del sheet-head estático
+  document.addEventListener('DOMContentLoaded',function(){
+    var b=document.querySelector('.combo .sheet-body');
+    if(b) b.innerHTML=UIFrag.FRAGS['crop-letoca']();
+  });
+  (function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();
+</script>

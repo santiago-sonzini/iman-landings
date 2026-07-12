@@ -1,0 +1,30 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>producto-reserva</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/booking.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .frame{position:relative;display:flex;flex-direction:column;align-items:center}
+  .phone{width:552px;margin-top:6px}.phone .scr{height:1000px}
+  .uiwrap{height:100%}
+  .p1080 .phone{width:430px;margin-top:2px}.p1080 .phone .scr{height:560px}
+  .p1080 h1{font-size:66px}
+  .callout{top:150px;left:36px}
+  .p1080 .callout{display:none}
+  .p1080 .foot{bottom:34px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:300px;height:300px;background:var(--acento-suave);top:-90px;left:-110px"></span>
+  <div class="eyebrow eb-acento">🔗 Reservas online</div>
+  <h1 class="small on-light">Tus clientes se<br><span class="hl hl-amber">agendan solos</span></h1>
+  <div class="frame">
+    <div class="phone tall"><div class="scr"><div class="uiwrap"><div data-ui="public-servicios"></div></div></div></div>
+    <div class="callout arrow down">Tu link en la bio</div>
+  </div>
+  <div class="foot">iman.ar/elroble · sin bajar ninguna app · pantalla real</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

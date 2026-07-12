@@ -1,0 +1,24 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>objecion-spam</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .stage{justify-content:center}
+  h1{margin-top:36px}
+  .crop{margin-top:52px}
+  .wa-mock{max-width:520px;margin:0 auto}
+  .p1080 h1{font-size:58px}.p1080 .crop{margin-top:40px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:320px;height:320px;background:var(--acento-suave);top:-110px;right:-110px"></span>
+  <span class="shape star" style="font-size:56px;color:var(--acento);bottom:9%;left:8%">✦</span>
+  <div class="eyebrow eb-acento">🔒 Sin sorpresas</div>
+  <h1 class="small on-light">"¿Les manda mensajes<br>solos a mis clientes?"<br><span class="hl hl-amber">No.</span></h1>
+  <div class="crop" data-ui="wa-preview"></div>
+  <div class="foot">Imán te arma el mensaje. Vos lo revisás y lo mandás. · datos de ejemplo</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

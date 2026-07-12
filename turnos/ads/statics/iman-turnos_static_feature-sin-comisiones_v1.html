@@ -1,0 +1,29 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>feature-sin-comisiones</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<style>
+  .stage{justify-content:center}
+  .precio{position:relative;z-index:3;margin-top:14px;display:inline-flex;align-items:baseline;gap:14px}
+  .precio .n{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--crema)}
+  .precio .per{font-family:var(--display);font-weight:600;font-size:44px;color:var(--crema);opacity:.85}
+  .featrow{margin-top:52px}
+  .p1080 .precio .n{font-size:118px}.p1080 h1{font-size:70px}
+</style>
+<body>
+<div class="stage p1350 bg-acento" id="stage">
+  <span class="shape disc" style="width:340px;height:340px;background:var(--acento-osc);top:-120px;right:-120px;opacity:.6"></span>
+  <span class="shape star" style="font-size:64px;color:var(--crema);bottom:8%;left:8%;opacity:.5">✦</span>
+  <div class="eyebrow eb-amarillo">💸 En pesos, siempre</div>
+  <h1 class="on-dark">Sin comisiones.<br>Sin permanencia.</h1>
+  <div class="precio"><span class="n">$15.000</span><span class="per">/ mes</span></div>
+  <div class="featrow">
+    <span class="feat"><span class="em">🆓</span> Prueba gratis</span>
+    <span class="feat"><span class="em">🚫</span> 0% de comisión</span>
+    <span class="feat"><span class="em">📆</span> Cancelás cuando quieras</span>
+  </div>
+  <div class="foot on-dark" style="color:var(--crema)">Imán Turnos · turnero para barberías</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

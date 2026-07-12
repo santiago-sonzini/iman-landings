@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Landing Imán Turnos — capa de layout sobre app.css/booking.css
+   (los componentes del demo son las clases REALES de la app)
+   ========================================================================== */
+.lp{overflow-x:hidden}
+.lp-wrap{max-width:1060px;margin:0 auto;padding:0 20px;position:relative}
+.lp-sec{padding:clamp(3.2rem,8vw,5.5rem) 0;position:relative}
+.lp-sec-alt{background:rgba(255,253,248,.55);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)}
+.lp h1{font-size:clamp(2.1rem,5.4vw,3.3rem);line-height:1.06;letter-spacing:-.01em;margin:18px 0 14px}
+.lp h2{font-size:clamp(1.5rem,3.6vw,2.2rem);margin-bottom:clamp(1.4rem,3vw,2.2rem)}
+.lp-p{font-weight:600;font-size:1.02rem;max-width:46ch;margin-bottom:12px}
+.lp-p b{font-weight:800}
+.lp-micro{font-size:.82rem;font-weight:800;color:var(--tinta-suave)}
+.centro{text-align:center}
+
+/* ---------- hero ---------- */
+.lp-hero{padding:clamp(1.6rem,4vw,3.4rem) 0 clamp(2.4rem,5vw,4rem)}
+.lp-hero-grid{display:grid;gap:34px;align-items:center}
+@media(min-width:960px){.lp-hero-grid{grid-template-columns:1.05fr .95fr;gap:20px}}
+.lp-marca{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.14rem}
+.lp-iman{position:relative;display:inline-flex}
+.lp-iman .iman-logo{width:44px}
+.lp-chip-vertical{font-size:.72rem;padding:.24rem .6rem}
+.lp-sub{font-weight:600;font-size:clamp(1.02rem,2.4vw,1.18rem);max-width:44ch;color:var(--tinta);margin-bottom:22px}
+.lp-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.lp-ctas-centro{justify-content:center;margin-top:8px}
+.lp-cta-main{font-size:1.12rem;padding:1rem 2rem}
+.lp-hero .lp-micro{margin-top:12px}
+
+/* ---------- teléfono demo (timeline) ---------- */
+.lp-hero-demo{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fono{width:min(340px,92vw);background:var(--crema);border:2.5px solid var(--tinta);border-radius:32px;
+  box-shadow:0 8px 0 var(--tinta),var(--sombra);padding:16px 13px;position:relative;overflow:hidden}
+.fono .turno{cursor:default}
+.demo-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px}
+.demo-marca{font-family:var(--display);font-weight:600;font-size:.98rem}
+.demo-oc{font-size:.74rem;font-weight:800;color:var(--tinta-suave)}
+#demo .turno{margin-bottom:10px}
+#demo .hueco{margin-bottom:10px}
+/* contenido lleno (post-magia) */
+#demo .l-contenido{display:none}
+#demo[data-lleno] .h-contenido{display:none}
+#demo[data-lleno] .l-contenido{display:block;animation:pop .45s var(--resorte) both}
+#demo[data-lleno] #demo-hueco{border-style:solid;background:var(--blanco);cursor:default}
+.demo-lleno-fila{display:flex;align-items:center;gap:11px}
+.demo-lleno-fila .ava{width:44px;height:44px;flex:none;border-radius:14px;border:2.5px solid var(--tinta);
+  display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.05rem}
+.demo-lleno-fila .info{flex:1;min-width:0}
+.demo-lleno-fila .nom{font-family:var(--display);font-weight:600;font-size:1.02rem}
+.demo-lleno-fila .det{font-size:.8rem;color:var(--tinta-suave);font-weight:700}
+/* sheet interna */
+.demo-sheet{position:absolute;left:0;right:0;bottom:0;background:var(--crema);
+  border-top:2.5px solid var(--tinta);border-radius:22px 22px 0 0;padding:10px 14px 16px;
+  box-shadow:0 -8px 30px rgba(51,35,26,.18);transform:translateY(105%);
+  transition:transform .5s var(--resorte)}
+#demo[data-paso="c"] .demo-sheet,#demo[data-paso="d"] .demo-sheet,#demo[data-paso="e"] .demo-sheet{transform:translateY(0)}
+.ds-handle{width:40px;height:5px;border-radius:99px;background:var(--linea);margin:0 auto 8px}
+.ds-tit{font-family:var(--display);font-weight:600;font-size:1.06rem}
+.ds-sub{font-size:.76rem;font-weight:800;color:var(--tinta-suave);margin-bottom:10px}
+.demo-sheet .cli-fila{margin-bottom:9px}
+.demo-sheet .cli-fila .btn{min-height:40px;padding:.5rem .8rem}
+#demo[data-paso="d"] #demo-marta{outline:3px solid var(--acento);outline-offset:2px}
+/* burbuja whatsapp */
+.demo-wa{position:absolute;left:12px;right:12px;bottom:14px;background:#DCF8C6;color:var(--tinta);
+  border:2.5px solid var(--tinta);border-radius:16px 16px 4px 16px;padding:10px 12px;
+  font-size:.82rem;font-weight:700;box-shadow:var(--sombra-dura);
+  opacity:0;transform:translateY(16px) scale(.94);transition:opacity .35s,transform .45s var(--resorte)}
+.demo-wa b{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:#1FAE54;margin-bottom:2px}
+.demo-wa .ticks{display:block;text-align:right;color:#34B7F1;font-weight:900}
+#demo[data-paso="e"] .demo-wa{opacity:1;transform:translateY(0) scale(1)}
+/* dedito de tap */
+.demo-tap{position:absolute;width:30px;height:30px;border-radius:50%;pointer-events:none;
+  border:3px solid var(--tinta);background:rgba(255,253,248,.55);opacity:0;z-index:5;
+  transition:top .4s var(--resorte),left .4s var(--resorte),opacity .2s}
+#demo[data-paso="b"] .demo-tap,#demo[data-paso="d"] .demo-tap{opacity:1;animation:tapPulse .7s ease-in-out infinite}
+@keyframes tapPulse{0%,100%{transform:scale(1)}50%{transform:scale(.82)}}
+.demo-caption{font-size:.78rem;font-weight:800;color:var(--tinta-suave);text-align:center;max-width:34ch}
+.demo-link{display:inline-block;margin-top:4px;color:var(--acento-osc);text-decoration:underline;text-underline-offset:2px}
+.demo-link:hover{color:var(--acento)}
+
+/* ---------- dolores ---------- */
+.lp-dolores{display:grid;gap:14px}
+@media(min-width:760px){.lp-dolores{grid-template-columns:repeat(3,1fr)}}
+.lp-dolor{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:20px 18px;
+  box-shadow:var(--sombra-dura)}
+.ldo-emo{font-size:2rem;margin-bottom:10px}
+.ldo-quote{font-family:var(--display);font-weight:600;font-size:1.1rem;line-height:1.3;margin-bottom:10px}
+.ldo-resp{font-weight:600;font-size:.92rem;color:var(--tinta)}
+.ldo-resp b{color:var(--acento-osc)}
+
+/* ---------- pasos ---------- */
+.lp-pasos{display:grid;gap:14px;counter-reset:paso}
+@media(min-width:760px){.lp-pasos{grid-template-columns:repeat(3,1fr)}}
+.lp-paso{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:20px 18px;
+  box-shadow:var(--sombra-dura);position:relative}
+.lpp-num{width:38px;height:38px;border-radius:50%;background:var(--acento);color:var(--acento-on);
+  border:2.5px solid var(--tinta);display:grid;place-items:center;font-family:var(--display);
+  font-weight:600;font-size:1.1rem;margin-bottom:12px;box-shadow:0 3px 0 var(--tinta)}
+.lp-paso h3{font-size:1.08rem;margin-bottom:5px}
+.lp-paso p{font-weight:600;font-size:.92rem}
+.lp-pasos+.lp-micro{margin-top:18px}
+
+/* ---------- 2 columnas (showcase / promos) ---------- */
+.lp-2col{display:grid;gap:30px;align-items:center}
+@media(min-width:900px){
+  .lp-2col{grid-template-columns:1fr 1fr}
+  .lp-2col-inv .lp-2col-txt{order:2}
+  .lp-2col-inv .lp-2col-demo{order:1}
+}
+.lp-2col-demo{display:flex;justify-content:center}
+.fono-bk{padding:0;overflow:hidden}
+.fono-bk .bk-hero{padding:20px 16px 16px}
+.lp-bk-body{padding:14px}
+.lp-bk-horas{display:flex;gap:8px}
+.lp-bk-horas .hora-btn{flex:1;cursor:default}
+.lp-swatch-lbl{margin-bottom:8px}
+.lp-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.lp-sw{width:46px;height:46px;border-radius:14px;border:2.5px solid var(--tinta);cursor:pointer;
+  box-shadow:0 3px 0 var(--tinta);transition:transform .15s var(--resorte),box-shadow .15s;position:relative}
+.lp-sw:hover{transform:translateY(-2px)}
+.lp-sw:active{transform:translateY(3px);box-shadow:0 0 0 var(--tinta)}
+.lp-sw.sel::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;
+  font-weight:900;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.lp-incentivo{max-width:400px;width:100%}
+
+/* ---------- precio ---------- */
+.lp-precio-wrap{max-width:560px}
+.lp-precio{background:var(--blanco);border:var(--borde);border-radius:var(--radio-lg);padding:26px 22px;
+  box-shadow:0 6px 0 var(--tinta),var(--sombra)}
+.lpr-monto{font-family:var(--display);font-weight:600;font-size:3.4rem;line-height:1;text-align:center}
+.lpr-moneda{font-size:1.6rem;vertical-align:super;margin-right:4px}
+.lpr-mes{font-size:1.1rem;color:var(--tinta-suave);font-weight:600}
+.lpr-hook{text-align:center;font-weight:800;color:var(--acento-osc);margin:8px 0 18px;font-size:1.02rem}
+.lpr-lista{list-style:none;margin:0 0 20px;display:grid;gap:9px}
+.lpr-lista li{font-weight:700;font-size:.96rem;padding-left:4px}
+.lp-garantia{display:flex;gap:14px;align-items:flex-start;background:var(--acento-suave);
+  border:2.5px dashed var(--tinta);border-radius:var(--radio);padding:16px 18px;margin-top:16px;
+  font-weight:700;font-size:.94rem}
+.lpg-emo{font-size:1.7rem;flex:none}
+.lpg-nota{display:block;font-size:.8rem;font-weight:700;color:var(--tinta-suave);margin-top:4px}
+
+/* ---------- FAQ ---------- */
+.lp-faq-wrap{max-width:640px}
+.lp-faq{background:var(--blanco);border:var(--borde);border-radius:16px;box-shadow:var(--sombra-dura);
+  margin-bottom:11px;overflow:hidden}
+.lp-faq summary{list-style:none;cursor:pointer;padding:15px 18px;font-family:var(--display);
+  font-weight:600;font-size:1.02rem;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  -webkit-tap-highlight-color:transparent}
+.lp-faq summary::-webkit-details-marker{display:none}
+.lp-faq summary::after{content:"+";font-size:1.4rem;font-weight:600;color:var(--acento-osc);
+  transition:transform .25s var(--resorte)}
+.lp-faq[open] summary::after{transform:rotate(45deg)}
+.lp-faq p{padding:0 18px 16px;font-weight:600;font-size:.94rem}
+
+/* ---------- cierre + footer ---------- */
+.lp-cierre{padding-bottom:clamp(4rem,9vw,6.5rem)}
+.lp-cierre-iman{display:flex;justify-content:center;margin-bottom:6px}
+.lp-iman-xl .iman-logo{width:76px}
+.lp-iman-xl .iman-part{width:20px;height:20px;margin:-10px 0 0 -10px}
+.lp-footer{border-top:2.5px solid var(--tinta);padding:20px 0 26px;font-weight:700;font-size:.86rem;
+  color:var(--tinta-suave)}
+.lp-footer b{color:var(--tinta)}
+.lp-footer a{text-decoration:underline}
+
+/* ---------- CTA fija mobile ---------- */
+.lp-sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 14px max(10px,env(safe-area-inset-bottom));
+  background:linear-gradient(transparent,var(--crema) 40%);
+  transform:translateY(110%);transition:transform .4s var(--resorte)}
+.lp-sticky.on{transform:translateY(0)}
+@media(min-width:900px){.lp-sticky{display:none}}
+
+/* ---------- reveals ---------- */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}
+.rv-d2{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  .lp-sticky{transition:none}
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>producto-agenda</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  /* el teléfono es el héroe: UI real recortada del timeline */
+  .frame{position:relative;display:flex;flex-direction:column;align-items:center}
+  .phone{width:560px;margin-top:6px}
+  .phone .scr{height:980px}
+  .uiwrap{height:100%}
+  .p1080 .phone{width:432px;margin-top:2px}.p1080 .phone .scr{height:560px}
+  .p1080 h1{font-size:70px}
+  .callout{top:812px;right:40px}
+  .p1080 .callout{display:none}
+  .p1080 .foot{bottom:34px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:320px;height:320px;background:var(--acento-suave);top:-90px;right:-110px"></span>
+  <span class="shape star" style="font-size:64px;color:var(--acento);top:8%;left:8%">✦</span>
+
+  <div class="eyebrow eb-acento">💈 Imán Turnos · para barberías</div>
+  <h1 class="small on-light">Tu agenda del día,<br><span class="hl hl-amber">sin huecos muertos</span></h1>
+
+  <div class="frame">
+    <div class="phone tall"><div class="scr"><div class="uiwrap"><div data-ui="timeline"></div></div></div></div>
+    <div class="callout arrow down">Tocá y se llena</div>
+  </div>
+
+  <div class="foot">iman.ar/elroble · pantalla real · datos de ejemplo</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>
+  // formato por query (?f=sq → 1:1) — un archivo, dos recortes
+  (function(){var f=new URLSearchParams(location.search).get('f');
+    if(f==='sq'){var s=document.getElementById('stage');s.classList.remove('p1350');s.classList.add('p1080');}})();
+</script>

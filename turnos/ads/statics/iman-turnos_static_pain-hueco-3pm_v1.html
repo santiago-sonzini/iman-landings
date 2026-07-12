@@ -1,0 +1,24 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>pain-hueco-3pm</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .stage{justify-content:center}
+  h1{margin-top:44px}
+  .crop{margin-top:64px}
+  .p1080 .stage{justify-content:center}
+  .p1080 h1{font-size:72px}.p1080 .crop{margin-top:48px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:340px;height:340px;background:var(--acento-suave);top:-110px;right:-120px"></span>
+  <span class="shape star" style="font-size:62px;color:var(--acento);bottom:11%;left:8%">✦</span>
+  <div class="eyebrow eb-acento">💈 Imán Turnos</div>
+  <h1 class="on-light">¿Otra vez<br>un <span class="hl hl-amber">hueco</span><br>a las 3?</h1>
+  <div data-ui="crop-hueco"></div>
+  <div class="foot">Llenalo con un cliente tuyo, en un toque. · pantalla real · datos de ejemplo</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

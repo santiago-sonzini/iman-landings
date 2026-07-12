@@ -8,6 +8,21 @@ NOTAS.md
 .claude/
 .vercel/
 
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Material de ads: renders e imágenes/videos generados (pesados, no se despliegan)
+# Se conserva el fuente liviano (.html, .css, .js, .md).
+turnos/ads/**/*.png
+turnos/ads/**/*.jpg
+turnos/ads/**/*.jpeg
+turnos/ads/**/*.webp
+turnos/ads/**/*.mp4
+turnos/ads/**/*.mov
+turnos/ads/**/*.gif
+turnos/ads/reels/
+
 # macOS
 .DS_Store
 **/.DS_Store

@@ -1,0 +1,20 @@
+/* ui-embed.css — reglas para incrustar la UI real dentro de un teléfono de ad.
+   Neutraliza el posicionamiento fixed de la app (tabbar/fab/sheets) para que
+   nada se escape del marco, y arregla glifos que el Chrome headless no trae. */
+
+.uiwrap{position:relative;overflow:hidden;background:var(--crema)}
+.uiwrap .app{min-height:auto!important;box-shadow:none!important;margin:0}
+.uiwrap .top{position:static}
+.uiwrap .pantalla{padding-bottom:18px;animation:none}
+/* la tabbar se ancla al fondo del teléfono (como en la app, el contenido pasa por debajo) */
+.uiwrap .tabbar{position:absolute;left:0;right:0;bottom:0;max-width:none;margin:0}
+.uiwrap .fab{display:none!important}
+.uiwrap .sheet-bg,.uiwrap .toast-zona,.uiwrap .confeti{display:none!important}
+/* sin animaciones de entrada al capturar (estado final estable) */
+.uiwrap *{animation-play-state:running}
+
+/* marcador de hueco dibujado (el emoji 🕳️ es Unicode 13, el headless viejo lo
+   muestra como bloque negro): anillo punteado acento, con el mismo latido */
+.z-mark{display:inline-block;width:19px;height:19px;flex:none;border:3px dashed var(--acento-osc);
+  border-radius:50%;animation:latido 2.4s var(--resorte) infinite}
+.hueco.prime .z-mark{border-color:var(--ambar-tinta)}

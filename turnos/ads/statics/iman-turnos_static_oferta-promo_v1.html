@@ -1,0 +1,28 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>oferta-promo</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/booking.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .stage{justify-content:flex-start}
+  h1{margin-top:40px}
+  .crop{margin-top:60px}
+  .featrow{margin-top:40px}
+  .p1080 .stage{justify-content:center}
+  .p1080 h1{font-size:64px}.p1080 .crop{margin-top:44px}.p1080 .featrow{display:none}
+</style>
+<body>
+<div class="stage p1350 bg-amarillo" id="stage">
+  <span class="shape disc" style="width:320px;height:320px;background:var(--acento-suave);top:-110px;left:-110px"></span>
+  <span class="shape star" style="font-size:60px;color:var(--tinta);bottom:9%;right:8%;opacity:.4">✦</span>
+  <div class="eyebrow eb-tinta">🎁 Promos que traen de vuelta</div>
+  <h1 class="small on-light">Un lavado gratis<br>te llena el <span class="hl hl-crema">miércoles</span></h1>
+  <div data-ui="crop-promo"></div>
+  <div class="featrow"><span class="feat"><span class="em">⏱️</span> Con countdown</span>
+    <span class="feat"><span class="em">🔗</span> En tu link de reservas</span></div>
+  <div class="foot">La promo aparece sola en los huecos y días flojos. · pantalla real</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

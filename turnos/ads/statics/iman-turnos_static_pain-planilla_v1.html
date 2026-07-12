@@ -1,0 +1,23 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>pain-planilla</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  .stage{justify-content:center}
+  h1{margin-top:36px}
+  .crop{margin-top:56px}
+  .p1080 h1{font-size:60px}.p1080 .crop{margin-top:42px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:320px;height:320px;background:var(--acento-suave);bottom:-100px;right:-110px"></span>
+  <span class="shape star" style="font-size:58px;color:var(--amarillo);top:7%;left:9%">✦</span>
+  <div class="eyebrow eb-amarillo">📓 vs 📱</div>
+  <h1 class="small on-light">¿Seguís anotando<br>los turnos en un<br><span class="hl hl-amber">cuaderno</span>?</h1>
+  <div class="crop" data-ui="crop-ocupa"></div>
+  <div class="foot">Pasá tu agenda al teléfono. La ves, la compartís, se llena sola. · datos de ejemplo</div>
+</div>
+<script src="../lib/ui-fragments.js"></script>
+<script>(function(){if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}})();</script>

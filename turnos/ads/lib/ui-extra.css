@@ -1,0 +1,39 @@
+/* ui-extra.css — envoltorios SÓLO para ads, sobre los tokens reales de la app.
+   No redefine ningún componente de producto: agrega el mock de WhatsApp,
+   el encuadre estático del sheet y las filas de opciones del builder. */
+
+/* sheet mostrado estático (sin overlay) dentro de un teléfono */
+.sheet-static{background:var(--crema);border-top:2.5px solid var(--tinta);
+  border-radius:26px 26px 0 0;padding-bottom:14px}
+.sheet-static .handle{width:44px;height:5px;border-radius:99px;background:var(--linea)}
+.sheet-static .sheet-head{padding:8px 20px 12px}
+.sheet-static .sheet-head h3{font-family:var(--display);font-weight:600;font-size:1.3rem}
+.sheet-static .sheet-head p{font-size:.86rem;color:var(--tinta-suave);font-weight:700;margin-top:2px}
+.sheet-static .sheet-body{padding:0 18px 4px}
+
+/* mock del mensaje de WhatsApp que arma la app (editable, no se manda solo) */
+.wa-mock{background:#E7F6EC;border:2.5px solid var(--tinta);border-radius:20px;
+  padding:12px;box-shadow:var(--sombra-dura)}
+.wa-top{display:flex;align-items:center;gap:10px;padding:2px 4px 10px;border-bottom:1.5px dashed rgba(51,35,26,.18);margin-bottom:10px}
+.wa-ava{width:38px;height:38px;flex:none;border-radius:50%;background:var(--verde-wa);color:#fff;
+  display:grid;place-items:center;font-family:var(--display);font-weight:600;border:2px solid var(--tinta)}
+.wa-top b{font-family:var(--display);font-weight:600;font-size:1rem;display:block;line-height:1.1}
+.wa-top small{font-size:.72rem;color:var(--verde-wa-osc,#1FAE54);font-weight:800}
+.wa-msg{background:#fff;border:2px solid var(--tinta);border-radius:14px;border-top-left-radius:5px;
+  padding:11px 13px;font-weight:700;font-size:.92rem;line-height:1.4;box-shadow:0 2px 0 var(--tinta)}
+.wa-hint{font-size:.74rem;color:var(--tinta-suave);font-weight:800;text-align:center;margin-top:9px}
+
+/* filas de opciones del builder de promos */
+.promo-opts{display:flex;flex-wrap:wrap;gap:8px}
+.promo-opts .chip{cursor:default}
+
+/* turno recién agendado — pequeño flash de entrada (para la escena "después") */
+.turno.recien{outline:0 solid var(--verde-ok)}
+.reveal .turno.recien{animation:reciennace .6s var(--resorte,cubic-bezier(.34,1.56,.64,1)) both}
+@keyframes reciennace{0%{transform:scale(.9) translateY(6px);opacity:0;box-shadow:0 0 0 var(--tinta)}
+  60%{transform:scale(1.03)}100%{transform:none;opacity:1}}
+.btn.listo{box-shadow:0 0 0 var(--acento-osc);transform:translateY(4px)}
+
+/* crop suelto (componente real flotando en el lienzo del ad) */
+.crop{margin:0 auto;text-align:left;position:relative;z-index:3}
+.crop .hueco.destacado,.crop .incentivo{box-shadow:8px 8px 0 var(--sh,rgba(51,35,26,.22))}
