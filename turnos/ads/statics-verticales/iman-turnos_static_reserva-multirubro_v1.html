@@ -1,0 +1,97 @@
+<!DOCTYPE html><meta charset="utf-8">
+<title>reserva-multirubro</title>
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/booking.css">
+<link rel="stylesheet" href="../lib/ui-extra.css">
+<link rel="stylesheet" href="../lib/ui-embed.css">
+<style>
+  /* acento "casa" neutro (no petróleo=barbería, no el de ningún sticker) */
+  :root{--acento:#6D54B5;--acento-osc:#4B3788;--acento-suave:#E6DFF6}
+
+  /* lockup de marca Imán en el eyebrow — imán ámbar sobre el pill de acento */
+  .brand-lock{gap:16px;padding:14px 42px 14px 28px}
+  .brand-lock .iman-logo{width:54px;height:auto;flex:none;animation:none}
+  .brand-lock .iman-cuerpo{stroke:var(--amarillo)}
+  .brand-lock .iman-polo{fill:var(--acento-on)}
+  .brand-lock small{font-family:var(--cuerpo);font-weight:800;font-size:.5em;
+    letter-spacing:.12em;text-transform:uppercase;opacity:.82;margin-left:2px}
+
+  .frame{position:relative;display:flex;flex-direction:column;align-items:center}
+  .phone{width:516px;margin-top:6px}.phone .scr{height:980px}
+  .uiwrap{height:100%}
+
+  /* stickers de rubro — mismo lenguaje que .feat, tinta gruesa + sombra dura */
+  .rubro{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:10px;
+    background:var(--blanco);border:5px solid var(--tinta);border-radius:999px;
+    padding:11px 20px;font-family:var(--display);font-weight:600;font-size:30px;
+    color:var(--tinta);box-shadow:7px 7px 0 var(--sh);white-space:nowrap}
+  .rubro .em{font-size:34px}
+  /* posiciones 4:5 */
+  .r1{top:470px;left:14px;transform:rotate(-5deg);background:#D9EAF0}
+  .r2{top:700px;left:2px;transform:rotate(4deg);background:#FADCEC}
+  .r3{top:930px;left:8px;transform:rotate(-3deg);background:#F8E6CF}
+  .r4{top:560px;right:12px;transform:rotate(5deg);background:#E4E0F2}
+  .r5{top:790px;right:0;transform:rotate(-4deg);background:#D9F0E4}
+  .r6{top:1010px;right:26px;transform:rotate(4deg);background:#E7F3E4}
+
+  /* ---- formato 1:1 ---- */
+  .p1080 .phone{width:414px;margin-top:2px}.p1080 .phone .scr{height:560px}
+  .p1080 h1{font-size:64px}
+  .p1080 .foot{bottom:30px}
+  .p1080 .rubro{font-size:27px;padding:10px 18px;gap:9px}
+  .p1080 .rubro .em{font-size:31px}
+  .p1080 .r1{top:360px;left:10px}
+  .p1080 .r2{top:530px;left:0}
+  .p1080 .r3{top:700px;left:24px}
+  .p1080 .r4{top:420px;right:6px}
+  .p1080 .r5{top:590px;right:-4px}
+  .p1080 .r6{top:760px;right:20px}
+</style>
+<body>
+<div class="stage p1350 bg-crema" id="stage">
+  <span class="shape disc" style="width:300px;height:300px;background:var(--acento-suave);top:-90px;left:-110px"></span>
+
+  <div class="eyebrow eb-acento brand-lock">
+    <span class="iman-wrap" style="position:relative;display:inline-block">
+      <svg class="iman-logo" viewBox="0 0 120 132" aria-hidden="true">
+        <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+        <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+        <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+      </svg>
+    </span>Imán <small>Turnos</small>
+  </div>
+  <h1 class="small on-light">Tus clientes se<br><span class="hl hl-amber">agendan solos</span></h1>
+
+  <div class="frame">
+    <div class="phone tall"><div class="scr"><div class="uiwrap" data-reserva></div></div></div>
+  </div>
+
+  <!-- stickers: el rubro del teléfono es una peluquería/estudio; los stickers suman el resto -->
+  <span class="rubro r1"><span class="em">💈</span> Barbería</span>
+  <span class="rubro r2"><span class="em">💅</span> Uñas</span>
+  <span class="rubro r3"><span class="em">🐶</span> Veterinaria</span>
+  <span class="rubro r4"><span class="em">🖤</span> Tattoo</span>
+  <span class="rubro r5"><span class="em">💪</span> Kinesio</span>
+  <span class="rubro r6"><span class="em">🌿</span> Spa</span>
+
+  <div class="foot">turnero.iman.ar · cualquier rubro con turnos · pantalla real</div>
+</div>
+
+<script src="./ui-vertical.js"></script>
+<script>
+  var CFG = {
+    nombre:'Tu negocio', foto:'📅', rating:'5,0', zona:'Tu ciudad',
+    titulo:'¿Qué te hacés?', sub:'Elegí el servicio y después el horario.',
+    servicios:[
+      {em:'✂️', nom:'Corte y brushing', dur:'45 min', precio:'12.000'},
+      {em:'🎨', nom:'Color', dur:'120 min', precio:'28.000'},
+      {em:'💅', nom:'Manicura', dur:'45 min', precio:'9.000'},
+      {em:'🌸', nom:'Facial express', dur:'40 min', precio:'11.000'}
+    ]
+  };
+  document.querySelector('[data-reserva]').innerHTML = buildReserva(CFG);
+  if(new URLSearchParams(location.search).get('f')==='sq'){var s=document.getElementById('stage');s.classList.replace('p1350','p1080');}
+</script>
