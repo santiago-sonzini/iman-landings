@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFF6E9">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%2333231A' stroke-width='34'/%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%236C5CE7' stroke-width='21'/%3E%3Crect x='13' y='88' width='42' height='20' rx='4' fill='%23FFFDF8' stroke='%2333231A' stroke-width='5'/%3E%3Crect x='65' y='88' width='42' height='20' rx='4' fill='%23FFFDF8' stroke='%2333231A' stroke-width='5'/%3E%3Cpath d='M28 114l-7 9M60 117v10M92 114l7 9' stroke='%2333231A' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+
+<title>Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes</title>
+<meta name="description" content="Creamos para tu comercio un Club de Clientes personalizado con puntos, beneficios y referidos. Tus clientes escanean el QR, participan y pueden invitar a otros sin descargar ninguna aplicación.">
+<link rel="canonical" href="https://iman-landings.vercel.app/club/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Imán">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes">
+<meta property="og:description" content="Un Club de Clientes con tu marca: puntos, premios y referidos. Sin apps para tus clientes. Te lo armamos junto a tu negocio.">
+<meta property="og:url" content="https://iman-landings.vercel.app/club/">
+<meta property="og:image" content="https://iman-landings.vercel.app/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Imán — Club de Clientes personalizado para tu comercio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes">
+<meta name="twitter:description" content="Un Club de Clientes con tu marca: puntos, premios y referidos. Sin apps para tus clientes.">
+<meta name="twitter:image" content="https://iman-landings.vercel.app/og.png">
+
+<!-- ============================================================
+     CONFIGURAR ANTES DE PUBLICAR  (objeto CONFIG al final del archivo)
+
+     1. CONFIG.formEndpoint  → VACÍO por defecto.
+        · Vacío: el formulario NO simula un envío. Valida, arma el resumen
+          y abre WhatsApp con todos los datos cargados para que la persona
+          toque "enviar" (canal real de Imán, el mismo de las otras landings).
+          El estado que se muestra es "abrimos WhatsApp", nunca
+          "solicitud recibida".
+        · Con URL: hace POST JSON a ese endpoint y solo muestra
+          "Solicitud recibida" si la respuesta es 2xx. Si falla, estado de
+          error con botón de reintentar (los datos NO se pierden).
+        Proveedores que funcionan pegando la URL, sin tocar más nada:
+          Formspree   https://formspree.io/f/XXXXXXX
+          Basin       https://usebasin.com/f/XXXXXXX
+          Web3Forms   https://api.web3forms.com/submit  (agregar access_key en CONFIG.formExtra)
+          Propio      cualquier endpoint que acepte POST JSON y responda 2xx
+        IMPORTANTE: la validación de servidor y el rate-limit viven en el
+        endpoint, no acá (esto es un sitio estático). En el cliente hay
+        honeypot + trampa de tiempo, que frenan bots simples pero NO
+        reemplazan la validación del backend.
+
+     2. CONFIG.calendlyUrl → URL real del evento. Si queda vacía, el tab
+        "Agendar llamada" se deshabilita con aviso de configuración
+        pendiente (nunca se muestra un calendario roto).
+
+     3. CONFIG.referidosDisponibles → false mientras el flujo de referidos
+        no funcione punta a punta. En false, la sección de referidos y el
+        FAQ muestran la etiqueta "Próximamente" y el copy no lo promete
+        como disponible. Poner en true recién cuando esté verificado.
+
+     4. CONFIG.whatsapp → número real de contacto.
+
+     5. Analytics: mismos tags que /comercios (Meta Pixel, Google Ads,
+        Vercel). Eventos propios: 'iman:cta_click' y 'iman:club_lead'.
+     ============================================================ -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1347555500811145');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Vercel Web Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Google tag (gtag.js) — Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18305633425"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18305633425');
+  // Conversión "lead": clic en WhatsApp o agenda confirmada en Calendly.
+  (function(){
+    var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i, hold=false;
+    document.addEventListener('click', function(ev){
+      var a = ev.target.closest && ev.target.closest('a[href]');
+      if(!a || !RE.test(a.href)) return;
+      if(hold) return; hold=true; setTimeout(function(){hold=false;}, 1500);
+      if(window.gtag) gtag('event','conversion',{
+        send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS', transport_type:'beacon'
+      });
+    }, true);
+  }());
+  window.addEventListener('message', function(e){
+    if(e && e.data && e.data.event === 'calendly.event_scheduled'){
+      if(window.gtag) gtag('event','conversion',{
+        send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS'
+      });
+    }
+  });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================================
+   SISTEMA BASE IMÁN  (mismos tokens que /comercios y /turnos)
+   ===================================================================== */
+:root{
+  --crema:#FFF6E9;
+  --tinta:#33231A;
+  --blanco:#FFFDF8;
+  --texto:#5a463a;
+  --tinta-suave:#7F6857;   /* AA sobre crema y blanco (4.9 / 5.1) */
+  --linea:#EADDC8;
+
+  --acento:#6C5CE7;
+  --acento-osc:#4E3FC0;
+  --acento-suave:#ECE9FF;
+  --acento-claro:#A79BFF;  /* el acento sobre fondos tinta: AA con holgura */
+  --acento-on:#fff;
+  --acento2:#17BEBB;
+  --amarillo:#FFC53D;
+  --verde-wa:#25D366;
+  --verde-wa-osc:#1DA851;
+  --rojo:#E23D3D;
+
+  --radio:22px;
+  --borde:2.5px solid var(--tinta);
+  --sombra:0 10px 30px rgba(51,35,26,.12);
+  --sombra-dura:0 4px 0 var(--tinta);
+  --resorte:cubic-bezier(.34,1.56,.64,1);
+
+  --display:'Fredoka',sans-serif;
+  --cuerpo:'Nunito',sans-serif;
+  --header-h:62px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--cuerpo);
+  background:var(--crema);
+  color:var(--tinta);
+  font-size:clamp(1rem,.95rem + .3vw,1.09rem);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.13;font-weight:600}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px;border-radius:6px}
+section{position:relative;padding:clamp(3.2rem,7vw,5.6rem) 1.15rem;scroll-margin-top:calc(var(--header-h) + 10px)}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.wrap-sm{max-width:760px}
+.centro{text-align:center}
+
+/* grain sutil de marca */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* tipografía compartida */
+.eyebrow{
+  display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.07em;
+  text-transform:uppercase;background:var(--acento-suave);color:#3B2E86;
+  padding:.4rem .95rem;border-radius:999px;border:2px solid var(--acento);margin-bottom:1.1rem;
+}
+.sec-h2{font-size:clamp(1.55rem,3.9vw,2.45rem);letter-spacing:-.01em;margin-bottom:.75rem;max-width:24ch}
+.sec-p{font-weight:600;color:var(--texto);max-width:52ch;margin-bottom:2.2rem;font-size:1rem}
+.centro .sec-h2,.centro .sec-p{margin-left:auto;margin-right:auto}
+.micro{font-size:.82rem;font-weight:800;color:var(--tinta-suave)}
+.marcaflow{
+  color:var(--acento);padding:0 .06em;
+  background:linear-gradient(var(--acento-suave),var(--acento-suave)) 0 92% / 100% .26em no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+.tag-pronto{
+  display:inline-block;background:var(--amarillo);color:var(--tinta);border:2px solid var(--tinta);
+  font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  padding:.16rem .5rem;border-radius:999px;vertical-align:middle;margin-left:.4rem;
+}
+.oscuro .tag-pronto{border-color:var(--crema)}
+
+/* reveals */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+
+/* =====================================================================
+   BOTONES
+   ===================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--display);font-weight:600;font-size:1.02rem;
+  padding:.95rem 1.7rem;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;transition:transform .2s var(--resorte),box-shadow .2s;
+  min-height:48px;text-align:center;
+}
+.btn:active{transform:scale(.96)}
+.btn-primario{background:var(--acento);color:var(--acento-on);box-shadow:0 6px 0 var(--acento-osc),0 14px 26px rgba(76,63,192,.22)}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--acento-osc),0 18px 32px rgba(76,63,192,.28)}
+.btn-linea{background:transparent;color:var(--tinta);border:2.5px solid var(--tinta);font-size:.98rem;padding:.85rem 1.45rem}
+.btn-linea:hover{transform:translateY(-2px);background:var(--tinta);color:var(--crema)}
+.btn-wa{background:var(--verde-wa);color:#fff;box-shadow:0 6px 0 var(--verde-wa-osc),0 14px 26px rgba(37,211,102,.3)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--verde-wa-osc)}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:0 4px 0 var(--acento-osc)!important}
+
+/* =====================================================================
+   MARCA IMÁN (logo + partículas)
+   ===================================================================== */
+.iman-marca{display:flex;align-items:center;gap:.5rem}
+.iman-nombre{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1}
+.iman-nombre i{font-style:normal;color:var(--acento)}
+.iman-nombre small{font-family:var(--cuerpo);font-weight:800;font-size:.62em;opacity:.75;margin-left:.25em}
+.iman-svg{width:40px;height:auto;transform-origin:50% 62%;animation:imanFlota 5s ease-in-out infinite}
+@keyframes imanFlota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.iman-cuerpo-borde{fill:none;stroke:var(--tinta);stroke-width:34}
+.iman-cuerpo{fill:none;stroke:var(--acento);stroke-width:21}
+.iman-polo{fill:var(--blanco);stroke:var(--tinta);stroke-width:5}
+.iman-chispa{stroke:var(--tinta);stroke-width:5;stroke-linecap:round;fill:none}
+.oscuro .iman-nombre{color:var(--crema)}
+.oscuro .iman-nombre i{color:var(--acento-claro)}
+.oscuro .iman-cuerpo-borde{stroke:var(--crema)}
+.oscuro .iman-polo{fill:var(--tinta);stroke:var(--crema)}
+.oscuro .iman-chispa{stroke:var(--crema)}
+
+/* =====================================================================
+   HEADER STICKY
+   ===================================================================== */
+.hdr{
+  position:sticky;top:0;z-index:70;background:rgba(255,246,233,.92);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:2.5px solid var(--tinta);
+}
+.hdr-in{max-width:1140px;margin:0 auto;padding:.5rem 1rem;display:flex;align-items:center;gap:1rem;min-height:var(--header-h)}
+.hdr .iman-svg{width:32px;animation:none}
+.hdr .iman-nombre{font-size:1.12rem}
+.hdr-nav{display:none;margin-left:auto;gap:.2rem}
+.hdr-nav a{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-weight:800;font-size:.86rem;text-decoration:none;padding:.5rem .62rem;border-radius:999px;
+  color:var(--texto);transition:background .18s,color .18s;white-space:nowrap;
+}
+.hdr-nav a:hover{background:var(--acento-suave);color:#3B2E86}
+.hdr-cta{margin-left:auto;font-size:.88rem;padding:.6rem 1.05rem;min-height:42px;box-shadow:0 4px 0 var(--acento-osc)}
+@media(min-width:1000px){
+  .hdr-nav{display:flex}
+  .hdr-cta{margin-left:.6rem}
+}
+@media(max-width:400px){
+  .hdr-in{padding:.5rem .7rem;gap:.5rem}
+  .hdr .iman-svg{width:28px}
+  .hdr .iman-nombre{font-size:1rem}
+  .hdr-cta{font-size:.82rem;padding:.55rem .85rem}
+}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+.hero{padding-top:clamp(1.6rem,3.4vw,2.4rem);padding-bottom:clamp(2rem,4.5vw,3rem)}
+/* mobile: texto → CTA → teléfono → chips (el producto lo más arriba posible) */
+.hero-grid{display:grid;gap:2rem;align-items:center}
+.hero-chips{margin-top:0}
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:1.02fr .98fr;gap:2rem 2.4rem;align-items:center}
+  .hero-txt{grid-column:1;grid-row:1;align-self:end}
+  .hero-grid .hero-chips{grid-column:1;grid-row:2;align-self:start;margin-top:0}
+  .escena{grid-column:2;grid-row:1 / span 2;align-self:center}
+}
+.hero h1{font-size:clamp(2.05rem,5.3vw,3.35rem);font-weight:700;letter-spacing:-.015em;margin-bottom:1rem}
+.hero .sub{font-size:clamp(1rem,1rem + .3vw,1.14rem);font-weight:600;color:var(--texto);max-width:36rem;margin-bottom:1.5rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero-ctas .btn-primario{font-size:1.06rem;padding:1rem 1.8rem}
+.hero-micro{margin-top:1rem;font-weight:800;font-size:.9rem;color:var(--tinta)}
+.hero-micro span{color:var(--acento)}
+.hero-nota{margin-top:.35rem;font-size:.84rem;font-weight:700;color:var(--tinta-suave)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.4rem .55rem;list-style:none}
+.hero-chips li{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:800;
+  background:var(--blanco);border:2px solid var(--tinta);border-radius:999px;padding:.32rem .7rem;
+  box-shadow:0 3px 0 rgba(51,35,26,.5);
+}
+
+/* ---------- escenario del teléfono ---------- */
+.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.fono{
+  width:min(318px,88vw);background:var(--t-fondo,var(--crema));
+  border:2.5px solid var(--tinta);border-radius:34px;
+  box-shadow:0 10px 0 var(--tinta),0 26px 50px rgba(51,35,26,.24);
+  padding:13px 12px 14px;position:relative;overflow:hidden;
+  font-family:var(--t-fuente,var(--cuerpo));
+  transition:background-color .45s ease;
+}
+.fono::before{
+  content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
+  width:86px;height:6px;border-radius:99px;background:rgba(51,35,26,.18);
+}
+.fono-in{padding-top:10px;transition:opacity .34s ease,transform .34s ease}
+.fono.cambiando .fono-in{opacity:0;transform:translateY(10px)}
+
+.t-top{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem}
+.t-logo{
+  width:38px;height:38px;border-radius:13px;flex:none;display:grid;place-items:center;
+  background:var(--t-color);color:var(--t-on);border:2.5px solid var(--tinta);
+  font-size:1.15rem;box-shadow:0 3px 0 var(--tinta);
+}
+.t-nombre{font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:1.02rem;line-height:1.15}
+.t-socia{font-size:.72rem;font-weight:800;color:var(--tinta-suave)}
+.t-nivel{
+  margin-left:auto;font-size:.63rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;
+  background:var(--t-suave);color:var(--t-osc);border:1.5px solid var(--t-color);
+  padding:.2rem .45rem;border-radius:999px;text-align:center;
+}
+
+.t-saldo{
+  background:var(--t-color);color:var(--t-on);border:2.5px solid var(--tinta);border-radius:18px;
+  padding:.7rem .85rem;box-shadow:0 4px 0 var(--tinta);margin-bottom:.55rem;
+}
+.t-saldo .lbl{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+.t-saldo .num{font-family:var(--t-fuente-tit,var(--display));font-weight:700;font-size:1.95rem;line-height:1.05}
+.t-saldo .num em{font-style:normal;font-size:.85rem;font-weight:800;margin-left:.25rem;opacity:.9}
+.t-barra{height:9px;border-radius:99px;background:rgba(0,0,0,.2);overflow:hidden;margin-top:.5rem}
+.t-barra i{display:block;height:100%;border-radius:99px;background:var(--t-on);width:0;transition:width .9s cubic-bezier(.22,1,.36,1)}
+.t-saldo .falta{font-size:.72rem;font-weight:800;margin-top:.4rem;opacity:.95}
+
+.t-premio{
+  display:flex;align-items:center;gap:.6rem;background:var(--blanco);border:2.5px solid var(--tinta);
+  border-radius:16px;padding:.6rem .7rem;margin-bottom:.55rem;box-shadow:0 3px 0 rgba(51,35,26,.55);
+}
+.t-premio .ic{width:34px;height:34px;flex:none;border-radius:11px;background:var(--t-suave);display:grid;place-items:center;font-size:1.05rem}
+.t-premio .tit{font-weight:800;font-size:.83rem;line-height:1.25;color:var(--tinta)}
+.t-premio .sub{font-size:.71rem;font-weight:700;color:var(--tinta-suave)}
+.t-premio .canjear{
+  margin-left:auto;flex:none;font-size:.68rem;font-weight:900;background:var(--t-color);color:var(--t-on);
+  border:2px solid var(--tinta);border-radius:999px;padding:.28rem .6rem;
+}
+
+.t-secc{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--tinta-suave);margin:.55rem 0 .25rem}
+.t-act{display:flex;align-items:center;gap:.5rem;padding:.26rem 0;border-bottom:1.5px dashed var(--linea)}
+.t-act:last-of-type{border-bottom:0}
+.t-act .qu{font-weight:800;font-size:.78rem;color:var(--tinta);line-height:1.25}
+.t-act .cu{font-size:.68rem;font-weight:700;color:var(--tinta-suave)}
+.t-act .pts{margin-left:auto;font-weight:900;font-size:.8rem;color:var(--t-osc);white-space:nowrap}
+.t-act .pts.neg{color:var(--tinta-suave)}
+
+.t-ref{
+  margin-top:.55rem;background:var(--t-suave);border:2.5px dashed var(--t-color);border-radius:16px;padding:.6rem;
+}
+.t-ref-top{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}
+.t-ref-qr{width:34px;height:34px;flex:none;border-radius:9px;background:#fff;border:2px solid var(--tinta);padding:3px}
+.t-ref h4{font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:.92rem;color:var(--tinta)}
+.t-ref p{font-size:.72rem;font-weight:700;color:var(--texto);line-height:1.35}
+.t-ref .link{
+  display:flex;align-items:center;gap:.4rem;margin-top:.5rem;background:#fff;border:2px solid var(--tinta);
+  border-radius:999px;padding:.3rem .35rem .3rem .7rem;font-size:.68rem;font-weight:800;color:var(--tinta-suave);
+  overflow:hidden;
+}
+.t-ref .link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-ref .link b{margin-left:auto;flex:none;background:var(--verde-wa);color:var(--tinta);border-radius:999px;padding:.22rem .55rem;font-size:.66rem}
+/* botón de la maqueta: es un dibujo del producto, no un control real */
+.t-cta{
+  margin-top:.6rem;background:var(--t-color);color:var(--t-on);
+  border:2.5px solid var(--tinta);border-radius:999px;padding:.62rem;box-shadow:0 4px 0 var(--tinta);
+  font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:.92rem;text-align:center;
+}
+.t-pronto{font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--t-osc);text-align:center;margin-top:.35rem}
+
+/* selector de comercio de ejemplo */
+.escena-tabs{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center}
+.escena-tabs button{
+  display:inline-flex;align-items:center;justify-content:center;gap:.3rem;background:var(--blanco);
+  border:2px solid var(--tinta);border-radius:999px;padding:.55rem .95rem;min-height:44px;
+  font-weight:800;font-size:.8rem;cursor:pointer;
+  box-shadow:0 3px 0 rgba(51,35,26,.5);transition:transform .15s var(--resorte),background .2s,color .2s;
+}
+.escena-tabs button:hover{transform:translateY(-2px)}
+.escena-tabs button[aria-pressed="true"]{background:var(--tinta);color:var(--crema);box-shadow:0 3px 0 var(--acento)}
+.escena-pie{font-size:.76rem;font-weight:700;color:var(--tinta-suave);text-align:center;max-width:32ch;margin:0 auto}
+
+/* piezas físicas junto al teléfono */
+.props{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;width:min(325px,88vw)}
+.prop{
+  background:var(--blanco);border:2.5px solid var(--tinta);border-radius:16px;padding:.6rem;
+  box-shadow:0 4px 0 rgba(51,35,26,.6);text-align:center;
+}
+.prop:nth-child(1){transform:rotate(-1.6deg)}
+.prop:nth-child(2){transform:rotate(1.4deg)}
+.prop .mini{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--tinta-suave);margin-top:.3rem}
+.prop svg{margin:0 auto}
+/* las piezas físicas solo flotan al lado del teléfono cuando hay lugar real */
+@media(min-width:1120px){
+  .props{position:absolute;width:auto;grid-template-columns:1fr;gap:1rem;right:-30px;bottom:64px;z-index:3}
+  .prop{width:118px}
+}
+@media(min-width:1240px){.props{right:-52px}}
+
+/* placa QR (dibujo, no foto de stock) */
+.qr-svg{width:56px;height:56px}
+.qr-svg rect.q{fill:var(--tinta)}
+
+/* =====================================================================
+   PROBLEMA (sección oscura)
+   ===================================================================== */
+.oscuro{background:var(--tinta);color:var(--crema)}
+.oscuro .sec-p{color:#D9C9B8}
+.oscuro .sec-h2{color:var(--crema)}
+.oscuro .eyebrow{background:rgba(255,246,233,.1);color:var(--crema);border-color:var(--acento)}
+.problema h2 span{color:var(--acento-claro)}
+.grid3{display:grid;gap:1.1rem}
+@media(min-width:780px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.p-card{
+  background:rgba(255,246,233,.06);border:1.5px solid rgba(255,246,233,.18);border-radius:var(--radio);
+  padding:1.5rem 1.35rem;
+}
+.p-card:nth-child(2){transform:rotate(.5deg)}
+.p-card:nth-child(3){transform:rotate(-.5deg)}
+.p-card .emo{font-size:1.8rem;margin-bottom:.6rem}
+.p-card h3{font-size:1.12rem;color:var(--amarillo);margin-bottom:.4rem}
+.p-card p{font-size:.94rem;font-weight:600;color:#D9C9B8}
+
+/* =====================================================================
+   REFERIDOS
+   ===================================================================== */
+.referidos{background:var(--acento);color:#fff;overflow:hidden;padding-top:clamp(4.4rem,8vw,6.4rem)}
+/* la sección oscura anterior "cae" sobre el violeta con una curva */
+.referidos::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:clamp(38px,5.5vw,68px);
+  background:var(--tinta);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
+}
+.referidos .sec-h2{color:#fff}
+.referidos .sec-p{color:rgba(255,255,255,.92)}
+.referidos .eyebrow{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.flujo{display:flex;flex-wrap:wrap;gap:.55rem;align-items:stretch;margin-bottom:2rem}
+.flujo-paso{
+  flex:1 1 156px;background:var(--blanco);color:var(--tinta);border:2.5px solid var(--tinta);
+  border-radius:16px;padding:.85rem .8rem;box-shadow:0 4px 0 var(--tinta);position:relative;
+}
+.flujo-paso .n{
+  width:24px;height:24px;border-radius:50%;background:var(--acento);color:#fff;font-family:var(--display);
+  font-weight:600;font-size:.8rem;display:grid;place-items:center;margin-bottom:.45rem;border:2px solid var(--tinta);
+}
+.flujo-paso .emo{font-size:1.15rem;line-height:1}
+.flujo-paso p{font-size:.83rem;font-weight:800;line-height:1.3;margin-top:.3rem}
+.flujo-paso.final{background:var(--amarillo)}
+.ref-2col{display:grid;gap:1.4rem}
+@media(min-width:900px){.ref-2col{grid-template-columns:1.05fr .95fr;gap:2rem;align-items:start}}
+.ref-lista{list-style:none;display:grid;gap:.6rem}
+.ref-lista li{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;font-size:.96rem}
+.ref-lista .tilde{
+  width:24px;height:24px;border-radius:50%;background:#fff;color:var(--acento);flex:none;
+  display:grid;place-items:center;font-size:.8rem;font-weight:900;margin-top:.12rem;
+}
+.ref-reglas{background:rgba(0,0,0,.16);border:2px solid rgba(255,255,255,.28);border-radius:var(--radio);padding:1.3rem 1.25rem}
+.ref-reglas h3{font-size:1.08rem;margin-bottom:.7rem}
+.ref-reglas ol{margin:0 0 0 1.05rem;display:grid;gap:.42rem}
+.ref-reglas li{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.94)}
+.ref-frase{
+  margin-top:1.9rem;text-align:center;font-family:var(--display);font-weight:600;
+  font-size:clamp(1.15rem,3vw,1.7rem);color:#fff;
+}
+.ref-frase span{background:var(--amarillo);color:var(--tinta);padding:.06em .35em;border-radius:10px;display:inline-block}
+.aviso-pronto{
+  display:flex;gap:.6rem;align-items:flex-start;background:var(--amarillo);color:var(--tinta);
+  border:2.5px solid var(--tinta);border-radius:16px;padding:.85rem 1rem;margin-bottom:1.5rem;
+  font-weight:800;font-size:.88rem;box-shadow:0 4px 0 rgba(51,35,26,.5);max-width:56ch;
+}
+
+/* =====================================================================
+   PERSONALIZACIÓN
+   ===================================================================== */
+.pers-grid{display:grid;gap:1.1rem;margin-bottom:2rem}
+@media(min-width:820px){.pers-grid{grid-template-columns:repeat(3,1fr)}}
+.pers-card{
+  background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.2rem 1.1rem;
+  box-shadow:var(--sombra-dura);
+}
+.pers-card:nth-child(2){transform:rotate(-.6deg)}
+.pers-card:nth-child(3){transform:rotate(.6deg)}
+.pers-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.pers-head .lg{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;border:2.5px solid var(--tinta);font-size:1.1rem;box-shadow:0 3px 0 var(--tinta)}
+.pers-head b{font-size:1rem;line-height:1.2;display:block}
+.pers-head small{font-size:.72rem;font-weight:800;color:var(--tinta-suave)}
+.pers-fila{display:flex;gap:.5rem;align-items:baseline;font-size:.82rem;font-weight:700;padding:.3rem 0;border-bottom:1.5px dashed var(--linea)}
+.pers-fila:last-child{border-bottom:0}
+.pers-fila span{color:var(--tinta-suave);font-weight:900;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;flex:0 0 82px}
+.pers-fila b{font-weight:800;color:var(--tinta)}
+.pers-swatch{display:inline-flex;gap:.2rem;vertical-align:middle}
+.pers-swatch i{width:14px;height:14px;border-radius:5px;border:1.5px solid var(--tinta);display:inline-block}
+.chips-pers{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+.chips-pers li{
+  background:var(--acento-suave);border:2px solid var(--acento);color:#3B2E86;border-radius:999px;
+  padding:.38rem .85rem;font-weight:800;font-size:.85rem;
+}
+
+/* =====================================================================
+   NO MARKETPLACE
+   ===================================================================== */
+.vs{display:grid;gap:1.1rem}
+@media(min-width:820px){.vs{grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}}
+.vs-card{border-radius:var(--radio);padding:1.5rem 1.35rem;border:var(--borde)}
+.vs-mal{background:#F4EDE2;box-shadow:0 4px 0 rgba(51,35,26,.35)}
+.vs-bien{background:var(--blanco);box-shadow:0 8px 0 var(--acento),0 14px 30px rgba(76,63,192,.16);border-color:var(--acento)}
+.vs-card h3{font-size:1.12rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.vs-card ul{list-style:none;display:grid;gap:.55rem}
+.vs-card li{display:flex;gap:.55rem;align-items:flex-start;font-weight:700;font-size:.94rem;color:var(--texto)}
+.vs-card li i{font-style:normal;flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:900;margin-top:.15rem}
+.vs-mal li i{background:#E0D2BF;color:#6d584a}
+.vs-bien li i{background:var(--acento);color:#fff}
+/* mini maqueta de "otras plataformas" vs "tu club" */
+.mini-tiendas{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;margin-bottom:1rem}
+.mini-tiendas i{
+  aspect-ratio:1;border-radius:9px;border:2px solid #C9B69C;background:#EBE0CF;display:grid;place-items:center;
+  font-size:.9rem;font-style:normal;opacity:.75;
+}
+.mini-tuya{
+  margin-bottom:1rem;border:2.5px solid var(--tinta);border-radius:12px;background:var(--acento);color:#fff;
+  padding:.75rem;font-weight:900;text-align:center;box-shadow:0 4px 0 var(--tinta);font-size:.95rem;
+}
+
+/* =====================================================================
+   PRODUCTO (panel comercio + pantallas)
+   ===================================================================== */
+.prod-grid{display:grid;gap:1.6rem;align-items:start}
+@media(min-width:980px){.prod-grid{grid-template-columns:1.25fr .75fr;gap:1.6rem}}
+.panel{
+  background:var(--blanco);border-radius:var(--radio);border:3px solid var(--tinta);overflow:hidden;
+  box-shadow:0 16px 0 rgba(51,35,26,.16),0 24px 50px rgba(51,35,26,.16);
+}
+.panel-top{display:flex;align-items:center;gap:.42rem;background:var(--tinta);padding:.6rem .95rem}
+.panel-top .dot{width:10px;height:10px;border-radius:50%}
+.panel-top .dot:nth-child(1){background:var(--acento)}
+.panel-top .dot:nth-child(2){background:var(--amarillo)}
+.panel-top .dot:nth-child(3){background:var(--acento2)}
+.panel-top span{color:var(--crema);font-family:var(--display);font-size:.82rem;margin-left:.5rem}
+.panel-tabs{display:flex;gap:.35rem;padding:.9rem .9rem 0;flex-wrap:wrap}
+.panel-tab{font-size:.75rem;font-weight:900;padding:.36rem .8rem;border-radius:999px;background:#F1E7D8;color:#6d584a}
+.panel-tab.activa{background:var(--acento);color:#fff}
+.panel-body{padding:.9rem}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-bottom:.8rem}
+@media(min-width:560px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--crema);border:2px solid var(--linea);border-radius:14px;padding:.6rem .7rem}
+.kpi .n{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1;color:var(--acento)}
+.kpi .l{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:var(--tinta-suave);margin-top:.15rem}
+.fila{
+  display:flex;align-items:center;gap:.7rem;background:var(--crema);border:1.5px solid var(--linea);
+  border-radius:14px;padding:.62rem .7rem;margin-bottom:.5rem;
+}
+.fila .ava{width:36px;height:36px;flex:none;border-radius:11px;background:var(--acento-suave);display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#3B2E86}
+.fila .info{flex:1;min-width:0}
+.fila .nom{font-weight:800;font-size:.88rem;line-height:1.25}
+.fila .det{font-size:.75rem;font-weight:700;color:#6d584a}
+.fila .acc{flex:none;font-size:.72rem;font-weight:900;border-radius:999px;padding:.32rem .7rem;border:2px solid var(--tinta)}
+.fila .acc.ok{background:var(--acento2);color:var(--tinta)}
+.fila .acc.val{background:var(--amarillo);color:var(--tinta)}
+.fila.destacada{background:var(--acento-suave);border:2px solid var(--acento)}
+@media(max-width:430px){
+  .fila{flex-wrap:wrap}
+  .fila .info{flex:1 1 calc(100% - 46px)}
+  .fila .acc{margin-left:46px}
+}
+.mini-fonos{display:grid;gap:1rem}
+@media(min-width:520px) and (max-width:979px){.mini-fonos{grid-template-columns:1fr 1fr}}
+.mini-fono{
+  background:var(--crema);border:2.5px solid var(--tinta);border-radius:24px;padding:.85rem .75rem;
+  box-shadow:0 7px 0 var(--tinta);
+}
+.mini-fono h4{font-size:.95rem;margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem}
+.mf-item{display:flex;align-items:center;gap:.5rem;background:var(--blanco);border:2px solid var(--tinta);border-radius:13px;padding:.5rem .6rem;margin-bottom:.45rem}
+.mf-item .ic{width:28px;height:28px;flex:none;border-radius:9px;background:var(--acento-suave);display:grid;place-items:center;font-size:.9rem}
+.mf-item b{font-size:.8rem;font-weight:800;line-height:1.2}
+.mf-item small{display:block;font-size:.68rem;font-weight:700;color:var(--tinta-suave)}
+.mf-item .cst{margin-left:auto;flex:none;font-size:.7rem;font-weight:900;color:var(--acento)}
+
+/* =====================================================================
+   PASOS
+   ===================================================================== */
+.pasos-grid{display:grid;gap:1.1rem;counter-reset:paso}
+@media(min-width:700px){.pasos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.pasos-grid{grid-template-columns:repeat(5,1fr);gap:.85rem}}
+.paso{
+  background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.45rem 1.15rem 1.2rem;
+  box-shadow:var(--sombra-dura);position:relative;
+}
+.paso:nth-child(odd){transform:rotate(-.7deg)}
+.paso:nth-child(even){transform:rotate(.7deg)}
+.paso .icono{width:48px;height:48px;border-radius:15px;background:var(--acento-suave);display:grid;place-items:center;font-size:1.4rem;margin-bottom:.8rem}
+.paso h3{font-size:1.05rem;margin-bottom:.35rem}
+.paso p{font-size:.9rem;font-weight:600;color:var(--texto)}
+.paso::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;top:-14px;right:14px;width:32px;height:32px;border-radius:50%;
+  background:var(--tinta);color:var(--crema);font-family:var(--display);font-weight:700;
+  display:grid;place-items:center;font-size:.98rem;
+}
+
+/* =====================================================================
+   BENEFICIOS
+   ===================================================================== */
+.ben-grid{display:grid;gap:.85rem}
+@media(min-width:700px){.ben-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.ben-grid{grid-template-columns:repeat(4,1fr)}}
+.ben{
+  background:rgba(255,246,233,.06);border:1.5px solid rgba(255,246,233,.18);border-radius:18px;
+  padding:1.1rem 1rem;display:flex;flex-direction:column;gap:.45rem;
+}
+.ben .emo{font-size:1.4rem}
+.ben p{font-size:.92rem;font-weight:700;color:var(--crema);line-height:1.4}
+
+/* =====================================================================
+   KIT FÍSICO
+   ===================================================================== */
+.kit-grid{display:grid;gap:1.1rem;align-items:center}
+@media(min-width:900px){.kit-grid{grid-template-columns:.95fr 1.05fr;gap:2rem}}
+.kit-piezas{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.kit-pieza{
+  background:var(--blanco);border:var(--borde);border-radius:18px;padding:1rem .85rem;text-align:center;
+  box-shadow:var(--sombra-dura);
+}
+.kit-pieza:nth-child(1){transform:rotate(-1.4deg)}
+.kit-pieza:nth-child(4){transform:rotate(1.4deg)}
+.kit-pieza b{display:block;font-size:.86rem;margin-top:.5rem}
+.kit-pieza small{display:block;font-size:.72rem;font-weight:700;color:var(--tinta-suave);margin-top:.15rem}
+.kit-lista{list-style:none;display:grid;gap:.6rem;margin-top:1.2rem}
+.kit-lista li{display:flex;gap:.55rem;font-weight:700;font-size:.94rem;color:var(--texto)}
+.kit-lista li b{color:var(--tinta)}
+
+/* =====================================================================
+   STUDIO
+   ===================================================================== */
+.studio-grid{display:grid;gap:1.5rem;align-items:center}
+@media(min-width:900px){.studio-grid{grid-template-columns:1fr 1fr;gap:2.2rem}}
+.piezas{display:grid;grid-template-columns:1.15fr .85fr;gap:.7rem;align-items:start}
+.pieza{border:2.5px solid var(--tinta);border-radius:16px;overflow:hidden;box-shadow:0 6px 0 rgba(51,35,26,.6);background:var(--blanco)}
+.pieza .lbl{font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;background:var(--tinta);color:var(--crema);padding:.28rem .55rem}
+.pieza-cuadro{aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:.9rem;color:#fff;background:var(--acento)}
+.pieza-hist{aspect-ratio:9/16;display:grid;place-items:center;text-align:center;padding:.9rem;color:var(--tinta);background:var(--amarillo)}
+.pieza-ancho{grid-column:1/-1;aspect-ratio:16/7;display:grid;place-items:center;text-align:center;padding:.9rem;color:var(--tinta);background:var(--acento2)}
+.pieza h4{font-family:var(--display);font-weight:600;font-size:clamp(.9rem,2.4vw,1.15rem);line-height:1.15}
+.pieza p{font-size:.68rem;font-weight:800;margin-top:.25rem;opacity:.92}
+.usos{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin-top:1.1rem}
+.usos li{background:var(--blanco);border:2px solid var(--tinta);border-radius:999px;padding:.3rem .7rem;font-size:.78rem;font-weight:800;box-shadow:0 3px 0 rgba(51,35,26,.5)}
+
+/* =====================================================================
+   EVOLUCIÓN / PRODUCTOS
+   ===================================================================== */
+.prods{display:grid;gap:1rem;margin-bottom:2.4rem}
+@media(min-width:820px){.prods{grid-template-columns:repeat(3,1fr)}}
+.prod{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.3rem 1.2rem;box-shadow:var(--sombra-dura)}
+.prod.principal{border-color:var(--acento);box-shadow:0 6px 0 var(--acento)}
+.prod .badge{
+  display:inline-block;font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  padding:.2rem .55rem;border-radius:999px;margin-bottom:.6rem;border:2px solid var(--tinta);
+}
+.prod .badge.now{background:var(--acento);color:#fff;border-color:var(--acento)}
+.prod .badge.extra{background:var(--acento2);color:var(--tinta);border-color:var(--tinta)}
+.prod .badge.later{background:var(--amarillo);color:var(--tinta)}
+.prod h3{font-size:1.15rem;margin-bottom:.4rem}
+.prod p{font-size:.92rem;font-weight:600;color:var(--texto)}
+.linea-t{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.linea-t .et{
+  background:var(--blanco);border:2.5px solid var(--tinta);border-radius:999px;padding:.45rem 1rem;
+  font-weight:900;font-size:.85rem;box-shadow:0 4px 0 rgba(51,35,26,.6);
+}
+.linea-t .et.on{background:var(--acento);color:#fff;box-shadow:0 4px 0 var(--acento-osc)}
+.linea-t .et.next{background:var(--crema);border-style:dashed;color:var(--tinta-suave)}
+.linea-t .fl{font-weight:900;color:var(--tinta-suave)}
+
+/* =====================================================================
+   PRUEBA
+   ===================================================================== */
+.prueba-caja{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);padding:1.7rem 1.4rem;
+  box-shadow:0 10px 0 var(--tinta);color:var(--tinta);   /* la caja es clara dentro de una sección oscura */
+}
+.prueba-caja .micro{color:var(--tinta-suave)}
+.prueba-mide{display:grid;gap:.6rem;margin-top:1.2rem}
+@media(min-width:640px){.prueba-mide{grid-template-columns:repeat(2,1fr)}}
+.prueba-mide li{display:flex;gap:.5rem;align-items:center;font-weight:800;font-size:.92rem;background:var(--crema);border:2px solid var(--linea);border-radius:14px;padding:.6rem .75rem}
+.prueba-mide li span{font-size:1.05rem}
+
+/* =====================================================================
+   CONTACTO + TABS
+   ===================================================================== */
+.contacto{background:var(--acento);overflow:hidden}
+.contacto .sec-h2,.contacto .sec-p{color:#fff}
+.contacto .sec-p{color:rgba(255,255,255,.92)}
+.contacto .eyebrow{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.mod{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);
+  box-shadow:0 14px 0 rgba(51,35,26,.35);max-width:840px;margin:0 auto;overflow:hidden;
+}
+.tabs{display:flex;gap:.4rem;padding:.75rem .75rem 0;background:var(--crema);border-bottom:2.5px solid var(--tinta)}
+.tab{
+  flex:1;background:transparent;border:2.5px solid transparent;border-bottom:0;cursor:pointer;
+  font-family:var(--display);font-weight:600;font-size:.98rem;padding:.75rem .6rem;
+  border-radius:14px 14px 0 0;color:var(--texto);position:relative;bottom:-2.5px;min-height:48px;
+  transition:background .2s,color .2s;
+}
+.tab:hover{background:rgba(108,92,231,.08)}
+.tab[aria-selected="true"]{
+  background:var(--blanco);border-color:var(--tinta);color:var(--tinta);
+  box-shadow:0 -3px 0 var(--acento) inset;
+}
+.tab[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+.tab-panel{padding:1.5rem 1.25rem 1.7rem}
+.tab-panel:focus-visible{outline-offset:-4px}
+@media(min-width:640px){.tab-panel{padding:1.8rem 1.7rem}}
+
+/* formulario */
+.form-grid{display:grid;gap:.9rem}
+@media(min-width:620px){
+  .form-grid{grid-template-columns:1fr 1fr}
+  .campo.ancho{grid-column:1/-1}
+}
+.campo{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.campo label{font-weight:800;font-size:.85rem}
+.campo label .opt{font-weight:700;color:var(--tinta-suave);font-size:.78rem}
+.campo input,.campo select,.campo textarea{
+  font-family:var(--cuerpo);font-size:1rem;font-weight:600;color:var(--tinta);
+  background:var(--crema);border:2.5px solid var(--tinta);border-radius:14px;
+  padding:.7rem .8rem;min-height:48px;width:100%;
+  transition:border-color .18s,box-shadow .18s,background .18s;
+}
+.campo textarea{min-height:96px;resize:vertical;line-height:1.5}
+.campo select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333231A' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;background-size:18px;padding-right:2.3rem;
+}
+.campo input:focus,.campo select:focus,.campo textarea:focus{
+  outline:none;background:var(--blanco);border-color:var(--acento);box-shadow:0 0 0 3px var(--acento-suave);
+}
+.campo input[aria-invalid="true"],.campo select[aria-invalid="true"]{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(226,61,61,.14)}
+.campo input:disabled{opacity:.55;cursor:not-allowed}
+.err{font-size:.78rem;font-weight:800;color:#B41F1F;min-height:0}
+.err:empty{display:none}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;font-weight:700;color:var(--texto);cursor:pointer}
+.check input{
+  appearance:none;-webkit-appearance:none;width:24px;height:24px;flex:none;margin-top:.05rem;
+  border:2.5px solid var(--tinta);border-radius:7px;background:var(--crema);cursor:pointer;position:relative;
+  min-height:0;padding:0;
+}
+.check input:checked{background:var(--acento);border-color:var(--acento)}
+.check input:checked::after{
+  content:"";position:absolute;left:7px;top:2px;width:6px;height:12px;
+  border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg);
+}
+.check input[aria-invalid="true"]{border-color:var(--rojo)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-pie{margin-top:1.3rem;display:flex;flex-direction:column;gap:.85rem}
+.form-pie .btn{width:100%}
+@media(min-width:620px){.form-pie .btn{width:auto;align-self:flex-start}}
+.estado{
+  display:none;gap:.7rem;align-items:flex-start;border-radius:16px;padding:.9rem 1rem;
+  font-weight:800;font-size:.92rem;border:2.5px solid var(--tinta);
+}
+.estado.visible{display:flex}
+.estado.es-ok{background:#E4F6EC;color:#14603A}
+.estado.es-err{background:#FBE6E6;color:#8E1B1B}
+.estado.es-info{background:var(--acento-suave);color:#3B2E86}
+.estado .btn-linea{margin-top:.5rem;font-size:.85rem;padding:.5rem 1rem;min-height:40px}
+.estado-cuerpo{flex:1;min-width:0}
+.estado-cuerpo p{font-weight:700;font-size:.86rem;margin-top:.25rem}
+.spin{
+  width:18px;height:18px;border-radius:50%;border:3px solid rgba(59,46,134,.25);border-top-color:#3B2E86;
+  animation:girar .7s linear infinite;flex:none;margin-top:.1rem;
+}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* calendly */
+.cal-tit{font-size:1.2rem;margin-bottom:.35rem}
+.cal-p{font-weight:600;color:var(--texto);font-size:.95rem;margin-bottom:1.1rem;max-width:48ch}
+#cal-embed{position:relative;width:100%;min-height:660px;border-radius:14px;overflow:hidden;border:2px solid var(--linea);background:var(--crema)}
+#cal-embed .calendly-inline-widget{position:relative;z-index:1;min-width:280px;height:660px}
+.cal-cargando{
+  position:absolute;inset:0;z-index:0;display:grid;place-items:center;text-align:center;padding:1rem;
+  font-weight:800;color:var(--tinta-suave);
+}
+.cal-fallback{margin-top:.9rem;font-size:.86rem;font-weight:700;color:var(--texto)}
+.cal-fallback a{color:var(--acento-osc);text-decoration:underline;text-underline-offset:2px}
+.cal-pendiente{background:var(--amarillo);border:2.5px solid var(--tinta);border-radius:16px;padding:1rem 1.1rem;font-weight:800;font-size:.9rem}
+
+/* =====================================================================
+   FAQ
+   ===================================================================== */
+.faq .wrap{max-width:780px}
+.faq details{background:var(--blanco);border:var(--borde);border-radius:18px;margin-bottom:.75rem;overflow:hidden}
+.faq summary{
+  font-family:var(--display);font-weight:600;font-size:1.02rem;padding:1.05rem 3rem 1.05rem 1.25rem;
+  cursor:pointer;list-style:none;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);
+  font-size:1.5rem;font-weight:500;color:var(--acento);transition:transform .25s;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .resp{padding:0 1.25rem 1.2rem;font-weight:600;color:var(--texto);font-size:.95rem}
+
+/* =====================================================================
+   CIERRE + FOOTER + STICKY
+   ===================================================================== */
+.cierre{background:var(--tinta);color:var(--crema);text-align:center}
+.cierre h2{font-size:clamp(1.85rem,4.8vw,3rem);max-width:22ch;margin:.9rem auto .8rem;color:var(--crema)}
+.cierre h2 span{color:var(--acento-claro)}
+.cierre p{color:#D9C9B8;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
+.cierre .iman-marca{justify-content:center}
+footer{background:#241810;color:#bfa893;text-align:center;padding:2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600}
+footer .iman-marca{justify-content:center;margin-bottom:.7rem}
+footer .iman-svg{width:30px}
+footer .iman-nombre{font-size:1.05rem}
+footer a{display:inline-block;padding:.5rem .25rem;color:#E4D6C6;text-decoration:underline;text-underline-offset:2px}
+footer .iman-nombre i{color:var(--acento-claro)}
+@media(min-width:768px){footer{padding-bottom:2rem}}
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem .85rem;
+  padding-bottom:calc(.65rem + env(safe-area-inset-bottom));
+  background:rgba(255,246,233,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-top:2.5px solid var(--tinta);display:flex;gap:.55rem;
+  transform:translateY(115%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.sticky-cta.visible{transform:none}
+.sticky-cta .btn{flex:1;font-size:.95rem;padding:.8rem .9rem;box-shadow:0 4px 0 var(--acento-osc)}
+@media(min-width:768px){.sticky-cta{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="iman-marca" href="#top" aria-label="Imán Club — inicio">
+      <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+        <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+        <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+        <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+      </svg>
+      <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+    </a>
+    <nav class="hdr-nav" aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#referidos">Referidos</a>
+      <a href="#personalizacion">Personalización</a>
+      <a href="#studio">Imán Studio</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
+    <a class="btn btn-primario hdr-cta" href="#contacto" data-demo>Quiero mi demo</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <span class="eyebrow">Fidelización y referidos diseñados para tu marca</span>
+      <h1 id="h1">Hacé que tus clientes <span class="marcaflow">vuelvan y traigan nuevos clientes.</span></h1>
+      <p class="sub">Creamos para tu comercio un Club de Clientes personalizado con puntos, beneficios y referidos. Tus clientes escanean el QR, participan y pueden invitar a otros sin descargar ninguna aplicación.</p>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+        <a class="btn btn-linea" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <p class="hero-micro">Tu marca. <span>Tus beneficios.</span> Tus clientes.</p>
+      <p class="hero-nota">Te contactamos personalmente. Sin tarjeta y sin compromiso.</p>
+    </div>
+
+    <div class="escena">
+      <!-- teléfono: la experiencia del cliente, retematizada por comercio -->
+      <div class="fono" id="fono">
+        <div class="fono-in" id="fono-in">
+          <div class="t-top">
+            <div class="t-logo" id="t-logo" aria-hidden="true">🌿</div>
+            <div>
+              <div class="t-nombre" id="t-nombre">Club Semilla</div>
+              <div class="t-socia" id="t-socia">Hola, Sofi 👋</div>
+            </div>
+            <div class="t-nivel" id="t-nivel">Nivel Semilla</div>
+          </div>
+
+          <div class="t-saldo">
+            <div class="lbl" id="t-saldo-lbl">Tus puntos</div>
+            <div class="num"><span id="t-puntos">340</span><em id="t-unidad">pts</em></div>
+            <div class="t-barra"><i id="t-barra"></i></div>
+            <div class="falta" id="t-falta">Te faltan 160 para tu próximo premio</div>
+          </div>
+
+          <div class="t-premio">
+            <div class="ic" id="t-premio-ic" aria-hidden="true">🥣</div>
+            <div>
+              <div class="tit" id="t-premio-tit">1 kg de granola de la casa</div>
+              <div class="sub" id="t-premio-sub">Disponible con 500 pts</div>
+            </div>
+            <span class="canjear">Canjear</span>
+          </div>
+
+          <div class="t-secc">Tu actividad</div>
+          <div id="t-actividad"></div>
+
+          <div class="t-ref">
+            <div class="t-ref-top">
+              <svg class="t-ref-qr" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="1" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
+                <rect x="15" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
+                <rect x="1" y="15" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
+                <rect x="4" y="4" width="2" height="2" fill="#33231A"/><rect x="18" y="4" width="2" height="2" fill="#33231A"/><rect x="4" y="18" width="2" height="2" fill="#33231A"/>
+                <path d="M13 12h3M19 12h3M13 16v3M17 15h2v2h-2zM21 19h2M15 21h3" stroke="#33231A" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h4>Invitá a un amigo</h4>
+                <p id="t-ref-p">Cuando haga su primera compra, ambos reciben puntos.</p>
+              </div>
+            </div>
+            <div class="link"><span id="t-ref-link">clubsemilla.com.ar/invita/sofi</span> <b>Compartir</b></div>
+            <div class="t-cta" aria-hidden="true" id="t-ref-cta">Compartir mi invitación</div>
+            <div class="t-pronto" id="t-pronto" hidden>Referidos · próximamente</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- piezas físicas, discretas -->
+      <div class="props" aria-hidden="true">
+        <div class="prop">
+          <svg class="qr-svg" viewBox="0 0 24 24">
+            <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFDF8" stroke="#33231A" stroke-width="1.6"/>
+            <rect class="q" x="3" y="3" width="6" height="6" rx="1"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+            <rect class="q" x="15" y="3" width="6" height="6" rx="1"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+            <rect class="q" x="3" y="15" width="6" height="6" rx="1"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+            <rect class="q" x="11" y="3" width="2" height="2"/><rect class="q" x="11" y="7" width="2" height="2"/><rect class="q" x="11" y="11" width="2" height="2"/>
+            <rect class="q" x="15" y="11" width="2" height="2"/><rect class="q" x="19" y="11" width="2" height="2"/><rect class="q" x="15" y="15" width="2" height="2"/>
+            <rect class="q" x="19" y="15" width="2" height="2"/><rect class="q" x="15" y="19" width="2" height="2"/><rect class="q" x="11" y="19" width="2" height="2"/>
+          </svg>
+          <span class="mini">Placa QR 3D</span>
+        </div>
+        <div class="prop">
+          <div style="background:var(--acento);border:2px solid var(--tinta);border-radius:9px;padding:.45rem .3rem;color:#fff">
+            <b style="display:block;font-family:var(--display);font-size:.72rem;line-height:1.15">Sumá puntos<br>en cada compra</b>
+            <span style="font-size:.56rem;font-weight:800;opacity:.9">escaneá acá</span>
+          </div>
+          <span class="mini">Pieza de Studio</span>
+        </div>
+      </div>
+
+      <div class="escena-tabs" role="group" aria-label="Ver el Club con la identidad de otro comercio">
+        <button type="button" data-club="0" aria-pressed="true"><span aria-hidden="true">🌿</span> Dietética</button>
+        <button type="button" data-club="1" aria-pressed="false"><span aria-hidden="true">☕</span> Cafetería</button>
+        <button type="button" data-club="2" aria-pressed="false"><span aria-hidden="true">🐾</span> Pet shop</button>
+      </div>
+      <p class="escena-pie">Ejemplo demostrativo con comercios ficticios. Las reglas de puntos y los premios los definís vos.</p>
+    </div>
+
+    <ul class="hero-chips">
+      <li><span aria-hidden="true">📱</span> Sin app para tus clientes</li>
+      <li><span aria-hidden="true">🎨</span> Con tu identidad</li>
+      <li><span aria-hidden="true">🤝</span> Configurado con vos</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 2. PROBLEMA ================= -->
+<section class="oscuro problema" aria-labelledby="h-problema">
+  <div class="wrap">
+    <span class="eyebrow">El problema</span>
+    <h2 class="sec-h2 rv" id="h-problema">Tus clientes compran. <span>¿Pero sabés cuántos vuelven?</span></h2>
+    <p class="sec-p rv rv-d1">Muchos comercios dependen de descuentos, tarjetas de papel y publicaciones aisladas. El problema no es solamente conseguir una compra: es construir una relación que haga que el cliente vuelva y recomiende el negocio.</p>
+    <div class="grid3">
+      <article class="p-card rv">
+        <div class="emo" aria-hidden="true">🃏</div>
+        <h3>Las tarjetas se pierden</h3>
+        <p>No muestran quién vuelve ni qué beneficio funciona.</p>
+      </article>
+      <article class="p-card rv rv-d1">
+        <div class="emo" aria-hidden="true">🏷️</div>
+        <h3>Las promociones quedan aisladas</h3>
+        <p>Generan una compra puntual, pero no construyen una relación.</p>
+      </article>
+      <article class="p-card rv rv-d2">
+        <div class="emo" aria-hidden="true">🔇</div>
+        <h3>Las recomendaciones no se miden</h3>
+        <p>Tus clientes pueden recomendarte, pero no sabés quién trajo a quién.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. REFERIDOS ================= -->
+<section class="referidos" id="referidos" aria-labelledby="h-referidos">
+  <div class="wrap">
+    <span class="eyebrow">Referidos</span>
+    <h2 class="sec-h2 rv" id="h-referidos">Tus mejores clientes pueden traerte los próximos.</h2>
+    <p class="sec-p rv rv-d1">Cada miembro recibe una invitación personal para compartir por WhatsApp. Cuando el nuevo cliente realiza su primera compra y el comercio la valida, ambos reciben un beneficio definido por vos.</p>
+
+    <div class="aviso-pronto rv rv-d1" id="aviso-referidos" hidden>
+      <span aria-hidden="true">🛠️</span>
+      <span><b>Referidos está en implementación.</b> Lo diseñamos junto a tu negocio y lo activamos cuando el circuito completo esté verificado. Todo lo demás del Club funciona desde el día uno.</span>
+    </div>
+
+    <div class="flujo rv rv-d1">
+      <div class="flujo-paso"><div class="n">1</div><div class="emo" aria-hidden="true">💜</div><p>Un cliente frecuente entra a su Club</p></div>
+      <div class="flujo-paso"><div class="n">2</div><div class="emo" aria-hidden="true">📲</div><p>Comparte su invitación por WhatsApp</p></div>
+      <div class="flujo-paso"><div class="n">3</div><div class="emo" aria-hidden="true">🙋</div><p>Un amigo se registra desde ese enlace</p></div>
+      <div class="flujo-paso"><div class="n">4</div><div class="emo" aria-hidden="true">🛍️</div><p>Hace su primera compra en tu local</p></div>
+      <div class="flujo-paso"><div class="n">5</div><div class="emo" aria-hidden="true">✅</div><p>El comercio valida esa compra</p></div>
+      <div class="flujo-paso final"><div class="n">6</div><div class="emo" aria-hidden="true">🎁</div><p>Ambos reciben los puntos que definiste</p></div>
+    </div>
+
+    <div class="ref-2col">
+      <div class="rv">
+        <ul class="ref-lista">
+          <li><i class="tilde" aria-hidden="true">✓</i> Recomendaciones medibles, no intuiciones.</li>
+          <li><i class="tilde" aria-hidden="true">✓</i> Menor dependencia de la publicidad paga.</li>
+          <li><i class="tilde" aria-hidden="true">✓</i> Clientes nuevos que llegan por personas conocidas.</li>
+          <li><i class="tilde" aria-hidden="true">✓</i> Premios solamente cuando ocurre una compra real.</li>
+          <li><i class="tilde" aria-hidden="true">✓</i> Seguimiento de quién recomendó a quién.</li>
+        </ul>
+      </div>
+      <div class="ref-reglas rv rv-d1">
+        <h3>Cómo funcionan las reglas</h3>
+        <ol>
+          <li>El cliente comparte un enlace o QR personal.</li>
+          <li>Cada referido puede registrarse una sola vez.</li>
+          <li>El beneficio se acredita después de la primera compra validada.</li>
+          <li>La recompensa la define el comercio.</li>
+          <li>Las operaciones quedan registradas.</li>
+          <li>Los ajustes y movimientos se pueden revisar.</li>
+        </ol>
+      </div>
+    </div>
+
+    <p class="ref-frase rv rv-d2">Premiá a quien vuelve <span>y a quien trae a otro.</span></p>
+  </div>
+</section>
+
+<!-- ================= 4. PERSONALIZACIÓN ================= -->
+<section id="personalizacion" aria-labelledby="h-pers">
+  <div class="wrap">
+    <span class="eyebrow">Personalización</span>
+    <h2 class="sec-h2 rv" id="h-pers">Tu negocio no se adapta a Imán. Imán se adapta a tu negocio.</h2>
+    <p class="sec-p rv rv-d1">Cada Club se configura de manera personalizada. Adaptamos la identidad, las reglas de puntos, los premios y la experiencia para que tus clientes sientan que están usando una herramienta propia de tu marca.</p>
+
+    <div class="pers-grid" id="pers-grid"></div>
+
+    <h3 style="font-size:1.1rem;margin-bottom:.8rem">Qué se adapta a tu negocio</h3>
+    <ul class="chips-pers rv">
+      <li>Logo</li><li>Colores</li><li>Tipografía</li><li>Nombre del programa</li>
+      <li>Sistema de puntos</li><li>Premios</li><li>Beneficios</li><li>Comunicación</li>
+      <li>Experiencia de referidos</li><li>Señalética física</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 5. NO MARKETPLACE ================= -->
+<section aria-labelledby="h-vs" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
+  <div class="wrap">
+    <span class="eyebrow">Sin competidores alrededor</span>
+    <h2 class="sec-h2 rv" id="h-vs">Tus clientes entran a tu marca, no a un marketplace.</h2>
+    <p class="sec-p rv rv-d1">Cada QR abre directamente el Club de tu negocio. Sin competidores alrededor, sin promociones ajenas y sin distraer al cliente con otras marcas.</p>
+
+    <div class="vs">
+      <article class="vs-card vs-mal rv">
+        <h3><span aria-hidden="true">🏬</span> Una plataforma genérica</h3>
+        <div class="mini-tiendas" aria-hidden="true"><i>🏪</i><i>🍕</i><i>👟</i><i>💅</i><i>🥐</i><i>🛒</i><i>🐶</i><i>💊</i></div>
+        <ul>
+          <li><i aria-hidden="true">–</i> Identidad compartida con otros negocios</li>
+          <li><i aria-hidden="true">–</i> Distintos comercios conviviendo en la misma app</li>
+          <li><i aria-hidden="true">–</i> Experiencia estandarizada para todos</li>
+          <li><i aria-hidden="true">–</i> Tu marca pierde protagonismo</li>
+        </ul>
+      </article>
+      <article class="vs-card vs-bien rv rv-d1">
+        <h3><span aria-hidden="true">💜</span> Imán Club</h3>
+        <div class="mini-tuya" aria-hidden="true">Club de tu negocio</div>
+        <ul>
+          <li><i aria-hidden="true">✓</i> Tu marca es la protagonista</li>
+          <li><i aria-hidden="true">✓</i> Un Club independiente, con su propio acceso</li>
+          <li><i aria-hidden="true">✓</i> Tus beneficios y tus reglas</li>
+          <li><i aria-hidden="true">✓</i> Experiencia personalizada de punta a punta</li>
+          <li><i aria-hidden="true">✓</i> Contacto directo con el equipo de Imán</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. PRODUCTO ================= -->
+<section aria-labelledby="h-prod">
+  <div class="wrap">
+    <span class="eyebrow">El producto</span>
+    <h2 class="sec-h2 rv" id="h-prod">Un Club de Clientes que se siente parte de tu negocio.</h2>
+    <p class="sec-p rv rv-d1">De un lado, la pantalla que ve tu cliente. Del otro, el panel donde vos mirás registros, visitas, puntos, canjes y referidos.</p>
+
+    <div class="prod-grid">
+      <div class="panel rv">
+        <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Panel del comercio · Club Semilla</span></div>
+        <div class="panel-tabs">
+          <span class="panel-tab activa">Clientes</span>
+          <span class="panel-tab">Premios</span>
+          <span class="panel-tab">Referidos</span>
+          <span class="panel-tab">Escanear QR</span>
+        </div>
+        <div class="panel-body">
+          <div class="kpis">
+            <div class="kpi"><div class="n">—</div><div class="l">Registros</div></div>
+            <div class="kpi"><div class="n">—</div><div class="l">Visitas</div></div>
+            <div class="kpi"><div class="n">—</div><div class="l">Canjes</div></div>
+            <div class="kpi"><div class="n">—</div><div class="l">Referidos</div></div>
+          </div>
+          <div class="fila destacada">
+            <div class="ava" aria-hidden="true">SM</div>
+            <div class="info">
+              <div class="nom">Sofía M. · miembro</div>
+              <div class="det">Escaneó el QR del mostrador · sumar puntos de esta compra</div>
+            </div>
+            <span class="acc ok">Sumar</span>
+          </div>
+          <div class="fila">
+            <div class="ava" aria-hidden="true">🎁</div>
+            <div class="info">
+              <div class="nom">Canje pendiente · 1 kg de granola</div>
+              <div class="det">Confirmar la entrega para descontar los puntos</div>
+            </div>
+            <span class="acc val">Validar</span>
+          </div>
+          <div class="fila">
+            <div class="ava" aria-hidden="true">🤝</div>
+            <div class="info">
+              <div class="nom">Referido de Sofía M. · primera compra</div>
+              <div class="det">Al validar, ambos reciben el beneficio que definiste</div>
+            </div>
+            <span class="acc val">Validar</span>
+          </div>
+          <p class="micro" style="margin-top:.7rem">Maqueta del panel. Los indicadores se completan con la actividad real de tu comercio.</p>
+        </div>
+      </div>
+
+      <div class="mini-fonos rv rv-d1">
+        <div class="mini-fono">
+          <h4><span aria-hidden="true">🎁</span> Catálogo de premios</h4>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🥣</div><div><b>1 kg de granola</b><small>Premio del comercio</small></div><span class="cst">500 pts</span></div>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🍵</div><div><b>Té de la casa</b><small>Premio del comercio</small></div><span class="cst">120 pts</span></div>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🏷️</div><div><b>10% en compras a granel</b><small>Beneficio del mes</small></div><span class="cst">200 pts</span></div>
+        </div>
+        <div class="mini-fono">
+          <h4><span aria-hidden="true">📜</span> Historial y visitas</h4>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🛒</div><div><b>Compra en el local</b><small>Hoy · QR del mostrador</small></div><span class="cst">+35</span></div>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🎁</div><div><b>Canje validado</b><small>Hace 6 días</small></div><span class="cst">−120</span></div>
+          <div class="mf-item"><div class="ic" aria-hidden="true">🤝</div><div><b>Referido acreditado</b><small>Tras la compra validada</small></div><span class="cst">+150</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. CÓMO FUNCIONA ================= -->
+<section id="como-funciona" aria-labelledby="h-como" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 class="sec-h2 rv" id="h-como">Listo para usar sin cambiar la operación del comercio.</h2>
+    <p class="sec-p rv rv-d1">No tenés que aprender un sistema nuevo ni sumar pasos a la caja. Lo armamos con vos y queda funcionando.</p>
+    <div class="pasos-grid">
+      <article class="paso rv"><div class="icono" aria-hidden="true">🔎</div><h3>Conocemos tu negocio</h3><p>Definimos identidad, objetivos, puntos y beneficios.</p></article>
+      <article class="paso rv rv-d1"><div class="icono" aria-hidden="true">🎨</div><h3>Personalizamos tu Club</h3><p>Adaptamos colores, logo, premios y experiencia.</p></article>
+      <article class="paso rv rv-d2"><div class="icono" aria-hidden="true">📌</div><h3>Colocás los QR</h3><p>Tus clientes descubren el programa desde el mostrador.</p></article>
+      <article class="paso rv rv-d2"><div class="icono" aria-hidden="true">✨</div><h3>Empiezan a participar</h3><p>Se registran, suman puntos, canjean beneficios y recomiendan.</p></article>
+      <article class="paso rv rv-d3"><div class="icono" aria-hidden="true">📊</div><h3>Medís la adopción</h3><p>Observás registros, actividad, canjes y referidos.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. BENEFICIOS ================= -->
+<section class="oscuro" aria-labelledby="h-ben">
+  <div class="wrap">
+    <span class="eyebrow">Para qué te sirve</span>
+    <h2 class="sec-h2 rv" id="h-ben">Más que puntos: una herramienta para construir recurrencia.</h2>
+    <p class="sec-p rv rv-d1">Lo que cambia no es la promo de la semana: es saber quién vuelve, por qué vuelve y cómo darle una razón concreta para hacerlo otra vez.</p>
+    <div class="ben-grid">
+      <div class="ben rv"><span class="emo" aria-hidden="true">👥</span><p>Conocé mejor a tus clientes frecuentes.</p></div>
+      <div class="ben rv"><span class="emo" aria-hidden="true">🔁</span><p>Dales una razón concreta para volver.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">📣</span><p>Convertí recomendaciones en un canal medible.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">🃏</span><p>Reemplazá las tarjetas físicas que se pierden.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">🎁</span><p>Premiá sin depender siempre de descuentos.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">🎨</span><p>Presentá una experiencia coherente con tu marca.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">💻</span><p>Administrá beneficios desde el celular o la computadora.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">🚀</span><p>Prepará el negocio para incorporar promociones y catálogo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. KIT FÍSICO ================= -->
+<section aria-labelledby="h-kit">
+  <div class="wrap kit-grid">
+    <div>
+      <span class="eyebrow">En el mostrador</span>
+      <h2 class="sec-h2 rv" id="h-kit">El Club también vive en tu mostrador.</h2>
+      <p class="sec-p rv rv-d1" style="margin-bottom:1rem">Preparamos señalética QR adaptada a la identidad del negocio para que el programa sea visible y fácil de explicar durante la compra.</p>
+      <ul class="kit-lista rv rv-d1">
+        <li><span aria-hidden="true">👉</span> <span><b>Una frase corta para el cliente:</b> "Escaneá y sumás puntos con esta compra".</span></li>
+        <li><span aria-hidden="true">👉</span> <span><b>Nada que explicar dos veces:</b> el QR abre directo tu Club, sin descargas.</span></li>
+        <li><span aria-hidden="true">👉</span> <span><b>Con tu identidad:</b> los colores y el logo de tu negocio, no los nuestros.</span></li>
+      </ul>
+      <p class="micro rv rv-d2" style="margin-top:1rem">Las piezas se definen junto con tu negocio según el mostrador y la vidriera.</p>
+    </div>
+    <div class="kit-piezas rv rv-d1">
+      <div class="kit-pieza">
+        <svg viewBox="0 0 24 24" style="width:52px;margin:0 auto" aria-hidden="true">
+          <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFDF8" stroke="#33231A" stroke-width="1.6"/>
+          <rect x="3" y="3" width="6" height="6" rx="1" fill="#33231A"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+          <rect x="15" y="3" width="6" height="6" rx="1" fill="#33231A"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+          <rect x="3" y="15" width="6" height="6" rx="1" fill="#33231A"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFDF8"/>
+          <rect x="11" y="3" width="2" height="2" fill="#33231A"/><rect x="11" y="7" width="2" height="2" fill="#33231A"/><rect x="11" y="11" width="2" height="2" fill="#33231A"/>
+          <rect x="15" y="11" width="2" height="2" fill="#33231A"/><rect x="19" y="11" width="2" height="2" fill="#33231A"/><rect x="15" y="15" width="2" height="2" fill="#33231A"/>
+          <rect x="19" y="15" width="2" height="2" fill="#33231A"/><rect x="15" y="19" width="2" height="2" fill="#33231A"/><rect x="11" y="19" width="2" height="2" fill="#33231A"/>
+        </svg>
+        <b>Placa QR</b><small>Impresa en 3D, para el mostrador</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="background:var(--acento);color:#fff;border:2px solid var(--tinta);border-radius:10px;padding:.7rem .5rem" aria-hidden="true">
+          <b style="font-family:var(--display);font-size:.82rem;line-height:1.15;display:block">Sumá puntos<br>con esta compra</b>
+        </div>
+        <b>Tarjeta de mostrador</b><small>Con tu logo y tus colores</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="width:46px;height:46px;margin:0 auto;border-radius:50%;background:var(--amarillo);border:2.5px solid var(--tinta);display:grid;place-items:center;font-size:1.3rem" aria-hidden="true">🧲</div>
+        <b>Sticker</b><small>Vidriera, caja o heladera</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="background:var(--crema);border:2px dashed var(--tinta);border-radius:10px;padding:.55rem;font-size:.7rem;font-weight:800;text-align:left;line-height:1.35" aria-hidden="true">
+          1. Escaneá<br>2. Dejás tu nombre<br>3. Sumás puntos
+        </div>
+        <b>Instrucción breve</b><small>Tres pasos para el cliente</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. IMÁN STUDIO ================= -->
+<section id="studio" aria-labelledby="h-studio" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
+  <div class="wrap studio-grid">
+    <div>
+      <span class="eyebrow">Imán Studio</span>
+      <h2 class="sec-h2 rv" id="h-studio">Además de fidelizar, comunicá mejor.</h2>
+      <p class="sec-p rv rv-d1" style="margin-bottom:1rem">Imán Studio permite crear promociones, posts, historias y piezas comerciales manteniendo la identidad visual del negocio.</p>
+      <p class="sec-p rv rv-d1" style="margin-bottom:.8rem">Es la herramienta con la que armamos las piezas del Club: la promoción de puntos, el beneficio por referidos, el aviso del premio nuevo.</p>
+      <h3 style="font-size:1rem;margin:1.2rem 0 .5rem">Dónde se usan</h3>
+      <ul class="usos rv rv-d2">
+        <li>Instagram</li><li>Estados de WhatsApp</li><li>Pantallas del local</li><li>Campañas</li><li>Promociones del Club</li>
+      </ul>
+      <p class="micro rv rv-d2" style="margin-top:1rem">Las piezas se arman con plantillas y con la identidad cargada de tu negocio.</p>
+    </div>
+    <div class="piezas rv rv-d1">
+      <div class="pieza">
+        <span class="lbl">Post cuadrado</span>
+        <div class="pieza-cuadro"><div><h4>Sumá puntos en cada compra</h4><p>Escaneá el QR del mostrador</p></div></div>
+      </div>
+      <div class="pieza">
+        <span class="lbl">Historia</span>
+        <div class="pieza-hist"><div><h4>Traé a un amigo</h4><p>Ganan los dos</p></div></div>
+      </div>
+      <div class="pieza">
+        <span class="lbl">Pieza horizontal</span>
+        <div class="pieza-ancho"><div><h4>Premio nuevo en el Club</h4><p>Canjealo con tus puntos</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. EVOLUCIÓN + PRODUCTOS ================= -->
+<section aria-labelledby="h-evo">
+  <div class="wrap">
+    <span class="eyebrow">El ecosistema</span>
+    <h2 class="sec-h2 rv" id="h-evo">Empezá con fidelización. Expandí cuando lo necesites.</h2>
+    <p class="sec-p rv rv-d1">Imán son tres piezas. La landing que estás leyendo es sobre la primera: el Club.</p>
+
+    <div class="prods">
+      <article class="prod principal rv">
+        <span class="badge now">Es lo que armamos hoy</span>
+        <h3>Imán Club</h3>
+        <p>Sistema personalizado de puntos, clientes, beneficios, referidos y QR, con la identidad de tu negocio.</p>
+      </article>
+      <article class="prod rv rv-d1">
+        <span class="badge extra">Valor adicional</span>
+        <h3>Imán Studio</h3>
+        <p>Creación de promociones, posts, historias y piezas comerciales con la identidad visual del negocio.</p>
+      </article>
+      <article class="prod rv rv-d2">
+        <span class="badge later">Segunda etapa</span>
+        <h3>Imán Catálogo</h3>
+        <p>El catálogo digital completo puede incorporarse posteriormente como una segunda etapa opcional. Todavía no es una función disponible.</p>
+      </article>
+    </div>
+
+    <div class="linea-t rv rv-d1" aria-label="Progresión: Club, Referidos, Studio, Catálogo digital, Promociones y pedidos">
+      <span class="et on">Imán Club</span><span class="fl" aria-hidden="true">→</span>
+      <span class="et on" id="et-referidos">Referidos</span><span class="fl" aria-hidden="true">→</span>
+      <span class="et on">Imán Studio</span><span class="fl" aria-hidden="true">→</span>
+      <span class="et next">Catálogo digital</span><span class="fl" aria-hidden="true">→</span>
+      <span class="et next">Promociones y pedidos</span>
+    </div>
+    <p class="micro centro rv rv-d2">El catálogo digital completo se incorpora como una segunda etapa opcional.</p>
+  </div>
+</section>
+
+<!-- ================= 12. PRUEBA ================= -->
+<section class="oscuro" aria-labelledby="h-prueba">
+  <div class="wrap wrap-sm">
+    <span class="eyebrow">Prueba</span>
+    <h2 class="sec-h2 rv" id="h-prueba">Probalo con clientes reales antes de decidir.</h2>
+    <p class="sec-p rv rv-d1">Configuramos una versión inicial de Imán Club para que puedas comprobar el funcionamiento y medir la adopción de tus clientes. Si te sirve, continuás. Si no, no tenés permanencia.</p>
+    <div class="prueba-caja rv rv-d1">
+      <h3 style="font-size:1.1rem;margin-bottom:.4rem">Qué vas a poder medir en la prueba</h3>
+      <p style="font-weight:600;color:var(--texto);font-size:.94rem">Números concretos de tu propio mostrador, no proyecciones.</p>
+      <ul class="prueba-mide" style="list-style:none">
+        <li><span aria-hidden="true">📷</span> Escaneos del QR</li>
+        <li><span aria-hidden="true">✍️</span> Registros de clientes</li>
+        <li><span aria-hidden="true">⚡</span> Actividad inicial</li>
+        <li><span aria-hidden="true">🎁</span> Uso de beneficios</li>
+        <li><span aria-hidden="true">🧑‍🍳</span> Participación del personal</li>
+        <li><span aria-hidden="true">🤝</span> Invitaciones compartidas</li>
+      </ul>
+      <p class="micro" style="margin-top:1rem">No prometemos un resultado de ventas en un plazo corto: lo que la prueba muestra es si tus clientes lo adoptan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 13. CONTACTO ================= -->
+<section class="contacto" id="contacto" aria-labelledby="h-contacto">
+  <div class="wrap">
+    <div class="centro" style="margin-bottom:1.8rem">
+      <span class="eyebrow">Demo personalizada</span>
+      <h2 class="sec-h2 rv" id="h-contacto">Veamos cómo quedaría aplicado a tu negocio.</h2>
+      <p class="sec-p rv rv-d1">Contanos sobre tu comercio o elegí directamente un horario para conversar con Imán.</p>
+    </div>
+
+    <div class="mod rv rv-d1">
+      <div class="tabs" role="tablist" aria-label="Formas de contacto">
+        <button class="tab" role="tab" id="tab-form" aria-selected="true" aria-controls="panel-form" tabindex="0" type="button">Solicitar demo</button>
+        <button class="tab" role="tab" id="tab-cal" aria-selected="false" aria-controls="panel-cal" tabindex="-1" type="button">Agendar llamada</button>
+      </div>
+
+      <!-- ---------- TAB 1: FORMULARIO (por defecto) ---------- -->
+      <div class="tab-panel" role="tabpanel" id="panel-form" aria-labelledby="tab-form" tabindex="0">
+        <form id="form-demo" novalidate>
+          <div class="form-grid">
+            <div class="campo">
+              <label for="f-nombre">Nombre y apellido</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+              <p class="err" id="e-nombre"></p>
+            </div>
+            <div class="campo">
+              <label for="f-negocio">Nombre del negocio</label>
+              <input id="f-negocio" name="negocio" type="text" autocomplete="organization" required aria-describedby="e-negocio">
+              <p class="err" id="e-negocio"></p>
+            </div>
+            <div class="campo">
+              <label for="f-rubro">Rubro</label>
+              <select id="f-rubro" name="rubro" required aria-describedby="e-rubro">
+                <option value="">Elegí una opción</option>
+                <option>Gastronomía</option>
+                <option>Dietética</option>
+                <option>Pet shop</option>
+                <option>Indumentaria</option>
+                <option>Belleza y estética</option>
+                <option>Librería</option>
+                <option>Supermercado o almacén</option>
+                <option>Gimnasio</option>
+                <option>Servicios</option>
+                <option>Otro</option>
+              </select>
+              <p class="err" id="e-rubro"></p>
+            </div>
+            <div class="campo">
+              <label for="f-ciudad">Ciudad o localidad</label>
+              <input id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2" required aria-describedby="e-ciudad">
+              <p class="err" id="e-ciudad"></p>
+            </div>
+            <div class="campo">
+              <label for="f-email">Correo electrónico</label>
+              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="e-email">
+              <p class="err" id="e-email"></p>
+            </div>
+            <div class="campo">
+              <label for="f-wa">WhatsApp</label>
+              <input id="f-wa" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 353 518 9997" required aria-describedby="e-wa">
+              <p class="err" id="e-wa"></p>
+            </div>
+
+            <div class="campo ancho">
+              <label class="check">
+                <input type="checkbox" id="f-mismo" name="mismo_tel">
+                <span>El teléfono es el mismo que mi WhatsApp.</span>
+              </label>
+            </div>
+
+            <div class="campo">
+              <label for="f-tel">Teléfono alternativo <span class="opt">(opcional)</span></label>
+              <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national">
+            </div>
+            <div class="campo">
+              <label for="f-suc">Cantidad de sucursales <span class="opt">(opcional)</span></label>
+              <select id="f-suc" name="sucursales">
+                <option value="">Sin especificar</option>
+                <option>1</option><option>2</option><option>3</option><option>4 o más</option>
+              </select>
+            </div>
+            <div class="campo ancho">
+              <label for="f-web">Instagram o página web <span class="opt">(opcional)</span></label>
+              <input id="f-web" name="web" type="text" inputmode="url" placeholder="@tunegocio o tunegocio.com.ar">
+            </div>
+            <div class="campo ancho">
+              <label for="f-msj">¿Qué te gustaría mejorar? <span class="opt">(opcional)</span></label>
+              <textarea id="f-msj" name="comentario" rows="4" placeholder="Contanos brevemente cómo trabajás hoy la fidelización o qué te gustaría lograr."></textarea>
+            </div>
+
+            <div class="campo ancho">
+              <label class="check">
+                <input type="checkbox" id="f-consent" name="consentimiento" required aria-describedby="e-consent">
+                <span>Acepto que Imán me contacte para conversar sobre la demostración.</span>
+              </label>
+              <p class="err" id="e-consent"></p>
+            </div>
+          </div>
+
+          <!-- anti-spam: honeypot (invisible para personas) -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-hp">No completar este campo</label>
+            <input id="f-hp" name="sitio_web_empresa" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-pie">
+            <button class="btn btn-primario" type="submit" id="f-submit">Solicitar mi demo personalizada</button>
+            <p class="micro" id="f-nota">Te contactamos personalmente. Sin tarjeta y sin compromiso.</p>
+            <div class="estado" id="f-estado" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ---------- TAB 2: CALENDLY (carga diferida) ---------- -->
+      <div class="tab-panel" role="tabpanel" id="panel-cal" aria-labelledby="tab-cal" tabindex="0" hidden>
+        <h3 class="cal-tit">Elegí un horario para conversar.</h3>
+        <p class="cal-p">En una llamada breve vemos cómo podría personalizarse Imán Club para tu comercio.</p>
+        <div id="cal-slot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 14. FAQ ================= -->
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2 class="sec-h2 rv" id="h-faq">Lo que suelen preguntarnos</h2>
+    <div class="rv rv-d1">
+      <details>
+        <summary>¿El cliente tiene que descargar una aplicación?</summary>
+        <div class="resp">No. El QR abre el Club en el navegador del teléfono. Se registra ahí mismo y vuelve a entrar con el mismo enlace o escaneando de nuevo.</div>
+      </details>
+      <details>
+        <summary>¿Se personaliza completamente con mi marca?</summary>
+        <div class="resp">Adaptamos logo, colores, tipografía, nombre del programa, premios, beneficios y el tono de la comunicación. La idea es que tu cliente sienta que está usando algo de tu negocio.</div>
+      </details>
+      <details>
+        <summary>¿Aparecen otros comercios?</summary>
+        <div class="resp">No. Cada Club es independiente y el QR abre directamente el tuyo. No hay directorio de marcas, competidores ni promociones ajenas.</div>
+      </details>
+      <details>
+        <summary>¿Cómo se acreditan los puntos?</summary>
+        <div class="resp">El cliente escanea el QR en el momento de la compra o la visita, y desde el panel se confirma la operación. Las reglas (cuántos puntos y por qué) se definen con vos en la configuración.</div>
+      </details>
+      <details>
+        <summary>¿Quién define los premios?</summary>
+        <div class="resp">Vos. Nosotros te ayudamos a armarlos para que sean sostenibles, pero los premios, su costo en puntos y los beneficios son decisión del comercio.</div>
+      </details>
+      <details>
+        <summary>¿Cómo funcionan los referidos? <span class="tag-pronto" data-pronto hidden>Próximamente</span></summary>
+        <div class="resp" id="faq-ref">Cada miembro recibe un enlace o QR personal para compartir. Si un conocido se registra desde ahí y hace su primera compra, al validarla desde el panel ambos reciben el beneficio que hayas definido.</div>
+      </details>
+      <details>
+        <summary>¿Cuándo reciben el beneficio las personas referidas?</summary>
+        <div class="resp">Después de la primera compra del referido, una vez que el comercio la valida. No se acredita solo por registrarse: tiene que haber una compra real.</div>
+      </details>
+      <details>
+        <summary>¿Qué mide la prueba gratuita?</summary>
+        <div class="resp">Escaneos, registros, actividad inicial, uso de beneficios y participación del personal. Es para ver si tus clientes lo adoptan, no para prometerte un resultado de ventas en pocas semanas.</div>
+      </details>
+      <details>
+        <summary>¿Necesito equipos especiales?</summary>
+        <div class="resp">No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas.</div>
+      </details>
+      <details>
+        <summary>¿Puedo incorporar un catálogo más adelante?</summary>
+        <div class="resp">Sí, como una segunda etapa opcional. Hoy el catálogo digital completo no es una función disponible: lo conversamos cuando el Club ya esté funcionando.</div>
+      </details>
+      <details>
+        <summary>¿Qué sucede si decido no continuar?</summary>
+        <div class="resp">No hay permanencia. Si después de la prueba no te sirve, no continuás. Podés pedirnos los datos de los clientes que se registraron en tu Club.</div>
+      </details>
+      <details>
+        <summary>¿Cómo se gestionan los datos de los clientes?</summary>
+        <div class="resp">Los datos que cargan tus clientes al registrarse son de tu comercio y se usan para hacer funcionar el Club. Antes de la puesta en marcha repasamos con vos qué datos se piden y cómo se comunica el consentimiento en el registro.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 15. CIERRE ================= -->
+<section class="cierre" aria-labelledby="h-cierre">
+  <div class="wrap wrap-sm">
+    <div class="iman-marca" aria-label="Imán">
+      <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+        <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+        <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+        <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+      </svg>
+      <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+    </div>
+    <h2 id="h-cierre">Hacé que tus clientes vuelvan y <span>traigan a los próximos.</span></h2>
+    <p>Te mostramos cómo podría funcionar un Club de Clientes diseñado específicamente para tu negocio.</p>
+    <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="iman-marca oscuro" aria-label="Imán">
+    <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+      <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+      <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+      <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+      <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+      <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+    </svg>
+    <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+  </div>
+  Fidelización, puntos y referidos con la identidad de tu negocio. 🧲<br>
+  <a href="/comercios/">Conocé Imán para recuperar clientes</a>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* =====================================================================
+   CONFIGURACIÓN  (ver comentario del <head>)
+   ===================================================================== */
+var CONFIG = {
+  // Endpoint del formulario. VACÍO = fallback a WhatsApp (no se simula envío).
+  formEndpoint: '',
+  // Campos fijos que algunos proveedores piden (ej. Web3Forms access_key).
+  formExtra: {},
+  // URL real del evento de Calendly. Vacío = tab deshabilitado con aviso.
+  calendlyUrl: 'https://calendly.com/santiago-iman/30min',
+  // Número de WhatsApp de contacto.
+  whatsapp: '5493534797679',
+  // Poner en true SOLO cuando el circuito de referidos funcione punta a punta.
+  referidosDisponibles: false
+};
+
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* =====================================================================
+   1. ANALYTICS
+   ===================================================================== */
+function track(evento, datos){
+  datos = datos || {};
+  try{
+    document.dispatchEvent(new CustomEvent('iman:' + evento, {detail:datos}));
+    if(window.gtag) window.gtag('event', evento, datos);
+    if(window.dataLayer && window.dataLayer.push) window.dataLayer.push(Object.assign({event:evento}, datos));
+    if(window.fbq){
+      if(evento === 'club_lead') window.fbq('track', 'Lead', {content_name:'club'});
+      else window.fbq('trackCustom', 'ClubCtaClick', datos);
+    }
+  }catch(e){}
+}
+
+/* =====================================================================
+   2. REVEALS
+   ===================================================================== */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+
+  // lo que ya está en pantalla al cargar (típico al entrar con un ancla:
+  // /club/#contacto) se muestra sin esperar al observer
+  function revelarVisible(){
+    document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }
+  revelarVisible();
+  window.addEventListener('load', revelarVisible);
+  setTimeout(revelarVisible, 1200);   // red de seguridad
+})();
+
+/* =====================================================================
+   3. CLUBES DE EJEMPLO (comercios ficticios)
+   Misma funcionalidad, distinta identidad: eso es lo que se demuestra.
+   ===================================================================== */
+var CLUBES = [
+  {
+    rubro:'Dietética', marca:'Semilla', club:'Club Semilla', emoji:'🌿',
+    color:'#268552', osc:'#175C34', suave:'#E2F4E9', on:'#fff', fondo:'#F4FBF6',
+    fuenteTit:"'Nunito',sans-serif", peso:'900', fuente:"'Nunito',sans-serif", fuenteNom:'Nunito 900',
+    socia:'Hola, Sofi 👋', nivel:'Nivel Semilla',
+    puntos:340, meta:500, saldoLbl:'Tus puntos', unidad:'pts',
+    premioIc:'🥣', premioTit:'1 kg de granola de la casa', premioSub:'Disponible con 500 pts',
+    beneficio:'10% en compras a granel',
+    refTexto:'Cuando haga su primera compra, ambos reciben puntos.',
+    refLink:'clubsemilla.com.ar/invita/sofi',
+    refCta:'Compartir mi invitación',
+    tono:'Cercano y saludable',
+    actividad:[
+      {qu:'Compra en el local', cu:'Hoy', pts:'+35'},
+      {qu:'Canje · Té de la casa', cu:'Hace 6 días', pts:'−120', neg:true},
+      {qu:'Compra en el local', cu:'Hace 12 días', pts:'+28'}
+    ]
+  },
+  {
+    rubro:'Cafetería', marca:'Nogal', club:'Nogal · Socios', emoji:'☕',
+    color:'#9A5B2E', osc:'#6F3F1E', suave:'#F4E7DA', on:'#fff', fondo:'#FBF5EF',
+    fuenteTit:"'Playfair Display',Georgia,serif", peso:'700', fuente:"'Nunito',sans-serif", fuenteNom:'Playfair Display',
+    socia:'Buen día, Marco ☕', nivel:'Socio Nogal',
+    puntos:8, meta:10, saldoLbl:'Tus sellos', unidad:'sellos',
+    premioIc:'☕', premioTit:'Tu décimo café, de la casa', premioSub:'Disponible con 10 sellos',
+    beneficio:'Medialuna con el café de la mañana',
+    refTexto:'Cuando tome su primer café acá, los dos suman sellos.',
+    refLink:'nogalcafe.ar/invita/marco',
+    refCta:'Invitar a un amigo',
+    tono:'Sobrio y de especialidad',
+    actividad:[
+      {qu:'Café en barra', cu:'Hoy', pts:'+1'},
+      {qu:'Café para llevar', cu:'Ayer', pts:'+1'},
+      {qu:'Canje · Medialuna', cu:'Hace 4 días', pts:'−3', neg:true}
+    ]
+  },
+  {
+    rubro:'Pet shop', marca:'Huellitas', club:'Club Huellitas', emoji:'🐾',
+    color:'#FF6B35', osc:'#A83C15', suave:'#FFE8DC', on:'#33231A', fondo:'#FFF7F2',
+    fuenteTit:"'Fredoka',sans-serif", peso:'600', fuente:"'Nunito',sans-serif", fuenteNom:'Fredoka',
+    socia:'¡Hola, Lucía y Toby! 🐶', nivel:'Nivel Patita',
+    puntos:620, meta:800, saldoLbl:'Tus huellitas', unidad:'pts',
+    premioIc:'🦴', premioTit:'Bolsa de snacks para Toby', premioSub:'Disponible con 800 pts',
+    beneficio:'Baño de regalo cada 5 visitas',
+    refTexto:'Cuando compre por primera vez, los dos reciben puntos.',
+    refLink:'clubhuellitas.ar/invita/lucia',
+    refCta:'Invitar a otro dueño',
+    tono:'Alegre y familiar',
+    actividad:[
+      {qu:'Alimento 15 kg', cu:'Hoy', pts:'+150'},
+      {qu:'Canje · Juguete', cu:'Hace 9 días', pts:'−200', neg:true},
+      {qu:'Baño y corte', cu:'Hace 18 días', pts:'+80'}
+    ]
+  }
+];
+
+var fono = document.getElementById('fono');
+var fonoIn = document.getElementById('fono-in');
+var tabsClub = Array.prototype.slice.call(document.querySelectorAll('.escena-tabs button'));
+var clubActivo = 0, autoTimer = null, autoOn = !reduce;
+
+function pintarClub(i){
+  var c = CLUBES[i];
+  fono.style.setProperty('--t-color', c.color);
+  fono.style.setProperty('--t-osc', c.osc);
+  fono.style.setProperty('--t-suave', c.suave);
+  fono.style.setProperty('--t-on', c.on);
+  fono.style.setProperty('--t-fondo', c.fondo);
+  fono.style.setProperty('--t-fuente', c.fuente);
+  fono.style.setProperty('--t-fuente-tit', c.fuenteTit);
+  fono.style.setProperty('--t-peso', c.peso);
+
+  document.getElementById('t-logo').textContent = c.emoji;
+  document.getElementById('t-nombre').textContent = c.club;
+  document.getElementById('t-socia').textContent = c.socia;
+  document.getElementById('t-nivel').textContent = c.nivel;
+  document.getElementById('t-saldo-lbl').textContent = c.saldoLbl;
+  document.getElementById('t-unidad').textContent = c.unidad;
+  document.getElementById('t-puntos').textContent = c.puntos;
+  document.getElementById('t-falta').textContent = 'Te faltan ' + (c.meta - c.puntos) + ' ' + c.unidad + ' para tu próximo premio';
+  document.getElementById('t-premio-ic').textContent = c.premioIc;
+  document.getElementById('t-premio-tit').textContent = c.premioTit;
+  document.getElementById('t-premio-sub').textContent = c.premioSub;
+  document.getElementById('t-ref-p').textContent = c.refTexto;
+  document.getElementById('t-ref-link').textContent = c.refLink;
+  document.getElementById('t-ref-cta').textContent = c.refCta;
+
+  var cont = document.getElementById('t-actividad');
+  cont.innerHTML = '';
+  c.actividad.forEach(function(a){
+    var d = document.createElement('div');
+    d.className = 't-act';
+    d.innerHTML = '<div><div class="qu"></div><div class="cu"></div></div><div class="pts' + (a.neg?' neg':'') + '"></div>';
+    d.querySelector('.qu').textContent = a.qu;
+    d.querySelector('.cu').textContent = a.cu;
+    d.querySelector('.pts').textContent = a.pts;
+    cont.appendChild(d);
+  });
+
+  // la barra arranca en 0 y crece por transición (setTimeout: no se pierde si
+  // la pestaña estaba en segundo plano y requestAnimationFrame quedó pausado)
+  var barra = document.getElementById('t-barra');
+  var pct = Math.round(c.puntos / c.meta * 100) + '%';
+  barra.style.width = '0%';
+  clearTimeout(barra._t);
+  barra._t = setTimeout(function(){ barra.style.width = pct; }, 90);
+
+  tabsClub.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  clubActivo = i;
+}
+
+function irAClub(i){
+  if(i === clubActivo) return;
+  if(reduce){ pintarClub(i); return; }
+  fono.classList.add('cambiando');
+  setTimeout(function(){
+    pintarClub(i);
+    fono.classList.remove('cambiando');
+  }, 340);
+}
+
+function pararAuto(){
+  autoOn = false;
+  if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+}
+function arrancarAuto(){
+  if(!autoOn || autoTimer) return;
+  autoTimer = setInterval(function(){ irAClub((clubActivo + 1) % CLUBES.length); }, 6500);
+}
+
+tabsClub.forEach(function(b){
+  b.addEventListener('click', function(){
+    pararAuto();
+    irAClub(parseInt(b.dataset.club, 10));
+  });
+});
+fono.addEventListener('mouseenter', function(){ if(autoTimer){ clearInterval(autoTimer); autoTimer = null; } });
+fono.addEventListener('mouseleave', arrancarAuto);
+
+pintarClub(0);
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ e.isIntersecting ? arrancarAuto() : (autoTimer && (clearInterval(autoTimer), autoTimer = null)); });
+  },{threshold:.25}).observe(fono);
+} else {
+  arrancarAuto();
+}
+
+/* =====================================================================
+   4. SECCIÓN PERSONALIZACIÓN: las mismas 3 identidades, comparadas
+   ===================================================================== */
+(function(){
+  var cont = document.getElementById('pers-grid');
+  CLUBES.forEach(function(c, i){
+    var art = document.createElement('article');
+    art.className = 'pers-card rv' + (i ? ' rv-d' + i : '');
+    art.innerHTML =
+      '<div class="pers-head">' +
+        '<span class="lg" aria-hidden="true"></span>' +
+        '<span><b></b><small></small></span>' +
+      '</div>' +
+      '<div class="pers-fila"><span>Club</span><b class="p-club"></b></div>' +
+      '<div class="pers-fila"><span>Colores</span><b class="pers-swatch"><i class="s1"></i><i class="s2"></i></b></div>' +
+      '<div class="pers-fila"><span>Tipografía</span><b class="p-fuente"></b></div>' +
+      '<div class="pers-fila"><span>Premio</span><b class="p-premio"></b></div>' +
+      '<div class="pers-fila"><span>Beneficio</span><b class="p-benef"></b></div>' +
+      '<div class="pers-fila"><span>Tono</span><b class="p-tono"></b></div>';
+    var lg = art.querySelector('.lg');
+    lg.textContent = c.emoji;
+    lg.style.background = c.suave;
+    art.querySelector('.pers-head b').textContent = c.marca;
+    art.querySelector('.pers-head small').textContent = c.rubro;
+    art.querySelector('.p-club').textContent = c.club;
+    art.querySelector('.s1').style.background = c.color;
+    art.querySelector('.s2').style.background = c.suave;
+    var pf = art.querySelector('.p-fuente');
+    pf.textContent = c.fuenteNom;
+    pf.style.fontFamily = c.fuenteTit;
+    art.querySelector('.p-premio').textContent = c.premioTit;
+    art.querySelector('.p-benef').textContent = c.beneficio;
+    art.querySelector('.p-tono').textContent = c.tono;
+    cont.appendChild(art);
+  });
+  // los reveals ya corrieron: mostramos estas tarjetas al observarlas de nuevo
+  var nuevas = cont.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    nuevas.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    nuevas.forEach(function(el){ io.observe(el); });
+  }
+})();
+
+/* =====================================================================
+   5. ESTADO DE REFERIDOS (honestidad: no prometer lo que no está)
+   ===================================================================== */
+if(!CONFIG.referidosDisponibles){
+  var aviso = document.getElementById('aviso-referidos');
+  if(aviso) aviso.hidden = false;
+  document.querySelectorAll('[data-pronto]').forEach(function(el){ el.hidden = false; });
+  var pronto = document.getElementById('t-pronto');
+  if(pronto) pronto.hidden = false;
+  var et = document.getElementById('et-referidos');
+  if(et){ et.classList.remove('on'); et.classList.add('next'); }
+  var faqRef = document.getElementById('faq-ref');
+  if(faqRef) faqRef.innerHTML += ' <b>Estamos terminando de implementar este circuito:</b> lo activamos en tu Club cuando esté verificado de punta a punta.';
+}
+
+/* =====================================================================
+   6. TABS ACCESIBLES DEL MÓDULO DE CONTACTO
+   ===================================================================== */
+var tabForm = document.getElementById('tab-form');
+var tabCal  = document.getElementById('tab-cal');
+var tabs    = [tabForm, tabCal];
+var calListo = false;
+
+function activarTab(tab, foco){
+  if(tab.getAttribute('aria-disabled') === 'true') return;
+  tabs.forEach(function(t){
+    var sel = t === tab;
+    t.setAttribute('aria-selected', sel ? 'true' : 'false');
+    t.tabIndex = sel ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !sel;
+  });
+  if(foco) tab.focus();
+  if(tab === tabCal) montarCalendly();
+}
+tabs.forEach(function(t){
+  t.addEventListener('click', function(){ activarTab(t); });
+  t.addEventListener('keydown', function(ev){
+    var i = tabs.indexOf(t), n = null;
+    if(ev.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+    else if(ev.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+    else if(ev.key === 'Home') n = tabs[0];
+    else if(ev.key === 'End') n = tabs[tabs.length - 1];
+    if(n){ ev.preventDefault(); activarTab(n, true); }
+  });
+});
+
+/* CTA "Quiero mi demo…" → contacto + tab del formulario */
+document.querySelectorAll('[data-demo]').forEach(function(a){
+  a.addEventListener('click', function(){
+    activarTab(tabForm);
+    track('cta_click', {tipo:'demo', pos:a.closest('header') ? 'header' : (a.closest('.sticky-cta') ? 'sticky' : 'seccion')});
+  });
+});
+
+/* =====================================================================
+   7. CALENDLY: se carga SOLO al abrir su tab
+   ===================================================================== */
+function montarCalendly(){
+  if(calListo) return;
+  calListo = true;
+  var slot = document.getElementById('cal-slot');
+
+  if(!CONFIG.calendlyUrl){
+    slot.innerHTML = '<div class="cal-pendiente">⚙️ Agenda online pendiente de configuración. Mientras tanto, dejanos tus datos en <b>“Solicitar demo”</b> y te escribimos para coordinar el horario.</div>';
+    return;
+  }
+
+  var url = CONFIG.calendlyUrl;
+  try{
+    var u = new URL(url);
+    u.searchParams.set('hide_event_type_details','1');
+    u.searchParams.set('hide_gdpr_banner','1');
+    u.searchParams.set('primary_color','6C5CE7');
+    u.searchParams.set('utm_source','landing');
+    u.searchParams.set('utm_campaign','club');
+    url = u.toString();
+  }catch(e){}
+
+  slot.innerHTML =
+    '<div id="cal-embed">' +
+      '<div class="cal-cargando"><div><span style="font-size:1.8rem">🗓️</span><br>Cargando la agenda…</div></div>' +
+      '<div class="calendly-inline-widget" data-url="' + url.replace(/"/g,'&quot;') + '"></div>' +
+    '</div>' +
+    '<p class="cal-fallback">¿No te carga el calendario? Abrilo en una pestaña nueva: <a href="' + CONFIG.calendlyUrl.replace(/"/g,'&quot;') + '" target="_blank" rel="noopener">elegir un horario</a>.</p>';
+
+  var s = document.createElement('script');
+  s.src = 'https://assets.calendly.com/assets/external/widget.js';
+  s.async = true;
+  document.head.appendChild(s);
+  track('cta_click', {tipo:'agenda'});
+}
+if(!CONFIG.calendlyUrl){
+  tabCal.setAttribute('aria-disabled','true');
+  tabCal.title = 'Agenda pendiente de configuración';
+}
+
+/* =====================================================================
+   8. FORMULARIO
+   ===================================================================== */
+var form = document.getElementById('form-demo');
+var estado = document.getElementById('f-estado');
+var submit = document.getElementById('f-submit');
+var nota = document.getElementById('f-nota');
+var tInicio = Date.now();          // trampa de tiempo: envíos instantáneos = bot
+var enviando = false;
+
+var REQ = [
+  ['f-nombre','e-nombre','Escribí tu nombre y apellido.'],
+  ['f-negocio','e-negocio','Escribí el nombre de tu negocio.'],
+  ['f-rubro','e-rubro','Elegí el rubro de tu comercio.'],
+  ['f-ciudad','e-ciudad','Escribí tu ciudad o localidad.'],
+  ['f-email','e-email','Escribí un correo electrónico válido.'],
+  ['f-wa','e-wa','Escribí tu WhatsApp con característica.']
+];
+
+function limpiarError(id, errId){
+  var el = document.getElementById(id);
+  el.setAttribute('aria-invalid','false');
+  document.getElementById(errId).textContent = '';
+}
+REQ.forEach(function(r){
+  var el = document.getElementById(r[0]);
+  el.addEventListener('input', function(){ limpiarError(r[0], r[1]); });
+  el.addEventListener('change', function(){ limpiarError(r[0], r[1]); });
+});
+document.getElementById('f-consent').addEventListener('change', function(){
+  this.setAttribute('aria-invalid','false');
+  document.getElementById('e-consent').textContent = '';
+});
+
+/* checkbox "el teléfono es el mismo que mi WhatsApp" */
+var mismo = document.getElementById('f-mismo');
+var tel = document.getElementById('f-tel');
+mismo.addEventListener('change', function(){
+  tel.disabled = mismo.checked;
+  if(mismo.checked){ tel.value = ''; tel.placeholder = 'Mismo que WhatsApp'; }
+  else { tel.placeholder = ''; }
+});
+
+function valido(){
+  var ok = true, primero = null;
+  REQ.forEach(function(r){
+    var el = document.getElementById(r[0]);
+    var v = (el.value || '').trim();
+    var malo = !v;
+    if(!malo && r[0] === 'f-email') malo = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if(!malo && r[0] === 'f-wa') malo = (v.replace(/\D/g,'').length < 8);
+    if(malo){
+      ok = false;
+      el.setAttribute('aria-invalid','true');
+      document.getElementById(r[1]).textContent = r[2];
+      if(!primero) primero = el;
+    }
+  });
+  var cons = document.getElementById('f-consent');
+  if(!cons.checked){
+    ok = false;
+    cons.setAttribute('aria-invalid','true');
+    document.getElementById('e-consent').textContent = 'Necesitamos tu confirmación para poder contactarte.';
+    if(!primero) primero = cons;
+  }
+  if(primero) primero.focus();
+  return ok;
+}
+
+function datos(){
+  return {
+    nombre: document.getElementById('f-nombre').value.trim(),
+    negocio: document.getElementById('f-negocio').value.trim(),
+    rubro: document.getElementById('f-rubro').value,
+    ciudad: document.getElementById('f-ciudad').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    whatsapp: document.getElementById('f-wa').value.trim(),
+    telefono: mismo.checked ? 'mismo que WhatsApp' : tel.value.trim(),
+    sucursales: document.getElementById('f-suc').value,
+    web: document.getElementById('f-web').value.trim(),
+    comentario: document.getElementById('f-msj').value.trim(),
+    consentimiento: true,
+    origen: 'landing/club',
+    url: location.href
+  };
+}
+
+function resumenTexto(d){
+  var l = [
+    'Hola! Quiero una demo personalizada de Imán Club.',
+    '',
+    'Nombre: ' + d.nombre,
+    'Negocio: ' + d.negocio,
+    'Rubro: ' + d.rubro,
+    'Ciudad: ' + d.ciudad,
+    'Email: ' + d.email,
+    'WhatsApp: ' + d.whatsapp
+  ];
+  if(d.telefono) l.push('Teléfono: ' + d.telefono);
+  if(d.sucursales) l.push('Sucursales: ' + d.sucursales);
+  if(d.web) l.push('Instagram/Web: ' + d.web);
+  if(d.comentario) l.push('', 'Quiero mejorar: ' + d.comentario);
+  return l.join('\n');
+}
+
+function mostrarEstado(tipo, html){
+  estado.className = 'estado visible es-' + tipo;
+  estado.innerHTML = html;
+}
+
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  if(enviando) return;
+
+  // anti-spam del cliente: honeypot (no reemplaza la validación del backend)
+  if(document.getElementById('f-hp').value) return;
+
+  if(!valido()){
+    mostrarEstado('err','<span aria-hidden="true">⚠️</span><div class="estado-cuerpo">Revisá los campos marcados y volvé a intentar.</div>');
+    return;
+  }
+  // trampa de tiempo: un formulario completo en menos de 2,5 s es un bot
+  if(Date.now() - tInicio < 2500){
+    mostrarEstado('err','<span aria-hidden="true">⏳</span><div class="estado-cuerpo">Esperá un momento y volvé a enviarlo.</div>');
+    return;
+  }
+
+  var d = datos();
+
+  /* --- Sin endpoint configurado: NO simulamos un envío. Abrimos WhatsApp --- */
+  if(!CONFIG.formEndpoint){
+    var href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(resumenTexto(d));
+    mostrarEstado('info',
+      '<span aria-hidden="true">💬</span><div class="estado-cuerpo">Te abrimos WhatsApp con tus datos cargados.' +
+      '<p>Tocá <b>enviar</b> en WhatsApp para que la solicitud nos llegue. Si no se abrió solo, usá este botón.</p>' +
+      '<a class="btn btn-linea" id="f-wa-link" href="' + href + '" target="_blank" rel="noopener">Abrir WhatsApp con mis datos</a></div>');
+    track('club_lead', {via:'whatsapp', rubro:d.rubro});
+    window.open(href, '_blank', 'noopener');
+    return;
+  }
+
+  /* --- Con endpoint: POST real, éxito solo con respuesta 2xx --- */
+  enviando = true;
+  submit.disabled = true;
+  submit.textContent = 'Enviando solicitud…';
+  mostrarEstado('info','<span class="spin" aria-hidden="true"></span><div class="estado-cuerpo">Enviando tu solicitud…</div>');
+
+  var cuerpo = Object.assign({}, CONFIG.formExtra, d);
+  fetch(CONFIG.formEndpoint, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(cuerpo)
+  }).then(function(res){
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    // Éxito real: solo acá se dice "recibida".
+    enviando = false;
+    mostrarEstado('ok','<span aria-hidden="true">✅</span><div class="estado-cuerpo">Solicitud recibida.<p>Te contactamos personalmente para coordinar la demostración. Si querés adelantarlo, también podés agendar una llamada en la otra pestaña.</p></div>');
+    form.querySelectorAll('input, select, textarea').forEach(function(el){
+      if(el.type === 'checkbox') el.checked = false; else el.value = '';
+    });
+    tel.disabled = false;
+    tel.placeholder = '';
+    submit.textContent = 'Solicitud enviada';   // queda deshabilitado hasta que vuelva a escribir
+    nota.textContent = 'Ya nos llegó. Te escribimos a la brevedad.';
+    track('club_lead', {via:'form', rubro:d.rubro});
+  }).catch(function(){
+    // Falla de red o respuesta no 2xx: NO se confirma nada y no se pierden los datos.
+    enviando = false;
+    submit.disabled = false;
+    submit.textContent = 'Reintentar el envío';
+    var href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(resumenTexto(d));
+    mostrarEstado('err',
+      '<span aria-hidden="true">⚠️</span><div class="estado-cuerpo">No pudimos enviar tu solicitud.' +
+      '<p>Tus datos siguen cargados. Probá de nuevo o escribinos directo por WhatsApp.</p>' +
+      '<a class="btn btn-linea" href="' + href + '" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>');
+  });
+});
+
+/* si vuelve a editar después de un envío exitoso, se rehabilita el botón */
+form.addEventListener('input', function(){
+  if(!enviando && submit.disabled){
+    submit.disabled = false;
+    submit.textContent = 'Solicitar mi demo personalizada';
+  }
+});
+
+/* =====================================================================
+   9. STICKY CTA MOBILE
+   ===================================================================== */
+(function(){
+  var sticky = document.getElementById('sticky-cta');
+  var hero = document.querySelector('.hero');
+  var contacto = document.getElementById('contacto');
+  var pasoHero = false, enContacto = false;
+  function actualizar(){ sticky.classList.toggle('visible', pasoHero && !enContacto); }
+  function medir(){
+    pasoHero = window.scrollY > hero.offsetHeight * .7;
+    actualizar();
+  }
+  window.addEventListener('scroll', medir, {passive:true});
+  window.addEventListener('resize', medir, {passive:true});
+  medir();   // por si se entra con un ancla (#faq, #contacto…) y aún no hubo scroll
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ enContacto = e.isIntersecting; actualizar(); });
+    },{threshold:.12}).observe(contacto);
+  }
+})();
+
+/* =====================================================================
+   10. DEEP LINK: /club/?tab=agenda abre el tab de Calendly
+   ===================================================================== */
+try{
+  if(new URLSearchParams(location.search).get('tab') === 'agenda') activarTab(tabCal);
+}catch(e){}
+
+})();
+</script>
+
+<!-- Vercel Speed Insights -->
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
