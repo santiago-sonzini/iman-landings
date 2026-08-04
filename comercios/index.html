@@ -581,7 +581,121 @@ body[data-aud="dist"] .switch-aud .b-dist{color:var(--acento-on)}
 .gestion-card .ic{font-size:1.6rem;display:block;margin-bottom:.6rem}
 .gestion-card small{display:block;font-weight:600;color:#8a7263;font-size:.82rem;margin-top:.3rem}
 
-/* ============ 6. PASOS ============ */
+/* ============ 6. CATÁLOGOS ============ */
+.catalogos{
+  color:var(--crema);background:var(--tinta);overflow:hidden;
+}
+.catalogos::before{
+  content:"";position:absolute;inset:-25% auto auto -8%;width:420px;height:420px;
+  border-radius:50%;background:var(--acento);opacity:.18;filter:blur(3px);
+}
+.catalogos-cabecera{
+  display:grid;gap:1.2rem;align-items:end;margin-bottom:2.2rem;
+}
+@media(min-width:800px){
+  .catalogos-cabecera{grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr)}
+}
+.catalogos-kicker{
+  display:inline-flex;align-items:center;gap:.45rem;width:max-content;
+  margin-bottom:.9rem;padding:.35rem .75rem;border:1.5px solid rgba(255,246,233,.28);
+  border-radius:999px;color:var(--acento);background:rgba(255,255,255,.06);
+  font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+}
+.catalogos h2{
+  max-width:40rem;margin-bottom:.8rem;color:var(--crema);
+  font-size:clamp(1.8rem,4.2vw,3rem);
+}
+.catalogos-baja{
+  max-width:39rem;color:#d9cbbf;font-weight:700;
+  font-size:clamp(1rem,2vw,1.14rem);
+}
+.catalogos-beneficios{
+  display:grid;grid-template-columns:1fr 1fr;gap:.55rem;
+}
+.catalogos-beneficios span{
+  display:flex;align-items:center;gap:.4rem;padding:.65rem .75rem;
+  border:1.5px solid rgba(255,246,233,.18);border-radius:12px;
+  background:rgba(255,255,255,.055);font-size:.82rem;font-weight:800;
+}
+.catalogos-beneficios span::before{content:"✓";color:var(--acento);font-weight:900}
+.catalogos-pista{
+  display:flex;align-items:center;justify-content:space-between;
+  margin:-.35rem 0 .8rem;color:#bfae9f;font-size:.77rem;font-weight:800;
+}
+.catalogos-pista a{color:var(--crema);text-underline-offset:3px}
+.catalogos-grid{
+  display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:.25rem 1.25rem 1rem;
+  margin:0 calc(50% - 50vw);scrollbar-color:var(--acento) rgba(255,255,255,.12);
+}
+.catalogo-card{
+  flex:0 0 min(84vw,340px);scroll-snap-align:center;overflow:hidden;
+  border:2.5px solid var(--crema);border-radius:20px;background:var(--blanco);
+  color:var(--tinta);text-decoration:none;
+  box-shadow:0 8px 0 rgba(255,246,233,.24),0 20px 35px rgba(0,0,0,.22);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,border-color .2s;
+}
+.catalogo-card:hover{
+  transform:translateY(-5px);border-color:var(--acento);
+  box-shadow:0 11px 0 var(--acento),0 24px 42px rgba(0,0,0,.28);
+}
+.catalogo-ventana{
+  position:relative;overflow:hidden;background:#e7dfd4;
+}
+.catalogo-barra{
+  display:flex;align-items:center;gap:.3rem;height:29px;padding:0 .7rem;
+  border-bottom:1px solid rgba(51,35,26,.12);background:#f4eee6;
+}
+.catalogo-barra i{width:7px;height:7px;border-radius:50%;background:#c9b8a8}
+.catalogo-barra span{
+  min-width:0;margin-left:.35rem;overflow:hidden;color:#7d6c5f;
+  font-size:.62rem;font-style:normal;font-weight:800;text-overflow:ellipsis;white-space:nowrap;
+}
+.catalogo-ventana img{
+  width:100%;height:176px;object-fit:cover;transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+.catalogo-card:hover .catalogo-ventana img{transform:scale(1.035)}
+.catalogo-cuerpo{padding:1rem 1.05rem 1.1rem}
+.catalogo-rubro{
+  display:inline-flex;margin-bottom:.45rem;color:var(--acento-osc);
+  font-size:.69rem;font-weight:900;letter-spacing:.055em;text-transform:uppercase;
+}
+.catalogo-cuerpo h3{font-size:1.08rem;margin-bottom:.25rem}
+.catalogo-cuerpo p{color:#806b5d;font-size:.82rem;font-weight:700}
+.catalogo-link{
+  display:inline-flex;align-items:center;gap:.35rem;margin-top:.8rem;
+  color:var(--tinta);font-family:var(--display);font-size:.88rem;font-weight:700;
+}
+.catalogo-card:hover .catalogo-link{color:var(--acento-osc)}
+.catalogos-cierre{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  flex-wrap:wrap;margin-top:1.4rem;padding:1.15rem 1.25rem;
+  border:1.5px solid rgba(255,246,233,.2);border-radius:18px;
+  background:rgba(255,255,255,.06);
+}
+.catalogos-cierre p{max-width:35rem;color:#d9cbbf;font-size:.88rem;font-weight:700}
+.catalogos-cierre strong{color:var(--crema)}
+.catalogos .btn-catalogo{
+  flex-shrink:0;background:var(--acento);color:var(--acento-on);
+  box-shadow:0 5px 0 var(--acento-osc),0 12px 24px rgba(0,0,0,.2);
+}
+.catalogos .btn-catalogo:hover{
+  transform:translateY(-2px);box-shadow:0 7px 0 var(--acento-osc),0 16px 28px rgba(0,0,0,.25);
+}
+@media(min-width:760px){
+  .catalogos-pista{justify-content:flex-end}
+  .catalogos-pista span{display:none}
+  .catalogos-grid{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;
+    margin:0;padding:.25rem 0 1rem;scroll-snap-type:none;
+  }
+  .catalogo-card{min-width:0}
+}
+@media(min-width:1040px){
+  .catalogos-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* ============ 7. PASOS ============ */
 .pasos h2{font-size:clamp(1.6rem,3.8vw,2.5rem);margin-bottom:.7rem}
 .pasos .baja{font-weight:700;color:#8a7263;margin-bottom:2.6rem}
 .pasos-grid{display:grid;gap:1.4rem;counter-reset:paso}
@@ -988,7 +1102,116 @@ footer{
   </div>
 </section>
 
-<!-- ================= 6. CÓMO FUNCIONA ================= -->
+<!-- ================= 6. CATÁLOGOS ================= -->
+<section class="catalogos" id="catalogos">
+  <div class="wrap">
+    <div class="catalogos-cabecera">
+      <div>
+        <span class="catalogos-kicker rv">🛒 catalogo.iman.ar</span>
+        <h2 class="rv rv-d1">También hacemos catálogos que reciben pedidos por vos.</h2>
+        <p class="catalogos-baja rv rv-d2">Una tienda online a la medida de tu negocio: con tu marca, tus productos y tus promociones. El cliente arma el pedido a cualquier hora y te llega ordenado por WhatsApp.</p>
+      </div>
+      <div class="catalogos-beneficios rv rv-d2" aria-label="Beneficios del catálogo">
+        <span>Tu identidad</span>
+        <span>Precios al día</span>
+        <span>Pedido 24/7</span>
+        <span>Listo para celular</span>
+      </div>
+    </div>
+
+    <div class="catalogos-pista rv">
+      <span>Deslizá para ver más →</span>
+      <a href="https://catalogo.iman.ar/demo/petoutlet-ar" target="_blank" rel="noopener">Demos conceptuales personalizadas</a>
+    </div>
+
+    <div class="catalogos-grid" aria-label="Ejemplos de catálogos hechos por Imán">
+      <a class="catalogo-card rv" href="https://catalogo.iman.ar/demo/petoutlet-ar" target="_blank" rel="noopener" aria-label="Ver demo de PetOutlet">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/petoutlet-ar</span></div>
+          <img src="https://catalogo.iman.ar/businesses/petoutlet-ar/hero-petshop-v2.webp" alt="Portada del catálogo de PetOutlet" loading="lazy" width="1962" height="802">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Mascotas</span>
+          <h3>PetOutlet</h3>
+          <p>Alimentos, paseo y accesorios en una vidriera fácil de comprar.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+
+      <a class="catalogo-card rv rv-d1" href="https://catalogo.iman.ar/demo/fds" target="_blank" rel="noopener" aria-label="Ver demo de Fideera del Salado">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/fds</span></div>
+          <img src="https://catalogo.iman.ar/businesses/fds/hero-pastas-desktop.webp" alt="Portada del catálogo de Fideera del Salado" loading="lazy" width="1672" height="941">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Industria alimenticia</span>
+          <h3>Fideera del Salado</h3>
+          <p>Dos marcas y todo el pedido mayorista en un mismo lugar.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+
+      <a class="catalogo-card rv rv-d2" href="https://catalogo.iman.ar/demo/mazzarella" target="_blank" rel="noopener" aria-label="Ver demo de Mazzarella Insumos Industriales">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/mazzarella</span></div>
+          <img src="https://catalogo.iman.ar/businesses/mazzarella/hero-industrial.webp" alt="Portada del catálogo de Mazzarella Insumos Industriales" loading="lazy" width="1672" height="941">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Insumos industriales</span>
+          <h3>Mazzarella</h3>
+          <p>Un catálogo técnico para herramientas, abrasivos y seguridad.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+
+      <a class="catalogo-card rv" href="https://catalogo.iman.ar/demo/procom" target="_blank" rel="noopener" aria-label="Ver demo de Procom Mayorista Ferretero">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/procom</span></div>
+          <img src="https://catalogo.iman.ar/businesses/procom/hero-mayorista.webp" alt="Portada del catálogo de Procom Mayorista Ferretero" loading="lazy" width="1672" height="941">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Ferretería</span>
+          <h3>Procom Mayorista</h3>
+          <p>Un surtido grande, ordenado para encontrar y pedir rápido.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+
+      <a class="catalogo-card rv rv-d1" href="https://catalogo.iman.ar/demo/bold" target="_blank" rel="noopener" aria-label="Ver demo de Bold Specialty Coffee">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/bold</span></div>
+          <img src="https://catalogo.iman.ar/businesses/bold/hero-cycle-texture.webp" alt="Portada del catálogo de Bold Specialty Coffee" loading="lazy" width="1717" height="916">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Café de especialidad</span>
+          <h3>Bold Specialty Coffee</h3>
+          <p>Una experiencia de marca pensada para volver a pedir.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+
+      <a class="catalogo-card rv rv-d2" href="https://catalogo.iman.ar/demo/centralmayorista-ar" target="_blank" rel="noopener" aria-label="Ver demo de Central Mayorista Córdoba">
+        <div class="catalogo-ventana">
+          <div class="catalogo-barra" aria-hidden="true"><i></i><i></i><i></i><span>catalogo.iman.ar/demo/centralmayorista-ar</span></div>
+          <img src="https://catalogo.iman.ar/businesses/centralmayorista-ar/hero-reposicion.webp" alt="Portada del catálogo de Central Mayorista Córdoba" loading="lazy" width="1536" height="1024">
+        </div>
+        <div class="catalogo-cuerpo">
+          <span class="catalogo-rubro">Limpieza y perfumería</span>
+          <h3>Central Mayorista Córdoba</h3>
+          <p>Reposición, combos y promociones sin mensajes sueltos.</p>
+          <span class="catalogo-link">Recorrer la demo ↗</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="catalogos-cierre rv">
+      <p><strong>Cada negocio se ve distinto porque cada marca es distinta.</strong> Estas demos son propuestas conceptuales y muestran cómo puede verse la tuya.</p>
+      <a class="btn btn-catalogo" id="catalogos-cta-wa" href="https://wa.me/5493534797679?text=Hola%21%20Vi%20los%20cat%C3%A1logos%20de%20Im%C3%A1n%20y%20quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener">Quiero mi catálogo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. CÓMO FUNCIONA ================= -->
 <section class="pasos">
   <div class="wrap">
     <h2 class="rv">Arrancás esta semana, sin cambiar nada de lo que usás</h2>
@@ -1779,6 +2002,7 @@ footer{
     }catch(e){}
   }
   [['hero-cta-wa','wa_demo'],['cierre-cta-wa','wa_demo'],['sticky-cta-wa','wa_demo'],['otro-wa','wa_demo'],
+   ['catalogos-cta-wa','wa_catalogo'],
    ['hero-cta-wa-dist','wa_dist'],['cierre-cta-wa-dist','wa_dist']].forEach(function(par){
     var el = document.getElementById(par[0]);
     if(el) el.addEventListener('click', function(){ trackCTA(par[1], selAud); });
