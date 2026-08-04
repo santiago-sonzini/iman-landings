@@ -7,6 +7,9 @@ campaign/
 NOTAS.md
 .claude/
 .vercel/
+.env
+.env.*
+!.env.example
 
 # Dependencias
 node_modules/

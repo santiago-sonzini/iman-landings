@@ -8,13 +8,13 @@
 
 <title>Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes</title>
 <meta name="description" content="Creamos para tu comercio un Club de Clientes personalizado con puntos, beneficios y referidos. Tus clientes escanean el QR, participan y pueden invitar a otros sin descargar ninguna aplicación.">
-<link rel="canonical" href="https://iman-landings.vercel.app/club/">
+<link rel="canonical" href="https://iman-landings.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Imán">
 <meta property="og:locale" content="es_AR">
 <meta property="og:title" content="Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes">
 <meta property="og:description" content="Un Club de Clientes con tu marca: puntos, premios y referidos. Sin apps para tus clientes. Te lo armamos junto a tu negocio.">
-<meta property="og:url" content="https://iman-landings.vercel.app/club/">
+<meta property="og:url" content="https://iman-landings.vercel.app/">
 <meta property="og:image" content="https://iman-landings.vercel.app/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -28,24 +28,11 @@
 <!-- ============================================================
      CONFIGURAR ANTES DE PUBLICAR  (objeto CONFIG al final del archivo)
 
-     1. CONFIG.formEndpoint  → VACÍO por defecto.
-        · Vacío: el formulario NO simula un envío. Valida, arma el resumen
-          y abre WhatsApp con todos los datos cargados para que la persona
-          toque "enviar" (canal real de Imán, el mismo de las otras landings).
-          El estado que se muestra es "abrimos WhatsApp", nunca
-          "solicitud recibida".
-        · Con URL: hace POST JSON a ese endpoint y solo muestra
-          "Solicitud recibida" si la respuesta es 2xx. Si falla, estado de
-          error con botón de reintentar (los datos NO se pierden).
-        Proveedores que funcionan pegando la URL, sin tocar más nada:
-          Formspree   https://formspree.io/f/XXXXXXX
-          Basin       https://usebasin.com/f/XXXXXXX
-          Web3Forms   https://api.web3forms.com/submit  (agregar access_key en CONFIG.formExtra)
-          Propio      cualquier endpoint que acepte POST JSON y responda 2xx
-        IMPORTANTE: la validación de servidor y el rate-limit viven en el
-        endpoint, no acá (esto es un sitio estático). En el cliente hay
-        honeypot + trampa de tiempo, que frenan bots simples pero NO
-        reemplazan la validación del backend.
+     1. CONFIG.formEndpoint → /api/contacto.
+        La función valida los datos y envía el correo con credenciales privadas
+        configuradas en Vercel. El formulario solo muestra "Solicitud recibida"
+        cuando la respuesta es 2xx. Si falla, conserva los datos y ofrece
+        reintentar o enviarlos por WhatsApp.
 
      2. CONFIG.calendlyUrl → URL real del evento. Si queda vacía, el tab
         "Agendar llamada" se deshabilita con aviso de configuración
@@ -264,16 +251,23 @@ body::after{
   color:var(--texto);transition:background .18s,color .18s;white-space:nowrap;
 }
 .hdr-nav a:hover{background:var(--acento-suave);color:#3B2E86}
-.hdr-cta{margin-left:auto;font-size:.88rem;padding:.6rem 1.05rem;min-height:42px;box-shadow:0 4px 0 var(--acento-osc)}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:.55rem}
+.hdr-cta{font-size:.88rem;padding:.6rem 1.05rem;min-height:42px;box-shadow:0 4px 0 var(--acento-osc)}
+.hdr-wa{font-size:.86rem;padding:.6rem .9rem;min-height:42px;box-shadow:0 4px 0 var(--verde-wa-osc)}
 @media(min-width:1000px){
   .hdr-nav{display:flex}
-  .hdr-cta{margin-left:.6rem}
+  .hdr-actions{margin-left:.6rem}
+}
+@media(max-width:560px){
+  .hdr-wa-label{display:none}
+  .hdr-wa{width:42px;padding:.55rem}
 }
 @media(max-width:400px){
   .hdr-in{padding:.5rem .7rem;gap:.5rem}
   .hdr .iman-svg{width:28px}
   .hdr .iman-nombre{font-size:1rem}
-  .hdr-cta{font-size:.82rem;padding:.55rem .85rem}
+  .hdr-actions{gap:.4rem}
+  .hdr-cta{font-size:.78rem;padding:.55rem .7rem}
 }
 
 /* =====================================================================
@@ -304,9 +298,9 @@ body::after{
 }
 
 /* ---------- escenario del teléfono ---------- */
-.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-bottom:1.25rem}
 .fono{
-  width:min(318px,88vw);background:var(--t-fondo,var(--crema));
+  width:min(350px,94vw);background:var(--t-fondo,var(--crema));
   border:2.5px solid var(--tinta);border-radius:34px;
   box-shadow:0 10px 0 var(--tinta),0 26px 50px rgba(51,35,26,.24);
   padding:13px 12px 14px;position:relative;overflow:hidden;
@@ -400,7 +394,7 @@ body::after{
 .escena-pie{font-size:.76rem;font-weight:700;color:var(--tinta-suave);text-align:center;max-width:32ch;margin:0 auto}
 
 /* piezas físicas junto al teléfono */
-.props{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;width:min(325px,88vw)}
+.props{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;width:min(350px,94vw)}
 .prop{
   background:var(--blanco);border:2.5px solid var(--tinta);border-radius:16px;padding:.6rem;
   box-shadow:0 4px 0 rgba(51,35,26,.6);text-align:center;
@@ -415,6 +409,7 @@ body::after{
   .prop{width:118px}
 }
 @media(min-width:1240px){.props{right:-52px}}
+@media(min-width:980px){.escena{margin-bottom:0}}
 
 /* placa QR (dibujo, no foto de stock) */
 .qr-svg{width:56px;height:56px}
@@ -826,6 +821,7 @@ body::after{
 .cierre h2 span{color:var(--acento-claro)}
 .cierre p{color:#D9C9B8;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
 .cierre .iman-marca{justify-content:center}
+.cierre-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
 footer{background:#241810;color:#bfa893;text-align:center;padding:2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600}
 footer .iman-marca{justify-content:center;margin-bottom:.7rem}
 footer .iman-svg{width:30px}
@@ -841,7 +837,9 @@ footer .iman-nombre i{color:var(--acento-claro)}
   transform:translateY(115%);transition:transform .35s cubic-bezier(.22,1,.36,1);
 }
 .sticky-cta.visible{transform:none}
-.sticky-cta .btn{flex:1;font-size:.95rem;padding:.8rem .9rem;box-shadow:0 4px 0 var(--acento-osc)}
+.sticky-cta .btn{flex:1;font-size:.92rem;padding:.8rem .7rem}
+.sticky-cta .btn-primario{box-shadow:0 4px 0 var(--acento-osc)}
+.sticky-cta .btn-wa{box-shadow:0 4px 0 var(--verde-wa-osc)}
 @media(min-width:768px){.sticky-cta{display:none}}
 </style>
 </head>
@@ -867,7 +865,10 @@ footer .iman-nombre i{color:var(--acento-claro)}
       <a href="#studio">Imán Studio</a>
       <a href="#faq">Preguntas frecuentes</a>
     </nav>
-    <a class="btn btn-primario hdr-cta" href="#contacto" data-demo>Quiero mi demo</a>
+    <div class="hdr-actions">
+      <a class="btn btn-primario hdr-cta" href="#contacto" data-demo>Quiero mi demo</a>
+      <a class="btn btn-wa hdr-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp aria-label="Escribir por WhatsApp al 353 518-9997"><span aria-hidden="true">💬</span><span class="hdr-wa-label">WhatsApp</span></a>
+    </div>
   </div>
 </header>
 
@@ -879,10 +880,11 @@ footer .iman-nombre i{color:var(--acento-claro)}
     <div class="hero-txt">
       <span class="eyebrow">Fidelización y referidos diseñados para tu marca</span>
       <h1 id="h1">Hacé que tus clientes <span class="marcaflow">vuelvan y traigan nuevos clientes.</span></h1>
-      <p class="sub">Creamos para tu comercio un Club de Clientes personalizado con puntos, beneficios y referidos. Tus clientes escanean el QR, participan y pueden invitar a otros sin descargar ninguna aplicación.</p>
+      <p class="sub">Un Club de Clientes con tu marca, puntos, beneficios y referidos. Sin apps.</p>
 
       <div class="hero-ctas">
         <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+        <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
         <a class="btn btn-linea" href="#como-funciona">Ver cómo funciona</a>
       </div>
       <p class="hero-micro">Tu marca. <span>Tus beneficios.</span> Tus clientes.</p>
@@ -1541,7 +1543,10 @@ footer .iman-nombre i{color:var(--acento-claro)}
     </div>
     <h2 id="h-cierre">Hacé que tus clientes vuelvan y <span>traigan a los próximos.</span></h2>
     <p>Te mostramos cómo podría funcionar un Club de Clientes diseñado específicamente para tu negocio.</p>
-    <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+    <div class="cierre-ctas">
+      <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+      <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
+    </div>
   </div>
 </section>
 
@@ -1563,7 +1568,8 @@ footer .iman-nombre i{color:var(--acento-claro)}
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+  <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo</a>
+  <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
 </div>
 
 <script>
@@ -1574,14 +1580,14 @@ footer .iman-nombre i{color:var(--acento-claro)}
    CONFIGURACIÓN  (ver comentario del <head>)
    ===================================================================== */
 var CONFIG = {
-  // Endpoint del formulario. VACÍO = fallback a WhatsApp (no se simula envío).
-  formEndpoint: '',
+  // Endpoint privado que envía la solicitud por correo.
+  formEndpoint: '/api/contacto',
   // Campos fijos que algunos proveedores piden (ej. Web3Forms access_key).
   formExtra: {},
   // URL real del evento de Calendly. Vacío = tab deshabilitado con aviso.
   calendlyUrl: 'https://calendly.com/santiago-iman/30min',
   // Número de WhatsApp de contacto.
-  whatsapp: '5493534797679',
+  whatsapp: '5493535189997',
   // Poner en true SOLO cuando el circuito de referidos funcione punta a punta.
   referidosDisponibles: false
 };
@@ -1886,6 +1892,11 @@ document.querySelectorAll('[data-demo]').forEach(function(a){
     track('cta_click', {tipo:'demo', pos:a.closest('header') ? 'header' : (a.closest('.sticky-cta') ? 'sticky' : 'seccion')});
   });
 });
+document.querySelectorAll('[data-whatsapp]').forEach(function(a){
+  a.addEventListener('click', function(){
+    track('cta_click', {tipo:'whatsapp', pos:a.closest('header') ? 'header' : (a.closest('.sticky-cta') ? 'sticky' : 'seccion')});
+  });
+});
 
 /* =====================================================================
    7. CALENDLY: se carga SOLO al abrir su tab
@@ -2011,6 +2022,7 @@ function datos(){
     web: document.getElementById('f-web').value.trim(),
     comentario: document.getElementById('f-msj').value.trim(),
     consentimiento: true,
+    sitio_web_empresa: document.getElementById('f-hp').value.trim(),
     origen: 'landing/club',
     url: location.href
   };

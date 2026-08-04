@@ -1,0 +1,8 @@
+{
+  "name": "iman-landings",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "nodemailer": "9.0.3"
+  }
+}
