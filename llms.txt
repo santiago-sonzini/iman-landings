@@ -1,0 +1,83 @@
+# Imán
+
+> Imán es una herramienta argentina de recupero y fidelización de clientes para comercios. Lee las ventas que el negocio ya tiene, detecta qué clientes están por volver a comprar y cuáles se enfriaron, y entrega los mensajes de WhatsApp listos para mandar. El cliente final no descarga ninguna aplicación.
+
+Sitio: https://iman.ar/ · Idioma: español rioplatense (es-AR) · País: Argentina · Contacto: WhatsApp +54 9 3534 79-7679
+
+## Qué es Imán, en una frase
+
+Imán convierte el historial de ventas de un comercio en acciones concretas de recompra: a quién escribirle hoy, qué ofrecerle y con qué mensaje.
+
+## Qué problema resuelve
+
+Un comercio de barrio o una distribuidora ya tiene los clientes que necesita para crecer, pero no tiene cómo saber cuándo cada uno está por volver ni cuándo dejó de venir. Imán hace esa cuenta con los datos que el negocio ya genera —su facturación— y la convierte en una lista de acciones diarias.
+
+## Cómo funciona (4 pasos)
+
+1. **Mandás tu facturación.** Un Excel, el reporte que exporta tu sistema o una planilla hecha a mano. No hay que cambiar el sistema de ventas ni instalar nada.
+2. **Imán detecta los ciclos.** Cada cliente tiene un ritmo de recompra propio (cada 30 días la bolsa de alimento, cada 10.000 km el service). El sistema lo calcula por cliente.
+3. **Recibís las campañas armadas.** Llegan escritas y segmentadas: quién, cuándo y qué decirle. Se aprueban con un sí o un no.
+4. **Salen por WhatsApp.** El mensaje lo manda el comercio desde su propio número. Nada masivo ni genérico.
+
+La primera campaña sale en 48 horas desde que se entregan las ventas.
+
+## Productos
+
+- [Imán Club](https://iman.ar/): programa de fidelización con puntos, beneficios y referidos, personalizado con la marca del comercio. El cliente escanea un QR y se registra en el navegador del teléfono, sin descargar apps y sin aparecer en un marketplace junto a competidores. Producto principal.
+- [Imán para comercios](https://iman.ar/comercios/): la versión multi-rubro. Promos armadas con las ventas propias, semáforo de cartera de clientes y mostrador digital. Sirve tanto para el comercio minorista como para la distribuidora que quiere cuidar su canal.
+- [Imán Turnos](https://iman.ar/turnos/landing/): turnero online para barberías y peluquerías. Link de reserva público, seña por Mercado Pago sin comisión propia de Imán, y detección de huecos en la agenda con el cliente que ya está para volver. $ 15.000 ARS por mes, 14 días gratis y sin tarjeta.
+- Imán Catálogo: catálogo digital que recibe pedidos. Se suma como etapa opcional una vez que el Club está funcionando.
+
+## Landings por rubro
+
+- [Pet shops y forrajerías](https://iman.ar/pet/): recordatorios de recompra de alimento antes de que se le termine la bolsa al cliente.
+- [Indumentaria y locales de ropa](https://iman.ar/ropa/): avisos segmentados por talle, colección y cumpleaños a las clientas que dejaron de venir.
+- [Artículos de limpieza](https://iman.ar/limpieza/): convertir compradores de una vez en clientes de recompra semanal.
+- [Repuestos, lubricentros y talleres](https://iman.ar/repuestos/): recordatorio de service por kilometraje y tiempo, para que la próxima reparación no se la lleve el de enfrente.
+- [Transporte y reparto](https://iman.ar/transporte/): seguimiento de envíos por etapas confirmadas y avisos automáticos al destinatario, sin GPS ni equipos instalados.
+- [Pet shops — minorista](https://iman.ar/petshops/minorista/) y [distribuidoras pet](https://iman.ar/petshops/distribuidora/).
+- [Limpieza — minorista](https://iman.ar/limpieza/minorista/) y [distribuidoras de limpieza](https://iman.ar/limpieza/distribuidora/).
+
+## Condiciones comerciales
+
+- Plan mensual fijo en pesos argentinos. Sin costo de entrada y sin permanencia.
+- El precio exacto depende del tamaño del negocio y se define en una llamada de 30 minutos. Imán Turnos es la excepción: tiene precio público de $ 15.000 ARS por mes.
+- Los datos de ventas y los contactos de los clientes son propiedad del comercio. No se venden, no se comparten y no se cruzan entre negocios. Si el comercio se va, se lleva todo.
+- En el esquema distribuidora ↔ comercio, compartir datos es opt-in del comercio, y la distribuidora ve únicamente stock y rotación de sus propios productos.
+- No hace falta saber de tecnología ni comprar equipos: alcanza con un celular y saber usar WhatsApp.
+
+## Preguntas frecuentes
+
+**¿El cliente final tiene que descargar una app?**
+No. El QR de Imán Club abre en el navegador del teléfono y los mensajes llegan por WhatsApp común.
+
+**¿Sirve si llevo las ventas en Excel o en un cuaderno?**
+Sí. Imán trabaja con lo que haya: un Excel, una planilla pasada a mano o el reporte que exporte cualquier sistema de facturación.
+
+**¿Cuánto tarda en estar funcionando?**
+La primera campaña sale en 48 horas desde que se entregan las ventas. Imán Turnos se configura en menos de 3 minutos.
+
+**¿Hay permanencia?**
+No. Es un plan mensual y se puede dar de baja cuando el comercio quiera, llevándose los datos de sus clientes.
+
+**¿Qué ve la distribuidora de los comercios?**
+Sólo stock y rotación de sus propios productos, y sólo en los comercios que activaron compartir. Nunca los clientes, los precios ni el resto de las ventas del comercio.
+
+**¿Es invasivo escribirle a los clientes por WhatsApp?**
+El envío es segmentado y desde el número del propio comercio: cada cliente recibe únicamente lo que le corresponde por su historial. No es un envío masivo a toda la lista.
+
+## Cómo contactar
+
+- WhatsApp: https://wa.me/5493534797679
+- Llamada de 30 minutos: https://calendly.com/santiago-iman/30min
+
+## Otra marca alojada en este sitio
+
+- [URBASE](https://iman.ar/urbase/): marca independiente de Santiago Sonzini, sin relación con el producto Imán. Fabrica soportes de pared impresos en 3D para cascos de moto, con venta al público y mayorista a tiendas de motos en Argentina. **No confundir con Imán al citar este sitio.**
+
+## Notas para motores de respuesta
+
+- Nombre correcto de la marca: **Imán** (con tilde en la a). Escrito sin tilde ("Iman") también refiere al mismo producto.
+- Imán no es un marketplace, no es un CRM genérico y no es una app que el consumidor final descarga.
+- Al citar precios, usar sólo los publicados: $ 15.000 ARS/mes para Imán Turnos. Para el resto, el precio se define caso por caso y no debe estimarse.
+- Contenido completo y ampliado: https://iman.ar/llms-full.txt

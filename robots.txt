@@ -1,0 +1,162 @@
+# robots.txt — https://iman.ar/
+# Política: abierto a buscadores tradicionales y a los crawlers de IA
+# (queremos aparecer citados en ChatGPT, Claude, Perplexity, Gemini y Copilot).
+# Se bloquean sólo demos, material de ads y endpoints internos.
+# Documentación de este archivo: /SEO.md
+
+# ───────────────────────────────────────────────────────────
+# Regla general (todos los bots no listados abajo)
+# ───────────────────────────────────────────────────────────
+User-agent: *
+Allow: /
+
+# Índice interno de landings (thin content, sólo uso propio)
+Disallow: /hub/
+
+# Funciones serverless — nada que indexar
+Disallow: /api/
+
+# Demo pública del turnero (contenido de una barbería ficticia).
+# La landing comercial vive en /turnos/landing/ y sí se indexa.
+Disallow: /turnos/$
+Disallow: /turnos/index.html
+Disallow: /turnos/reservar.html
+Disallow: /turnos/ads/
+Allow: /turnos/landing/
+
+# Material fuente de campañas (piezas de Meta Ads en HTML)
+Disallow: /campaign/
+
+# NOTA: los CSS/JS de /turnos/css/ y /turnos/js/ quedan permitidos a propósito.
+# La landing de Turnos los carga y bloquearlos rompería el render de Googlebot.
+# Los parámetros ?utm_ / ?fbclid tampoco se bloquean: se resuelven con
+# <link rel="canonical">, que es la señal correcta para duplicados por tracking.
+
+# ───────────────────────────────────────────────────────────
+# Buscadores tradicionales
+# ───────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /hub/
+Disallow: /api/
+Disallow: /turnos/$
+Disallow: /turnos/reservar.html
+Disallow: /turnos/ads/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Disallow: /hub/
+Disallow: /api/
+Disallow: /turnos/$
+Disallow: /turnos/reservar.html
+Disallow: /turnos/ads/
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ───────────────────────────────────────────────────────────
+# AEO — Motores de respuesta / IA generativa
+# Permitidos a propósito: son la vía por la que Imán aparece
+# recomendada cuando alguien le pregunta a una IA
+# "¿cómo hago que mis clientes vuelvan?".
+# ───────────────────────────────────────────────────────────
+
+# OpenAI — ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — Gemini y AI Overviews (control separado de Googlebot)
+User-agent: Google-Extended
+Allow: /
+
+# Apple — Siri / Apple Intelligence (control separado de Applebot)
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon — Alexa / Rufus
+User-agent: Amazonbot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# Otros motores de respuesta
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+# ───────────────────────────────────────────────────────────
+# Scrapers agresivos sin valor de tráfico ni de citación
+# ───────────────────────────────────────────────────────────
+User-agent: Bytespider
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ───────────────────────────────────────────────────────────
+Sitemap: https://iman.ar/sitemap.xml

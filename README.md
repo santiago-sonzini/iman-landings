@@ -19,6 +19,25 @@ landings de Imán. Se despliega como **un solo proyecto** en Vercel.
 La raíz muestra `/club/` mediante un rewrite de `vercel.json` (con fallback en
 `index.html`). El hub queda en `/hub/`.
 
+## SEO y AEO
+
+Ver **[`SEO.md`](SEO.md)** para el detalle. En resumen:
+
+| Archivo | Qué es |
+|---|---|
+| `robots.txt` | Permisos por crawler, incluidos los de IA. Declara el sitemap. |
+| `sitemap.xml` | Las 13 URLs indexables. Generado. |
+| `llms.txt` | Resumen del sitio para motores de respuesta (ChatGPT, Claude, Perplexity). Curado a mano. |
+| `llms-full.txt` | Volcado completo de secciones y FAQ de cada landing. Generado. |
+| `scripts/seo.py` | Genera el bloque `<head>` (canonical + robots + Open Graph + JSON-LD), el sitemap y `llms-full.txt`. Idempotente. |
+
+```bash
+python3 scripts/seo.py
+```
+
+El dominio canónico configurado es **`https://iman.ar`**; hay que apuntarlo en Vercel
+antes de mandar el sitemap a Search Console (ver los pendientes al final de `SEO.md`).
+
 ## Qué NO se sube (ver `.gitignore`)
 
 - `iman/` — el producto en sí, vive en otra carpeta/repo.

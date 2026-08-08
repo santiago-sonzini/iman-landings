@@ -1,0 +1,641 @@
+# Imán — contenido completo de las landings
+
+> Volcado en texto plano de todas las páginas públicas de https://iman.ar/, pensado para
+> motores de respuesta e IA. El índice corto está en https://iman.ar/llms.txt
+
+Última actualización: 2026-08-07 · Idioma: es-AR · País: Argentina
+
+
+---
+
+## Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes
+
+URL: https://iman.ar/
+
+Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.
+
+### Secciones de la página
+
+- Tus clientes compran. ¿Pero sabés cuántos vuelven?
+- Las tarjetas se pierden
+- Las promociones quedan aisladas
+- Las recomendaciones no se miden
+- Tus mejores clientes pueden traerte los próximos.
+- Cómo funcionan las reglas
+- Tu negocio no se adapta a Imán. Imán se adapta a tu negocio.
+- Qué se adapta a tu negocio
+- Tus clientes entran a tu marca, no a un marketplace.
+- 🏬 Una plataforma genérica
+- 💜 Imán Club
+- Un Club de Clientes que se siente parte de tu negocio.
+- Listo para usar sin cambiar la operación del comercio.
+- Conocemos tu negocio
+- Personalizamos tu Club
+- Colocás los QR
+- Empiezan a participar
+- Medís la adopción
+- Más que puntos: una herramienta para construir recurrencia.
+- El Club también vive en tu mostrador.
+- Además de fidelizar, comunicá mejor.
+- Dónde se usan
+- Empezá con fidelización. Expandí cuando lo necesites.
+- Imán Club
+- Imán Studio
+- Imán Catálogo
+- Probalo con clientes reales antes de decidir.
+- Qué vas a poder medir en la prueba
+- Veamos cómo quedaría aplicado a tu negocio.
+- Elegí un horario para conversar.
+- Lo que suelen preguntarnos
+- Hacé que tus clientes vuelvan y traigan a los próximos.
+
+### Preguntas frecuentes
+
+**¿El cliente tiene que descargar una aplicación?**
+
+No. El QR abre el Club en el navegador del teléfono. Se registra ahí mismo y vuelve a entrar con el mismo enlace o escaneando de nuevo.
+
+**¿Se personaliza completamente con mi marca?**
+
+Adaptamos logo, colores, tipografía, nombre del programa, premios, beneficios y el tono de la comunicación. La idea es que tu cliente sienta que está usando algo de tu negocio.
+
+**¿Aparecen otros comercios?**
+
+No. Cada Club es independiente y el QR abre directamente el tuyo. No hay directorio de marcas, competidores ni promociones ajenas.
+
+**¿Cómo se acreditan los puntos?**
+
+El cliente escanea el QR en el momento de la compra o la visita, y desde el panel se confirma la operación. Las reglas (cuántos puntos y por qué) se definen con vos en la configuración.
+
+**¿Quién define los premios?**
+
+Vos. Nosotros te ayudamos a armarlos para que sean sostenibles, pero los premios, su costo en puntos y los beneficios son decisión del comercio.
+
+**¿Cómo funcionan los referidos?**
+
+Cada miembro recibe un enlace o QR personal para compartir. Si un conocido se registra desde ahí y hace su primera compra, al validarla desde el panel ambos reciben el beneficio que hayas definido.
+
+**¿Cuándo reciben el beneficio las personas referidas?**
+
+Después de la primera compra del referido, una vez que el comercio la valida. No se acredita solo por registrarse: tiene que haber una compra real.
+
+**¿Qué mide la prueba gratuita?**
+
+Escaneos, registros, actividad inicial, uso de beneficios y participación del personal. Es para ver si tus clientes lo adoptan, no para prometerte un resultado de ventas en pocas semanas.
+
+**¿Necesito equipos especiales?**
+
+No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas.
+
+**¿Puedo incorporar un catálogo más adelante?**
+
+Sí, como una segunda etapa opcional. Hoy el catálogo digital completo no es una función disponible: lo conversamos cuando el Club ya esté funcionando.
+
+**¿Qué sucede si decido no continuar?**
+
+No hay permanencia. Si después de la prueba no te sirve, no continuás. Podés pedirnos los datos de los clientes que se registraron en tu Club.
+
+**¿Cómo se gestionan los datos de los clientes?**
+
+Los datos que cargan tus clientes al registrarse son de tu comercio y se usan para hacer funcionar el Club. Antes de la puesta en marcha repasamos con vos qué datos se piden y cómo se comunica el consentimiento en el registro.
+
+
+---
+
+## Imán — Vendé más con los clientes que ya tenés
+
+URL: https://iman.ar/comercios/
+
+Imán mira tus ventas, detecta a tus mejores clientes y te arma las promos con los WhatsApp listos para mandar. Para cualquier comercio que venda al público.
+
+### Secciones de la página
+
+- ¿Querés verlo con ejemplos de tu rubro?
+- ¿Sirve para mi rubro?
+- ¿Te suena alguna de estas tres?
+- Las promos se arman solas con tus propias ventas.
+- Y además, todo el mostrador en un solo lugar.
+- También hacemos catálogos que reciben pedidos por vos.
+- PetOutlet
+- Fideera del Salado
+- Mazzarella
+- Procom Mayorista
+- Bold Specialty Coffee
+- Central Mayorista Córdoba
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Cargás tus productos
+- Vendés desde el mostrador
+- Imán te dice a quién premiar
+- Se paga solo con que vuelvan un puñado de clientes en el mes.
+- Los números de un comercio de barrio, con y sin Imán
+- Preguntas que nos hacen siempre
+- La próxima venta ya está en tus ventas de ayer.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu comercio y te lo damos en la demo. Como referencia: es una fracción de lo que ya facturás en una semana típica.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Mi proveedor ve mis datos?**
+
+Solo si vos activás compartir — y aunque lo actives, ve únicamente SUS productos: cuánto stock te queda y cómo rotan. Tus clientes, tus precios y el resto de tus ventas no los ve nadie.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Cargás tus productos en una tarde (te ayudamos) y esa misma semana salen tus primeras promos.
+
+**Uso Excel / otro sistema de facturación. ¿Me sirve igual?**
+
+Sí. Si ya facturás con otro sistema, traemos tu historial desde un Excel o el reporte que exporte. Y si no usás nada, mejor: Imán te resuelve el mostrador desde el día uno.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.
+
+
+---
+
+## Imán Turnos — Tu agenda llena, sin perseguir a nadie
+
+URL: https://iman.ar/turnos/landing/
+
+El turnero para barberías que detecta los huecos de tu día y te dice qué cliente ya está para volver, con el WhatsApp listo. $ 15.000/mes, 14 días gratis.
+
+### Secciones de la página
+
+- Te suena, ¿no?
+- Arrancás hoy, en 3 pasos
+- Creá tu cuenta
+- Cargá servicios y horarios
+- Compartí tu link
+- Así lo ve tu cliente
+- Huecos que se venden solos
+- Un precio que se paga solo
+- Preguntas de barbero
+- Mañana a esta hora, tu link ya está en tu bio.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale?**
+
+$ 15.000 por mes, en pesos. Sin costo por turno ni sorpresas en dólares. Los primeros 14 días son gratis y no te pedimos tarjeta.
+
+**¿La seña cómo funciona?**
+
+Con Mercado Pago. La plata va directo a tu cuenta e Imán no te cobra comisión por cada seña (aplican solo las comisiones normales de Mercado Pago).
+
+**¿Qué pasa con mis datos y mis clientes?**
+
+Son tuyos. Los exportás cuando quieras y, si un día te vas, te los llevás. No los compartimos con nadie.
+
+**¿Cuánto tarda armarlo?**
+
+Menos de 3 minutos: nombre, servicios (ya vienen precargados) y horarios. Sin instalar nada: anda en el teléfono que ya tenés.
+
+**No sé nada de tecnología**
+
+Si usás WhatsApp, ya sabés usar Imán Turnos. Y si te trabás en algo, nos escribís y te lo dejamos andando nosotros.
+
+**¿Mis clientes tienen que bajarse una app?**
+
+No. Entran a tu link, eligen horario y confirman. Sin cuenta, sin app, sin contraseña.
+
+
+---
+
+## Que nunca se le termine el alimento sin que vos aparezcas primero
+
+URL: https://iman.ar/pet/
+
+Analizamos las ventas de tu pet shop, calculamos cuándo se le termina la bolsa a cada cliente y le avisamos por WhatsApp antes que el súper.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- El sistema hace la cuenta que vos no llegás a hacer.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Nos mandás tus ventas
+- Detectamos los ciclos
+- Tu primera campaña sale en 48 hs
+- Cuesta menos que una bolsa de alimento.
+- Los números de un pet shop de barrio, con y sin recordatorios
+- Preguntas que nos hacen siempre
+- La próxima bolsa se compra donde llegue el primer mensaje.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu base de clientes, y te lo damos en la llamada de 30 minutos. Como referencia: menos de lo que sale una bolsa de alimento premium de 15 kg por mes.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y los datos de tus clientes son tuyos, siempre. Los usamos solo para armar los recordatorios de TU pet shop: no se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tus ventas, tu primera campaña sale en 48 horas. La llamada inicial es de 30 minutos y después el trabajo pesado lo hacemos nosotros.
+
+**Uso Excel / un sistema de facturación viejo. ¿Me sirve igual?**
+
+Sí. Trabajamos con lo que tengas: un Excel, un cuaderno pasado a planilla, o el reporte que exporta tu sistema de facturación. No hace falta cambiar nada de lo que usás hoy.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+No tenés que operar ningún sistema: nosotros lo configuramos y las campañas te llegan armadas para que las apruebes con un sí o un no. Si sabés contestar un WhatsApp, ya sabés todo lo que hace falta.
+
+
+---
+
+## Tus mejores clientas no volvieron este mes — Avisales antes que la competencia
+
+URL: https://iman.ar/ropa/
+
+Analizamos el historial de ventas de tu local de ropa, detectamos qué clientas dejaron de venir y las traemos de vuelta con mensajes de WhatsApp que se agradecen.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- El sistema te muestra quién se está yendo antes de que sea tarde.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Nos mandás tus ventas
+- Detectamos los ritmos
+- Tu primera campaña sale en 48 horas
+- Una sola clienta que vuelve ya lo pagó.
+- Los números de un local de barrio, con y sin reactivación
+- Preguntas que nos hacen siempre
+- La clienta que no volvió esta temporada está a un mensaje de volver.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu base de clientas, y te lo damos en la llamada de 30 minutos. Como referencia: menos de lo que sale una prenda de las que tenés colgadas.
+
+**¿No es invasivo escribirles por WhatsApp?**
+
+Al revés. Un mensaje segmentado con valor real —«llegó tu talle», «acceso anticipado a la colección», «feliz cumple, tenés un regalo»— se agradece y convierte. Lo que molesta es el mensaje masivo genérico a toda la lista, y eso es exactamente lo que este sistema NO hace: cada clienta recibe solo lo que tiene que ver con lo que compra.
+
+**¿Qué pasa con mis datos y los de mis clientas?**
+
+Tus ventas y los datos de tus clientas son tuyos, siempre. Los usamos solo para armar las campañas de TU local: no se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tus ventas, tu primera campaña sale en 48 horas. La llamada inicial es de 30 minutos y después el trabajo pesado lo hacemos nosotros.
+
+**Uso Excel / un sistema de facturación viejo. ¿Me sirve igual?**
+
+Sí. Trabajamos con lo que tengas: un Excel, un cuaderno pasado a planilla o el reporte que exporta tu sistema de facturación. No hace falta cambiar nada de lo que usás hoy.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+No tenés que operar ningún sistema: nosotros lo configuramos y las campañas te llegan armadas para que las apruebes con un sí o un no. Si sabés contestar un WhatsApp, ya sabés todo lo que hace falta.
+
+
+---
+
+## Convertí compradores de una vez en clientes de todas las semanas
+
+URL: https://iman.ar/limpieza/
+
+Analizamos las ventas de tu negocio de artículos de limpieza, calculamos cuándo se le termina cada producto a cada cliente y le avisamos por WhatsApp antes que el súper.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- El sistema sabe cuándo se le termina cada producto a cada cliente.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Nos mandás tus ventas
+- Detectamos los ciclos
+- Tu primera campaña sale en 48 horas
+- Se paga solo con 3 clientes que vuelvan en el mes.
+- Los números de una química de barrio, con y sin recordatorios
+- Preguntas que nos hacen siempre
+- La próxima lavandina se compra donde llegue el primer mensaje.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu base de clientes, y te lo damos en la llamada de 30 minutos. Como referencia: se cubre con las primeras 3 recompras del mes.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y los datos de tus clientes son tuyos, siempre. Los usamos solo para armar los recordatorios de TU negocio: no se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tus ventas, tu primera campaña sale en 48 horas. La llamada inicial es de 30 minutos y después el trabajo pesado lo hacemos nosotros.
+
+**Uso Excel / anoto en un cuaderno. ¿Me sirve igual?**
+
+Sí. Trabajamos con lo que tengas: un Excel, el reporte que exporta tu sistema de facturación o un cuaderno pasado a planilla. No hace falta cambiar nada de lo que usás hoy.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+No operás ningún sistema: nosotros lo configuramos y las campañas te llegan armadas para que las apruebes con un sí o un no. Si sabés contestar un WhatsApp, ya sabés todo lo que hace falta.
+
+
+---
+
+## Que el service lo compren con vos, no con el de enfrente
+
+URL: https://iman.ar/repuestos/
+
+Analizamos las ventas de tu casa de repuestos, calculamos el ciclo de service de cada cliente y le avisamos por WhatsApp antes de que compre en otra casa.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- La rotura no avisa. El mantenimiento sí — y el sistema lleva la cuenta.
+- Arrancás esta semana, sin tocar nada de lo que usás
+- Nos mandás tus ventas
+- Detectamos los ciclos
+- Tu primera campaña sale en 48 horas
+- Un cambio de aceite recuperado por semana y ya estás ganando.
+- Los números de una casa de repuestos de barrio, con y sin sistema
+- Preguntas de mostrador
+- El próximo service se compra donde llegue el primer aviso.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu base de clientes, y te lo damos en la llamada de 30 minutos. Como referencia: menos que el margen de un par de services al mes.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y los datos de tus clientes son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie — tampoco con otras casas de repuestos. Si te vas, te llevás todo.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tus ventas, tu primera campaña sale en 48 horas. La llamada inicial es de 30 minutos y el trabajo pesado lo hacemos nosotros.
+
+**Uso Excel / un sistema de facturación viejo. ¿Me sirve igual?**
+
+Sí. Trabajamos con lo que tengas: un Excel, el reporte que exporta tu sistema de facturación o una planilla armada a mano. Con el reporte de ventas alcanza.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+No operás ningún sistema. Las campañas te llegan armadas y las aprobás con un sí o un no. Si sabés contestar un WhatsApp, ya está.
+
+
+---
+
+## Que tu cliente nunca más te pregunte «¿dónde está mi pedido?»
+
+URL: https://iman.ar/transporte/
+
+Avisamos a tu cliente por WhatsApp en cada etapa del envío — despachado, en camino y entregado — y te dejamos toda la operación en un solo panel, con prueba de entrega. Menos llamados, menos reclamos.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- El pedido avanza y el aviso sale solo.
+- Arrancás esta semana, sin cambiar cómo trabajás
+- Cargás tus envíos
+- Marcás cada etapa
+- El aviso sale solo
+- Cuesta menos que una mañana contestando «¿dónde está?».
+- Los números de un reparto de todos los días, con y sin avisos
+- Preguntas que nos hacen siempre
+- La próxima entrega, con el cliente tranquilo y avisado.
+
+### Preguntas frecuentes
+
+**¿Necesito GPS o rastreo satelital?**
+
+No. El seguimiento es por etapas confirmadas —despachado, en camino, entregado— no por posición en el mapa. Vos o el chofer marcan cada paso y el cliente recibe el aviso. Sin equipos, sin instalación en las unidades.
+
+**¿El chofer tiene que instalar una app complicada?**
+
+No. Marca cada etapa desde un enlace en el celular, con un toque. Al entregar, carga la firma y la foto en la misma pantalla. Si sabe usar WhatsApp, ya está.
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del volumen de envíos, y te lo damos en la llamada de 30 minutos. Como referencia: menos de lo que te cuesta una mañana entera contestando consultas.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos contás cómo trabajás, lo dejamos andando en pocos días. La llamada inicial es de 30 minutos y la puesta en marcha la hacemos nosotros.
+
+**Uso Excel / un sistema de pedidos propio. ¿Me sirve igual?**
+
+Sí. Trabajamos con lo que tengas: una planilla, el reporte que exporta tu sistema o una carga a mano. Con los envíos y el teléfono del cliente alcanza para arrancar.
+
+
+---
+
+## Imán para pet shops — que tus clientes vuelvan a comprar a tiempo
+
+URL: https://iman.ar/petshops/minorista/
+
+Imán mira las ventas de tu pet shop, detecta a quién se le está por terminar el alimento y te deja las promos y los WhatsApp listos para mandar. Sin cambiar tu sistema.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- Las promos se arman solas con tus propias ventas.
+- Y además, todo el mostrador en un solo lugar.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Cargás tus productos
+- Vendés desde el mostrador
+- Imán te dice a quién premiar
+- Cuesta menos que una bolsa de alimento.
+- Los números de un pet shop de barrio, con y sin Imán
+- Preguntas que nos hacen siempre
+- La próxima promo ya está en tus ventas de ayer.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu negocio y te lo damos en la demo. Como referencia: menos de lo que sale una bolsa premium de 15 kg por mes.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Mi proveedor ve mis datos?**
+
+Solo si vos activás compartir — y aunque lo actives, ve únicamente SUS productos: cuánto stock te queda y cómo rotan. Tus clientes, tus precios y el resto de tus ventas no los ve nadie.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Cargás tus productos en una tarde (te ayudamos) y esa misma semana salen tus primeras promos.
+
+**Uso Excel / otro sistema de facturación. ¿Me sirve igual?**
+
+Sí. Si ya facturás con otro sistema, traemos tu historial desde un Excel o el reporte que exporte. Y si no usás nada, mejor: Imán te resuelve el mostrador desde el día uno.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.
+
+
+---
+
+## Imán para distribuidoras pet — premiá a tus comercios y recuperá los que se enfrían
+
+URL: https://iman.ar/petshops/distribuidora/
+
+Imán analiza tu facturación mayorista, te muestra qué pet shops bajaron sin avisar y a cuáles premiar, y te deja regalarles la herramienta con tu marca.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- Tu facturación ya sabe a quién premiar y a quién llamar.
+- Regalales la herramienta. Quedate con la lealtad.
+- La herramienta que regalás resuelve el mostrador entero.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Nos mandás tu facturación
+- Vemos juntos tu cartera
+- Tus comercios reciben su copia
+- Un solo comercio recuperado paga el mes.
+- Los números de una distribuidora zonal, con y sin Imán
+- Preguntas que nos hacen siempre
+- Tu cartera entera, en un tablero, en 30 minutos.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia, con las copias para tus comercios incluidas. El número exacto depende del tamaño de tu cartera y te lo damos en la llamada de 30 minutos.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Qué ve exactamente cada parte?**
+
+El comercio ve todo lo suyo: sus ventas, sus clientes, sus precios. Vos ves stock y rotación solo de TUS productos, y solo en los comercios que eligieron compartir. Es opt-in del comercio, y así se lo decimos a ellos también: la confianza del canal es el negocio.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tu facturación, tu semáforo de cartera está listo en 48 horas.
+
+**Uso Excel / otro sistema de facturación. ¿Me sirve igual?**
+
+Sí. Trabajamos con tu facturación exportada: Excel, tu sistema o lo que uses. No cambiás nada de tu operación.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.
+
+
+---
+
+## Imán para negocios de limpieza — clientes que recompran todas las semanas
+
+URL: https://iman.ar/limpieza/minorista/
+
+Imán usa las ventas de tu negocio de limpieza para detectar quién está por reponer y quién dejó de venir, y te arma las promos con el WhatsApp listo.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- Los combos se arman solos con tus propias ventas.
+- Y además, todo el mostrador en un solo lugar.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Cargás tus productos
+- Vendés desde el mostrador
+- Imán te dice a quién premiar
+- Se paga solo con 3 clientes que vuelvan en el mes.
+- Los números de un comercio de barrio, con y sin Imán
+- Preguntas que nos hacen siempre
+- El próximo combo ya está en tus ventas de ayer.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia. El número exacto depende del tamaño de tu negocio y te lo damos en la demo. Como referencia: se cubre con las primeras recompras del mes.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Mi proveedor ve mis datos?**
+
+Solo si vos activás compartir — y aunque lo actives, ve únicamente SUS productos: cuánto stock te queda y cómo rotan. Tus clientes, tus precios y el resto de tus ventas no los ve nadie.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Cargás tus productos en una tarde (te ayudamos) y esa misma semana salen tus primeras promos.
+
+**Uso Excel / otro sistema de facturación. ¿Me sirve igual?**
+
+Sí. Si ya facturás con otro sistema, traemos tu historial desde un Excel o el reporte que exporte. Y si no usás nada, mejor: Imán te resuelve el mostrador desde el día uno.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.
+
+
+---
+
+## Imán para distribuidoras de limpieza — premiá a tus comercios y recuperá los que se enfrían
+
+URL: https://iman.ar/limpieza/distribuidora/
+
+Imán analiza tu facturación mayorista, te muestra qué comercios de limpieza bajaron sin avisar y a cuáles premiar, y te deja regalarles la herramienta con tu marca.
+
+### Secciones de la página
+
+- ¿Te suena alguna de estas tres?
+- Tu facturación ya sabe a quién premiar y a quién llamar.
+- Regalales la herramienta. Quedate con la lealtad.
+- La herramienta que regalás resuelve el mostrador entero.
+- Arrancás esta semana, sin cambiar nada de lo que usás
+- Nos mandás tu facturación
+- Vemos juntos tu cartera
+- Tus comercios reciben su copia
+- Un solo comercio recuperado paga el mes.
+- Los números de una distribuidora zonal, con y sin Imán
+- Preguntas que nos hacen siempre
+- Tu cartera entera, en un tablero, en 30 minutos.
+
+### Preguntas frecuentes
+
+**¿Cuánto sale en pesos?**
+
+Es un plan mensual fijo en pesos, sin costo de entrada y sin permanencia, con las copias para tus comercios incluidas. El número exacto depende del tamaño de tu cartera y te lo damos en la llamada de 30 minutos.
+
+**¿Qué pasa con mis datos y los de mis clientes?**
+
+Tus ventas y tus contactos son tuyos, siempre. No se venden, no se comparten y no se cruzan con nadie. Si te vas, te llevás todo.
+
+**¿Qué ve exactamente cada parte?**
+
+El comercio ve todo lo suyo: sus ventas, sus clientes, sus precios. Vos ves stock y rotación solo de TUS productos, y solo en los comercios que eligieron compartir. Es opt-in del comercio, y así se lo decimos a ellos también: la confianza del canal es el negocio.
+
+**¿Cuánto tarda en estar funcionando?**
+
+Desde que nos mandás tu facturación, tu semáforo de cartera está listo en 48 horas.
+
+**Uso Excel / otro sistema de facturación. ¿Me sirve igual?**
+
+Sí. Trabajamos con tu facturación exportada: Excel, tu sistema o lo que uses. No cambiás nada de tu operación.
+
+**No sé nada de tecnología. ¿Voy a poder usarlo?**
+
+Si sabés cobrar y contestar un WhatsApp, ya sabés usar Imán. Las promos llegan armadas y las aprobás con un sí o un no. Y te acompañamos hasta que salga la primera.
+
+
+---
+
+## URBASE — Soportes de pared para cascos de moto
+
+URL: https://iman.ar/urbase/
+
+Soportes de pared para cascos impresos en 3D. Guardá tu casco sin tocar la visera y colgá campera, guantes y llaves. Venta al público y por mayor para tiendas de motos.
+
+### Secciones de la página
+
+- ¿Tenés una tienda de motos?
