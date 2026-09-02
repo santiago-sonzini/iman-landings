@@ -217,6 +217,7 @@ body::after{
    MARCA IMÁN (logo + partículas)
    ===================================================================== */
 .iman-marca{display:flex;align-items:center;gap:.5rem}
+.iman-marca.oscuro{background:transparent}
 .iman-nombre{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1}
 .iman-nombre i{font-style:normal;color:var(--acento)}
 .iman-nombre small{font-family:var(--cuerpo);font-weight:800;font-size:.62em;opacity:.75;margin-left:.25em}
@@ -821,7 +822,11 @@ body::after{
 .cierre p{color:#D9C9B8;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
 .cierre .iman-marca{justify-content:center}
 .cierre-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
-footer{background:#241810;color:#bfa893;text-align:center;padding:2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600}
+footer{
+  background:var(--tinta);color:#C4AF9C;text-align:center;
+  padding:2.2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600;
+  border-top:1px solid rgba(255,246,233,.12);
+}
 footer .iman-marca{justify-content:center;margin-bottom:.7rem}
 footer .iman-svg{width:30px}
 footer .iman-nombre{font-size:1.05rem}
@@ -1762,7 +1767,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
 <!-- ================= 15. CIERRE ================= -->
 <section class="cierre" aria-labelledby="h-cierre">
   <div class="wrap wrap-sm">
-    <div class="iman-marca" aria-label="Imán">
+    <div class="iman-marca oscuro" aria-label="Imán">
       <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
         <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
         <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
