@@ -1,0 +1,338 @@
+{
+  "exportedAt": "2026-09-03T05:00:40.291Z",
+  "products": [
+    {
+      "id": "cmtjjkcfg000rko7s37r6dbga",
+      "name": "Caja con olas en relieve",
+      "slug": "caja-con-olas-en-relieve",
+      "description": "Perfil: capa 0,2 mm, 2 paredes, 10% relleno",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/caja-con-olas-en-relieve/18779127b851b44e.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/caja-con-olas-en-relieve/18779127b851b44e.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/caja-con-olas-en-relieve/6b4b42a398eeec8e.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/caja-con-olas-en-relieve/43e1434762c59b72.jpg"
+      ],
+      "wholesalePrice": 25335.9,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcvyi000gzrfbx999pqge",
+      "name": "Clip para bolsa de café 1 kg",
+      "slug": "clip-para-bolsa-de-cafe-1-kg",
+      "description": "Perfil: capa 0,2 mm, 2 paredes, 15% relleno",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-para-bolsa-de-cafe-1-kg/013b2e5d9194bf4f.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-para-bolsa-de-cafe-1-kg/013b2e5d9194bf4f.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-for-1-kg-coffee-bag/23775d7fdaeed062.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-for-1-kg-coffee-bag/be40e4d148e1d8c3.png"
+      ],
+      "wholesalePrice": 7448.63,
+      "variants": []
+    },
+    {
+      "id": "cmtjfd365000mzrfbvnzww4mb",
+      "name": "Clip para bolsa de café 1 kg (reforzado)",
+      "slug": "clip-para-bolsa-de-cafe-1-kg-reforzado",
+      "description": "Perfil: capa 0,2 mm, 6 paredes, 20% relleno",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-para-bolsa-de-cafe-1-kg-reforzado/9c3b9484938a4918.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/clip-para-bolsa-de-cafe-1-kg-reforzado/9c3b9484938a4918.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/coffee-bag-clip-for-1kg-bags/fcba46480bb88567.jpeg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/coffee-bag-clip-for-1kg-bags/dc0553baef71751c.jpg"
+      ],
+      "wholesalePrice": 6569.12,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcze0000jzrfbs1p5k5ic",
+      "name": "Colgador de casco de moto",
+      "slug": "colgador-de-casco-de-moto",
+      "description": "Perfil: pico 0,4 mm, capa 0,2 mm, 4 paredes, 15% relleno",
+      "category": "Vehículos",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/colgador-de-casco-de-moto/f47a0b25b98282d5.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/colgador-de-casco-de-moto/f47a0b25b98282d5.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/colgador-de-casco-de-moto/b1b7488c9eb69769.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/colgador-de-casco-de-moto/3b8d20c8c505a9e5.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/motorcycle-helmet-hanger/94cbe684022fd0f6.png"
+      ],
+      "wholesalePrice": 9000,
+      "variants": [
+        {
+          "id": "cmtjia8hz0001fv0gxdk84ut6",
+          "name": "Negro · logo normal",
+          "colorName": "Negro",
+          "colorHex": "#111111",
+          "wholesalePrice": 9000
+        },
+        {
+          "id": "cmtjia92z0003fv0gm1pcdm21",
+          "name": "Negro · logo Honda",
+          "colorName": "Negro",
+          "colorHex": "#111111",
+          "wholesalePrice": 9000
+        },
+        {
+          "id": "cmtjia9tu0005fv0g3o6ge6v1",
+          "name": "Blanco · logo normal",
+          "colorName": "Blanco",
+          "colorHex": "#f5f5f5",
+          "wholesalePrice": 9000
+        }
+      ]
+    },
+    {
+      "id": "cmtjjkjwm000vko7skz71x20b",
+      "name": "Gancho para mampara de 6 mm",
+      "slug": "gancho-para-mampara-de-6-mm",
+      "description": "Perfil: gancho para vidrio o panel de 6 mm",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/gancho-para-mampara-de-6-mm/1a53cb1763ee45e7.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/gancho-para-mampara-de-6-mm/1a53cb1763ee45e7.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/gancho-para-mampara-de-6-mm/1e6b89ca53ef1109.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/gancho-para-mampara-de-6-mm/83160c488c86daca.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/gancho-para-mampara-de-6-mm/64b7cb90eadaaeb3.jpg"
+      ],
+      "wholesalePrice": 1265.62,
+      "variants": []
+    },
+    {
+      "id": "cmtjfca0g0000zrfbv8927j1b",
+      "name": "Llavero soporte plegable para celular",
+      "slug": "llavero-soporte-plegable-para-celular",
+      "description": "Perfil: soporte de celular",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/llavero-soporte-plegable-para-celular/e34aad03a10b2160.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/llavero-soporte-plegable-para-celular/e34aad03a10b2160.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pocket-flip-phone-stand-keychain/80d16c14d684f721.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pocket-flip-phone-stand-keychain/079ece2fae9e2bc2.jpg"
+      ],
+      "wholesalePrice": 1709.84,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcfgr0004zrfbwqxub7ft",
+      "name": "Máquina de afeitar clásica",
+      "slug": "maquina-de-afeitar-clasica",
+      "description": "Perfil: capa 0,12 mm — corte real en Bambu Studio",
+      "category": "Herramientas",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/maquina-de-afeitar-clasica/80ca431d11142e74.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/maquina-de-afeitar-clasica/80ca431d11142e74.png"
+      ],
+      "wholesalePrice": 3785.62,
+      "variants": []
+    },
+    {
+      "id": "cmtjjjql2000hko7sdg18waei",
+      "name": "Pico regulable para manguera",
+      "slug": "pico-regulable-para-manguera",
+      "description": "Perfil: capa 0,24 mm, 2 paredes, 100% relleno",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/076a07c3cb089025.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/076a07c3cb089025.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/49f91a92164b3329.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/77df6196d14868f9.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/1755562cc6e79175.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/8a7701278d2a6c1a.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/pico-regulable-para-manguera/b0eedc176ec260b4.jpg"
+      ],
+      "wholesalePrice": 5072.15,
+      "variants": []
+    },
+    {
+      "id": "cmtjjk5u8000lko7suci6xqhw",
+      "name": "Posavasos de iris",
+      "slug": "posavasos-de-iris",
+      "description": "Perfil: capa 0,08 mm, 2 paredes, 100% relleno",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/503c0e86405a0081.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/503c0e86405a0081.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/4f3362b186e202a7.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/7214be897622a7fb.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/bd1248a136c62d9e.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/4b3798019808489a.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/e511be8ac6d4ca00.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/posavasos-de-iris/95136a09d3e1ad00.jpg"
+      ],
+      "wholesalePrice": 4033.49,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcisw0007zrfb6avrujbh",
+      "name": "Recolector de polvo para taladro",
+      "slug": "recolector-de-polvo-para-taladro",
+      "description": "Perfil: PLA, capa 0,2 mm, 2 paredes, 15% relleno",
+      "category": "Herramientas",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/recolector-de-polvo-para-taladro/3f2895600e2b962e.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/recolector-de-polvo-para-taladro/3f2895600e2b962e.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/bohrstaubfanger-drilling-dust-collector/e3a1f1079778ab0a.png"
+      ],
+      "wholesalePrice": 2346.17,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcrha000dzrfb7093jqc0",
+      "name": "Soporte chico para celular",
+      "slug": "soporte-chico-para-celular",
+      "description": "Perfil: estándar / chico (hasta 11,5 mm de espesor)",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-chico-para-celular/b673e193092c49b3.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-chico-para-celular/b673e193092c49b3.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/small-smartphone-stand-print-in-place-design/b1ea83ab3ea677c6.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/small-smartphone-stand-print-in-place-design/657ac4a04e696a9e.jpeg"
+      ],
+      "wholesalePrice": 1417.27,
+      "variants": []
+    },
+    {
+      "id": "cmtkfesqb00017dsb9dwkonoo",
+      "name": "Soporte chico para celular 13 mm (marca Sanigas)",
+      "slug": "soporte-chico-para-celular-13-mm-sanigas",
+      "description": "Perfil: 13 mm de espesor · con la marca Sanigas impresa en 3 colores",
+      "category": "Hogar",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/small-smartphone-stand-print-in-place-design/b1ea83ab3ea677c6.jpg",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/small-smartphone-stand-print-in-place-design/b1ea83ab3ea677c6.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/small-smartphone-stand-print-in-place-design/657ac4a04e696a9e.jpeg"
+      ],
+      "wholesalePrice": 2219.24,
+      "variants": []
+    },
+    {
+      "id": "cmtjfcpgm000azrfb5skdmrh1",
+      "name": "Soporte de celular para exterior",
+      "slug": "soporte-de-celular-para-exterior",
+      "description": "Perfil: para celulares con funda",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-de-celular-para-exterior/7b2351ad57a23345.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-de-celular-para-exterior/7b2351ad57a23345.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/outdoor-phone-stand-compact-and-durable/04b37acde0df837b.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/outdoor-phone-stand-compact-and-durable/badf6a78f51b3746.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/outdoor-phone-stand-compact-and-durable/66691fe6b1f8272b.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/outdoor-phone-stand-compact-and-durable/a8316e7a4ff0547f.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/outdoor-phone-stand-compact-and-durable/a8c34786e7e07ffd.png"
+      ],
+      "wholesalePrice": 1542.92,
+      "variants": []
+    },
+    {
+      "id": "cmtjk2awu001av3soe77yf6h0",
+      "name": "Soporte minimalista para auriculares",
+      "slug": "soporte-minimalista-para-auriculares",
+      "description": "Perfil: perfil corregido: capa 0,2 mm, 3 paredes, 15% relleno",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-minimalista-para-auriculares/651580242bc9b211.jpeg",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-minimalista-para-auriculares/651580242bc9b211.jpeg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-minimalista-para-auriculares/dd00cbc8952b9403.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-minimalista-para-auriculares/1b3316982f4c6049.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-minimalista-para-auriculares/518bce712bae7cc4.jpeg"
+      ],
+      "wholesalePrice": 8361.88,
+      "variants": []
+    },
+    {
+      "id": "cmtjk22p40017v3sohdlo39b7",
+      "name": "Soporte moderno para auriculares",
+      "slug": "soporte-moderno-para-auriculares",
+      "description": "Perfil: capa 0,16 mm, 2 paredes, 8% relleno",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-moderno-para-auriculares/291e1ea2bd4b5c72.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-moderno-para-auriculares/291e1ea2bd4b5c72.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-moderno-para-auriculares/74ff8b6c0b69a549.png"
+      ],
+      "wholesalePrice": 12237.14,
+      "variants": []
+    },
+    {
+      "id": "cmtjk1sqf0010v3soo2puy4kt",
+      "name": "Soporte modular para auriculares",
+      "slug": "soporte-modular-para-auriculares",
+      "description": "Perfil: PLA, capa 0,2 mm, 2 paredes, 15% relleno",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-modular-para-auriculares/179d0ebde1b7aaa5.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-modular-para-auriculares/179d0ebde1b7aaa5.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-modular-para-auriculares/2a607b346c9f1604.jpg"
+      ],
+      "wholesalePrice": 32438.45,
+      "variants": []
+    },
+    {
+      "id": "cmtjk1bg5000uv3sobv12h736",
+      "name": "Soporte ovalado para auriculares",
+      "slug": "soporte-ovalado-para-auriculares",
+      "description": "Perfil: capa 0,2 mm, 2 paredes, 15% relleno",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-ovalado-para-auriculares/a7a3dddd8e42f078.png",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-ovalado-para-auriculares/a7a3dddd8e42f078.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-ovalado-para-auriculares/a7a3dddd8e42f078.png",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-ovalado-para-auriculares/c0ac0620fc3dc7fa.png"
+      ],
+      "wholesalePrice": 11123.41,
+      "variants": []
+    },
+    {
+      "id": "cmtjk1npl000xv3soegc3hece",
+      "name": "Soporte para auriculares (cuerpo completo)",
+      "slug": "soporte-para-auriculares-cuerpo-completo",
+      "description": "Perfil: 4. Soporte para auriculares de cuerpo completo",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-cuerpo-completo/8d493800061fd6d2.jpg",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-cuerpo-completo/8d493800061fd6d2.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-cuerpo-completo/1d119547f139208b.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-cuerpo-completo/a7d7212fa4c2ba2d.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-cuerpo-completo/7bc1dd835f6d7952.jpg"
+      ],
+      "wholesalePrice": 13884.32,
+      "variants": []
+    },
+    {
+      "id": "cmtjk1y2u0014v3sonq4c6r6v",
+      "name": "Soporte para auriculares con encastre",
+      "slug": "soporte-para-auriculares-con-encastre",
+      "description": "Perfil: versión estándar (220 mm)",
+      "category": "Accesorios",
+      "sku": null,
+      "imageUrl": "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-con-encastre/77b0b15f91292658.jpg",
+      "images": [
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-con-encastre/77b0b15f91292658.jpg",
+        "https://jpojeveiwjwophbzkzfn.supabase.co/storage/v1/object/public/products/impresiones3d/soporte-para-auriculares-con-encastre/77b0b15f91292658.jpg"
+      ],
+      "wholesalePrice": 8413.07,
+      "variants": []
+    }
+  ]
+}

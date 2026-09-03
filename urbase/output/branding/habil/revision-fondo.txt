@@ -1,0 +1,6 @@
+Use case: precise-object-edit.
+Input image 1 is the edit target: an existing brand presentation board.
+Change ONLY the page background and opacity/contrast problem. Keep the exact logo design, wordmark lettering, shapes, brand colors, all words, all product mockup photographs, layout and framing unchanged.
+The existing image has erroneous transparency and dark hazy glow that makes the main logo unreadable. Replace ALL empty/background page areas and the entire top logo presentation field with completely flat solid opaque warm white (#F8F7F2). Put the original dark or colored logo and text cleanly on this LIGHT white background with full contrast. Do the same for the small monochrome logo specimen field: pure black logo on opaque white.
+Remove all haze, color glow, dark gradients and transparent areas around the graphic elements, but preserve natural lighting INSIDE the product mockup photo rectangles.
+This is a COMPLETE OPAQUE PRESENTATION POSTER with a white page, NOT an isolated logo asset. Fill every background pixel with opaque white. Final entire image must be opaque including corners and gaps; no transparency, no alpha cutout, no checkerboard. Flat white paper background, crisp original logos. Do not redesign, remove or add any content.

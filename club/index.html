@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#FFF6E9">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%2333231A' stroke-width='34'/%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%236C5CE7' stroke-width='21'/%3E%3Crect x='13' y='88' width='42' height='20' rx='4' fill='%23FFFDF8' stroke='%2333231A' stroke-width='5'/%3E%3Crect x='65' y='88' width='42' height='20' rx='4' fill='%23FFFDF8' stroke='%2333231A' stroke-width='5'/%3E%3Cpath d='M28 114l-7 9M60 117v10M92 114l7 9' stroke='%2333231A' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F7F7FC">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%23242333' stroke-width='34'/%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%236C5CE7' stroke-width='21'/%3E%3Crect x='13' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Crect x='65' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Cpath d='M28 114l-7 9M60 117v10M92 114l7 9' stroke='%23242333' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 
 <title>Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes</title>
 <meta name="description" content="Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.">
@@ -103,15 +103,15 @@ src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></
 
 <style>
 /* =====================================================================
-   SISTEMA BASE IMÁN  (mismos tokens que /comercios y /turnos)
+   SISTEMA BASE IMÁN CLUB (neutros fríos + violeta de marca)
    ===================================================================== */
 :root{
-  --crema:#FFF6E9;
-  --tinta:#33231A;
-  --blanco:#FFFDF8;
-  --texto:#5a463a;
-  --tinta-suave:#7F6857;   /* AA sobre crema y blanco (4.9 / 5.1) */
-  --linea:#EADDC8;
+  --crema:#F7F7FC;
+  --tinta:#242333;
+  --blanco:#FFFFFF;
+  --texto:#525266;
+  --tinta-suave:#68687B;   /* contraste AA sobre las superficies claras */
+  --linea:#DDDDE8;
 
   --acento:#6C5CE7;
   --acento-osc:#4E3FC0;
@@ -123,10 +123,13 @@ src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></
   --verde-wa:#25D366;
   --verde-wa-osc:#1DA851;
   --rojo:#E23D3D;
+  --rojo-seccion:#C63249;
+  --rojo-seccion-osc:#B52F41;
+  --resalte-calido:#FFF3CB;
 
   --radio:22px;
   --borde:2.5px solid var(--tinta);
-  --sombra:0 10px 30px rgba(51,35,26,.12);
+  --sombra:0 10px 30px rgba(36,35,51,.12);
   --sombra-dura:0 4px 0 var(--tinta);
   --resorte:cubic-bezier(.34,1.56,.64,1);
 
@@ -228,16 +231,16 @@ body::after{
 .iman-polo{fill:var(--blanco);stroke:var(--tinta);stroke-width:5}
 .iman-chispa{stroke:var(--tinta);stroke-width:5;stroke-linecap:round;fill:none}
 .oscuro .iman-nombre{color:var(--crema)}
-.oscuro .iman-nombre i{color:var(--acento-claro)}
+.oscuro .iman-nombre i{color:var(--resalte-calido)}
 .oscuro .iman-cuerpo-borde{stroke:var(--crema)}
-.oscuro .iman-polo{fill:var(--tinta);stroke:var(--crema)}
+.oscuro .iman-polo{fill:var(--rojo-seccion);stroke:var(--crema)}
 .oscuro .iman-chispa{stroke:var(--crema)}
 
 /* =====================================================================
    HEADER STICKY
    ===================================================================== */
 .hdr{
-  position:sticky;top:0;z-index:70;background:rgba(255,246,233,.92);
+  position:sticky;top:0;z-index:70;background:rgba(247,247,252,.92);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   border-bottom:2.5px solid var(--tinta);
 }
@@ -294,25 +297,23 @@ body::after{
 .hero-chips li{
   display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:800;
   background:var(--blanco);border:2px solid var(--tinta);border-radius:999px;padding:.32rem .7rem;
-  box-shadow:0 3px 0 rgba(51,35,26,.5);
+  box-shadow:0 3px 0 rgba(36,35,51,.5);
 }
 
 /* ---------- escenario del teléfono ---------- */
-.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-bottom:1.25rem}
+.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem;min-width:0;margin-bottom:1.25rem}
 .fono{
-  width:min(350px,94vw);background:var(--t-fondo,var(--crema));
+  width:min(350px,100%);background:var(--t-fondo,var(--crema));
   border:2.5px solid var(--tinta);border-radius:34px;
-  box-shadow:0 10px 0 var(--tinta),0 26px 50px rgba(51,35,26,.24);
+  box-shadow:0 10px 0 var(--tinta),0 26px 50px rgba(36,35,51,.24);
   padding:13px 12px 14px;position:relative;overflow:hidden;
   font-family:var(--t-fuente,var(--cuerpo));
-  transition:background-color .45s ease;
 }
 .fono::before{
   content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
-  width:86px;height:6px;border-radius:99px;background:rgba(51,35,26,.18);
+  width:86px;height:6px;border-radius:99px;background:rgba(36,35,51,.18);
 }
-.fono-in{padding-top:10px;transition:opacity .34s ease,transform .34s ease}
-.fono.cambiando .fono-in{opacity:0;transform:translateY(10px)}
+.fono-in{padding-top:10px}
 
 .t-top{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem}
 .t-logo{
@@ -341,7 +342,7 @@ body::after{
 
 .t-premio{
   display:flex;align-items:center;gap:.6rem;background:var(--blanco);border:2.5px solid var(--tinta);
-  border-radius:16px;padding:.6rem .7rem;margin-bottom:.55rem;box-shadow:0 3px 0 rgba(51,35,26,.55);
+  border-radius:16px;padding:.6rem .7rem;margin-bottom:.55rem;box-shadow:0 3px 0 rgba(36,35,51,.55);
 }
 .t-premio .ic{width:34px;height:34px;flex:none;border-radius:11px;background:var(--t-suave);display:grid;place-items:center;font-size:1.05rem}
 .t-premio .tit{font-weight:800;font-size:.83rem;line-height:1.25;color:var(--tinta)}
@@ -381,68 +382,39 @@ body::after{
 }
 .t-pronto{font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--t-osc);text-align:center;margin-top:.35rem}
 
-/* selector de comercio de ejemplo */
-.escena-tabs{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center}
-.escena-tabs button{
-  display:inline-flex;align-items:center;justify-content:center;gap:.3rem;background:var(--blanco);
-  border:2px solid var(--tinta);border-radius:999px;padding:.55rem .95rem;min-height:44px;
-  font-weight:800;font-size:.8rem;cursor:pointer;
-  box-shadow:0 3px 0 rgba(51,35,26,.5);transition:transform .15s var(--resorte),background .2s,color .2s;
-}
-.escena-tabs button:hover{transform:translateY(-2px)}
-.escena-tabs button[aria-pressed="true"]{background:var(--tinta);color:var(--crema);box-shadow:0 3px 0 var(--acento)}
 .escena-pie{font-size:.76rem;font-weight:700;color:var(--tinta-suave);text-align:center;max-width:32ch;margin:0 auto}
 
-/* piezas físicas junto al teléfono */
-.props{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;width:min(350px,94vw)}
-.prop{
-  background:var(--blanco);border:2.5px solid var(--tinta);border-radius:16px;padding:.6rem;
-  box-shadow:0 4px 0 rgba(51,35,26,.6);text-align:center;
-}
-.prop:nth-child(1){transform:rotate(-1.6deg)}
-.prop:nth-child(2){transform:rotate(1.4deg)}
-.prop .mini{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--tinta-suave);margin-top:.3rem}
-.prop svg{margin:0 auto}
-/* las piezas físicas solo flotan al lado del teléfono cuando hay lugar real */
-@media(min-width:1120px){
-  .props{position:absolute;width:auto;grid-template-columns:1fr;gap:1rem;right:-30px;bottom:64px;z-index:3}
-  .prop{width:118px}
-}
-@media(min-width:1240px){.props{right:-52px}}
 @media(min-width:980px){.escena{margin-bottom:0}}
 
-/* placa QR (dibujo, no foto de stock) */
-.qr-svg{width:56px;height:56px}
-.qr-svg rect.q{fill:var(--tinta)}
-
 /* =====================================================================
-   PROBLEMA (sección oscura)
+   PROBLEMA Y SECCIONES DESTACADAS (rojo frambuesa)
    ===================================================================== */
-.oscuro{background:var(--tinta);color:var(--crema)}
-.oscuro .sec-p{color:#D9C9B8}
+.oscuro{background:var(--rojo-seccion);color:var(--blanco)}
+.oscuro .sec-p{color:var(--blanco)}
 .oscuro .sec-h2{color:var(--crema)}
-.oscuro .eyebrow{background:rgba(255,246,233,.1);color:var(--crema);border-color:var(--acento)}
-.problema h2 span{color:var(--acento-claro)}
+.oscuro .eyebrow{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.65)}
+.problema h2 span{color:var(--resalte-calido)}
 .grid3{display:grid;gap:1.1rem}
 @media(min-width:780px){.grid3{grid-template-columns:repeat(3,1fr)}}
 .p-card{
-  background:rgba(255,246,233,.06);border:1.5px solid rgba(255,246,233,.18);border-radius:var(--radio);
+  background:rgba(247,247,252,.06);border:1.5px solid rgba(247,247,252,.18);border-radius:var(--radio);
   padding:1.5rem 1.35rem;
 }
 .p-card:nth-child(2){transform:rotate(.5deg)}
 .p-card:nth-child(3){transform:rotate(-.5deg)}
 .p-card .emo{font-size:1.8rem;margin-bottom:.6rem}
-.p-card h3{font-size:1.12rem;color:var(--amarillo);margin-bottom:.4rem}
-.p-card p{font-size:.94rem;font-weight:600;color:#D9C9B8}
+.p-card h3{font-size:1.12rem;color:var(--blanco);margin-bottom:.4rem}
+.p-card p{font-size:.94rem;font-weight:600;color:var(--blanco)}
+
 
 /* =====================================================================
    REFERIDOS
    ===================================================================== */
 .referidos{background:var(--acento);color:#fff;overflow:hidden;padding-top:clamp(4.4rem,8vw,6.4rem)}
-/* la sección oscura anterior "cae" sobre el violeta con una curva */
+/* la sección frambuesa anterior "cae" sobre el violeta con una curva */
 .referidos::before{
   content:"";position:absolute;top:0;left:0;right:0;height:clamp(38px,5.5vw,68px);
-  background:var(--tinta);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
+  background:var(--rojo-seccion);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
 }
 .referidos .sec-h2{color:#fff}
 .referidos .sec-p{color:rgba(255,255,255,.92)}
@@ -479,7 +451,7 @@ body::after{
 .aviso-pronto{
   display:flex;gap:.6rem;align-items:flex-start;background:var(--amarillo);color:var(--tinta);
   border:2.5px solid var(--tinta);border-radius:16px;padding:.85rem 1rem;margin-bottom:1.5rem;
-  font-weight:800;font-size:.88rem;box-shadow:0 4px 0 rgba(51,35,26,.5);max-width:56ch;
+  font-weight:800;font-size:.88rem;box-shadow:0 4px 0 rgba(36,35,51,.5);max-width:56ch;
 }
 
 /* =====================================================================
@@ -515,18 +487,18 @@ body::after{
 .vs{display:grid;gap:1.1rem}
 @media(min-width:820px){.vs{grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}}
 .vs-card{border-radius:var(--radio);padding:1.5rem 1.35rem;border:var(--borde)}
-.vs-mal{background:#F4EDE2;box-shadow:0 4px 0 rgba(51,35,26,.35)}
+.vs-mal{background:#F0F0F6;box-shadow:0 4px 0 rgba(36,35,51,.35)}
 .vs-bien{background:var(--blanco);box-shadow:0 8px 0 var(--acento),0 14px 30px rgba(76,63,192,.16);border-color:var(--acento)}
 .vs-card h3{font-size:1.12rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
 .vs-card ul{list-style:none;display:grid;gap:.55rem}
 .vs-card li{display:flex;gap:.55rem;align-items:flex-start;font-weight:700;font-size:.94rem;color:var(--texto)}
 .vs-card li i{font-style:normal;flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:900;margin-top:.15rem}
-.vs-mal li i{background:#E0D2BF;color:#6d584a}
+.vs-mal li i{background:#DDDDE8;color:#626276}
 .vs-bien li i{background:var(--acento);color:#fff}
 /* mini maqueta de "otras plataformas" vs "tu club" */
 .mini-tiendas{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;margin-bottom:1rem}
 .mini-tiendas i{
-  aspect-ratio:1;border-radius:9px;border:2px solid #C9B69C;background:#EBE0CF;display:grid;place-items:center;
+  aspect-ratio:1;border-radius:9px;border:2px solid #C4C4D4;background:#E7E7F0;display:grid;place-items:center;
   font-size:.9rem;font-style:normal;opacity:.75;
 }
 .mini-tuya{
@@ -541,7 +513,7 @@ body::after{
 @media(min-width:980px){.prod-grid{grid-template-columns:1.25fr .75fr;gap:1.6rem}}
 .panel{
   background:var(--blanco);border-radius:var(--radio);border:3px solid var(--tinta);overflow:hidden;
-  box-shadow:0 16px 0 rgba(51,35,26,.16),0 24px 50px rgba(51,35,26,.16);
+  box-shadow:0 16px 0 rgba(36,35,51,.16),0 24px 50px rgba(36,35,51,.16);
 }
 .panel-top{display:flex;align-items:center;gap:.42rem;background:var(--tinta);padding:.6rem .95rem}
 .panel-top .dot{width:10px;height:10px;border-radius:50%}
@@ -550,7 +522,7 @@ body::after{
 .panel-top .dot:nth-child(3){background:var(--acento2)}
 .panel-top span{color:var(--crema);font-family:var(--display);font-size:.82rem;margin-left:.5rem}
 .panel-tabs{display:flex;gap:.35rem;padding:.9rem .9rem 0;flex-wrap:wrap}
-.panel-tab{font-size:.75rem;font-weight:900;padding:.36rem .8rem;border-radius:999px;background:#F1E7D8;color:#6d584a}
+.panel-tab{font-size:.75rem;font-weight:900;padding:.36rem .8rem;border-radius:999px;background:#ECECF4;color:#626276}
 .panel-tab.activa{background:var(--acento);color:#fff}
 .panel-body{padding:.9rem}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-bottom:.8rem}
@@ -565,7 +537,7 @@ body::after{
 .fila .ava{width:36px;height:36px;flex:none;border-radius:11px;background:var(--acento-suave);display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#3B2E86}
 .fila .info{flex:1;min-width:0}
 .fila .nom{font-weight:800;font-size:.88rem;line-height:1.25}
-.fila .det{font-size:.75rem;font-weight:700;color:#6d584a}
+.fila .det{font-size:.75rem;font-weight:700;color:#626276}
 .fila .acc{flex:none;font-size:.72rem;font-weight:900;border-radius:999px;padding:.32rem .7rem;border:2px solid var(--tinta)}
 .fila .acc.ok{background:var(--acento2);color:var(--tinta)}
 .fila .acc.val{background:var(--amarillo);color:var(--tinta)}
@@ -617,11 +589,11 @@ body::after{
 @media(min-width:700px){.ben-grid{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.ben-grid{grid-template-columns:repeat(4,1fr)}}
 .ben{
-  background:rgba(255,246,233,.06);border:1.5px solid rgba(255,246,233,.18);border-radius:18px;
+  background:rgba(247,247,252,.06);border:1.5px solid rgba(247,247,252,.18);border-radius:18px;
   padding:1.1rem 1rem;display:flex;flex-direction:column;gap:.45rem;
 }
 .ben .emo{font-size:1.4rem}
-.ben p{font-size:.92rem;font-weight:700;color:var(--crema);line-height:1.4}
+.ben p{font-size:.92rem;font-weight:700;color:var(--blanco);line-height:1.4}
 
 /* =====================================================================
    KIT FÍSICO
@@ -642,26 +614,10 @@ body::after{
 .kit-lista li b{color:var(--tinta)}
 
 /* =====================================================================
-   STUDIO
-   ===================================================================== */
-.studio-grid{display:grid;gap:1.5rem;align-items:center}
-@media(min-width:900px){.studio-grid{grid-template-columns:1fr 1fr;gap:2.2rem}}
-.piezas{display:grid;grid-template-columns:1.15fr .85fr;gap:.7rem;align-items:start}
-.pieza{border:2.5px solid var(--tinta);border-radius:16px;overflow:hidden;box-shadow:0 6px 0 rgba(51,35,26,.6);background:var(--blanco)}
-.pieza .lbl{font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;background:var(--tinta);color:var(--crema);padding:.28rem .55rem}
-.pieza-cuadro{aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:.9rem;color:#fff;background:var(--acento)}
-.pieza-hist{aspect-ratio:9/16;display:grid;place-items:center;text-align:center;padding:.9rem;color:var(--tinta);background:var(--amarillo)}
-.pieza-ancho{grid-column:1/-1;aspect-ratio:16/7;display:grid;place-items:center;text-align:center;padding:.9rem;color:var(--tinta);background:var(--acento2)}
-.pieza h4{font-family:var(--display);font-weight:600;font-size:clamp(.9rem,2.4vw,1.15rem);line-height:1.15}
-.pieza p{font-size:.68rem;font-weight:800;margin-top:.25rem;opacity:.92}
-.usos{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin-top:1.1rem}
-.usos li{background:var(--blanco);border:2px solid var(--tinta);border-radius:999px;padding:.3rem .7rem;font-size:.78rem;font-weight:800;box-shadow:0 3px 0 rgba(51,35,26,.5)}
-
-/* =====================================================================
    EVOLUCIÓN / PRODUCTOS
    ===================================================================== */
 .prods{display:grid;gap:1rem;margin-bottom:2.4rem}
-@media(min-width:820px){.prods{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:820px){.prods{grid-template-columns:repeat(2,1fr)}}
 .prod{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.3rem 1.2rem;box-shadow:var(--sombra-dura)}
 .prod.principal{border-color:var(--acento);box-shadow:0 6px 0 var(--acento)}
 .prod .badge{
@@ -669,14 +625,13 @@ body::after{
   padding:.2rem .55rem;border-radius:999px;margin-bottom:.6rem;border:2px solid var(--tinta);
 }
 .prod .badge.now{background:var(--acento);color:#fff;border-color:var(--acento)}
-.prod .badge.extra{background:var(--acento2);color:var(--tinta);border-color:var(--tinta)}
 .prod .badge.later{background:var(--amarillo);color:var(--tinta)}
 .prod h3{font-size:1.15rem;margin-bottom:.4rem}
 .prod p{font-size:.92rem;font-weight:600;color:var(--texto)}
 .linea-t{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1.1rem}
 .linea-t .et{
   background:var(--blanco);border:2.5px solid var(--tinta);border-radius:999px;padding:.45rem 1rem;
-  font-weight:900;font-size:.85rem;box-shadow:0 4px 0 rgba(51,35,26,.6);
+  font-weight:900;font-size:.85rem;box-shadow:0 4px 0 rgba(36,35,51,.6);
 }
 .linea-t .et.on{background:var(--acento);color:#fff;box-shadow:0 4px 0 var(--acento-osc)}
 .linea-t .et.next{background:var(--crema);border-style:dashed;color:var(--tinta-suave)}
@@ -704,7 +659,7 @@ body::after{
 .contacto .eyebrow{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
 .mod{
   background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);
-  box-shadow:0 14px 0 rgba(51,35,26,.35);max-width:840px;margin:0 auto;overflow:hidden;
+  box-shadow:0 14px 0 rgba(36,35,51,.35);max-width:840px;margin:0 auto;overflow:hidden;
 }
 .tabs{display:flex;gap:.4rem;padding:.75rem .75rem 0;background:var(--crema);border-bottom:2.5px solid var(--tinta)}
 .tab{
@@ -740,7 +695,7 @@ body::after{
 }
 .campo textarea{min-height:96px;resize:vertical;line-height:1.5}
 .campo select{appearance:none;-webkit-appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333231A' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23242333' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right .7rem center;background-size:18px;padding-right:2.3rem;
 }
 .campo input:focus,.campo select:focus,.campo textarea:focus{
@@ -816,27 +771,27 @@ body::after{
 /* =====================================================================
    CIERRE + FOOTER + STICKY
    ===================================================================== */
-.cierre{background:var(--tinta);color:var(--crema);text-align:center}
+.cierre{background:var(--rojo-seccion);color:var(--crema);text-align:center}
 .cierre h2{font-size:clamp(1.85rem,4.8vw,3rem);max-width:22ch;margin:.9rem auto .8rem;color:var(--crema)}
-.cierre h2 span{color:var(--acento-claro)}
-.cierre p{color:#D9C9B8;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
+.cierre h2 span{color:var(--resalte-calido)}
+.cierre p{color:var(--blanco);font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
 .cierre .iman-marca{justify-content:center}
 .cierre-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
 footer{
-  background:var(--tinta);color:#C4AF9C;text-align:center;
+  background:var(--rojo-seccion-osc);color:var(--crema);text-align:center;
   padding:2.2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600;
-  border-top:1px solid rgba(255,246,233,.12);
+  border-top:1px solid rgba(247,247,252,.12);
 }
 footer .iman-marca{justify-content:center;margin-bottom:.7rem}
 footer .iman-svg{width:30px}
 footer .iman-nombre{font-size:1.05rem}
-footer a{display:inline-block;padding:.5rem .25rem;color:#E4D6C6;text-decoration:underline;text-underline-offset:2px}
-footer .iman-nombre i{color:var(--acento-claro)}
+footer a{display:inline-block;padding:.5rem .25rem;color:var(--blanco);text-decoration:underline;text-underline-offset:2px}
+footer .iman-nombre i{color:var(--resalte-calido)}
 @media(min-width:768px){footer{padding-bottom:2rem}}
 .sticky-cta{
   position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem .85rem;
   padding-bottom:calc(.65rem + env(safe-area-inset-bottom));
-  background:rgba(255,246,233,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  background:rgba(247,247,252,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   border-top:2.5px solid var(--tinta);display:flex;gap:.55rem;
   transform:translateY(115%);transition:transform .35s cubic-bezier(.22,1,.36,1);
 }
@@ -1098,7 +1053,6 @@ footer .iman-nombre i{color:var(--acento-claro)}
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#referidos">Referidos</a>
       <a href="#personalizacion">Personalización</a>
-      <a href="#studio">Imán Studio</a>
       <a href="#faq">Preguntas frecuentes</a>
     </nav>
     <div class="hdr-actions">
@@ -1128,7 +1082,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
     </div>
 
     <div class="escena">
-      <!-- teléfono: la experiencia del cliente, retematizada por comercio -->
+      <!-- teléfono: ejemplo fijo de la experiencia del cliente -->
       <div class="fono" id="fono">
         <div class="fono-in" id="fono-in">
           <div class="t-top">
@@ -1162,11 +1116,11 @@ footer .iman-nombre i{color:var(--acento-claro)}
           <div class="t-ref">
             <div class="t-ref-top">
               <svg class="t-ref-qr" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="1" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
-                <rect x="15" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
-                <rect x="1" y="15" width="8" height="8" rx="1.5" fill="none" stroke="#33231A" stroke-width="2"/>
-                <rect x="4" y="4" width="2" height="2" fill="#33231A"/><rect x="18" y="4" width="2" height="2" fill="#33231A"/><rect x="4" y="18" width="2" height="2" fill="#33231A"/>
-                <path d="M13 12h3M19 12h3M13 16v3M17 15h2v2h-2zM21 19h2M15 21h3" stroke="#33231A" stroke-width="2" stroke-linecap="round"/>
+                <rect x="1" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="15" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="1" y="15" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="4" y="4" width="2" height="2" fill="#242333"/><rect x="18" y="4" width="2" height="2" fill="#242333"/><rect x="4" y="18" width="2" height="2" fill="#242333"/>
+                <path d="M13 12h3M19 12h3M13 16v3M17 15h2v2h-2zM21 19h2M15 21h3" stroke="#242333" stroke-width="2" stroke-linecap="round"/>
               </svg>
               <div>
                 <h4>Invitá a un amigo</h4>
@@ -1180,35 +1134,8 @@ footer .iman-nombre i{color:var(--acento-claro)}
         </div>
       </div>
 
-      <!-- piezas físicas, discretas -->
-      <div class="props" aria-hidden="true">
-        <div class="prop">
-          <svg class="qr-svg" viewBox="0 0 24 24">
-            <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFDF8" stroke="#33231A" stroke-width="1.6"/>
-            <rect class="q" x="3" y="3" width="6" height="6" rx="1"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-            <rect class="q" x="15" y="3" width="6" height="6" rx="1"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-            <rect class="q" x="3" y="15" width="6" height="6" rx="1"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-            <rect class="q" x="11" y="3" width="2" height="2"/><rect class="q" x="11" y="7" width="2" height="2"/><rect class="q" x="11" y="11" width="2" height="2"/>
-            <rect class="q" x="15" y="11" width="2" height="2"/><rect class="q" x="19" y="11" width="2" height="2"/><rect class="q" x="15" y="15" width="2" height="2"/>
-            <rect class="q" x="19" y="15" width="2" height="2"/><rect class="q" x="15" y="19" width="2" height="2"/><rect class="q" x="11" y="19" width="2" height="2"/>
-          </svg>
-          <span class="mini">Placa QR 3D</span>
-        </div>
-        <div class="prop">
-          <div style="background:var(--acento);border:2px solid var(--tinta);border-radius:9px;padding:.45rem .3rem;color:#fff">
-            <b style="display:block;font-family:var(--display);font-size:.72rem;line-height:1.15">Sumá puntos<br>en cada compra</b>
-            <span style="font-size:.56rem;font-weight:800;opacity:.9">escaneá acá</span>
-          </div>
-          <span class="mini">Pieza de Studio</span>
-        </div>
-      </div>
 
-      <div class="escena-tabs" role="group" aria-label="Ver el Club con la identidad de otro comercio">
-        <button type="button" data-club="0" aria-pressed="true"><span aria-hidden="true">🌿</span> Dietética</button>
-        <button type="button" data-club="1" aria-pressed="false"><span aria-hidden="true">☕</span> Cafetería</button>
-        <button type="button" data-club="2" aria-pressed="false"><span aria-hidden="true">🐾</span> Pet shop</button>
-      </div>
-      <p class="escena-pie">Ejemplo demostrativo con comercios ficticios. Las reglas de puntos y los premios los definís vos.</p>
+      <p class="escena-pie">Ejemplo demostrativo de un comercio ficticio. Las reglas de puntos y los premios los definís vos.</p>
     </div>
 
     <ul class="hero-chips">
@@ -1244,6 +1171,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
     </div>
   </div>
 </section>
+
 
 <!-- ================= 3. REFERIDOS ================= -->
 <section class="referidos" id="referidos" aria-labelledby="h-referidos">
@@ -1465,13 +1393,13 @@ footer .iman-nombre i{color:var(--acento-claro)}
     <div class="kit-piezas rv rv-d1">
       <div class="kit-pieza">
         <svg viewBox="0 0 24 24" style="width:52px;margin:0 auto" aria-hidden="true">
-          <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFDF8" stroke="#33231A" stroke-width="1.6"/>
-          <rect x="3" y="3" width="6" height="6" rx="1" fill="#33231A"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-          <rect x="15" y="3" width="6" height="6" rx="1" fill="#33231A"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-          <rect x="3" y="15" width="6" height="6" rx="1" fill="#33231A"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFDF8"/>
-          <rect x="11" y="3" width="2" height="2" fill="#33231A"/><rect x="11" y="7" width="2" height="2" fill="#33231A"/><rect x="11" y="11" width="2" height="2" fill="#33231A"/>
-          <rect x="15" y="11" width="2" height="2" fill="#33231A"/><rect x="19" y="11" width="2" height="2" fill="#33231A"/><rect x="15" y="15" width="2" height="2" fill="#33231A"/>
-          <rect x="19" y="15" width="2" height="2" fill="#33231A"/><rect x="15" y="19" width="2" height="2" fill="#33231A"/><rect x="11" y="19" width="2" height="2" fill="#33231A"/>
+          <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFFFF" stroke="#242333" stroke-width="1.6"/>
+          <rect x="3" y="3" width="6" height="6" rx="1" fill="#242333"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="15" y="3" width="6" height="6" rx="1" fill="#242333"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="3" y="15" width="6" height="6" rx="1" fill="#242333"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="11" y="3" width="2" height="2" fill="#242333"/><rect x="11" y="7" width="2" height="2" fill="#242333"/><rect x="11" y="11" width="2" height="2" fill="#242333"/>
+          <rect x="15" y="11" width="2" height="2" fill="#242333"/><rect x="19" y="11" width="2" height="2" fill="#242333"/><rect x="15" y="15" width="2" height="2" fill="#242333"/>
+          <rect x="19" y="15" width="2" height="2" fill="#242333"/><rect x="15" y="19" width="2" height="2" fill="#242333"/><rect x="11" y="19" width="2" height="2" fill="#242333"/>
         </svg>
         <b>Placa QR</b><small>Impresa en 3D, para el mostrador</small>
       </div>
@@ -1495,43 +1423,13 @@ footer .iman-nombre i{color:var(--acento-claro)}
   </div>
 </section>
 
-<!-- ================= 10. IMÁN STUDIO ================= -->
-<section id="studio" aria-labelledby="h-studio" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
-  <div class="wrap studio-grid">
-    <div>
-      <span class="eyebrow">Imán Studio</span>
-      <h2 class="sec-h2 rv" id="h-studio">Además de fidelizar, comunicá mejor.</h2>
-      <p class="sec-p rv rv-d1" style="margin-bottom:1rem">Imán Studio permite crear promociones, posts, historias y piezas comerciales manteniendo la identidad visual del negocio.</p>
-      <p class="sec-p rv rv-d1" style="margin-bottom:.8rem">Es la herramienta con la que armamos las piezas del Club: la promoción de puntos, el beneficio por referidos, el aviso del premio nuevo.</p>
-      <h3 style="font-size:1rem;margin:1.2rem 0 .5rem">Dónde se usan</h3>
-      <ul class="usos rv rv-d2">
-        <li>Instagram</li><li>Estados de WhatsApp</li><li>Pantallas del local</li><li>Campañas</li><li>Promociones del Club</li>
-      </ul>
-      <p class="micro rv rv-d2" style="margin-top:1rem">Las piezas se arman con plantillas y con la identidad cargada de tu negocio.</p>
-    </div>
-    <div class="piezas rv rv-d1">
-      <div class="pieza">
-        <span class="lbl">Post cuadrado</span>
-        <div class="pieza-cuadro"><div><h4>Sumá puntos en cada compra</h4><p>Escaneá el QR del mostrador</p></div></div>
-      </div>
-      <div class="pieza">
-        <span class="lbl">Historia</span>
-        <div class="pieza-hist"><div><h4>Traé a un amigo</h4><p>Ganan los dos</p></div></div>
-      </div>
-      <div class="pieza">
-        <span class="lbl">Pieza horizontal</span>
-        <div class="pieza-ancho"><div><h4>Premio nuevo en el Club</h4><p>Canjealo con tus puntos</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= 11. EVOLUCIÓN + PRODUCTOS ================= -->
 <section aria-labelledby="h-evo">
   <div class="wrap">
     <span class="eyebrow">El ecosistema</span>
     <h2 class="sec-h2 rv" id="h-evo">Empezá con fidelización. Expandí cuando lo necesites.</h2>
-    <p class="sec-p rv rv-d1">Imán son tres piezas. La landing que estás leyendo es sobre la primera: el Club.</p>
+    <p class="sec-p rv rv-d1">El punto de partida es tu Club de Clientes. Después podés sumar nuevas herramientas según lo que necesite tu negocio.</p>
 
     <div class="prods">
       <article class="prod principal rv">
@@ -1540,21 +1438,15 @@ footer .iman-nombre i{color:var(--acento-claro)}
         <p>Sistema personalizado de puntos, clientes, beneficios, referidos y QR, con la identidad de tu negocio.</p>
       </article>
       <article class="prod rv rv-d1">
-        <span class="badge extra">Valor adicional</span>
-        <h3>Imán Studio</h3>
-        <p>Creación de promociones, posts, historias y piezas comerciales con la identidad visual del negocio.</p>
-      </article>
-      <article class="prod rv rv-d2">
         <span class="badge later">Segunda etapa</span>
         <h3>Imán Catálogo</h3>
         <p>El catálogo digital completo puede incorporarse posteriormente como una segunda etapa opcional. Todavía no es una función disponible.</p>
       </article>
     </div>
 
-    <div class="linea-t rv rv-d1" aria-label="Progresión: Club, Referidos, Studio, Catálogo digital, Promociones y pedidos">
+    <div class="linea-t rv rv-d1" aria-label="Progresión: Club, Referidos, Catálogo digital, Promociones y pedidos">
       <span class="et on">Imán Club</span><span class="fl" aria-hidden="true">→</span>
       <span class="et on" id="et-referidos">Referidos</span><span class="fl" aria-hidden="true">→</span>
-      <span class="et on">Imán Studio</span><span class="fl" aria-hidden="true">→</span>
       <span class="et next">Catálogo digital</span><span class="fl" aria-hidden="true">→</span>
       <span class="et next">Promociones y pedidos</span>
     </div>
@@ -1875,6 +1767,7 @@ function track(evento, datos){
   setTimeout(revelarVisible, 1200);   // red de seguridad
 })();
 
+
 /* =====================================================================
    3. CLUBES DE EJEMPLO (comercios ficticios)
    Misma funcionalidad, distinta identidad: eso es lo que se demuestra.
@@ -1900,7 +1793,7 @@ var CLUBES = [
   },
   {
     rubro:'Cafetería', marca:'Nogal', club:'Nogal · Socios', emoji:'☕',
-    color:'#9A5B2E', osc:'#6F3F1E', suave:'#F4E7DA', on:'#fff', fondo:'#FBF5EF',
+    color:'#5B4DC2', osc:'#3F338F', suave:'#EEEAFB', on:'#fff', fondo:'#F7F5FF',
     fuenteTit:"'Playfair Display',Georgia,serif", peso:'700', fuente:"'Nunito',sans-serif", fuenteNom:'Playfair Display',
     socia:'Buen día, Marco ☕', nivel:'Socio Nogal',
     puntos:8, meta:10, saldoLbl:'Tus sellos', unidad:'sellos',
@@ -1918,7 +1811,7 @@ var CLUBES = [
   },
   {
     rubro:'Pet shop', marca:'Huellitas', club:'Club Huellitas', emoji:'🐾',
-    color:'#FF6B35', osc:'#A83C15', suave:'#FFE8DC', on:'#33231A', fondo:'#FFF7F2',
+    color:'#17BEBB', osc:'#08716F', suave:'#DDF7F6', on:'#242333', fondo:'#F2FCFC',
     fuenteTit:"'Fredoka',sans-serif", peso:'600', fuente:"'Nunito',sans-serif", fuenteNom:'Fredoka',
     socia:'¡Hola, Lucía y Toby! 🐶', nivel:'Nivel Patita',
     puntos:620, meta:800, saldoLbl:'Tus huellitas', unidad:'pts',
@@ -1937,9 +1830,6 @@ var CLUBES = [
 ];
 
 var fono = document.getElementById('fono');
-var fonoIn = document.getElementById('fono-in');
-var tabsClub = Array.prototype.slice.call(document.querySelectorAll('.escena-tabs button'));
-var clubActivo = 0, autoTimer = null, autoOn = !reduce;
 
 function pintarClub(i){
   var c = CLUBES[i];
@@ -1987,46 +1877,10 @@ function pintarClub(i){
   clearTimeout(barra._t);
   barra._t = setTimeout(function(){ barra.style.width = pct; }, 90);
 
-  tabsClub.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-  clubActivo = i;
 }
 
-function irAClub(i){
-  if(i === clubActivo) return;
-  if(reduce){ pintarClub(i); return; }
-  fono.classList.add('cambiando');
-  setTimeout(function(){
-    pintarClub(i);
-    fono.classList.remove('cambiando');
-  }, 340);
-}
-
-function pararAuto(){
-  autoOn = false;
-  if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
-}
-function arrancarAuto(){
-  if(!autoOn || autoTimer) return;
-  autoTimer = setInterval(function(){ irAClub((clubActivo + 1) % CLUBES.length); }, 6500);
-}
-
-tabsClub.forEach(function(b){
-  b.addEventListener('click', function(){
-    pararAuto();
-    irAClub(parseInt(b.dataset.club, 10));
-  });
-});
-fono.addEventListener('mouseenter', function(){ if(autoTimer){ clearInterval(autoTimer); autoTimer = null; } });
-fono.addEventListener('mouseleave', arrancarAuto);
-
+// Un solo ejemplo en el teléfono; las tres identidades siguen en Personalización.
 pintarClub(0);
-if('IntersectionObserver' in window){
-  new IntersectionObserver(function(es){
-    es.forEach(function(e){ e.isIntersecting ? arrancarAuto() : (autoTimer && (clearInterval(autoTimer), autoTimer = null)); });
-  },{threshold:.25}).observe(fono);
-} else {
-  arrancarAuto();
-}
 
 /* =====================================================================
    4. SECCIÓN PERSONALIZACIÓN: las mismas 3 identidades, comparadas
