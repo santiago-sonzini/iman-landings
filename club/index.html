@@ -123,9 +123,6 @@ src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></
   --verde-wa:#25D366;
   --verde-wa-osc:#1DA851;
   --rojo:#E23D3D;
-  --rojo-seccion:#C63249;
-  --rojo-seccion-osc:#B52F41;
-  --resalte-calido:#FFF3CB;
 
   --radio:22px;
   --borde:2.5px solid var(--tinta);
@@ -231,9 +228,9 @@ body::after{
 .iman-polo{fill:var(--blanco);stroke:var(--tinta);stroke-width:5}
 .iman-chispa{stroke:var(--tinta);stroke-width:5;stroke-linecap:round;fill:none}
 .oscuro .iman-nombre{color:var(--crema)}
-.oscuro .iman-nombre i{color:var(--resalte-calido)}
+.oscuro .iman-nombre i{color:var(--acento-claro)}
 .oscuro .iman-cuerpo-borde{stroke:var(--crema)}
-.oscuro .iman-polo{fill:var(--rojo-seccion);stroke:var(--crema)}
+.oscuro .iman-polo{fill:var(--tinta);stroke:var(--crema)}
 .oscuro .iman-chispa{stroke:var(--crema)}
 
 /* =====================================================================
@@ -387,13 +384,13 @@ body::after{
 @media(min-width:980px){.escena{margin-bottom:0}}
 
 /* =====================================================================
-   PROBLEMA Y SECCIONES DESTACADAS (rojo frambuesa)
+   PROBLEMA Y SECCIONES DESTACADAS (gris carbón)
    ===================================================================== */
-.oscuro{background:var(--rojo-seccion);color:var(--blanco)}
-.oscuro .sec-p{color:var(--blanco)}
+.oscuro{background:var(--tinta);color:var(--crema)}
+.oscuro .sec-p{color:#D5D4E5}
 .oscuro .sec-h2{color:var(--crema)}
-.oscuro .eyebrow{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.65)}
-.problema h2 span{color:var(--resalte-calido)}
+.oscuro .eyebrow{background:rgba(247,247,252,.1);color:var(--crema);border-color:var(--acento)}
+.problema h2 span{color:var(--acento-claro)}
 .grid3{display:grid;gap:1.1rem}
 @media(min-width:780px){.grid3{grid-template-columns:repeat(3,1fr)}}
 .p-card{
@@ -403,18 +400,18 @@ body::after{
 .p-card:nth-child(2){transform:rotate(.5deg)}
 .p-card:nth-child(3){transform:rotate(-.5deg)}
 .p-card .emo{font-size:1.8rem;margin-bottom:.6rem}
-.p-card h3{font-size:1.12rem;color:var(--blanco);margin-bottom:.4rem}
-.p-card p{font-size:.94rem;font-weight:600;color:var(--blanco)}
+.p-card h3{font-size:1.12rem;color:var(--amarillo);margin-bottom:.4rem}
+.p-card p{font-size:.94rem;font-weight:600;color:#D5D4E5}
 
 
 /* =====================================================================
    REFERIDOS
    ===================================================================== */
 .referidos{background:var(--acento);color:#fff;overflow:hidden;padding-top:clamp(4.4rem,8vw,6.4rem)}
-/* la sección frambuesa anterior "cae" sobre el violeta con una curva */
+/* la sección oscura anterior "cae" sobre el violeta con una curva */
 .referidos::before{
   content:"";position:absolute;top:0;left:0;right:0;height:clamp(38px,5.5vw,68px);
-  background:var(--rojo-seccion);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
+  background:var(--tinta);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
 }
 .referidos .sec-h2{color:#fff}
 .referidos .sec-p{color:rgba(255,255,255,.92)}
@@ -593,7 +590,7 @@ body::after{
   padding:1.1rem 1rem;display:flex;flex-direction:column;gap:.45rem;
 }
 .ben .emo{font-size:1.4rem}
-.ben p{font-size:.92rem;font-weight:700;color:var(--blanco);line-height:1.4}
+.ben p{font-size:.92rem;font-weight:700;color:var(--crema);line-height:1.4}
 
 /* =====================================================================
    KIT FÍSICO
@@ -771,22 +768,22 @@ body::after{
 /* =====================================================================
    CIERRE + FOOTER + STICKY
    ===================================================================== */
-.cierre{background:var(--rojo-seccion);color:var(--crema);text-align:center}
+.cierre{background:var(--tinta);color:var(--crema);text-align:center}
 .cierre h2{font-size:clamp(1.85rem,4.8vw,3rem);max-width:22ch;margin:.9rem auto .8rem;color:var(--crema)}
-.cierre h2 span{color:var(--resalte-calido)}
-.cierre p{color:var(--blanco);font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
+.cierre h2 span{color:var(--acento-claro)}
+.cierre p{color:#D5D4E5;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
 .cierre .iman-marca{justify-content:center}
 .cierre-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
 footer{
-  background:var(--rojo-seccion-osc);color:var(--crema);text-align:center;
+  background:var(--tinta);color:#B9B8CD;text-align:center;
   padding:2.2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600;
   border-top:1px solid rgba(247,247,252,.12);
 }
 footer .iman-marca{justify-content:center;margin-bottom:.7rem}
 footer .iman-svg{width:30px}
 footer .iman-nombre{font-size:1.05rem}
-footer a{display:inline-block;padding:.5rem .25rem;color:var(--blanco);text-decoration:underline;text-underline-offset:2px}
-footer .iman-nombre i{color:var(--resalte-calido)}
+footer a{display:inline-block;padding:.5rem .25rem;color:#E4E3EF;text-decoration:underline;text-underline-offset:2px}
+footer .iman-nombre i{color:var(--acento-claro)}
 @media(min-width:768px){footer{padding-bottom:2rem}}
 .sticky-cta{
   position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem .85rem;
