@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#F7F7FC">
+<meta name="theme-color" content="#F4F5F7">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%23242333' stroke-width='34'/%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%236C5CE7' stroke-width='21'/%3E%3Crect x='13' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Crect x='65' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Cpath d='M28 114l-7 9M60 117v10M92 114l7 9' stroke='%23242333' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 
-<title>Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes</title>
-<meta name="description" content="Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.">
+<title>Imán Club — Aumentá tus ventas sin invertir en publicidad</title>
+<meta name="description" content="Imán crea campañas de email personalizadas para recuperar clientes, aumentar la frecuencia de compra y cuidar la rentabilidad de tu negocio.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Imán">
 <meta property="og:locale" content="es_AR">
-<meta property="og:title" content="Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes">
-<meta property="og:description" content="Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.">
+<meta property="og:title" content="Imán Club — Aumentá tus ventas sin invertir en publicidad">
+<meta property="og:description" content="Campañas de email, Club de Clientes y referidos diseñados según tu rubro, tus clientes y tus costos.">
 <meta property="og:url" content="https://iman.ar/">
 <meta property="og:image" content="https://iman.ar/og.png">
 <meta property="og:image:type" content="image/png">
@@ -20,8 +20,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Imán — Club de Clientes personalizado para tu comercio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes">
-<meta name="twitter:description" content="Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.">
+<meta name="twitter:title" content="Imán Club — Aumentá tus ventas sin invertir en publicidad">
+<meta name="twitter:description" content="Campañas de email, fidelización y referidos para hacer que tus clientes vuelvan.">
 <meta name="twitter:image" content="https://iman.ar/og.png">
 
 <!-- ============================================================
@@ -37,14 +37,9 @@
         "Agendar llamada" se deshabilita con aviso de configuración
         pendiente (nunca se muestra un calendario roto).
 
-     3. CONFIG.referidosDisponibles → false mientras el flujo de referidos
-        no funcione punta a punta. En false, la sección de referidos y el
-        FAQ muestran la etiqueta "Próximamente" y el copy no lo promete
-        como disponible. Poner en true recién cuando esté verificado.
+     3. CONFIG.whatsapp → número real de contacto.
 
-     4. CONFIG.whatsapp → número real de contacto.
-
-     5. Analytics: mismos tags que /comercios (Meta Pixel, Google Ads,
+     4. Analytics: mismos tags que /comercios (Meta Pixel, Google Ads,
         Vercel). Eventos propios: 'iman:cta_click' y 'iman:club_lead'.
      ============================================================ -->
 
@@ -99,7 +94,7 @@ src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* =====================================================================
@@ -635,19 +630,6 @@ body::after{
 .linea-t .fl{font-weight:900;color:var(--tinta-suave)}
 
 /* =====================================================================
-   PRUEBA
-   ===================================================================== */
-.prueba-caja{
-  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);padding:1.7rem 1.4rem;
-  box-shadow:0 10px 0 var(--tinta);color:var(--tinta);   /* la caja es clara dentro de una sección oscura */
-}
-.prueba-caja .micro{color:var(--tinta-suave)}
-.prueba-mide{display:grid;gap:.6rem;margin-top:1.2rem}
-@media(min-width:640px){.prueba-mide{grid-template-columns:repeat(2,1fr)}}
-.prueba-mide li{display:flex;gap:.5rem;align-items:center;font-weight:800;font-size:.92rem;background:var(--crema);border:2px solid var(--linea);border-radius:14px;padding:.6rem .75rem}
-.prueba-mide li span{font-size:1.05rem}
-
-/* =====================================================================
    CONTACTO + TABS
    ===================================================================== */
 .contacto{background:var(--acento);overflow:hidden}
@@ -797,6 +779,512 @@ footer .iman-nombre i{color:var(--acento-claro)}
 .sticky-cta .btn-primario{box-shadow:0 4px 0 var(--acento-osc)}
 .sticky-cta .btn-wa{box-shadow:0 4px 0 var(--verde-wa-osc)}
 @media(min-width:768px){.sticky-cta{display:none}}
+
+/* =====================================================================
+   DIRECCIÓN 2026 — EDITORIAL TECNOLÓGICA
+   Una capa visual más sobria y profesional que conserva toda la
+   estructura, accesibilidad y comportamiento de la landing.
+   ===================================================================== */
+:root{
+  --crema:#F4F5F7;
+  --tinta:#121319;
+  --blanco:#FFFFFF;
+  --texto:#555862;
+  --tinta-suave:#6D707A;
+  --linea:#D9DBE2;
+  --acento:#5B55EA;
+  --acento-osc:#4039BF;
+  --acento-suave:#EEEDFF;
+  --acento-claro:#BDB9FF;
+  --acento-on:#FFFFFF;
+  --acento2:#16A6A1;
+  --amarillo:#EFC75E;
+  --verde-wa:#1C9A58;
+  --verde-wa-osc:#147943;
+  --radio:14px;
+  --borde:1px solid var(--linea);
+  --sombra:0 22px 60px rgba(18,19,25,.10);
+  --sombra-dura:0 16px 40px rgba(18,19,25,.08);
+  --resorte:cubic-bezier(.2,.8,.2,1);
+  --display:'Instrument Serif',Georgia,serif;
+  --cuerpo:'Manrope',system-ui,sans-serif;
+  --header-h:72px;
+}
+
+body{
+  background:
+    radial-gradient(circle at 83% 3%,rgba(91,85,234,.08),transparent 27rem),
+    var(--crema);
+  font-size:clamp(1rem,.97rem + .15vw,1.06rem);
+  line-height:1.65;
+  letter-spacing:-.006em;
+}
+body::after{display:none}
+section{padding:clamp(4.5rem,8vw,7.5rem) 1.35rem}
+.wrap{max-width:1180px}
+.wrap-sm{max-width:820px}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.035em}
+h3,h4{font-family:var(--cuerpo);font-weight:700;letter-spacing:-.025em}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:0;border:0;border-radius:0;background:transparent;color:var(--acento);
+  font-size:.72rem;font-weight:800;letter-spacing:.13em;margin-bottom:1.35rem;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.sec-h2{font-size:clamp(2.35rem,5vw,4.25rem);line-height:.98;max-width:18ch;margin-bottom:1.25rem}
+.sec-p{font-size:1.02rem;font-weight:500;line-height:1.75;max-width:60ch;margin-bottom:3rem}
+.micro{font-weight:600}
+.marcaflow{
+  color:inherit;padding:0;background:linear-gradient(90deg,var(--acento),#8B80F9) 0 96% / 100% .1em no-repeat;
+}
+
+.btn{
+  font-family:var(--cuerpo);font-weight:700;font-size:.92rem;letter-spacing:-.01em;
+  border-radius:9px;padding:.9rem 1.35rem;min-height:50px;
+  transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.btn-primario{box-shadow:0 10px 24px rgba(64,57,191,.22)}
+.btn-primario:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(64,57,191,.28)}
+.btn-linea{background:rgba(255,255,255,.52);border:1px solid var(--linea);font-size:.9rem}
+.btn-linea:hover{background:var(--tinta);color:#fff;transform:translateY(-2px)}
+.btn-wa{background:#fff;color:var(--tinta);border:1px solid var(--linea);box-shadow:none}
+.btn-wa:hover{background:#F2FAF5;color:#116C3B;border-color:#B8DEC9;transform:translateY(-2px);box-shadow:none}
+.btn[disabled]{box-shadow:none!important}
+
+.iman-marca{gap:.65rem;text-decoration:none}
+.iman-nombre{font-family:var(--cuerpo);font-size:1.18rem;font-weight:800;letter-spacing:-.04em}
+.iman-nombre i{color:inherit}
+.iman-nombre small{font-weight:600;letter-spacing:0;opacity:.55}
+.iman-svg{animation:none}
+.iman-cuerpo-borde{stroke:var(--tinta);stroke-width:29}
+.iman-cuerpo{stroke:var(--acento);stroke-width:18}
+.iman-polo{stroke-width:3.5}
+.iman-chispa{display:none}
+
+.hdr{
+  background:rgba(244,245,247,.82);border-bottom:1px solid rgba(18,19,25,.09);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+}
+.hdr-in{max-width:1240px;padding:.7rem 1.35rem}
+.hdr-nav{gap:0}
+.hdr-nav a{font-weight:600;font-size:.78rem;padding:.55rem .72rem;border-radius:7px}
+.hdr-nav a:hover{background:#fff;color:var(--tinta)}
+.hdr-cta,.hdr-wa{box-shadow:none;min-height:42px}
+
+.hero{padding-top:clamp(3.3rem,7vw,7rem);padding-bottom:clamp(4rem,8vw,7rem);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;width:560px;height:560px;right:-260px;top:-260px;border-radius:50%;
+  border:1px solid rgba(91,85,234,.18);box-shadow:0 0 0 80px rgba(91,85,234,.025),0 0 0 160px rgba(91,85,234,.018);
+}
+.hero-grid{gap:3rem}
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:1.18fr .82fr;gap:4rem 5rem}
+}
+.hero h1{font-size:clamp(3.25rem,7.2vw,6.3rem);line-height:.91;letter-spacing:-.05em;margin-bottom:1.7rem;max-width:11ch}
+.hero .sub{font-size:clamp(1.03rem,1rem + .35vw,1.25rem);font-weight:500;line-height:1.65;max-width:31rem;margin-bottom:2rem}
+.hero-ctas{gap:.65rem}
+.hero-ctas .btn-primario{font-size:.94rem;padding:1rem 1.5rem}
+.hero-micro{margin-top:1.35rem;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.hero-nota{font-size:.78rem;font-weight:500}
+.hero-chips{gap:.5rem 1.1rem}
+.hero-chips li{
+  background:transparent;border:0;border-radius:0;padding:.25rem 0;box-shadow:none;
+  font-size:.75rem;font-weight:600;color:var(--texto);
+}
+.hero-chips li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acento)}
+
+.fono{
+  width:min(370px,100%);border:1px solid rgba(18,19,25,.8);border-radius:30px;
+  box-shadow:0 35px 80px rgba(18,19,25,.19),0 8px 24px rgba(18,19,25,.10);padding:12px;
+}
+.fono::before{height:4px;background:rgba(18,19,25,.18)}
+.t-logo,.t-saldo,.t-premio,.t-ref-qr,.t-ref .link,.t-cta{border-width:1px;box-shadow:none}
+.t-logo{border-radius:10px}
+.t-saldo{border-radius:13px;padding:.9rem 1rem}
+.t-premio,.t-ref{border-radius:12px}
+.t-ref{border-style:solid;border-width:1px}
+.t-cta{border-radius:8px}
+.escena-pie{font-weight:500}
+
+.oscuro{background:#111218}
+.oscuro .sec-p{color:#AEB1BC}
+.oscuro .eyebrow{background:transparent;color:var(--acento-claro);border:0}
+.problema h2 span{color:var(--acento-claro)}
+.grid3{gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);overflow:hidden}
+.p-card{
+  background:#171820;border:0;border-radius:0;padding:2rem 1.7rem;min-height:205px;
+}
+.p-card:nth-child(2),.p-card:nth-child(3){transform:none}
+.p-card .emo{filter:grayscale(1);opacity:.7;font-size:1.35rem}
+.p-card h3{font-size:1rem;color:#fff;margin-bottom:.7rem}
+.p-card p{font-size:.9rem;font-weight:500;color:#AEB1BC}
+
+.referidos{background:linear-gradient(145deg,#3530A4 0%,#514BD5 55%,#6660E8 100%);padding-top:clamp(4.5rem,8vw,7.5rem)}
+.referidos::before{display:none}
+.referidos .eyebrow{border:0;background:transparent;color:#D8D6FF}
+.referidos .sec-p{color:#E5E4FF}
+.flujo{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18);border-radius:12px;overflow:hidden}
+@media(min-width:820px){.flujo{grid-template-columns:repeat(6,1fr)}}
+.flujo-paso{background:rgba(17,18,24,.22);color:#fff;border:0;border-radius:0;box-shadow:none;padding:1.25rem;min-height:155px}
+.flujo-paso.final{background:#fff;color:var(--tinta)}
+.flujo-paso .n{width:auto;height:auto;display:block;background:none;border:0;border-radius:0;color:#D8D6FF;font-family:var(--cuerpo);font-size:.68rem;letter-spacing:.12em;text-align:left}
+.flujo-paso.final .n{color:var(--acento)}
+.flujo-paso .emo{font-size:1rem;filter:grayscale(1);opacity:.75}
+.flujo-paso p{font-size:.78rem;font-weight:600}
+.ref-lista li{font-weight:500}
+.ref-lista .tilde{border-radius:6px;color:var(--acento);font-size:.68rem}
+.ref-reglas{background:rgba(17,18,24,.2);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:1.6rem}
+.ref-reglas li{font-weight:500}
+.ref-frase{font-size:clamp(1.8rem,4vw,3rem);font-weight:400}
+.ref-frase span{background:transparent;color:#fff;padding:0;border-radius:0;text-decoration:underline;text-decoration-color:#D8D6FF;text-underline-offset:.15em}
+
+.pers-grid{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.pers-card{border:0;border-radius:0;box-shadow:none;padding:1.6rem}
+.pers-card:nth-child(2),.pers-card:nth-child(3){transform:none}
+.pers-head .lg{border:0;box-shadow:none;border-radius:8px;filter:grayscale(.35)}
+.pers-fila{border-bottom:1px solid var(--linea);font-weight:500}
+.pers-fila b{font-weight:600}
+.chips-pers li{background:#fff;border:1px solid var(--linea);color:var(--texto);border-radius:8px;font-weight:600;font-size:.78rem}
+
+main>section[style]{border-top:1px solid var(--linea)!important;border-bottom:1px solid var(--linea)!important}
+.vs{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.vs-card{border:0;border-radius:0;padding:2rem}
+.vs-mal,.vs-bien{box-shadow:none}
+.vs-mal{background:#F1F2F4}
+.vs-bien{background:#fff}
+.vs-card li{font-weight:500}
+.mini-tiendas i{border:1px solid #D4D6DB;border-radius:7px;filter:grayscale(1)}
+.mini-tuya{border:0;border-radius:8px;box-shadow:none}
+
+.panel{border:1px solid var(--linea);border-radius:14px;box-shadow:0 28px 70px rgba(18,19,25,.12)}
+.panel-top{background:#16171D;padding:.8rem 1rem}
+.panel-top span{font-family:var(--cuerpo);font-weight:600}
+.panel-tab{font-weight:700;border-radius:7px}
+.kpi,.fila{border:1px solid var(--linea);border-radius:9px}
+.fila.destacada{border:1px solid rgba(91,85,234,.5)}
+.fila .acc{border:1px solid var(--linea);border-radius:7px}
+.mini-fono{border:1px solid var(--linea);border-radius:14px;box-shadow:var(--sombra-dura);background:#fff}
+.mf-item{border:1px solid var(--linea);border-radius:9px}
+
+.pasos-grid{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.paso{border:0;border-radius:0;box-shadow:none;padding:2.3rem 1.25rem 1.5rem}
+.paso:nth-child(odd),.paso:nth-child(even){transform:none}
+.paso .icono{display:none}
+.paso::before{top:1.25rem;right:auto;left:1.25rem;width:auto;height:auto;background:transparent;color:var(--acento);font-family:var(--cuerpo);font-size:.7rem;letter-spacing:.12em}
+.paso h3{font-size:.96rem;margin-top:1.2rem}
+.paso p{font-size:.84rem;font-weight:500}
+
+.ben-grid{gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);overflow:hidden}
+.ben{background:#171820;border:0;border-radius:0;padding:1.5rem;min-height:145px;justify-content:space-between}
+.ben .emo{filter:grayscale(1);opacity:.65;font-size:1.1rem}
+.ben p{font-weight:500;color:#D4D6DE}
+
+.kit-piezas{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.kit-pieza{border:0;border-radius:0;box-shadow:none;padding:1.4rem 1rem}
+.kit-pieza:nth-child(1),.kit-pieza:nth-child(4){transform:none}
+.kit-lista li{font-weight:500}
+
+.prods{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.prod,.prod.principal{border:0;border-radius:0;box-shadow:none;padding:1.8rem}
+.prod .badge{border:0;border-radius:6px;font-size:.62rem}
+.prod p{font-weight:500}
+.linea-t .et{border:1px solid var(--linea);border-radius:7px;box-shadow:none;font-weight:700;font-size:.76rem}
+.linea-t .et.on{box-shadow:none}
+
+.contacto{background:#111218}
+.contacto .eyebrow{border:0;color:var(--acento-claro)}
+.contacto .sec-p{color:#AEB1BC}
+.mod{border:1px solid rgba(255,255,255,.16);border-radius:14px;box-shadow:0 35px 90px rgba(0,0,0,.32)}
+.tabs{padding:.75rem;border-bottom:1px solid var(--linea);gap:.5rem}
+.tab{border:0;border-radius:8px;bottom:0;font-family:var(--cuerpo);font-size:.86rem;font-weight:700}
+.tab[aria-selected="true"]{border:0;background:#fff;box-shadow:0 1px 4px rgba(18,19,25,.12)}
+.campo label{font-weight:700;font-size:.8rem}
+.campo input,.campo select,.campo textarea{border:1px solid var(--linea);border-radius:8px;background:#F8F8FA;font-weight:500}
+.check input{border:1px solid var(--linea);border-radius:5px}
+.estado{border:1px solid var(--linea);border-radius:9px}
+
+.faq details{border:0;border-bottom:1px solid var(--linea);border-radius:0;background:transparent;margin:0}
+.faq summary{font-family:var(--cuerpo);font-weight:700;font-size:.98rem;padding:1.35rem 3rem 1.35rem 0}
+.faq summary::after{right:0;font-family:var(--cuerpo);font-size:1.25rem;font-weight:400}
+.faq .resp{padding:0 2rem 1.5rem 0;font-weight:500}
+
+.cierre{background:linear-gradient(140deg,#111218 0%,#1A1A2A 100%)}
+.cierre h2{font-size:clamp(2.7rem,6vw,5rem);line-height:.97;max-width:16ch}
+.cierre h2 span{color:var(--acento-claro)}
+.cierre p{font-weight:500;color:#AEB1BC}
+footer{background:#0C0D11;font-weight:500}
+.sticky-cta{background:rgba(244,245,247,.92);border-top:1px solid var(--linea)}
+.sticky-cta .btn-primario,.sticky-cta .btn-wa{box-shadow:none}
+
+@media(max-width:699px){
+  section{padding-left:1rem;padding-right:1rem}
+  .hero{padding-top:2.6rem}
+  .hero h1{font-size:clamp(3rem,15vw,4.8rem)}
+  .hero-ctas{display:grid}
+  .hero-ctas .btn{width:100%}
+  .sec-h2{font-size:clamp(2.4rem,12vw,3.5rem)}
+    .hdr-in{padding:.6rem .85rem}
+  .flujo{grid-template-columns:1fr 1fr}
+}
+
+/* =====================================================================
+   DIRECCIÓN APROBADA — PRODUCTO CLARO / HERO CAFÉ REAL
+   ===================================================================== */
+:root{
+  --crema:#FBFBFE;
+  --tinta:#101116;
+  --texto:#666B7B;
+  --tinta-suave:#7D8291;
+  --linea:#E2E4EC;
+  --acento:#4F46F5;
+  --acento-osc:#3730C9;
+  --acento-suave:#F0EFFF;
+  --acento-claro:#C7C4FF;
+  --display:'Manrope',system-ui,sans-serif;
+  --cuerpo:'Manrope',system-ui,sans-serif;
+  --header-h:78px;
+}
+body{background:#fff;letter-spacing:0}
+h1,h2,h3,h4{font-family:var(--cuerpo);text-wrap:balance}
+h1{letter-spacing:-.035em}
+h2{letter-spacing:-.025em}
+
+.hdr{background:rgba(255,255,255,.9);border-bottom:1px solid var(--linea)}
+.hdr-in{max-width:1400px;min-height:var(--header-h);padding:.7rem 1.5rem}
+.hdr .iman-svg{width:38px}
+.hdr .iman-nombre{font-size:1.26rem}
+.hdr-nav{gap:1rem}
+.hdr-nav a{font-size:.88rem;color:#393C49;padding:.55rem .45rem}
+.hdr-nav a:hover{background:transparent;color:var(--acento)}
+.hdr-actions{margin-left:auto}
+.hdr-wa{display:none}
+.hdr-cta{padding:.7rem 1.25rem;border-radius:10px;background:linear-gradient(135deg,#5146EE,#573CF5);font-size:.9rem}
+
+.hero{
+  background:
+    linear-gradient(135deg,transparent 56%,rgba(79,70,245,.045) 56%,rgba(79,70,245,.045) 76%,transparent 76%),
+    radial-gradient(circle at 70% 28%,rgba(79,70,245,.09),transparent 29rem),
+    #fff;
+  border-bottom:1px solid var(--linea);padding:clamp(4rem,7vw,6.5rem) 1.5rem 0;overflow:hidden;
+}
+.hero::before{display:none}
+.hero .wrap{max-width:1400px}
+.hero-grid{display:grid;gap:2.5rem 3rem;align-items:center}
+.hero-txt{position:relative;z-index:4}
+.hero .eyebrow{color:var(--acento);font-size:.72rem;letter-spacing:.18em;margin-bottom:1.8rem}
+.hero .eyebrow::before{width:30px;height:2px}
+.hero h1{
+  max-width:none;margin:0 0 1.8rem;font-size:clamp(3.15rem,5.35vw,5.2rem);line-height:1.08;
+  font-weight:800;letter-spacing:-.045em;color:#090A0D;
+}
+.hero .marcaflow{
+  color:inherit;background:linear-gradient(var(--acento),var(--acento)) 0 100% / 100% .09em no-repeat;
+  padding-bottom:.05em;
+}
+.hero .sub{max-width:34rem;font-size:clamp(1.05rem,1.45vw,1.32rem);line-height:1.6;font-weight:500;color:#666B7B;margin-bottom:2rem}
+.hero-ctas{gap:.85rem}
+.hero-ctas .btn{min-height:58px;padding:1rem 1.65rem;border-radius:10px;font-size:.94rem}
+.hero-ctas .btn-primario{background:linear-gradient(135deg,#5146EE,#5135F2);box-shadow:0 15px 34px rgba(79,70,245,.22)}
+.hero-ctas .btn-primario span{font-size:1.25rem;line-height:1;margin-left:.35rem}
+.hero-ctas .btn-linea{background:#fff;border:1px solid #D8DAE4;color:#222431;box-shadow:0 8px 22px rgba(19,20,30,.04)}
+.hero-ctas .btn-linea span{font-size:.72rem;margin-left:.45rem}
+.hero-nota{margin-top:1.2rem;font-size:.78rem;color:#858A99}
+.hero-micro{display:none}
+
+.escena{width:100%;min-width:0;margin:0;gap:.9rem}
+.hero-showcase{position:relative;width:100%;height:600px;isolation:isolate}
+.showcase-orb{
+  position:absolute;inset:8% 1% 6% 2%;z-index:-2;border-radius:46% 54% 51% 49% / 41% 43% 57% 59%;
+  background:linear-gradient(145deg,rgba(240,239,255,.15),rgba(218,215,255,.82));
+  transform:rotate(-7deg);filter:drop-shadow(0 30px 55px rgba(79,70,245,.09));
+}
+
+.showcase-dashboard{
+  position:absolute;z-index:1;right:0;top:58px;width:min(78%,540px);height:410px;overflow:hidden;
+  background:rgba(255,255,255,.93);border:1px solid #D8DAE4;border-radius:13px;
+  box-shadow:0 32px 74px rgba(38,40,63,.14),0 4px 12px rgba(38,40,63,.05);
+  color:#1D1F29;font-family:var(--cuerpo);text-align:left;
+}
+.dash-chrome{height:36px;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #E5E6EB;background:#FAFAFC}
+.dash-chrome i{width:8px;height:8px;border-radius:50%;background:#BEC2CE}
+.dash-layout{display:grid;grid-template-columns:118px 1fr;height:calc(100% - 36px)}
+.dash-side{padding:17px 11px;border-right:1px solid #E8E9EE;background:#FCFCFE;display:flex;flex-direction:column;gap:5px}
+.dash-brand{display:flex;align-items:center;gap:6px;margin-bottom:15px;padding:0 5px}
+.dash-brand svg{width:20px;height:22px;color:#11131A}
+.dash-brand b{font-size:12px;letter-spacing:-.04em}
+.dash-brand small{font-size:7px;font-weight:600;color:#7B7F8B;margin-left:2px}
+.dash-side>span{font-size:8px;font-weight:600;color:#6B6F7B;padding:7px 8px;border-radius:6px;white-space:nowrap}
+.dash-side>span.active{background:#EEECFF;color:#4F46F5}
+.dash-content{padding:22px 20px}
+.dash-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+.dash-heading b{display:block;font-size:18px;letter-spacing:-.035em}
+.dash-heading small{display:block;font-size:8px;color:#7C8190;margin-top:3px}
+.dash-heading>span{font-size:8px;color:#555A68;border:1px solid #E2E4EA;border-radius:6px;padding:8px 9px}
+.dash-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.dash-kpis article{padding:13px 14px;border:1px solid #E5E6EC;border-radius:8px;background:#fff;box-shadow:0 5px 12px rgba(20,22,38,.035)}
+.dash-kpis small{font-size:8px;color:#555A68;display:block}
+.dash-kpis strong{font-size:22px;line-height:1.2;display:block;letter-spacing:-.04em}
+.dash-kpis em{font-style:normal;font-size:8px;font-weight:700;color:#209978}
+.dash-chart{height:180px;padding:13px 14px 8px;border:1px solid #E5E6EC;border-radius:8px;background:#fff}
+.dash-chart>div:first-child{display:flex;justify-content:space-between;align-items:center}
+.dash-chart b{font-size:9px}.dash-chart>div span{font-size:7px;color:#6D7280}
+.dash-chart svg{display:block;width:100%;height:112px;margin-top:4px;border-bottom:1px solid #ECEEF2}
+.chart-days{display:flex;justify-content:space-between;padding-top:5px}
+.chart-days span{font-size:6px!important}
+.dash-disclaimer{position:absolute;right:14px;bottom:7px;font-size:6px;color:#A1A5AF}
+
+.cafe-device{
+  position:absolute;z-index:4;left:0;top:8px;width:292px;height:570px;padding:10px 9px 11px;
+  border:2px solid #BFC3CE;border-radius:34px;background:linear-gradient(135deg,#F8F9FB,#D8DAE2 48%,#FAFBFC);
+  box-shadow:0 34px 64px rgba(24,26,40,.22),0 7px 18px rgba(24,26,40,.11),inset 0 0 0 1px #fff;
+  transform:rotate(-1.2deg);transform-origin:center;
+}
+.device-speaker{position:absolute;z-index:7;top:15px;left:50%;width:70px;height:7px;border-radius:999px;background:#0E0F13;transform:translateX(-50%)}
+.cafe-screen{position:relative;height:100%;overflow:hidden;border-radius:25px;background:#FCF8F1;border:1px solid rgba(17,20,29,.25);font-family:var(--cuerpo);color:#14254A;text-align:left}
+.cafe-head{height:59px;padding:25px 13px 7px;display:flex;justify-content:space-between;align-items:center;background:#FFF9F0}
+.cafe-head strong{font-size:23px;font-weight:800;letter-spacing:-.055em}
+.cafe-head div{display:flex;gap:5px}.cafe-head div span{display:grid;place-items:center;width:28px;height:28px;border:1px solid #D9D7D2;border-radius:50%;font-size:13px}
+.cafe-location{height:29px;padding:6px 11px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E4DED6;border-bottom:1px solid #E4DED6;background:#FFF9F0}
+.cafe-location span{font-size:6.5px;font-weight:700}.cafe-location em{font-size:6px;font-style:normal;color:#3F8A54;background:#E5F1E1;border-radius:999px;padding:3px 6px}
+.cafe-ready{height:38px;margin:7px 8px;display:flex;align-items:center;gap:7px;padding:0 10px;background:rgba(255,255,255,.78);border:1px solid #D8D3CA;border-radius:15px;color:#14254A}
+.cafe-ready span{color:#E65035}.cafe-ready b{font-size:8px}.cafe-ready i{margin-left:auto;font-style:normal;font-size:17px}
+.cafe-campaign{position:relative;height:286px;margin:0 7px;overflow:hidden;border-radius:15px;background:#101A2F;color:#fff}
+.cafe-campaign>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.cafe-campaign-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,11,24,.95) 0%,rgba(5,11,24,.72) 47%,rgba(5,11,24,.08) 82%),linear-gradient(0deg,rgba(5,11,24,.8),transparent 54%)}
+.cafe-campaign-copy{position:absolute;inset:0;padding:15px 12px;display:flex;flex-direction:column;align-items:flex-start}
+.cafe-campaign-copy>span{font-size:5.7px;font-weight:800;letter-spacing:.12em}
+.cafe-campaign-copy h3{font-size:31px;line-height:.88;letter-spacing:-.06em;color:#fff;margin:auto 0 8px;max-width:6ch;font-weight:800}
+.cafe-campaign-copy p{font-size:6.7px;line-height:1.25;max-width:28ch;color:rgba(255,255,255,.9);margin-bottom:10px}
+.cafe-campaign-copy b{font-size:7px;color:#fff;background:#F14D2F;border-radius:6px;padding:9px 12px;box-shadow:0 6px 16px rgba(241,77,47,.25)}
+.cafe-reward{height:43px;margin:7px 8px;display:flex;align-items:center;gap:7px;padding:6px 9px;background:#13264C;color:#fff;border-radius:12px}
+.cafe-reward>span{font-size:14px}.cafe-reward>div{flex:1}.cafe-reward b{display:block;font-size:6px}.cafe-reward i{display:block;margin-top:4px;width:100%;height:3px;border-radius:99px;background:rgba(255,255,255,.22)}
+.cafe-reward strong{font-size:7px;white-space:nowrap}
+.cafe-nav{position:absolute;left:0;right:0;bottom:0;height:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:5px 7px 6px;background:rgba(255,251,246,.98);border-top:1px solid #E5DED5;box-shadow:0 -8px 18px rgba(20,28,45,.06)}
+.cafe-nav>span{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#85898F;border:1px solid transparent;border-radius:9px}
+.cafe-nav svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cafe-nav>span.on{background:#FFF0E8;color:#E3553E;border-color:#F3D0C5}.cafe-nav small{font-size:5.7px;font-weight:700;line-height:1}
+.escena-pie{max-width:50ch;font-size:.68rem;color:#8A8E9B;margin-top:-.2rem}
+.fono-legacy{display:none!important}
+
+.hero-chips{list-style:none;border-top:1px solid var(--linea);margin-top:0;padding:1.5rem 0;display:grid;gap:0}
+.hero-grid .hero-chips{grid-column:1/-1}
+.hero-chips li{display:flex;align-items:center;gap:.9rem;padding:.35rem 1.2rem;background:transparent;border:0;border-radius:0;box-shadow:none}
+.hero-chips li+li{border-left:1px solid var(--linea)}
+.hero-chips li::before{display:none}
+.hero-chips li i{width:42px;height:42px;display:grid;place-items:center;flex:none;border-radius:50%;background:var(--acento-suave);color:var(--acento);font-size:1.1rem;font-style:normal;font-weight:800}
+.hero-chips li span{display:flex;flex-direction:column;min-width:0}
+.hero-chips li b{font-size:.84rem;color:#171820;line-height:1.25}
+.hero-chips li small{font-size:.7rem;color:#777C89;line-height:1.35;margin-top:.15rem}
+
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:minmax(510px,.93fr) minmax(590px,1.07fr);grid-template-rows:auto auto;gap:2.5rem 3.5rem}
+  .hero-txt{grid-column:1;grid-row:1;align-self:center;padding-bottom:1.5rem}
+  .escena{grid-column:2;grid-row:1;align-self:center}
+  .hero-grid .hero-chips{grid-column:1/-1;grid-row:2;grid-template-columns:repeat(4,1fr)}
+}
+
+@media(min-width:980px) and (max-width:1210px){
+  .hero-grid{grid-template-columns:minmax(450px,.9fr) minmax(500px,1.1fr);gap:2rem}
+  .hero h1{font-size:clamp(3.7rem,5.7vw,4.65rem)}
+  .hero-showcase{transform:scale(.88);transform-origin:left center;width:113%;margin-right:-13%}
+}
+
+@media(max-width:979px){
+  .hero{padding-top:3.4rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-txt,.escena,.hero-grid .hero-chips{grid-column:1;grid-row:auto}
+  .hero h1{font-size:clamp(3.2rem,9vw,5rem);line-height:1.05}
+  .hero-showcase{max-width:690px;margin:0 auto}
+  .hero-grid .hero-chips{grid-template-columns:repeat(2,1fr);width:100%}
+  .hero-chips li:nth-child(3){border-left:0;border-top:1px solid var(--linea)}
+  .hero-chips li:nth-child(4){border-top:1px solid var(--linea)}
+}
+
+@media(max-width:640px){
+  .hdr-in{min-height:68px;padding:.6rem 1rem}
+  .hdr .iman-svg{width:31px}.hdr .iman-nombre{font-size:1.05rem}
+  .hdr-cta{font-size:.76rem;padding:.62rem .82rem;min-height:42px}
+  .hero{padding:2.8rem 1rem 0}
+  .hero .eyebrow{font-size:.62rem;letter-spacing:.14em;margin-bottom:1.25rem}
+  .hero h1{font-size:clamp(2.72rem,12.4vw,4rem);line-height:1.04;letter-spacing:-.04em}
+  .hero .sub{font-size:1rem;margin-bottom:1.5rem}
+  .hero-ctas{grid-template-columns:1fr 1fr;display:grid}
+  .hero-ctas .btn{width:100%;min-height:53px;padding:.8rem .7rem;font-size:.82rem}
+  .hero-showcase{height:555px}
+  .showcase-dashboard{display:none}
+  .showcase-orb{inset:8% 0 4%;transform:rotate(-4deg)}
+  .cafe-device{left:50%;top:2px;transform:translateX(-50%) rotate(-1deg);width:282px;height:552px}
+  .hero-grid .hero-chips{grid-template-columns:1fr;margin-top:.5rem}
+  .hero-chips li{padding:.9rem .2rem;border-left:0!important;border-top:1px solid var(--linea)}
+  .hero-chips li:first-child{border-top:0}
+}
+
+/* =====================================================================
+   LANDING CORTA — CAMPAÑAS, EMAIL Y RENTABILIDAD
+   ===================================================================== */
+.campanas{background:#111218;color:#fff;overflow:hidden}
+.campanas::before{
+  content:"";position:absolute;width:34rem;height:34rem;right:-10rem;top:-12rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(103,92,255,.28),transparent 68%);pointer-events:none
+}
+.campanas-grid{display:grid;gap:3rem;align-items:center}
+.campanas .eyebrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#D8D5FF}
+.campanas .sec-h2{color:#fff;max-width:15ch;font-size:clamp(2.6rem,5vw,4.6rem);line-height:1}
+.campanas .sec-p{color:#B9BDCA;max-width:49ch;font-weight:500;margin-bottom:1.35rem}
+.campanas-dato{display:flex;align-items:flex-start;gap:.8rem;color:#ECECF4;font-size:.9rem;max-width:48ch}
+.campanas-dato i{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:8px;background:#5750F1;font-style:normal}
+
+.email-demo{position:relative;padding:1rem;background:#F5F5F8;border:1px solid rgba(255,255,255,.2);border-radius:16px;box-shadow:0 32px 90px rgba(0,0,0,.35);color:#181922}
+.email-demo-top{display:flex;justify-content:space-between;align-items:center;padding:.2rem .15rem 1rem;color:#6F7380;font-size:.7rem;font-weight:700}
+.email-demo-top b{color:#252731;font-size:.8rem}
+.email-demo-top span{background:#E7F7EF;color:#19845E;padding:.35rem .55rem;border-radius:999px}
+.email-card{overflow:hidden;background:#fff;border:1px solid #DFE1E8;border-radius:12px}
+.email-subject{padding:.85rem 1rem;border-bottom:1px solid #E8E9EE;font-size:.73rem;color:#6F7380}
+.email-subject b{color:#23252E}
+.email-body{padding:2rem 1.55rem 1.7rem;background:linear-gradient(145deg,#FFF8EE,#FFFDF9)}
+.email-brand{font-size:.82rem;letter-spacing:.16em;font-weight:800;color:#E1533D}
+.email-body small{display:block;margin:1.5rem 0 .55rem;font-size:.61rem;letter-spacing:.13em;font-weight:800;color:#E1533D}
+.email-body h3{font-size:clamp(1.9rem,4vw,3.15rem);line-height:.95;letter-spacing:-.05em;max-width:9ch;color:#14254A}
+.email-body p{max-width:34ch;margin:1rem 0 1.25rem;color:#5E6678;font-size:.82rem;line-height:1.55}
+.email-button{display:inline-block;background:#E8523A;color:#fff;padding:.72rem 1rem;border-radius:7px;font-size:.72rem;font-weight:800}
+.email-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1E3EA;border-top:1px solid #E1E3EA}
+.email-meta div{background:#fff;padding:.8rem}.email-meta small{display:block;font-size:.58rem;color:#888C98}.email-meta b{font-size:.72rem}
+
+.criterios{display:grid;gap:1px;background:#DADCE5;border:1px solid #DADCE5;border-radius:14px;overflow:hidden;margin-top:3rem}
+.criterio{background:#fff;padding:1.5rem;color:#181922}
+.criterio span{display:block;color:var(--acento);font-size:.68rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase;margin-bottom:.55rem}
+.criterio h3{font-size:1rem;margin-bottom:.35rem}.criterio p{color:var(--texto);font-size:.82rem;line-height:1.55}
+
+.producto-corto{background:#F7F7FB}
+.producto-corto .sec-h2{max-width:18ch}
+.producto-grid{display:grid;gap:1px;background:#DADCE5;border:1px solid #DADCE5;border-radius:16px;overflow:hidden}
+.producto-card{background:#fff;padding:1.7rem;min-height:220px;display:flex;flex-direction:column;align-items:flex-start}
+.producto-card .prod-ic{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;background:var(--acento-suave);color:var(--acento);font-size:1.15rem;margin-bottom:1.4rem}
+.producto-card h3{font-size:1.08rem;margin-bottom:.5rem}.producto-card p{font-size:.86rem;color:var(--texto);line-height:1.55}
+.producto-card .prod-tag{margin-top:auto;padding-top:1.2rem;font-size:.68rem;color:var(--acento);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+
+.pasos-cortos{background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.pasos-cortos .pasos-grid{grid-template-columns:repeat(3,1fr)}
+.pasos-cortos .paso{min-height:205px}
+.pasos-cta{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:2rem;padding:1.35rem 1.5rem;border-radius:12px;background:#101116;color:#fff}
+.pasos-cta p{font-size:.9rem;color:#D0D2DB;max-width:48ch}
+.pasos-cta .btn{flex:none}
+
+@media(min-width:860px){
+  .campanas-grid{grid-template-columns:minmax(0,.85fr) minmax(470px,1.15fr);gap:5rem}
+  .criterios,.producto-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:859px){
+  .campanas-grid{grid-template-columns:1fr}.email-demo{max-width:600px}
+  .producto-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .campanas .sec-h2{font-size:clamp(2.35rem,11vw,3.3rem)}
+  .email-meta{grid-template-columns:1fr}.email-meta div{padding:.65rem .8rem}
+  .pasos-cortos .pasos-grid{grid-template-columns:1fr}
+  .pasos-cta{align-items:stretch;flex-direction:column}.pasos-cta .btn{width:100%}
+}
 </style>
 <!-- ═══ SEO/AEO generado — no editar a mano, ver SEO.md ═══ -->
 <link rel="canonical" href="https://iman.ar/">
@@ -887,12 +1375,12 @@ footer .iman-nombre i{color:var(--acento-claro)}
       "featureList": [
         "Detección automática del ciclo de recompra de cada cliente",
         "Semáforo de cartera: quién compra seguido y quién se enfrió",
-        "Campañas de WhatsApp armadas y segmentadas, listas para aprobar",
+        "Campañas de email armadas y segmentadas, listas para aprobar",
         "Importación desde Excel o desde el reporte de cualquier sistema de facturación",
         "Programa de puntos, beneficios y referidos con la marca del comercio",
         "Sin aplicación para el cliente final"
       ],
-      "description": "Imán Club es un Club de Clientes personalizado con la marca del comercio: puntos, beneficios y referidos. El cliente escanea un QR, se registra en el navegador de su teléfono y participa sin descargar ninguna aplicación ni entrar a un marketplace."
+      "description": "Imán combina campañas de email segmentadas, un Club de Clientes sin app y referidos medibles para recuperar clientes y aumentar la frecuencia de compra."
     },
     {
       "@type": "FAQPage",
@@ -910,34 +1398,18 @@ footer .iman-nombre i{color:var(--acento-claro)}
         },
         {
           "@type": "Question",
-          "name": "¿Se personaliza completamente con mi marca?",
+          "name": "¿Cómo usan el email de mis clientes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Adaptamos logo, colores, tipografía, nombre del programa, premios, beneficios y el tono de la comunicación. La idea es que tu cliente sienta que está usando algo de tu negocio."
+            "text": "Creamos segmentos y campañas para la base de clientes de tu propio local. El objetivo es volver a contactar a quienes ya compraron con mensajes relevantes."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Aparecen otros comercios?",
+          "name": "¿Cómo cuidan la rentabilidad de las campañas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Cada Club es independiente y el QR abre directamente el tuyo. No hay directorio de marcas, competidores ni promociones ajenas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo se acreditan los puntos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El cliente escanea el QR en el momento de la compra o la visita, y desde el panel se confirma la operación. Las reglas (cuántos puntos y por qué) se definen con vos en la configuración."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Quién define los premios?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vos. Nosotros te ayudamos a armarlos para que sean sostenibles, pero los premios, su costo en puntos y los beneficios son decisión del comercio."
+            "text": "Revisamos el rubro, el tipo de cliente, el objetivo y los costos del negocio para diseñar beneficios que busquen generar ventas sin regalar margen innecesariamente."
           }
         },
         {
@@ -950,50 +1422,10 @@ footer .iman-nombre i{color:var(--acento-claro)}
         },
         {
           "@type": "Question",
-          "name": "¿Cuándo reciben el beneficio las personas referidas?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Después de la primera compra del referido, una vez que el comercio la valida. No se acredita solo por registrarse: tiene que haber una compra real."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué mide la prueba gratuita?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Escaneos, registros, actividad inicial, uso de beneficios y participación del personal. Es para ver si tus clientes lo adoptan, no para prometerte un resultado de ventas en pocas semanas."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "¿Necesito equipos especiales?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Puedo incorporar un catálogo más adelante?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, como una segunda etapa opcional. Hoy el catálogo digital completo no es una función disponible: lo conversamos cuando el Club ya esté funcionando."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué sucede si decido no continuar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No hay permanencia. Si después de la prueba no te sirve, no continuás. Podés pedirnos los datos de los clientes que se registraron en tu Club."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo se gestionan los datos de los clientes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los datos que cargan tus clientes al registrarse son de tu comercio y se usan para hacer funcionar el Club. Antes de la puesta en marcha repasamos con vos qué datos se piden y cómo se comunica el consentimiento en el registro."
           }
         }
       ]
@@ -1002,13 +1434,13 @@ footer .iman-nombre i{color:var(--acento-claro)}
       "@type": "WebPage",
       "@id": "https://iman.ar/#webpage",
       "url": "https://iman.ar/",
-      "name": "Imán Club — Hacé que tus clientes vuelvan y traigan nuevos clientes",
-      "description": "Imán Club es un Club de Clientes con la marca de tu comercio: puntos, beneficios y referidos. Tus clientes escanean un QR y participan sin descargar ninguna aplicación.",
+      "name": "Imán Club — Aumentá tus ventas sin invertir en publicidad",
+      "description": "Campañas de email, fidelización y referidos diseñados para recuperar clientes y cuidar la rentabilidad del negocio.",
       "isPartOf": {
         "@id": "https://iman.ar/#website"
       },
       "inLanguage": "es-AR",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://iman.ar/og.png"
@@ -1047,10 +1479,9 @@ footer .iman-nombre i{color:var(--acento-claro)}
       <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
     </a>
     <nav class="hdr-nav" aria-label="Secciones">
+      <a href="#campanas">Campañas</a>
+      <a href="#producto">Producto</a>
       <a href="#como-funciona">Cómo funciona</a>
-      <a href="#referidos">Referidos</a>
-      <a href="#personalizacion">Personalización</a>
-      <a href="#faq">Preguntas frecuentes</a>
     </nav>
     <div class="hdr-actions">
       <a class="btn btn-primario hdr-cta" href="#contacto" data-demo>Quiero mi demo</a>
@@ -1065,22 +1496,88 @@ footer .iman-nombre i{color:var(--acento-claro)}
 <section class="hero" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div class="hero-txt">
-      <span class="eyebrow">Fidelización y referidos diseñados para tu marca</span>
-      <h1 id="h1">Hacé que tus clientes <span class="marcaflow">vuelvan y traigan nuevos clientes.</span></h1>
-      <p class="sub">Un Club de Clientes con tu marca, puntos, beneficios y referidos. Sin apps.</p>
+      <span class="eyebrow">Fidelización que impulsa negocios locales</span>
+      <h1 id="h1">Aumentá tus<br>ventas sin invertir<br>en <span class="marcaflow">publicidad.</span></h1>
+      <p class="sub">Convertí la base de clientes que ya tiene tu local en más visitas, más compras y referidos. Sin apps.</p>
 
       <div class="hero-ctas">
-        <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
-        <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
-        <a class="btn btn-linea" href="#como-funciona">Ver cómo funciona</a>
+        <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo <span aria-hidden="true">→</span></a>
+        <a class="btn btn-linea" href="#como-funciona">Cómo funciona <span aria-hidden="true">▶</span></a>
       </div>
-      <p class="hero-micro">Tu marca. <span>Tus beneficios.</span> Tus clientes.</p>
-      <p class="hero-nota">Te contactamos personalmente. Sin tarjeta y sin compromiso.</p>
+      <p class="hero-nota">Te contactamos personalmente y armamos una propuesta para tu negocio.</p>
     </div>
 
     <div class="escena">
+      <div class="hero-showcase" aria-label="Ejemplo de Imán aplicado a Café: experiencia del cliente en el teléfono y panel de gestión del comercio.">
+        <div class="showcase-orb" aria-hidden="true"></div>
+
+        <div class="showcase-dashboard" aria-hidden="true">
+          <div class="dash-chrome"><i></i><i></i><i></i></div>
+          <div class="dash-layout">
+            <aside class="dash-side">
+              <div class="dash-brand">
+                <svg viewBox="0 0 30 32"><path d="M8 23V13a7 7 0 0114 0v10" fill="none" stroke="currentColor" stroke-width="7"/><path d="M8 23V13a7 7 0 0114 0v10" fill="none" stroke="#5B55EA" stroke-width="4"/></svg>
+                <b>Imán<small>Club</small></b>
+              </div>
+              <span class="active">⌂&nbsp; Inicio</span>
+              <span>♙&nbsp; Clientes</span>
+              <span>♡&nbsp; Beneficios</span>
+              <span>♧&nbsp; Referidos</span>
+              <span>▥&nbsp; Estadísticas</span>
+              <span>⚙&nbsp; Configuración</span>
+            </aside>
+            <div class="dash-content">
+              <div class="dash-heading">
+                <div><b>Hola, Juan</b><small>Así va tu club esta semana.</small></div>
+                <span>7 al 13 de septiembre⌄</span>
+              </div>
+              <div class="dash-kpis">
+                <article><small>Clientes activos</small><strong>1.248</strong><em>↑ 12%</em></article>
+                <article><small>Referidos</small><strong>320</strong><em>↑ 28%</em></article>
+              </div>
+              <div class="dash-chart">
+                <div><b>Clientes activos</b><span>Esta semana⌄</span></div>
+                <svg viewBox="0 0 320 120" preserveAspectRatio="none">
+                  <defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#56BFA5" stop-opacity=".34"/><stop offset="1" stop-color="#56BFA5" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 94 C28 62 51 87 76 74 S118 42 145 59 S188 48 212 37 S260 28 320 13 V120 H0Z" fill="url(#chartFill)"/>
+                  <path d="M0 94 C28 62 51 87 76 74 S118 42 145 59 S188 48 212 37 S260 28 320 13" fill="none" stroke="#23977F" stroke-width="3"/>
+                </svg>
+                <div class="chart-days"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+              </div>
+            </div>
+          </div>
+          <small class="dash-disclaimer">Datos ilustrativos</small>
+        </div>
+
+        <div class="cafe-device" aria-hidden="true">
+          <div class="device-speaker"></div>
+          <div class="cafe-screen">
+            <div class="cafe-head"><strong>CAFÉ</strong><div><span>⌕</span><span>▢</span></div></div>
+            <div class="cafe-location"><span>⌖ Nueva Córdoba⌄</span><em>Abierto hasta las 20:00</em></div>
+            <div class="cafe-ready"><span>☕</span><b>Tu café de siempre está listo</b><i>›</i></div>
+            <div class="cafe-campaign">
+              <img src="https://cafe.iman.ar/cafe/campaign/ritual-v2.webp" alt="" loading="eager">
+              <div class="cafe-campaign-shade"></div>
+              <div class="cafe-campaign-copy">
+                <span>✣ RITUAL SEMANAL · 7 AL 13 DE SEPTIEMBRE</span>
+                <h3>Esta semana,<br>arrancás mejor.</h3>
+                <p>Elegí un beneficio para tu café de todos los días.</p>
+                <b>Elegir mi beneficio</b>
+              </div>
+            </div>
+            <div class="cafe-reward"><span>♢</span><div><b>Tu próximo regalo</b><i></i></div><strong>0 / 90 pts</strong></div>
+            <div class="cafe-nav">
+              <span class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5M9.5 20v-5.5h5V20"/></svg><small>Inicio</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14M5 12h14M5 18.5h14"/><circle cx="3" cy="5.5" r=".5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r=".5" fill="currentColor" stroke="none"/><circle cx="3" cy="18.5" r=".5" fill="currentColor" stroke="none"/></svg><small>Carta</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg><small>Club</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><small>Pedido</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- teléfono: ejemplo fijo de la experiencia del cliente -->
-      <div class="fono" id="fono">
+      <div class="fono fono-legacy" id="fono" hidden aria-hidden="true">
         <div class="fono-in" id="fono-in">
           <div class="t-top">
             <div class="t-logo" id="t-logo" aria-hidden="true">🌿</div>
@@ -1126,25 +1623,25 @@ footer .iman-nombre i{color:var(--acento-claro)}
             </div>
             <div class="link"><span id="t-ref-link">clubsemilla.com.ar/invita/sofi</span> <b>Compartir</b></div>
             <div class="t-cta" aria-hidden="true" id="t-ref-cta">Compartir mi invitación</div>
-            <div class="t-pronto" id="t-pronto" hidden>Referidos · próximamente</div>
           </div>
         </div>
       </div>
 
 
-      <p class="escena-pie">Ejemplo demostrativo de un comercio ficticio. Las reglas de puntos y los premios los definís vos.</p>
+      <p class="escena-pie">Ejemplo real de una experiencia personalizada con Imán. Los indicadores del panel son ilustrativos.</p>
     </div>
 
     <ul class="hero-chips">
-      <li><span aria-hidden="true">📱</span> Sin app para tus clientes</li>
-      <li><span aria-hidden="true">🎨</span> Con tu identidad</li>
-      <li><span aria-hidden="true">🤝</span> Configurado con vos</li>
+      <li><i aria-hidden="true">✉</i><span><b>Email marketing</b><small>Activá a quienes ya te compraron.</small></span></li>
+      <li><i aria-hidden="true">▱</i><span><b>Sin app</b><small>Tus clientes se suman fácil.</small></span></li>
+      <li><i aria-hidden="true">◇</i><span><b>Tu identidad</b><small>100% con tu marca.</small></span></li>
+      <li><i aria-hidden="true">▥</i><span><b>Datos claros</b><small>Decisiones que hacen crecer.</small></span></li>
     </ul>
   </div>
 </section>
 
-<!-- ================= 2. PROBLEMA ================= -->
-<section class="oscuro problema" aria-labelledby="h-problema">
+<!-- ================= 2. PROBLEMA (retirada de la landing corta) ================= -->
+<section class="oscuro problema" aria-labelledby="h-problema" hidden>
   <div class="wrap">
     <span class="eyebrow">El problema</span>
     <h2 class="sec-h2 rv" id="h-problema">Tus clientes compran. <span>¿Pero sabés cuántos vuelven?</span></h2>
@@ -1170,74 +1667,47 @@ footer .iman-nombre i{color:var(--acento-claro)}
 </section>
 
 
-<!-- ================= 3. REFERIDOS ================= -->
-<section class="referidos" id="referidos" aria-labelledby="h-referidos">
+<!-- ================= 4. CAMPAÑAS Y EMAIL ================= -->
+<section class="campanas" id="campanas" aria-labelledby="h-campanas">
   <div class="wrap">
-    <span class="eyebrow">Referidos</span>
-    <h2 class="sec-h2 rv" id="h-referidos">Tus mejores clientes pueden traerte los próximos.</h2>
-    <p class="sec-p rv rv-d1">Cada miembro recibe una invitación personal para compartir por WhatsApp. Cuando el nuevo cliente realiza su primera compra y el comercio la valida, ambos reciben un beneficio definido por vos.</p>
-
-    <div class="aviso-pronto rv rv-d1" id="aviso-referidos" hidden>
-      <span aria-hidden="true">🛠️</span>
-      <span><b>Referidos está en implementación.</b> Lo diseñamos junto a tu negocio y lo activamos cuando el circuito completo esté verificado. Todo lo demás del Club funciona desde el día uno.</span>
-    </div>
-
-    <div class="flujo rv rv-d1">
-      <div class="flujo-paso"><div class="n">1</div><div class="emo" aria-hidden="true">💜</div><p>Un cliente frecuente entra a su Club</p></div>
-      <div class="flujo-paso"><div class="n">2</div><div class="emo" aria-hidden="true">📲</div><p>Comparte su invitación por WhatsApp</p></div>
-      <div class="flujo-paso"><div class="n">3</div><div class="emo" aria-hidden="true">🙋</div><p>Un amigo se registra desde ese enlace</p></div>
-      <div class="flujo-paso"><div class="n">4</div><div class="emo" aria-hidden="true">🛍️</div><p>Hace su primera compra en tu local</p></div>
-      <div class="flujo-paso"><div class="n">5</div><div class="emo" aria-hidden="true">✅</div><p>El comercio valida esa compra</p></div>
-      <div class="flujo-paso final"><div class="n">6</div><div class="emo" aria-hidden="true">🎁</div><p>Ambos reciben los puntos que definiste</p></div>
-    </div>
-
-    <div class="ref-2col">
-      <div class="rv">
-        <ul class="ref-lista">
-          <li><i class="tilde" aria-hidden="true">✓</i> Recomendaciones medibles, no intuiciones.</li>
-          <li><i class="tilde" aria-hidden="true">✓</i> Menor dependencia de la publicidad paga.</li>
-          <li><i class="tilde" aria-hidden="true">✓</i> Clientes nuevos que llegan por personas conocidas.</li>
-          <li><i class="tilde" aria-hidden="true">✓</i> Premios solamente cuando ocurre una compra real.</li>
-          <li><i class="tilde" aria-hidden="true">✓</i> Seguimiento de quién recomendó a quién.</li>
-        </ul>
+    <div class="campanas-grid">
+      <div>
+        <span class="eyebrow">Marketing por email</span>
+        <h2 class="sec-h2 rv" id="h-campanas">Volvé a hablar con quienes ya te compraron.</h2>
+        <p class="sec-p rv rv-d1">Trabajamos con la base de clientes que tu local ya construyó. Creamos campañas personalizadas según tu rubro, el comportamiento de tus clientes y tus costos, para generar nuevas visitas sin regalar margen.</p>
+        <p class="campanas-dato rv rv-d2"><i aria-hidden="true">↗</i><span><b>No enviamos la misma promoción a todos.</b> Definimos a quién contactar, cuándo hacerlo y qué propuesta conviene para maximizar la rentabilidad de cada campaña.</span></p>
       </div>
-      <div class="ref-reglas rv rv-d1">
-        <h3>Cómo funcionan las reglas</h3>
-        <ol>
-          <li>El cliente comparte un enlace o QR personal.</li>
-          <li>Cada referido puede registrarse una sola vez.</li>
-          <li>El beneficio se acredita después de la primera compra validada.</li>
-          <li>La recompensa la define el comercio.</li>
-          <li>Las operaciones quedan registradas.</li>
-          <li>Los ajustes y movimientos se pueden revisar.</li>
-        </ol>
+
+      <div class="email-demo rv rv-d1" aria-label="Ejemplo ilustrativo de una campaña de email para clientes de una cafetería">
+        <div class="email-demo-top"><b>Campaña de reactivación</b><span>Lista para enviar</span></div>
+        <div class="email-card">
+          <div class="email-subject"><b>Asunto:</b> Hace mucho que no compartimos un café ☕</div>
+          <div class="email-body">
+            <div class="email-brand">CAFÉ</div>
+            <small>UN BENEFICIO PENSADO PARA VOS</small>
+            <h3>Hay una mesa esperándote.</h3>
+            <p>Volvé esta semana y disfrutá un beneficio elegido según tus visitas anteriores.</p>
+            <span class="email-button">Ver mi beneficio</span>
+          </div>
+          <div class="email-meta">
+            <div><small>Segmento</small><b>Sin visita hace 21 días</b></div>
+            <div><small>Canal</small><b>Email</b></div>
+            <div><small>Objetivo</small><b>Recuperar la visita</b></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <p class="ref-frase rv rv-d2">Premiá a quien vuelve <span>y a quien trae a otro.</span></p>
+    <div class="criterios rv rv-d1">
+      <article class="criterio"><span>01 · Tu rubro</span><h3>Campañas con contexto</h3><p>No funciona igual una cafetería, un restaurante o un comercio con compras mensuales.</p></article>
+      <article class="criterio"><span>02 · Tus clientes</span><h3>Mensajes relevantes</h3><p>Segmentamos por frecuencia, historial y tiempo desde la última visita.</p></article>
+      <article class="criterio"><span>03 · Tus costos</span><h3>Beneficios sostenibles</h3><p>Diseñamos cada incentivo considerando costo real, margen y objetivo comercial.</p></article>
+    </div>
   </div>
 </section>
 
-<!-- ================= 4. PERSONALIZACIÓN ================= -->
-<section id="personalizacion" aria-labelledby="h-pers">
-  <div class="wrap">
-    <span class="eyebrow">Personalización</span>
-    <h2 class="sec-h2 rv" id="h-pers">Tu negocio no se adapta a Imán. Imán se adapta a tu negocio.</h2>
-    <p class="sec-p rv rv-d1">Cada Club se configura de manera personalizada. Adaptamos la identidad, las reglas de puntos, los premios y la experiencia para que tus clientes sientan que están usando una herramienta propia de tu marca.</p>
-
-    <div class="pers-grid" id="pers-grid"></div>
-
-    <h3 style="font-size:1.1rem;margin-bottom:.8rem">Qué se adapta a tu negocio</h3>
-    <ul class="chips-pers rv">
-      <li>Logo</li><li>Colores</li><li>Tipografía</li><li>Nombre del programa</li>
-      <li>Sistema de puntos</li><li>Premios</li><li>Beneficios</li><li>Comunicación</li>
-      <li>Experiencia de referidos</li><li>Señalética física</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= 5. NO MARKETPLACE ================= -->
-<section aria-labelledby="h-vs" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
+<!-- ================= 5. NO MARKETPLACE (retirada de la landing corta) ================= -->
+<section aria-labelledby="h-vs" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)" hidden>
   <div class="wrap">
     <span class="eyebrow">Sin competidores alrededor</span>
     <h2 class="sec-h2 rv" id="h-vs">Tus clientes entran a tu marca, no a un marketplace.</h2>
@@ -1270,92 +1740,52 @@ footer .iman-nombre i{color:var(--acento-claro)}
 </section>
 
 <!-- ================= 6. PRODUCTO ================= -->
-<section aria-labelledby="h-prod">
+<section class="producto-corto" id="producto" aria-labelledby="h-prod">
   <div class="wrap">
-    <span class="eyebrow">El producto</span>
-    <h2 class="sec-h2 rv" id="h-prod">Un Club de Clientes que se siente parte de tu negocio.</h2>
-    <p class="sec-p rv rv-d1">De un lado, la pantalla que ve tu cliente. Del otro, el panel donde vos mirás registros, visitas, puntos, canjes y referidos.</p>
+    <span class="eyebrow">Una sola herramienta</span>
+    <h2 class="sec-h2 rv" id="h-prod">Todo lo necesario para que vuelvan y recomienden.</h2>
+    <p class="sec-p rv rv-d1">Imán reúne la experiencia del cliente, las campañas y la medición en un sistema simple para tu equipo.</p>
 
-    <div class="prod-grid">
-      <div class="panel rv">
-        <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>Panel del comercio · Club Semilla</span></div>
-        <div class="panel-tabs">
-          <span class="panel-tab activa">Clientes</span>
-          <span class="panel-tab">Premios</span>
-          <span class="panel-tab">Referidos</span>
-          <span class="panel-tab">Escanear QR</span>
-        </div>
-        <div class="panel-body">
-          <div class="kpis">
-            <div class="kpi"><div class="n">—</div><div class="l">Registros</div></div>
-            <div class="kpi"><div class="n">—</div><div class="l">Visitas</div></div>
-            <div class="kpi"><div class="n">—</div><div class="l">Canjes</div></div>
-            <div class="kpi"><div class="n">—</div><div class="l">Referidos</div></div>
-          </div>
-          <div class="fila destacada">
-            <div class="ava" aria-hidden="true">SM</div>
-            <div class="info">
-              <div class="nom">Sofía M. · miembro</div>
-              <div class="det">Escaneó el QR del mostrador · sumar puntos de esta compra</div>
-            </div>
-            <span class="acc ok">Sumar</span>
-          </div>
-          <div class="fila">
-            <div class="ava" aria-hidden="true">🎁</div>
-            <div class="info">
-              <div class="nom">Canje pendiente · 1 kg de granola</div>
-              <div class="det">Confirmar la entrega para descontar los puntos</div>
-            </div>
-            <span class="acc val">Validar</span>
-          </div>
-          <div class="fila">
-            <div class="ava" aria-hidden="true">🤝</div>
-            <div class="info">
-              <div class="nom">Referido de Sofía M. · primera compra</div>
-              <div class="det">Al validar, ambos reciben el beneficio que definiste</div>
-            </div>
-            <span class="acc val">Validar</span>
-          </div>
-          <p class="micro" style="margin-top:.7rem">Maqueta del panel. Los indicadores se completan con la actividad real de tu comercio.</p>
-        </div>
-      </div>
-
-      <div class="mini-fonos rv rv-d1">
-        <div class="mini-fono">
-          <h4><span aria-hidden="true">🎁</span> Catálogo de premios</h4>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🥣</div><div><b>1 kg de granola</b><small>Premio del comercio</small></div><span class="cst">500 pts</span></div>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🍵</div><div><b>Té de la casa</b><small>Premio del comercio</small></div><span class="cst">120 pts</span></div>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🏷️</div><div><b>10% en compras a granel</b><small>Beneficio del mes</small></div><span class="cst">200 pts</span></div>
-        </div>
-        <div class="mini-fono">
-          <h4><span aria-hidden="true">📜</span> Historial y visitas</h4>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🛒</div><div><b>Compra en el local</b><small>Hoy · QR del mostrador</small></div><span class="cst">+35</span></div>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🎁</div><div><b>Canje validado</b><small>Hace 6 días</small></div><span class="cst">−120</span></div>
-          <div class="mf-item"><div class="ic" aria-hidden="true">🤝</div><div><b>Referido acreditado</b><small>Tras la compra validada</small></div><span class="cst">+150</span></div>
-        </div>
-      </div>
+    <div class="producto-grid rv rv-d1">
+      <article class="producto-card">
+        <span class="prod-ic" aria-hidden="true">◎</span>
+        <h3>Club de Clientes sin app</h3>
+        <p>Puntos, premios y beneficios desde un QR, con la identidad de tu local.</p>
+        <span class="prod-tag">Más motivos para volver</span>
+      </article>
+      <article class="producto-card">
+        <span class="prod-ic" aria-hidden="true">✉</span>
+        <h3>Campañas por email</h3>
+        <p>Reactivá a clientes que ya te conocen con mensajes segmentados y propuestas rentables.</p>
+        <span class="prod-tag">Tu base, mejor aprovechada</span>
+      </article>
+      <article class="producto-card" id="referidos">
+        <span class="prod-ic" aria-hidden="true">◇</span>
+        <h3>Referidos medibles</h3>
+        <p>Premiá a quien recomienda después de una compra real y registrá quién trajo a quién.</p>
+        <span class="prod-tag">Incluido y disponible</span>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ================= 7. CÓMO FUNCIONA ================= -->
-<section id="como-funciona" aria-labelledby="h-como" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)">
+<section class="pasos-cortos" id="como-funciona" aria-labelledby="h-como">
   <div class="wrap">
     <span class="eyebrow">Cómo funciona</span>
-    <h2 class="sec-h2 rv" id="h-como">Listo para usar sin cambiar la operación del comercio.</h2>
-    <p class="sec-p rv rv-d1">No tenés que aprender un sistema nuevo ni sumar pasos a la caja. Lo armamos con vos y queda funcionando.</p>
+    <h2 class="sec-h2 rv" id="h-como">De tus datos a una campaña lista para vender.</h2>
+    <p class="sec-p rv rv-d1">Nos ocupamos de convertir la información de tus clientes en acciones concretas.</p>
     <div class="pasos-grid">
-      <article class="paso rv"><div class="icono" aria-hidden="true">🔎</div><h3>Conocemos tu negocio</h3><p>Definimos identidad, objetivos, puntos y beneficios.</p></article>
-      <article class="paso rv rv-d1"><div class="icono" aria-hidden="true">🎨</div><h3>Personalizamos tu Club</h3><p>Adaptamos colores, logo, premios y experiencia.</p></article>
-      <article class="paso rv rv-d2"><div class="icono" aria-hidden="true">📌</div><h3>Colocás los QR</h3><p>Tus clientes descubren el programa desde el mostrador.</p></article>
-      <article class="paso rv rv-d2"><div class="icono" aria-hidden="true">✨</div><h3>Empiezan a participar</h3><p>Se registran, suman puntos, canjean beneficios y recomiendan.</p></article>
-      <article class="paso rv rv-d3"><div class="icono" aria-hidden="true">📊</div><h3>Medís la adopción</h3><p>Observás registros, actividad, canjes y referidos.</p></article>
+      <article class="paso rv"><h3>Entendemos tu negocio</h3><p>Revisamos rubro, clientes, frecuencia de compra, objetivos y costos.</p></article>
+      <article class="paso rv rv-d1"><h3>Diseñamos la campaña</h3><p>Elegimos segmento, mensaje, beneficio y momento de envío.</p></article>
+      <article class="paso rv rv-d2"><h3>Medimos y mejoramos</h3><p>Seguimos respuestas, visitas y resultados para optimizar la próxima acción.</p></article>
     </div>
+    <div class="pasos-cta rv rv-d2"><p><b>Vos aprobás cada campaña.</b> Imán se ocupa de que tenga sentido para tus clientes y para tus números.</p><a class="btn btn-primario" href="#contacto" data-demo>Quiero ver una demo →</a></div>
   </div>
 </section>
 
 <!-- ================= 8. BENEFICIOS ================= -->
-<section class="oscuro" aria-labelledby="h-ben">
+<section class="oscuro" aria-labelledby="h-ben" hidden>
   <div class="wrap">
     <span class="eyebrow">Para qué te sirve</span>
     <h2 class="sec-h2 rv" id="h-ben">Más que puntos: una herramienta para construir recurrencia.</h2>
@@ -1374,7 +1804,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
 </section>
 
 <!-- ================= 9. KIT FÍSICO ================= -->
-<section aria-labelledby="h-kit">
+<section aria-labelledby="h-kit" hidden>
   <div class="wrap kit-grid">
     <div>
       <span class="eyebrow">En el mostrador</span>
@@ -1420,58 +1850,6 @@ footer .iman-nombre i{color:var(--acento-claro)}
   </div>
 </section>
 
-
-<!-- ================= 11. EVOLUCIÓN + PRODUCTOS ================= -->
-<section aria-labelledby="h-evo">
-  <div class="wrap">
-    <span class="eyebrow">El ecosistema</span>
-    <h2 class="sec-h2 rv" id="h-evo">Empezá con fidelización. Expandí cuando lo necesites.</h2>
-    <p class="sec-p rv rv-d1">El punto de partida es tu Club de Clientes. Después podés sumar nuevas herramientas según lo que necesite tu negocio.</p>
-
-    <div class="prods">
-      <article class="prod principal rv">
-        <span class="badge now">Es lo que armamos hoy</span>
-        <h3>Imán Club</h3>
-        <p>Sistema personalizado de puntos, clientes, beneficios, referidos y QR, con la identidad de tu negocio.</p>
-      </article>
-      <article class="prod rv rv-d1">
-        <span class="badge later">Segunda etapa</span>
-        <h3>Imán Catálogo</h3>
-        <p>El catálogo digital completo puede incorporarse posteriormente como una segunda etapa opcional. Todavía no es una función disponible.</p>
-      </article>
-    </div>
-
-    <div class="linea-t rv rv-d1" aria-label="Progresión: Club, Referidos, Catálogo digital, Promociones y pedidos">
-      <span class="et on">Imán Club</span><span class="fl" aria-hidden="true">→</span>
-      <span class="et on" id="et-referidos">Referidos</span><span class="fl" aria-hidden="true">→</span>
-      <span class="et next">Catálogo digital</span><span class="fl" aria-hidden="true">→</span>
-      <span class="et next">Promociones y pedidos</span>
-    </div>
-    <p class="micro centro rv rv-d2">El catálogo digital completo se incorpora como una segunda etapa opcional.</p>
-  </div>
-</section>
-
-<!-- ================= 12. PRUEBA ================= -->
-<section class="oscuro" aria-labelledby="h-prueba">
-  <div class="wrap wrap-sm">
-    <span class="eyebrow">Prueba</span>
-    <h2 class="sec-h2 rv" id="h-prueba">Probalo con clientes reales antes de decidir.</h2>
-    <p class="sec-p rv rv-d1">Configuramos una versión inicial de Imán Club para que puedas comprobar el funcionamiento y medir la adopción de tus clientes. Si te sirve, continuás. Si no, no tenés permanencia.</p>
-    <div class="prueba-caja rv rv-d1">
-      <h3 style="font-size:1.1rem;margin-bottom:.4rem">Qué vas a poder medir en la prueba</h3>
-      <p style="font-weight:600;color:var(--texto);font-size:.94rem">Números concretos de tu propio mostrador, no proyecciones.</p>
-      <ul class="prueba-mide" style="list-style:none">
-        <li><span aria-hidden="true">📷</span> Escaneos del QR</li>
-        <li><span aria-hidden="true">✍️</span> Registros de clientes</li>
-        <li><span aria-hidden="true">⚡</span> Actividad inicial</li>
-        <li><span aria-hidden="true">🎁</span> Uso de beneficios</li>
-        <li><span aria-hidden="true">🧑‍🍳</span> Participación del personal</li>
-        <li><span aria-hidden="true">🤝</span> Invitaciones compartidas</li>
-      </ul>
-      <p class="micro" style="margin-top:1rem">No prometemos un resultado de ventas en un plazo corto: lo que la prueba muestra es si tus clientes lo adoptan.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ================= 13. CONTACTO ================= -->
 <section class="contacto" id="contacto" aria-labelledby="h-contacto">
@@ -1536,30 +1914,8 @@ footer .iman-nombre i{color:var(--acento-claro)}
             </div>
 
             <div class="campo ancho">
-              <label class="check">
-                <input type="checkbox" id="f-mismo" name="mismo_tel">
-                <span>El teléfono es el mismo que mi WhatsApp.</span>
-              </label>
-            </div>
-
-            <div class="campo">
-              <label for="f-tel">Teléfono alternativo <span class="opt">(opcional)</span></label>
-              <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national">
-            </div>
-            <div class="campo">
-              <label for="f-suc">Cantidad de sucursales <span class="opt">(opcional)</span></label>
-              <select id="f-suc" name="sucursales">
-                <option value="">Sin especificar</option>
-                <option>1</option><option>2</option><option>3</option><option>4 o más</option>
-              </select>
-            </div>
-            <div class="campo ancho">
-              <label for="f-web">Instagram o página web <span class="opt">(opcional)</span></label>
-              <input id="f-web" name="web" type="text" inputmode="url" placeholder="@tunegocio o tunegocio.com.ar">
-            </div>
-            <div class="campo ancho">
               <label for="f-msj">¿Qué te gustaría mejorar? <span class="opt">(opcional)</span></label>
-              <textarea id="f-msj" name="comentario" rows="4" placeholder="Contanos brevemente cómo trabajás hoy la fidelización o qué te gustaría lograr."></textarea>
+              <textarea id="f-msj" name="comentario" rows="3" placeholder="Por ejemplo: recuperar clientes por email o aumentar la frecuencia de compra."></textarea>
             </div>
 
             <div class="campo ancho">
@@ -1579,7 +1935,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
 
           <div class="form-pie">
             <button class="btn btn-primario" type="submit" id="f-submit">Solicitar mi demo personalizada</button>
-            <p class="micro" id="f-nota">Te contactamos personalmente. Sin tarjeta y sin compromiso.</p>
+            <p class="micro" id="f-nota">Te contactamos personalmente para preparar una demo aplicada a tu negocio.</p>
             <div class="estado" id="f-estado" role="status" aria-live="polite"></div>
           </div>
         </form>
@@ -1606,44 +1962,20 @@ footer .iman-nombre i{color:var(--acento-claro)}
         <div class="resp">No. El QR abre el Club en el navegador del teléfono. Se registra ahí mismo y vuelve a entrar con el mismo enlace o escaneando de nuevo.</div>
       </details>
       <details>
-        <summary>¿Se personaliza completamente con mi marca?</summary>
-        <div class="resp">Adaptamos logo, colores, tipografía, nombre del programa, premios, beneficios y el tono de la comunicación. La idea es que tu cliente sienta que está usando algo de tu negocio.</div>
+        <summary>¿Cómo usan el email de mis clientes?</summary>
+        <div class="resp">Creamos segmentos y campañas para la base de clientes de tu propio local. El objetivo es volver a contactar a quienes ya compraron con mensajes relevantes, no enviar promociones masivas sin criterio.</div>
       </details>
       <details>
-        <summary>¿Aparecen otros comercios?</summary>
-        <div class="resp">No. Cada Club es independiente y el QR abre directamente el tuyo. No hay directorio de marcas, competidores ni promociones ajenas.</div>
+        <summary>¿Cómo cuidan la rentabilidad de las campañas?</summary>
+        <div class="resp">Antes de definir un beneficio revisamos tu rubro, el tipo de cliente, el objetivo de la campaña y los costos del negocio. Así la propuesta busca generar una nueva venta sin regalar margen innecesariamente.</div>
       </details>
       <details>
-        <summary>¿Cómo se acreditan los puntos?</summary>
-        <div class="resp">El cliente escanea el QR en el momento de la compra o la visita, y desde el panel se confirma la operación. Las reglas (cuántos puntos y por qué) se definen con vos en la configuración.</div>
-      </details>
-      <details>
-        <summary>¿Quién define los premios?</summary>
-        <div class="resp">Vos. Nosotros te ayudamos a armarlos para que sean sostenibles, pero los premios, su costo en puntos y los beneficios son decisión del comercio.</div>
-      </details>
-      <details>
-        <summary>¿Cómo funcionan los referidos? <span class="tag-pronto" data-pronto hidden>Próximamente</span></summary>
+        <summary>¿Cómo funcionan los referidos?</summary>
         <div class="resp" id="faq-ref">Cada miembro recibe un enlace o QR personal para compartir. Si un conocido se registra desde ahí y hace su primera compra, al validarla desde el panel ambos reciben el beneficio que hayas definido.</div>
-      </details>
-      <details>
-        <summary>¿Cuándo reciben el beneficio las personas referidas?</summary>
-        <div class="resp">Después de la primera compra del referido, una vez que el comercio la valida. No se acredita solo por registrarse: tiene que haber una compra real.</div>
-      </details>
-      <details>
-        <summary>¿Qué mide la prueba gratuita?</summary>
-        <div class="resp">Escaneos, registros, actividad inicial, uso de beneficios y participación del personal. Es para ver si tus clientes lo adoptan, no para prometerte un resultado de ventas en pocas semanas.</div>
       </details>
       <details>
         <summary>¿Necesito equipos especiales?</summary>
         <div class="resp">No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas.</div>
-      </details>
-      <details>
-        <summary>¿Puedo incorporar un catálogo más adelante?</summary>
-        <div class="resp">Sí, como una segunda etapa opcional. Hoy el catálogo digital completo no es una función disponible: lo conversamos cuando el Club ya esté funcionando.</div>
-      </details>
-      <details>
-        <summary>¿Qué sucede si decido no continuar?</summary>
-        <div class="resp">No hay permanencia. Si después de la prueba no te sirve, no continuás. Podés pedirnos los datos de los clientes que se registraron en tu Club.</div>
       </details>
       <details>
         <summary>¿Cómo se gestionan los datos de los clientes?</summary>
@@ -1666,8 +1998,8 @@ footer .iman-nombre i{color:var(--acento-claro)}
       </svg>
       <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
     </div>
-    <h2 id="h-cierre">Hacé que tus clientes vuelvan y <span>traigan a los próximos.</span></h2>
-    <p>Te mostramos cómo podría funcionar un Club de Clientes diseñado específicamente para tu negocio.</p>
+    <h2 id="h-cierre">Hacé que quienes ya te eligieron <span>vuelvan a hacerlo.</span></h2>
+    <p>Te mostramos una campaña pensada para tus clientes, tus costos y tu negocio.</p>
     <div class="cierre-ctas">
       <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
       <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
@@ -1688,7 +2020,7 @@ footer .iman-nombre i{color:var(--acento-claro)}
     </svg>
     <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
   </div>
-  Fidelización, puntos y referidos con la identidad de tu negocio. 🧲<br>
+  Campañas, fidelización y referidos para que tus clientes vuelvan. 🧲<br>
   <a href="/comercios/">Conocé Imán para recuperar clientes</a>
 </footer>
 
@@ -1713,8 +2045,8 @@ var CONFIG = {
   calendlyUrl: 'https://calendly.com/santiago-iman/30min',
   // Número de WhatsApp de contacto.
   whatsapp: '5493535189997',
-  // Poner en true SOLO cuando el circuito de referidos funcione punta a punta.
-  referidosDisponibles: false
+  // El circuito de referidos está disponible.
+  referidosDisponibles: true
 };
 
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1884,6 +2216,7 @@ pintarClub(0);
    ===================================================================== */
 (function(){
   var cont = document.getElementById('pers-grid');
+  if(!cont) return;
   CLUBES.forEach(function(c, i){
     var art = document.createElement('article');
     art.className = 'pers-card rv' + (i ? ' rv-d' + i : '');
@@ -2061,15 +2394,6 @@ document.getElementById('f-consent').addEventListener('change', function(){
   document.getElementById('e-consent').textContent = '';
 });
 
-/* checkbox "el teléfono es el mismo que mi WhatsApp" */
-var mismo = document.getElementById('f-mismo');
-var tel = document.getElementById('f-tel');
-mismo.addEventListener('change', function(){
-  tel.disabled = mismo.checked;
-  if(mismo.checked){ tel.value = ''; tel.placeholder = 'Mismo que WhatsApp'; }
-  else { tel.placeholder = ''; }
-});
-
 function valido(){
   var ok = true, primero = null;
   REQ.forEach(function(r){
@@ -2104,9 +2428,6 @@ function datos(){
     ciudad: document.getElementById('f-ciudad').value.trim(),
     email: document.getElementById('f-email').value.trim(),
     whatsapp: document.getElementById('f-wa').value.trim(),
-    telefono: mismo.checked ? 'mismo que WhatsApp' : tel.value.trim(),
-    sucursales: document.getElementById('f-suc').value,
-    web: document.getElementById('f-web').value.trim(),
     comentario: document.getElementById('f-msj').value.trim(),
     consentimiento: true,
     sitio_web_empresa: document.getElementById('f-hp').value.trim(),
@@ -2126,9 +2447,6 @@ function resumenTexto(d){
     'Email: ' + d.email,
     'WhatsApp: ' + d.whatsapp
   ];
-  if(d.telefono) l.push('Teléfono: ' + d.telefono);
-  if(d.sucursales) l.push('Sucursales: ' + d.sucursales);
-  if(d.web) l.push('Instagram/Web: ' + d.web);
   if(d.comentario) l.push('', 'Quiero mejorar: ' + d.comentario);
   return l.join('\n');
 }
@@ -2188,8 +2506,6 @@ form.addEventListener('submit', function(ev){
     form.querySelectorAll('input, select, textarea').forEach(function(el){
       if(el.type === 'checkbox') el.checked = false; else el.value = '';
     });
-    tel.disabled = false;
-    tel.placeholder = '';
     submit.textContent = 'Solicitud enviada';   // queda deshabilitado hasta que vuelva a escribir
     nota.textContent = 'Ya nos llegó. Te escribimos a la brevedad.';
     track('club_lead', {via:'form', rubro:d.rubro});
