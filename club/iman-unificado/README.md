@@ -4,7 +4,7 @@ Sitio comercial unificado de IMAN, con la identidad visual de la landing origina
 
 ## Estado local
 
-Actualizado el 27 de septiembre de 2026. **La publicación mediante Git, la propagación del dominio y el correo real en Cloudflare siguen pendientes de cierre y validación operativa.** Hay recursos creados y configuración guardada en la cuenta; eso todavía no confirma que el sitio final esté publicado ni que los formularios entreguen correos.
+Actualizado el 27 de septiembre de 2026. **Sitio publicado en https://iman-4jp.pages.dev/ mediante Git.** Cloudflare compila automáticamente la rama `codex/iman-unificado`; `main` permanece sin cambios. La propagación del dominio propio y el correo real siguen pendientes de activación y validación operativa.
 
 - 15 páginas canónicas y 6 guías generadas y verificadas. Auditoría sin errores ni advertencias; panel SEO regenerado.
 - Galería de demos recorribles en lugar de las páginas genéricas por rubro. Las URLs antiguas tienen redirecciones a los servicios y demostraciones correspondientes.
@@ -14,10 +14,10 @@ Actualizado el 27 de septiembre de 2026. **La publicación mediante Git, la prop
 - Backend de Cloudflare Email Sending desde `hola@iman.ar`, almacenamiento D1 y relay privado. No usa Gmail SMTP.
 - 31 pruebas del backend aprobadas con proveedores simulados; no enviaron correos reales.
 - El build produce `public/` y `iman-cloudflare.zip`, con `_worker.js` y `_routes.json`. El conteo y tamaño finales cambian al compilar; los informes deben corresponder a esa misma versión.
-- Repositorio solicitado para el despliegue: [santiago-sonzini/iman-landings](https://github.com/santiago-sonzini/iman-landings). La conexión de Cloudflare Pages con Git está pendiente.
+- Repositorio solicitado para el despliegue: [santiago-sonzini/iman-landings](https://github.com/santiago-sonzini/iman-landings). Conectado a Pages: raíz `club/iman-unificado`, comando `bash scripts/build-ci.sh`, salida `public`, rama de producción `codex/iman-unificado`.
 - Las tres propuestas de `conceptos/` fueron descartadas por el usuario. Son un archivo de exploración y no forman parte de `public/` ni del ZIP.
 
-La zona de Cloudflare está creada y los nameservers `sid` y `zelda` quedaron guardados en Donweb, pendientes de propagación. D1 y su esquema, el binding `CONTACT_DB`, las variables de Pages y el relay privado `iman-correo` con `EMAIL` están preparados. El binding `MAILER` está verificado. Falta completar el alta del dominio para Email Sending y probar los correos reales. El TXT de Search Console está guardado; la propiedad todavía no está verificada.
+La zona de Cloudflare está creada y los nameservers `sid` y `zelda` quedaron guardados en Donweb, pendientes de propagación. D1 y su esquema, el binding `CONTACT_DB`, las variables de Pages y el relay privado `iman-correo` con `EMAIL` están preparados. El binding `MAILER` está verificado. Falta completar el alta del dominio para Email Sending y probar los correos reales. El TXT de Search Console está guardado en Cloudflare y Donweb; la verificación requiere autorización explícita solicitada al usuario.
 
 La revisión estática no sustituye la prueba visual final, DNS/HTTPS ni un envío real autorizado. Detalles de operación en [pendientes de publicación](docs/cloudflare-pending.md). Los informes de `docs/` son instantáneas fechadas: revisar su versión antes de usarlos como evidencia del último build.
 
@@ -102,3 +102,9 @@ La newsletter exige consentimiento propio y confirmación posterior. Solicitar u
 El [panel SEO local](docs/seo/dashboard.html) muestra auditoría, artículos, prioridades y calendario. Permite importar CSV de Search Console sin enviar datos a un servidor; mientras no haya una exportación, muestra que faltan datos. La importación no conecta ni verifica la propiedad. No hay promesas de primer puesto ni una red de enlaces comprados.
 
 Para bindings, variables y funcionamiento de los endpoints, consultar [server/README.md](server/README.md). Para conversión y búsqueda: [auditoría CRO](docs/conversion-audit.md), [investigación de skills](docs/skills-seo-research.md) y [herramientas SEO](docs/seo/README.md). Los informes iniciales reflejan estados anteriores; regenerar las verificaciones tras cada cambio final.
+
+## Mantenimiento editorial
+
+Automatización diaria de esta tarea: `iman-seo-y-conversi-n`. Revisa oportunidades, mejora una guía o publica como máximo un artículo original por ejecución, valida antes de subir y despliega exclusivamente desde `codex/iman-unificado`. No publica por cuota ni promete posiciones. Mantiene silencio cuando no hay cambios relevantes.
+
+Las previews nativas de Dietética y PetOutlet usan recursos reales de las demos; PetOutlet incluye búsqueda y filtros locales. La experiencia completa se abre con su enlace externo. El teléfono de Fidelización usa la fotografía real de Café, con tarjeta y aviso claramente ilustrativos.

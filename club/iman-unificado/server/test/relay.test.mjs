@@ -33,3 +33,22 @@ test('worker forwards static assets and redirects; previews alone are noindex',a
   const preview=await worker.fetch(new Request('https://preview.iman.pages.dev/club'),env);
   assert.equal(preview.status,301);assert.equal(preview.headers.get('x-robots-tag'),'noindex, nofollow');
 });
+test('worker canonicalizes only the exact apex before asset or API routing, preserving path and query',async()=>{
+  const target='/fidelizacion/?utm_source=google&oferta=caf%C3%A9%20club';
+  const redirect=await worker.fetch(new Request('https://iman.ar'+target),{});
+  assert.equal(redirect.status,308);
+  assert.equal(redirect.headers.get('location'),'https://www.iman.ar'+target);
+  const api=await worker.fetch(new Request('https://iman.ar/api/contacto?origen=home',{method:'POST',body:'not-a-real-form'}),{});
+  assert.equal(api.status,308);
+  assert.equal(api.headers.get('location'),'https://www.iman.ar/api/contacto?origen=home');
+  const env={ASSETS:{fetch:async()=>new Response('static-page')}};
+  for(const hostname of ['iman-4jp.pages.dev','preview.iman-4jp.pages.dev']){
+    const preview=await worker.fetch(new Request('https://'+hostname+target),env);
+    assert.equal(preview.status,200);assert.equal(preview.headers.get('location'),null);
+    assert.equal(preview.headers.get('x-robots-tag'),'noindex, nofollow');
+    assert.equal(await preview.text(),'static-page');
+  }
+  const canonical=await worker.fetch(new Request('https://www.iman.ar'+target),env);
+  assert.equal(canonical.status,200);assert.equal(canonical.headers.get('location'),null);
+  assert.equal(canonical.headers.get('x-robots-tag'),null);
+});

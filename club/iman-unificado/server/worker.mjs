@@ -20,6 +20,10 @@ const handleNewsletter=createNewsletterHandler({sendMail});
 export default {
   async fetch(request,env) {
     const url=new URL(request.url);
+    if(url.hostname==='iman.ar'){
+      url.protocol='https:';url.hostname='www.iman.ar';url.port='';
+      return Response.redirect(url.href,308);
+    }
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});

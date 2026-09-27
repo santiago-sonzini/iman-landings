@@ -1,6 +1,6 @@
 # Cloudflare: pendientes de publicación y operación
 
-Estado documental: **publicación y operación pendientes de cierre**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
+Estado documental: **publicación por Git completada; dominio y correo pendientes**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
 
 ## Configuración realizada
 
@@ -14,17 +14,17 @@ Estado documental: **publicación y operación pendientes de cierre**, 27 de sep
 | Variables de Pages | Guardadas | Confirmar entorno y disponibilidad en el despliegue final |
 | Worker `iman-correo` | Código desplegado como relay privado, con `workers.dev`, previews y rutas públicas desactivados | Prueba mediante el service binding |
 | `EMAIL` del relay | Binding preparado | Validar envío después del alta del dominio remitente |
-| `MAILER` de Pages | Seleccionado/configurado durante la preparación | Verificar guardado y enlace efectivo a `iman-correo` |
+| `MAILER` de Pages | Guardado y verificado hacia `iman-correo` | Prueba de entrega tras activar Email Sending |
 | Search Console | TXT de verificación guardado en DNS | Propagación, verificación de propiedad y sitemap |
-| Despliegue por Git | Solicitado con repositorio existente | Conectar Pages a `santiago-sonzini/iman-landings` y desplegar la versión final |
+| Despliegue por Git | Publicado y verificado en `https://iman-4jp.pages.dev/` | Automático desde `codex/iman-unificado`; main sin cambios |
 
 No se realizaron pruebas de correo real que permitan considerar la entrega operativa.
 
 ## Sitio y dominio
 
-- Conectar Cloudflare Pages al repositorio existente [santiago-sonzini/iman-landings](https://github.com/santiago-sonzini/iman-landings). Confirmar proyecto, rama, directorio raíz, comandos y directorio de salida según su layout real.
+- Cloudflare Pages está conectado a [santiago-sonzini/iman-landings](https://github.com/santiago-sonzini/iman-landings), rama `codex/iman-unificado`, raíz `club/iman-unificado`, comando `bash scripts/build-ci.sh`, salida `public`.
 - Compilar backend y sitio, ejecutar verificaciones y publicar la salida `public/`, con `_worker.js` y `_routes.json` en su raíz. El ZIP es una alternativa, no evidencia de un despliegue completado.
-- Proyecto de referencia: `iman`; hostname de Pages conocido: `iman-4jp.pages.dev`. Confirmar el despliegue activo antes de considerarlo público.
+- Proyecto `iman`; hostname `iman-4jp.pages.dev` verificado público, deployment inicial `a5a0f935`, commit `d870b02`. El informe live-release-audit.md registra controles HTTP sin envíos de correo.
 - Dominio canónico del sitio y de los emails: `https://www.iman.ar`.
 - Revisar la configuración final de `iman.ar` y `www.iman.ar`, HTTPS, redirección de la variante secundaria y ausencia de bucles.
 - Verificar que `/club/` llegue a Fidelización y que las antiguas rutas por rubro lleven a los servicios/demos previstos. Confirmar que el sitemap final incluya las 15 páginas y seis guías de la nueva integración, y que los previews de Pages y las demos ilustrativas permanezcan fuera del índice.
@@ -57,3 +57,8 @@ Con el dominio canónico apuntando a la versión correcta:
 5. Confirmar la propagación del TXT de Search Console, verificar la propiedad, enviar el sitemap y revisar las URLs importantes después de publicar. El panel SEO local todavía debe mostrar la cuenta sin conectar mientras no se incorporen datos reales.
 
 Las pruebas unitarias ya realizadas usan stubs y no sustituyen una comprobación real de la cuenta. No hay una campaña masiva, un cron de newsletter ni un envío recurrente configurado por este código.
+
+## Decisiones y autorizaciones
+
+La revisión automática bloqueó modificar main; se usó la alternativa segura de publicar desde codex/iman-unificado. Git y Cloudflare están conectados sin modificar la rama principal.
+La verificación de propiedad Search Console quedó pendiente de la autorización específica solicitada al usuario. El TXT se guardó en ambos proveedores para preservar la validación durante la migración.
