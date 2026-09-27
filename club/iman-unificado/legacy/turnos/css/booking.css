@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Imán Turnos — Página pública de reservas (la vidriera del barbero)
+   Reusa tokens de app.css. Acento-themed, targets enormes, mobile-first.
+   ========================================================================== */
+.bk{max-width:480px;margin:0 auto;min-height:100svh;position:relative;padding-bottom:40px}
+@media(min-width:900px){.bk{max-width:560px}}
+
+/* header vidriera */
+.bk-hero{position:relative;background:var(--acento);color:var(--acento-on);
+  border-bottom:2.5px solid var(--tinta);padding:26px 20px 24px;overflow:hidden}
+.bk-hero::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background:radial-gradient(circle at 20% -10%,rgba(255,255,255,.18),transparent 60%)}
+.bk-hero .foto{width:74px;height:74px;border-radius:20px;border:2.5px solid var(--tinta);
+  background:var(--blanco);display:grid;place-items:center;font-size:2.4rem;
+  box-shadow:0 4px 0 var(--tinta);position:relative;z-index:1;margin-bottom:12px}
+.bk-hero h1{font-size:1.9rem;position:relative;z-index:1;line-height:1.1}
+.bk-hero .meta{position:relative;z-index:1;font-weight:700;opacity:.92;margin-top:4px;font-size:.94rem;
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bk-hero .estrellas{display:inline-flex;gap:2px;align-items:center}
+.bk-hero .powered{position:absolute;top:14px;right:16px;z-index:1;display:flex;align-items:center;gap:5px;
+  font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;opacity:.85}
+.bk-hero .powered .iman-logo{width:22px}
+.bk-hero .powered .iman-cuerpo{stroke:var(--amarillo)}
+.bk-hero .powered .iman-polo{fill:var(--acento-on)}
+
+/* progreso de pasos */
+.bk-prog{display:flex;gap:6px;padding:16px 20px 4px;align-items:center}
+.bk-prog .step{flex:1;height:6px;border-radius:99px;background:var(--linea);overflow:hidden}
+.bk-prog .step i{display:block;height:100%;width:0;background:var(--acento);transition:width .4s var(--resorte)}
+.bk-prog .step.done i{width:100%}
+.bk-prog .step.now i{width:55%}
+
+.bk-body{padding:12px 18px 0;animation:sube .34s var(--resorte) both}
+.bk-titulo{font-size:1.42rem;margin:10px 0 3px}
+.bk-sub{color:var(--tinta-suave);font-weight:700;font-size:.92rem;margin-bottom:18px}
+
+/* volver */
+.bk-volver{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.86rem;
+  color:var(--tinta-suave);padding:14px 0 2px}
+
+/* tarjetas de servicio */
+.svc{display:flex;align-items:center;gap:14px;background:var(--blanco);border:var(--borde);
+  border-radius:var(--radio);padding:15px;box-shadow:var(--sombra-dura);margin-bottom:12px;width:100%;text-align:left;
+  transition:transform .16s var(--resorte),box-shadow .16s;cursor:pointer}
+.svc:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--tinta)}
+.svc:active{transform:translateY(2px);box-shadow:0 2px 0 var(--tinta)}
+.svc .em{width:52px;height:52px;flex:none;border-radius:15px;border:2.5px solid var(--tinta);
+  display:grid;place-items:center;font-size:1.6rem;background:var(--acento-suave)}
+.svc .info{flex:1;min-width:0}
+.svc .nom{font-family:var(--display);font-weight:600;font-size:1.16rem}
+.svc .dur{font-size:.84rem;color:var(--tinta-suave);font-weight:700;display:flex;align-items:center;gap:5px}
+.svc .precio{font-family:var(--display);font-weight:600;font-size:1.16rem;flex:none;text-align:right}
+.svc .precio .off{display:block;font-size:.72rem;color:var(--verde-ok);font-weight:800;font-family:var(--cuerpo)}
+
+/* selector de día (scroll horizontal) */
+.dias-scroll{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 14px;margin:0 -18px;padding-left:18px;padding-right:18px;
+  scrollbar-width:none}
+.dias-scroll::-webkit-scrollbar{display:none}
+.dia-pastilla{flex:none;width:62px;background:var(--blanco);border:var(--borde);border-radius:16px;
+  padding:11px 6px;text-align:center;box-shadow:var(--sombra-dura);cursor:pointer;
+  transition:transform .15s var(--resorte),background .15s}
+.dia-pastilla:active{transform:translateY(2px)}
+.dia-pastilla.sel{background:var(--acento);color:var(--acento-on)}
+.dia-pastilla .dow{font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.03em}
+.dia-pastilla .num{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.1}
+.dia-pastilla .mes{font-size:.66rem;font-weight:700;opacity:.8}
+.dia-pastilla.sel .mes{opacity:.95}
+
+/* grilla de horarios */
+.horas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:4px}
+@media(min-width:420px){.horas-grid{grid-template-columns:repeat(4,1fr)}}
+.hora-btn{position:relative;background:var(--blanco);border:var(--borde);border-radius:14px;
+  padding:.7rem .2rem;font-family:var(--display);font-weight:600;font-size:1.02rem;
+  box-shadow:0 3px 0 var(--tinta);transition:transform .14s var(--resorte),box-shadow .14s,background .14s;cursor:pointer}
+.hora-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--tinta)}
+.hora-btn.sel{background:var(--acento);color:var(--acento-on);box-shadow:0 3px 0 var(--acento-osc)}
+.hora-btn .fuego{position:absolute;top:-8px;right:-6px;font-size:.9rem;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+
+/* banner incentivo + countdown */
+.incentivo{background:var(--amarillo);border:2.5px solid var(--tinta);border-radius:var(--radio);
+  padding:14px 15px;box-shadow:var(--sombra-dura);margin:6px 0 18px;position:relative;overflow:hidden}
+.incentivo .ping{position:absolute;top:0;left:0;right:0;height:100%;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(51,35,26,.05) 10px,rgba(51,35,26,.05) 20px)}
+.incentivo .tit{position:relative;font-family:var(--display);font-weight:600;font-size:1.06rem;display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.incentivo .txt{position:relative;font-weight:700;font-size:.86rem;margin-bottom:10px}
+.incentivo .cd{position:relative;display:inline-flex;align-items:center;gap:7px;background:var(--tinta);color:var(--crema);
+  font-family:var(--display);font-weight:600;padding:.4rem .8rem;border-radius:99px;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.incentivo .cd .lbl{font-family:var(--cuerpo);font-size:.7rem;font-weight:800;text-transform:uppercase;opacity:.85}
+
+/* resumen del turno */
+.resumen{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:15px;
+  box-shadow:var(--sombra-dura);margin-bottom:18px}
+.resumen .r-fila{display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-weight:700}
+.resumen .r-fila+.r-fila{border-top:1.5px dashed var(--linea)}
+.resumen .r-fila .k{color:var(--tinta-suave);font-size:.86rem}
+.resumen .r-fila .v{font-family:var(--display);font-weight:600}
+.resumen .r-total{border-top:2.5px solid var(--tinta)!important;margin-top:4px;padding-top:11px}
+.resumen .r-total .v{font-size:1.3rem}
+
+/* chip seña / mercadopago */
+.sena-chip{display:flex;align-items:center;gap:12px;background:var(--blanco);border:var(--borde);
+  border-radius:16px;padding:13px 14px;box-shadow:var(--sombra-dura);margin-bottom:16px;cursor:pointer;
+  transition:background .15s}
+.sena-chip.on{background:var(--acento-suave)}
+.sena-chip .tick{width:26px;height:26px;flex:none;border-radius:8px;border:2.5px solid var(--tinta);
+  background:var(--blanco);display:grid;place-items:center;transition:background .15s}
+.sena-chip.on .tick{background:var(--acento);color:var(--acento-on)}
+.sena-chip .tick svg{width:16px;height:16px;opacity:0;transition:opacity .15s}
+.sena-chip.on .tick svg{opacity:1}
+.sena-chip .info{flex:1}
+.sena-chip .nom{font-weight:800}
+.sena-chip .sub{font-size:.78rem;color:var(--tinta-suave);font-weight:700}
+.sena-chip .mp{font-size:.66rem;font-weight:800;color:#009ee3;display:flex;align-items:center;gap:4px}
+
+/* confirmado */
+.bk-ok{text-align:center;padding:30px 20px}
+.bk-ok .marca-ok{width:96px;height:96px;border-radius:50%;background:var(--verde-ok);border:2.5px solid var(--tinta);
+  display:grid;place-items:center;margin:10px auto 20px;box-shadow:0 5px 0 #217a45;
+  animation:pop .5s var(--resorte) both}
+.bk-ok .marca-ok svg{width:52px;height:52px;color:#fff;stroke-width:3}
+@keyframes pop{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.bk-ok h1{font-size:1.8rem;margin-bottom:6px}
+.bk-ok .sub{color:var(--tinta-suave);font-weight:700;margin-bottom:20px}
+.confeti{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+.confeti i{position:absolute;top:-14px;width:10px;height:14px;border-radius:2px;animation:cae linear forwards}
+@keyframes cae{to{transform:translateY(104svh) rotate(680deg)}}
+
+.bk-cta{position:sticky;bottom:0;background:linear-gradient(transparent,var(--crema) 26%);
+  padding:16px 18px max(16px,env(safe-area-inset-bottom));margin-top:8px}

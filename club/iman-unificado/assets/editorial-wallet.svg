@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="810" viewBox="0 0 600 810" role="img" aria-labelledby="title description">
+<title id="title">Un programa, dos canales</title><desc id="description">Al sumarse: tarjeta y bienvenida. Ante un premio: actualizar Wallet y evaluar un aviso admitido. Para reactivar: email segmentado con una propuesta relevante.</desc>
+<rect x="1" y="1" width="598" height="808" rx="22" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#171923">
+<path d="M40 49H77" stroke="#4F46F5" stroke-width="4" stroke-linecap="round"/>
+<text x="91" y="56" fill="#4F46F5" font-size="19" font-weight="700" letter-spacing="1.5">IMAN / GUÍAS</text>
+<text x="40" y="105" font-size="30" font-weight="700">Un programa, dos canales</text>
+<rect x="40" y="140" width="520" height="172" rx="13" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<text x="61" y="177" font-size="26" font-weight="700">Al sumarse</text>
+<rect x="60" y="195" width="89" height="29" rx="6" fill="#4F46F5"/><text x="104" y="215" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">WALLET</text>
+<text x="162" y="215" font-size="22" fill="#565B70">Guardar la tarjeta</text>
+<rect x="60" y="245" width="89" height="29" rx="6" fill="#171923"/><text x="104" y="265" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">EMAIL</text>
+<text x="162" y="265" font-size="22" fill="#565B70">Entender el programa</text>
+<path d="M300 320v22m-7-7 7 7 7-7" fill="none" stroke="#4F46F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="345" width="520" height="172" rx="13" fill="#F3F2FF" stroke="#4F46F5" stroke-width="2"/>
+<text x="61" y="382" font-size="26" font-weight="700">Cuando gana un beneficio</text>
+<rect x="60" y="400" width="89" height="29" rx="6" fill="#4F46F5"/><text x="104" y="420" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">WALLET</text>
+<text x="162" y="420" font-size="22" fill="#565B70">Actualizar beneficio y aviso*</text>
+<rect x="60" y="450" width="89" height="29" rx="6" fill="#171923"/><text x="104" y="470" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">EMAIL</text>
+<text x="162" y="470" font-size="22" fill="#565B70">Ampliar detalles si hace falta</text>
+<path d="M300 525v22m-7-7 7 7 7-7" fill="none" stroke="#4F46F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="550" width="520" height="172" rx="13" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<text x="61" y="587" font-size="26" font-weight="700">Para invitar a volver</text>
+<rect x="60" y="605" width="89" height="29" rx="6" fill="#4F46F5"/><text x="104" y="625" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">WALLET</text>
+<text x="162" y="625" font-size="22" fill="#565B70">Consultar beneficios vigentes</text>
+<rect x="60" y="655" width="89" height="29" rx="6" fill="#171923"/><text x="104" y="675" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">EMAIL</text>
+<text x="162" y="675" font-size="22" fill="#565B70">Recibir una propuesta relevante</text>
+<text x="40" y="770" fill="#565B70" font-size="21">* Según permisos y funciones de cada Wallet.</text>
+</g></svg>

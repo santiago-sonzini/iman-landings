@@ -1,0 +1,26 @@
+<aside class="iman-newsletter-invite" id="iman-newsletter-invite" aria-labelledby="newsletter-invite-title" hidden>
+  <button type="button" class="iman-newsletter-close" data-newsletter-dismiss aria-label="Cerrar invitación al newsletter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  <span class="iman-newsletter-eyebrow">IDEAS PARA TU COMERCIO</span>
+  <h2 id="newsletter-invite-title">Recibí ideas para que tus clientes vuelvan</h2>
+  <p>Fidelización, campañas y ejemplos para poner en práctica.</p>
+  <button type="button" class="iman-newsletter-button" data-newsletter-open>Quiero recibir ideas <span aria-hidden="true">→</span></button>
+</aside>
+<dialog class="iman-newsletter-dialog" id="iman-newsletter-dialog" aria-labelledby="newsletter-title" aria-describedby="newsletter-description">
+  <button type="button" class="iman-newsletter-close" data-newsletter-dismiss aria-label="Cerrar newsletter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  <div class="iman-newsletter-heading">
+    <span class="iman-newsletter-eyebrow">IDEAS PARA TU COMERCIO</span>
+    <h2 id="newsletter-title">Recibí ideas para que tus clientes vuelvan</h2>
+    <p id="newsletter-description">Ejemplos de beneficios, mensajes y campañas para que la próxima compra también sea en tu negocio.</p>
+  </div>
+  <form class="iman-newsletter-form" id="iman-newsletter-form" action="/api/newsletter" method="post">
+    <label for="newsletter-name">Tu nombre<input id="newsletter-name" name="nombre" autocomplete="given-name" maxlength="100" required placeholder="¿Cómo te llamás?"></label>
+    <label for="newsletter-email">Tu email<input id="newsletter-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required placeholder="vos@tucomercio.com"></label>
+    <label for="newsletter-industry"><span>Rubro de tu comercio <span class="iman-newsletter-optional">(opcional)</span></span><input id="newsletter-industry" name="rubro" maxlength="100" placeholder="Por ejemplo, gastronomía" autocomplete="off"></label>
+    <div class="iman-newsletter-honey" aria-hidden="true"><label for="newsletter-website">Sitio web de la empresa<input id="newsletter-website" name="sitio_web_empresa" tabindex="-1" autocomplete="off"></label></div>
+    <label class="iman-newsletter-consent" for="newsletter-consent"><input id="newsletter-consent" name="consentimiento" type="checkbox" required><span>Quiero recibir ideas y novedades de IMAN por email. Puedo darme de baja cuando quiera. <a href="/privacidad/">Ver privacidad</a>.</span></label>
+    <button type="submit" class="iman-newsletter-button">Recibir ideas <span aria-hidden="true">→</span></button>
+    <p class="iman-newsletter-note">Te vamos a pedir que confirmes tu email.</p>
+  </form>
+  <p class="iman-newsletter-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <p class="iman-newsletter-error" role="alert" hidden></p>
+</dialog>

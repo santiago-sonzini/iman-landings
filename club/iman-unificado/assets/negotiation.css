@@ -1,0 +1,89 @@
+.negotiation{--neg-violet:#4f46f5;--neg-ink:#222236;--neg-muted:#75758b;--neg-border:#e6e6f1;--neg-green:#187857;box-sizing:border-box;width:100%;max-width:570px;margin:0 auto;padding:18px;background:#fff;border:1px solid var(--neg-border);border-radius:24px;box-shadow:0 28px 75px -35px #4f46f552,0 5px 18px #29294708;color:var(--neg-ink);font-family:inherit;font-size:13px;line-height:1.45;position:relative;isolation:isolate;text-align:left}
+.negotiation *{box-sizing:border-box}
+.negotiation p,.negotiation h2,.negotiation ol{margin:0}
+.negotiation button{font-family:inherit;cursor:pointer;touch-action:manipulation;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.negotiation button:focus-visible{outline:3px solid #a69eff;outline-offset:4px}
+.negotiation button:disabled{opacity:.45;cursor:default}
+.negotiation [hidden]{display:none!important}
+.negotiation .negotiation-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.negotiation .negotiation-eyebrow{font-size:9px;letter-spacing:1.25px;font-weight:800;color:var(--neg-violet);margin-bottom:3px}
+.negotiation .negotiation-head h2{font-size:19px;line-height:1.15;font-weight:800;letter-spacing:-.75px}
+.negotiation .negotiation-badge{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:9px;font-weight:700;color:#67667a;background:#f6f6fc;border:1px solid #e9e9f4;padding:6px 8px;border-radius:30px}
+.negotiation .negotiation-badge i{width:5px;height:5px;flex-shrink:0;background:#aaa7bb;border-radius:50%}
+.negotiation.is-playing .negotiation-badge i{background:var(--neg-violet);box-shadow:0 0 0 3px #4f46f512;animation:negotiation-pulse 1.2s ease-in-out infinite}
+.negotiation .negotiation-order{border:1px solid #e3e1fc;background:linear-gradient(120deg,#f7f6ff,#fbfbff);border-radius:14px;padding:10px 13px}
+.negotiation .negotiation-order-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;gap:10px}
+.negotiation .negotiation-order-top>span:last-child{font-size:8px;font-weight:700;letter-spacing:1px;color:#8a889e}
+.negotiation .negotiation-buyer{display:flex;gap:6px;align-items:center;font-size:10px;font-weight:700;color:#77738d}
+.negotiation .negotiation-buyer svg{width:14px;height:14px;color:var(--neg-violet)}
+.negotiation .negotiation-order-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.negotiation .negotiation-order-bottom>strong{font-size:14px;font-weight:800;letter-spacing:-.3px}
+.negotiation .negotiation-order-bottom>div{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.negotiation .negotiation-order-bottom>div span{font-size:9px;color:#77738d;padding:4px 6px;border:1px solid #e5e1fc;background:#fff;border-radius:5px;white-space:nowrap}
+.negotiation .negotiation-order-bottom b{color:#4d466b;font-weight:700}
+.negotiation .negotiation-routing{display:flex;align-items:center;gap:10px;padding:7px 25px}
+.negotiation .negotiation-agent{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:9px;font-weight:800;color:var(--neg-violet)}
+.negotiation .negotiation-agent svg{width:12px;height:12px}
+.negotiation .negotiation-wire{height:1px;background:#dedafb;flex:1;position:relative;overflow:visible}
+.negotiation .negotiation-wire:after{position:absolute;content:"";height:4px;width:4px;background:#c7c2f8;border-radius:50%;top:-1.5px}
+.negotiation .negotiation-wire:first-child:after{left:0}
+.negotiation .negotiation-wire:last-child:after{right:0}
+.negotiation.is-playing .negotiation-wire:after{background:var(--neg-violet);animation:negotiation-travel 1.7s ease-in-out infinite}
+.negotiation .negotiation-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.negotiation .negotiation-offer{min-width:0;padding:10px 10px 8px;border:1px solid var(--neg-border);border-radius:12px;background:#fff;transition:border-color .35s,background .35s,box-shadow .35s,transform .35s}
+.negotiation .negotiation-supplier{display:flex;align-items:center;gap:6px;margin-bottom:7px}
+.negotiation .negotiation-supplier>span{width:20px;height:20px;display:grid;place-items:center;flex-shrink:0;border-radius:7px;background:#f0f0f7;color:#86859b;font-size:10px;font-weight:800}
+.negotiation .negotiation-supplier>strong{font-size:11px;font-weight:700;white-space:nowrap}
+.negotiation .negotiation-price{display:block;font-size:18px;line-height:1.2;font-weight:800;letter-spacing:-.7px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.negotiation .negotiation-offer>p{font-size:9px;color:var(--neg-muted);margin-top:3px;min-height:13px;white-space:nowrap}
+.negotiation .negotiation-fit{display:block;margin-top:7px;padding-top:6px;border-top:1px solid #ededf5;font-size:8px;line-height:1.2;font-weight:600;color:#858298;min-height:18px}
+.negotiation .negotiation-offer.is-eligible{border-color:#c9c4fc;background:#faf9ff}
+.negotiation .negotiation-offer.is-eligible .negotiation-fit{color:var(--neg-violet)}
+.negotiation .negotiation-offer.is-selected{border-color:var(--neg-violet);box-shadow:0 4px 12px #4f46f513;background:#f8f7ff}
+.negotiation .negotiation-offer.is-selected .negotiation-supplier>span{background:var(--neg-violet);color:#fff}
+.negotiation .negotiation-offer.is-selected .negotiation-price{color:var(--neg-violet)}
+.negotiation .negotiation-offer.is-outside .negotiation-price{color:#787689}
+.negotiation .negotiation-offer.is-countering{animation:negotiation-highlight 1s ease-out}
+.negotiation .negotiation-conversation{margin-top:12px;padding:10px 12px;border:1px solid var(--neg-border);background:#fcfcff;border-radius:12px;min-height:94px}
+.negotiation .negotiation-conversation-head{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--neg-violet);font-size:9px;font-weight:800;margin-bottom:6px}
+.negotiation .negotiation-conversation-head>span:last-child{font-size:8px;color:#9c99ae;font-variant-numeric:tabular-nums;white-space:nowrap}
+.negotiation .negotiation-conversation>p{font-size:12px;line-height:1.45;font-weight:600;letter-spacing:-.1px;min-height:34px}
+.negotiation .negotiation-message-meta{display:flex;align-items:flex-start;gap:5px;font-size:9px;line-height:1.5;color:#88859c;margin-top:6px}
+.negotiation .negotiation-message-dot{flex-shrink:0;height:4px;width:4px;border-radius:50%;background:#aaa4d4;margin-top:5px}
+.negotiation.is-changing .negotiation-conversation>p{animation:negotiation-message .36s cubic-bezier(.2,.7,.2,1)}
+.negotiation .negotiation-result{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;border:1px solid #e6e4f5;border-radius:12px;padding:10px 12px;background:#f7f7fc;min-height:68px;transition:background .3s,border-color .3s}
+.negotiation .negotiation-result>div>span{display:block;font-size:7px;font-weight:800;letter-spacing:1.1px;color:#9290a6}
+.negotiation .negotiation-result strong{display:block;font-size:17px;line-height:1.2;letter-spacing:-.4px;margin-top:4px}
+.negotiation .negotiation-result small{display:block;font-size:9px;color:#848097;margin-top:4px}
+.negotiation .negotiation-result-icon{display:grid;place-items:center;flex-shrink:0;color:#aaa5cb;width:30px;height:30px}
+.negotiation .negotiation-result-icon svg{height:28px;width:28px}
+.negotiation.has-proposal .negotiation-result{background:#f3f1ff;border-color:#d9d5fd}
+.negotiation.has-proposal .negotiation-result strong{color:var(--neg-violet)}
+.negotiation.has-proposal .negotiation-result-icon{color:var(--neg-violet)}
+.negotiation .negotiation-approve{display:flex;align-items:center;justify-content:center;gap:7px;background:#fff;border:1px solid #bfb7fd;border-radius:8px;padding:10px;font-size:9px;font-weight:800;color:var(--neg-violet);white-space:nowrap}
+.negotiation .negotiation-approve:hover{background:#e9e6ff}
+.negotiation.is-approved .negotiation-result{background:#edf8f2;border-color:#c6e8d9}
+.negotiation.is-approved .negotiation-result strong,.negotiation.is-approved .negotiation-result-icon{color:var(--neg-green)}
+.negotiation .negotiation-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+.negotiation .negotiation-play{display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;background:var(--neg-violet);border:1px solid var(--neg-violet);border-radius:9px;padding:11px 16px;font-size:11px;font-weight:800;box-shadow:0 4px 9px #4f46f51c;min-width:179px}
+.negotiation .negotiation-play:hover{background:#4037df;transform:translateY(-1px)}
+.negotiation .negotiation-play [data-negotiation-play-icon]{font-size:9px;min-width:10px}
+.negotiation .negotiation-secondary-controls{display:flex;align-items:center;gap:6px}
+.negotiation .negotiation-secondary-controls button{background:#fff;border:1px solid var(--neg-border);border-radius:8px;color:#77738c;padding:10px;font-size:10px;font-weight:700}
+.negotiation .negotiation-secondary-controls button:hover:not(:disabled){color:var(--neg-violet);border-color:#bbb5f9;background:#f9f8ff}
+.negotiation .negotiation-secondary-controls .negotiation-reset{width:33px;padding:6px;font-size:20px;line-height:20px;font-weight:400}
+.negotiation .negotiation-progress{display:flex;list-style:none;padding:0;gap:4px;margin-top:12px}
+.negotiation .negotiation-progress li{height:3px;flex:1;border-radius:10px;background:#e9e8f2;transition:background .3s;position:relative}
+.negotiation .negotiation-progress li.is-current{background:var(--neg-violet)}
+.negotiation .negotiation-progress li.is-complete{background:#b7aff9}
+.negotiation .negotiation-progress span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.negotiation .negotiation-disclaimer{margin-top:8px;font-size:8px;color:#9a96aa;text-align:center;line-height:1.5}
+.negotiation .negotiation-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.negotiation .negotiation-noscript{font-size:12px;padding-top:12px;color:#6b6680}
+@keyframes negotiation-message{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes negotiation-pulse{50%{opacity:.45}}
+@keyframes negotiation-travel{0%{left:0;opacity:0}20%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes negotiation-highlight{0%,100%{box-shadow:0 4px 12px #4f46f513}50%{box-shadow:0 0 0 4px #4f46f520}}
+@media(max-width:600px){.negotiation{padding:18px;border-radius:20px;max-width:460px}.negotiation .negotiation-head{margin-bottom:15px}.negotiation .negotiation-head h2{font-size:19px}.negotiation .negotiation-badge{font-size:8px;padding:5px 7px}.negotiation .negotiation-eyebrow{font-size:8px;letter-spacing:1px}.negotiation .negotiation-order{padding:12px}.negotiation .negotiation-order-bottom{align-items:flex-start;flex-direction:column;gap:8px}.negotiation .negotiation-order-bottom>div{justify-content:flex-start}.negotiation .negotiation-order-bottom>strong{font-size:15px}.negotiation .negotiation-offer{padding:10px 8px}.negotiation .negotiation-price{font-size:17px}.negotiation .negotiation-supplier{gap:5px}.negotiation .negotiation-supplier>strong{font-size:10px}.negotiation .negotiation-supplier>span{width:18px;height:18px;font-size:8px;border-radius:5px}.negotiation .negotiation-offer>p{font-size:8px}.negotiation .negotiation-fit{font-size:7px}.negotiation .negotiation-result{padding:11px}.negotiation .negotiation-result strong{font-size:16px}.negotiation .negotiation-play{min-width:0;padding:12px;font-size:10px}.negotiation .negotiation-secondary-controls button{font-size:9px;padding:10px 8px}.negotiation .negotiation-conversation>p{font-size:11px;min-height:34px}.negotiation .negotiation-conversation{min-height:103px}.negotiation .negotiation-approve{font-size:8px;padding:9px 7px;white-space:normal;max-width:100px}.negotiation .negotiation-controls{gap:6px}.negotiation .negotiation-result small{font-size:8px}}
+@media(max-width:370px){.negotiation{padding:14px}.negotiation .negotiation-badge{font-size:0;gap:0;padding:6px}.negotiation .negotiation-price{font-size:15px}.negotiation .negotiation-disclaimer{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.negotiation *,.negotiation *:before,.negotiation *:after{animation:none!important;transition:none!important}.negotiation .negotiation-play:hover{transform:none}}

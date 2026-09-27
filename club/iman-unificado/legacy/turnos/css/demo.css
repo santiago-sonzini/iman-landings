@@ -1,0 +1,10 @@
+/* Shared notice for the illustrative, local-only Turnos demo. */
+:root{--demo-banner-height:100px}
+.demo-banner{position:sticky;top:0;z-index:70;background:#4f46f5;color:#fff;padding:12px 18px;border-bottom:2px solid #25213f;font:600 14px/1.5 system-ui,sans-serif}
+.demo-banner>div{max-width:820px;margin:auto}
+.demo-banner p{margin:0}.demo-banner strong{font-weight:800}.demo-banner a{display:inline-block;margin-top:5px;text-decoration:underline;text-underline-offset:3px;min-height:28px}
+.demo-banner a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.demo-status{margin-top:8px!important;padding:9px 12px;border:1px solid #ffffff66;border-radius:8px;background:#ffffff12}
+.demo-status[hidden]{display:none}
+.top{top:var(--demo-banner-height)}
+@media(min-width:900px){.panel-slot{top:calc(78px + var(--demo-banner-height));max-height:calc(100svh - 78px - var(--demo-banner-height) - var(--nav-h))}}

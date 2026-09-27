@@ -1,0 +1,55 @@
+# Plan editorial de 30 días
+
+Secuencia propuesta desde la publicación estable. No es una automatización programada. Consultas e intenciones son hipótesis; no se inventaron volumen, dificultad ni posición. Primero se mejoran las páginas que ayudan a contratar, después se agregan contenidos con una pregunta distinta.
+
+## Calendario de trabajo
+
+| Momento | Pieza / trabajo | Entrega concreta | Condición para publicar |
+| --- | --- | --- | --- |
+| Días 1–3 | Verificar la base | Auditoría, redirects, sitemap, Search Console y flujo de consulta | Sitio canónico y formulario probados; registrar lo que falta. |
+| Días 4–7 | Wallet y email | Guía para elegir el canal según el mensaje; tabla de ejemplos | Confirmar comportamiento técnico y fuentes; enlazar Fidelización y guía Club Wallet. |
+| Días 8–10 | Catálogo que recibe pedidos | Recorrido de un pedido minorista y otro mayorista con demo | Verificar enlaces y que no se afirme stock/precio/pago que la demo no confirma. |
+| Días 11–14 | Compras con proveedores | Comparación ilustrativa, aprobación y tratamiento de excepciones | Diferenciar cotización, recomendación y compra enviada. |
+| Días 15–18 | Mejorar tres guías existentes | Responder dudas surgidas en conversaciones reales o Search Console | No fabricar preguntas o testimonios de clientes; si no hay datos, registrar hipótesis. |
+| Días 19–23 | Prueba propia | Documentar una implementación, o una demo detallada si aún no hay caso autorizado | Capturas, contexto, fecha y alcance verificables; números sólo con evidencia. |
+| Días 24–27 | Interconexión | Revisar enlaces entre guía, servicio, demo y contacto | Un próximo paso comprensible por página y ninguna URL huérfana prioritaria. |
+| Días 28–30 | Medir y decidir | Comparar consultas calificadas y búsquedas; elegir siguiente pieza | Informar muestra y limitaciones. No concluir aumento de conversión con pocos casos. |
+
+## Brief 1 — Wallet y email: qué mensaje enviar por cada canal
+
+- **Lector:** dueño de un negocio que quiere fidelizar sin una aplicación propia.
+- **Decisión:** qué comunica la tarjeta y cuándo conviene desarrollar una campaña por email.
+- **Respuesta inicial:** la tarjeta identifica el Club y refleja beneficios; el canal y el aviso dependen del acontecimiento, la plataforma y los permisos. El email permite desarrollar una propuesta que necesita explicación.
+- **Estructura:** recorrido desde QR hasta beneficio; ejemplos de saldo/premio/cliente inactivo; tabla evento/canal/acción; qué tiene que validar caja; qué medir; siguiente paso.
+- **Ejemplo propio:** una cafetería registra una visita, actualiza el beneficio del cliente y prepara una campaña para quienes dejaron de volver. Explicar qué dato dispara cada acción sin inventar frecuencia óptima.
+- **Visual:** dos pantallas de demo: pase actualizado y email con beneficio. Rotular ambas como ilustrativas y mantener la estética de IMAN.
+- **Límites:** pase guardado no es aviso recibido; aviso no es compra. No presentar Apple/Google como canales idénticos ni prometer alcance universal.
+- **Fuentes técnicas:** [Apple Wallet](https://developer.apple.com/wallet/get-started/), [actualización de pases Apple](https://developer.apple.com/documentation/walletpasses/adding-a-web-service-to-update-passes), [notificaciones de tarjetas de fidelidad Google](https://developers.google.com/wallet/retail/loyalty-cards/use-cases/trigger-push-notifications).
+- **Enlaces:** `/recursos/club-wallet/` explica el concepto; `/fidelizacion/` presenta el servicio. No repetir el artículo existente entero.
+- **CTA:** «Veamos qué debería comunicar el Club de tu negocio».
+
+## Brief 2 — Del catálogo al pedido: qué información no puede faltar
+
+- **Lector:** comercio o mayorista que recibe pedidos repartidos entre mensajes y fotos.
+- **Decisión:** qué datos pedir para que el equipo pueda confirmar el pedido sin reconstruirlo.
+- **Estructura:** producto y variante; unidad/presentación; cantidad; condición de precio; entrega; resumen; confirmación del negocio.
+- **Ejemplo propio:** minorista elige un producto y cantidad; mayorista selecciona bultos, mínimos y condición comercial. Mostrar el resumen que recibe el negocio y qué puede requerir confirmación.
+- **Visual:** demo recorrible y un pedido ilustrativo con renglones, cantidades y observaciones. No usar una captura decorativa como única prueba.
+- **Límites:** solicitar pedido no garantiza disponibilidad, precio final ni pago. No prometer sincronización con sistemas que no se integraron.
+- **Evidencia:** verificar la demo elegida y contrastar cada campo con lo que realmente hace. Las demos conceptuales no se presentan como clientes.
+- **Enlaces:** `/comercios/`, demo correspondiente, `/automatizaciones/` sólo al explicar conexión posterior del pedido.
+- **CTA:** «Quiero un catálogo para recibir pedidos completos».
+
+## Brief 3 — Comparar proveedores sin perder el control de la compra
+
+- **Lector:** responsable de compras que compara listas, presupuestos y respuestas manualmente.
+- **Decisión:** qué puede preparar una automatización y dónde permanece la aprobación.
+- **Estructura:** solicitud; recepción; normalización; faltantes; comparación; recomendación justificada; aprobación; seguimiento.
+- **Ejemplo propio:** tres presupuestos ilustrativos con distinta unidad, flete y plazo. Explicar por qué el menor precio unitario puede no ser la mejor alternativa para esa necesidad.
+- **Visual:** tabla simple con cantidad, costo total comparable, plazo, dato faltante y estado de aprobación. Evitar ahorro porcentual inventado.
+- **Límites:** no enviar compras, aceptar condiciones o elegir proveedor automáticamente sin reglas autorizadas. Un dato faltante queda visible; no lo completa la IA como si fuera un hecho.
+- **Evidencia:** mostrar la demo de compras de IMAN y aclarar su carácter ilustrativo. Los criterios de comparación son una propuesta de proceso, no asesoramiento fiscal.
+- **Enlaces:** `/automatizaciones/`, su demo de compras y `/recursos/automatizar-procesos/`.
+- **CTA:** «Evaluemos tu circuito de compras».
+
+Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente genere el pipeline editorial. Ningún texto se considera publicado por figurar en este calendario.

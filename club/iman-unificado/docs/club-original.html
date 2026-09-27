@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F4F5F7">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%23242333' stroke-width='34'/%3E%3Cpath d='M34 92V56a26 26 0 0 1 52 0v36' fill='none' stroke='%236C5CE7' stroke-width='21'/%3E%3Crect x='13' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Crect x='65' y='88' width='42' height='20' rx='4' fill='%23FFFFFF' stroke='%23242333' stroke-width='5'/%3E%3Cpath d='M28 114l-7 9M60 117v10M92 114l7 9' stroke='%23242333' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+
+<title>Imán Club — Aumentá tus ventas sin invertir en publicidad</title>
+<meta name="description" content="Imán crea campañas de email personalizadas para recuperar clientes, aumentar la frecuencia de compra y cuidar la rentabilidad de tu negocio.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Imán">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Imán Club — Aumentá tus ventas sin invertir en publicidad">
+<meta property="og:description" content="Campañas de email, Club de Clientes y referidos diseñados según tu rubro, tus clientes y tus costos.">
+<meta property="og:url" content="https://iman.ar/">
+<meta property="og:image" content="https://iman.ar/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Imán — Club de Clientes personalizado para tu comercio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imán Club — Aumentá tus ventas sin invertir en publicidad">
+<meta name="twitter:description" content="Campañas de email, fidelización y referidos para hacer que tus clientes vuelvan.">
+<meta name="twitter:image" content="https://iman.ar/og.png">
+
+<!-- ============================================================
+     CONFIGURAR ANTES DE PUBLICAR  (objeto CONFIG al final del archivo)
+
+     1. CONFIG.formEndpoint → /api/contacto.
+        La función valida los datos y envía el correo con credenciales privadas
+        configuradas en Vercel. El formulario solo muestra "Solicitud recibida"
+        cuando la respuesta es 2xx. Si falla, conserva los datos y ofrece
+        reintentar o enviarlos por WhatsApp.
+
+     2. CONFIG.calendlyUrl → URL real del evento. Si queda vacía, el tab
+        "Agendar llamada" se deshabilita con aviso de configuración
+        pendiente (nunca se muestra un calendario roto).
+
+     3. CONFIG.whatsapp → número real de contacto.
+
+     4. Analytics: mismos tags que /comercios (Meta Pixel, Google Ads,
+        Vercel). Eventos propios: 'iman:cta_click' y 'iman:club_lead'.
+     ============================================================ -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1347555500811145');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1347555500811145&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Vercel Web Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Google tag (gtag.js) — Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18305633425"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18305633425');
+  // Conversión "lead": clic en WhatsApp o agenda confirmada en Calendly.
+  (function(){
+    var RE=/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i, hold=false;
+    document.addEventListener('click', function(ev){
+      var a = ev.target.closest && ev.target.closest('a[href]');
+      if(!a || !RE.test(a.href)) return;
+      if(hold) return; hold=true; setTimeout(function(){hold=false;}, 1500);
+      if(window.gtag) gtag('event','conversion',{
+        send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS', transport_type:'beacon'
+      });
+    }, true);
+  }());
+  window.addEventListener('message', function(e){
+    if(e && e.data && e.data.event === 'calendly.event_scheduled'){
+      if(window.gtag) gtag('event','conversion',{
+        send_to:'AW-18305633425/Y1nDCI2hrcwcEJGZ55hE', value:1.0, currency:'ARS'
+      });
+    }
+  });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================================
+   SISTEMA BASE IMÁN CLUB (neutros fríos + violeta de marca)
+   ===================================================================== */
+:root{
+  --crema:#F7F7FC;
+  --tinta:#242333;
+  --blanco:#FFFFFF;
+  --texto:#525266;
+  --tinta-suave:#68687B;   /* contraste AA sobre las superficies claras */
+  --linea:#DDDDE8;
+
+  --acento:#6C5CE7;
+  --acento-osc:#4E3FC0;
+  --acento-suave:#ECE9FF;
+  --acento-claro:#A79BFF;  /* el acento sobre fondos tinta: AA con holgura */
+  --acento-on:#fff;
+  --acento2:#17BEBB;
+  --amarillo:#FFC53D;
+  --verde-wa:#25D366;
+  --verde-wa-osc:#1DA851;
+  --rojo:#E23D3D;
+
+  --radio:22px;
+  --borde:2.5px solid var(--tinta);
+  --sombra:0 10px 30px rgba(36,35,51,.12);
+  --sombra-dura:0 4px 0 var(--tinta);
+  --resorte:cubic-bezier(.34,1.56,.64,1);
+
+  --display:'Fredoka',sans-serif;
+  --cuerpo:'Nunito',sans-serif;
+  --header-h:62px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--cuerpo);
+  background:var(--crema);
+  color:var(--tinta);
+  font-size:clamp(1rem,.95rem + .3vw,1.09rem);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.13;font-weight:600}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px;border-radius:6px}
+section{position:relative;padding:clamp(3.2rem,7vw,5.6rem) 1.15rem;scroll-margin-top:calc(var(--header-h) + 10px)}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.wrap-sm{max-width:760px}
+.centro{text-align:center}
+
+/* grain sutil de marca */
+body::after{
+  content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* tipografía compartida */
+.eyebrow{
+  display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.07em;
+  text-transform:uppercase;background:var(--acento-suave);color:#3B2E86;
+  padding:.4rem .95rem;border-radius:999px;border:2px solid var(--acento);margin-bottom:1.1rem;
+}
+.sec-h2{font-size:clamp(1.55rem,3.9vw,2.45rem);letter-spacing:-.01em;margin-bottom:.75rem;max-width:24ch}
+.sec-p{font-weight:600;color:var(--texto);max-width:52ch;margin-bottom:2.2rem;font-size:1rem}
+.centro .sec-h2,.centro .sec-p{margin-left:auto;margin-right:auto}
+.micro{font-size:.82rem;font-weight:800;color:var(--tinta-suave)}
+.marcaflow{
+  color:var(--acento);padding:0 .06em;
+  background:linear-gradient(var(--acento-suave),var(--acento-suave)) 0 92% / 100% .26em no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+.tag-pronto{
+  display:inline-block;background:var(--amarillo);color:var(--tinta);border:2px solid var(--tinta);
+  font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  padding:.16rem .5rem;border-radius:999px;vertical-align:middle;margin-left:.4rem;
+}
+.oscuro .tag-pronto{border-color:var(--crema)}
+
+/* reveals */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+
+/* =====================================================================
+   BOTONES
+   ===================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--display);font-weight:600;font-size:1.02rem;
+  padding:.95rem 1.7rem;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;transition:transform .2s var(--resorte),box-shadow .2s;
+  min-height:48px;text-align:center;
+}
+.btn:active{transform:scale(.96)}
+.btn-primario{background:var(--acento);color:var(--acento-on);box-shadow:0 6px 0 var(--acento-osc),0 14px 26px rgba(76,63,192,.22)}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--acento-osc),0 18px 32px rgba(76,63,192,.28)}
+.btn-linea{background:transparent;color:var(--tinta);border:2.5px solid var(--tinta);font-size:.98rem;padding:.85rem 1.45rem}
+.btn-linea:hover{transform:translateY(-2px);background:var(--tinta);color:var(--crema)}
+.btn-wa{background:var(--verde-wa);color:#fff;box-shadow:0 6px 0 var(--verde-wa-osc),0 14px 26px rgba(37,211,102,.3)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--verde-wa-osc)}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:0 4px 0 var(--acento-osc)!important}
+
+/* =====================================================================
+   MARCA IMÁN (logo + partículas)
+   ===================================================================== */
+.iman-marca{display:flex;align-items:center;gap:.5rem}
+.iman-marca.oscuro{background:transparent}
+.iman-nombre{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1}
+.iman-nombre i{font-style:normal;color:var(--acento)}
+.iman-nombre small{font-family:var(--cuerpo);font-weight:800;font-size:.62em;opacity:.75;margin-left:.25em}
+.iman-svg{width:40px;height:auto;transform-origin:50% 62%;animation:imanFlota 5s ease-in-out infinite}
+@keyframes imanFlota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.iman-cuerpo-borde{fill:none;stroke:var(--tinta);stroke-width:34}
+.iman-cuerpo{fill:none;stroke:var(--acento);stroke-width:21}
+.iman-polo{fill:var(--blanco);stroke:var(--tinta);stroke-width:5}
+.iman-chispa{stroke:var(--tinta);stroke-width:5;stroke-linecap:round;fill:none}
+.oscuro .iman-nombre{color:var(--crema)}
+.oscuro .iman-nombre i{color:var(--acento-claro)}
+.oscuro .iman-cuerpo-borde{stroke:var(--crema)}
+.oscuro .iman-polo{fill:var(--tinta);stroke:var(--crema)}
+.oscuro .iman-chispa{stroke:var(--crema)}
+
+/* =====================================================================
+   HEADER STICKY
+   ===================================================================== */
+.hdr{
+  position:sticky;top:0;z-index:70;background:rgba(247,247,252,.92);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:2.5px solid var(--tinta);
+}
+.hdr-in{max-width:1140px;margin:0 auto;padding:.5rem 1rem;display:flex;align-items:center;gap:1rem;min-height:var(--header-h)}
+.hdr .iman-svg{width:32px;animation:none}
+.hdr .iman-nombre{font-size:1.12rem}
+.hdr-nav{display:none;margin-left:auto;gap:.2rem}
+.hdr-nav a{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-weight:800;font-size:.86rem;text-decoration:none;padding:.5rem .62rem;border-radius:999px;
+  color:var(--texto);transition:background .18s,color .18s;white-space:nowrap;
+}
+.hdr-nav a:hover{background:var(--acento-suave);color:#3B2E86}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:.55rem}
+.hdr-cta{font-size:.88rem;padding:.6rem 1.05rem;min-height:42px;box-shadow:0 4px 0 var(--acento-osc)}
+.hdr-wa{font-size:.86rem;padding:.6rem .9rem;min-height:42px;box-shadow:0 4px 0 var(--verde-wa-osc)}
+@media(min-width:1000px){
+  .hdr-nav{display:flex}
+  .hdr-actions{margin-left:.6rem}
+}
+@media(max-width:560px){
+  .hdr-wa-label{display:none}
+  .hdr-wa{width:42px;padding:.55rem}
+}
+@media(max-width:400px){
+  .hdr-in{padding:.5rem .7rem;gap:.5rem}
+  .hdr .iman-svg{width:28px}
+  .hdr .iman-nombre{font-size:1rem}
+  .hdr-actions{gap:.4rem}
+  .hdr-cta{font-size:.78rem;padding:.55rem .7rem}
+}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+.hero{padding-top:clamp(1.6rem,3.4vw,2.4rem);padding-bottom:clamp(2rem,4.5vw,3rem)}
+/* mobile: texto → CTA → teléfono → chips (el producto lo más arriba posible) */
+.hero-grid{display:grid;gap:2rem;align-items:center}
+.hero-chips{margin-top:0}
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:1.02fr .98fr;gap:2rem 2.4rem;align-items:center}
+  .hero-txt{grid-column:1;grid-row:1;align-self:end}
+  .hero-grid .hero-chips{grid-column:1;grid-row:2;align-self:start;margin-top:0}
+  .escena{grid-column:2;grid-row:1 / span 2;align-self:center}
+}
+.hero h1{font-size:clamp(2.05rem,5.3vw,3.35rem);font-weight:700;letter-spacing:-.015em;margin-bottom:1rem}
+.hero .sub{font-size:clamp(1rem,1rem + .3vw,1.14rem);font-weight:600;color:var(--texto);max-width:36rem;margin-bottom:1.5rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero-ctas .btn-primario{font-size:1.06rem;padding:1rem 1.8rem}
+.hero-micro{margin-top:1rem;font-weight:800;font-size:.9rem;color:var(--tinta)}
+.hero-micro span{color:var(--acento)}
+.hero-nota{margin-top:.35rem;font-size:.84rem;font-weight:700;color:var(--tinta-suave)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.4rem .55rem;list-style:none}
+.hero-chips li{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:800;
+  background:var(--blanco);border:2px solid var(--tinta);border-radius:999px;padding:.32rem .7rem;
+  box-shadow:0 3px 0 rgba(36,35,51,.5);
+}
+
+/* ---------- escenario del teléfono ---------- */
+.escena{position:relative;display:flex;flex-direction:column;align-items:center;gap:.7rem;min-width:0;margin-bottom:1.25rem}
+.fono{
+  width:min(350px,100%);background:var(--t-fondo,var(--crema));
+  border:2.5px solid var(--tinta);border-radius:34px;
+  box-shadow:0 10px 0 var(--tinta),0 26px 50px rgba(36,35,51,.24);
+  padding:13px 12px 14px;position:relative;overflow:hidden;
+  font-family:var(--t-fuente,var(--cuerpo));
+}
+.fono::before{
+  content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
+  width:86px;height:6px;border-radius:99px;background:rgba(36,35,51,.18);
+}
+.fono-in{padding-top:10px}
+
+.t-top{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem}
+.t-logo{
+  width:38px;height:38px;border-radius:13px;flex:none;display:grid;place-items:center;
+  background:var(--t-color);color:var(--t-on);border:2.5px solid var(--tinta);
+  font-size:1.15rem;box-shadow:0 3px 0 var(--tinta);
+}
+.t-nombre{font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:1.02rem;line-height:1.15}
+.t-socia{font-size:.72rem;font-weight:800;color:var(--tinta-suave)}
+.t-nivel{
+  margin-left:auto;font-size:.63rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;
+  background:var(--t-suave);color:var(--t-osc);border:1.5px solid var(--t-color);
+  padding:.2rem .45rem;border-radius:999px;text-align:center;
+}
+
+.t-saldo{
+  background:var(--t-color);color:var(--t-on);border:2.5px solid var(--tinta);border-radius:18px;
+  padding:.7rem .85rem;box-shadow:0 4px 0 var(--tinta);margin-bottom:.55rem;
+}
+.t-saldo .lbl{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+.t-saldo .num{font-family:var(--t-fuente-tit,var(--display));font-weight:700;font-size:1.95rem;line-height:1.05}
+.t-saldo .num em{font-style:normal;font-size:.85rem;font-weight:800;margin-left:.25rem;opacity:.9}
+.t-barra{height:9px;border-radius:99px;background:rgba(0,0,0,.2);overflow:hidden;margin-top:.5rem}
+.t-barra i{display:block;height:100%;border-radius:99px;background:var(--t-on);width:0;transition:width .9s cubic-bezier(.22,1,.36,1)}
+.t-saldo .falta{font-size:.72rem;font-weight:800;margin-top:.4rem;opacity:.95}
+
+.t-premio{
+  display:flex;align-items:center;gap:.6rem;background:var(--blanco);border:2.5px solid var(--tinta);
+  border-radius:16px;padding:.6rem .7rem;margin-bottom:.55rem;box-shadow:0 3px 0 rgba(36,35,51,.55);
+}
+.t-premio .ic{width:34px;height:34px;flex:none;border-radius:11px;background:var(--t-suave);display:grid;place-items:center;font-size:1.05rem}
+.t-premio .tit{font-weight:800;font-size:.83rem;line-height:1.25;color:var(--tinta)}
+.t-premio .sub{font-size:.71rem;font-weight:700;color:var(--tinta-suave)}
+.t-premio .canjear{
+  margin-left:auto;flex:none;font-size:.68rem;font-weight:900;background:var(--t-color);color:var(--t-on);
+  border:2px solid var(--tinta);border-radius:999px;padding:.28rem .6rem;
+}
+
+.t-secc{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--tinta-suave);margin:.55rem 0 .25rem}
+.t-act{display:flex;align-items:center;gap:.5rem;padding:.26rem 0;border-bottom:1.5px dashed var(--linea)}
+.t-act:last-of-type{border-bottom:0}
+.t-act .qu{font-weight:800;font-size:.78rem;color:var(--tinta);line-height:1.25}
+.t-act .cu{font-size:.68rem;font-weight:700;color:var(--tinta-suave)}
+.t-act .pts{margin-left:auto;font-weight:900;font-size:.8rem;color:var(--t-osc);white-space:nowrap}
+.t-act .pts.neg{color:var(--tinta-suave)}
+
+.t-ref{
+  margin-top:.55rem;background:var(--t-suave);border:2.5px dashed var(--t-color);border-radius:16px;padding:.6rem;
+}
+.t-ref-top{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}
+.t-ref-qr{width:34px;height:34px;flex:none;border-radius:9px;background:#fff;border:2px solid var(--tinta);padding:3px}
+.t-ref h4{font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:.92rem;color:var(--tinta)}
+.t-ref p{font-size:.72rem;font-weight:700;color:var(--texto);line-height:1.35}
+.t-ref .link{
+  display:flex;align-items:center;gap:.4rem;margin-top:.5rem;background:#fff;border:2px solid var(--tinta);
+  border-radius:999px;padding:.3rem .35rem .3rem .7rem;font-size:.68rem;font-weight:800;color:var(--tinta-suave);
+  overflow:hidden;
+}
+.t-ref .link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-ref .link b{margin-left:auto;flex:none;background:var(--verde-wa);color:var(--tinta);border-radius:999px;padding:.22rem .55rem;font-size:.66rem}
+/* botón de la maqueta: es un dibujo del producto, no un control real */
+.t-cta{
+  margin-top:.6rem;background:var(--t-color);color:var(--t-on);
+  border:2.5px solid var(--tinta);border-radius:999px;padding:.62rem;box-shadow:0 4px 0 var(--tinta);
+  font-family:var(--t-fuente-tit,var(--display));font-weight:var(--t-peso,600);font-size:.92rem;text-align:center;
+}
+.t-pronto{font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--t-osc);text-align:center;margin-top:.35rem}
+
+.escena-pie{font-size:.76rem;font-weight:700;color:var(--tinta-suave);text-align:center;max-width:32ch;margin:0 auto}
+
+@media(min-width:980px){.escena{margin-bottom:0}}
+
+/* =====================================================================
+   PROBLEMA Y SECCIONES DESTACADAS (gris carbón)
+   ===================================================================== */
+.oscuro{background:var(--tinta);color:var(--crema)}
+.oscuro .sec-p{color:#D5D4E5}
+.oscuro .sec-h2{color:var(--crema)}
+.oscuro .eyebrow{background:rgba(247,247,252,.1);color:var(--crema);border-color:var(--acento)}
+.problema h2 span{color:var(--acento-claro)}
+.grid3{display:grid;gap:1.1rem}
+@media(min-width:780px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.p-card{
+  background:rgba(247,247,252,.06);border:1.5px solid rgba(247,247,252,.18);border-radius:var(--radio);
+  padding:1.5rem 1.35rem;
+}
+.p-card:nth-child(2){transform:rotate(.5deg)}
+.p-card:nth-child(3){transform:rotate(-.5deg)}
+.p-card .emo{font-size:1.8rem;margin-bottom:.6rem}
+.p-card h3{font-size:1.12rem;color:var(--amarillo);margin-bottom:.4rem}
+.p-card p{font-size:.94rem;font-weight:600;color:#D5D4E5}
+
+
+/* =====================================================================
+   REFERIDOS
+   ===================================================================== */
+.referidos{background:var(--acento);color:#fff;overflow:hidden;padding-top:clamp(4.4rem,8vw,6.4rem)}
+/* la sección oscura anterior "cae" sobre el violeta con una curva */
+.referidos::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:clamp(38px,5.5vw,68px);
+  background:var(--tinta);clip-path:ellipse(62% 100% at 50% 0%);z-index:1;
+}
+.referidos .sec-h2{color:#fff}
+.referidos .sec-p{color:rgba(255,255,255,.92)}
+.referidos .eyebrow{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.flujo{display:flex;flex-wrap:wrap;gap:.55rem;align-items:stretch;margin-bottom:2rem}
+.flujo-paso{
+  flex:1 1 156px;background:var(--blanco);color:var(--tinta);border:2.5px solid var(--tinta);
+  border-radius:16px;padding:.85rem .8rem;box-shadow:0 4px 0 var(--tinta);position:relative;
+}
+.flujo-paso .n{
+  width:24px;height:24px;border-radius:50%;background:var(--acento);color:#fff;font-family:var(--display);
+  font-weight:600;font-size:.8rem;display:grid;place-items:center;margin-bottom:.45rem;border:2px solid var(--tinta);
+}
+.flujo-paso .emo{font-size:1.15rem;line-height:1}
+.flujo-paso p{font-size:.83rem;font-weight:800;line-height:1.3;margin-top:.3rem}
+.flujo-paso.final{background:var(--amarillo)}
+.ref-2col{display:grid;gap:1.4rem}
+@media(min-width:900px){.ref-2col{grid-template-columns:1.05fr .95fr;gap:2rem;align-items:start}}
+.ref-lista{list-style:none;display:grid;gap:.6rem}
+.ref-lista li{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;font-size:.96rem}
+.ref-lista .tilde{
+  width:24px;height:24px;border-radius:50%;background:#fff;color:var(--acento);flex:none;
+  display:grid;place-items:center;font-size:.8rem;font-weight:900;margin-top:.12rem;
+}
+.ref-reglas{background:rgba(0,0,0,.16);border:2px solid rgba(255,255,255,.28);border-radius:var(--radio);padding:1.3rem 1.25rem}
+.ref-reglas h3{font-size:1.08rem;margin-bottom:.7rem}
+.ref-reglas ol{margin:0 0 0 1.05rem;display:grid;gap:.42rem}
+.ref-reglas li{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.94)}
+.ref-frase{
+  margin-top:1.9rem;text-align:center;font-family:var(--display);font-weight:600;
+  font-size:clamp(1.15rem,3vw,1.7rem);color:#fff;
+}
+.ref-frase span{background:var(--amarillo);color:var(--tinta);padding:.06em .35em;border-radius:10px;display:inline-block}
+.aviso-pronto{
+  display:flex;gap:.6rem;align-items:flex-start;background:var(--amarillo);color:var(--tinta);
+  border:2.5px solid var(--tinta);border-radius:16px;padding:.85rem 1rem;margin-bottom:1.5rem;
+  font-weight:800;font-size:.88rem;box-shadow:0 4px 0 rgba(36,35,51,.5);max-width:56ch;
+}
+
+/* =====================================================================
+   PERSONALIZACIÓN
+   ===================================================================== */
+.pers-grid{display:grid;gap:1.1rem;margin-bottom:2rem}
+@media(min-width:820px){.pers-grid{grid-template-columns:repeat(3,1fr)}}
+.pers-card{
+  background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.2rem 1.1rem;
+  box-shadow:var(--sombra-dura);
+}
+.pers-card:nth-child(2){transform:rotate(-.6deg)}
+.pers-card:nth-child(3){transform:rotate(.6deg)}
+.pers-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.pers-head .lg{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;border:2.5px solid var(--tinta);font-size:1.1rem;box-shadow:0 3px 0 var(--tinta)}
+.pers-head b{font-size:1rem;line-height:1.2;display:block}
+.pers-head small{font-size:.72rem;font-weight:800;color:var(--tinta-suave)}
+.pers-fila{display:flex;gap:.5rem;align-items:baseline;font-size:.82rem;font-weight:700;padding:.3rem 0;border-bottom:1.5px dashed var(--linea)}
+.pers-fila:last-child{border-bottom:0}
+.pers-fila span{color:var(--tinta-suave);font-weight:900;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;flex:0 0 82px}
+.pers-fila b{font-weight:800;color:var(--tinta)}
+.pers-swatch{display:inline-flex;gap:.2rem;vertical-align:middle}
+.pers-swatch i{width:14px;height:14px;border-radius:5px;border:1.5px solid var(--tinta);display:inline-block}
+.chips-pers{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+.chips-pers li{
+  background:var(--acento-suave);border:2px solid var(--acento);color:#3B2E86;border-radius:999px;
+  padding:.38rem .85rem;font-weight:800;font-size:.85rem;
+}
+
+/* =====================================================================
+   NO MARKETPLACE
+   ===================================================================== */
+.vs{display:grid;gap:1.1rem}
+@media(min-width:820px){.vs{grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}}
+.vs-card{border-radius:var(--radio);padding:1.5rem 1.35rem;border:var(--borde)}
+.vs-mal{background:#F0F0F6;box-shadow:0 4px 0 rgba(36,35,51,.35)}
+.vs-bien{background:var(--blanco);box-shadow:0 8px 0 var(--acento),0 14px 30px rgba(76,63,192,.16);border-color:var(--acento)}
+.vs-card h3{font-size:1.12rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.vs-card ul{list-style:none;display:grid;gap:.55rem}
+.vs-card li{display:flex;gap:.55rem;align-items:flex-start;font-weight:700;font-size:.94rem;color:var(--texto)}
+.vs-card li i{font-style:normal;flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:900;margin-top:.15rem}
+.vs-mal li i{background:#DDDDE8;color:#626276}
+.vs-bien li i{background:var(--acento);color:#fff}
+/* mini maqueta de "otras plataformas" vs "tu club" */
+.mini-tiendas{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;margin-bottom:1rem}
+.mini-tiendas i{
+  aspect-ratio:1;border-radius:9px;border:2px solid #C4C4D4;background:#E7E7F0;display:grid;place-items:center;
+  font-size:.9rem;font-style:normal;opacity:.75;
+}
+.mini-tuya{
+  margin-bottom:1rem;border:2.5px solid var(--tinta);border-radius:12px;background:var(--acento);color:#fff;
+  padding:.75rem;font-weight:900;text-align:center;box-shadow:0 4px 0 var(--tinta);font-size:.95rem;
+}
+
+/* =====================================================================
+   PRODUCTO (panel comercio + pantallas)
+   ===================================================================== */
+.prod-grid{display:grid;gap:1.6rem;align-items:start}
+@media(min-width:980px){.prod-grid{grid-template-columns:1.25fr .75fr;gap:1.6rem}}
+.panel{
+  background:var(--blanco);border-radius:var(--radio);border:3px solid var(--tinta);overflow:hidden;
+  box-shadow:0 16px 0 rgba(36,35,51,.16),0 24px 50px rgba(36,35,51,.16);
+}
+.panel-top{display:flex;align-items:center;gap:.42rem;background:var(--tinta);padding:.6rem .95rem}
+.panel-top .dot{width:10px;height:10px;border-radius:50%}
+.panel-top .dot:nth-child(1){background:var(--acento)}
+.panel-top .dot:nth-child(2){background:var(--amarillo)}
+.panel-top .dot:nth-child(3){background:var(--acento2)}
+.panel-top span{color:var(--crema);font-family:var(--display);font-size:.82rem;margin-left:.5rem}
+.panel-tabs{display:flex;gap:.35rem;padding:.9rem .9rem 0;flex-wrap:wrap}
+.panel-tab{font-size:.75rem;font-weight:900;padding:.36rem .8rem;border-radius:999px;background:#ECECF4;color:#626276}
+.panel-tab.activa{background:var(--acento);color:#fff}
+.panel-body{padding:.9rem}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-bottom:.8rem}
+@media(min-width:560px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--crema);border:2px solid var(--linea);border-radius:14px;padding:.6rem .7rem}
+.kpi .n{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1;color:var(--acento)}
+.kpi .l{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:var(--tinta-suave);margin-top:.15rem}
+.fila{
+  display:flex;align-items:center;gap:.7rem;background:var(--crema);border:1.5px solid var(--linea);
+  border-radius:14px;padding:.62rem .7rem;margin-bottom:.5rem;
+}
+.fila .ava{width:36px;height:36px;flex:none;border-radius:11px;background:var(--acento-suave);display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#3B2E86}
+.fila .info{flex:1;min-width:0}
+.fila .nom{font-weight:800;font-size:.88rem;line-height:1.25}
+.fila .det{font-size:.75rem;font-weight:700;color:#626276}
+.fila .acc{flex:none;font-size:.72rem;font-weight:900;border-radius:999px;padding:.32rem .7rem;border:2px solid var(--tinta)}
+.fila .acc.ok{background:var(--acento2);color:var(--tinta)}
+.fila .acc.val{background:var(--amarillo);color:var(--tinta)}
+.fila.destacada{background:var(--acento-suave);border:2px solid var(--acento)}
+@media(max-width:430px){
+  .fila{flex-wrap:wrap}
+  .fila .info{flex:1 1 calc(100% - 46px)}
+  .fila .acc{margin-left:46px}
+}
+.mini-fonos{display:grid;gap:1rem}
+@media(min-width:520px) and (max-width:979px){.mini-fonos{grid-template-columns:1fr 1fr}}
+.mini-fono{
+  background:var(--crema);border:2.5px solid var(--tinta);border-radius:24px;padding:.85rem .75rem;
+  box-shadow:0 7px 0 var(--tinta);
+}
+.mini-fono h4{font-size:.95rem;margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem}
+.mf-item{display:flex;align-items:center;gap:.5rem;background:var(--blanco);border:2px solid var(--tinta);border-radius:13px;padding:.5rem .6rem;margin-bottom:.45rem}
+.mf-item .ic{width:28px;height:28px;flex:none;border-radius:9px;background:var(--acento-suave);display:grid;place-items:center;font-size:.9rem}
+.mf-item b{font-size:.8rem;font-weight:800;line-height:1.2}
+.mf-item small{display:block;font-size:.68rem;font-weight:700;color:var(--tinta-suave)}
+.mf-item .cst{margin-left:auto;flex:none;font-size:.7rem;font-weight:900;color:var(--acento)}
+
+/* =====================================================================
+   PASOS
+   ===================================================================== */
+.pasos-grid{display:grid;gap:1.1rem;counter-reset:paso}
+@media(min-width:700px){.pasos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.pasos-grid{grid-template-columns:repeat(5,1fr);gap:.85rem}}
+.paso{
+  background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.45rem 1.15rem 1.2rem;
+  box-shadow:var(--sombra-dura);position:relative;
+}
+.paso:nth-child(odd){transform:rotate(-.7deg)}
+.paso:nth-child(even){transform:rotate(.7deg)}
+.paso .icono{width:48px;height:48px;border-radius:15px;background:var(--acento-suave);display:grid;place-items:center;font-size:1.4rem;margin-bottom:.8rem}
+.paso h3{font-size:1.05rem;margin-bottom:.35rem}
+.paso p{font-size:.9rem;font-weight:600;color:var(--texto)}
+.paso::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;top:-14px;right:14px;width:32px;height:32px;border-radius:50%;
+  background:var(--tinta);color:var(--crema);font-family:var(--display);font-weight:700;
+  display:grid;place-items:center;font-size:.98rem;
+}
+
+/* =====================================================================
+   BENEFICIOS
+   ===================================================================== */
+.ben-grid{display:grid;gap:.85rem}
+@media(min-width:700px){.ben-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.ben-grid{grid-template-columns:repeat(4,1fr)}}
+.ben{
+  background:rgba(247,247,252,.06);border:1.5px solid rgba(247,247,252,.18);border-radius:18px;
+  padding:1.1rem 1rem;display:flex;flex-direction:column;gap:.45rem;
+}
+.ben .emo{font-size:1.4rem}
+.ben p{font-size:.92rem;font-weight:700;color:var(--crema);line-height:1.4}
+
+/* =====================================================================
+   KIT FÍSICO
+   ===================================================================== */
+.kit-grid{display:grid;gap:1.1rem;align-items:center}
+@media(min-width:900px){.kit-grid{grid-template-columns:.95fr 1.05fr;gap:2rem}}
+.kit-piezas{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.kit-pieza{
+  background:var(--blanco);border:var(--borde);border-radius:18px;padding:1rem .85rem;text-align:center;
+  box-shadow:var(--sombra-dura);
+}
+.kit-pieza:nth-child(1){transform:rotate(-1.4deg)}
+.kit-pieza:nth-child(4){transform:rotate(1.4deg)}
+.kit-pieza b{display:block;font-size:.86rem;margin-top:.5rem}
+.kit-pieza small{display:block;font-size:.72rem;font-weight:700;color:var(--tinta-suave);margin-top:.15rem}
+.kit-lista{list-style:none;display:grid;gap:.6rem;margin-top:1.2rem}
+.kit-lista li{display:flex;gap:.55rem;font-weight:700;font-size:.94rem;color:var(--texto)}
+.kit-lista li b{color:var(--tinta)}
+
+/* =====================================================================
+   EVOLUCIÓN / PRODUCTOS
+   ===================================================================== */
+.prods{display:grid;gap:1rem;margin-bottom:2.4rem}
+@media(min-width:820px){.prods{grid-template-columns:repeat(2,1fr)}}
+.prod{background:var(--blanco);border:var(--borde);border-radius:var(--radio);padding:1.3rem 1.2rem;box-shadow:var(--sombra-dura)}
+.prod.principal{border-color:var(--acento);box-shadow:0 6px 0 var(--acento)}
+.prod .badge{
+  display:inline-block;font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  padding:.2rem .55rem;border-radius:999px;margin-bottom:.6rem;border:2px solid var(--tinta);
+}
+.prod .badge.now{background:var(--acento);color:#fff;border-color:var(--acento)}
+.prod .badge.later{background:var(--amarillo);color:var(--tinta)}
+.prod h3{font-size:1.15rem;margin-bottom:.4rem}
+.prod p{font-size:.92rem;font-weight:600;color:var(--texto)}
+.linea-t{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.linea-t .et{
+  background:var(--blanco);border:2.5px solid var(--tinta);border-radius:999px;padding:.45rem 1rem;
+  font-weight:900;font-size:.85rem;box-shadow:0 4px 0 rgba(36,35,51,.6);
+}
+.linea-t .et.on{background:var(--acento);color:#fff;box-shadow:0 4px 0 var(--acento-osc)}
+.linea-t .et.next{background:var(--crema);border-style:dashed;color:var(--tinta-suave)}
+.linea-t .fl{font-weight:900;color:var(--tinta-suave)}
+
+/* =====================================================================
+   CONTACTO + TABS
+   ===================================================================== */
+.contacto{background:var(--acento);overflow:hidden}
+.contacto .sec-h2,.contacto .sec-p{color:#fff}
+.contacto .sec-p{color:rgba(255,255,255,.92)}
+.contacto .eyebrow{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.mod{
+  background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);
+  box-shadow:0 14px 0 rgba(36,35,51,.35);max-width:840px;margin:0 auto;overflow:hidden;
+}
+.tabs{display:flex;gap:.4rem;padding:.75rem .75rem 0;background:var(--crema);border-bottom:2.5px solid var(--tinta)}
+.tab{
+  flex:1;background:transparent;border:2.5px solid transparent;border-bottom:0;cursor:pointer;
+  font-family:var(--display);font-weight:600;font-size:.98rem;padding:.75rem .6rem;
+  border-radius:14px 14px 0 0;color:var(--texto);position:relative;bottom:-2.5px;min-height:48px;
+  transition:background .2s,color .2s;
+}
+.tab:hover{background:rgba(108,92,231,.08)}
+.tab[aria-selected="true"]{
+  background:var(--blanco);border-color:var(--tinta);color:var(--tinta);
+  box-shadow:0 -3px 0 var(--acento) inset;
+}
+.tab[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+.tab-panel{padding:1.5rem 1.25rem 1.7rem}
+.tab-panel:focus-visible{outline-offset:-4px}
+@media(min-width:640px){.tab-panel{padding:1.8rem 1.7rem}}
+
+/* formulario */
+.form-grid{display:grid;gap:.9rem}
+@media(min-width:620px){
+  .form-grid{grid-template-columns:1fr 1fr}
+  .campo.ancho{grid-column:1/-1}
+}
+.campo{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.campo label{font-weight:800;font-size:.85rem}
+.campo label .opt{font-weight:700;color:var(--tinta-suave);font-size:.78rem}
+.campo input,.campo select,.campo textarea{
+  font-family:var(--cuerpo);font-size:1rem;font-weight:600;color:var(--tinta);
+  background:var(--crema);border:2.5px solid var(--tinta);border-radius:14px;
+  padding:.7rem .8rem;min-height:48px;width:100%;
+  transition:border-color .18s,box-shadow .18s,background .18s;
+}
+.campo textarea{min-height:96px;resize:vertical;line-height:1.5}
+.campo select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23242333' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;background-size:18px;padding-right:2.3rem;
+}
+.campo input:focus,.campo select:focus,.campo textarea:focus{
+  outline:none;background:var(--blanco);border-color:var(--acento);box-shadow:0 0 0 3px var(--acento-suave);
+}
+.campo input[aria-invalid="true"],.campo select[aria-invalid="true"]{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(226,61,61,.14)}
+.campo input:disabled{opacity:.55;cursor:not-allowed}
+.err{font-size:.78rem;font-weight:800;color:#B41F1F;min-height:0}
+.err:empty{display:none}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;font-weight:700;color:var(--texto);cursor:pointer}
+.check input{
+  appearance:none;-webkit-appearance:none;width:24px;height:24px;flex:none;margin-top:.05rem;
+  border:2.5px solid var(--tinta);border-radius:7px;background:var(--crema);cursor:pointer;position:relative;
+  min-height:0;padding:0;
+}
+.check input:checked{background:var(--acento);border-color:var(--acento)}
+.check input:checked::after{
+  content:"";position:absolute;left:7px;top:2px;width:6px;height:12px;
+  border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg);
+}
+.check input[aria-invalid="true"]{border-color:var(--rojo)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-pie{margin-top:1.3rem;display:flex;flex-direction:column;gap:.85rem}
+.form-pie .btn{width:100%}
+@media(min-width:620px){.form-pie .btn{width:auto;align-self:flex-start}}
+.estado{
+  display:none;gap:.7rem;align-items:flex-start;border-radius:16px;padding:.9rem 1rem;
+  font-weight:800;font-size:.92rem;border:2.5px solid var(--tinta);
+}
+.estado.visible{display:flex}
+.estado.es-ok{background:#E4F6EC;color:#14603A}
+.estado.es-err{background:#FBE6E6;color:#8E1B1B}
+.estado.es-info{background:var(--acento-suave);color:#3B2E86}
+.estado .btn-linea{margin-top:.5rem;font-size:.85rem;padding:.5rem 1rem;min-height:40px}
+.estado-cuerpo{flex:1;min-width:0}
+.estado-cuerpo p{font-weight:700;font-size:.86rem;margin-top:.25rem}
+.spin{
+  width:18px;height:18px;border-radius:50%;border:3px solid rgba(59,46,134,.25);border-top-color:#3B2E86;
+  animation:girar .7s linear infinite;flex:none;margin-top:.1rem;
+}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* calendly */
+.cal-tit{font-size:1.2rem;margin-bottom:.35rem}
+.cal-p{font-weight:600;color:var(--texto);font-size:.95rem;margin-bottom:1.1rem;max-width:48ch}
+#cal-embed{position:relative;width:100%;min-height:660px;border-radius:14px;overflow:hidden;border:2px solid var(--linea);background:var(--crema)}
+#cal-embed .calendly-inline-widget{position:relative;z-index:1;min-width:280px;height:660px}
+.cal-cargando{
+  position:absolute;inset:0;z-index:0;display:grid;place-items:center;text-align:center;padding:1rem;
+  font-weight:800;color:var(--tinta-suave);
+}
+.cal-fallback{margin-top:.9rem;font-size:.86rem;font-weight:700;color:var(--texto)}
+.cal-fallback a{color:var(--acento-osc);text-decoration:underline;text-underline-offset:2px}
+.cal-pendiente{background:var(--amarillo);border:2.5px solid var(--tinta);border-radius:16px;padding:1rem 1.1rem;font-weight:800;font-size:.9rem}
+
+/* =====================================================================
+   FAQ
+   ===================================================================== */
+.faq .wrap{max-width:780px}
+.faq details{background:var(--blanco);border:var(--borde);border-radius:18px;margin-bottom:.75rem;overflow:hidden}
+.faq summary{
+  font-family:var(--display);font-weight:600;font-size:1.02rem;padding:1.05rem 3rem 1.05rem 1.25rem;
+  cursor:pointer;list-style:none;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);
+  font-size:1.5rem;font-weight:500;color:var(--acento);transition:transform .25s;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .resp{padding:0 1.25rem 1.2rem;font-weight:600;color:var(--texto);font-size:.95rem}
+
+/* =====================================================================
+   CIERRE + FOOTER + STICKY
+   ===================================================================== */
+.cierre{background:var(--tinta);color:var(--crema);text-align:center}
+.cierre h2{font-size:clamp(1.85rem,4.8vw,3rem);max-width:22ch;margin:.9rem auto .8rem;color:var(--crema)}
+.cierre h2 span{color:var(--acento-claro)}
+.cierre p{color:#D5D4E5;font-weight:700;max-width:44ch;margin:0 auto 1.9rem}
+.cierre .iman-marca{justify-content:center}
+.cierre-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+footer{
+  background:var(--tinta);color:#B9B8CD;text-align:center;
+  padding:2.2rem 1.25rem 6.2rem;font-size:.84rem;font-weight:600;
+  border-top:1px solid rgba(247,247,252,.12);
+}
+footer .iman-marca{justify-content:center;margin-bottom:.7rem}
+footer .iman-svg{width:30px}
+footer .iman-nombre{font-size:1.05rem}
+footer a{display:inline-block;padding:.5rem .25rem;color:#E4E3EF;text-decoration:underline;text-underline-offset:2px}
+footer .iman-nombre i{color:var(--acento-claro)}
+@media(min-width:768px){footer{padding-bottom:2rem}}
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;padding:.65rem .85rem;
+  padding-bottom:calc(.65rem + env(safe-area-inset-bottom));
+  background:rgba(247,247,252,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-top:2.5px solid var(--tinta);display:flex;gap:.55rem;
+  transform:translateY(115%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.sticky-cta.visible{transform:none}
+.sticky-cta .btn{flex:1;font-size:.92rem;padding:.8rem .7rem}
+.sticky-cta .btn-primario{box-shadow:0 4px 0 var(--acento-osc)}
+.sticky-cta .btn-wa{box-shadow:0 4px 0 var(--verde-wa-osc)}
+@media(min-width:768px){.sticky-cta{display:none}}
+
+/* =====================================================================
+   DIRECCIÓN 2026 — EDITORIAL TECNOLÓGICA
+   Una capa visual más sobria y profesional que conserva toda la
+   estructura, accesibilidad y comportamiento de la landing.
+   ===================================================================== */
+:root{
+  --crema:#F4F5F7;
+  --tinta:#121319;
+  --blanco:#FFFFFF;
+  --texto:#555862;
+  --tinta-suave:#6D707A;
+  --linea:#D9DBE2;
+  --acento:#5B55EA;
+  --acento-osc:#4039BF;
+  --acento-suave:#EEEDFF;
+  --acento-claro:#BDB9FF;
+  --acento-on:#FFFFFF;
+  --acento2:#16A6A1;
+  --amarillo:#EFC75E;
+  --verde-wa:#1C9A58;
+  --verde-wa-osc:#147943;
+  --radio:14px;
+  --borde:1px solid var(--linea);
+  --sombra:0 22px 60px rgba(18,19,25,.10);
+  --sombra-dura:0 16px 40px rgba(18,19,25,.08);
+  --resorte:cubic-bezier(.2,.8,.2,1);
+  --display:'Instrument Serif',Georgia,serif;
+  --cuerpo:'Manrope',system-ui,sans-serif;
+  --header-h:72px;
+}
+
+body{
+  background:
+    radial-gradient(circle at 83% 3%,rgba(91,85,234,.08),transparent 27rem),
+    var(--crema);
+  font-size:clamp(1rem,.97rem + .15vw,1.06rem);
+  line-height:1.65;
+  letter-spacing:-.006em;
+}
+body::after{display:none}
+section{padding:clamp(4.5rem,8vw,7.5rem) 1.35rem}
+.wrap{max-width:1180px}
+.wrap-sm{max-width:820px}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.035em}
+h3,h4{font-family:var(--cuerpo);font-weight:700;letter-spacing:-.025em}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:0;border:0;border-radius:0;background:transparent;color:var(--acento);
+  font-size:.72rem;font-weight:800;letter-spacing:.13em;margin-bottom:1.35rem;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.sec-h2{font-size:clamp(2.35rem,5vw,4.25rem);line-height:.98;max-width:18ch;margin-bottom:1.25rem}
+.sec-p{font-size:1.02rem;font-weight:500;line-height:1.75;max-width:60ch;margin-bottom:3rem}
+.micro{font-weight:600}
+.marcaflow{
+  color:inherit;padding:0;background:linear-gradient(90deg,var(--acento),#8B80F9) 0 96% / 100% .1em no-repeat;
+}
+
+.btn{
+  font-family:var(--cuerpo);font-weight:700;font-size:.92rem;letter-spacing:-.01em;
+  border-radius:9px;padding:.9rem 1.35rem;min-height:50px;
+  transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.btn-primario{box-shadow:0 10px 24px rgba(64,57,191,.22)}
+.btn-primario:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(64,57,191,.28)}
+.btn-linea{background:rgba(255,255,255,.52);border:1px solid var(--linea);font-size:.9rem}
+.btn-linea:hover{background:var(--tinta);color:#fff;transform:translateY(-2px)}
+.btn-wa{background:#fff;color:var(--tinta);border:1px solid var(--linea);box-shadow:none}
+.btn-wa:hover{background:#F2FAF5;color:#116C3B;border-color:#B8DEC9;transform:translateY(-2px);box-shadow:none}
+.btn[disabled]{box-shadow:none!important}
+
+.iman-marca{gap:.65rem;text-decoration:none}
+.iman-nombre{font-family:var(--cuerpo);font-size:1.18rem;font-weight:800;letter-spacing:-.04em}
+.iman-nombre i{color:inherit}
+.iman-nombre small{font-weight:600;letter-spacing:0;opacity:.55}
+.iman-svg{animation:none}
+.iman-cuerpo-borde{stroke:var(--tinta);stroke-width:29}
+.iman-cuerpo{stroke:var(--acento);stroke-width:18}
+.iman-polo{stroke-width:3.5}
+.iman-chispa{display:none}
+
+.hdr{
+  background:rgba(244,245,247,.82);border-bottom:1px solid rgba(18,19,25,.09);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+}
+.hdr-in{max-width:1240px;padding:.7rem 1.35rem}
+.hdr-nav{gap:0}
+.hdr-nav a{font-weight:600;font-size:.78rem;padding:.55rem .72rem;border-radius:7px}
+.hdr-nav a:hover{background:#fff;color:var(--tinta)}
+.hdr-cta,.hdr-wa{box-shadow:none;min-height:42px}
+
+.hero{padding-top:clamp(3.3rem,7vw,7rem);padding-bottom:clamp(4rem,8vw,7rem);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;width:560px;height:560px;right:-260px;top:-260px;border-radius:50%;
+  border:1px solid rgba(91,85,234,.18);box-shadow:0 0 0 80px rgba(91,85,234,.025),0 0 0 160px rgba(91,85,234,.018);
+}
+.hero-grid{gap:3rem}
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:1.18fr .82fr;gap:4rem 5rem}
+}
+.hero h1{font-size:clamp(3.25rem,7.2vw,6.3rem);line-height:.91;letter-spacing:-.05em;margin-bottom:1.7rem;max-width:11ch}
+.hero .sub{font-size:clamp(1.03rem,1rem + .35vw,1.25rem);font-weight:500;line-height:1.65;max-width:31rem;margin-bottom:2rem}
+.hero-ctas{gap:.65rem}
+.hero-ctas .btn-primario{font-size:.94rem;padding:1rem 1.5rem}
+.hero-micro{margin-top:1.35rem;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.hero-nota{font-size:.78rem;font-weight:500}
+.hero-chips{gap:.5rem 1.1rem}
+.hero-chips li{
+  background:transparent;border:0;border-radius:0;padding:.25rem 0;box-shadow:none;
+  font-size:.75rem;font-weight:600;color:var(--texto);
+}
+.hero-chips li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acento)}
+
+.fono{
+  width:min(370px,100%);border:1px solid rgba(18,19,25,.8);border-radius:30px;
+  box-shadow:0 35px 80px rgba(18,19,25,.19),0 8px 24px rgba(18,19,25,.10);padding:12px;
+}
+.fono::before{height:4px;background:rgba(18,19,25,.18)}
+.t-logo,.t-saldo,.t-premio,.t-ref-qr,.t-ref .link,.t-cta{border-width:1px;box-shadow:none}
+.t-logo{border-radius:10px}
+.t-saldo{border-radius:13px;padding:.9rem 1rem}
+.t-premio,.t-ref{border-radius:12px}
+.t-ref{border-style:solid;border-width:1px}
+.t-cta{border-radius:8px}
+.escena-pie{font-weight:500}
+
+.oscuro{background:#111218}
+.oscuro .sec-p{color:#AEB1BC}
+.oscuro .eyebrow{background:transparent;color:var(--acento-claro);border:0}
+.problema h2 span{color:var(--acento-claro)}
+.grid3{gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);overflow:hidden}
+.p-card{
+  background:#171820;border:0;border-radius:0;padding:2rem 1.7rem;min-height:205px;
+}
+.p-card:nth-child(2),.p-card:nth-child(3){transform:none}
+.p-card .emo{filter:grayscale(1);opacity:.7;font-size:1.35rem}
+.p-card h3{font-size:1rem;color:#fff;margin-bottom:.7rem}
+.p-card p{font-size:.9rem;font-weight:500;color:#AEB1BC}
+
+.referidos{background:linear-gradient(145deg,#3530A4 0%,#514BD5 55%,#6660E8 100%);padding-top:clamp(4.5rem,8vw,7.5rem)}
+.referidos::before{display:none}
+.referidos .eyebrow{border:0;background:transparent;color:#D8D6FF}
+.referidos .sec-p{color:#E5E4FF}
+.flujo{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18);border-radius:12px;overflow:hidden}
+@media(min-width:820px){.flujo{grid-template-columns:repeat(6,1fr)}}
+.flujo-paso{background:rgba(17,18,24,.22);color:#fff;border:0;border-radius:0;box-shadow:none;padding:1.25rem;min-height:155px}
+.flujo-paso.final{background:#fff;color:var(--tinta)}
+.flujo-paso .n{width:auto;height:auto;display:block;background:none;border:0;border-radius:0;color:#D8D6FF;font-family:var(--cuerpo);font-size:.68rem;letter-spacing:.12em;text-align:left}
+.flujo-paso.final .n{color:var(--acento)}
+.flujo-paso .emo{font-size:1rem;filter:grayscale(1);opacity:.75}
+.flujo-paso p{font-size:.78rem;font-weight:600}
+.ref-lista li{font-weight:500}
+.ref-lista .tilde{border-radius:6px;color:var(--acento);font-size:.68rem}
+.ref-reglas{background:rgba(17,18,24,.2);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:1.6rem}
+.ref-reglas li{font-weight:500}
+.ref-frase{font-size:clamp(1.8rem,4vw,3rem);font-weight:400}
+.ref-frase span{background:transparent;color:#fff;padding:0;border-radius:0;text-decoration:underline;text-decoration-color:#D8D6FF;text-underline-offset:.15em}
+
+.pers-grid{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.pers-card{border:0;border-radius:0;box-shadow:none;padding:1.6rem}
+.pers-card:nth-child(2),.pers-card:nth-child(3){transform:none}
+.pers-head .lg{border:0;box-shadow:none;border-radius:8px;filter:grayscale(.35)}
+.pers-fila{border-bottom:1px solid var(--linea);font-weight:500}
+.pers-fila b{font-weight:600}
+.chips-pers li{background:#fff;border:1px solid var(--linea);color:var(--texto);border-radius:8px;font-weight:600;font-size:.78rem}
+
+main>section[style]{border-top:1px solid var(--linea)!important;border-bottom:1px solid var(--linea)!important}
+.vs{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.vs-card{border:0;border-radius:0;padding:2rem}
+.vs-mal,.vs-bien{box-shadow:none}
+.vs-mal{background:#F1F2F4}
+.vs-bien{background:#fff}
+.vs-card li{font-weight:500}
+.mini-tiendas i{border:1px solid #D4D6DB;border-radius:7px;filter:grayscale(1)}
+.mini-tuya{border:0;border-radius:8px;box-shadow:none}
+
+.panel{border:1px solid var(--linea);border-radius:14px;box-shadow:0 28px 70px rgba(18,19,25,.12)}
+.panel-top{background:#16171D;padding:.8rem 1rem}
+.panel-top span{font-family:var(--cuerpo);font-weight:600}
+.panel-tab{font-weight:700;border-radius:7px}
+.kpi,.fila{border:1px solid var(--linea);border-radius:9px}
+.fila.destacada{border:1px solid rgba(91,85,234,.5)}
+.fila .acc{border:1px solid var(--linea);border-radius:7px}
+.mini-fono{border:1px solid var(--linea);border-radius:14px;box-shadow:var(--sombra-dura);background:#fff}
+.mf-item{border:1px solid var(--linea);border-radius:9px}
+
+.pasos-grid{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.paso{border:0;border-radius:0;box-shadow:none;padding:2.3rem 1.25rem 1.5rem}
+.paso:nth-child(odd),.paso:nth-child(even){transform:none}
+.paso .icono{display:none}
+.paso::before{top:1.25rem;right:auto;left:1.25rem;width:auto;height:auto;background:transparent;color:var(--acento);font-family:var(--cuerpo);font-size:.7rem;letter-spacing:.12em}
+.paso h3{font-size:.96rem;margin-top:1.2rem}
+.paso p{font-size:.84rem;font-weight:500}
+
+.ben-grid{gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);overflow:hidden}
+.ben{background:#171820;border:0;border-radius:0;padding:1.5rem;min-height:145px;justify-content:space-between}
+.ben .emo{filter:grayscale(1);opacity:.65;font-size:1.1rem}
+.ben p{font-weight:500;color:#D4D6DE}
+
+.kit-piezas{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.kit-pieza{border:0;border-radius:0;box-shadow:none;padding:1.4rem 1rem}
+.kit-pieza:nth-child(1),.kit-pieza:nth-child(4){transform:none}
+.kit-lista li{font-weight:500}
+
+.prods{gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.prod,.prod.principal{border:0;border-radius:0;box-shadow:none;padding:1.8rem}
+.prod .badge{border:0;border-radius:6px;font-size:.62rem}
+.prod p{font-weight:500}
+.linea-t .et{border:1px solid var(--linea);border-radius:7px;box-shadow:none;font-weight:700;font-size:.76rem}
+.linea-t .et.on{box-shadow:none}
+
+.contacto{background:#111218}
+.contacto .eyebrow{border:0;color:var(--acento-claro)}
+.contacto .sec-p{color:#AEB1BC}
+.mod{border:1px solid rgba(255,255,255,.16);border-radius:14px;box-shadow:0 35px 90px rgba(0,0,0,.32)}
+.tabs{padding:.75rem;border-bottom:1px solid var(--linea);gap:.5rem}
+.tab{border:0;border-radius:8px;bottom:0;font-family:var(--cuerpo);font-size:.86rem;font-weight:700}
+.tab[aria-selected="true"]{border:0;background:#fff;box-shadow:0 1px 4px rgba(18,19,25,.12)}
+.campo label{font-weight:700;font-size:.8rem}
+.campo input,.campo select,.campo textarea{border:1px solid var(--linea);border-radius:8px;background:#F8F8FA;font-weight:500}
+.check input{border:1px solid var(--linea);border-radius:5px}
+.estado{border:1px solid var(--linea);border-radius:9px}
+
+.faq details{border:0;border-bottom:1px solid var(--linea);border-radius:0;background:transparent;margin:0}
+.faq summary{font-family:var(--cuerpo);font-weight:700;font-size:.98rem;padding:1.35rem 3rem 1.35rem 0}
+.faq summary::after{right:0;font-family:var(--cuerpo);font-size:1.25rem;font-weight:400}
+.faq .resp{padding:0 2rem 1.5rem 0;font-weight:500}
+
+.cierre{background:linear-gradient(140deg,#111218 0%,#1A1A2A 100%)}
+.cierre h2{font-size:clamp(2.7rem,6vw,5rem);line-height:.97;max-width:16ch}
+.cierre h2 span{color:var(--acento-claro)}
+.cierre p{font-weight:500;color:#AEB1BC}
+footer{background:#0C0D11;font-weight:500}
+.sticky-cta{background:rgba(244,245,247,.92);border-top:1px solid var(--linea)}
+.sticky-cta .btn-primario,.sticky-cta .btn-wa{box-shadow:none}
+
+@media(max-width:699px){
+  section{padding-left:1rem;padding-right:1rem}
+  .hero{padding-top:2.6rem}
+  .hero h1{font-size:clamp(3rem,15vw,4.8rem)}
+  .hero-ctas{display:grid}
+  .hero-ctas .btn{width:100%}
+  .sec-h2{font-size:clamp(2.4rem,12vw,3.5rem)}
+    .hdr-in{padding:.6rem .85rem}
+  .flujo{grid-template-columns:1fr 1fr}
+}
+
+/* =====================================================================
+   DIRECCIÓN APROBADA — PRODUCTO CLARO / HERO CAFÉ REAL
+   ===================================================================== */
+:root{
+  --crema:#FBFBFE;
+  --tinta:#101116;
+  --texto:#666B7B;
+  --tinta-suave:#7D8291;
+  --linea:#E2E4EC;
+  --acento:#4F46F5;
+  --acento-osc:#3730C9;
+  --acento-suave:#F0EFFF;
+  --acento-claro:#C7C4FF;
+  --display:'Manrope',system-ui,sans-serif;
+  --cuerpo:'Manrope',system-ui,sans-serif;
+  --header-h:78px;
+}
+body{background:#fff;letter-spacing:0}
+h1,h2,h3,h4{font-family:var(--cuerpo);text-wrap:balance}
+h1{letter-spacing:-.035em}
+h2{letter-spacing:-.025em}
+
+.hdr{background:rgba(255,255,255,.9);border-bottom:1px solid var(--linea)}
+.hdr-in{max-width:1400px;min-height:var(--header-h);padding:.7rem 1.5rem}
+.hdr .iman-svg{width:38px}
+.hdr .iman-nombre{font-size:1.26rem}
+.hdr-nav{gap:1rem}
+.hdr-nav a{font-size:.88rem;color:#393C49;padding:.55rem .45rem}
+.hdr-nav a:hover{background:transparent;color:var(--acento)}
+.hdr-actions{margin-left:auto}
+.hdr-wa{display:none}
+.hdr-cta{padding:.7rem 1.25rem;border-radius:10px;background:linear-gradient(135deg,#5146EE,#573CF5);font-size:.9rem}
+
+.hero{
+  background:
+    linear-gradient(135deg,transparent 56%,rgba(79,70,245,.045) 56%,rgba(79,70,245,.045) 76%,transparent 76%),
+    radial-gradient(circle at 70% 28%,rgba(79,70,245,.09),transparent 29rem),
+    #fff;
+  border-bottom:1px solid var(--linea);padding:clamp(4rem,7vw,6.5rem) 1.5rem 0;overflow:hidden;
+}
+.hero::before{display:none}
+.hero .wrap{max-width:1400px}
+.hero-grid{display:grid;gap:2.5rem 3rem;align-items:center}
+.hero-txt{position:relative;z-index:4}
+.hero .eyebrow{color:var(--acento);font-size:.72rem;letter-spacing:.18em;margin-bottom:1.8rem}
+.hero .eyebrow::before{width:30px;height:2px}
+.hero h1{
+  max-width:none;margin:0 0 1.8rem;font-size:clamp(3.15rem,5.35vw,5.2rem);line-height:1.08;
+  font-weight:800;letter-spacing:-.045em;color:#090A0D;
+}
+.hero .marcaflow{
+  color:inherit;background:linear-gradient(var(--acento),var(--acento)) 0 100% / 100% .09em no-repeat;
+  padding-bottom:.05em;
+}
+.hero .sub{max-width:34rem;font-size:clamp(1.05rem,1.45vw,1.32rem);line-height:1.6;font-weight:500;color:#666B7B;margin-bottom:2rem}
+.hero-ctas{gap:.85rem}
+.hero-ctas .btn{min-height:58px;padding:1rem 1.65rem;border-radius:10px;font-size:.94rem}
+.hero-ctas .btn-primario{background:linear-gradient(135deg,#5146EE,#5135F2);box-shadow:0 15px 34px rgba(79,70,245,.22)}
+.hero-ctas .btn-primario span{font-size:1.25rem;line-height:1;margin-left:.35rem}
+.hero-ctas .btn-linea{background:#fff;border:1px solid #D8DAE4;color:#222431;box-shadow:0 8px 22px rgba(19,20,30,.04)}
+.hero-ctas .btn-linea span{font-size:.72rem;margin-left:.45rem}
+.hero-nota{margin-top:1.2rem;font-size:.78rem;color:#858A99}
+.hero-micro{display:none}
+
+.escena{width:100%;min-width:0;margin:0;gap:.9rem}
+.hero-showcase{position:relative;width:100%;height:600px;isolation:isolate}
+.showcase-orb{
+  position:absolute;inset:8% 1% 6% 2%;z-index:-2;border-radius:46% 54% 51% 49% / 41% 43% 57% 59%;
+  background:linear-gradient(145deg,rgba(240,239,255,.15),rgba(218,215,255,.82));
+  transform:rotate(-7deg);filter:drop-shadow(0 30px 55px rgba(79,70,245,.09));
+}
+
+.showcase-dashboard{
+  position:absolute;z-index:1;right:0;top:58px;width:min(78%,540px);height:410px;overflow:hidden;
+  background:rgba(255,255,255,.93);border:1px solid #D8DAE4;border-radius:13px;
+  box-shadow:0 32px 74px rgba(38,40,63,.14),0 4px 12px rgba(38,40,63,.05);
+  color:#1D1F29;font-family:var(--cuerpo);text-align:left;
+}
+.dash-chrome{height:36px;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #E5E6EB;background:#FAFAFC}
+.dash-chrome i{width:8px;height:8px;border-radius:50%;background:#BEC2CE}
+.dash-layout{display:grid;grid-template-columns:118px 1fr;height:calc(100% - 36px)}
+.dash-side{padding:17px 11px;border-right:1px solid #E8E9EE;background:#FCFCFE;display:flex;flex-direction:column;gap:5px}
+.dash-brand{display:flex;align-items:center;gap:6px;margin-bottom:15px;padding:0 5px}
+.dash-brand svg{width:20px;height:22px;color:#11131A}
+.dash-brand b{font-size:12px;letter-spacing:-.04em}
+.dash-brand small{font-size:7px;font-weight:600;color:#7B7F8B;margin-left:2px}
+.dash-side>span{font-size:8px;font-weight:600;color:#6B6F7B;padding:7px 8px;border-radius:6px;white-space:nowrap}
+.dash-side>span.active{background:#EEECFF;color:#4F46F5}
+.dash-content{padding:22px 20px}
+.dash-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+.dash-heading b{display:block;font-size:18px;letter-spacing:-.035em}
+.dash-heading small{display:block;font-size:8px;color:#7C8190;margin-top:3px}
+.dash-heading>span{font-size:8px;color:#555A68;border:1px solid #E2E4EA;border-radius:6px;padding:8px 9px}
+.dash-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.dash-kpis article{padding:13px 14px;border:1px solid #E5E6EC;border-radius:8px;background:#fff;box-shadow:0 5px 12px rgba(20,22,38,.035)}
+.dash-kpis small{font-size:8px;color:#555A68;display:block}
+.dash-kpis strong{font-size:22px;line-height:1.2;display:block;letter-spacing:-.04em}
+.dash-kpis em{font-style:normal;font-size:8px;font-weight:700;color:#209978}
+.dash-chart{height:180px;padding:13px 14px 8px;border:1px solid #E5E6EC;border-radius:8px;background:#fff}
+.dash-chart>div:first-child{display:flex;justify-content:space-between;align-items:center}
+.dash-chart b{font-size:9px}.dash-chart>div span{font-size:7px;color:#6D7280}
+.dash-chart svg{display:block;width:100%;height:112px;margin-top:4px;border-bottom:1px solid #ECEEF2}
+.chart-days{display:flex;justify-content:space-between;padding-top:5px}
+.chart-days span{font-size:6px!important}
+.dash-disclaimer{position:absolute;right:14px;bottom:7px;font-size:6px;color:#A1A5AF}
+
+.cafe-device{
+  position:absolute;z-index:4;left:0;top:8px;width:292px;height:570px;padding:10px 9px 11px;
+  border:2px solid #BFC3CE;border-radius:34px;background:linear-gradient(135deg,#F8F9FB,#D8DAE2 48%,#FAFBFC);
+  box-shadow:0 34px 64px rgba(24,26,40,.22),0 7px 18px rgba(24,26,40,.11),inset 0 0 0 1px #fff;
+  transform:rotate(-1.2deg);transform-origin:center;
+}
+.device-speaker{position:absolute;z-index:7;top:15px;left:50%;width:70px;height:7px;border-radius:999px;background:#0E0F13;transform:translateX(-50%)}
+.cafe-screen{position:relative;height:100%;overflow:hidden;border-radius:25px;background:#FCF8F1;border:1px solid rgba(17,20,29,.25);font-family:var(--cuerpo);color:#14254A;text-align:left}
+.cafe-head{height:59px;padding:25px 13px 7px;display:flex;justify-content:space-between;align-items:center;background:#FFF9F0}
+.cafe-head strong{font-size:23px;font-weight:800;letter-spacing:-.055em}
+.cafe-head div{display:flex;gap:5px}.cafe-head div span{display:grid;place-items:center;width:28px;height:28px;border:1px solid #D9D7D2;border-radius:50%;font-size:13px}
+.cafe-location{height:29px;padding:6px 11px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E4DED6;border-bottom:1px solid #E4DED6;background:#FFF9F0}
+.cafe-location span{font-size:6.5px;font-weight:700}.cafe-location em{font-size:6px;font-style:normal;color:#3F8A54;background:#E5F1E1;border-radius:999px;padding:3px 6px}
+.cafe-ready{height:38px;margin:7px 8px;display:flex;align-items:center;gap:7px;padding:0 10px;background:rgba(255,255,255,.78);border:1px solid #D8D3CA;border-radius:15px;color:#14254A}
+.cafe-ready span{color:#E65035}.cafe-ready b{font-size:8px}.cafe-ready i{margin-left:auto;font-style:normal;font-size:17px}
+.cafe-campaign{position:relative;height:286px;margin:0 7px;overflow:hidden;border-radius:15px;background:#101A2F;color:#fff}
+.cafe-campaign>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.cafe-campaign-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,11,24,.95) 0%,rgba(5,11,24,.72) 47%,rgba(5,11,24,.08) 82%),linear-gradient(0deg,rgba(5,11,24,.8),transparent 54%)}
+.cafe-campaign-copy{position:absolute;inset:0;padding:15px 12px;display:flex;flex-direction:column;align-items:flex-start}
+.cafe-campaign-copy>span{font-size:5.7px;font-weight:800;letter-spacing:.12em}
+.cafe-campaign-copy h3{font-size:31px;line-height:.88;letter-spacing:-.06em;color:#fff;margin:auto 0 8px;max-width:6ch;font-weight:800}
+.cafe-campaign-copy p{font-size:6.7px;line-height:1.25;max-width:28ch;color:rgba(255,255,255,.9);margin-bottom:10px}
+.cafe-campaign-copy b{font-size:7px;color:#fff;background:#F14D2F;border-radius:6px;padding:9px 12px;box-shadow:0 6px 16px rgba(241,77,47,.25)}
+.cafe-reward{height:43px;margin:7px 8px;display:flex;align-items:center;gap:7px;padding:6px 9px;background:#13264C;color:#fff;border-radius:12px}
+.cafe-reward>span{font-size:14px}.cafe-reward>div{flex:1}.cafe-reward b{display:block;font-size:6px}.cafe-reward i{display:block;margin-top:4px;width:100%;height:3px;border-radius:99px;background:rgba(255,255,255,.22)}
+.cafe-reward strong{font-size:7px;white-space:nowrap}
+.cafe-nav{position:absolute;left:0;right:0;bottom:0;height:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:5px 7px 6px;background:rgba(255,251,246,.98);border-top:1px solid #E5DED5;box-shadow:0 -8px 18px rgba(20,28,45,.06)}
+.cafe-nav>span{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#85898F;border:1px solid transparent;border-radius:9px}
+.cafe-nav svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cafe-nav>span.on{background:#FFF0E8;color:#E3553E;border-color:#F3D0C5}.cafe-nav small{font-size:5.7px;font-weight:700;line-height:1}
+.escena-pie{max-width:50ch;font-size:.68rem;color:#8A8E9B;margin-top:-.2rem}
+.fono-legacy{display:none!important}
+
+.hero-chips{list-style:none;border-top:1px solid var(--linea);margin-top:0;padding:1.5rem 0;display:grid;gap:0}
+.hero-grid .hero-chips{grid-column:1/-1}
+.hero-chips li{display:flex;align-items:center;gap:.9rem;padding:.35rem 1.2rem;background:transparent;border:0;border-radius:0;box-shadow:none}
+.hero-chips li+li{border-left:1px solid var(--linea)}
+.hero-chips li::before{display:none}
+.hero-chips li i{width:42px;height:42px;display:grid;place-items:center;flex:none;border-radius:50%;background:var(--acento-suave);color:var(--acento);font-size:1.1rem;font-style:normal;font-weight:800}
+.hero-chips li span{display:flex;flex-direction:column;min-width:0}
+.hero-chips li b{font-size:.84rem;color:#171820;line-height:1.25}
+.hero-chips li small{font-size:.7rem;color:#777C89;line-height:1.35;margin-top:.15rem}
+
+@media(min-width:980px){
+  .hero-grid{grid-template-columns:minmax(510px,.93fr) minmax(590px,1.07fr);grid-template-rows:auto auto;gap:2.5rem 3.5rem}
+  .hero-txt{grid-column:1;grid-row:1;align-self:center;padding-bottom:1.5rem}
+  .escena{grid-column:2;grid-row:1;align-self:center}
+  .hero-grid .hero-chips{grid-column:1/-1;grid-row:2;grid-template-columns:repeat(4,1fr)}
+}
+
+@media(min-width:980px) and (max-width:1210px){
+  .hero-grid{grid-template-columns:minmax(450px,.9fr) minmax(500px,1.1fr);gap:2rem}
+  .hero h1{font-size:clamp(3.7rem,5.7vw,4.65rem)}
+  .hero-showcase{transform:scale(.88);transform-origin:left center;width:113%;margin-right:-13%}
+}
+
+@media(max-width:979px){
+  .hero{padding-top:3.4rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-txt,.escena,.hero-grid .hero-chips{grid-column:1;grid-row:auto}
+  .hero h1{font-size:clamp(3.2rem,9vw,5rem);line-height:1.05}
+  .hero-showcase{max-width:690px;margin:0 auto}
+  .hero-grid .hero-chips{grid-template-columns:repeat(2,1fr);width:100%}
+  .hero-chips li:nth-child(3){border-left:0;border-top:1px solid var(--linea)}
+  .hero-chips li:nth-child(4){border-top:1px solid var(--linea)}
+}
+
+@media(max-width:640px){
+  .hdr-in{min-height:68px;padding:.6rem 1rem}
+  .hdr .iman-svg{width:31px}.hdr .iman-nombre{font-size:1.05rem}
+  .hdr-cta{font-size:.76rem;padding:.62rem .82rem;min-height:42px}
+  .hero{padding:2.8rem 1rem 0}
+  .hero .eyebrow{font-size:.62rem;letter-spacing:.14em;margin-bottom:1.25rem}
+  .hero h1{font-size:clamp(2.72rem,12.4vw,4rem);line-height:1.04;letter-spacing:-.04em}
+  .hero .sub{font-size:1rem;margin-bottom:1.5rem}
+  .hero-ctas{grid-template-columns:1fr 1fr;display:grid}
+  .hero-ctas .btn{width:100%;min-height:53px;padding:.8rem .7rem;font-size:.82rem}
+  .hero-showcase{height:555px}
+  .showcase-dashboard{display:none}
+  .showcase-orb{inset:8% 0 4%;transform:rotate(-4deg)}
+  .cafe-device{left:50%;top:2px;transform:translateX(-50%) rotate(-1deg);width:282px;height:552px}
+  .hero-grid .hero-chips{grid-template-columns:1fr;margin-top:.5rem}
+  .hero-chips li{padding:.9rem .2rem;border-left:0!important;border-top:1px solid var(--linea)}
+  .hero-chips li:first-child{border-top:0}
+}
+
+/* =====================================================================
+   LANDING CORTA — CAMPAÑAS, EMAIL Y RENTABILIDAD
+   ===================================================================== */
+.campanas{background:#111218;color:#fff;overflow:hidden}
+.campanas::before{
+  content:"";position:absolute;width:34rem;height:34rem;right:-10rem;top:-12rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(103,92,255,.28),transparent 68%);pointer-events:none
+}
+.campanas-grid{display:grid;gap:3rem;align-items:center}
+.campanas .eyebrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#D8D5FF}
+.campanas .sec-h2{color:#fff;max-width:15ch;font-size:clamp(2.6rem,5vw,4.6rem);line-height:1}
+.campanas .sec-p{color:#B9BDCA;max-width:49ch;font-weight:500;margin-bottom:1.35rem}
+.campanas-dato{display:flex;align-items:flex-start;gap:.8rem;color:#ECECF4;font-size:.9rem;max-width:48ch}
+.campanas-dato i{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:8px;background:#5750F1;font-style:normal}
+
+.email-demo{position:relative;padding:1rem;background:#F5F5F8;border:1px solid rgba(255,255,255,.2);border-radius:16px;box-shadow:0 32px 90px rgba(0,0,0,.35);color:#181922}
+.email-demo-top{display:flex;justify-content:space-between;align-items:center;padding:.2rem .15rem 1rem;color:#6F7380;font-size:.7rem;font-weight:700}
+.email-demo-top b{color:#252731;font-size:.8rem}
+.email-demo-top span{background:#E7F7EF;color:#19845E;padding:.35rem .55rem;border-radius:999px}
+.email-card{overflow:hidden;background:#fff;border:1px solid #DFE1E8;border-radius:12px}
+.email-subject{padding:.85rem 1rem;border-bottom:1px solid #E8E9EE;font-size:.73rem;color:#6F7380}
+.email-subject b{color:#23252E}
+.email-body{padding:2rem 1.55rem 1.7rem;background:linear-gradient(145deg,#FFF8EE,#FFFDF9)}
+.email-brand{font-size:.82rem;letter-spacing:.16em;font-weight:800;color:#E1533D}
+.email-body small{display:block;margin:1.5rem 0 .55rem;font-size:.61rem;letter-spacing:.13em;font-weight:800;color:#E1533D}
+.email-body h3{font-size:clamp(1.9rem,4vw,3.15rem);line-height:.95;letter-spacing:-.05em;max-width:9ch;color:#14254A}
+.email-body p{max-width:34ch;margin:1rem 0 1.25rem;color:#5E6678;font-size:.82rem;line-height:1.55}
+.email-button{display:inline-block;background:#E8523A;color:#fff;padding:.72rem 1rem;border-radius:7px;font-size:.72rem;font-weight:800}
+.email-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1E3EA;border-top:1px solid #E1E3EA}
+.email-meta div{background:#fff;padding:.8rem}.email-meta small{display:block;font-size:.58rem;color:#888C98}.email-meta b{font-size:.72rem}
+
+.criterios{display:grid;gap:1px;background:#DADCE5;border:1px solid #DADCE5;border-radius:14px;overflow:hidden;margin-top:3rem}
+.criterio{background:#fff;padding:1.5rem;color:#181922}
+.criterio span{display:block;color:var(--acento);font-size:.68rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase;margin-bottom:.55rem}
+.criterio h3{font-size:1rem;margin-bottom:.35rem}.criterio p{color:var(--texto);font-size:.82rem;line-height:1.55}
+
+.producto-corto{background:#F7F7FB}
+.producto-corto .sec-h2{max-width:18ch}
+.producto-grid{display:grid;gap:1px;background:#DADCE5;border:1px solid #DADCE5;border-radius:16px;overflow:hidden}
+.producto-card{background:#fff;padding:1.7rem;min-height:220px;display:flex;flex-direction:column;align-items:flex-start}
+.producto-card .prod-ic{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;background:var(--acento-suave);color:var(--acento);font-size:1.15rem;margin-bottom:1.4rem}
+.producto-card h3{font-size:1.08rem;margin-bottom:.5rem}.producto-card p{font-size:.86rem;color:var(--texto);line-height:1.55}
+.producto-card .prod-tag{margin-top:auto;padding-top:1.2rem;font-size:.68rem;color:var(--acento);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+
+.pasos-cortos{background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.pasos-cortos .pasos-grid{grid-template-columns:repeat(3,1fr)}
+.pasos-cortos .paso{min-height:205px}
+.pasos-cta{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:2rem;padding:1.35rem 1.5rem;border-radius:12px;background:#101116;color:#fff}
+.pasos-cta p{font-size:.9rem;color:#D0D2DB;max-width:48ch}
+.pasos-cta .btn{flex:none}
+
+@media(min-width:860px){
+  .campanas-grid{grid-template-columns:minmax(0,.85fr) minmax(470px,1.15fr);gap:5rem}
+  .criterios,.producto-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:859px){
+  .campanas-grid{grid-template-columns:1fr}.email-demo{max-width:600px}
+  .producto-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .campanas .sec-h2{font-size:clamp(2.35rem,11vw,3.3rem)}
+  .email-meta{grid-template-columns:1fr}.email-meta div{padding:.65rem .8rem}
+  .pasos-cortos .pasos-grid{grid-template-columns:1fr}
+  .pasos-cta{align-items:stretch;flex-direction:column}.pasos-cta .btn{width:100%}
+}
+</style>
+<!-- ═══ SEO/AEO generado — no editar a mano, ver SEO.md ═══ -->
+<link rel="canonical" href="https://iman.ar/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://iman.ar/#organization",
+      "name": "Imán",
+      "alternateName": [
+        "Iman",
+        "Imán App"
+      ],
+      "url": "https://iman.ar/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://iman.ar/#logo",
+        "url": "https://iman.ar/og.png",
+        "width": 1200,
+        "height": 630,
+        "caption": "Imán"
+      },
+      "image": {
+        "@id": "https://iman.ar/#logo"
+      },
+      "slogan": "La próxima venta ya está en tus ventas de ayer.",
+      "description": "Imán es una herramienta argentina de recupero y fidelización de clientes para comercios. Usa las ventas que el negocio ya tiene para detectar quién está por volver a comprar y quién se enfrió, y entrega los mensajes de WhatsApp listos para mandar. El cliente final no descarga ninguna aplicación.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Argentina"
+      },
+      "knowsLanguage": [
+        "es-AR",
+        "es"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+5493534797679",
+          "url": "https://wa.me/5493534797679",
+          "availableLanguage": [
+            "Spanish"
+          ],
+          "areaServed": "AR"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://iman.ar/#website",
+      "url": "https://iman.ar/",
+      "name": "Imán",
+      "publisher": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "inLanguage": "es-AR"
+    },
+    {
+      "@type": [
+        "SoftwareApplication",
+        "Product"
+      ],
+      "@id": "https://iman.ar/#imanclub",
+      "name": "Imán Club",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Programa de fidelización y recupero de clientes",
+      "operatingSystem": "Web — funciona en el navegador, sin instalación",
+      "url": "https://iman.ar/",
+      "inLanguage": "es-AR",
+      "brand": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "provider": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "publisher": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Comercios minoristas y distribuidoras de Argentina"
+      },
+      "featureList": [
+        "Detección automática del ciclo de recompra de cada cliente",
+        "Semáforo de cartera: quién compra seguido y quién se enfrió",
+        "Campañas de email armadas y segmentadas, listas para aprobar",
+        "Importación desde Excel o desde el reporte de cualquier sistema de facturación",
+        "Programa de puntos, beneficios y referidos con la marca del comercio",
+        "Sin aplicación para el cliente final"
+      ],
+      "description": "Imán combina campañas de email segmentadas, un Club de Clientes sin app y referidos medibles para recuperar clientes y aumentar la frecuencia de compra."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://iman.ar/#faq",
+      "url": "https://iman.ar/",
+      "inLanguage": "es-AR",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿El cliente tiene que descargar una aplicación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El QR abre el Club en el navegador del teléfono. Se registra ahí mismo y vuelve a entrar con el mismo enlace o escaneando de nuevo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo usan el email de mis clientes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Creamos segmentos y campañas para la base de clientes de tu propio local. El objetivo es volver a contactar a quienes ya compraron con mensajes relevantes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo cuidan la rentabilidad de las campañas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revisamos el rubro, el tipo de cliente, el objetivo y los costos del negocio para diseñar beneficios que busquen generar ventas sin regalar margen innecesariamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funcionan los referidos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cada miembro recibe un enlace o QR personal para compartir. Si un conocido se registra desde ahí y hace su primera compra, al validarla desde el panel ambos reciben el beneficio que hayas definido."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito equipos especiales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://iman.ar/#webpage",
+      "url": "https://iman.ar/",
+      "name": "Imán Club — Aumentá tus ventas sin invertir en publicidad",
+      "description": "Campañas de email, fidelización y referidos diseñados para recuperar clientes y cuidar la rentabilidad del negocio.",
+      "isPartOf": {
+        "@id": "https://iman.ar/#website"
+      },
+      "inLanguage": "es-AR",
+      "dateModified": "2026-09-09",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://iman.ar/og.png"
+      },
+      "about": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "publisher": {
+        "@id": "https://iman.ar/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://iman.ar/#imanclub"
+      },
+      "hasPart": {
+        "@id": "https://iman.ar/#faq"
+      }
+    }
+  ]
+}
+</script>
+<!-- ═══ /SEO/AEO ═══ -->
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="iman-marca" href="#top" aria-label="Imán Club — inicio">
+      <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+        <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+        <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+        <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+      </svg>
+      <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+    </a>
+    <nav class="hdr-nav" aria-label="Secciones">
+      <a href="#campanas">Campañas</a>
+      <a href="#producto">Producto</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+    <div class="hdr-actions">
+      <a class="btn btn-primario hdr-cta" href="#contacto" data-demo>Quiero mi demo</a>
+      <a class="btn btn-wa hdr-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp aria-label="Escribir por WhatsApp al 353 518-9997"><span aria-hidden="true">💬</span><span class="hdr-wa-label">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <span class="eyebrow">Fidelización que impulsa negocios locales</span>
+      <h1 id="h1">Aumentá tus<br>ventas sin invertir<br>en <span class="marcaflow">publicidad.</span></h1>
+      <p class="sub">Convertí la base de clientes que ya tiene tu local en más visitas, más compras y referidos. Sin apps.</p>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo <span aria-hidden="true">→</span></a>
+        <a class="btn btn-linea" href="#como-funciona">Cómo funciona <span aria-hidden="true">▶</span></a>
+      </div>
+      <p class="hero-nota">Te contactamos personalmente y armamos una propuesta para tu negocio.</p>
+    </div>
+
+    <div class="escena">
+      <div class="hero-showcase" aria-label="Ejemplo de Imán aplicado a Café: experiencia del cliente en el teléfono y panel de gestión del comercio.">
+        <div class="showcase-orb" aria-hidden="true"></div>
+
+        <div class="showcase-dashboard" aria-hidden="true">
+          <div class="dash-chrome"><i></i><i></i><i></i></div>
+          <div class="dash-layout">
+            <aside class="dash-side">
+              <div class="dash-brand">
+                <svg viewBox="0 0 30 32"><path d="M8 23V13a7 7 0 0114 0v10" fill="none" stroke="currentColor" stroke-width="7"/><path d="M8 23V13a7 7 0 0114 0v10" fill="none" stroke="#5B55EA" stroke-width="4"/></svg>
+                <b>Imán<small>Club</small></b>
+              </div>
+              <span class="active">⌂&nbsp; Inicio</span>
+              <span>♙&nbsp; Clientes</span>
+              <span>♡&nbsp; Beneficios</span>
+              <span>♧&nbsp; Referidos</span>
+              <span>▥&nbsp; Estadísticas</span>
+              <span>⚙&nbsp; Configuración</span>
+            </aside>
+            <div class="dash-content">
+              <div class="dash-heading">
+                <div><b>Hola, Juan</b><small>Así va tu club esta semana.</small></div>
+                <span>7 al 13 de septiembre⌄</span>
+              </div>
+              <div class="dash-kpis">
+                <article><small>Clientes activos</small><strong>1.248</strong><em>↑ 12%</em></article>
+                <article><small>Referidos</small><strong>320</strong><em>↑ 28%</em></article>
+              </div>
+              <div class="dash-chart">
+                <div><b>Clientes activos</b><span>Esta semana⌄</span></div>
+                <svg viewBox="0 0 320 120" preserveAspectRatio="none">
+                  <defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#56BFA5" stop-opacity=".34"/><stop offset="1" stop-color="#56BFA5" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 94 C28 62 51 87 76 74 S118 42 145 59 S188 48 212 37 S260 28 320 13 V120 H0Z" fill="url(#chartFill)"/>
+                  <path d="M0 94 C28 62 51 87 76 74 S118 42 145 59 S188 48 212 37 S260 28 320 13" fill="none" stroke="#23977F" stroke-width="3"/>
+                </svg>
+                <div class="chart-days"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+              </div>
+            </div>
+          </div>
+          <small class="dash-disclaimer">Datos ilustrativos</small>
+        </div>
+
+        <div class="cafe-device" aria-hidden="true">
+          <div class="device-speaker"></div>
+          <div class="cafe-screen">
+            <div class="cafe-head"><strong>CAFÉ</strong><div><span>⌕</span><span>▢</span></div></div>
+            <div class="cafe-location"><span>⌖ Nueva Córdoba⌄</span><em>Abierto hasta las 20:00</em></div>
+            <div class="cafe-ready"><span>☕</span><b>Tu café de siempre está listo</b><i>›</i></div>
+            <div class="cafe-campaign">
+              <img src="https://cafe.iman.ar/cafe/campaign/ritual-v2.webp" alt="" loading="eager">
+              <div class="cafe-campaign-shade"></div>
+              <div class="cafe-campaign-copy">
+                <span>✣ RITUAL SEMANAL · 7 AL 13 DE SEPTIEMBRE</span>
+                <h3>Esta semana,<br>arrancás mejor.</h3>
+                <p>Elegí un beneficio para tu café de todos los días.</p>
+                <b>Elegir mi beneficio</b>
+              </div>
+            </div>
+            <div class="cafe-reward"><span>♢</span><div><b>Tu próximo regalo</b><i></i></div><strong>0 / 90 pts</strong></div>
+            <div class="cafe-nav">
+              <span class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5M9.5 20v-5.5h5V20"/></svg><small>Inicio</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14M5 12h14M5 18.5h14"/><circle cx="3" cy="5.5" r=".5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r=".5" fill="currentColor" stroke="none"/><circle cx="3" cy="18.5" r=".5" fill="currentColor" stroke="none"/></svg><small>Carta</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg><small>Club</small></span>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><small>Pedido</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- teléfono: ejemplo fijo de la experiencia del cliente -->
+      <div class="fono fono-legacy" id="fono" hidden aria-hidden="true">
+        <div class="fono-in" id="fono-in">
+          <div class="t-top">
+            <div class="t-logo" id="t-logo" aria-hidden="true">🌿</div>
+            <div>
+              <div class="t-nombre" id="t-nombre">Club Semilla</div>
+              <div class="t-socia" id="t-socia">Hola, Sofi 👋</div>
+            </div>
+            <div class="t-nivel" id="t-nivel">Nivel Semilla</div>
+          </div>
+
+          <div class="t-saldo">
+            <div class="lbl" id="t-saldo-lbl">Tus puntos</div>
+            <div class="num"><span id="t-puntos">340</span><em id="t-unidad">pts</em></div>
+            <div class="t-barra"><i id="t-barra"></i></div>
+            <div class="falta" id="t-falta">Te faltan 160 para tu próximo premio</div>
+          </div>
+
+          <div class="t-premio">
+            <div class="ic" id="t-premio-ic" aria-hidden="true">🥣</div>
+            <div>
+              <div class="tit" id="t-premio-tit">1 kg de granola de la casa</div>
+              <div class="sub" id="t-premio-sub">Disponible con 500 pts</div>
+            </div>
+            <span class="canjear">Canjear</span>
+          </div>
+
+          <div class="t-secc">Tu actividad</div>
+          <div id="t-actividad"></div>
+
+          <div class="t-ref">
+            <div class="t-ref-top">
+              <svg class="t-ref-qr" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="1" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="15" y="1" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="1" y="15" width="8" height="8" rx="1.5" fill="none" stroke="#242333" stroke-width="2"/>
+                <rect x="4" y="4" width="2" height="2" fill="#242333"/><rect x="18" y="4" width="2" height="2" fill="#242333"/><rect x="4" y="18" width="2" height="2" fill="#242333"/>
+                <path d="M13 12h3M19 12h3M13 16v3M17 15h2v2h-2zM21 19h2M15 21h3" stroke="#242333" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h4>Invitá a un amigo</h4>
+                <p id="t-ref-p">Cuando haga su primera compra, ambos reciben puntos.</p>
+              </div>
+            </div>
+            <div class="link"><span id="t-ref-link">clubsemilla.com.ar/invita/sofi</span> <b>Compartir</b></div>
+            <div class="t-cta" aria-hidden="true" id="t-ref-cta">Compartir mi invitación</div>
+          </div>
+        </div>
+      </div>
+
+
+      <p class="escena-pie">Ejemplo real de una experiencia personalizada con Imán. Los indicadores del panel son ilustrativos.</p>
+    </div>
+
+    <ul class="hero-chips">
+      <li><i aria-hidden="true">✉</i><span><b>Email marketing</b><small>Activá a quienes ya te compraron.</small></span></li>
+      <li><i aria-hidden="true">▱</i><span><b>Sin app</b><small>Tus clientes se suman fácil.</small></span></li>
+      <li><i aria-hidden="true">◇</i><span><b>Tu identidad</b><small>100% con tu marca.</small></span></li>
+      <li><i aria-hidden="true">▥</i><span><b>Datos claros</b><small>Decisiones que hacen crecer.</small></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 2. PROBLEMA (retirada de la landing corta) ================= -->
+<section class="oscuro problema" aria-labelledby="h-problema" hidden>
+  <div class="wrap">
+    <span class="eyebrow">El problema</span>
+    <h2 class="sec-h2 rv" id="h-problema">Tus clientes compran. <span>¿Pero sabés cuántos vuelven?</span></h2>
+    <p class="sec-p rv rv-d1">Muchos comercios dependen de descuentos, tarjetas de papel y publicaciones aisladas. El problema no es solamente conseguir una compra: es construir una relación que haga que el cliente vuelva y recomiende el negocio.</p>
+    <div class="grid3">
+      <article class="p-card rv">
+        <div class="emo" aria-hidden="true">🃏</div>
+        <h3>Las tarjetas se pierden</h3>
+        <p>No muestran quién vuelve ni qué beneficio funciona.</p>
+      </article>
+      <article class="p-card rv rv-d1">
+        <div class="emo" aria-hidden="true">🏷️</div>
+        <h3>Las promociones quedan aisladas</h3>
+        <p>Generan una compra puntual, pero no construyen una relación.</p>
+      </article>
+      <article class="p-card rv rv-d2">
+        <div class="emo" aria-hidden="true">🔇</div>
+        <h3>Las recomendaciones no se miden</h3>
+        <p>Tus clientes pueden recomendarte, pero no sabés quién trajo a quién.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= 4. CAMPAÑAS Y EMAIL ================= -->
+<section class="campanas" id="campanas" aria-labelledby="h-campanas">
+  <div class="wrap">
+    <div class="campanas-grid">
+      <div>
+        <span class="eyebrow">Marketing por email</span>
+        <h2 class="sec-h2 rv" id="h-campanas">Volvé a hablar con quienes ya te compraron.</h2>
+        <p class="sec-p rv rv-d1">Trabajamos con la base de clientes que tu local ya construyó. Creamos campañas personalizadas según tu rubro, el comportamiento de tus clientes y tus costos, para generar nuevas visitas sin regalar margen.</p>
+        <p class="campanas-dato rv rv-d2"><i aria-hidden="true">↗</i><span><b>No enviamos la misma promoción a todos.</b> Definimos a quién contactar, cuándo hacerlo y qué propuesta conviene para maximizar la rentabilidad de cada campaña.</span></p>
+      </div>
+
+      <div class="email-demo rv rv-d1" aria-label="Ejemplo ilustrativo de una campaña de email para clientes de una cafetería">
+        <div class="email-demo-top"><b>Campaña de reactivación</b><span>Lista para enviar</span></div>
+        <div class="email-card">
+          <div class="email-subject"><b>Asunto:</b> Hace mucho que no compartimos un café ☕</div>
+          <div class="email-body">
+            <div class="email-brand">CAFÉ</div>
+            <small>UN BENEFICIO PENSADO PARA VOS</small>
+            <h3>Hay una mesa esperándote.</h3>
+            <p>Volvé esta semana y disfrutá un beneficio elegido según tus visitas anteriores.</p>
+            <span class="email-button">Ver mi beneficio</span>
+          </div>
+          <div class="email-meta">
+            <div><small>Segmento</small><b>Sin visita hace 21 días</b></div>
+            <div><small>Canal</small><b>Email</b></div>
+            <div><small>Objetivo</small><b>Recuperar la visita</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="criterios rv rv-d1">
+      <article class="criterio"><span>01 · Tu rubro</span><h3>Campañas con contexto</h3><p>No funciona igual una cafetería, un restaurante o un comercio con compras mensuales.</p></article>
+      <article class="criterio"><span>02 · Tus clientes</span><h3>Mensajes relevantes</h3><p>Segmentamos por frecuencia, historial y tiempo desde la última visita.</p></article>
+      <article class="criterio"><span>03 · Tus costos</span><h3>Beneficios sostenibles</h3><p>Diseñamos cada incentivo considerando costo real, margen y objetivo comercial.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. NO MARKETPLACE (retirada de la landing corta) ================= -->
+<section aria-labelledby="h-vs" style="background:var(--blanco);border-top:2.5px solid var(--tinta);border-bottom:2.5px solid var(--tinta)" hidden>
+  <div class="wrap">
+    <span class="eyebrow">Sin competidores alrededor</span>
+    <h2 class="sec-h2 rv" id="h-vs">Tus clientes entran a tu marca, no a un marketplace.</h2>
+    <p class="sec-p rv rv-d1">Cada QR abre directamente el Club de tu negocio. Sin competidores alrededor, sin promociones ajenas y sin distraer al cliente con otras marcas.</p>
+
+    <div class="vs">
+      <article class="vs-card vs-mal rv">
+        <h3><span aria-hidden="true">🏬</span> Una plataforma genérica</h3>
+        <div class="mini-tiendas" aria-hidden="true"><i>🏪</i><i>🍕</i><i>👟</i><i>💅</i><i>🥐</i><i>🛒</i><i>🐶</i><i>💊</i></div>
+        <ul>
+          <li><i aria-hidden="true">–</i> Identidad compartida con otros negocios</li>
+          <li><i aria-hidden="true">–</i> Distintos comercios conviviendo en la misma app</li>
+          <li><i aria-hidden="true">–</i> Experiencia estandarizada para todos</li>
+          <li><i aria-hidden="true">–</i> Tu marca pierde protagonismo</li>
+        </ul>
+      </article>
+      <article class="vs-card vs-bien rv rv-d1">
+        <h3><span aria-hidden="true">💜</span> Imán Club</h3>
+        <div class="mini-tuya" aria-hidden="true">Club de tu negocio</div>
+        <ul>
+          <li><i aria-hidden="true">✓</i> Tu marca es la protagonista</li>
+          <li><i aria-hidden="true">✓</i> Un Club independiente, con su propio acceso</li>
+          <li><i aria-hidden="true">✓</i> Tus beneficios y tus reglas</li>
+          <li><i aria-hidden="true">✓</i> Experiencia personalizada de punta a punta</li>
+          <li><i aria-hidden="true">✓</i> Contacto directo con el equipo de Imán</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. PRODUCTO ================= -->
+<section class="producto-corto" id="producto" aria-labelledby="h-prod">
+  <div class="wrap">
+    <span class="eyebrow">Una sola herramienta</span>
+    <h2 class="sec-h2 rv" id="h-prod">Todo lo necesario para que vuelvan y recomienden.</h2>
+    <p class="sec-p rv rv-d1">Imán reúne la experiencia del cliente, las campañas y la medición en un sistema simple para tu equipo.</p>
+
+    <div class="producto-grid rv rv-d1">
+      <article class="producto-card">
+        <span class="prod-ic" aria-hidden="true">◎</span>
+        <h3>Club de Clientes sin app</h3>
+        <p>Puntos, premios y beneficios desde un QR, con la identidad de tu local.</p>
+        <span class="prod-tag">Más motivos para volver</span>
+      </article>
+      <article class="producto-card">
+        <span class="prod-ic" aria-hidden="true">✉</span>
+        <h3>Campañas por email</h3>
+        <p>Reactivá a clientes que ya te conocen con mensajes segmentados y propuestas rentables.</p>
+        <span class="prod-tag">Tu base, mejor aprovechada</span>
+      </article>
+      <article class="producto-card" id="referidos">
+        <span class="prod-ic" aria-hidden="true">◇</span>
+        <h3>Referidos medibles</h3>
+        <p>Premiá a quien recomienda después de una compra real y registrá quién trajo a quién.</p>
+        <span class="prod-tag">Incluido y disponible</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. CÓMO FUNCIONA ================= -->
+<section class="pasos-cortos" id="como-funciona" aria-labelledby="h-como">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 class="sec-h2 rv" id="h-como">De tus datos a una campaña lista para vender.</h2>
+    <p class="sec-p rv rv-d1">Nos ocupamos de convertir la información de tus clientes en acciones concretas.</p>
+    <div class="pasos-grid">
+      <article class="paso rv"><h3>Entendemos tu negocio</h3><p>Revisamos rubro, clientes, frecuencia de compra, objetivos y costos.</p></article>
+      <article class="paso rv rv-d1"><h3>Diseñamos la campaña</h3><p>Elegimos segmento, mensaje, beneficio y momento de envío.</p></article>
+      <article class="paso rv rv-d2"><h3>Medimos y mejoramos</h3><p>Seguimos respuestas, visitas y resultados para optimizar la próxima acción.</p></article>
+    </div>
+    <div class="pasos-cta rv rv-d2"><p><b>Vos aprobás cada campaña.</b> Imán se ocupa de que tenga sentido para tus clientes y para tus números.</p><a class="btn btn-primario" href="#contacto" data-demo>Quiero ver una demo →</a></div>
+  </div>
+</section>
+
+<!-- ================= 8. BENEFICIOS ================= -->
+<section class="oscuro" aria-labelledby="h-ben" hidden>
+  <div class="wrap">
+    <span class="eyebrow">Para qué te sirve</span>
+    <h2 class="sec-h2 rv" id="h-ben">Más que puntos: una herramienta para construir recurrencia.</h2>
+    <p class="sec-p rv rv-d1">Lo que cambia no es la promo de la semana: es saber quién vuelve, por qué vuelve y cómo darle una razón concreta para hacerlo otra vez.</p>
+    <div class="ben-grid">
+      <div class="ben rv"><span class="emo" aria-hidden="true">👥</span><p>Conocé mejor a tus clientes frecuentes.</p></div>
+      <div class="ben rv"><span class="emo" aria-hidden="true">🔁</span><p>Dales una razón concreta para volver.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">📣</span><p>Convertí recomendaciones en un canal medible.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">🃏</span><p>Reemplazá las tarjetas físicas que se pierden.</p></div>
+      <div class="ben rv rv-d1"><span class="emo" aria-hidden="true">🎁</span><p>Premiá sin depender siempre de descuentos.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">🎨</span><p>Presentá una experiencia coherente con tu marca.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">💻</span><p>Administrá beneficios desde el celular o la computadora.</p></div>
+      <div class="ben rv rv-d2"><span class="emo" aria-hidden="true">🚀</span><p>Prepará el negocio para incorporar promociones y catálogo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. KIT FÍSICO ================= -->
+<section aria-labelledby="h-kit" hidden>
+  <div class="wrap kit-grid">
+    <div>
+      <span class="eyebrow">En el mostrador</span>
+      <h2 class="sec-h2 rv" id="h-kit">El Club también vive en tu mostrador.</h2>
+      <p class="sec-p rv rv-d1" style="margin-bottom:1rem">Preparamos señalética QR adaptada a la identidad del negocio para que el programa sea visible y fácil de explicar durante la compra.</p>
+      <ul class="kit-lista rv rv-d1">
+        <li><span aria-hidden="true">👉</span> <span><b>Una frase corta para el cliente:</b> "Escaneá y sumás puntos con esta compra".</span></li>
+        <li><span aria-hidden="true">👉</span> <span><b>Nada que explicar dos veces:</b> el QR abre directo tu Club, sin descargas.</span></li>
+        <li><span aria-hidden="true">👉</span> <span><b>Con tu identidad:</b> los colores y el logo de tu negocio, no los nuestros.</span></li>
+      </ul>
+      <p class="micro rv rv-d2" style="margin-top:1rem">Las piezas se definen junto con tu negocio según el mostrador y la vidriera.</p>
+    </div>
+    <div class="kit-piezas rv rv-d1">
+      <div class="kit-pieza">
+        <svg viewBox="0 0 24 24" style="width:52px;margin:0 auto" aria-hidden="true">
+          <rect x="0" y="0" width="24" height="24" rx="4" fill="#FFFFFF" stroke="#242333" stroke-width="1.6"/>
+          <rect x="3" y="3" width="6" height="6" rx="1" fill="#242333"/><rect x="4.6" y="4.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="15" y="3" width="6" height="6" rx="1" fill="#242333"/><rect x="16.6" y="4.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="3" y="15" width="6" height="6" rx="1" fill="#242333"/><rect x="4.6" y="16.6" width="2.8" height="2.8" fill="#FFFFFF"/>
+          <rect x="11" y="3" width="2" height="2" fill="#242333"/><rect x="11" y="7" width="2" height="2" fill="#242333"/><rect x="11" y="11" width="2" height="2" fill="#242333"/>
+          <rect x="15" y="11" width="2" height="2" fill="#242333"/><rect x="19" y="11" width="2" height="2" fill="#242333"/><rect x="15" y="15" width="2" height="2" fill="#242333"/>
+          <rect x="19" y="15" width="2" height="2" fill="#242333"/><rect x="15" y="19" width="2" height="2" fill="#242333"/><rect x="11" y="19" width="2" height="2" fill="#242333"/>
+        </svg>
+        <b>Placa QR</b><small>Impresa en 3D, para el mostrador</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="background:var(--acento);color:#fff;border:2px solid var(--tinta);border-radius:10px;padding:.7rem .5rem" aria-hidden="true">
+          <b style="font-family:var(--display);font-size:.82rem;line-height:1.15;display:block">Sumá puntos<br>con esta compra</b>
+        </div>
+        <b>Tarjeta de mostrador</b><small>Con tu logo y tus colores</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="width:46px;height:46px;margin:0 auto;border-radius:50%;background:var(--amarillo);border:2.5px solid var(--tinta);display:grid;place-items:center;font-size:1.3rem" aria-hidden="true">🧲</div>
+        <b>Sticker</b><small>Vidriera, caja o heladera</small>
+      </div>
+      <div class="kit-pieza">
+        <div style="background:var(--crema);border:2px dashed var(--tinta);border-radius:10px;padding:.55rem;font-size:.7rem;font-weight:800;text-align:left;line-height:1.35" aria-hidden="true">
+          1. Escaneá<br>2. Dejás tu nombre<br>3. Sumás puntos
+        </div>
+        <b>Instrucción breve</b><small>Tres pasos para el cliente</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= 13. CONTACTO ================= -->
+<section class="contacto" id="contacto" aria-labelledby="h-contacto">
+  <div class="wrap">
+    <div class="centro" style="margin-bottom:1.8rem">
+      <span class="eyebrow">Demo personalizada</span>
+      <h2 class="sec-h2 rv" id="h-contacto">Veamos cómo quedaría aplicado a tu negocio.</h2>
+      <p class="sec-p rv rv-d1">Contanos sobre tu comercio o elegí directamente un horario para conversar con Imán.</p>
+    </div>
+
+    <div class="mod rv rv-d1">
+      <div class="tabs" role="tablist" aria-label="Formas de contacto">
+        <button class="tab" role="tab" id="tab-form" aria-selected="true" aria-controls="panel-form" tabindex="0" type="button">Solicitar demo</button>
+        <button class="tab" role="tab" id="tab-cal" aria-selected="false" aria-controls="panel-cal" tabindex="-1" type="button">Agendar llamada</button>
+      </div>
+
+      <!-- ---------- TAB 1: FORMULARIO (por defecto) ---------- -->
+      <div class="tab-panel" role="tabpanel" id="panel-form" aria-labelledby="tab-form" tabindex="0">
+        <form id="form-demo" novalidate>
+          <div class="form-grid">
+            <div class="campo">
+              <label for="f-nombre">Nombre y apellido</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+              <p class="err" id="e-nombre"></p>
+            </div>
+            <div class="campo">
+              <label for="f-negocio">Nombre del negocio</label>
+              <input id="f-negocio" name="negocio" type="text" autocomplete="organization" required aria-describedby="e-negocio">
+              <p class="err" id="e-negocio"></p>
+            </div>
+            <div class="campo">
+              <label for="f-rubro">Rubro</label>
+              <select id="f-rubro" name="rubro" required aria-describedby="e-rubro">
+                <option value="">Elegí una opción</option>
+                <option>Gastronomía</option>
+                <option>Dietética</option>
+                <option>Pet shop</option>
+                <option>Indumentaria</option>
+                <option>Belleza y estética</option>
+                <option>Librería</option>
+                <option>Supermercado o almacén</option>
+                <option>Gimnasio</option>
+                <option>Servicios</option>
+                <option>Otro</option>
+              </select>
+              <p class="err" id="e-rubro"></p>
+            </div>
+            <div class="campo">
+              <label for="f-ciudad">Ciudad o localidad</label>
+              <input id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2" required aria-describedby="e-ciudad">
+              <p class="err" id="e-ciudad"></p>
+            </div>
+            <div class="campo">
+              <label for="f-email">Correo electrónico</label>
+              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="e-email">
+              <p class="err" id="e-email"></p>
+            </div>
+            <div class="campo">
+              <label for="f-wa">WhatsApp</label>
+              <input id="f-wa" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 353 518 9997" required aria-describedby="e-wa">
+              <p class="err" id="e-wa"></p>
+            </div>
+
+            <div class="campo ancho">
+              <label for="f-msj">¿Qué te gustaría mejorar? <span class="opt">(opcional)</span></label>
+              <textarea id="f-msj" name="comentario" rows="3" placeholder="Por ejemplo: recuperar clientes por email o aumentar la frecuencia de compra."></textarea>
+            </div>
+
+            <div class="campo ancho">
+              <label class="check">
+                <input type="checkbox" id="f-consent" name="consentimiento" required aria-describedby="e-consent">
+                <span>Acepto que Imán me contacte para conversar sobre la demostración.</span>
+              </label>
+              <p class="err" id="e-consent"></p>
+            </div>
+          </div>
+
+          <!-- anti-spam: honeypot (invisible para personas) -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-hp">No completar este campo</label>
+            <input id="f-hp" name="sitio_web_empresa" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-pie">
+            <button class="btn btn-primario" type="submit" id="f-submit">Solicitar mi demo personalizada</button>
+            <p class="micro" id="f-nota">Te contactamos personalmente para preparar una demo aplicada a tu negocio.</p>
+            <div class="estado" id="f-estado" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ---------- TAB 2: CALENDLY (carga diferida) ---------- -->
+      <div class="tab-panel" role="tabpanel" id="panel-cal" aria-labelledby="tab-cal" tabindex="0" hidden>
+        <h3 class="cal-tit">Elegí un horario para conversar.</h3>
+        <p class="cal-p">En una llamada breve vemos cómo podría personalizarse Imán Club para tu comercio.</p>
+        <div id="cal-slot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 14. FAQ ================= -->
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2 class="sec-h2 rv" id="h-faq">Lo que suelen preguntarnos</h2>
+    <div class="rv rv-d1">
+      <details>
+        <summary>¿El cliente tiene que descargar una aplicación?</summary>
+        <div class="resp">No. El QR abre el Club en el navegador del teléfono. Se registra ahí mismo y vuelve a entrar con el mismo enlace o escaneando de nuevo.</div>
+      </details>
+      <details>
+        <summary>¿Cómo usan el email de mis clientes?</summary>
+        <div class="resp">Creamos segmentos y campañas para la base de clientes de tu propio local. El objetivo es volver a contactar a quienes ya compraron con mensajes relevantes, no enviar promociones masivas sin criterio.</div>
+      </details>
+      <details>
+        <summary>¿Cómo cuidan la rentabilidad de las campañas?</summary>
+        <div class="resp">Antes de definir un beneficio revisamos tu rubro, el tipo de cliente, el objetivo de la campaña y los costos del negocio. Así la propuesta busca generar una nueva venta sin regalar margen innecesariamente.</div>
+      </details>
+      <details>
+        <summary>¿Cómo funcionan los referidos?</summary>
+        <div class="resp" id="faq-ref">Cada miembro recibe un enlace o QR personal para compartir. Si un conocido se registra desde ahí y hace su primera compra, al validarla desde el panel ambos reciben el beneficio que hayas definido.</div>
+      </details>
+      <details>
+        <summary>¿Necesito equipos especiales?</summary>
+        <div class="resp">No. Alcanza con la señalética QR en el mostrador y un celular o computadora para entrar al panel. No hace falta cambiar tu sistema de ventas.</div>
+      </details>
+      <details>
+        <summary>¿Cómo se gestionan los datos de los clientes?</summary>
+        <div class="resp">Los datos que cargan tus clientes al registrarse son de tu comercio y se usan para hacer funcionar el Club. Antes de la puesta en marcha repasamos con vos qué datos se piden y cómo se comunica el consentimiento en el registro.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 15. CIERRE ================= -->
+<section class="cierre" aria-labelledby="h-cierre">
+  <div class="wrap wrap-sm">
+    <div class="iman-marca oscuro" aria-label="Imán">
+      <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+        <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+        <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+        <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+        <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+      </svg>
+      <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+    </div>
+    <h2 id="h-cierre">Hacé que quienes ya te eligieron <span>vuelvan a hacerlo.</span></h2>
+    <p>Te mostramos una campaña pensada para tus clientes, tus costos y tu negocio.</p>
+    <div class="cierre-ctas">
+      <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo personalizada</a>
+      <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="iman-marca oscuro" aria-label="Imán">
+    <svg class="iman-svg" viewBox="0 0 120 132" aria-hidden="true">
+      <path class="iman-cuerpo-borde" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+      <path class="iman-cuerpo" d="M34 92 V56 A26 26 0 0 1 86 56 V92"/>
+      <rect class="iman-polo" x="13" y="88" width="42" height="20" rx="4"/>
+      <rect class="iman-polo" x="65" y="88" width="42" height="20" rx="4"/>
+      <path class="iman-chispa" d="M28 114 l-7 9 M60 117 v10 M92 114 l7 9"/>
+    </svg>
+    <span class="iman-nombre">Im<i>á</i>n<small>Club</small></span>
+  </div>
+  Campañas, fidelización y referidos para que tus clientes vuelvan. 🧲<br>
+  <a href="/comercios/">Conocé Imán para recuperar clientes</a>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn btn-primario" href="#contacto" data-demo>Quiero mi demo</a>
+  <a class="btn btn-wa" href="https://wa.me/5493535189997?text=Hola%21%20Quiero%20conocer%20Im%C3%A1n%20Club." target="_blank" rel="noopener" data-whatsapp><span aria-hidden="true">💬</span> WhatsApp</a>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* =====================================================================
+   CONFIGURACIÓN  (ver comentario del <head>)
+   ===================================================================== */
+var CONFIG = {
+  // Endpoint privado que envía la solicitud por correo.
+  formEndpoint: '/api/contacto',
+  // Campos fijos que algunos proveedores piden (ej. Web3Forms access_key).
+  formExtra: {},
+  // URL real del evento de Calendly. Vacío = tab deshabilitado con aviso.
+  calendlyUrl: 'https://calendly.com/santiago-iman/30min',
+  // Número de WhatsApp de contacto.
+  whatsapp: '5493535189997',
+  // El circuito de referidos está disponible.
+  referidosDisponibles: true
+};
+
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* =====================================================================
+   1. ANALYTICS
+   ===================================================================== */
+function track(evento, datos){
+  datos = datos || {};
+  try{
+    document.dispatchEvent(new CustomEvent('iman:' + evento, {detail:datos}));
+    if(window.gtag) window.gtag('event', evento, datos);
+    if(window.dataLayer && window.dataLayer.push) window.dataLayer.push(Object.assign({event:evento}, datos));
+    if(window.fbq){
+      if(evento === 'club_lead') window.fbq('track', 'Lead', {content_name:'club'});
+      else window.fbq('trackCustom', 'ClubCtaClick', datos);
+    }
+  }catch(e){}
+}
+
+/* =====================================================================
+   2. REVEALS
+   ===================================================================== */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+
+  // lo que ya está en pantalla al cargar (típico al entrar con un ancla:
+  // /club/#contacto) se muestra sin esperar al observer
+  function revelarVisible(){
+    document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }
+  revelarVisible();
+  window.addEventListener('load', revelarVisible);
+  setTimeout(revelarVisible, 1200);   // red de seguridad
+})();
+
+
+/* =====================================================================
+   3. CLUBES DE EJEMPLO (comercios ficticios)
+   Misma funcionalidad, distinta identidad: eso es lo que se demuestra.
+   ===================================================================== */
+var CLUBES = [
+  {
+    rubro:'Dietética', marca:'Semilla', club:'Club Semilla', emoji:'🌿',
+    color:'#268552', osc:'#175C34', suave:'#E2F4E9', on:'#fff', fondo:'#F4FBF6',
+    fuenteTit:"'Nunito',sans-serif", peso:'900', fuente:"'Nunito',sans-serif", fuenteNom:'Nunito 900',
+    socia:'Hola, Sofi 👋', nivel:'Nivel Semilla',
+    puntos:340, meta:500, saldoLbl:'Tus puntos', unidad:'pts',
+    premioIc:'🥣', premioTit:'1 kg de granola de la casa', premioSub:'Disponible con 500 pts',
+    beneficio:'10% en compras a granel',
+    refTexto:'Cuando haga su primera compra, ambos reciben puntos.',
+    refLink:'clubsemilla.com.ar/invita/sofi',
+    refCta:'Compartir mi invitación',
+    tono:'Cercano y saludable',
+    actividad:[
+      {qu:'Compra en el local', cu:'Hoy', pts:'+35'},
+      {qu:'Canje · Té de la casa', cu:'Hace 6 días', pts:'−120', neg:true},
+      {qu:'Compra en el local', cu:'Hace 12 días', pts:'+28'}
+    ]
+  },
+  {
+    rubro:'Cafetería', marca:'Nogal', club:'Nogal · Socios', emoji:'☕',
+    color:'#5B4DC2', osc:'#3F338F', suave:'#EEEAFB', on:'#fff', fondo:'#F7F5FF',
+    fuenteTit:"'Playfair Display',Georgia,serif", peso:'700', fuente:"'Nunito',sans-serif", fuenteNom:'Playfair Display',
+    socia:'Buen día, Marco ☕', nivel:'Socio Nogal',
+    puntos:8, meta:10, saldoLbl:'Tus sellos', unidad:'sellos',
+    premioIc:'☕', premioTit:'Tu décimo café, de la casa', premioSub:'Disponible con 10 sellos',
+    beneficio:'Medialuna con el café de la mañana',
+    refTexto:'Cuando tome su primer café acá, los dos suman sellos.',
+    refLink:'nogalcafe.ar/invita/marco',
+    refCta:'Invitar a un amigo',
+    tono:'Sobrio y de especialidad',
+    actividad:[
+      {qu:'Café en barra', cu:'Hoy', pts:'+1'},
+      {qu:'Café para llevar', cu:'Ayer', pts:'+1'},
+      {qu:'Canje · Medialuna', cu:'Hace 4 días', pts:'−3', neg:true}
+    ]
+  },
+  {
+    rubro:'Pet shop', marca:'Huellitas', club:'Club Huellitas', emoji:'🐾',
+    color:'#17BEBB', osc:'#08716F', suave:'#DDF7F6', on:'#242333', fondo:'#F2FCFC',
+    fuenteTit:"'Fredoka',sans-serif", peso:'600', fuente:"'Nunito',sans-serif", fuenteNom:'Fredoka',
+    socia:'¡Hola, Lucía y Toby! 🐶', nivel:'Nivel Patita',
+    puntos:620, meta:800, saldoLbl:'Tus huellitas', unidad:'pts',
+    premioIc:'🦴', premioTit:'Bolsa de snacks para Toby', premioSub:'Disponible con 800 pts',
+    beneficio:'Baño de regalo cada 5 visitas',
+    refTexto:'Cuando compre por primera vez, los dos reciben puntos.',
+    refLink:'clubhuellitas.ar/invita/lucia',
+    refCta:'Invitar a otro dueño',
+    tono:'Alegre y familiar',
+    actividad:[
+      {qu:'Alimento 15 kg', cu:'Hoy', pts:'+150'},
+      {qu:'Canje · Juguete', cu:'Hace 9 días', pts:'−200', neg:true},
+      {qu:'Baño y corte', cu:'Hace 18 días', pts:'+80'}
+    ]
+  }
+];
+
+var fono = document.getElementById('fono');
+
+function pintarClub(i){
+  var c = CLUBES[i];
+  fono.style.setProperty('--t-color', c.color);
+  fono.style.setProperty('--t-osc', c.osc);
+  fono.style.setProperty('--t-suave', c.suave);
+  fono.style.setProperty('--t-on', c.on);
+  fono.style.setProperty('--t-fondo', c.fondo);
+  fono.style.setProperty('--t-fuente', c.fuente);
+  fono.style.setProperty('--t-fuente-tit', c.fuenteTit);
+  fono.style.setProperty('--t-peso', c.peso);
+
+  document.getElementById('t-logo').textContent = c.emoji;
+  document.getElementById('t-nombre').textContent = c.club;
+  document.getElementById('t-socia').textContent = c.socia;
+  document.getElementById('t-nivel').textContent = c.nivel;
+  document.getElementById('t-saldo-lbl').textContent = c.saldoLbl;
+  document.getElementById('t-unidad').textContent = c.unidad;
+  document.getElementById('t-puntos').textContent = c.puntos;
+  document.getElementById('t-falta').textContent = 'Te faltan ' + (c.meta - c.puntos) + ' ' + c.unidad + ' para tu próximo premio';
+  document.getElementById('t-premio-ic').textContent = c.premioIc;
+  document.getElementById('t-premio-tit').textContent = c.premioTit;
+  document.getElementById('t-premio-sub').textContent = c.premioSub;
+  document.getElementById('t-ref-p').textContent = c.refTexto;
+  document.getElementById('t-ref-link').textContent = c.refLink;
+  document.getElementById('t-ref-cta').textContent = c.refCta;
+
+  var cont = document.getElementById('t-actividad');
+  cont.innerHTML = '';
+  c.actividad.forEach(function(a){
+    var d = document.createElement('div');
+    d.className = 't-act';
+    d.innerHTML = '<div><div class="qu"></div><div class="cu"></div></div><div class="pts' + (a.neg?' neg':'') + '"></div>';
+    d.querySelector('.qu').textContent = a.qu;
+    d.querySelector('.cu').textContent = a.cu;
+    d.querySelector('.pts').textContent = a.pts;
+    cont.appendChild(d);
+  });
+
+  // la barra arranca en 0 y crece por transición (setTimeout: no se pierde si
+  // la pestaña estaba en segundo plano y requestAnimationFrame quedó pausado)
+  var barra = document.getElementById('t-barra');
+  var pct = Math.round(c.puntos / c.meta * 100) + '%';
+  barra.style.width = '0%';
+  clearTimeout(barra._t);
+  barra._t = setTimeout(function(){ barra.style.width = pct; }, 90);
+
+}
+
+// Un solo ejemplo en el teléfono; las tres identidades siguen en Personalización.
+pintarClub(0);
+
+/* =====================================================================
+   4. SECCIÓN PERSONALIZACIÓN: las mismas 3 identidades, comparadas
+   ===================================================================== */
+(function(){
+  var cont = document.getElementById('pers-grid');
+  if(!cont) return;
+  CLUBES.forEach(function(c, i){
+    var art = document.createElement('article');
+    art.className = 'pers-card rv' + (i ? ' rv-d' + i : '');
+    art.innerHTML =
+      '<div class="pers-head">' +
+        '<span class="lg" aria-hidden="true"></span>' +
+        '<span><b></b><small></small></span>' +
+      '</div>' +
+      '<div class="pers-fila"><span>Club</span><b class="p-club"></b></div>' +
+      '<div class="pers-fila"><span>Colores</span><b class="pers-swatch"><i class="s1"></i><i class="s2"></i></b></div>' +
+      '<div class="pers-fila"><span>Tipografía</span><b class="p-fuente"></b></div>' +
+      '<div class="pers-fila"><span>Premio</span><b class="p-premio"></b></div>' +
+      '<div class="pers-fila"><span>Beneficio</span><b class="p-benef"></b></div>' +
+      '<div class="pers-fila"><span>Tono</span><b class="p-tono"></b></div>';
+    var lg = art.querySelector('.lg');
+    lg.textContent = c.emoji;
+    lg.style.background = c.suave;
+    art.querySelector('.pers-head b').textContent = c.marca;
+    art.querySelector('.pers-head small').textContent = c.rubro;
+    art.querySelector('.p-club').textContent = c.club;
+    art.querySelector('.s1').style.background = c.color;
+    art.querySelector('.s2').style.background = c.suave;
+    var pf = art.querySelector('.p-fuente');
+    pf.textContent = c.fuenteNom;
+    pf.style.fontFamily = c.fuenteTit;
+    art.querySelector('.p-premio').textContent = c.premioTit;
+    art.querySelector('.p-benef').textContent = c.beneficio;
+    art.querySelector('.p-tono').textContent = c.tono;
+    cont.appendChild(art);
+  });
+  // los reveals ya corrieron: mostramos estas tarjetas al observarlas de nuevo
+  var nuevas = cont.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    nuevas.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    nuevas.forEach(function(el){ io.observe(el); });
+  }
+})();
+
+/* =====================================================================
+   5. ESTADO DE REFERIDOS (honestidad: no prometer lo que no está)
+   ===================================================================== */
+if(!CONFIG.referidosDisponibles){
+  var aviso = document.getElementById('aviso-referidos');
+  if(aviso) aviso.hidden = false;
+  document.querySelectorAll('[data-pronto]').forEach(function(el){ el.hidden = false; });
+  var pronto = document.getElementById('t-pronto');
+  if(pronto) pronto.hidden = false;
+  var et = document.getElementById('et-referidos');
+  if(et){ et.classList.remove('on'); et.classList.add('next'); }
+  var faqRef = document.getElementById('faq-ref');
+  if(faqRef) faqRef.innerHTML += ' <b>Estamos terminando de implementar este circuito:</b> lo activamos en tu Club cuando esté verificado de punta a punta.';
+}
+
+/* =====================================================================
+   6. TABS ACCESIBLES DEL MÓDULO DE CONTACTO
+   ===================================================================== */
+var tabForm = document.getElementById('tab-form');
+var tabCal  = document.getElementById('tab-cal');
+var tabs    = [tabForm, tabCal];
+var calListo = false;
+
+function activarTab(tab, foco){
+  if(tab.getAttribute('aria-disabled') === 'true') return;
+  tabs.forEach(function(t){
+    var sel = t === tab;
+    t.setAttribute('aria-selected', sel ? 'true' : 'false');
+    t.tabIndex = sel ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !sel;
+  });
+  if(foco) tab.focus();
+  if(tab === tabCal) montarCalendly();
+}
+tabs.forEach(function(t){
+  t.addEventListener('click', function(){ activarTab(t); });
+  t.addEventListener('keydown', function(ev){
+    var i = tabs.indexOf(t), n = null;
+    if(ev.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+    else if(ev.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+    else if(ev.key === 'Home') n = tabs[0];
+    else if(ev.key === 'End') n = tabs[tabs.length - 1];
+    if(n){ ev.preventDefault(); activarTab(n, true); }
+  });
+});
+
+/* CTA "Quiero mi demo…" → contacto + tab del formulario */
+document.querySelectorAll('[data-demo]').forEach(function(a){
+  a.addEventListener('click', function(){
+    activarTab(tabForm);
+    track('cta_click', {tipo:'demo', pos:a.closest('header') ? 'header' : (a.closest('.sticky-cta') ? 'sticky' : 'seccion')});
+  });
+});
+document.querySelectorAll('[data-whatsapp]').forEach(function(a){
+  a.addEventListener('click', function(){
+    track('cta_click', {tipo:'whatsapp', pos:a.closest('header') ? 'header' : (a.closest('.sticky-cta') ? 'sticky' : 'seccion')});
+  });
+});
+
+/* =====================================================================
+   7. CALENDLY: se carga SOLO al abrir su tab
+   ===================================================================== */
+function montarCalendly(){
+  if(calListo) return;
+  calListo = true;
+  var slot = document.getElementById('cal-slot');
+
+  if(!CONFIG.calendlyUrl){
+    slot.innerHTML = '<div class="cal-pendiente">⚙️ Agenda online pendiente de configuración. Mientras tanto, dejanos tus datos en <b>“Solicitar demo”</b> y te escribimos para coordinar el horario.</div>';
+    return;
+  }
+
+  var url = CONFIG.calendlyUrl;
+  try{
+    var u = new URL(url);
+    u.searchParams.set('hide_event_type_details','1');
+    u.searchParams.set('hide_gdpr_banner','1');
+    u.searchParams.set('primary_color','6C5CE7');
+    u.searchParams.set('utm_source','landing');
+    u.searchParams.set('utm_campaign','club');
+    url = u.toString();
+  }catch(e){}
+
+  slot.innerHTML =
+    '<div id="cal-embed">' +
+      '<div class="cal-cargando"><div><span style="font-size:1.8rem">🗓️</span><br>Cargando la agenda…</div></div>' +
+      '<div class="calendly-inline-widget" data-url="' + url.replace(/"/g,'&quot;') + '"></div>' +
+    '</div>' +
+    '<p class="cal-fallback">¿No te carga el calendario? Abrilo en una pestaña nueva: <a href="' + CONFIG.calendlyUrl.replace(/"/g,'&quot;') + '" target="_blank" rel="noopener">elegir un horario</a>.</p>';
+
+  var s = document.createElement('script');
+  s.src = 'https://assets.calendly.com/assets/external/widget.js';
+  s.async = true;
+  document.head.appendChild(s);
+  track('cta_click', {tipo:'agenda'});
+}
+if(!CONFIG.calendlyUrl){
+  tabCal.setAttribute('aria-disabled','true');
+  tabCal.title = 'Agenda pendiente de configuración';
+}
+
+/* =====================================================================
+   8. FORMULARIO
+   ===================================================================== */
+var form = document.getElementById('form-demo');
+var estado = document.getElementById('f-estado');
+var submit = document.getElementById('f-submit');
+var nota = document.getElementById('f-nota');
+var tInicio = Date.now();          // trampa de tiempo: envíos instantáneos = bot
+var enviando = false;
+
+var REQ = [
+  ['f-nombre','e-nombre','Escribí tu nombre y apellido.'],
+  ['f-negocio','e-negocio','Escribí el nombre de tu negocio.'],
+  ['f-rubro','e-rubro','Elegí el rubro de tu comercio.'],
+  ['f-ciudad','e-ciudad','Escribí tu ciudad o localidad.'],
+  ['f-email','e-email','Escribí un correo electrónico válido.'],
+  ['f-wa','e-wa','Escribí tu WhatsApp con característica.']
+];
+
+function limpiarError(id, errId){
+  var el = document.getElementById(id);
+  el.setAttribute('aria-invalid','false');
+  document.getElementById(errId).textContent = '';
+}
+REQ.forEach(function(r){
+  var el = document.getElementById(r[0]);
+  el.addEventListener('input', function(){ limpiarError(r[0], r[1]); });
+  el.addEventListener('change', function(){ limpiarError(r[0], r[1]); });
+});
+document.getElementById('f-consent').addEventListener('change', function(){
+  this.setAttribute('aria-invalid','false');
+  document.getElementById('e-consent').textContent = '';
+});
+
+function valido(){
+  var ok = true, primero = null;
+  REQ.forEach(function(r){
+    var el = document.getElementById(r[0]);
+    var v = (el.value || '').trim();
+    var malo = !v;
+    if(!malo && r[0] === 'f-email') malo = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if(!malo && r[0] === 'f-wa') malo = (v.replace(/\D/g,'').length < 8);
+    if(malo){
+      ok = false;
+      el.setAttribute('aria-invalid','true');
+      document.getElementById(r[1]).textContent = r[2];
+      if(!primero) primero = el;
+    }
+  });
+  var cons = document.getElementById('f-consent');
+  if(!cons.checked){
+    ok = false;
+    cons.setAttribute('aria-invalid','true');
+    document.getElementById('e-consent').textContent = 'Necesitamos tu confirmación para poder contactarte.';
+    if(!primero) primero = cons;
+  }
+  if(primero) primero.focus();
+  return ok;
+}
+
+function datos(){
+  return {
+    nombre: document.getElementById('f-nombre').value.trim(),
+    negocio: document.getElementById('f-negocio').value.trim(),
+    rubro: document.getElementById('f-rubro').value,
+    ciudad: document.getElementById('f-ciudad').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    whatsapp: document.getElementById('f-wa').value.trim(),
+    comentario: document.getElementById('f-msj').value.trim(),
+    consentimiento: true,
+    sitio_web_empresa: document.getElementById('f-hp').value.trim(),
+    origen: 'landing/club',
+    url: location.href
+  };
+}
+
+function resumenTexto(d){
+  var l = [
+    'Hola! Quiero una demo personalizada de Imán Club.',
+    '',
+    'Nombre: ' + d.nombre,
+    'Negocio: ' + d.negocio,
+    'Rubro: ' + d.rubro,
+    'Ciudad: ' + d.ciudad,
+    'Email: ' + d.email,
+    'WhatsApp: ' + d.whatsapp
+  ];
+  if(d.comentario) l.push('', 'Quiero mejorar: ' + d.comentario);
+  return l.join('\n');
+}
+
+function mostrarEstado(tipo, html){
+  estado.className = 'estado visible es-' + tipo;
+  estado.innerHTML = html;
+}
+
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  if(enviando) return;
+
+  // anti-spam del cliente: honeypot (no reemplaza la validación del backend)
+  if(document.getElementById('f-hp').value) return;
+
+  if(!valido()){
+    mostrarEstado('err','<span aria-hidden="true">⚠️</span><div class="estado-cuerpo">Revisá los campos marcados y volvé a intentar.</div>');
+    return;
+  }
+  // trampa de tiempo: un formulario completo en menos de 2,5 s es un bot
+  if(Date.now() - tInicio < 2500){
+    mostrarEstado('err','<span aria-hidden="true">⏳</span><div class="estado-cuerpo">Esperá un momento y volvé a enviarlo.</div>');
+    return;
+  }
+
+  var d = datos();
+
+  /* --- Sin endpoint configurado: NO simulamos un envío. Abrimos WhatsApp --- */
+  if(!CONFIG.formEndpoint){
+    var href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(resumenTexto(d));
+    mostrarEstado('info',
+      '<span aria-hidden="true">💬</span><div class="estado-cuerpo">Te abrimos WhatsApp con tus datos cargados.' +
+      '<p>Tocá <b>enviar</b> en WhatsApp para que la solicitud nos llegue. Si no se abrió solo, usá este botón.</p>' +
+      '<a class="btn btn-linea" id="f-wa-link" href="' + href + '" target="_blank" rel="noopener">Abrir WhatsApp con mis datos</a></div>');
+    track('club_lead', {via:'whatsapp', rubro:d.rubro});
+    window.open(href, '_blank', 'noopener');
+    return;
+  }
+
+  /* --- Con endpoint: POST real, éxito solo con respuesta 2xx --- */
+  enviando = true;
+  submit.disabled = true;
+  submit.textContent = 'Enviando solicitud…';
+  mostrarEstado('info','<span class="spin" aria-hidden="true"></span><div class="estado-cuerpo">Enviando tu solicitud…</div>');
+
+  var cuerpo = Object.assign({}, CONFIG.formExtra, d);
+  fetch(CONFIG.formEndpoint, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(cuerpo)
+  }).then(function(res){
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    // Éxito real: solo acá se dice "recibida".
+    enviando = false;
+    mostrarEstado('ok','<span aria-hidden="true">✅</span><div class="estado-cuerpo">Solicitud recibida.<p>Te contactamos personalmente para coordinar la demostración. Si querés adelantarlo, también podés agendar una llamada en la otra pestaña.</p></div>');
+    form.querySelectorAll('input, select, textarea').forEach(function(el){
+      if(el.type === 'checkbox') el.checked = false; else el.value = '';
+    });
+    submit.textContent = 'Solicitud enviada';   // queda deshabilitado hasta que vuelva a escribir
+    nota.textContent = 'Ya nos llegó. Te escribimos a la brevedad.';
+    track('club_lead', {via:'form', rubro:d.rubro});
+  }).catch(function(){
+    // Falla de red o respuesta no 2xx: NO se confirma nada y no se pierden los datos.
+    enviando = false;
+    submit.disabled = false;
+    submit.textContent = 'Reintentar el envío';
+    var href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(resumenTexto(d));
+    mostrarEstado('err',
+      '<span aria-hidden="true">⚠️</span><div class="estado-cuerpo">No pudimos enviar tu solicitud.' +
+      '<p>Tus datos siguen cargados. Probá de nuevo o escribinos directo por WhatsApp.</p>' +
+      '<a class="btn btn-linea" href="' + href + '" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>');
+  });
+});
+
+/* si vuelve a editar después de un envío exitoso, se rehabilita el botón */
+form.addEventListener('input', function(){
+  if(!enviando && submit.disabled){
+    submit.disabled = false;
+    submit.textContent = 'Solicitar mi demo personalizada';
+  }
+});
+
+/* =====================================================================
+   9. STICKY CTA MOBILE
+   ===================================================================== */
+(function(){
+  var sticky = document.getElementById('sticky-cta');
+  var hero = document.querySelector('.hero');
+  var contacto = document.getElementById('contacto');
+  var pasoHero = false, enContacto = false;
+  function actualizar(){ sticky.classList.toggle('visible', pasoHero && !enContacto); }
+  function medir(){
+    pasoHero = window.scrollY > hero.offsetHeight * .7;
+    actualizar();
+  }
+  window.addEventListener('scroll', medir, {passive:true});
+  window.addEventListener('resize', medir, {passive:true});
+  medir();   // por si se entra con un ancla (#faq, #contacto…) y aún no hubo scroll
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ enContacto = e.isIntersecting; actualizar(); });
+    },{threshold:.12}).observe(contacto);
+  }
+})();
+
+/* =====================================================================
+   10. DEEP LINK: /club/?tab=agenda abre el tab de Calendly
+   ===================================================================== */
+try{
+  if(new URLSearchParams(location.search).get('tab') === 'agenda') activarTab(tabCal);
+}catch(e){}
+
+})();
+</script>
+
+<!-- Vercel Speed Insights -->
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

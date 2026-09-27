@@ -1,0 +1,113 @@
+[
+  {
+    "path": "/",
+    "title": "IMAN | Fidelización con Wallet, notificaciones y email",
+    "description": "Fidelización con Apple Wallet, Google Wallet, notificaciones y email. Catálogos para comercios y mayoristas, y automatizaciones a medida en Argentina.",
+    "file": "index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/fidelizacion/",
+    "title": "Club de clientes en Apple Wallet y Google Wallet | IMAN",
+    "description": "Creamos tu Club de fidelización a medida: tarjetas en Apple Wallet y Google Wallet, beneficios, puntos y notificaciones para que tus clientes vuelvan.",
+    "file": "fidelizacion/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/automatizaciones/",
+    "title": "Automatizaciones y agentes de IA a medida | IMAN",
+    "description": "Automatizamos consultas, pedidos, seguimiento y reportes. Diagnóstico, desarrollo, integración y mantenimiento. Conocé IMAN Automatizaciones para negocios y compras B2B.",
+    "file": "automatizaciones/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/comercios/",
+    "title": "Catálogos digitales para comercios y mayoristas | IMAN",
+    "description": "Catálogos a medida y circuitos de pedidos para minoristas y mayoristas. Conectá tus ventas con fidelización y automatizaciones según tu operación.",
+    "file": "comercios/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/turnos/landing/",
+    "title": "Sistema de turnos online para barberías y negocios | IMAN",
+    "description": "Reservas online, servicios y horarios en un enlace. IMAN Turnos para barberías, peluquerías y negocios con atención por cita. Explorá la demo.",
+    "file": "turnos/landing/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/recursos/club-wallet/",
+    "title": "Club de clientes en Wallet: qué es y cómo funciona | IMAN",
+    "description": "Una tarjeta digital guarda la identidad del Club y sus beneficios en la billetera del teléfono. La implementación combina diseño, reglas y un sistema que mantiene la información actualizada.",
+    "file": "recursos/club-wallet/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/recuperar-clientes/",
+    "title": "Cómo empezar a recuperar clientes con tus ventas | IMAN",
+    "description": "La primera campaña útil empieza por una pregunta concreta: quién dejó de comprar según el ritmo de tu negocio, y qué propuesta puede darle una buena razón para volver.",
+    "file": "recursos/recuperar-clientes/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/automatizar-procesos/",
+    "title": "Qué proceso conviene automatizar primero en un negocio | IMAN",
+    "description": "Empezá por una tarea repetida, con entradas claras y un resultado verificable. Una automatización útil se reconoce por el trabajo que resuelve y por lo fácil que es controlar sus excepciones.",
+    "file": "recursos/automatizar-procesos/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/catalogo-digital-pedidos-whatsapp-mayorista/",
+    "title": "Catálogo digital con pedidos por WhatsApp: qué necesita tu negocio | IMAN",
+    "description": "Qué incluir en un catálogo digital para recibir pedidos claros por WhatsApp: productos, cantidades, precios y condiciones para minoristas y mayoristas.",
+    "file": "recursos/catalogo-digital-pedidos-whatsapp-mayorista/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/wallet-email-notificaciones-fidelizacion/",
+    "title": "Wallet o email: cómo combinar notificaciones para fidelizar clientes | IMAN",
+    "description": "Cuándo usar Apple Wallet, Google Wallet y email en un programa de fidelización. Ejemplos de beneficios, avisos y campañas sin prometer notificaciones garantizadas.",
+    "file": "recursos/wallet-email-notificaciones-fidelizacion/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/automatizar-compras-comparar-proveedores/",
+    "title": "Automatizar compras: comparar proveedores sin perder el control | IMAN",
+    "description": "Cómo automatizar una compra mayorista con criterios claros: normalizar propuestas, comparar precio total y entrega, detectar faltantes y conservar aprobaciones.",
+    "file": "recursos/automatizar-compras-comparar-proveedores/index.html",
+    "dateModified": "2026-09-27",
+    "datePublished": "2026-09-27"
+  },
+  {
+    "path": "/recursos/",
+    "title": "Guías de Wallet, catálogos y automatización | IMAN",
+    "description": "Guías prácticas de fidelización con Wallet y email, catálogos con pedidos por WhatsApp y automatización de compras para tu negocio.",
+    "file": "recursos/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/nosotros/",
+    "title": "Qué es IMAN | Soluciones para negocios de Argentina",
+    "description": "Conocé IMAN: fidelización con Wallet y email, catálogos minoristas y mayoristas, y automatizaciones a medida para negocios de Argentina.",
+    "file": "nosotros/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/informacion/",
+    "title": "Información oficial de IMAN y sus servicios",
+    "description": "Definiciones de IMAN Fidelización, Comercios, Turnos y Automatizaciones. Modalidad y alcance de fidelización, catálogos y automatización.",
+    "file": "informacion/index.html",
+    "dateModified": "2026-09-27"
+  },
+  {
+    "path": "/privacidad/",
+    "title": "Privacidad y contacto | IMAN",
+    "description": "Información sobre el formulario de contacto, servicios externos y tratamiento de datos en los proyectos de IMAN.",
+    "file": "privacidad/index.html",
+    "dateModified": "2026-09-27"
+  }
+]

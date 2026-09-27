@@ -1,0 +1,10 @@
+import { build } from 'esbuild';
+import { mkdir,writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const result=await build({absWorkingDir:root,entryPoints:['worker.mjs'],bundle:true,format:'esm',platform:'neutral',target:'es2022',write:false,minify:true,legalComments:'none'});
+await mkdir(path.join(root,'dist'),{recursive:true});
+await writeFile(path.join(root,'dist','_worker.js'),result.outputFiles[0].text);
+await writeFile(path.join(root,'dist','_routes.json'),JSON.stringify({version:1,include:['/*'],exclude:[]},null,2)+'\n');
+console.log(`Worker built: ${result.outputFiles[0].contents.length} bytes; no Node compatibility required.`);

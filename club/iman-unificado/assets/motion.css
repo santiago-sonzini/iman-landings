@@ -1,0 +1,62 @@
+/* The motion layer keeps IMAN's existing typography, colors and composition. */
+@media (prefers-reduced-motion:no-preference) {
+  .iman-motion-enabled .iman-motion-layer {
+    translate:var(--iman-shift-x,0px) var(--iman-shift-y,0px);
+    transition:translate 420ms cubic-bezier(.2,.7,.2,1);
+  }
+  .iman-motion-enabled .nav>a {
+    position:relative;
+  }
+  .iman-motion-enabled .nav>a:after {
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-5px;
+    height:2px;
+    border-radius:2px;
+    background:currentColor;
+    transform:scaleX(0);
+    transform-origin:right center;
+    transition:transform 240ms cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .iman-motion-enabled .nav>a:hover:after,
+  .iman-motion-enabled .nav>a:focus-visible:after {
+    transform:scaleX(1);
+    transform-origin:left center;
+  }
+  .iman-motion-enabled .button>.arrow,
+  .iman-motion-enabled .text-link>span:last-child,
+  .iman-motion-enabled .iman-demo-contact>span {
+    display:inline-block;
+    transition:translate 220ms cubic-bezier(.2,.7,.2,1);
+  }
+  .iman-motion-enabled .button:hover>.arrow,
+  .iman-motion-enabled .button:focus-visible>.arrow,
+  .iman-motion-enabled .text-link:hover>span:last-child,
+  .iman-motion-enabled .text-link:focus-visible>span:last-child,
+  .iman-motion-enabled .iman-demo-contact:hover>span,
+  .iman-motion-enabled .iman-demo-contact:focus-visible>span {
+    translate:3px -1px;
+  }
+  .iman-motion-enabled .iman-motion-card .num {
+    transform-origin:left center;
+    transition:transform 240ms cubic-bezier(.2,.7,.2,1);
+  }
+  .iman-motion-enabled .iman-motion-card:hover .num {
+    transform:translateX(3px);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .iman-motion-layer {
+    translate:none!important;
+    transition:none!important;
+  }
+  .iman-motion-enabled .nav>a:after,
+  .iman-motion-enabled .button>.arrow,
+  .iman-motion-enabled .text-link>span:last-child,
+  .iman-motion-enabled .iman-demo-contact>span {
+    transition:none!important;
+  }
+}

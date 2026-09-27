@@ -1,0 +1,14 @@
+public/
+server/dist/
+node_modules/
+__pycache__/
+*.pyc
+*.zip
+.env*
+.dev.vars
+.wrangler/
+.DS_Store
+conceptos/
+docs/dns-before-migration.json
+docs/iman-zone-import.txt
+docs/seo/imports/

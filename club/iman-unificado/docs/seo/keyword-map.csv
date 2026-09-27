@@ -1,0 +1,15 @@
+prioridad,consulta_principal,intencion,url_destino,estado,variantes_naturales,prueba_necesaria,accion
+1,fidelización con Wallet para negocios,contratar,/fidelizacion/,existente,"tarjeta de fidelización Apple Wallet; Google Wallet para comercios",recorrido alta pase compra canje y alcance a medida,solicitar demo Fidelización
+1,IMAN fidelización,navegar,/,existente,"IMAN Argentina; IMAN Wallet",marca y resumen claro de ofertas,elegir servicio
+1,catálogo digital con pedidos por WhatsApp,contratar,/comercios/,existente,"catálogo online para comercios; catálogo mayorista",demo catálogo y pedido detallado,consultar catálogo
+1,automatizar compras a proveedores,contratar,/automatizaciones/,existente,"comparar cotizaciones proveedores; automatización compras B2B",demo con variables comparadas y aprobación,describir proceso de compras
+1,notificaciones Wallet o email para fidelizar,evaluar,/recursos/wallet-email-notificaciones-fidelizacion/,propuesto,"notificaciones Apple Wallet negocios; notificaciones Google Wallet clientes",fuentes Apple Google y ejemplo sin promesa de entrega,consultar campaña Fidelización
+1,qué debe tener un catálogo para recibir pedidos,aprender,/recursos/catalogo-digital-pedidos-whatsapp-mayorista/,propuesto,"catálogo mayorista por WhatsApp; pedidos con cantidades y presentaciones",ejemplo pedido retail y mayorista,ver demo Comercios
+1,cómo comparar cotizaciones de proveedores,aprender,/recursos/automatizar-compras-comparar-proveedores/,propuesto,"precio plazo proveedor; aprobación compras automatizada",tabla ilustrativa comparando costo plazo cantidad y moneda,ver demo compras
+2,club de clientes en Wallet qué es,aprender,/recursos/club-wallet/,existente,"tarjeta digital de puntos; cómo funciona Club Wallet",definición recorrido y fuentes técnicas,ver Fidelización
+2,cómo recuperar clientes que dejaron de comprar,aprender,/recursos/recuperar-clientes/,existente,"reactivar clientes; campañas de recompra",ejemplo con frecuencia real sin atribuir ventas al clic,consultar campaña
+2,qué proceso automatizar primero,aprender,/recursos/automatizar-procesos/,existente,"automatizaciones para pymes; tareas repetidas negocio",matriz frecuencia errores control excepciones,consultar Automatizaciones
+3,sistema de turnos online para barberías,contratar,/turnos/landing/,existente,"agenda online barbería; reservas peluquería",demo claramente rotulada y alcance confirmado,ver demo Turnos
+2,qué es IMAN,navegar,/nosotros/,existente,"servicios IMAN; equipo IMAN",identidad responsable y forma de trabajar,contactar
+2,costo de implementar un programa de fidelización,evaluar,/fidelizacion/,ampliar FAQ existente,"precio tarjeta Wallet negocio; cuánto cuesta club de clientes",variables de cotización sin inventar precios o plazos,pedir propuesta
+2,catálogo mayorista o tienda online,evaluar,/comercios/,ampliar página existente,"lista de precios por cliente; pedidos B2B",comparación de flujos y condiciones reales,ver demo mayorista

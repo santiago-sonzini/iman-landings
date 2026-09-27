@@ -1,0 +1,359 @@
+{
+  "generated_at": "2026-09-27T21:02:59.169770+00:00",
+  "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
+  "site": "https://www.iman.ar",
+  "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
+  "counts": {
+    "html": 20,
+    "indexable_html": 15,
+    "sitemap_urls": 15,
+    "error": 0,
+    "warning": 0,
+    "notice": 0
+  },
+  "findings": [],
+  "pages": [
+    {
+      "path": "/",
+      "title": "IMAN | Fidelización con Wallet, notificaciones y email",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 0,
+      "incoming_pages": 16,
+      "schema_types": [
+        "Answer",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "Organization",
+        "Question",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/404.html",
+      "title": "Página no encontrada | IMAN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 0,
+      "schema_types": []
+    },
+    {
+      "path": "/automatizaciones/",
+      "title": "Automatizaciones y agentes de IA a medida | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/automatizaciones/compras-demo/",
+      "title": "Ejemplo de automatización de compras mayoristas | IMAN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": 2,
+      "incoming_pages": 2,
+      "schema_types": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/comercios/",
+      "title": "Catálogos digitales para comercios y mayoristas | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/fidelizacion/",
+      "title": "Club de clientes en Apple Wallet y Google Wallet | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/informacion/",
+      "title": "Información oficial de IMAN y sus servicios",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/nosotros/",
+      "title": "Qué es IMAN | Soluciones para negocios de Argentina",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/privacidad/",
+      "title": "Privacidad y contacto | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/",
+      "title": "Guías de Wallet, catálogos y automatización | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 15,
+      "schema_types": [
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/automatizar-compras-comparar-proveedores/",
+      "title": "Automatizar compras: comparar proveedores sin perder el control | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 2,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/automatizar-procesos/",
+      "title": "Qué proceso conviene automatizar primero en un negocio | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/catalogo-digital-pedidos-whatsapp-mayorista/",
+      "title": "Catálogo digital con pedidos por WhatsApp: qué necesita tu negocio | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 2,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/club-wallet/",
+      "title": "Club de clientes en Wallet: qué es y cómo funciona | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/recuperar-clientes/",
+      "title": "Cómo empezar a recuperar clientes con tus ventas | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/recursos/wallet-email-notificaciones-fidelizacion/",
+      "title": "Wallet o email: cómo combinar notificaciones para fidelizar clientes | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 2,
+      "schema_types": [
+        "Article",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/turnos/",
+      "title": "Demo de Imán Turnos — Barbería El Roble",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": []
+    },
+    {
+      "path": "/turnos/landing/",
+      "title": "Sistema de turnos online para barberías y negocios | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 17,
+      "schema_types": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/turnos/reservar.html",
+      "title": "Demo de reserva — Imán Turnos",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 0,
+      "schema_types": []
+    },
+    {
+      "path": "/urbase/",
+      "title": "URBASE — Soportes de pared para cascos de moto",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 0,
+      "schema_types": [
+        "Brand",
+        "ContactPoint",
+        "Country",
+        "ImageObject",
+        "Offer",
+        "Organization",
+        "Product",
+        "PropertyValue",
+        "WebPage",
+        "WebSite"
+      ]
+    }
+  ]
+}

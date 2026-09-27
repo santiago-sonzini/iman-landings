@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="770" viewBox="0 0 600 770" role="img" aria-labelledby="title description">
+<title id="title">Una compra con reglas claras</title><desc id="description">Solicitud, comparación, contrapropuesta si corresponde y aprobación. Se revisan las condiciones antes de emitir una orden.</desc>
+<rect x="1" y="1" width="598" height="768" rx="22" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#171923">
+<path d="M40 49H77" stroke="#4F46F5" stroke-width="4" stroke-linecap="round"/>
+<text x="91" y="56" fill="#4F46F5" font-size="19" font-weight="700" letter-spacing="1.5">IMAN / GUÍAS</text>
+<text x="40" y="105" font-size="30" font-weight="700">Una compra con reglas claras</text>
+<rect x="40" y="142" width="520" height="110" rx="13" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<circle cx="76" cy="177" r="17" fill="#4F46F5"/><text x="76" y="184" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">1</text>
+<text x="109" y="185" font-size="26" font-weight="700">Solicitud</text>
+<text x="60" y="219" fill="#565B70" font-size="22">Producto, cantidad y fecha necesaria</text>
+<path d="M300 258v22m-7-7 7 7 7-7" fill="none" stroke="#4F46F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="291" width="520" height="110" rx="13" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<circle cx="76" cy="326" r="17" fill="#4F46F5"/><text x="76" y="333" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">2</text>
+<text x="109" y="334" font-size="26" font-weight="700">Comparación</text>
+<text x="60" y="368" fill="#565B70" font-size="22">Precio total, cantidad y entrega</text>
+<path d="M300 407v22m-7-7 7 7 7-7" fill="none" stroke="#4F46F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="440" width="520" height="110" rx="13" fill="#FFFFFF" stroke="#E1E0EC" stroke-width="2"/>
+<circle cx="76" cy="475" r="17" fill="#4F46F5"/><text x="76" y="482" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">3</text>
+<text x="109" y="483" font-size="26" font-weight="700">Contrapropuesta</text>
+<text x="60" y="517" fill="#565B70" font-size="22">Si hace falta: preparar ajustes</text>
+<text x="60" y="542" fill="#565B70" font-size="22">para revisar antes de comunicarlos</text>
+<path d="M300 556v22m-7-7 7 7 7-7" fill="none" stroke="#4F46F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="589" width="520" height="110" rx="13" fill="#F3F2FF" stroke="#4F46F5" stroke-width="2"/>
+<circle cx="76" cy="624" r="17" fill="#4F46F5"/><text x="76" y="631" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">4</text>
+<text x="109" y="632" font-size="26" font-weight="700">Aprobación</text>
+<text x="60" y="666" fill="#565B70" font-size="22">Autorizar antes de emitir la orden</text>
+<text x="40" y="741" font-size="21" fill="#565B70">Preparar una compra no equivale a enviarla.</text>
+</g></svg>

@@ -1,0 +1,17 @@
+{
+  "pages": 15,
+  "errors": [],
+  "checks": [
+    "single h1",
+    "unique canonical",
+    "description",
+    "JSON-LD parse",
+    "visible FAQ questions",
+    "internal files and anchors",
+    "legacy contact/brand",
+    "sitemap",
+    "demo noindex",
+    "Open Graph image",
+    "no env files"
+  ]
+}
