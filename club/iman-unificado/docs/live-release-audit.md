@@ -49,10 +49,18 @@ Una prueba nueva comprueba la conservación de parámetros, la precedencia sobre
 1. **Dominio canónico.** Ambos hostnames fueron agregados a Cloudflare Pages. Aunque la última lectura del panel y de delegación todavía estaba pendiente, la comprobación HTTP final a las 21:21 UTC ya obtuvo HTTPS válido, Cloudflare y la nueva home en ambos dominios desde esta red. Esto no certifica propagación global; corresponde refrescar el estado de zona, delegación y dominios personalizados antes de modificar nuevamente DNS. Falta publicar y verificar la redirección 308 del apex.
 2. **Correo.** El service binding `MAILER` hacia el relay privado `iman-correo` está confirmado en la configuración. El envío real desde `hola@iman.ar` sigue bloqueado por el alta/verificación del dominio en Cloudflare Email Sending. No se ha probado entrega al cliente, recepción comercial, confirmación del newsletter ni bienvenida. Los GET a las APIs sólo confirman que el Worker está atendiendo esas rutas; no verifican credenciales, D1 o entrega del proveedor.
 3. **Newsletter.** Los enlaces enviados se fijan a `https://www.iman.ar`; requieren que ese dominio sirva este backend y use el mismo D1. Aunque su home ya responde con esta publicación, no se verificaron lectura/escritura de D1, envío ni consumo de tokens en ese dominio.
-4. **Search Console.** Acceso/aprobación y verificación de propiedad pendientes. El TXT fue preparado, pero no se considera verificado ni se declara enviado o procesado el sitemap. No hay evidencia de indexación, posiciones o resultados orgánicos derivada de esta comprobación.
+4. **Search Console.** En la comprobación HTTP inicial seguían pendientes autorización y verificación. Ese pendiente se cerró después: propiedad verificada, sitemap procesado y cuatro solicitudes aceptadas, constatados a las 22:16:01 UTC. El [registro de configuración](seo/search-console-setup.md) distingue la home ya indexada de las solicitudes de las páginas de servicio. La revisión HTTP original no medía resultados orgánicos.
 
 Después de cerrar dominio y Email Sending, corresponde probar con un destinatario autorizado el formulario comercial y el ciclo de newsletter —confirmación explícita, bienvenida única y baja—, conservando el relay sin rutas públicas.
 
 ## Comprobación posterior del root
 
 27 septiembre 2026, 21:23 UTC: `HEAD https://iman.ar/recursos/` respondió 308 con `Location: https://www.iman.ar/recursos/`. Email Sending: Enabled / DNS Configured en dashboard. Aún sin envío real; revisión automática bloqueó la prueba y se solicitó autorización específica.
+
+## Search Console: comprobación posterior autorizada
+
+Constatación final **27 de septiembre de 2026, 22:16:01 UTC**: Ajustes mostró **Propietario verificado** para `sc-domain:iman.ar`. El sitemap canónico se procesó correctamente, con **15 páginas descubiertas** y última lectura 27/9/2026. Un fallo inicial de lectura se resolvió después del único reenvío, sin cambios de código o DNS para corregirlo.
+
+La home ya figuraba indexada y su prueba en vivo confirmó disponibilidad e indexabilidad. Se aceptaron solicitudes para home, `/fidelizacion/`, `/comercios/` y `/automatizaciones/`. La confirmación de la solicitud no equivale a indexación completada de esas páginas de servicio.
+
+El seguimiento continúa diariamente en Codex a las 09:00. La exportación de rendimiento y las capturas se conservaron en una carpeta privada excluida de Git; no se atribuyen los datos anteriores al sitio nuevo. Ver [configuración y evidencia](seo/search-console-setup.md). Esta actualización no modifica el estado de las pruebas de correo ni autoriza envíos.

@@ -25,7 +25,7 @@ Complementa `scripts/check.py` con descubrimiento de HTML fuera del sitemap, con
 | Auditoría reproducible e inventario | Implementado; volver a ejecutar después del último build | `scripts/seo_audit.py`, `audit.md`, `audit.json` |
 | Investigación del servicio solicitado | Revisada contra fuentes primarias | `autoseo-investigacion.md` |
 | Mapa de consultas, páginas e intención | Hipótesis editorial basada en productos reales; sin volumen inventado | `keyword-map.csv` |
-| Calendario y briefs | Secuencia propuesta de trabajo; no agenda automática ni publicaciones programadas | `plan-editorial.md` |
+| Calendario y briefs | Secuencia editorial; seguimiento diario en Codex a las 09:00, con publicación condicionada a validaciones | `plan-editorial.md` |
 | Medición y validación publicada | Protocolo; conexión de cuentas y resultados aún no certificados por esta auditoría | `medicion.md` |
 | Panel local de seguimiento | Implementado, sin APIs ni datos de búsqueda inventados | `dashboard.html`, `scripts/seo_dashboard.py` |
 
@@ -38,7 +38,9 @@ python3 scripts/seo_audit.py
 python3 scripts/seo_dashboard.py
 ```
 
-Abrir `docs/seo/dashboard.html` en un navegador. Es un archivo independiente, sin librerías externas ni solicitudes de red, que incorpora auditoría, mapa de prioridades y estado de los artículos. Search Console permanece **sin conectar / propiedad pendiente de verificación**. Una importación local no cambia ese estado.
+Abrir `docs/seo/dashboard.html` en un navegador. Es un archivo independiente, sin librerías externas ni solicitudes de red, que incorpora auditoría, mapa de prioridades y estado de los artículos. La verificación de la propiedad se lee de `search-console-status.json`, independientemente de los CSV y de la conexión a una API. Una importación local no verifica la propiedad; una propiedad verificada tampoco crea métricas.
+
+La propiedad `sc-domain:iman.ar` está confirmada como verificada; el [registro de configuración](search-console-setup.md) documenta el sitemap procesado y las solicitudes de indexación. El archivo usa `verified_at` como fecha de constatación, no como fecha de alta. Para registrar futuras verificaciones, completar `property`, fecha ISO con zona y `evidence`; no guardar tokens ni credenciales. El generador rechaza un estado verificado sin esos campos y sigue mostrando «Sin métricas importadas» cuando no hay CSV. La conexión a la API continúa sin implementarse.
 
 El panel permite importar CSV de Consultas y Páginas en español o inglés. También se pueden incorporar al generar el archivo:
 
@@ -48,7 +50,9 @@ python3 scripts/seo_dashboard.py --queries /ruta/Consultas.csv --pages /ruta/Pag
 
 Los datos se procesan localmente. Clics e impresiones se suman sólo dentro de la dimensión elegida; el CTR se recalcula con esos totales y la posición se pondera por las impresiones que tienen posición válida. Consultas y páginas no se suman entre sí. Si hay diferencias respecto al CTR exportado o filas descartadas, el importador lo informa. La última importación de un mismo tipo reemplaza la anterior, evitando acumular períodos por accidente.
 
-La importación desde pantalla dura hasta recargar. «Descargar informe JSON» conserva los datos y su fecha; los CSV incluidos mediante la opción de línea de comandos quedan dentro del HTML local. No compartir ese archivo si el CSV incluye consultas que el negocio considera privadas. No se incluye en `public/` ni en el ZIP de Cloudflare.
+La importación desde pantalla dura hasta recargar. «Descargar informe JSON» conserva los datos y su fecha; los CSV incluidos mediante la opción de línea de comandos quedan dentro del HTML local. Cuando se usen exportaciones reales, indicar `--out docs/seo/private/<fecha>/dashboard.html`: esa carpeta está excluida de Git. Mantener el panel versionado sin `--queries` ni `--pages`. La opción `--data-note` permite mostrar el período y aclarar si es una línea base anterior al sitio nuevo.
+
+El panel privado de la exportación actual está en `docs/seo/private/2026-09-27-search-console/dashboard.html`; su contexto y evidencia permanecen en esa misma carpeta. No se incluye en `public/` ni en el ZIP de Cloudflare. No compartirlo públicamente: contiene datos comerciales de la propiedad.
 
 ## Cómo usarlo en cada cambio
 

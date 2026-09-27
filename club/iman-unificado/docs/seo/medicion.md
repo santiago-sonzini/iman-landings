@@ -18,11 +18,11 @@ Revisar indexación de inicio, los tres servicios y cada recurso publicado. Veri
 | Consulta calificada | IMAN registró necesidad, encaje y siguiente paso | Venta cerrada |
 | Venta | Aceptación comercial registrada por IMAN | Causalidad exclusiva del SEO |
 
-El código local actual emite eventos de intención y conversión a Google Ads/Meta sólo con consentimiento y en dominio de producción. No se verificó recepción en esas cuentas. No se encontró un panel orgánico unificado ni una importación de Search Console en este módulo. Registrar fuentes/campañas disponibles junto con la consulta comercial sin mandar nombre, email, teléfono o texto libre a herramientas analíticas.
+El código local actual emite eventos de intención y conversión a Google Ads/Meta sólo con consentimiento y en dominio de producción. No se verificó recepción en esas cuentas. El panel SEO local admite exportaciones CSV de Search Console; no tiene conexión a su API. El estado de propiedad se registra por separado en `search-console-status.json` y requiere evidencia antes de marcarse como verificado. Registrar fuentes/campañas disponibles junto con la consulta comercial sin mandar nombre, email, teléfono o texto libre a herramientas analíticas.
 
 ## Revisión semanal propuesta
 
-No se creó un scheduler. Al revisar, registrar:
+El seguimiento «IMAN · SEO y conversión» está programado en Codex diariamente a las 09:00. Prioriza sitemap e indexación y mantiene las exportaciones de Search Console en la carpeta privada ignorada. El panel local no publica contenido ni se conecta a la API. La tarea de Codex puede publicar hasta una guía por ejecución si supera las validaciones, sin una cuota obligatoria. Al revisar, registrar:
 
 1. Páginas con impresiones relevantes pero poca respuesta comercial: mejorar claridad, demo o próximo paso según evidencia.
 2. Consultas que muestran una duda no resuelta: ampliar la página existente o redactar una guía diferente si corresponde.

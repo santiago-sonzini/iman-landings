@@ -1,6 +1,6 @@
 # Cloudflare: pendientes de publicación y operación
 
-Estado documental: **sitio y dominio publicados; Email Sending habilitado; pruebas de correo y Search Console requieren autorización**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
+Estado documental: **sitio y dominio publicados; Email Sending habilitado; Search Console verificado y sitemap procesado; pruebas de correo pendientes de autorización**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
 
 ## Configuración realizada
 
@@ -15,7 +15,7 @@ Estado documental: **sitio y dominio publicados; Email Sending habilitado; prueb
 | Worker `iman-correo` | Código desplegado como relay privado, con `workers.dev`, previews y rutas públicas desactivados | Prueba mediante el service binding |
 | `EMAIL` del relay | Binding preparado; dominio Enabled / DNS Configured | Validar envío real autorizado |
 | `MAILER` de Pages | Guardado y verificado hacia `iman-correo` | Prueba de entrega tras activar Email Sending |
-| Search Console | TXT de verificación guardado en DNS | Propagación, verificación de propiedad y sitemap |
+| Search Console | Propietario verificado; sitemap procesado con 15 URLs descubiertas; cuatro solicitudes aceptadas | Observar indexación posterior de las páginas de servicio, sin confundir solicitudes con resultados |
 | Despliegue por Git | Publicado y verificado en `https://iman-4jp.pages.dev/` | Automático desde `codex/iman-unificado`; main sin cambios |
 
 No se realizaron pruebas de correo real que permitan considerar la entrega operativa.
@@ -54,14 +54,14 @@ Con el dominio canónico apuntando a la versión correcta:
 2. Probar newsletter: solicitud, email inicial, GET sin suscripción automática, confirmación explícita, bienvenida única y baja.
 3. Verificar que visitas/clics no se confundan con consultas recibidas y que los píxeles respeten la elección de medición.
 4. Validar enlaces de Calendly, versiones móvil/escritorio, datos estructurados y redirecciones servidas por Cloudflare.
-5. Confirmar la propagación del TXT de Search Console, verificar la propiedad, enviar el sitemap y revisar las URLs importantes después de publicar. El panel SEO local todavía debe mostrar la cuenta sin conectar mientras no se incorporen datos reales.
+5. Dar seguimiento a la indexación en Search Console. Propiedad y sitemap quedaron confirmados a las 22:16:01 UTC; ver [registro de configuración](seo/search-console-setup.md). El panel versionado no contiene métricas; las exportaciones reales se conservan en la carpeta privada ignorada. No hay conexión a la API.
 
 Las pruebas unitarias ya realizadas usan stubs y no sustituyen una comprobación real de la cuenta. No hay una campaña masiva, un cron de newsletter ni un envío recurrente configurado por este código.
 
 ## Decisiones y autorizaciones
 
 La revisión automática bloqueó modificar main; se usó la alternativa segura de publicar desde codex/iman-unificado. Git y Cloudflare están conectados sin modificar la rama principal.
-La verificación de propiedad Search Console quedó pendiente de la autorización específica solicitada al usuario. El TXT se guardó en ambos proveedores para preservar la validación durante la migración.
+Inicialmente se esperó la autorización específica para Search Console. El usuario la concedió después y se confirmó la propiedad existente, el procesamiento del sitemap y las solicitudes de indexación; el [registro de configuración](seo/search-console-setup.md) conserva ese cierre. El TXT se guardó en ambos proveedores para preservar la validación durante la migración.
 
 ## Cierre de esta iteración (21:25 UTC)
 
@@ -70,4 +70,11 @@ La verificación de propiedad Search Console quedó pendiente de la autorizació
 - `www` apunta a `iman-4jp.pages.dev` tanto en Cloudflare como en Donweb durante la transición; los subdominios de demos se conservaron.
 - Email Sending del dominio: Sending status Enabled y DNS records Configured. Se configuraron MX de rebotes, SPF, DKIM y DMARC mediante el asistente oficial.
 - La consulta interna de prueba quedó preparada pero sin enviar: la revisión automática exige aprobación del payload y destinatario. Newsletter no fue enviada ni se suscribió a nadie.
-- Search Console: también pendiente de aprobación explícita para verificar propiedad. No reenviar ni verificar hasta recibir las respuestas solicitadas.
+- Search Console a las 21:25 UTC: estaba pendiente de aprobación explícita. Este pendiente quedó cerrado posteriormente con autorización del usuario; ver la actualización siguiente.
+
+## Cierre posterior de Search Console (22:16:01 UTC)
+
+- `sc-domain:iman.ar`: **Propietario verificado** en Ajustes; propiedad existente, no creada en esta intervención.
+- Sitemap `https://www.iman.ar/sitemap.xml`: **procesado correctamente**, 15 páginas descubiertas, última lectura 27/9/2026. El error inicial de lectura quedó resuelto; no permanece como pendiente.
+- Home ya indexada y disponible en prueba en vivo. Solicitudes de actualización/indexación aceptadas para home, Fidelización, Comercios y Automatizaciones.
+- La aceptación de solicitudes no confirma todavía la indexación de todas las páginas de servicio. Seguimiento diario en Codex a las 09:00; datos y capturas guardados en privado. [Detalle y límites](seo/search-console-setup.md).

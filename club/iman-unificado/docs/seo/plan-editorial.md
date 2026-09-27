@@ -1,6 +1,6 @@
 # Plan editorial de 30 días
 
-Secuencia propuesta desde la publicación estable. No es una automatización programada. Consultas e intenciones son hipótesis; no se inventaron volumen, dificultad ni posición. Primero se mejoran las páginas que ayudan a contratar, después se agregan contenidos con una pregunta distinta.
+Secuencia editorial propuesta desde la publicación estable. El seguimiento «IMAN · SEO y conversión» está programado en Codex diariamente a las 09:00; el panel local no publica contenido. La tarea de Codex puede publicar hasta una guía por ejecución si supera las validaciones, sin hacerlo para cumplir una cuota. Consultas e intenciones son hipótesis; no se inventaron volumen, dificultad ni posición. Primero se mejoran las páginas que ayudan a contratar, después se agregan contenidos con una pregunta distinta.
 
 ## Calendario de trabajo
 
