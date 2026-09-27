@@ -74,8 +74,8 @@ cd server
 npm test
 npm run build
 cd ..
-python3 scripts/content_pipeline.py
 python3 scripts/build.py
+python3 scripts/content_pipeline.py
 python3 scripts/check.py
 python3 scripts/seo_audit.py
 python3 scripts/seo_dashboard.py

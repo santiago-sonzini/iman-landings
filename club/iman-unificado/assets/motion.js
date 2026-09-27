@@ -67,8 +67,8 @@
         if (reward) enter(reward,430,8);
       }
       if (scene.matches('.wallet-demo')) {
-        const notification = scene.querySelector('.notification');
-        const pass = scene.querySelector('.mini-pass');
+        const notification = scene.querySelector('.notification,.wallet-photo-notification');
+        const pass = scene.querySelector('.mini-pass,.wallet-photo-pass');
         if (notification) enter(notification,300,10);
         if (pass) enter(pass,460,10);
       }
@@ -76,7 +76,7 @@
 
     const hero = document.querySelector('.hero,.subhero');
     if (!hero) return;
-    const layers = [...hero.querySelectorAll('.cafe-device,.showcase-dashboard,.wallet-demo .phone')];
+    const layers = [...hero.querySelectorAll('.cafe-device,.showcase-dashboard,.wallet-demo .phone,.wallet-photo-device')];
     if (!layers.length) return;
     let bounds,raf = 0,latestPoint;
     layers.forEach(layer => layer.classList.add('iman-motion-layer'));

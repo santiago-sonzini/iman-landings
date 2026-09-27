@@ -5,6 +5,7 @@
   const tabs = [...section.querySelectorAll('[data-demo]')];
   const panel = section.querySelector('#iman-demo-panel');
   const frame = section.querySelector('#iman-demo-frame');
+  const petPreview = section.querySelector('[data-demo-pet-preview]');
   const staticPreview = section.querySelector('[data-demo-static-preview]');
   const displayType = section.querySelector('[data-demo-display-type]');
   const fallbackCopy = section.querySelector('[data-demo-fallback-copy]');
@@ -36,17 +37,18 @@
   }
 
   function displayMode() {
-    const local = selected === 'dietetica';
-    if (staticPreview) staticPreview.hidden = !local;
+    const local = selected === 'dietetica' || selected === 'pet';
+    if (staticPreview) staticPreview.hidden = selected !== 'dietetica';
+    if (petPreview) petPreview.hidden = selected !== 'pet';
     frame.hidden = local;
-    if (displayType) displayType.textContent = local ? 'VISTA PREVIA DE DIETÉTICA' : 'DEMO NAVEGABLE';
-    if (fallbackCopy) fallbackCopy.textContent = local ? 'Para recorrer el catálogo y el Club, ' : 'Podés desplazarte dentro de la pantalla. Si no se visualiza, ';
+    if (displayType) displayType.textContent = local ? `VISTA PREVIA DE ${demos[selected].name.toUpperCase()}` : 'DEMO NAVEGABLE';
+    if (fallbackCopy) fallbackCopy.textContent = local ? 'Para recorrer la experiencia completa, ' : 'Podés desplazarte dentro de la pantalla. Si no se visualiza, ';
     if (local) {
       clearTimeout(loadTimeout);
       // Dietética restricts framing; never load a frame that will display an error.
       frame.removeAttribute('src');
       frame.removeAttribute('data-src');
-      status.textContent = 'Vista previa de Dietética. Abrí la demo completa para recorrerla.';
+      status.textContent = `Vista previa de ${demos[selected].name}. Abrí la demo completa para recorrerla.`;
     } else if (!activated) status.textContent = 'La demo se carga al acercarte a esta sección.';
   }
 
@@ -57,9 +59,11 @@
     clearTimeout(loadTimeout);
     displayMode();
     if (selected === 'dietetica') {replayPreview(); return;}
+    if (selected === 'pet') {petPreview?.querySelector('[data-pet-preview]')?.dispatchEvent(new Event('pet:replay')); return;}
     status.textContent = `Abriendo ${demo.name}…`;
     frame.title = demo.frameTitle;
     // A single cross-origin frame is used. Forms, popups and top navigation remain sandboxed.
+    frame.loading = 'eager';
     frame.src = demo.url;
     loadTimeout = setTimeout(() => {
       status.textContent = 'La vista previa está tardando. La demo completa sigue disponible en el enlace.';
@@ -80,7 +84,7 @@
     title.replaceChildren(document.createTextNode(demo.title[0]), document.createElement('br'), document.createTextNode(demo.title[1]));
     section.querySelector('[data-demo-description]').textContent = demo.description;
     for (const link of section.querySelectorAll('[data-demo-external],[data-demo-fallback]')) link.href = demo.url;
-    if (key !== 'dietetica') frame.dataset.src = demo.url;
+    if (!['dietetica', 'pet'].includes(key)) frame.dataset.src = demo.url;
     frame.title = demo.frameTitle;
     displayMode();
     if (fetchNow) load();
@@ -106,7 +110,7 @@
     });
   }
   frame.addEventListener('load', () => {
-    if (!activated || selected === 'dietetica' || !frame.getAttribute('src')) return;
+    if (!activated || ['dietetica', 'pet'].includes(selected) || !frame.getAttribute('src')) return;
     clearTimeout(loadTimeout);
     // A frame load event cannot verify a cross-origin page or its embedding policy.
     status.textContent = `Vista previa de ${demos[selected].name}. También podés abrirla completa.`;
