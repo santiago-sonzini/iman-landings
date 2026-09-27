@@ -4,7 +4,7 @@ Sitio comercial unificado de IMAN, con la identidad visual de la landing origina
 
 ## Estado local
 
-Actualizado el 27 de septiembre de 2026. **Sitio publicado en https://iman-4jp.pages.dev/ mediante Git.** Cloudflare compila automáticamente la rama `codex/iman-unificado`; `main` permanece sin cambios. La propagación del dominio propio y el correo real siguen pendientes de activación y validación operativa.
+Actualizado el 27 de septiembre de 2026. **Sitio publicado en https://iman-4jp.pages.dev/ mediante Git.** Cloudflare compila automáticamente la rama `codex/iman-unificado`; `main` permanece sin cambios. `www.iman.ar` ya sirve la nueva web y el apex redirige con 308. Email Sending muestra Enabled / DNS Configured; falta una prueba real de entrega, pendiente de aprobación específica.
 
 - 15 páginas canónicas y 6 guías generadas y verificadas. Auditoría sin errores ni advertencias; panel SEO regenerado.
 - Galería de demos recorribles en lugar de las páginas genéricas por rubro. Las URLs antiguas tienen redirecciones a los servicios y demostraciones correspondientes.
@@ -12,12 +12,12 @@ Actualizado el 27 de septiembre de 2026. **Sitio publicado en https://iman-4jp.p
 - Formulario comercial con correo al equipo, confirmación de marca al cliente y enlace de Calendly.
 - Newsletter independiente con doble opt-in, bienvenida y baja mediante enlaces con token.
 - Backend de Cloudflare Email Sending desde `hola@iman.ar`, almacenamiento D1 y relay privado. No usa Gmail SMTP.
-- 31 pruebas del backend aprobadas con proveedores simulados; no enviaron correos reales.
+- 32 pruebas del backend aprobadas con proveedores simulados; no enviaron correos reales.
 - El build produce `public/` y `iman-cloudflare.zip`, con `_worker.js` y `_routes.json`. El conteo y tamaño finales cambian al compilar; los informes deben corresponder a esa misma versión.
 - Repositorio solicitado para el despliegue: [santiago-sonzini/iman-landings](https://github.com/santiago-sonzini/iman-landings). Conectado a Pages: raíz `club/iman-unificado`, comando `bash scripts/build-ci.sh`, salida `public`, rama de producción `codex/iman-unificado`.
 - Las tres propuestas de `conceptos/` fueron descartadas por el usuario. Son un archivo de exploración y no forman parte de `public/` ni del ZIP.
 
-La zona de Cloudflare está creada y los nameservers `sid` y `zelda` quedaron guardados en Donweb, pendientes de propagación. D1 y su esquema, el binding `CONTACT_DB`, las variables de Pages y el relay privado `iman-correo` con `EMAIL` están preparados. El binding `MAILER` está verificado. Falta completar el alta del dominio para Email Sending y probar los correos reales. El TXT de Search Console está guardado en Cloudflare y Donweb; la verificación requiere autorización explícita solicitada al usuario.
+La zona de Cloudflare está activa; nameservers `sid` y `zelda` guardados en Donweb. El DNS puede mantener respuestas previas en algunas cachés mientras termina de propagarse. D1 y su esquema, el binding `CONTACT_DB`, las variables de Pages y el relay privado `iman-correo` con `EMAIL` están preparados. El binding `MAILER` está verificado. Email Sending fue activado para `iman.ar`, con SPF, DKIM y DMARC configurados. La prueba real de correo fue bloqueada por revisión automática y se pidió autorización al usuario; no se envió. El TXT de Search Console está guardado en Cloudflare y Donweb; la verificación requiere autorización explícita solicitada al usuario.
 
 La revisión estática no sustituye la prueba visual final, DNS/HTTPS ni un envío real autorizado. Detalles de operación en [pendientes de publicación](docs/cloudflare-pending.md). Los informes de `docs/` son instantáneas fechadas: revisar su versión antes de usarlos como evidencia del último build.
 

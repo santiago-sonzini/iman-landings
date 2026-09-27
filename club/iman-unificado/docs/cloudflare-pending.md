@@ -1,19 +1,19 @@
 # Cloudflare: pendientes de publicación y operación
 
-Estado documental: **publicación por Git completada; dominio y correo pendientes**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
+Estado documental: **sitio y dominio publicados; Email Sending habilitado; pruebas de correo y Search Console requieren autorización**, 27 de septiembre de 2026. Este archivo registra la configuración realizada y las comprobaciones que todavía faltan. Guardar una configuración no demuestra propagación DNS, despliegue del sitio final ni entrega de correos.
 
 ## Configuración realizada
 
 | Elemento | Estado registrado | Falta cerrar |
 | --- | --- | --- |
-| Zona `iman.ar` en Cloudflare | Creada | Propagación y activación efectiva del dominio |
+| Zona `iman.ar` en Cloudflare | Activa; sitio verificado en dominio real | Pueden persistir cachés de DNS/redirects anteriores |
 | Nameservers en Donweb | `sid.ns.cloudflare.com` y `zelda.ns.cloudflare.com` guardados | Confirmar delegación y resolución pública |
 | Registros anteriores | Siete registros copiados como DNS-only | Contrastar resolución y servicios existentes tras propagación |
 | D1 | Esquema actualizado aplicado | Confirmar lectura/escritura desde el despliegue final |
 | `CONTACT_DB` en Pages | Binding guardado | Verificar en el entorno que se publique |
 | Variables de Pages | Guardadas | Confirmar entorno y disponibilidad en el despliegue final |
 | Worker `iman-correo` | Código desplegado como relay privado, con `workers.dev`, previews y rutas públicas desactivados | Prueba mediante el service binding |
-| `EMAIL` del relay | Binding preparado | Validar envío después del alta del dominio remitente |
+| `EMAIL` del relay | Binding preparado; dominio Enabled / DNS Configured | Validar envío real autorizado |
 | `MAILER` de Pages | Guardado y verificado hacia `iman-correo` | Prueba de entrega tras activar Email Sending |
 | Search Console | TXT de verificación guardado en DNS | Propagación, verificación de propiedad y sitemap |
 | Despliegue por Git | Publicado y verificado en `https://iman-4jp.pages.dev/` | Automático desde `codex/iman-unificado`; main sin cambios |
@@ -62,3 +62,12 @@ Las pruebas unitarias ya realizadas usan stubs y no sustituyen una comprobación
 
 La revisión automática bloqueó modificar main; se usó la alternativa segura de publicar desde codex/iman-unificado. Git y Cloudflare están conectados sin modificar la rama principal.
 La verificación de propiedad Search Console quedó pendiente de la autorización específica solicitada al usuario. El TXT se guardó en ambos proveedores para preservar la validación durante la migración.
+
+## Cierre de esta iteración (21:25 UTC)
+
+- Git automático confirmado: un segundo push publicó el Worker con redirección 308 de `iman.ar` a `www.iman.ar`, preservando ruta y query.
+- `www.iman.ar` figura Active en Pages. Ambos dominios sirven Cloudflare; el sitio se comprobó también en el navegador integrado con una URL nueva para evitar caché de la landing anterior.
+- `www` apunta a `iman-4jp.pages.dev` tanto en Cloudflare como en Donweb durante la transición; los subdominios de demos se conservaron.
+- Email Sending del dominio: Sending status Enabled y DNS records Configured. Se configuraron MX de rebotes, SPF, DKIM y DMARC mediante el asistente oficial.
+- La consulta interna de prueba quedó preparada pero sin enviar: la revisión automática exige aprobación del payload y destinatario. Newsletter no fue enviada ni se suscribió a nadie.
+- Search Console: también pendiente de aprobación explícita para verificar propiedad. No reenviar ni verificar hasta recibir las respuestas solicitadas.
