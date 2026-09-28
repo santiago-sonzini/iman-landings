@@ -1,5 +1,22 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 28 de septiembre de 2026
+
+Constatación: **2026-09-28T12:06:50.472Z**. Las inspecciones del índice muestran **La URL está en Google** y **La página está indexada** para las cuatro páginas prioritarias:
+
+| URL | Estado observado el 28/9 |
+| --- | --- |
+| `https://www.iman.ar/` | Indexada; conserva el estado anterior. |
+| `https://www.iman.ar/fidelizacion/` | Indexada; confirmada después de la solicitud del 27/9. |
+| `https://www.iman.ar/comercios/` | Indexada; la inspección actual ya no muestra la duplicación histórica. |
+| `https://www.iman.ar/automatizaciones/` | Indexada; confirmada después de la solicitud del 27/9. |
+
+El sitemap continúa **Correcto**, con **15 páginas descubiertas** y última lectura el 27/9. No se reenviaron el sitemap ni solicitudes de indexación, y no se modificó DNS. No se detectaron nuevos problemas en estas cuatro inspecciones; esto no sustituye una auditoría de todas las URLs de la propiedad.
+
+Las capturas y el registro estructurado se conservan en `docs/seo/private/2026-09-28-search-console/`, fuera de Git y del sitio público. No se exportaron métricas de rendimiento nuevas. Estar indexado no confirma posiciones ni resultados comerciales.
+
+## Registro histórico del 27 de septiembre
+
 Constatación final: **27 de septiembre de 2026, 22:16:01 UTC**. Esta es la hora de comprobación del estado, no la hora exacta de cada acción ni la fecha de alta de la propiedad.
 
 ## Propiedad y sitemap

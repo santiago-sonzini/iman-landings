@@ -2,7 +2,7 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-09-27T21:12:40.977586+00:00
+Generada: 2026-09-28T12:06:20.249572+00:00
 
 20 HTML · 15 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
@@ -25,7 +25,7 @@ Sin hallazgos en los controles implementados.
 | /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 2 |
 | /recursos/automatizar-procesos/ | Sí | 2 | 1 |
 | /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 2 |
-| /recursos/club-wallet/ | Sí | 2 | 1 |
+| /recursos/club-wallet/ | Sí | 2 | 2 |
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
 | /turnos/landing/ | Sí | 1 | 17 |

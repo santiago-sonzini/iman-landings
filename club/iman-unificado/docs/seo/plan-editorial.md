@@ -53,3 +53,11 @@ Secuencia editorial propuesta desde la publicación estable. El seguimiento «IM
 - **CTA:** «Evaluemos tu circuito de compras».
 
 Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente genere el pipeline editorial. Ningún texto se considera publicado por figurar en este calendario.
+
+## Ejecución del 28 de septiembre de 2026
+
+- Se actualizó la guía existente `/recursos/wallet-email-notificaciones-fidelizacion/`; no se añadió un artículo nuevo.
+- Mejora: pruebas concretas del piloto (alta, saldo, canje, permisos y baja de campañas), diferencias entre actualización del pase y aviso, y CTA al recorrido de Fidelización con enlace a la guía Club Wallet.
+- Fuentes verificadas: referencia oficial Apple `PassFieldContent` y documentación Google Wallet de notificaciones de tarjetas de fidelidad, actualizada el 24/9/2026. El límite de tres mensajes con notificación en 24 horas se presenta como requisito técnico, no como frecuencia recomendada.
+- Comprobaciones: `scripts/build-ci.sh` pasó; 32 pruebas, 15 páginas generadas, validador editorial y auditoría de 20 HTML sin errores, advertencias ni observaciones. No se hicieron envíos de correo.
+- Search Console confirmó las cuatro páginas prioritarias indexadas; evidencia privada y detalles en `search-console-setup.md`. No se volvió a solicitar indexación.
