@@ -1,5 +1,13 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 29 de septiembre de 2026
+
+Las cuatro inspecciones prioritarias (inicio, Fidelización, Comercios y Automatizaciones) vuelven a mostrar **La URL está en Google** y **La página está indexada**. Sin cambio respecto del 28/9; no se enviaron solicitudes nuevas ni se modificó DNS.
+
+El sitemap continúa **Correcto**, con 15 páginas descubiertas y última lectura el **28/9/2026**. El sitemap de la nueva versión publicada contiene 17 URLs; el conteo anterior de Search Console no prueba un fallo de lectura ni justifica reenviarlo. Evidencia de hoy en `docs/seo/private/2026-09-29-search-console/`, excluida de Git y del sitio público. No se exportaron métricas comerciales nuevas.
+
+Se amplió la guía de compras con una negociación hipotética entre dos agentes: solicitud, oferta, contrapropuesta y aprobación. Se mantiene el URL existente y se evita crear otra guía que compita por la misma intención.
+
 ## Seguimiento del 28 de septiembre de 2026
 
 Constatación: **2026-09-28T12:06:50.472Z**. Las inspecciones del índice muestran **La URL está en Google** y **La página está indexada** para las cuatro páginas prioritarias:

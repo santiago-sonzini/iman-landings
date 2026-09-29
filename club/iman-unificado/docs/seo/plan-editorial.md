@@ -61,3 +61,12 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Fuentes verificadas: referencia oficial Apple `PassFieldContent` y documentación Google Wallet de notificaciones de tarjetas de fidelidad, actualizada el 24/9/2026. El límite de tres mensajes con notificación en 24 horas se presenta como requisito técnico, no como frecuencia recomendada.
 - Comprobaciones: `scripts/build-ci.sh` pasó; 32 pruebas, 15 páginas generadas, validador editorial y auditoría de 20 HTML sin errores, advertencias ni observaciones. No se hicieron envíos de correo.
 - Search Console confirmó las cuatro páginas prioritarias indexadas; evidencia privada y detalles en `search-console-setup.md`. No se volvió a solicitar indexación.
+
+## Ejecución del 29 de septiembre de 2026
+
+- Se amplió `/recursos/automatizar-compras-comparar-proveedores/` con una negociación hipotética entre agentes: cotización, contrapropuesta, límites y aprobación. Sin URL nueva.
+- Fuente técnica primaria consultada: documentación oficial de A2A, «Life of a Task». Las reglas comerciales y los importes son un ejemplo editorial propio; no una negociación real ni ahorro garantizado.
+- El usuario descartó el tema de unidades/cajas para Instagram y pidió negociación entre agentes. Carrusel de seis láminas en el estilo publicado: carbón, Playfair Display SC, Libre Baskerville y acentos azul grisáceo. Cuenta actual: @estudio.iman.
+- Validación aislada sobre HEAD c25c1d4 más estos cambios: `scripts/build-ci.sh`, 39 pruebas aprobadas, 22 HTML, 17 URLs en sitemap, cero errores o advertencias SEO. Los cambios ajenos de diseño y correo del checkout no se incorporaron.
+- Search Console: las cuatro páginas prioritarias siguen indexadas; sitemap Correcto, leído el 28/9. Sin reenvíos. Evidencia privada fuera de Git.
+- Instagram publicado y verificado en el perfil: https://www.instagram.com/estudio.iman/p/Dd3v63woMDB/ (seis láminas 4:5, textos alternativos y pregunta concreta en última lámina y descripción). Archivos locales: `social/2026-09-29-negociacion/`; captura `published.png`. Próximas ejecuciones deben evitar repetir este ejemplo.
