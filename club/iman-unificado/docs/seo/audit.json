@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T12:20:21.090226+00:00",
+  "generated_at": "2026-09-29T19:48:26.085484+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
@@ -15,7 +15,7 @@
   "pages": [
     {
       "path": "/",
-      "title": "IMÁN — Menos tareas. Más vínculos.",
+      "title": "IMÁN — Vendé más. Trabajá menos.",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
@@ -48,8 +48,8 @@
       "title": "Contexto de IMÁN para personas y agentes",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 2,
-      "incoming_pages": 17,
+      "click_depth": 1,
+      "incoming_pages": 18,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -97,7 +97,7 @@
       "title": "Ejemplo de automatización de compras mayoristas | IMAN",
       "noindex": true,
       "in_sitemap": false,
-      "click_depth": 4,
+      "click_depth": 3,
       "incoming_pages": 1,
       "schema_types": [
         "BreadcrumbList",
@@ -167,8 +167,8 @@
       "title": "Privacidad y contacto | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 2,
-      "incoming_pages": 17,
+      "click_depth": 1,
+      "incoming_pages": 18,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -182,8 +182,8 @@
       "title": "Guías de Wallet, catálogos y automatización | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 2,
-      "incoming_pages": 17,
+      "click_depth": 1,
+      "incoming_pages": 18,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -197,7 +197,7 @@
       "title": "Automatizar compras: comparar proveedores sin perder el control | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 1,
       "schema_types": [
         "Article",
@@ -213,7 +213,7 @@
       "title": "Qué proceso conviene automatizar primero en un negocio | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 1,
       "schema_types": [
         "Article",
@@ -229,7 +229,7 @@
       "title": "Catálogo digital con pedidos por WhatsApp: qué necesita tu negocio | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 1,
       "schema_types": [
         "Article",
@@ -245,7 +245,7 @@
       "title": "Club de clientes en Wallet: qué es y cómo funciona | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 2,
       "schema_types": [
         "Article",
@@ -261,7 +261,7 @@
       "title": "Cómo empezar a recuperar clientes con tus ventas | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 1,
       "schema_types": [
         "Article",
@@ -277,7 +277,7 @@
       "title": "Wallet o email: cómo combinar notificaciones para fidelizar clientes | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 1,
       "schema_types": [
         "Article",
@@ -308,7 +308,7 @@
       "title": "Demo de Imán Turnos — Barbería El Roble",
       "noindex": true,
       "in_sitemap": false,
-      "click_depth": 4,
+      "click_depth": 3,
       "incoming_pages": 1,
       "schema_types": []
     },
@@ -317,7 +317,7 @@
       "title": "Sistema de turnos online para barberías y negocios | IMAN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 3,
+      "click_depth": 2,
       "incoming_pages": 4,
       "schema_types": [
         "ContactPoint",

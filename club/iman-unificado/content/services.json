@@ -1,0 +1,46 @@
+[
+  {
+    "id": "fidelizacion", "name": "Fidelización", "backend": "IMAN Fidelización", "color": "#75cedd", "route": "/fidelizacion/",
+    "short": "Dale a tus clientes un motivo para volver.", "headline": "La próxima compra empieza con un vínculo.",
+    "what": "Diseñamos e implementamos programas de fidelización con la identidad de tu negocio. Tarjetas en Apple Wallet y Google Wallet, beneficios, puntos o sellos, notificaciones y campañas de email, según el alcance acordado.",
+    "solves": "Ayuda a sostener el contacto después de una compra, organizar beneficios y acompañar la relación con tus clientes.",
+    "examples": ["Una cafetería que reconoce visitas con sellos y un beneficio definido.", "Un comercio que comunica novedades de su Club a clientes que autorizaron el contacto.", "Un negocio que prepara una campaña de email para invitar a volver a un segmento de clientes."],
+    "needs": "Una propuesta de beneficios sostenible, reglas de compra y canje, un equipo que pueda operarla y permisos para comunicarse con sus clientes.",
+    "scope": "La identidad de la tarjeta, las reglas, los canales, el registro de operaciones, las conexiones y el acompañamiento se definen a medida. Los avisos de Wallet dependen de las funciones de cada plataforma y de los permisos del dispositivo; no se garantiza su recepción.",
+    "fit": "Tiene sentido para negocios con compras recurrentes y un beneficio que puedan sostener. Si todavía no hay una propuesta clara, empezamos por definirla.",
+    "question": "¿Qué te gustaría que motive a tus clientes a volver?", "cta": "Quiero que mis clientes vuelvan"
+  },
+  {
+    "id": "catalogos", "name": "Catálogos", "backend": "IMAN Comercios · Catálogos", "color": "#e5bd7c", "route": "/comercios/",
+    "short": "Tus productos claros. Tus pedidos, ordenados.", "headline": "Más claridad entre elegir y pedir.",
+    "what": "Desarrollamos catálogos digitales y recorridos de pedidos para negocios minoristas y mayoristas, organizados alrededor de sus productos y condiciones comerciales.",
+    "solves": "Permite presentar una oferta ordenada y reducir idas y vueltas para conocer productos, condiciones y datos necesarios para pedir.",
+    "examples": ["Un minorista que comparte su catálogo por un enlace.", "Una distribuidora que presenta categorías, formatos y condiciones mayoristas.", "Un negocio que necesita recibir pedidos con cantidades y datos completos."],
+    "needs": "Productos, categorías, imágenes y condiciones actualizadas; una persona responsable de mantener la información y un circuito definido para recibir y confirmar pedidos.",
+    "scope": "La estructura, las condiciones por cliente y el recorrido del pedido se acuerdan por proyecto. Pagos, stock sincronizado e integraciones requieren evaluación y presupuesto específicos: no se presuponen incluidos.",
+    "fit": "Tiene sentido si tus clientes necesitan consultar una oferta y hoy el pedido exige demasiados mensajes. Un catálogo sencillo puede alcanzar como primera etapa.",
+    "question": "¿Cómo te llegan los pedidos hoy y qué se complica?", "cta": "Quiero ordenar mis pedidos"
+  },
+  {
+    "id": "automatizaciones", "name": "Automatizaciones", "backend": "IMAN Automatizaciones", "color": "#b5a3ee", "route": "/automatizaciones/",
+    "short": "Menos tareas repetidas. Más tiempo para tu negocio.", "headline": "Que la rutina encuentre su ritmo.",
+    "what": "Conectamos herramientas y procesos para reducir tareas repetitivas, ordenar información y facilitar el seguimiento de tu operación.",
+    "solves": "Ayuda a evitar la carga repetida de datos, ordenar pendientes y dar continuidad a tareas que hoy dependen de recordatorios o pasos manuales.",
+    "examples": ["Registrar una consulta y preparar el siguiente paso para el equipo.", "Consolidar información de fuentes autorizadas en un reporte revisable.", "Ordenar solicitudes de compra y derivarlas a la persona que debe aprobarlas."],
+    "needs": "Un flujo concreto, ejemplos de sus entradas y resultados, acceso autorizado a las herramientas y una persona responsable de validar reglas y excepciones.",
+    "scope": "Acordamos disparadores, conexiones posibles, reglas, controles, reintentos, alertas y aprobaciones humanas. La viabilidad depende del acceso que permitan las herramientas; su costo y mantenimiento se evalúan por separado.",
+    "fit": "Tiene sentido cuando una tarea se repite y sus reglas pueden explicarse. Si el proceso todavía cambia todos los días, primero conviene ordenarlo.",
+    "question": "¿Qué tarea repetís seguido y te gustaría simplificar?", "cta": "Quiero recuperar tiempo"
+  },
+  {
+    "id": "agentes", "name": "Agentes", "backend": "IMAN Agentes", "color": "#a9cdb9", "route": "/agentes/",
+    "short": "Asistencia con contexto, herramientas y límites claros.", "headline": "Ayuda que entiende el contexto.",
+    "what": "Desarrollamos asistentes que pueden consultar información y ayudar con tareas o procesos definidos, dentro de los permisos y límites acordados con tu negocio.",
+    "solves": "Pueden facilitar la consulta de documentación, preparar respuestas y asistir a un equipo cuando la tarea necesita interpretar información.",
+    "examples": ["Un asistente interno que consulta procedimientos y muestra las fuentes disponibles.", "Un apoyo comercial que prepara borradores a partir de información aprobada.", "Un asistente que clasifica solicitudes y propone una acción para revisión humana."],
+    "needs": "Información confiable y actualizada, ejemplos de tareas, acceso autorizado a herramientas, permisos definidos y alguien que supervise resultados y corrija errores.",
+    "scope": "Se acuerdan fuentes, herramientas, acciones permitidas, controles, evaluación y derivación a personas. Un agente puede equivocarse: no prometemos autonomía total, y las acciones sensibles requieren los controles acordados.",
+    "fit": "Tiene sentido cuando consultar e interpretar contexto aporta valor. Si reglas simples resuelven la tarea, una automatización puede ser suficiente.",
+    "question": "¿Con qué información y tarea concreta debería ayudarte un agente?", "cta": "Exploremos un agente para mi negocio"
+  }
+]

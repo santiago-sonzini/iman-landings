@@ -15,7 +15,7 @@ def schemas(path,title,desc,extra=()):
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('</','<\\/')+'</script>'
 
 def seo(path,title,desc,extra=()):
-    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}/assets/editorial-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Menos tareas. Más vínculos."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
+    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}/assets/editorial-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Vendé más. Trabajá menos."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
 
 def button(label,url):
     return f'<a class="cta" href="{e(url,quote=True)}"><span class="cta-label">{e(label)}</span></a>'
@@ -60,8 +60,8 @@ def context():
 def build_dark(out,pages):
     dest=out/'assets/experience';dest.mkdir(parents=True,exist_ok=True)
     shutil.copytree(SOURCE/'assets',dest,dirs_exist_ok=True)
-    for name in ['site.css','home.js','reading.css','form.js']:shutil.copy2(SOURCE/name,dest/name)
-    home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Menos tareas. Más vínculos.',INTRO)+'</head>')
+    for name in ['site.css','home.css','home.js','reading.css','form.js']:shutil.copy2(SOURCE/name,dest/name)
+    home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+'</head>')
     (out/'index.html').write_text(home)
     routes=[]
     for s in SERVICES:
@@ -83,7 +83,7 @@ def build_dark(out,pages):
         pages[:]=[p for p in pages if p['path']!=path]
         pages.append({'path':path,'title':title,'description':desc,'file':str(file.relative_to(out)),'dateModified':DATE})
     for p in pages:
-        if p['path']=='/':p.update(title='IMÁN — Menos tareas. Más vínculos.',description=INTRO,dateModified=DATE)
+        if p['path']=='/':p.update(title='IMÁN — Vendé más. Trabajá menos.',description=INTRO,dateModified=DATE)
     # Preserve indexed guides with the approved typography and their original article data.
     guides=[p for p in pages if p['path'].startswith('/recursos/') and p['path']!='/recursos/']
     for p in guides:

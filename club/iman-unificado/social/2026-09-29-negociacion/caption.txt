@@ -1,0 +1,17 @@
+Tu agente de IA negociando con el del proveedor. ¿Qué le dejarías decidir?
+
+Imaginá este intercambio: pedís 100 unidades, recibís una oferta y tu agente propone otras condiciones. El agente del proveedor responde dentro de sus propias reglas.
+
+El precio es una parte. También entran en juego entrega, cantidades, forma de pago y vigencia de la oferta.
+
+Antes de conectarlos, hay que definir:
+• Qué puede negociar cada uno.
+• Qué límites no puede cambiar.
+• Cuándo debe pedir aprobación.
+• Cuántas rondas puede intentar antes de cerrar sin acuerdo.
+
+En el ejemplo del carrusel, los agentes preparan una propuesta y el dueño aprueba antes de emitir la orden. Los importes y el intercambio son hipotéticos: no son un caso real ni una promesa de ahorro. Para hacerlo funcionar, ambas partes necesitan una integración y permisos acordados.
+
+En tu negocio, ¿le dejarías negociar precio, entrega o forma de pago? Contá tu rubro y qué condición aprobarías siempre vos.
+
+#AgentesIA #Automatizacion #Compras #PymesArgentina

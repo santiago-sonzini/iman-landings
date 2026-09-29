@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  if (document.body.classList.contains('cinematic-home')) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
   const running = new Set();

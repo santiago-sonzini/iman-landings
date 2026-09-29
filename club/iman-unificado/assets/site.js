@@ -339,7 +339,7 @@ navigation?.addEventListener('click', event => {
   });
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  if ('IntersectionObserver' in window && !reducedMotion.matches && !document.body.classList.contains('cinematic-home')) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       observer.unobserve(entry.target);
