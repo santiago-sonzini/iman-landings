@@ -96,7 +96,7 @@ test('honeypot silently accepts without sending or requiring mail credentials',a
 test('email content escapes user HTML and keeps one fixed booking CTA',async()=>{
   const {handle,sent}=setup();
   await handle(request({nombre:'<img src=x onerror=alert(1)>',negocio:'<script>alert(2)</script>',comentario:'<iframe>evil</iframe>'}),env);
-  for(const mail of sent){assert.doesNotMatch(mail.html,/<script|<img|<iframe/);}
+  for(const mail of sent){assert.doesNotMatch(mail.html,/<script|<img src=x|<iframe/);}
   const html=sent[1].html;
   assert.match(html,/&lt;img/);
   assert.equal((html.match(/href="https:\/\/calendly.com\/santiago-iman\/30min"/g)||[]).length,1);
@@ -158,7 +158,7 @@ test('D1 rate limit survives new edge instance and storage error does not send',
 });
 test('confirmation email never promises deployed integrations or unverifiable timeframes',()=>{
   const mail=confirmationEmail(base);
-  assert.match(mail.text,/vamos a revisarla/);
+  assert.match(mail.text,/Vamos a revisar tu consulta/);
   assert.doesNotMatch(mail.text,/24 horas|ya está funcionando|garantizado/i);
 });
 
@@ -178,4 +178,45 @@ test('definite provider rejection can retry; ambiguous timeout remains deduplica
   assert.equal((await handle(request({},headers),env)).status,200);assert.equal(sends,3);
   let ambiguous=0;const other=setup({sendMail:async()=>{ambiguous++;throw Object.assign(new Error('timeout'),{code:'ETIMEDOUT'});}});
   await other.handle(request({},headers),env);await other.handle(request({},headers),env);assert.equal(ambiguous,1);
+});
+
+test('multiple services reach both HTML and plain text emails and are deduplicated',async()=>{
+  const {handle,sent}=setup();
+  const servicios=['IMAN Agentes','IMAN Fidelización','IMAN Agentes','IMAN Automatizaciones'];
+  const response=await handle(request({servicio:undefined,servicios}),env);
+  assert.equal(response.status,200);
+  for(const mail of sent)for(const service of new Set(servicios)){assert.ok(mail.text.includes(service));assert.ok(mail.html.includes(service));}
+  assert.equal((sent[1].text.match(/IMAN Agentes/g)||[]).length,1);
+});
+test('service arrays reject unknowns, nonstrings, oversized sets and contradictory orientation',async()=>{
+  const {handle,sent}=setup();
+  for(const servicios of ['IMAN Agentes',[null],['Unknown'],Array(5).fill('IMAN Agentes'),['Quiero que me orienten','IMAN Agentes']])assert.equal((await handle(request({servicio:undefined,servicios}),env)).status,400);
+  assert.equal(sent.length,0);
+});
+test('empty selection is a valid request for orientation',async()=>{
+  const {handle,sent}=setup();
+  assert.equal((await handle(request({servicio:undefined,servicios:[]}),env)).status,200);
+  assert.match(sent[0].text,/Quiero que me orienten/);
+});
+test('same service set in different order reuses the idempotent result',async()=>{
+  const {handle,sent}=setup();const headers={'Idempotency-Key':'multi_order_test_1234567890'};
+  await handle(request({servicio:undefined,servicios:['IMAN Agentes','IMAN Fidelización']},headers),env);
+  assert.equal((await handle(request({servicio:undefined,servicios:['IMAN Fidelización','IMAN Agentes']},headers),env)).status,200);
+  assert.equal(sent.length,2);
+});
+
+test('three-service inquiry carries industry and city into escaped owner email',async()=>{
+  const {handle,sent}=setup();
+  const response=await handle(request({servicios:['WhatsApp e IA','Fidelización y email marketing','Catálogos y ERP'],rubro:'Mayorista <industrial>',ciudad:'Villa María',comentario:'Queremos conectar el catálogo y mejorar la recompra.'}),env);
+  assert.equal(response.status,200);
+  assert.match(sent[0].text,/Rubro: Mayorista <industrial>/);
+  assert.match(sent[0].text,/Ciudad: Villa María/);
+  for(const service of ['WhatsApp e IA','Fidelización y email marketing','Catálogos y ERP'])assert.ok(sent[0].text.includes(service));
+  assert.ok(sent[0].html.includes('Mayorista &lt;industrial&gt;'));
+  assert.equal(sent.length,2);
+});
+test('industry and city limits reject invalid payloads without sending',async()=>{
+  const {handle,sent}=setup();
+  for(const changes of [{rubro:'x'.repeat(121)},{ciudad:'x'.repeat(121)},{rubro:[]},{ciudad:{}}])assert.equal((await handle(request(changes),env)).status,400);
+  assert.equal(sent.length,0);
 });

@@ -1,5 +1,21 @@
 # IMAN
 
+## Experiencia IMÁN — septiembre de 2026
+
+La interfaz aprobada se mantiene en `experience/` y se integra con las páginas, el SEO y el backend existentes mediante `scripts/dark_site.py`. `scripts/build.py` genera `public/`, que es la salida conectada a Cloudflare Pages.
+
+- Portada oscura: títulos, frases breves, CTA y enlaces subrayados. Fondo ASCII con velocidad reducida; horizontal en escritorio y vertical en móvil.
+- `/automatizaciones/`, `/fidelizacion/` y `/comercios/`: detalle de los tres servicios y formulario al pie. `/servicios/` permite comparar y `/contacto/` abre la consulta general.
+- Selección múltiple independiente del rubro. Nombre, negocio, email, rubro y consulta; WhatsApp y ciudad opcionales.
+- Endpoint existente `/api/contacto`, `CONTACT_DB` y `MAILER` en Cloudflare. Remitente `hola@iman.ar`; destinatario privado en `CONTACT_EMAIL`.
+- `/agente/`, `/contexto-iman.md`, `llms.txt`, `llms-full.txt`, canonical, JSON-LD, sitemap y las guías previas permanecen disponibles.
+
+Validación y publicación: `bash scripts/build-ci.sh`. Vista previa con correos capturados: `IMAN_PREVIEW_PORT=8793 npm --prefix server run preview`. Ver `docs/experience-release.md` para el resultado de la publicación y prueba de correo.
+
+## Experiencia editorial local — 28/09/2026
+
+La nueva interfaz está en desarrollo local y **no fue publicada**. Ver [entrega y verificación](docs/editorial-delivery.md). Vista previa conectada a un buzón local: `npm --prefix server run preview`. El logo definitivo ya está incorporado. Falta certificar la recepción externa de emails antes de publicar. El texto siguiente documenta la versión publicada anterior.
+
 Sitio comercial unificado de IMAN, con la identidad visual de la landing original de Club: violeta, tipografía contundente, gráficos de imanes y demostraciones de producto. La home recupera el titular «Aumentá tus ventas sin invertir en publicidad.». La conversión principal es solicitar una demo o agendar una conversación.
 
 ## Estado local

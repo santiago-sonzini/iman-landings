@@ -2,9 +2,9 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-09-28T12:06:20.249572+00:00
+Generada: 2026-09-29T03:34:39.904474+00:00
 
-20 HTML · 15 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
+22 HTML · 17 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
 ## Hallazgos
 
@@ -14,21 +14,23 @@ Sin hallazgos en los controles implementados.
 
 | URL | Sitemap | Clics desde inicio | Páginas que enlazan |
 | --- | --- | --- | --- |
-| / | Sí | 0 | 16 |
-| /automatizaciones/ | Sí | 1 | 15 |
-| /comercios/ | Sí | 1 | 15 |
-| /fidelizacion/ | Sí | 1 | 15 |
-| /informacion/ | Sí | 1 | 15 |
-| /nosotros/ | Sí | 1 | 15 |
-| /privacidad/ | Sí | 1 | 15 |
-| /recursos/ | Sí | 1 | 15 |
-| /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 2 |
-| /recursos/automatizar-procesos/ | Sí | 2 | 1 |
-| /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 2 |
-| /recursos/club-wallet/ | Sí | 2 | 2 |
-| /recursos/recuperar-clientes/ | Sí | 2 | 1 |
-| /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
-| /turnos/landing/ | Sí | 1 | 17 |
+| / | Sí | 0 | 18 |
+| /agente/ | Sí | 2 | 17 |
+| /agentes/ | Sí | 2 | 1 |
+| /automatizaciones/ | Sí | 1 | 8 |
+| /comercios/ | Sí | 1 | 5 |
+| /contacto/ | Sí | 1 | 17 |
+| /fidelizacion/ | Sí | 1 | 7 |
+| /privacidad/ | Sí | 2 | 17 |
+| /recursos/ | Sí | 2 | 17 |
+| /recursos/automatizar-compras-comparar-proveedores/ | Sí | 3 | 1 |
+| /recursos/automatizar-procesos/ | Sí | 3 | 1 |
+| /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 3 | 1 |
+| /recursos/club-wallet/ | Sí | 3 | 2 |
+| /recursos/recuperar-clientes/ | Sí | 3 | 1 |
+| /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 3 | 1 |
+| /servicios/ | Sí | 1 | 17 |
+| /turnos/landing/ | Sí | 3 | 4 |
 
 ## Verificaciones que requieren el sitio publicado
 

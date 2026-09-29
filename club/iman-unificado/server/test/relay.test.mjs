@@ -52,3 +52,14 @@ test('worker canonicalizes only the exact apex before asset or API routing, pres
   assert.equal(canonical.status,200);assert.equal(canonical.headers.get('location'),null);
   assert.equal(canonical.headers.get('x-robots-tag'),null);
 });
+
+test('noncanonical preview hosts block indexing and expose a restrictive robots file',async()=>{
+  const env={ASSETS:{fetch:async()=>new Response('static')}};
+  for(const hostname of ['staging.iman.ar','127.0.0.1','test.pages.dev']){
+    const response=await worker.fetch(new Request('https://'+hostname+'/robots.txt'),env);
+    assert.equal(response.headers.get('x-robots-tag'),'noindex, nofollow');
+    assert.match(await response.text(),/Disallow: \//);
+  }
+  const production=await worker.fetch(new Request('https://www.iman.ar/robots.txt'),env);
+  assert.equal(production.headers.get('x-robots-tag'),null);
+});

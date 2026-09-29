@@ -1,9 +1,9 @@
 import { CALENDLY_URL, confirmationEmail, ownerEmail } from './email.mjs';
 
-export const SERVICES = new Set(['IMAN Fidelización', 'IMAN Comercios · Catálogos', 'IMAN Automatizaciones', 'IMAN Turnos', 'Quiero que me orienten']);
+export const SERVICES = new Set(['WhatsApp e IA', 'Fidelización y email marketing', 'Catálogos y ERP', 'IMAN Fidelización', 'IMAN Comercios · Catálogos', 'IMAN Automatizaciones', 'IMAN Agentes', 'IMAN Turnos', 'Quiero que me orienten']);
 const MAX_BYTES = 12_000;
 const DAY = 86_400_000;
-const LIMITS = {nombre:100,negocio:120,email:254,whatsapp:50,servicio:80,comentario:2000,sitio_web_empresa:200,source:1000,url:1000,origen:1000,requestId:80,utm_source:120,utm_medium:120,utm_campaign:180,utm_content:180,utm_term:180};
+const LIMITS = {nombre:100,negocio:120,rubro:120,ciudad:120,email:254,whatsapp:50,servicio:80,comentario:2000,sitio_web_empresa:200,source:1000,url:1000,origen:1000,requestId:80,utm_source:120,utm_medium:120,utm_campaign:180,utm_content:180,utm_term:180};
 const EMAIL = /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)+$/i;
 const single = value => typeof value === 'string' ? value.replace(/[\x00-\x1f\x7f]/g, ' ').replace(/\s+/g, ' ').trim() : '';
 const multiline = value => typeof value === 'string' ? value.replace(/\r\n?/g,'\n').replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g,'').trim() : '';
@@ -44,8 +44,15 @@ function parseLead(body, origin) {
     if (body[key] !== undefined && (typeof body[key] !== 'string' || body[key].length > limit)) return null;
   }
   if (body.utm !== undefined && (typeof body.utm !== 'object' || !body.utm || Array.isArray(body.utm))) return null;
-  const lead = {nombre:single(body.nombre),negocio:single(body.negocio),email:single(body.email).toLowerCase(),servicio:single(body.servicio),whatsapp:single(body.whatsapp),comentario:multiline(body.comentario),source:'',utm:{}};
-  if (!lead.nombre || !lead.negocio || !EMAIL.test(lead.email) || !SERVICES.has(lead.servicio) || body.consentimiento !== true) return null;
+  // Keep the scalar contract for existing pages; new clients send an explicit array.
+  if (body.servicios !== undefined && (!Array.isArray(body.servicios) || body.servicios.length > 4 || body.servicios.some(value => typeof value !== 'string' || !SERVICES.has(value)))) return null;
+  const requested = body.servicios === undefined ? [single(body.servicio)] : body.servicios;
+  if (requested.some(value => !SERVICES.has(value))) return null;
+  const selected = [...SERVICES].filter(value => requested.includes(value));
+  if (selected.length > 1 && selected.includes('Quiero que me orienten')) return null;
+  const servicios = selected.length ? selected : ['Quiero que me orienten'];
+  const lead = {nombre:single(body.nombre),negocio:single(body.negocio),rubro:single(body.rubro),ciudad:single(body.ciudad),email:single(body.email).toLowerCase(),servicio:servicios.join(' · '),servicios,whatsapp:single(body.whatsapp),comentario:multiline(body.comentario),source:'',utm:{}};
+  if (!lead.nombre || !lead.negocio || !EMAIL.test(lead.email) || body.consentimiento !== true) return null;
   if (lead.whatsapp && !/^[\d+().\s-]{6,50}$/.test(lead.whatsapp)) return null;
   const inputSource = body.source || body.url || body.origen;
   if (inputSource) {

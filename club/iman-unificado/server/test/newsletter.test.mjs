@@ -78,7 +78,7 @@ test('delivery failure never claims confirmation and never exposes SMTP errors',
 test('newsletter email escapes user markup and only uses canonical origin for token links',async()=>{
   const {handler,env,sent,sqlite}=setup();
   await handler(subscribe({nombre:'<img src=x>',rubro:'<script>bad</script>'}),{...env,SITE_URL:'https://evil.example/'});
-  assert.doesNotMatch(sent[0].html,/<img|<script/);assert.match(sent[0].html,/&lt;img/);
+  assert.doesNotMatch(sent[0].html,/<img src=x|<script/);assert.match(sent[0].html,/&lt;img/);
   assert.doesNotMatch(sent[0].text,/evil.example/);assert.match(sent[0].text,/https:\/\/www.iman.ar\/api\/newsletter\/confirmar/);sqlite.close();
 });
 

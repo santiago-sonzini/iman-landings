@@ -28,7 +28,8 @@ export default {
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
     const asset=await env.ASSETS.fetch(request);
-    if(url.hostname.endsWith('.pages.dev')){
+    if(url.hostname!=='www.iman.ar'){
+      if(url.pathname==='/robots.txt') return new Response('User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain','X-Robots-Tag':'noindex, nofollow','Cache-Control':'no-store'}});
       const response=new Response(asset.body,asset);
       response.headers.set('X-Robots-Tag','noindex, nofollow');
       return response;

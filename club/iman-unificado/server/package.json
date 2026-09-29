@@ -5,7 +5,10 @@
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "preview-email": "node preview.mjs"
+    "preview-email": "node preview.mjs",
+    "preview": "node local-preview.mjs"
   },
-  "devDependencies": { "esbuild": "0.25.12" }
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
 }

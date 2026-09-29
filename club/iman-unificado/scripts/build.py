@@ -1,6 +1,7 @@
 from pathlib import Path
 import html, json, shutil, re, zipfile
 from content_pipeline import load_articles, build_rss
+from dark_site import build_dark, not_found as editorial_not_found
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'public'
@@ -104,6 +105,11 @@ def page(path,title,desc,body,faqs=None,service=None,contact_service=None,*,arti
         schema.append(article_schema)
     if faqs:schema.append({'@type':'FAQPage','@id':url+'#faq','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':re.sub('<[^>]+>','',a)}} for q,a in faqs]})
     html_doc=f'''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#4F46F5"><title>{e(title)}</title><meta name="description" content="{e(desc,quote=True)}"><link rel="canonical" href="{url}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta property="og:type" content="{"article" if article else "website"}"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="IMAN"><meta property="og:title" content="{e(title,quote=True)}"><meta property="og:description" content="{e(desc,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMAN — Fidelización, ventas y automatización"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title,quote=True)}"><meta name="twitter:description" content="{e(desc,quote=True)}"><meta name="twitter:image" content="{BASE}/assets/og.png"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/assets/site.css"><link rel="alternate" type="application/rss+xml" title="Guías de IMAN" href="/recursos/feed.xml"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False).replace('</','<\\/')}</script><link rel="stylesheet" href="/assets/newsletter.css"><link rel="stylesheet" href="/assets/demos.css"><link rel="stylesheet" href="/assets/negotiation.css"><link rel="stylesheet" href="/assets/motion.css"><link rel="stylesheet" href="/assets/pet-preview.css"><script src="/assets/pet-preview.js" defer></script><link rel="stylesheet" href="/assets/wallet-phone.css"><script src="/assets/site.js" defer></script><script src="/assets/newsletter.js" defer></script><script src="/assets/demos.js" defer></script><script src="/assets/negotiation.js" defer></script><script src="/assets/motion.js" defer></script></head><body>{header(path)}<main id="contenido">{body}{faq(faqs) if faqs else ''}{contact(contact_service or 'Quiero que me orienten')}</main>{footer()}{(ROOT/"templates/newsletter.html").read_text()}<div class="mobile-cta"><a class="button" href="#contacto">Quiero mi demo →</a><a href="{WA}">WhatsApp</a></div></body></html>'''
+    if path == '/':
+        presentation = '<link rel="stylesheet" href="/assets/cinematic-home.css"><script src="/assets/vendor/gsap.min.js" defer></script><script src="/assets/vendor/ScrollTrigger.min.js" defer></script><script src="/assets/cinematic-home.js" defer></script>'
+        html_doc = html_doc.replace('</head>', presentation + '</head>').replace('<body>', '<body class="cinematic-home">')
+        html_doc = html_doc.replace('<meta name="theme-color" content="#4F46F5">', '<meta name="theme-color" content="#09090b">')
+        html_doc = html_doc.replace('<h1>Aumentá tus ventas<br>sin invertir en<br><em>publicidad.</em></h1>', '<h1 aria-label="Aumentá tus ventas sin invertir en publicidad."><span class="title-line" aria-hidden="true"><span>Aumentá tus </span></span><span class="title-line" aria-hidden="true"><span>ventas sin </span></span><span class="title-line" aria-hidden="true"><span>invertir en </span></span><span class="title-line" aria-hidden="true"><span>publicidad.</span></span></h1>')
     out=OUT/path.strip('/')/'index.html' if path!='/' else OUT/'index.html'
     out.parent.mkdir(parents=True,exist_ok=True);out.write_text(html_doc)
     PAGES.append({'path':path,'title':title,'description':desc,'file':str(out.relative_to(OUT)),'dateModified':modified,**({'datePublished':article['datePublished']} if article else {})})
@@ -205,6 +211,10 @@ PAGES[:]=[p for p in PAGES if p['path']!='/automatizaciones/compras-demo/']
 
 # Explicit legacy aliases preserve existing marketing URLs without duplicate pages.
 redirects={'/gastronomia/':'/#demos','/pet/':'/comercios/#demos','/ropa/':'/comercios/#demos','/limpieza/':'/comercios/#demos','/repuestos/':'/comercios/#demos','/transporte/':'/automatizaciones/','/distribuidoras/':'/comercios/#modalidades','/petshops/distribuidora/':'/comercios/#demos','/limpieza/distribuidora/':'/comercios/#demos','/club/':'/fidelizacion/','/club':'/fidelizacion/','/catalogos/':'/comercios/','/petshops/':'/comercios/#demos','/petshops/minorista/':'/comercios/#demos','/limpieza/minorista/':'/comercios/#demos','/hermes/':'/automatizaciones/#compras','/hub/':'/#soluciones'}
+redirects.update({'/informacion/':'/agente/','/nosotros/':'/agente/','/gastronomia/':'/servicios/#fidelizacion','/hub/':'/#seleccion'})
+# Replace the primary interface entirely, preserving the archive generator.
+build_dark(OUT, PAGES)
+redirects.update({"/hub/":"/servicios/", "/gastronomia/":"/fidelizacion/", "/distribuidoras/":"/comercios/", "/pet/":"/comercios/", "/ropa/":"/comercios/", "/limpieza/":"/comercios/", "/repuestos/":"/comercios/", "/petshops/distribuidora/":"/comercios/", "/limpieza/distribuidora/":"/comercios/", "/petshops/":"/comercios/", "/petshops/minorista/":"/comercios/", "/limpieza/minorista/":"/comercios/"})
 OUT.joinpath('_redirects').write_text('\n'.join(f'{a} {b} 301' for a,b in redirects.items())+'\n')
 OUT.joinpath('_headers').write_text('''/*
   X-Content-Type-Options: nosniff
@@ -235,34 +245,8 @@ if urbase.exists():
     urbase.write_text(old.replace('</head>', '<meta name="robots" content="noindex,follow"></head>'))
 OUT.joinpath('robots.txt').write_text(f'User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /campaign/\nDisallow: /turnos/ads/\n\nSitemap: {BASE}/sitemap.xml\n')
 OUT.joinpath('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{BASE}{p["path"]}</loc><lastmod>{p["dateModified"]}</lastmod></url>\n' for p in PAGES)+'</urlset>\n')
-llms=f'''# IMAN
-
-> IMAN es una marca argentina de fidelización, ventas y automatización a medida para comercios, servicios y distribuidoras.
-
-Sitio oficial: {BASE}/
-Idioma: español de Argentina. Contacto comercial: +54 9 353 518-9997.
-
-## Soluciones
-- [IMAN Fidelización]({BASE}/fidelizacion/): desarrollo a medida de programas de fidelización con tarjetas en Apple Wallet y Google Wallet. Beneficios, puntos, notificaciones y campañas de email según el alcance. Las comunicaciones dependen de permisos y reglas de cada plataforma.
-- [IMAN Comercios]({BASE}/comercios/): catálogos digitales y circuitos de pedidos para venta minorista y mayorista, con conexiones a Fidelización y Automatizaciones según proyecto.
-- [IMAN Turnos]({BASE}/turnos/landing/): organización de servicios y reservas online desde un enlace.
-- [IMAN Automatizaciones]({BASE}/automatizaciones/): diagnóstico, desarrollo de flujos y agentes, integraciones, pruebas, documentación y mantenimiento según propuesta.
-Los catálogos son parte de IMAN Comercios. Club es el nombre del programa de clientes de cada negocio dentro de IMAN Fidelización, no una marca de servicio separada.
-
-## Automatización de compras mayoristas
-La automatización de compras es parte de IMAN Automatizaciones. Coordina necesidades, propuestas y aprobaciones B2B con límites acordados. El ejemplo del sitio es ilustrativo y no realiza pedidos ni pagos.
-
-## Alcance comercial
-Los proyectos se cotizan según alcance, sistemas, volumen y controles. Se distinguen implementación, mantenimiento y costos de terceros. No se publican promesas de resultados, rankings, integración instantánea o entrega garantizada de notificaciones.
-
-## Demos
-- [Explorar demos]({BASE}/#demos): experiencias desarrolladas por IMAN para ver el producto y recorrer sus funciones. Se identifican las demostraciones conceptuales.
-'''+'\n## Información adicional\n'+f'- [Información de productos]({BASE}/informacion/)\n- [Guías]({BASE}/recursos/)\n- [Privacidad]({BASE}/privacidad/)\n'
-OUT.joinpath('llms.txt').write_text(llms)
-OUT.joinpath('llms-full.txt').write_text(llms+'\n## Índice de páginas\n'+''.join(f'\n### {p["title"]}\n{BASE}{p["path"]}\n{p["description"]}\n' for p in PAGES))
 shutil.copytree(ROOT/'assets',OUT/'assets',dirs_exist_ok=True)
-not_found='''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Página no encontrada | IMAN</title><meta name="robots" content="noindex"><link rel="stylesheet" href="/assets/site.css"></head><body><main class="wrap section"><p class="eyebrow">404 / IMAN</p><h1 style="margin:30px 0">Por acá<br>no era.</h1><p>Encontrá Fidelización, Comercios, Turnos y Automatizaciones desde el inicio.</p><div class="actions"><a class="button" href="/">Volver a IMAN ↗</a></div></main></body></html>'''
-OUT.joinpath('404.html').write_text(not_found)
+OUT.joinpath('404.html').write_text(editorial_not_found())
 for demo_file in [OUT/'turnos/index.html',OUT/'turnos/reservar.html']:
     if demo_file.exists():
         raw=demo_file.read_text()
