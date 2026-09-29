@@ -10,7 +10,7 @@ La interfaz aprobada se mantiene en `experience/` y se integra con las páginas,
 - Endpoint existente `/api/contacto`, `CONTACT_DB` y `MAILER` en Cloudflare. Remitente `hola@iman.ar`; destinatario privado en `CONTACT_EMAIL`.
 - `/agente/`, `/contexto-iman.md`, `llms.txt`, `llms-full.txt`, canonical, JSON-LD, sitemap y las guías previas permanecen disponibles.
 
-Validación y publicación: `bash scripts/build-ci.sh`. Vista previa con correos capturados: `IMAN_PREVIEW_PORT=8793 npm --prefix server run preview`. Ver `docs/experience-release.md` para el resultado de la publicación y prueba de correo.
+Validación y publicación: `bash scripts/build-ci.sh`. Vista previa con correos capturados: `IMAN_PREVIEW_PORT=8793 npm --prefix server run preview`. Publicada en **https://www.iman.ar/** y prueba real de consulta/confirmación con estado **Delivered** en Cloudflare. Ver `docs/experience-release.md` para el detalle.
 
 ## Experiencia editorial local — 28/09/2026
 

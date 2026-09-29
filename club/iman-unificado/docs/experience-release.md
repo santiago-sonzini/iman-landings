@@ -11,7 +11,13 @@ Fuente principal: `experience/`; integración: `scripts/dark_site.py`. La maquet
 
 ## Publicación
 
-Pendiente de completar la comprobación externa de esta versión. La rama de producción existente es `codex/iman-unificado`, proyecto Pages `iman`, dominio `www.iman.ar`. Se verificaron en el panel los bindings `CONTACT_DB` y `MAILER` y la configuración de compilación.
+Publicada el 29 de septiembre de 2026 en **https://www.iman.ar/**. Commit de implementación: `39d7387`. Cloudflare Pages confirmó `success` para el despliegue `adba3861-9857-491b-b286-1de151bada93` (28 segundos). La rama de producción es `codex/iman-unificado`, proyecto Pages `iman`. Se verificaron los bindings `CONTACT_DB` y `MAILER`, dominio remitente habilitado y DNS configurado.
+
+Prueba real desde el formulario de fidelización con los tres servicios y datos identificados como prueba interna. El endpoint aceptó la consulta y la confirmación. El registro de Email Sending mostró **Delivered** para ambos mensajes enviados desde `hola@iman.ar` al correo del dueño configurado en el servidor. Esto verifica entrega al servidor de destino; no se inspeccionó el buzón ni se certifica la carpeta de recepción.
+
+Comprobaciones públicas: HTTP 200 en home, los tres servicios, contacto, sitemap y archivos de contexto; el apex termina en `www`; `/club/` redirige a fidelización; una ruta inexistente devuelve 404. El sitemap publicado tiene 17 URLs y la preview de Pages devuelve `X-Robots-Tag: noindex, nofollow`. El correo privado del dueño no aparece en los archivos públicos.
+
+La lectura directa del buzón de Gmail fue rechazada por revisión automática por falta de autorización para leer mensajes. La verificación se completó por la alternativa permitida: registros de entrega de Cloudflare, sin acceder al buzón.
 
 ## Documentación técnica
 
