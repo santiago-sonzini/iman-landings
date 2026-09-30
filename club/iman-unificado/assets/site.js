@@ -175,7 +175,7 @@ navigation?.addEventListener('click', event => {
         if (iframe && !iframe.getAttribute('src')) {
           try {
             const url = new URL(iframe.dataset.calendlySrc);
-            if (url.protocol === 'https:' && url.hostname === 'calendly.com') iframe.src = url.href;
+            if (url.protocol === 'https:' && url.hostname === 'agenda.iman.ar') iframe.src = url.href;
           } catch (_) { /* The permanent direct booking link remains available. */ }
         }
       }
@@ -333,7 +333,7 @@ navigation?.addEventListener('click', event => {
     try { destination = new URL(link.href, location.href); } catch (_) { return; }
     const placement = link.closest('#contacto') ? 'contact' : link.closest('.hero,.subhero') ? 'hero' : link.closest('.header') ? 'header' : link.closest('.mobile-cta') ? 'mobile_sticky' : 'body';
     if (destination.hostname === 'wa.me' || destination.hostname.endsWith('.whatsapp.com')) track('whatsapp_click', {placement, destination: 'whatsapp'});
-    else if (destination.hostname === 'calendly.com') track('calendar_open', {placement, destination: 'external'});
+    else if (destination.hostname === 'agenda.iman.ar') track('calendar_open', {placement, destination: 'agenda'});
     else if (link.matches('.button,.text-link,.btn,.btn-primario') || link.closest('.mobile-cta')) track('cta_click', {placement, destination: destination.hash === '#contacto' ? 'contact' : 'page'});
     if (destination.origin === location.origin && destination.pathname === location.pathname && destination.hash === '#contacto' && !link.hasAttribute('data-contact-tab')) selectContactTab('form');
   });

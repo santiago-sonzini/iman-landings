@@ -1,4 +1,4 @@
-export const CALENDLY_URL = 'https://calendly.com/santiago-iman/30min';
+export const AGENDA_URL = 'https://agenda.iman.ar';
 export const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const E=escapeHTML;
 const serviceList=lead => lead.servicios?.length ? lead.servicios : [lead.servicio || 'Quiero que me orienten'];
@@ -20,14 +20,14 @@ export function confirmationEmail(lead){
   const comment=lead.comentario?`<p style="margin:18px 0 0;padding-top:16px;border-top:1px solid ${LINE};font-family:${SANS};font-size:14px;line-height:1.7;color:${MUTED};white-space:pre-wrap;font-style:italic">“${E(lead.comentario)}”</p>`:'';
   return {
     subject:`Recibimos tu consulta, ${lead.nombre} · IMÁN`,
-    text:`Hola, ${lead.nombre}.\n\nGracias por contarnos sobre ${lead.negocio}. Recibimos tu consulta.\n\nLo que te interesa:\n${services.map(s=>'- '+s).join('\n')}\n\nVamos a revisar tu consulta y te contactamos para entender tu negocio y armar una propuesta a medida.\n\nSi preferís, elegí un horario para conversar con Santiago:\n${CALENDLY_URL}\n\nTambién podés responder este correo o escribirnos por WhatsApp: ${WHATSAPP_URL}\n\nSantiago · IMÁN\nhttps://www.iman.ar/\n\nEsta consulta no te suscribe a ninguna lista.\nPrivacidad: https://www.iman.ar/privacidad/`,
+    text:`Hola, ${lead.nombre}.\n\nGracias por contarnos sobre ${lead.negocio}. Recibimos tu consulta.\n\nLo que te interesa:\n${services.map(s=>'- '+s).join('\n')}\n\nVamos a revisar tu consulta y te contactamos para entender tu negocio y armar una propuesta a medida.\n\nSi preferís, elegí un horario para conversar con Santiago:\n${AGENDA_URL}\n\nTambién podés responder este correo o escribirnos por WhatsApp: ${WHATSAPP_URL}\n\nSantiago · IMÁN\nhttps://www.iman.ar/\n\nEsta consulta no te suscribe a ninguna lista.\nPrivacidad: https://www.iman.ar/privacidad/`,
     html:frame('Recibimos tu consulta. Te contactamos para armar una propuesta a medida.',
       eyebrow('Consulta recibida')
       +heading(`Gracias, ${E(lead.nombre)}.<br><em style="font-style:italic;color:#c9d3e3">Ya estamos en eso.</em>`)
       +paragraph(`Recibimos tu consulta sobre <strong style="color:${INK};font-weight:600">${E(lead.negocio)}</strong>. Vamos a revisar tu consulta y contactarte para entender cómo trabajás hoy y armar una propuesta a medida.`)
       +box(eyebrow('Lo que te interesa')+numbered(services)+comment)
       +paragraph('Si querés adelantar, elegí un horario para una charla de 30 minutos con Santiago:')
-      +button('Elegir un horario',CALENDLY_URL)
+      +button('Elegir un horario',AGENDA_URL)
       +paragraph(`También podés responder este correo o <a href="${WHATSAPP_URL}" style="color:${INK};text-decoration:underline">escribirnos por WhatsApp</a>.`)
       +`<p style="margin:30px 0 0;font-family:${SERIF};font-size:20px;line-height:1.3;color:${INK}">Santiago<br><span style="font-family:${SANS};font-size:12px;color:${MUTED}">IMÁN · Tecnología a medida para pymes</span></p>`)
   };

@@ -30,7 +30,7 @@ test('accepted lead is delivered to owner before client; response links Calendly
   const {handle,sent}=setup();
   const response=await handle(request(),env);
   assert.equal(response.status,200);
-  assert.deepEqual(await response.json(),{ok:true,confirmationSent:true,calendlyUrl:'https://calendly.com/santiago-iman/30min'});
+  assert.deepEqual(await response.json(),{ok:true,confirmationSent:true,agendaUrl:'https://agenda.iman.ar'});
   assert.equal(sent.length,2);
   assert.equal(sent[0].to,'sales@example.com');
   assert.equal(sent[0].replyTo,'sofia@example.com');
@@ -99,8 +99,8 @@ test('email content escapes user HTML and keeps one fixed booking CTA',async()=>
   for(const mail of sent){assert.doesNotMatch(mail.html,/<script|<img src=x|<iframe/);}
   const html=sent[1].html;
   assert.match(html,/&lt;img/);
-  assert.equal((html.match(/href="https:\/\/calendly.com\/santiago-iman\/30min"/g)||[]).length,1);
-  assert.match(sent[1].text,/https:\/\/calendly.com\/santiago-iman\/30min/);
+  assert.equal((html.match(/href="https:\/\/agenda.iman.ar"/g)||[]).length,1);
+  assert.match(sent[1].text,/https:\/\/agenda.iman.ar/);
 });
 test('same key + payload returns stored result and never resends',async()=>{
   const {handle,sent}=setup();
@@ -219,4 +219,32 @@ test('industry and city limits reject invalid payloads without sending',async()=
   const {handle,sent}=setup();
   for(const changes of [{rubro:'x'.repeat(121)},{ciudad:'x'.repeat(121)},{rubro:[]},{ciudad:{}}])assert.equal((await handle(request(changes),env)).status,400);
   assert.equal(sent.length,0);
+});
+
+test('with a WhatsApp number the assistant is asked to write first, and its outcome is returned',async()=>{
+  const calls=[];
+  const {handle,sent}=setup({startChat:async(lead)=>{calls.push(lead);return 'enviado';}});
+  const response=await handle(request(),env);
+  assert.equal(response.status,200);
+  const body=await response.json();
+  assert.equal(body.whatsapp,'enviado');
+  assert.equal(calls.length,1);
+  assert.equal(calls[0].whatsapp,'+54 9 353 111-2222');
+  assert.equal(sent.length,2);
+});
+
+test('a failing assistant never breaks the inquiry',async()=>{
+  const {handle,logs}=setup({startChat:async()=>{throw new Error('bot down');}});
+  const response=await handle(request(),env);
+  assert.equal(response.status,200);
+  assert.equal((await response.json()).whatsapp,undefined);
+  assert.ok(logs.includes('contact_whatsapp_failed'));
+});
+
+test('without a WhatsApp number the assistant is not called',async()=>{
+  const calls=[];
+  const {handle}=setup({startChat:async lead=>{calls.push(lead);return 'enviado';}});
+  const response=await handle(request({whatsapp:''}),env);
+  assert.equal(response.status,200);
+  assert.equal(calls.length,0);
 });

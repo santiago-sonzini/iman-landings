@@ -14,7 +14,18 @@ async function sendMail(message,config) {
   if(!response.ok || !result.messageId)throw Object.assign(new Error('mail_delivery_failed'),{code:result.code});
   return result;
 }
-const handleContact=createContactHandler({sendMail});
+// Asks the WhatsApp assistant (bot on agenda.iman.ar) to write first to someone who left their number. The token is a
+// Pages secret shared only with the bot, so nobody can make it message arbitrary numbers. Returns the bot's outcome.
+async function startChat(lead,env){
+  const url=typeof env.BOT_URL==='string'?env.BOT_URL.replace(/\/$/,''):'', token=typeof env.BOT_TOKEN==='string'?env.BOT_TOKEN:'';
+  if(!url||!token)return null;
+  const response=await fetch(`${url}/api/consulta`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+    body:JSON.stringify({nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,ciudad:lead.ciudad,servicios:lead.servicios,comentario:lead.comentario}),
+    signal:AbortSignal.timeout(6000)});
+  if(!response.ok)throw new Error(`bot_${response.status}`);
+  return (await response.json()).resultado||null;
+}
+const handleContact=createContactHandler({sendMail,startChat});
 const handleNewsletter=createNewsletterHandler({sendMail});
 
 export default {

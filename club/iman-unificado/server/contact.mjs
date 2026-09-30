@@ -1,4 +1,4 @@
-import { CALENDLY_URL, confirmationEmail, ownerEmail } from './email.mjs';
+import { AGENDA_URL, confirmationEmail, ownerEmail } from './email.mjs';
 
 export const SERVICES = new Set(['WhatsApp e IA', 'Fidelización y email marketing', 'Catálogos y ERP', 'IMAN Fidelización', 'IMAN Comercios · Catálogos', 'IMAN Automatizaciones', 'IMAN Agentes', 'IMAN Turnos', 'Quiero que me orienten']);
 const MAX_BYTES = 12_000;
@@ -85,7 +85,7 @@ export function mailConfig(env) {
 
 export const definitelyNotSent = error => ['E_VALIDATION_ERROR','E_FIELD_MISSING','E_TOO_MANY_RECIPIENTS','E_SENDER_NOT_VERIFIED','E_RECIPIENT_NOT_ALLOWED','E_RECIPIENT_SUPPRESSED','E_SENDER_DOMAIN_NOT_AVAILABLE','E_CONTENT_TOO_LARGE','E_RATE_LIMIT_EXCEEDED','E_DAILY_LIMIT_EXCEEDED','E_HEADER_NOT_ALLOWED','E_HEADER_USE_API_FIELD','E_HEADER_VALUE_INVALID','E_HEADER_VALUE_TOO_LONG','E_HEADER_NAME_INVALID','E_HEADERS_TOO_LARGE','E_HEADERS_TOO_MANY'].includes(error?.code);
 
-export function createContactHandler({sendMail, now = Date.now, report = code => console.error(code), allowInMemory = false} = {}) {
+export function createContactHandler({sendMail, startChat = null, now = Date.now, report = code => console.error(code), allowInMemory = false} = {}) {
   const requests = new Map();
   const buckets = new Map();
   function prune() {
@@ -120,7 +120,7 @@ export function createContactHandler({sendMail, now = Date.now, report = code =>
     let body;
     try { body = await readJSON(request); }
     catch (error) { return failure('invalid_request',error.status === 413 ? 'La consulta es demasiado extensa.' : 'No pudimos leer la consulta.', error.status || 400); }
-    if (body && typeof body === 'object' && single(body.sitio_web_empresa)) return reply({ok:true,confirmationSent:true,calendlyUrl:CALENDLY_URL});
+    if (body && typeof body === 'object' && single(body.sitio_web_empresa)) return reply({ok:true,confirmationSent:true,agendaUrl:AGENDA_URL});
     const lead = parseLead(body,origin);
     if (!lead) return failure('validation_failed','Revisá los datos obligatorios y la autorización de contacto.',400);
     const config = mailConfig(env);
@@ -178,7 +178,13 @@ export function createContactHandler({sendMail, now = Date.now, report = code =>
       let confirmationSent = true;
       try { await sendMail({...common,to:lead.email,replyTo:config.contact,...confirmationEmail(lead)},config); }
       catch {confirmationSent=false;report('contact_confirmation_delivery_failed');}
-      const response = await finish({ok:true,confirmationSent,calendlyUrl:CALENDLY_URL},200);
+      // With a WhatsApp number, the IMAN assistant writes to them right away (server to server; see worker.mjs).
+      let whatsapp = null;
+      if (lead.whatsapp && startChat) {
+        try { whatsapp = await startChat(lead, env); }
+        catch { report('contact_whatsapp_failed'); }
+      }
+      const response = await finish({ok:true,confirmationSent,agendaUrl:AGENDA_URL,...(whatsapp ? {whatsapp} : {})},200);
       if (db) {
         // Opportunistic cleanup only; never retain hashes/results beyond 7 days.
         try { await db.batch([db.prepare('DELETE FROM contact_requests WHERE created_at < ?').bind(now()-7*DAY),db.prepare('DELETE FROM contact_rate_limits WHERE expires_at < ?').bind(now())]); }

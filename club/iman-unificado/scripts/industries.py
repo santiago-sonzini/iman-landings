@@ -2,7 +2,7 @@
 from html import escape
 
 E = escape
-CAL = 'https://calendly.com/santiago-iman/30min'
+CAL = 'https://agenda.iman.ar'
 COFFEE_IMAGE = 'https://cafe.iman.ar/cafe/campaign/ritual-v2.webp'
 
 
