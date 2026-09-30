@@ -1,0 +1,15 @@
+Tu tarjeta de club en el celular: qué va adelante y qué va atrás.
+
+Si todo entra en el frente, en la caja no se lee nada.
+
+Adelante: el nombre del club, un solo dato principal (sellos, puntos o saldo), el próximo premio y el código para registrar la compra.
+
+Atrás (en Apple Wallet) o en los detalles (en Google Wallet): condiciones, cómo canjear, contacto y cómo dejar de recibir avisos.
+
+Y un detalle técnico: en Apple Wallet, que un cambio en la tarjeta muestre una notificación depende de que ese campo tenga un mensaje de cambio definido. Pase guardado no es aviso visto, y aviso visto no es visita. Elegí pocos avisos y útiles.
+
+El ejemplo de la cafetería es hipotético, no un caso real.
+
+Si pudieras mostrar un solo dato en la tarjeta, ¿cuál sería: sellos, saldo o próximo premio? Contá tu rubro.
+
+#Fidelizacion #ClubDeClientes #AppleWallet #GoogleWallet #PymesArgentina
