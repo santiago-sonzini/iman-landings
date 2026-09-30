@@ -1,0 +1,15 @@
+Un pedido por WhatsApp que no necesita ida y vuelta.
+
+«Hola, quiero tres de las azules» abre cinco preguntas: cuáles, qué talle, por unidad o por caja, retiro o envío, a nombre de quién.
+
+Si el catálogo arma el mensaje, el pedido llega con los cinco datos: código y variante, cantidad en tu unidad de venta, qué lista de precios aplica, cómo lo recibe y quién pide.
+
+WhatsApp permite abrir el chat con un mensaje predefinido: el cliente lo revisa y lo envía.
+
+Ojo: pedido completo no es pedido confirmado. Si el stock no está conectado a tu sistema, confirmá disponibilidad antes de cobrar.
+
+El ejemplo del almacén es hipotético, no un caso real.
+
+¿Qué dato te falta más seguido en un pedido: la variante, la cantidad o la entrega? Contá tu rubro.
+
+#CatalogoDigital #PedidosPorWhatsApp #Mayoristas #PymesArgentina
