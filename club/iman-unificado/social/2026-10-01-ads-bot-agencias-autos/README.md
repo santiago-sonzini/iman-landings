@@ -43,16 +43,23 @@ Demo ilustrativa con datos de ejemplo. Foto: Just a Man / Wikimedia Commons, CC 
 
 Reglas que se respetan: sin prueba gratis ni garantía, sin casos ni porcentajes inventados.
 
-## Campaña en Meta (borrador, sin publicar) — estado al 01/10/2026
+## Campaña en Meta — estado al 01/10/2026 (noche)
+
+Lista para publicar; **falta solo el botón «Publish»**, que tiene que apretar Santiago: el clasificador de permisos de la sesión bloquea ese clic (y también pausar la campaña vieja y tocar Explee) por ser transacciones reales.
 
 - Campaña `IMAN | Bot WhatsApp | Agencias de autos | Oct 2026` (ID 120251148844750223), objetivo Interacción.
-- Conjunto `AR | Agencias de autos | Link a WhatsApp | 2 USD diario` (ID 120251148844760223): destino sitio web, objetivo clics en el enlace, **USD 2 por día** (máximo USD 3,50 diario y USD 14 semanal según Meta). Argentina, 18–65+. Segmentación manual: interés «Car dealership (retailer)» **y además** comportamiento «Business page admins» → 610.000–717.600 personas (sin segmentar eran 37 millones). Meta avisa que Advantage+ puede ampliar la segmentación detallada.
-- Anuncio `A | 23:40 Quien contesta | Agencias de autos` (ID 120251148844740223): imagen `a-feed.png`, texto principal, título, descripción, botón «See details», URL y enlace visible cargados. Mejoras automáticas de Meta apagadas (música, retoques, overlays, reescritura de texto, animación, CTA); quedan solo «comentarios relevantes» y «brillo y contraste». Multianunciante desactivado.
-- Ubicaciones: **solo Instagram** (feed, stories, explorar, reels, feed del perfil, búsqueda). Con eso la audiencia estimada es 564.400–664.000.
-- **Falta un solo paso: el botón «Publish»**. El usuario dio el «dale», pero el clasificador de permisos de la sesión bloqueó ese clic por ser una transacción real. Lo aprieta Santiago.
+- Conjunto `AR | Agencias de autos | Web: conversion Contact | 5 USD diario` (ID 120251148844760223): destino sitio web, **objetivo conversiones** con el píxel `IMAN web (iman.ar)` (1666535484901345) y el evento **Contact**, **USD 5 por día** (máximo USD 8,75 diario y USD 35 semanal según Meta). Argentina, 18–65+. Interés «Car dealership (retailer)» y además comportamiento «Business page admins»; solo Instagram (en Facebook la página figura como «Silt») → 562.900–662.300 personas.
+- Anuncio `A | 23:40 Quien contesta | Agencias de autos` (ID 120251148844740223): `a-feed.png`, textos de arriba, botón «See details», destino `https://www.iman.ar/automatizaciones/`. Mejoras automáticas de Meta apagadas.
+- Pendiente del usuario: publicar, y pausar `IMAN | Visitas Instagram | Comercios AR | Sept 2026` (lo aprobó el 01/10).
+
+## Medición (píxel de Meta 1666535484901345)
+
+- Sitio (`experience/pixel.js`, en la home y las páginas de servicio): `PageView`; `Contact` al tocar WhatsApp o el link de agenda, o al enviar el formulario (`content_name` dice cuál); `Lead` al enviar el formulario.
+- Agenda (`agenda.iman.ar`, en el bot): `PageView` y `Schedule` cuando se confirma la llamada.
+- No se envía nada de lo que se escribe en los formularios y no carga si el navegador pide no ser rastreado. La página de privacidad lo explica.
+- El mensaje de WhatsApp en sí no se puede medir desde la web: para contarlo, el bot tendría que avisar cada chat nuevo a Meta por la API de conversiones (no hecho).
 
 Lo que se encontró al armarla:
 
-- **WhatsApp no se puede elegir como destino**: la cuenta publicitaria no tiene un número de WhatsApp conectado. Meta además rechaza un enlace `wa.me` como URL de sitio web («To receive messages in WhatsApp, you must set it as the destination of your ad», #2446860). Por eso el destino es la landing. Conectar el número pide un código de verificación: lo tiene que hacer Santiago.
-- En las ubicaciones de Facebook la página aparece con el nombre **«Silt»**, no IMÁN. Renombrarla o limitar el conjunto a Instagram antes de publicar.
-- En el editor, la tecla Escape abre el diálogo «Publish draft items?»: no usarla. Si la pestaña deja de responder, abrir el borrador en una pestaña nueva; los cambios se guardan solos.
+- **WhatsApp no se puede elegir como destino**: la cuenta publicitaria no tiene un número de WhatsApp conectado, y Meta rechaza un enlace `wa.me` como URL de sitio web (#2446860). Conectarlo pide un código de verificación: lo hace Santiago.
+- En el editor, la tecla Escape abre el diálogo «Publish draft items?»: no usarla. Si la pestaña deja de responder, abrir el borrador en una pestaña nueva; los cambios se guardan solos. El campo de subida de imágenes se crea al tocar «Upload».
