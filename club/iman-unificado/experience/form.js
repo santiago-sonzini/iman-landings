@@ -37,6 +37,7 @@
       success.querySelector('[data-success-message]').textContent=(result.whatsapp==='enviado'?'¡Listo! Te acabamos de escribir por WhatsApp para seguir la charla por ahí. ':'')
         +(result.confirmationSent?'Recibimos tu consulta y enviamos una confirmación a tu email.':'Recibimos tu consulta. La confirmación por email no pudo enviarse, pero tu mensaje ya está en nuestro circuito de atención.');
       success.focus();
+      dispatchEvent(new CustomEvent('iman:consulta'));   // pixel.js counts it as a lead
     }catch(problem){status.textContent='';error.textContent=problem.name==='AbortError'?'El envío tardó más de lo esperado. No podemos confirmarlo todavía. Conservamos tus datos: podés reintentar sin duplicar la consulta.':problem.message;error.hidden=false;}
     finally{clearTimeout(timeout);pending=false;submit.disabled=false;form.removeAttribute('aria-busy');label.textContent='Enviar consulta';}
   });

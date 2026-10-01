@@ -74,3 +74,11 @@ test('the short /wa link opens WhatsApp with the Instagram message, on www and f
   assert.equal(apex.status,308);
   assert.equal(apex.headers.get('location'),'https://www.iman.ar/wa');
 });
+
+test('the short /agenda link sends people to the booking page',async()=>{
+  for(const path of ['/agenda','/agenda/']){
+    const response=await worker.fetch(new Request('https://www.iman.ar'+path),{});
+    assert.equal(response.status,302);
+    assert.equal(response.headers.get('location'),'https://agenda.iman.ar/');
+  }
+});
