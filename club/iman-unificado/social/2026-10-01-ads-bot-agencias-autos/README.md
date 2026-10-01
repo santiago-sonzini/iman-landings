@@ -45,12 +45,12 @@ Reglas que se respetan: sin prueba gratis ni garantía, sin casos ni porcentajes
 
 ## Campaña en Meta — estado al 01/10/2026 (noche)
 
-Lista para publicar; **falta solo el botón «Publish»**, que tiene que apretar Santiago: el clasificador de permisos de la sesión bloquea ese clic (y también pausar la campaña vieja y tocar Explee) por ser transacciones reales.
+Publicada el 01/10/2026 (en revisión de Meta al cerrar la sesión).
 
 - Campaña `IMAN | Bot WhatsApp | Agencias de autos | Oct 2026` (ID 120251148844750223), objetivo Interacción.
-- Conjunto `AR | Agencias de autos | Web: conversion Contact | 5 USD diario` (ID 120251148844760223): destino sitio web, **objetivo conversiones** con el píxel `IMAN web (iman.ar)` (1666535484901345) y el evento **Contact**, **USD 5 por día** (máximo USD 8,75 diario y USD 35 semanal según Meta). Argentina, 18–65+. Interés «Car dealership (retailer)» y además comportamiento «Business page admins»; solo Instagram (en Facebook la página figura como «Silt») → 562.900–662.300 personas.
+- Conjunto `AR | Agencias de autos | Web: conversion Contact | 5 USD diario` (ID 120251148844760223): destino sitio web, **objetivo conversiones** con el píxel `IMAN web (iman.ar)` (1666535484901345) y el evento **Contact**, **USD 3 por día** desde el 01/10 a la noche (el nombre del conjunto todavía dice «5 USD diario»; máximo USD 5,25 diario y USD 21 semanal según Meta). Argentina, 18–65+. Interés «Car dealership (retailer)» y además comportamiento «Business page admins»; solo Instagram (en Facebook la página figura como «Silt») → 562.900–662.300 personas.
 - Anuncio `A | 23:40 Quien contesta | Agencias de autos` (ID 120251148844740223): `a-feed.png`, textos de arriba, botón «See details», destino `https://www.iman.ar/automatizaciones/`. Mejoras automáticas de Meta apagadas.
-- Pendiente del usuario: publicar, y pausar `IMAN | Visitas Instagram | Comercios AR | Sept 2026` (lo aprobó el 01/10).
+- Publicada por Santiago el 01/10; la campaña vieja `IMAN | Visitas Instagram | Comercios AR | Sept 2026` quedó pausada ese mismo día.
 
 ## Medición (píxel de Meta 1666535484901345)
 
