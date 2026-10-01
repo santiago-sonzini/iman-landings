@@ -1,1 +1,10 @@
-{"status":"ready","account":"estudio.iman","slides":7,"note":"No publicado el 30/09: el reel de filtro salió a las 22:31 y hay que dejar 3 h. Publicar en la corrida de la mañana del 01/10 en lugar de crear un carrusel nuevo."}
+{
+  "status": "scheduled",
+  "account": "estudio.iman",
+  "slides": 7,
+  "scheduledFor": "2026-10-01T06:00:00-03:00",
+  "via": "Meta Business Suite (Programados)",
+  "verifiedAt": "2026-10-01T00:55:00-03:00",
+  "altText": false,
+  "note": "Santiago pidió publicarlo el 01/10 a las 6:00. Programado y verificado en Content → Scheduled (solo @estudio.iman, público, 7 láminas 4:5). Falta guardar la URL del post y published.png cuando salga."
+}
