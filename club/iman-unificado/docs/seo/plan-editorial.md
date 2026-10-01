@@ -77,3 +77,10 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Fuentes verificadas el 30/9: Meta, ventana de atención de 24 h y plantillas; guía de opt-in; términos de WhatsApp Business Platform (actualizados 23/9/2026, cláusula de proveedores de IA). Se creó `docs/seo/blog-log.md` como registro de temas.
 - Instagram: carrusel de fidelización «Tarjeta del club: qué va adelante y qué va atrás», publicado en https://www.instagram.com/estudio.iman/p/Dd6ZMdKoFe6/ (`social/2026-09-30-0930-tarjeta-club-wallet/`).
 - `scripts/build-ci.sh`: 39 pruebas aprobadas, 18 URLs indexables en sitemap, cero errores o advertencias SEO.
+
+## Ejecución del 1 de octubre de 2026
+
+- Artículo nuevo `/recursos/programa-de-puntos-o-tarjeta-de-sellos/`: cuándo conviene una tarjeta de sellos y cuándo un programa de puntos, tres preguntas para decidir, la cuenta del premio y dos ejemplos hipotéticos (cafetería y pet shop). Intención distinta de `/recursos/club-wallet/` (qué es un club en Wallet) y de la guía de Wallet o email (por qué canal avisar). Se escribió a la tarde, a pedido de Santiago, porque la corrida de las 9 no lo había publicado.
+- Fuentes verificadas el 1/10: referencia de `LoyaltyObject` de Google Wallet (campos `loyaltyPoints` y `secondaryLoyaltyPoints`, tipos de saldo) y plantilla de tarjetas de fidelidad (actualizada el 28/9/2026). La página de Apple `PassFields` se había verificado el 30/9; hoy no se pudo releer porque el sitio no devuelve el contenido sin JavaScript.
+- Instagram: carrusel del mismo tema «¿Sellos o puntos?», programado para las 21:15 (`social/2026-10-01-1850-sellos-o-puntos/`).
+- `scripts/build-ci.sh`: 44 pruebas aprobadas, 19 URLs indexables en sitemap, cero errores o advertencias SEO.
