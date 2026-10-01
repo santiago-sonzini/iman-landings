@@ -27,6 +27,7 @@ async function startChat(lead,env){
 }
 const handleContact=createContactHandler({sendMail,startChat});
 const handleNewsletter=createNewsletterHandler({sendMail});
+const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, vengo de Instagram y quiero info');
 
 export default {
   async fetch(request,env) {
@@ -35,6 +36,8 @@ export default {
       url.protocol='https:';url.hostname='www.iman.ar';url.port='';
       return Response.redirect(url.href,308);
     }
+    // Short link for the Instagram bio (iman.ar/wa): opens WhatsApp with the message the assistant recognizes as a lead.
+    if(url.pathname==='/wa'||url.pathname==='/wa/')return Response.redirect(WHATSAPP_FROM_INSTAGRAM,302);
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});

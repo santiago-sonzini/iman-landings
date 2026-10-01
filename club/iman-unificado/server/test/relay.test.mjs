@@ -63,3 +63,14 @@ test('noncanonical preview hosts block indexing and expose a restrictive robots 
   const production=await worker.fetch(new Request('https://www.iman.ar/robots.txt'),env);
   assert.equal(production.headers.get('x-robots-tag'),null);
 });
+
+test('the short /wa link opens WhatsApp with the Instagram message, on www and from the apex',async()=>{
+  const direct=await worker.fetch(new Request('https://www.iman.ar/wa'),{});
+  assert.equal(direct.status,302);
+  const target=new URL(direct.headers.get('location'));
+  assert.equal(target.origin+target.pathname,'https://wa.me/5493535189997');
+  assert.equal(target.searchParams.get('text'),'Hola, vengo de Instagram y quiero info');
+  const apex=await worker.fetch(new Request('https://iman.ar/wa'),{});
+  assert.equal(apex.status,308);
+  assert.equal(apex.headers.get('location'),'https://www.iman.ar/wa');
+});
