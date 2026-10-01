@@ -1,7 +1,7 @@
 """Production layer for the approved IMÁN experience and readable service pages."""
 from pathlib import Path
 from html import escape as e
-import json, re, shutil
+import hashlib, json, re, shutil
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'experience'
@@ -17,6 +17,12 @@ def schemas(path,title,desc,extra=()):
 def seo(path,title,desc,extra=()):
     return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}/assets/editorial-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Vendé más. Trabajá menos."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
 
+def asset(name):
+    # Cloudflare keeps /assets/* cached for hours: the content hash in the URL makes a new version show up at once.
+    # Files in experience/assets/ are published next to the styles and scripts, in the same folder.
+    source=SOURCE/name if (SOURCE/name).exists() else SOURCE/'assets'/name
+    return f'/assets/experience/{name}?v={hashlib.md5(source.read_bytes()).hexdigest()[:8]}'
+
 def button(label,url):
     return f'<a class="cta" href="{e(url,quote=True)}"><span class="cta-label">{e(label)}</span></a>'
 
@@ -28,16 +34,20 @@ def actions():
 
 # Seconds of the video at which each step happens (experience/assets/demo-agencia.json, written by scripts/capture-agencia-video.mjs).
 DEMO=json.loads((SOURCE/'assets/demo-agencia.json').read_text())
-def demo():
+def demo(s):
+    """Hero of the WhatsApp page: the title next to the dealership demo (on a phone, the video comes first), then its steps."""
+    title=e(s['title']).replace(e(s['emphasis']),'<em>'+e(s['emphasis'])+'</em>')
     steps=[(0,'Llega la consulta','De noche, desde la publicación de Mercado Libre.'),(DEMO['responde'],'Responde en segundos','Con el stock y el precio que cargó la agencia.'),(DEMO['califica'],'Pregunta cómo paga','Contado, financiado o con un usado en parte de pago.'),(DEMO['financia'],'Propone un horario','Explica la financiación y ofrece dos turnos para ver la unidad.'),(DEMO['agenda'],'Agenda la visita','Y le avisa al vendedor que hay un comprador listo.')]
     items=''.join(f'<li data-at="{at}"><b>{e(title)}</b><span>{e(text)}</span></li>' for at,title,text in steps)
-    return f'<section class="demo" aria-labelledby="demo-title"><p class="eyebrow">UN EJEMPLO · AGENCIA DE AUTOS</p><h2 id="demo-title">De la consulta<br><em>a la visita agendada.</em></h2><div class="demo-stage"><video class="demo-video" width="{DEMO["ancho"]}" height="{DEMO["alto"]}" muted loop playsinline preload="metadata" poster="/assets/experience/demo-agencia.webp" aria-label="Video de un asistente de WhatsApp que responde una consulta por una camioneta, pregunta cómo paga el comprador y agenda la visita."><source src="/assets/experience/demo-agencia.mp4" type="video/mp4"></video><ol class="demo-steps">{items}</ol></div><p class="demo-note">Demostración con datos de ejemplo: el asistente se arma con la información y las reglas de cada negocio. Foto del vehículo: Just a Man / Wikimedia Commons, CC BY 4.0.</p>{actions()}</section>'
+    video=f'<video class="demo-video" width="{DEMO["ancho"]}" height="{DEMO["alto"]}" muted loop playsinline preload="metadata" poster="{asset("demo-agencia.webp")}" aria-label="Video de un asistente de WhatsApp que responde una consulta por una camioneta, pregunta cómo paga el comprador y agenda la visita."><source src="{asset("demo-agencia.mp4")}" type="video/mp4"></video>'
+    hero=f'<section class="reading-hero demo-hero"><div class="demo-copy"><p class="eyebrow">{e(s["name"])} · Ejemplo: agencia de autos</p><h1>{title}</h1><p class="reading-intro">{e(s["intro"])}</p>{actions()}</div><div class="demo-phone">{video}</div></section>'
+    return hero+f'<section class="demo" aria-labelledby="demo-title"><p class="eyebrow">QUÉ PASA EN EL VIDEO</p><h2 id="demo-title">De la consulta<br><em>a la visita agendada.</em></h2><ol class="demo-steps">{items}</ol><p class="demo-note">Demostración con datos de ejemplo: el asistente se arma con la información y las reglas de cada negocio. Foto del vehículo: Just a Man / Wikimedia Commons, CC BY 4.0.</p>{actions()}</section>'
 
 def footer():
     return '<footer class="reading-footer"><a href="/">IMÁN</a><nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/recursos/">Guías</a><a href="/agente/">Para agentes</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav><span>Hecho en Argentina.</span></footer>'
 
 def shell(path,title,desc,body,extra=()):
-    return f'''<!doctype html><html lang="es-AR" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11141b"><meta name="color-scheme" content="dark"><title>{e(title)}</title><meta name="description" content="{e(desc,quote=True)}"><meta property="og:title" content="{e(title,quote=True)}"><meta property="og:description" content="{e(desc,quote=True)}"><meta property="og:type" content="website"><meta property="og:locale" content="es_AR">{seo(path,title,desc,extra)}<link rel="icon" href="/assets/experience/iman-simbolo.svg" type="image/svg+xml"><link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/assets/experience/site.css"><link rel="stylesheet" href="/assets/experience/reading.css"><script src="/assets/experience/form.js" defer></script><script src="/assets/experience/demo.js" defer></script><script src="/assets/experience/pixel.js" defer></script></head><body class="reading"><a class="skip" href="#contenido">Saltar al contenido</a><header class="site-header"><a class="identity" href="/" aria-label="IMÁN, inicio"><span class="wordmark">imán</span></a><a class="header-contact" href="/contacto/">Hablemos</a></header><main id="contenido">{body}</main>{footer()}</body></html>'''
+    return f'''<!doctype html><html lang="es-AR" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11141b"><meta name="color-scheme" content="dark"><title>{e(title)}</title><meta name="description" content="{e(desc,quote=True)}"><meta property="og:title" content="{e(title,quote=True)}"><meta property="og:description" content="{e(desc,quote=True)}"><meta property="og:type" content="website"><meta property="og:locale" content="es_AR">{seo(path,title,desc,extra)}<link rel="icon" href="/assets/experience/iman-simbolo.svg" type="image/svg+xml"><link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="{asset('site.css')}"><link rel="stylesheet" href="{asset('reading.css')}"><script src="{asset('form.js')}" defer></script><script src="{asset('demo.js')}" defer></script><script src="{asset('pixel.js')}" defer></script></head><body class="reading"><a class="skip" href="#contenido">Saltar al contenido</a><header class="site-header"><a class="identity" href="/" aria-label="IMÁN, inicio"><span class="wordmark">imán</span></a><a class="header-contact" href="/contacto/">Hablemos</a></header><main id="contenido">{body}</main>{footer()}</body></html>'''
 
 def form(selected=''):
     fields=''
@@ -50,7 +60,8 @@ def form(selected=''):
 
 def service_body(s):
     title=e(s['title']).replace(e(s['emphasis']),'<em>'+e(s['emphasis'])+'</em>')
-    body=f'<section class="reading-hero"><p class="eyebrow">{e(s["name"])}</p><h1>{title}</h1><p class="reading-intro">{e(s["intro"])}</p>{actions() if s["id"]=="whatsapp" else button("Contanos tu idea", "#consulta")}</section>{demo() if s["id"]=="whatsapp" else ""}<article class="reading-content">'
+    hero=demo(s) if s['id']=='whatsapp' else f'<section class="reading-hero"><p class="eyebrow">{e(s["name"])}</p><h1>{title}</h1><p class="reading-intro">{e(s["intro"])}</p>{button("Contanos tu idea", "#consulta")}</section>'
+    body=hero+'<article class="reading-content">'
     for i,section in enumerate(s['sections']):
         body+=f'<section class="reading-section"><span class="section-index">0{i+1}</span><h2>{e(section["title"])}</h2><p>{e(section["text"])}</p>'
         if section['items']: body+='<ul>'+''.join('<li>'+e(x)+'</li>' for x in section['items'])+'</ul>'
@@ -74,7 +85,8 @@ def build_dark(out,pages):
     dest=out/'assets/experience';dest.mkdir(parents=True,exist_ok=True)
     shutil.copytree(SOURCE/'assets',dest,dirs_exist_ok=True)
     for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js']:shutil.copy2(SOURCE/name,dest/name)
-    home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+'<script src="/assets/experience/pixel.js" defer></script></head>')
+    home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
+    home=re.sub(r'/assets/experience/(site\.css|home\.css|home\.js)(?=")',lambda m:asset(m[1]),home)
     (out/'index.html').write_text(home)
     routes=[]
     for s in SERVICES:

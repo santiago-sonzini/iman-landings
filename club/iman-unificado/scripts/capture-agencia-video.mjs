@@ -57,8 +57,8 @@ const k=box.w>600?1:2,crop=`crop=${Math.round((box.w+PAD*2)*k/2)*2}:${Math.round
 const mp4=path.join(out,'demo-agencia.mp4');
 execFileSync('ffmpeg',['-y','-loglevel','error','-f','concat','-safe','0','-i',path.join(tmp,'list.txt'),'-vf',`${crop},scale=${WIDTH}:-2:flags=lanczos,setpts=PTS/${SPEED},fps=30`,
  '-an','-c:v','libx264','-preset','slow','-crf','25','-pix_fmt','yuv420p','-movflags','+faststart',mp4]);
-// Póster: el momento en que la visita ya está agendada.
-const at=((marks.agenda-t0)/SPEED+1.2).toFixed(2),png=path.join(tmp,'poster.png');
+// Póster: el primer cuadro, para que no salte al empezar a reproducirse.
+const at='0.20',png=path.join(tmp,'poster.png');
 execFileSync('ffmpeg',['-y','-loglevel','error','-ss',at,'-i',mp4,'-frames:v','1',png]);
 execFileSync('cwebp',['-quiet','-q','82',png,'-o',path.join(out,'demo-agencia.webp')]);
 const sec=n=>+((marks[n]-t0)/SPEED).toFixed(1);
