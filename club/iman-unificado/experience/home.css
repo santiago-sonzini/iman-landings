@@ -208,9 +208,9 @@ body.home{height:auto;min-height:100%;overflow-x:hidden;overflow-y:visible;text-
 .shop-browser{width:92%;margin-left:auto}
 .shop-phone{position:absolute;left:0;bottom:0;width:min(230px,31%);z-index:2}
 .order-bar{position:absolute;left:4%;right:4%;bottom:2.4%;display:flex;gap:2cqw;padding:2cqw;border-radius:5.5cqw;background:#fff;box-shadow:0 8px 20px -6px #0005;font:600 4.3cqw/1.2 system-ui,-apple-system,sans-serif}
-.order-main{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2.6cqw 3.4cqw;border-radius:4cqw;background:#a3155f;color:#fff}
+.order-main{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2.6cqw 3.4cqw;border-radius:4cqw;background:#12301f;color:#fff}
 .order-main b,.order-main small{display:block;overflow:hidden;text-overflow:ellipsis}.order-main small{font-weight:400;opacity:.8;font-size:3.4cqw}
-.order-wa{display:grid;place-items:center;padding:0 4cqw;border-radius:4cqw;background:#e91e7a;color:#fff}
+.order-wa{display:grid;place-items:center;padding:0 4cqw;border-radius:4cqw;background:#1f4d3a;color:#fff}
 .shop-visual .demo-note{bottom:4px}
 
 /* Closing */

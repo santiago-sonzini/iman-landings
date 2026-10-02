@@ -14,7 +14,7 @@ Validación y publicación: `bash scripts/build-ci.sh`. Vista previa con correos
 
 ## Home con demos — 29/09/2026 (local, sin publicar)
 
-`experience/home.html` + `home.css` + `home.js`: hero con capturas reales de cafe.iman.ar (navegador + celular), los tres servicios en la primera pantalla y «Más info» que abre `#demos` con la demo de cada uno: conversación estilo WhatsApp animada (Automatizaciones), club de Verde Café con Wallet y push (Fidelización) y render con scroll de la demo de PetOutlet (Catálogos). Las capturas son WebP en `experience/assets/shots/`; se regeneran con `node scripts/capture-demos.mjs` (PNG crudos en `club/tmp/demo-captures/`, después recortar/convertir con `magick`). Sin JS cada «Más info» enlaza a la página del servicio.
+`experience/home.html` + `home.css` + `home.js`: hero con capturas reales de cafe.iman.ar (navegador + celular), los tres servicios en la primera pantalla y «Más info» que abre `#demos` con la demo de cada uno: conversación estilo WhatsApp animada (Automatizaciones), club de Verde Café con Wallet y push (Fidelización) y render con scroll de la demo de Grano Norte, una distribuidora de café ficticia presentada como proveedora de Verde Café (Catálogos; antes era PetOutlet). Las capturas son WebP en `experience/assets/shots/`; se regeneran con `node scripts/capture-demos.mjs` (PNG crudos en `club/tmp/demo-captures/`, después recortar/convertir con `magick`; `CATALOG_URL=http://localhost:3210/demo/grano-norte` captura el catálogo desde el template corriendo en local). Sin JS cada «Más info» enlaza a la página del servicio.
 
 ## Experiencia editorial local — 28/09/2026
 
