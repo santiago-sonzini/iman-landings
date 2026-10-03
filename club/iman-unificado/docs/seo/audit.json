@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-01T21:57:37.059861+00:00",
+  "generated_at": "2026-10-03T15:41:40.805682+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
-    "html": 24,
-    "indexable_html": 19,
-    "sitemap_urls": 19,
+    "html": 25,
+    "indexable_html": 20,
+    "sitemap_urls": 20,
     "error": 0,
     "warning": 0,
     "notice": 0
@@ -19,7 +19,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
-      "incoming_pages": 20,
+      "incoming_pages": 21,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -49,7 +49,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 20,
+      "incoming_pages": 21,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -79,7 +79,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 9,
+      "incoming_pages": 10,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -134,7 +134,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 19,
+      "incoming_pages": 20,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -168,7 +168,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 20,
+      "incoming_pages": 21,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -183,7 +183,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 20,
+      "incoming_pages": 21,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -198,7 +198,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 2,
-      "incoming_pages": 1,
+      "incoming_pages": 2,
       "schema_types": [
         "Article",
         "ContactPoint",
@@ -230,7 +230,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 2,
-      "incoming_pages": 2,
+      "incoming_pages": 3,
       "schema_types": [
         "Article",
         "ContactPoint",
@@ -321,12 +321,28 @@
       ]
     },
     {
+      "path": "/recursos/whatsapp-business-app-o-api/",
+      "title": "WhatsApp Business o la API de WhatsApp: cuál necesita tu comercio | IMAN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": [
+        "Article",
+        "ContactPoint",
+        "Country",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
       "path": "/servicios/",
       "title": "Automatización, fidelización y ERP | IMÁN",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 19,
+      "incoming_pages": 20,
       "schema_types": [
         "ContactPoint",
         "Country",

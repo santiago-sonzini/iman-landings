@@ -9,3 +9,4 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-09-27 | automatizar-compras-comparar-proveedores | Cómo comparar cotizaciones de proveedores con automatización (aprender) | Nuevo; ampliado 29/09 |
 | 2026-09-30 | agente-ia-whatsapp-comercio | Qué puede responder un agente/chatbot de IA en WhatsApp de un comercio y cuándo derivar a una persona (aprender/evaluar) | Nuevo |
 | 2026-10-01 | programa-de-puntos-o-tarjeta-de-sellos | Programa de puntos o tarjeta de sellos: cuál conviene a un comercio (evaluar) | Nuevo |
+| 2026-10-03 | whatsapp-business-app-o-api | WhatsApp Business (app) o API de WhatsApp: diferencias, costo y cuál conviene a un comercio (evaluar) | Nuevo |

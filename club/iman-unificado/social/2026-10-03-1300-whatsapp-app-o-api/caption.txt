@@ -1,0 +1,15 @@
+¿La app de WhatsApp Business o la API? Depende de quién responde los mensajes.
+
+En la app responde una persona: se descarga, se configura el perfil y el catálogo, y tiene mensajes de bienvenida y de ausencia. Todo lo demás se escribe a mano.
+
+En la API responde un sistema: un agente de IA, un CRM o tu gestión. No tiene pantalla propia, necesita integración y los avisos salen con plantillas aprobadas por Meta, a quien dio su permiso.
+
+Sobre el costo: Meta cobra por mensaje de plantilla desde julio de 2025. Responderle a quien te escribió no tiene cargo; las plantillas de marketing se cobran siempre. La integración se paga aparte.
+
+Tres preguntas para decidir: ¿quedan mensajes sin responder al final del día? ¿La mayoría de las consultas tiene una respuesta estable? ¿El pedido tiene que quedar en otro sistema? Con tres «no», seguí con la app.
+
+La guía completa está en el link de la bio (iman.ar → Recursos).
+
+¿Quién responde hoy tu WhatsApp: vos, alguien del equipo o un sistema? Contá tu rubro y cuántos mensajes te llegan por día.
+
+#WhatsAppBusiness #Automatizacion #PymesArgentina #AtencionAlCliente

@@ -1,10 +1,11 @@
 {
-  "status": "scheduled",
+  "status": "published",
   "account": "estudio.iman",
   "slides": 7,
   "scheduledFor": "2026-10-01T21:15:00-03:00",
   "via": "Meta Business Suite (Programados)",
-  "verifiedAt": "2026-10-01T18:58:00-03:00",
+  "verifiedAt": "2026-10-03T12:45:00-03:00",
   "altText": false,
-  "note": "No se publicó a las 18:50 porque los reels de las 18:00 y 18:05 estaban a menos de 3 h. Programado para las 21:15 y verificado en Content → Scheduled (solo @estudio.iman, público, 7 láminas 4:5, con caption). Falta guardar la URL del post y published.png cuando salga."
+  "note": "Programado en Meta Business Suite para el 01/10 a las 21:15; visto en el perfil el 03/10 a las 12:45. No se guardó published.png.",
+  "url": "https://www.instagram.com/estudio.iman/p/Dd-LHEjCVeI/"
 }
