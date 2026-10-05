@@ -2,7 +2,7 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-03T15:41:40.805682+00:00
+Generada: 2026-10-05T14:24:25.062751+00:00
 
 25 HTML · 20 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
@@ -28,7 +28,7 @@ Sin hallazgos en los controles implementados.
 | /recursos/automatizar-procesos/ | Sí | 2 | 3 |
 | /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 2 |
 | /recursos/club-wallet/ | Sí | 2 | 3 |
-| /recursos/programa-de-puntos-o-tarjeta-de-sellos/ | Sí | 2 | 1 |
+| /recursos/programa-de-puntos-o-tarjeta-de-sellos/ | Sí | 2 | 2 |
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
 | /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 1 |

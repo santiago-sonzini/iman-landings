@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-03T15:41:40.805682+00:00",
+  "generated_at": "2026-10-05T14:24:25.062751+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
-  "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
+  "public": "/private/tmp/iman-daily-20261005/public",
   "counts": {
     "html": 25,
     "indexable_html": 20,
@@ -278,7 +278,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 2,
-      "incoming_pages": 1,
+      "incoming_pages": 2,
       "schema_types": [
         "Article",
         "ContactPoint",

@@ -1,5 +1,11 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 5 de octubre de 2026
+
+Las cuatro URLs prioritarias muestran «La URL está en Google» y «La página está indexada». El sitemap está Correcto, con última lectura el 3/10/2026 y 20 páginas descubiertas (antes: 15). Esto no equivale a 20 páginas indexadas. Sin solicitudes nuevas ni cambios de DNS. Evidencia privada en `docs/seo/private/2026-10-05-search-console/`.
+
+Se amplió la guía existente Wallet/email con una tabla de decisiones y controles para cancelar avisos tras un canje. No se creó una URL adicional.
+
 ## Seguimiento del 29 de septiembre de 2026
 
 Las cuatro inspecciones prioritarias (inicio, Fidelización, Comercios y Automatizaciones) vuelven a mostrar **La URL está en Google** y **La página está indexada**. Sin cambio respecto del 28/9; no se enviaron solicitudes nuevas ni se modificó DNS.

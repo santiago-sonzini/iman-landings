@@ -84,3 +84,13 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Fuentes verificadas el 1/10: referencia de `LoyaltyObject` de Google Wallet (campos `loyaltyPoints` y `secondaryLoyaltyPoints`, tipos de saldo) y plantilla de tarjetas de fidelidad (actualizada el 28/9/2026). La página de Apple `PassFields` se había verificado el 30/9; hoy no se pudo releer porque el sitio no devuelve el contenido sin JavaScript.
 - Instagram: carrusel del mismo tema «¿Sellos o puntos?», programado para las 21:15 (`social/2026-10-01-1850-sellos-o-puntos/`).
 - `scripts/build-ci.sh`: 44 pruebas aprobadas, 19 URLs indexables en sitemap, cero errores o advertencias SEO.
+
+
+## Ejecución del 5 de octubre de 2026
+
+- Actualización de `/recursos/wallet-email-notificaciones-fidelizacion/`: elegir canal por evento y revisar estado antes del envío; ejemplo hipotético que evita recordar un premio ya canjeado. Enlace a guía de sellos/puntos y CTA existente a Fidelización.
+- Fuente primaria vigente: Google Wallet, notificaciones de tarjetas de fidelidad, consultada hoy. Apple: guía oficial archivada Updating a Pass; la página moderna PassFieldContent no devolvió texto legible y no se afirma una revisión actual de su contenido.
+- Search Console: cuatro páginas prioritarias indexadas; sitemap Correcto, 20 URLs descubiertas, leído el 3/10. Evidencia privada. Sin reenvíos.
+- Validación sobre HEAD e5986ec: 44 pruebas, 25 HTML, 20 URLs de sitemap, cero errores, advertencias u observaciones. Panel regenerado sin métricas privadas.
+- Carrusel: `social/2026-10-05-wallet-email/`, seis láminas 4:5 y pregunta específica en cierre y descripción. El estado final de publicación se guarda en publication.json.
+- Publicación confirmada en Instagram y verificada en perfil/post: https://www.instagram.com/estudio.iman/p/DeHbQpNIMjk/ .
