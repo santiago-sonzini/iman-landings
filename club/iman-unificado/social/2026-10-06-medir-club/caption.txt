@@ -1,0 +1,13 @@
+Tu club suma socios. ¿Pero lo usan?
+
+Separá las altas de las compras identificadas, los canjes y el costo de esos premios. Guardar la tarjeta no demuestra que una persona haya vuelto.
+
+Para mirar recurrencia, elegí un grupo y dales el mismo tiempo: por ejemplo, 30 días desde la primera compra registrada en el programa. Calculá solo con quienes ya completaron ese plazo. No mezcles a quien entró ayer con quien tuvo un mes para volver.
+
+Ejemplo hipotético: de 40 clientes con 30 días completos de seguimiento, 10 hicieron otra compra dentro de ese plazo. Si uno volvió cinco veces, cuenta una vez entre esos 10; los tickets van aparte. No son resultados de IMAN ni un objetivo para tu negocio.
+
+Antes de cambiar el premio, revisá que caja identifique al socio y registre el canje. Y anotá cambios de precios, stock o campañas: una compra posterior no demuestra por sí sola que el club la causó.
+
+¿Qué dato te falta hoy: compras por cliente, canjes o costo del premio? Contá tu rubro y dónde lo registrás.
+
+#Fidelizacion #Comercios #ClubDeClientes #PymesArgentina

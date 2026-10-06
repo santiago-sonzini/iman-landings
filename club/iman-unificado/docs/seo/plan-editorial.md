@@ -94,3 +94,12 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Validación sobre HEAD e5986ec: 44 pruebas, 25 HTML, 20 URLs de sitemap, cero errores, advertencias u observaciones. Panel regenerado sin métricas privadas.
 - Carrusel: `social/2026-10-05-wallet-email/`, seis láminas 4:5 y pregunta específica en cierre y descripción. El estado final de publicación se guarda en publication.json.
 - Publicación confirmada en Instagram y verificada en perfil/post: https://www.instagram.com/estudio.iman/p/DeHbQpNIMjk/ .
+
+## Ejecución del 6 de octubre de 2026
+
+- Ampliada la guía de sellos/puntos con un tablero mínimo de uso, comparación con igual tiempo de seguimiento y un ejemplo hipotético de 10 clientes sobre 40. Distingue recurrencia observada de efecto causal del programa. No se creó una URL nueva.
+- Fuentes primarias actuales: informes de clientes de Shopify y protección de privacidad de Mail de Apple, consultadas hoy. Ventana individual de 30 días: propuesta editorial, no definición predeterminada del informe mensual de Shopify.
+- Perfil vigente revisado: el último carrusel era Wallet/email del 5/10. El de hoy aborda medición del uso, con pregunta en cierre y descripción. Archivos en `social/2026-10-06-medir-club/`.
+- Search Console: cuatro prioridades indexadas; sitemap Correcto y leído el 5/10. Error transitorio inicial resuelto; sin reenvíos.
+- Build sobre HEAD ffb58ba y esta actualización: 44 pruebas aprobadas, 25 HTML, 20 URLs de sitemap; cero errores, advertencias u observaciones.
+- Carrusel publicado y verificado: https://www.instagram.com/estudio.iman/p/DeJxZPIEax9/ .

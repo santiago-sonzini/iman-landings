@@ -1,5 +1,10 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 6 de octubre de 2026
+
+Las cuatro URLs prioritarias vuelven a mostrar «La URL está en Google» y «La página está indexada». La primera consulta del inicio devolvió un error temporal del servicio; tras responder correctamente las otras tres, un único reintento confirmó el inicio. No fue un error de rastreo del sitio. Sitemap Correcto, 20 páginas descubiertas, última lectura 5/10/2026. No se enviaron solicitudes ni se modificó DNS. Evidencia privada: `docs/seo/private/2026-10-06-search-console/`.
+
+
 ## Seguimiento del 5 de octubre de 2026
 
 Las cuatro URLs prioritarias muestran «La URL está en Google» y «La página está indexada». El sitemap está Correcto, con última lectura el 3/10/2026 y 20 páginas descubiertas (antes: 15). Esto no equivale a 20 páginas indexadas. Sin solicitudes nuevas ni cambios de DNS. Evidencia privada en `docs/seo/private/2026-10-05-search-console/`.
