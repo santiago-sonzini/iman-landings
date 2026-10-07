@@ -2,9 +2,9 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-07T12:14:51.440823+00:00
+Generada: 2026-10-07T14:10:27.526231+00:00
 
-25 HTML · 20 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
+26 HTML · 21 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
 ## Hallazgos
 
@@ -14,25 +14,26 @@ Sin hallazgos en los controles implementados.
 
 | URL | Sitemap | Clics desde inicio | Páginas que enlazan |
 | --- | --- | --- | --- |
-| / | Sí | 0 | 21 |
-| /agente/ | Sí | 1 | 21 |
+| / | Sí | 0 | 22 |
+| /agente/ | Sí | 1 | 22 |
 | /agentes/ | Sí | 2 | 1 |
 | /automatizaciones/ | Sí | 1 | 10 |
-| /comercios/ | Sí | 1 | 5 |
-| /contacto/ | Sí | 1 | 20 |
+| /comercios/ | Sí | 1 | 6 |
+| /contacto/ | Sí | 1 | 21 |
 | /fidelizacion/ | Sí | 1 | 8 |
-| /privacidad/ | Sí | 1 | 21 |
-| /recursos/ | Sí | 1 | 21 |
+| /privacidad/ | Sí | 1 | 22 |
+| /recursos/ | Sí | 1 | 22 |
 | /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 2 |
 | /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 1 |
-| /recursos/automatizar-procesos/ | Sí | 2 | 3 |
-| /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 2 |
+| /recursos/automatizar-procesos/ | Sí | 2 | 4 |
+| /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 3 |
 | /recursos/club-wallet/ | Sí | 2 | 3 |
+| /recursos/integrar-catalogo-con-erp/ | Sí | 2 | 1 |
 | /recursos/programa-de-puntos-o-tarjeta-de-sellos/ | Sí | 2 | 2 |
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
 | /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 2 |
-| /servicios/ | Sí | 1 | 20 |
+| /servicios/ | Sí | 1 | 21 |
 | /turnos/landing/ | Sí | 2 | 4 |
 
 ## Verificaciones que requieren el sitio publicado

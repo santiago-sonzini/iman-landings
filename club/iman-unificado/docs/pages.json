@@ -50,7 +50,7 @@
     "title": "Wallet o email: cómo combinar notificaciones para fidelizar clientes | IMAN",
     "description": "Cuándo usar Apple Wallet, Google Wallet y email en un programa de fidelización. Ejemplos de beneficios, avisos y campañas sin prometer notificaciones garantizadas.",
     "file": "recursos/wallet-email-notificaciones-fidelizacion/index.html",
-    "dateModified": "2026-09-28",
+    "dateModified": "2026-10-05",
     "datePublished": "2026-09-27"
   },
   {
@@ -66,7 +66,7 @@
     "title": "Agente de IA en WhatsApp: qué puede responder y cuándo pasar a una persona | IMAN",
     "description": "Qué consultas de un comercio puede resolver un agente de IA en WhatsApp, cuándo derivar a una persona y qué reglas de la WhatsApp Business Platform condicionan el diseño.",
     "file": "recursos/agente-ia-whatsapp-comercio/index.html",
-    "dateModified": "2026-09-30",
+    "dateModified": "2026-10-07",
     "datePublished": "2026-09-30"
   },
   {
@@ -74,7 +74,7 @@
     "title": "Programa de puntos o tarjeta de sellos: cuál conviene a tu comercio | IMAN",
     "description": "Cuándo conviene una tarjeta de sellos y cuándo un programa de puntos, según cómo compran tus clientes, con tres preguntas para decidir y la cuenta del premio.",
     "file": "recursos/programa-de-puntos-o-tarjeta-de-sellos/index.html",
-    "dateModified": "2026-10-01",
+    "dateModified": "2026-10-06",
     "datePublished": "2026-10-01"
   },
   {
@@ -84,6 +84,14 @@
     "file": "recursos/whatsapp-business-app-o-api/index.html",
     "dateModified": "2026-10-03",
     "datePublished": "2026-10-03"
+  },
+  {
+    "path": "/recursos/integrar-catalogo-con-erp/",
+    "title": "Integrar el catálogo online con tu ERP: qué sincronizar primero | IMAN",
+    "description": "Cómo conectar un catálogo digital con tu ERP o sistema de gestión: qué dato viaja en cada dirección, por qué empezar por precios y cuándo sumar stock y pedidos.",
+    "file": "recursos/integrar-catalogo-con-erp/index.html",
+    "dateModified": "2026-10-07",
+    "datePublished": "2026-10-07"
   },
   {
     "path": "/recursos/",
