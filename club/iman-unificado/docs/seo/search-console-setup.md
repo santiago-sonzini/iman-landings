@@ -1,5 +1,13 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 7 de octubre de 2026
+
+Las inspecciones de inicio, Fidelización, Comercios y Automatizaciones confirman «La URL está en Google» y «La página está indexada». El sitemap continúa Correcto y su última lectura es del 7/10/2026. El informe global de la propiedad avanzó; sus conteos y ejemplos quedan en evidencia privada porque abarcan también subdominios y URLs antiguas, no solo el sitemap actual.
+
+Se revisaron las exclusiones: el bloqueo por robots corresponde a una URL histórica de Turnero. El informe también muestra URLs descubiertas pendientes, incluida la guía de agentes de IA. Este estado no prueba un fallo técnico; no se reenviaron solicitudes ni se cambió DNS. Evidencia: `docs/seo/private/2026-10-07-search-console/`.
+
+Se amplió la guía existente de agentes en WhatsApp con una ficha de derivación, separación entre solicitud y promesa, responsable, pausa del agente y cinco pruebas de continuidad. Fuente primaria: política de mensajería de WhatsApp consultada el 7/10. Sin URL nueva. Carrusel relacionado preparado; pendiente de publicación porque @estudio.iman y el post anterior aparecen no disponibles en la sesión observada. No se publicó en la cuenta personal.
+
 ## Seguimiento del 6 de octubre de 2026
 
 Las cuatro URLs prioritarias vuelven a mostrar «La URL está en Google» y «La página está indexada». La primera consulta del inicio devolvió un error temporal del servicio; tras responder correctamente las otras tres, un único reintento confirmó el inicio. No fue un error de rastreo del sitio. Sitemap Correcto, 20 páginas descubiertas, última lectura 5/10/2026. No se enviaron solicitudes ni se modificó DNS. Evidencia privada: `docs/seo/private/2026-10-06-search-console/`.

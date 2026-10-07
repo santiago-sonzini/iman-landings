@@ -2,7 +2,7 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-06T12:18:32.922560+00:00
+Generada: 2026-10-07T12:14:51.440823+00:00
 
 25 HTML · 20 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
@@ -31,7 +31,7 @@ Sin hallazgos en los controles implementados.
 | /recursos/programa-de-puntos-o-tarjeta-de-sellos/ | Sí | 2 | 2 |
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
-| /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 1 |
+| /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 2 |
 | /servicios/ | Sí | 1 | 20 |
 | /turnos/landing/ | Sí | 2 | 4 |
 

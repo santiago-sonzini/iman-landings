@@ -1,0 +1,13 @@
+“Te paso con alguien” no debería significar “explicá todo de nuevo”.
+
+Antes de derivar una conversación de WhatsApp, dejá claro qué pidió el cliente, qué falta confirmar y quién sigue la atención.
+
+En el ejemplo del carrusel, recibir antes de las 17 es una condición solicitada: todavía no es una entrega prometida. Cuando una persona toma el caso, el agente debe pausar sus respuestas. Y si el cliente cambia el pedido, el equipo tiene que ver ese mensaje nuevo.
+
+Una prueba sencilla: pedile a alguien del equipo que continúe el caso usando solo la ficha. ¿Puede hacerlo sin volver a preguntar lo mismo?
+
+¿Qué consulta pasarías siempre a una persona: un reclamo, un precio especial o una entrega urgente? Contá tu rubro y qué dato necesita tu equipo para responder.
+
+Ejemplo hipotético. La implementación depende de las herramientas y las reglas de atención de cada negocio.
+
+#AtencionAlCliente #Comercios #Automatizacion #WhatsAppBusiness
