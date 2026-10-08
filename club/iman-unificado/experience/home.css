@@ -78,6 +78,15 @@ body.home{height:auto;min-height:100%;overflow-x:hidden;overflow-y:visible;text-
 .plus::before,.plus::after{content:'';position:absolute;left:0;top:5px;width:11px;height:1px;background:currentColor;transition:transform .35s}
 .plus::after{transform:rotate(90deg)}
 .service-card.is-current .plus::after{transform:rotate(0)}
+/* Gauss: a separate product, so it sits apart as a full-width fourth row under the three services. */
+@media(min-width:1001px){
+  .service-wide,.service-wide:first-child{grid-column:1/-1;grid-template-columns:auto 1fr auto;align-items:center;padding:clamp(11px,1.7vh,17px) 0;border-left:0;border-top:1px solid var(--line)}
+  .service-wide .service-index{line-height:1.4}
+  .service-wide .service-text{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 18px}
+  .service-wide .service-text h2{margin:0}
+  .service-wide .service-text p{max-width:none}
+  .service-wide .service-more{margin:0}
+}
 
 /* ── Demo stage ── */
 .stage{position:relative;background:linear-gradient(#11141b00,#11141b 90px);padding:clamp(28px,4vh,48px) var(--gutter) clamp(60px,9vh,110px);scroll-margin-top:0}

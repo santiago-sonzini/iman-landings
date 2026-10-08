@@ -8,6 +8,9 @@
   const serviceError=document.querySelector('#services-error');
   let pending=false, previousPayload='', requestId='';
   submit.disabled=false;
+  // A link can arrive with one choice already ticked: /contacto/?servicio=gauss
+  const wanted=new URLSearchParams(location.search).get('servicio');
+  if(wanted){const box=[...form.querySelectorAll('[name="servicios"]')].find(x=>x.dataset.id===wanted);if(box)box.checked=true;}
   industry.addEventListener('change',()=>{
     const show=industry.value==='Otro';other.closest('.field').hidden=!show;other.disabled=!show;other.required=show;
   });
@@ -16,7 +19,7 @@
     event.preventDefault();if(pending)return;
     error.hidden=true;error.textContent='';status.textContent='';serviceError.textContent='';
     const services=[...form.querySelectorAll('[name="servicios"]:checked')].map(x=>x.value);
-    if(!services.length){serviceError.textContent='Elegí al menos un servicio. Podés seleccionar los tres.';const first=form.querySelector('[name="servicios"]');first.setAttribute('aria-invalid','true');first.setAttribute('aria-describedby','services-error');first.focus();return;}
+    if(!services.length){serviceError.textContent='Elegí al menos una opción. Podés seleccionar más de una.';const first=form.querySelector('[name="servicios"]');first.setAttribute('aria-invalid','true');first.setAttribute('aria-describedby','services-error');first.focus();return;}
     if(!form.reportValidity())return;
     const data=new FormData(form), payload={};
     for(const field of ['nombre','negocio','email','whatsapp','ciudad','comentario','sitio_web_empresa'])payload[field]=String(data.get(field)||'').trim();
