@@ -88,6 +88,9 @@ def build_dark(out,pages):
     home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
     home=re.sub(r'/assets/experience/(site\.css|home\.css|home\.js)(?=")',lambda m:asset(m[1]),home)
     (out/'index.html').write_text(home)
+    # Gauss: standalone product page, unlisted for now (carries its own noindex; stays out of the sitemap and the manifest).
+    gauss=re.sub(r'/assets/experience/(site\.css|home\.css)(?=")',lambda m:asset(m[1]),(SOURCE/'gauss.html').read_text())
+    (out/'gauss').mkdir(exist_ok=True);(out/'gauss/index.html').write_text(gauss)
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]

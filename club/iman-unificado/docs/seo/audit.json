@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-08T16:53:08.701504+00:00",
+  "generated_at": "2026-10-08T17:44:23.186796+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
-  "public": "/private/tmp/iman-daily-20261008/public",
+  "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
-    "html": 26,
+    "html": 27,
     "indexable_html": 21,
     "sitemap_urls": 21,
     "error": 0,
@@ -19,7 +19,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -134,7 +134,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 21,
+      "incoming_pages": 22,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -163,12 +163,21 @@
       ]
     },
     {
+      "path": "/gauss/",
+      "title": "Gauss · Tus compras, en automático | de IMÁN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 0,
+      "schema_types": []
+    },
+    {
       "path": "/privacidad/",
       "title": "Privacidad y contacto | IMÁN",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -358,7 +367,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 21,
+      "incoming_pages": 22,
       "schema_types": [
         "ContactPoint",
         "Country",

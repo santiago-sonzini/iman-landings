@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="es-AR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11141b">
+<meta name="color-scheme" content="dark">
+<!-- Página no listada: sin indexar y fuera del sitemap hasta decidir el lanzamiento. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Gauss · Tus compras, en automático | de IMÁN</title>
+<meta name="description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Para empresas e industrias de Argentina.">
+<meta property="og:title" content="Gauss · Tus compras, en automático">
+<meta property="og:description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://www.iman.ar/gauss/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2311141b'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23eef0f4'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/assets/experience/libre-baskerville-italic.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/assets/experience/site.css">
+<link rel="stylesheet" href="/assets/experience/home.css">
+<script>document.documentElement.classList.add('motion-enabled')</script>
+<style>
+/* Gauss: reuses the IMÁN dark editorial shell (site.css + home.css) and adds its own pieces. */
+.g-top{position:relative;overflow:hidden}
+.g-field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(#000 60%,#0000);mask-image:linear-gradient(#000 60%,#0000)}
+.g-top .site-header{z-index:3}
+.g-top .hero{position:relative;z-index:1}
+.g-brand{display:flex;align-items:baseline;gap:13px}
+.g-by{font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:8px 0;transition:color .25s}
+.g-by b{font-weight:400;color:var(--ink)}
+.g-by:hover{color:var(--ink)}
+.home h1.g-h1{font-size:clamp(42px,min(4.9vw,9.2vh),92px)}
+
+/* Hero: title and pitch on the left, the demo on the right. On small screens the first screen is title + demo. */
+.hero.g-hero{grid-template-rows:1fr auto auto 1fr auto;grid-template-areas:". visual" "title visual" "pitch visual" ". visual" "strip strip"}
+.g-first{display:contents}
+.g-title{grid-area:title;padding-top:clamp(12px,3vh,40px)}
+.g-pitch{grid-area:pitch;padding-bottom:clamp(12px,3vh,40px)}
+.g-strip{grid-area:strip}
+.g-strip .service-card{grid-template-columns:auto 1fr}
+
+/* Demo: Gauss moves through the supplier chats while the comparison board fills in. */
+.g-visual{grid-area:visual;position:relative;align-self:center;display:flex;align-items:center;justify-content:center;gap:clamp(16px,2.2vw,34px);margin:0;padding:clamp(10px,2vh,24px) 0;min-width:0}
+.g-visual::before{content:'';position:absolute;inset:4% 2%;background:radial-gradient(closest-side,#5d6d8a4d,#5d6d8a00);filter:blur(10px);pointer-events:none}
+.g-visual>*{position:relative}
+.g-visual .wa-phone{width:clamp(236px,calc((100svh - 310px) * .462),300px)}
+.g-visual .wa-avatar{background:#2a3942;color:#e9edef;font:600 15px/1 system-ui,sans-serif;transition:background .3s}
+.g-visual .wa-avatar[data-who=norte]{background:#35507a}
+.g-visual .wa-avatar[data-who=centro]{background:#7a5d24}
+.g-visual .wa-avatar[data-who=sur]{background:#4f3f7d}
+.g-op{margin-left:auto;display:flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:#0b141a;font:9.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#aebac1;white-space:nowrap}
+.g-tabs{display:flex;gap:4px;padding:6px 8px;background:#111b21;border-bottom:1px solid #0006}
+.g-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;height:26px;padding:0 4px;border-radius:999px;font-size:11.5px;color:#8696a0;transition:background .3s,color .3s}
+.g-tab b{font-weight:500}
+.g-tab.is-open{background:#202c33;color:#e9edef}
+.g-badge{display:none;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#00a884;color:#06281f;font:700 9.5px/15px system-ui,sans-serif;font-style:normal;text-align:center}
+.g-tab.has-new .g-badge{display:block}
+.g-visual .wa-thread{overflow-x:hidden;overflow-y:auto;scrollbar-width:none}
+.g-visual .wa-thread::-webkit-scrollbar{display:none}
+.g-chats{transition:opacity .17s,transform .26s cubic-bezier(.2,.8,.2,1)}
+.g-chats.is-leaving{opacity:0;transform:translateX(-14px)}
+.g-chats.is-entering{opacity:0;transform:translateX(14px);transition:none}
+.g-chats [hidden]{display:none}
+.g-visual .wa-msg .bubble{transition:opacity .3s .12s,transform .4s cubic-bezier(.2,.8,.2,1),margin .4s}
+.g-visual.wa-live .wa-msg.pending .bubble{margin-top:0;margin-bottom:0}
+.g-board{flex:1 1 300px;max-width:350px;min-width:0;padding:20px 18px 14px;border:1px solid var(--line);border-radius:16px;background:#151a23eb;box-shadow:0 40px 70px -40px #000;font:12px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif}
+.g-board-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.g-board-item{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:0 0 14px;font-size:13.5px;font-weight:600;color:var(--ink)}
+.g-board-item small{display:block;margin-top:2px;font-weight:400;font-size:11.5px;color:var(--muted)}
+.g-demo{display:none;flex:none;padding:2px 7px;border:1px solid #94a4bc40;border-radius:999px;font:9px/1.5 var(--mono);font-style:normal;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.g-rows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.g-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:7px 12px;padding:11px 12px;border:1px solid #94a4bc24;border-radius:12px;background:#11141b99;transition:border-color .45s,background .45s,opacity .45s,box-shadow .3s}
+.g-row.is-idle{opacity:.5}
+.g-row.is-best{border-color:#f4c43099;background:#f4c43012}
+.g-row.is-open{box-shadow:inset 2px 0 0 #00a884}
+.g-name{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--ink)}
+.g-name i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#94a4bc26;font:600 11px/1 system-ui,sans-serif;font-style:normal;color:var(--ink);transition:background .3s,color .3s}
+.g-row.is-open .g-name i{background:#00a884;color:#06281f}
+.g-row.has-new .g-name::after{content:'1';display:grid;place-items:center;min-width:15px;height:15px;border-radius:999px;background:#00a884;color:#06281f;font:700 9.5px/1 system-ui,sans-serif}
+.g-price{display:grid;grid-template-rows:13px auto;justify-items:end;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.g-old{font-size:11px;line-height:13px;font-weight:400;color:var(--muted);text-decoration:line-through}
+.g-terms{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11.5px;color:var(--muted)}
+.g-terms span+span{margin-left:10px}
+.g-terms .late{color:#e9a48f}
+.g-chip{justify-self:end;padding:3px 9px;border:1px solid #94a4bc40;border-radius:999px;font:10px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted);white-space:nowrap;transition:color .3s,background .3s,border-color .3s}
+.g-chip.ok{color:#3ddc84;border-color:#3ddc8455}
+.g-chip.busy{color:var(--ink);border-color:#94a4bc99}
+.g-chip.best{color:#1b1500;background:var(--gold);border-color:var(--gold)}
+.g-board-foot{display:flex;align-items:center;gap:10px;height:50px;margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:11.5px;line-height:1.4;color:var(--muted)}
+.g-board-foot [data-g-foot-text]{flex:1;min-width:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.g-board-foot.is-done{color:var(--ink)}
+.g-approve{display:none;flex:none;margin-left:auto;padding:6px 14px;border-radius:999px;background:var(--gold);color:#1b1500;font:600 11.5px/1.3 system-ui,sans-serif;transition:transform .15s,filter .15s}
+.g-approve.is-on{display:block;animation:g-pop .35s cubic-bezier(.2,.8,.2,1) backwards,g-ring 1.5s .4s infinite}
+.g-approve.is-pressed{transform:scale(.9);filter:brightness(.82)}
+@keyframes g-pop{from{opacity:0;transform:scale(.8)}}
+@keyframes g-ring{0%{box-shadow:0 0 0 0 #f4c43088}70%,100%{box-shadow:0 0 0 9px #f4c43000}}
+
+/* Sections */
+.g-section{position:relative;padding:clamp(64px,10vh,120px) var(--gutter);border-top:1px solid var(--line);background:var(--paper)}
+.g-wrap{max-width:1240px;margin:0 auto}
+.g-section h2{margin:0 0 18px;width:auto;font-size:clamp(34px,4.2vw,62px);line-height:1.06;letter-spacing:-.05em;text-align:left;text-wrap:balance}
+.g-lead{max-width:540px;margin:0;font-size:14px;line-height:1.85;color:#bcc5d3;text-wrap:pretty}
+.g-head{margin-bottom:clamp(30px,5vh,54px)}
+.g-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(30px,6vw,100px);align-items:start}
+.g-split>header{position:sticky;top:40px}
+.g-steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.g-steps li{display:grid;grid-template-columns:54px 1fr;gap:4px 18px;padding:22px 0;border-top:1px solid var(--line)}
+.g-steps li:last-child{border-bottom:1px solid var(--line)}
+.g-steps li::before{counter-increment:s;content:counter(s,decimal-leading-zero);grid-row:1/3;font:11px/2.5 var(--mono);letter-spacing:.08em;color:var(--gold)}
+.g-steps h3{grid-column:2;margin:0 0 6px;font:clamp(21px,1.9vw,27px)/1.15 var(--display);font-weight:400;letter-spacing:-.04em}
+.g-steps p{grid-column:2;margin:0;max-width:520px;font-size:13.5px;line-height:1.8;color:var(--muted)}
+.g-rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.g-rules li{padding:26px 24px 30px;background:var(--paper)}
+.g-rules b{display:block;margin:0 0 9px;font:20px/1.2 var(--display);font-weight:400;letter-spacing:-.035em;color:var(--ink)}
+.g-rules span{font-size:13px;line-height:1.75;color:var(--muted)}
+.g-needs{list-style:none;margin:0 0 34px;padding:0;display:grid;gap:0}
+.g-needs li{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;padding:18px 0;border-top:1px solid var(--line)}
+.g-needs li:last-child{border-bottom:1px solid var(--line)}
+.g-needs li::before{content:'';width:14px;height:8px;margin-top:7px;border-left:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(-45deg)}
+.g-needs b{display:block;font-size:14.5px;font-weight:400;color:var(--ink)}
+.g-needs span{display:block;font-size:13px;line-height:1.7;color:var(--muted)}
+.g-where{margin:0;padding:22px 24px;border:1px solid var(--line);border-radius:16px;background:#151a23}
+.g-where p{margin:0 0 14px;font-size:13px;line-height:1.75;color:var(--muted)}
+.g-where p b{font-weight:400;color:var(--ink)}
+.g-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.g-tags li{padding:6px 12px;border:1px solid #94a4bc40;border-radius:999px;font:10.5px/1.4 var(--mono);letter-spacing:.04em;color:var(--ink)}
+.g-stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.g-stages li{position:relative;padding:26px 20px 0 0;border-top:1px solid #94a4bc55}
+.g-stages li::before{content:'';position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;border:1.5px solid #94a4bc99;background:var(--paper)}
+.g-stages li.now{border-top-color:var(--gold)}
+.g-stages li.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 14px #f4c43088}
+.g-stages small{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.g-stages .now small{color:var(--gold)}
+.g-stages b{display:block;margin:9px 0 7px;font:21px/1.15 var(--display);font-weight:400;letter-spacing:-.035em;color:var(--ink)}
+.g-stages span{display:block;font-size:12.5px;line-height:1.7;color:var(--muted)}
+.g-native{margin-top:clamp(36px,6vh,64px)}
+.g-faq details{border-top:1px solid var(--line)}
+.g-faq details:last-child{border-bottom:1px solid var(--line)}
+.g-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font:clamp(18px,1.5vw,22px)/1.3 var(--display);letter-spacing:-.03em}
+.g-faq summary::-webkit-details-marker{display:none}
+.g-faq summary::after{content:'+';flex:none;font:20px/1 var(--mono);color:var(--gold);transition:transform .3s}
+.g-faq details[open] summary::after{transform:rotate(45deg)}
+.g-faq details p{margin:0 0 22px;max-width:640px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+.g-origin{margin:0;font:10px/1.7 var(--mono);letter-spacing:.04em;color:#7f8a9c;text-align:center}
+
+/* Scroll reveal, only when motion is allowed. */
+.motion-enabled .g-reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.motion-enabled .g-reveal.is-in{opacity:1;transform:none}
+
+@media(max-width:1180px) and (min-width:1001px){
+  .g-board{flex-basis:250px;padding:16px 14px 12px}
+  .g-chip{grid-column:1/-1;justify-self:start;padding:2px 7px}
+  .g-terms{grid-column:1/-1}
+}
+@media(max-width:1000px){
+  :root{--g-head:84px}
+  /* First screen: title, then the demo, filling the viewport. */
+  .hero.g-hero{display:block;min-height:0;padding-top:var(--g-head)}
+  .g-first{display:flex;flex-direction:column;height:calc(100svh - var(--g-head));min-height:500px;max-height:800px;max-width:560px;margin:0 auto}
+  .g-title{flex:none;padding:4px 0 0}
+  .g-title .kicker{margin-bottom:12px}
+  .home h1.g-h1{font-size:clamp(34px,10.4vw,56px);margin-bottom:14px}
+  .g-visual{flex:1 1 0;align-self:stretch;width:100%;min-height:0;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:10px;padding:0 0 14px}
+  .g-visual::before{display:none}
+  .g-board{order:1;flex:none;max-width:none;padding:11px 11px 9px;border-radius:14px;box-shadow:none}
+  .g-board-head{display:none}
+  .g-demo{display:block}
+  .g-board-item{margin:0 2px 8px;font-size:13px}
+  .g-board-item small{margin-top:1px;font-size:11px}
+  .g-rows{gap:5px}
+  .g-row{padding:6px 10px;gap:1px 10px;border-radius:10px}
+  .g-name{gap:7px;font-size:12.5px}
+  .g-name i{width:18px;height:18px;font-size:10px}
+  .g-price{display:flex;align-items:baseline;gap:6px;font-size:13px}
+  .g-terms{font-size:11px}
+  .g-chip{padding:1px 7px;font-size:9.5px}
+  .g-board-foot{height:38px;margin-top:8px;padding-top:8px;font-size:11px}
+  .g-board-foot [data-g-foot-text]{-webkit-line-clamp:1}
+  .g-approve{padding:5px 13px}
+  .g-visual .wa-phone{order:2;display:flex;flex-direction:column;flex:1 1 0;min-height:0;width:auto;aspect-ratio:auto;border-radius:14px;box-shadow:0 0 0 1px #94a4bc40;font-size:13px}
+  .g-visual .phone-screen{flex:1;min-height:0;height:auto}
+  .g-visual .wa-status,.g-visual .wa-composer,.g-tabs{display:none}
+  .g-visual .wa-header{padding:6px 10px 7px 4px}
+  .g-visual .wa-avatar{width:30px;height:30px;font-size:13px}
+  .g-visual .wa-notice{margin-bottom:6px}
+  .g-pitch{padding:24px 0 8px}
+  .g-strip .service-text p{display:block;margin-top:4px}
+  .g-strip .service-card,.g-strip .service-card:first-child{align-items:start;padding:16px 0}
+  .g-split{grid-template-columns:1fr}
+  .g-split>header{position:static}
+  .g-rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-stages{grid-template-columns:1fr;border-left:1px solid #94a4bc55;margin-left:4px}
+  .g-stages li{padding:0 0 26px 24px;border-top:0}
+  .g-stages li:last-child{padding-bottom:0}
+  .g-stages li::before{left:-5px;top:3px}
+  .g-stages li.now{border-top-color:transparent}
+}
+@media(max-width:800px){:root{--g-head:72px}}
+@media(max-width:1000px) and (max-height:700px){.g-title .kicker{display:none}}
+@media(max-width:1000px) and (max-height:620px){
+  .g-board-item small{display:none}
+  .g-row{grid-template-columns:1fr auto auto}
+  .g-terms{display:none}
+  .g-chip{order:2}
+  .g-price{order:3}
+}
+@media(max-width:640px){
+  .g-by{letter-spacing:.1em}
+  .g-rules{grid-template-columns:1fr}
+  .g-steps li{grid-template-columns:38px 1fr;gap:4px 10px}
+  .g-section h2{font-size:clamp(32px,9vw,46px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-enabled .g-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="home">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="g-top">
+<canvas class="g-field" id="g-field" aria-hidden="true"></canvas>
+
+<header class="site-header">
+<div class="g-brand">
+<a class="identity" href="/gauss/" aria-label="Gauss, inicio"><span class="wordmark">gauss</span></a>
+<a class="g-by" href="/" aria-label="Gauss es un producto de IMÁN">de <b>imán</b></a>
+</div>
+<nav class="header-nav" aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#erp">ERP para agentes</a><a class="header-contact" href="/contacto/">Hablemos</a></nav>
+</header>
+
+<main id="contenido">
+<section class="hero g-hero" aria-labelledby="hero-title">
+<div class="g-first">
+<div class="g-title">
+<p class="kicker">Compras para empresas e industrias</p>
+<h1 class="g-h1" id="hero-title"><span class="line"><span>Tus compras,</span></span><span class="line"><em>en automático.</em></span></h1>
+</div>
+
+<figure class="g-visual" data-g-demo aria-label="Ejemplo ilustrativo: Gauss consulta a tres proveedores por WhatsApp, negocia con uno y deja la compra lista para aprobar">
+<div class="phone wa-phone">
+<div class="phone-screen wa-screen">
+<div class="wa-status" aria-hidden="true"><span>9:41</span><span class="wa-status-icons"><i></i><i></i><i></i></span></div>
+<div class="wa-header">
+<span class="wa-back" aria-hidden="true">‹</span>
+<span class="wa-avatar" data-g-avatar data-who="centro" aria-hidden="true">C</span>
+<span class="wa-contact"><b data-g-name>Centro</b><small class="wa-presence">en línea</small></span>
+<span class="g-op" title="Este WhatsApp lo opera Gauss"><i class="live-dot"></i>Gauss</span>
+</div>
+<div class="g-tabs" aria-hidden="true">
+<span class="g-tab" data-g-tab="norte"><b>Norte</b><i class="g-badge">1</i></span>
+<span class="g-tab is-open" data-g-tab="centro"><b>Centro</b><i class="g-badge">1</i></span>
+<span class="g-tab" data-g-tab="sur"><b>Sur</b><i class="g-badge">1</i></span>
+</div>
+<div class="wa-thread">
+<p class="wa-notice"><span>🔒 Demo ilustrativa: datos de ejemplo.</span></p>
+<div class="g-chats" data-g-chats>
+<ol class="wa-messages" data-g-chat="norte" hidden>
+<li class="wa-msg out"><div class="bubble">Hola, soy Gauss, asistente de compras. ¿Precio por 40 rodamientos 6205 para el jueves?<span class="meta">09:02<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in"><div class="bubble">Buen día. <b>$398.000</b> de contado. Llega el lunes.<span class="meta">09:20</span></div></li>
+</ol>
+<ol class="wa-messages" data-g-chat="centro">
+<li class="wa-msg out"><div class="bubble">Hola, soy Gauss, asistente de compras. ¿Precio por 40 rodamientos 6205 para el jueves?<span class="meta">09:02<i class="ticks read"></i></span></div></li>
+<li class="wa-msg out"><div class="bubble">¿Pudieron ver el pedido de los rodamientos?<span class="meta">10:15<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in"><div class="bubble">Perdón la demora. <b>$412.000</b>, el jueves, a 30 días.<span class="meta">10:22</span></div></li>
+<li class="wa-msg out"><div class="bubble">Tengo otra oferta en $398.000. ¿Podés mejorar manteniendo el jueves?<span class="meta">10:23<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in"><div class="bubble">Te lo dejo en <b>$389.000</b>.<span class="meta">10:31</span></div></li>
+<li class="wa-msg out"><div class="bubble">Aprobado ✅ Te envío la orden OC-0187.<span class="meta">11:41<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in"><div class="bubble">Recibido. El jueves a primera hora está ahí.<span class="meta">11:44</span></div></li>
+</ol>
+<ol class="wa-messages" data-g-chat="sur" hidden>
+<li class="wa-msg out"><div class="bubble">Hola, soy Gauss, asistente de compras. ¿Precio por 40 rodamientos 6205 para el jueves?<span class="meta">09:02<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in"><div class="bubble">Hola. <b>$431.000</b>, lo entrego mañana. Pago a 15 días.<span class="meta">09:08</span></div></li>
+</ol>
+</div>
+</div>
+<div class="wa-composer" aria-hidden="true">
+<span class="wa-input"><span class="wa-emoji">☺</span><span class="wa-typed" data-wa-typed></span><span class="wa-placeholder">Mensaje</span></span>
+<span class="wa-send"><svg class="mic" viewBox="0 0 24 24"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11Z"/></svg><svg class="plane" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21 23 12 2 3v7l15 2-15 2Z"/></svg></span>
+</div>
+</div>
+</div>
+
+<div class="g-board">
+<p class="g-board-head"><span>Cuadro comparativo</span><span>Demo · datos ficticios</span></p>
+<p class="g-board-item"><span>40 rodamientos 6205<small>Para el jueves · mantenimiento</small></span><em class="g-demo">Demo</em></p>
+<ol class="g-rows">
+<li class="g-row" data-g-row="norte"><span class="g-name"><i>N</i>Norte</span><span class="g-price" data-price><span class="g-old"></span><span class="g-now">$398.000</span></span><span class="g-terms" data-terms><span class="late">Lunes · no llega</span><span>Contado</span></span><span class="g-chip ok" data-chip>Cotizó</span></li>
+<li class="g-row is-best is-open" data-g-row="centro"><span class="g-name"><i>C</i>Centro</span><span class="g-price" data-price><span class="g-old">$412.000</span><span class="g-now">$389.000</span></span><span class="g-terms" data-terms><span>Jueves</span><span>30 días</span></span><span class="g-chip best" data-chip>Recomendado</span></li>
+<li class="g-row" data-g-row="sur"><span class="g-name"><i>S</i>Sur</span><span class="g-price" data-price><span class="g-old"></span><span class="g-now">$431.000</span></span><span class="g-terms" data-terms><span>Mañana</span><span>15 días</span></span><span class="g-chip ok" data-chip>Cotizó</span></li>
+</ol>
+<p class="g-board-foot is-done" data-g-foot><span class="live-dot"></span><span data-g-foot-text>Aprobado · entrega confirmada para el jueves</span><span class="g-approve" data-g-approve aria-hidden="true">Aprobar</span></p>
+</div>
+</figure>
+</div>
+
+<div class="g-pitch">
+<p class="hero-brief">Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Nada se compra sin tu sí.</p>
+<div class="hero-actions">
+<a class="cta cta-solid" href="/contacto/"><span class="cta-label">Quiero verlo con mis compras <span aria-hidden="true">→</span></span></a>
+<a class="ghost-link" href="#como">Ver cómo funciona <span aria-hidden="true">▸</span></a>
+</div>
+</div>
+
+<div class="service-strip g-strip" role="list" aria-label="Qué hace Gauss">
+<article class="service-card" role="listitem">
+<span class="service-index">01</span>
+<div class="service-text"><h2>Pide precios</h2><p>A todos tus proveedores, por WhatsApp o mail. Insiste con el que no contesta.</p></div>
+</article>
+<article class="service-card" role="listitem">
+<span class="service-index">02</span>
+<div class="service-text"><h2>Negocia</h2><p>Precio, plazo de pago y entrega, con las reglas que vos definís.</p></div>
+</article>
+<article class="service-card" role="listitem">
+<span class="service-index">03</span>
+<div class="service-text"><h2>Vos aprobás</h2><p>Un cuadro comparativo y un sí. Después manda la orden y sigue la entrega.</p></div>
+</article>
+</div>
+</section>
+</div>
+
+<section class="g-section" id="como" aria-labelledby="como-title">
+<div class="g-wrap g-split">
+<header class="g-reveal">
+<p class="kicker">Cómo funciona</p>
+<h2 id="como-title">De «necesito esto» <em>a la orden aprobada.</em></h2>
+<p class="g-lead">Tus proveedores no instalan nada ni cambian su forma de trabajar: les llega un mensaje, como siempre.</p>
+</header>
+<ol class="g-steps">
+<li class="g-reveal"><h3>Pedís</h3><p>Por WhatsApp o desde el panel: qué necesitás, cuánto y para cuándo.</p></li>
+<li class="g-reveal"><h3>Gauss consulta</h3><p>Le escribe a cada proveedor por su canal. A varios si hay varios; a uno solo si la compra es con uno.</p></li>
+<li class="g-reveal"><h3>Lee y negocia</h3><p>Entiende texto, PDF, fotos de listas y audios. Repregunta lo que falta y negocia precio, plazo de pago y entrega.</p></li>
+<li class="g-reveal"><h3>Compara</h3><p>Arma el cuadro con el costo total: precio, IVA, flete, pago y entrega. Y recomienda una opción.</p></li>
+<li class="g-reveal"><h3>Aprobás</h3><p>Con un mensaje. Gauss manda la orden de compra, sigue la entrega y guarda cada precio para la próxima.</p></li>
+</ol>
+</div>
+</section>
+
+<section class="g-section" aria-labelledby="reglas-title">
+<div class="g-wrap">
+<header class="g-head g-reveal">
+<p class="kicker">Control</p>
+<h2 id="reglas-title">Tus reglas. <em>Tu decisión.</em></h2>
+<p class="g-lead">Gauss hace el ida y vuelta. Qué se compra, a quién y a cuánto lo seguís decidiendo vos.</p>
+</header>
+<ul class="g-rules g-reveal">
+<li><b>No compra sola.</b><span>Cada compra espera tu aprobación. Más adelante podés fijar topes para lo repetitivo.</span></li>
+<li><b>No se hace pasar por nadie.</b><span>Se presenta como el asistente de compras de tu empresa.</span></li>
+<li><b>No inventa ofertas.</b><span>Negocia solo con cotizaciones reales que recibió.</span></li>
+<li><b>Se corre cuando entrás.</b><span>Si alguien de tu equipo responde en un chat, Gauss deja de escribir ahí.</span></li>
+<li><b>No adivina.</b><span>Lo que no entiende se lo pasa a una persona.</span></li>
+<li><b>Tus datos son tuyos.</b><span>Proveedores, precios e historial quedan en tu empresa.</span></li>
+</ul>
+</div>
+</section>
+
+<section class="g-section" aria-labelledby="arranque-title">
+<div class="g-wrap g-split">
+<header class="g-reveal">
+<p class="kicker">Para arrancar</p>
+<h2 id="arranque-title">Empieza <em>sin tocar tu sistema.</em></h2>
+<p class="g-lead">Lo implementamos a medida. La carga la hacemos nosotros, y las primeras semanas tu equipo revisa todo lo que Gauss propone.</p>
+</header>
+<div class="g-reveal">
+<ul class="g-needs">
+<li><div><b>Tus proveedores</b><span>Nombre, contacto, WhatsApp o mail, y qué te vende cada uno.</span></div></li>
+<li><div><b>Tus compras de los últimos 6 a 12 meses</b><span>Un export del sistema, un Excel o las facturas. De ahí salen los precios de referencia.</span></div></li>
+<li><div><b>Tus reglas</b><span>Quién puede pedir, quién aprueba, topes y condiciones de pago habituales.</span></div></li>
+</ul>
+<div class="g-where">
+<p><b>Dónde rinde primero:</b> las compras chicas y repetidas, con muchos proveedores, que nadie tiene tiempo de negociar.</p>
+<ul class="g-tags"><li>Mantenimiento</li><li>Repuestos</li><li>Elementos de protección</li><li>Limpieza</li><li>Librería</li><li>Embalaje</li></ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="g-section" id="erp" aria-labelledby="erp-title">
+<div class="g-wrap">
+<header class="g-head g-reveal">
+<p class="kicker">Hacia dónde va</p>
+<h2 id="erp-title">Tu ERP, <em>nativo para agentes.</em></h2>
+<p class="g-lead">Los sistemas de gestión se hicieron para que una persona cargue datos. Gauss se construye al revés: los agentes hacen el trabajo y tu equipo decide. Empieza por compras y suma una etapa a la vez.</p>
+</header>
+<ol class="g-stages g-reveal">
+<li class="now"><small>Primero</small><b>Compras</b><span>Cotizar, negociar, comparar, ordenar y seguir la entrega.</span></li>
+<li><small>Después</small><b>Aviso de recompra</b><span>Detecta el ritmo de cada insumo y avisa cuándo toca pedir.</span></li>
+<li><small>Después</small><b>Stock</b><span>Conectado a tu sistema: propone cuándo y cuánto comprar.</span></li>
+<li><small>Después</small><b>Recepción y papeles</b><span>Cruza remito, orden y factura, y carga los comprobantes.</span></li>
+<li><small>Después</small><b>Producción y mantenimiento</b><span>El plan de producción y el de mantenimiento disparan las compras.</span></li>
+</ol>
+<ul class="g-rules g-native g-reveal">
+<li><b>Cada acción, lista para un agente.</b><span>Pedir una cotización, aprobar una compra o registrar una entrega se puede hacer por mensaje, desde el panel o desde otro agente.</span></li>
+<li><b>Funciona con lo que ya tenés.</b><span>WhatsApp, mail, planillas y tu sistema actual. No hay que migrar nada para empezar.</span></li>
+<li><b>Pensado para el otro lado.</b><span>Cuando tu proveedor tenga su propio agente, van a poder resolver la cotización entre ellos. Vos seguís aprobando.</span></li>
+</ul>
+</div>
+</section>
+
+<section class="g-section" aria-labelledby="faq-title">
+<div class="g-wrap g-split">
+<header class="g-reveal">
+<p class="kicker">Preguntas</p>
+<h2 id="faq-title">Lo que seguro <em>te preguntás.</em></h2>
+</header>
+<div class="g-faq g-reveal">
+<details><summary>¿Mis proveedores tienen que instalar algo?</summary><p>No. Reciben un WhatsApp o un mail y responden como siempre: con un texto, un PDF, una foto de la lista o un audio.</p></details>
+<details><summary>¿Puede comprar sin que yo me entere?</summary><p>No. Cada compra espera la aprobación de quien vos definas. Con el tiempo podés habilitar topes por monto para lo que se repite.</p></details>
+<details><summary>¿Se conecta con mi sistema de gestión?</summary><p>Para empezar no hace falta. Después revisamos qué permite tu sistema, por API o por exportaciones, para sumar stock y carga de comprobantes.</p></details>
+<details><summary>¿Qué pasa con mi equipo de compras?</summary><p>Sigue decidiendo. Gauss se ocupa de pedir, insistir, comparar y registrar, y tu equipo puede entrar en cualquier conversación cuando quiera.</p></details>
+<details><summary>¿Desde qué número escribe?</summary><p>Lo definimos en la implementación. Puede ser la línea de compras que ya usás o una nueva.</p></details>
+<details><summary>¿Cuánto cuesta?</summary><p>Depende de los rubros, la cantidad de proveedores y el volumen de compras. Lo vemos en una llamada de 30 minutos.</p></details>
+</div>
+</div>
+</section>
+
+<section class="closing" aria-labelledby="closing-title">
+<p class="kicker">Hablemos de tus compras</p>
+<h2 id="closing-title">Probalo con <em>una compra real.</em></h2>
+<p>Elegí algo que tengas que comprar este mes y te mostramos cómo lo resolvería Gauss.</p>
+<div class="hero-actions centered"><a class="cta cta-solid" href="/contacto/"><span class="cta-label">Quiero verlo con mis compras <span aria-hidden="true">→</span></span></a><a class="ghost-link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20ver%20Gauss%20con%20mis%20compras" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+</section>
+</main>
+
+<footer class="reading-footer">
+<a href="/gauss/">gauss</a>
+<nav aria-label="Más"><a href="/">IMÁN</a><a href="/servicios/">Servicios</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav>
+<p class="g-origin">Gauss: la unidad con la que se mide la fuerza de un imán.</p>
+<span>Un producto de IMÁN. Hecho en Argentina.</span>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ready=function(){root.classList.add('is-ready')};requestAnimationFrame(function(){requestAnimationFrame(ready)});setTimeout(ready,150);
+
+  /* Scroll reveal */
+  var reveals=[].slice.call(document.querySelectorAll('.g-reveal'));
+  if(reduce||!('IntersectionObserver' in window)){reveals.forEach(function(el){el.classList.add('is-in')})}
+  else{
+    var ro=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');ro.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    reveals.forEach(function(el){ro.observe(el)});
+  }
+
+  /* Magnetic field: filings aligned by two poles, drifting slowly. */
+  var cv=document.getElementById('g-field');
+  if(cv&&cv.getContext){
+    var ctx=cv.getContext('2d'),W=0,H=0,last=0,fieldOn=true;
+    var size=function(){var d=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*d);cv.height=Math.round(H*d);ctx.setTransform(d,0,0,d,0,0)};
+    var draw=function(t){
+      ctx.clearRect(0,0,W,H);
+      var wide=W>1000,step=wide?26:22;
+      var ax=W*((wide?.60:.22)+.015*Math.sin(t/5200)),ay=H*((wide?.36:.16)+.02*Math.cos(t/6100));
+      var bx=W*((wide?.93:.84)+.012*Math.cos(t/4700)),by=H*((wide?.66:.40)+.02*Math.sin(t/5600));
+      ctx.lineWidth=1;ctx.lineCap='round';ctx.strokeStyle='#94a4bc';
+      for(var y=step/2;y<H;y+=step){for(var x=step/2;x<W;x+=step){
+        var dx1=x-ax,dy1=y-ay,r1=dx1*dx1+dy1*dy1+900,k1=1/(r1*Math.sqrt(r1));
+        var dx2=x-bx,dy2=y-by,r2=dx2*dx2+dy2*dy2+900,k2=1/(r2*Math.sqrt(r2));
+        var fx=dx1*k1-dx2*k2,fy=dy1*k1-dy2*k2,m=Math.sqrt(fx*fx+fy*fy);
+        if(!m)continue;
+        var s=Math.min(1,Math.log(1+m*4e5)/Math.LN10/2.2);
+        var a=.05+.36*s;
+        if(wide){var u=(x/W-.12)/.4;a*=u<=0?.3:u>=1?1:.3+.7*u*u*(3-2*u)}else{a*=.42}
+        var l=(4+6*s)/m;
+        ctx.globalAlpha=a;ctx.beginPath();ctx.moveTo(x-fx*l/2,y-fy*l/2);ctx.lineTo(x+fx*l/2,y+fy*l/2);ctx.stroke();
+      }}
+      ctx.globalAlpha=1;
+    };
+    var loop=function(t){if(!fieldOn)return;if(t-last>50){last=t;draw(t)}requestAnimationFrame(loop)};
+    size();draw(0);
+    window.addEventListener('resize',function(){size();draw(last)});
+    if(!reduce){
+      requestAnimationFrame(loop);
+      if('IntersectionObserver' in window){new IntersectionObserver(function(e){var on=e[0].isIntersecting;if(on&&!fieldOn){fieldOn=true;requestAnimationFrame(loop)}else if(!on){fieldOn=false}}).observe(cv)}
+      document.addEventListener('visibilitychange',function(){if(document.hidden){fieldOn=false}else if(!fieldOn){fieldOn=true;requestAnimationFrame(loop)}});
+    }
+  }
+
+  /* Demo player: the static markup is the finished purchase; with motion it is replayed step by step,
+     moving through the three supplier chats while the board fills in. */
+  var demo=document.querySelector('[data-g-demo]');
+  if(!demo)return;
+  var thread=demo.querySelector('.wa-thread');
+  if(reduce){thread.scrollTop=thread.scrollHeight;return}
+  var ids=['norte','centro','sur'],label={norte:'Norte',centro:'Centro',sur:'Sur'};
+  var chats={},rows={},tabs={};
+  ids.forEach(function(k){
+    var ol=demo.querySelector('[data-g-chat="'+k+'"]');
+    chats[k]={el:ol,msgs:[].slice.call(ol.querySelectorAll('.wa-msg'))};
+    rows[k]=demo.querySelector('[data-g-row="'+k+'"]');
+    tabs[k]=demo.querySelector('[data-g-tab="'+k+'"]');
+  });
+  var box=demo.querySelector('[data-g-chats]'),avatar=demo.querySelector('[data-g-avatar]'),who=demo.querySelector('[data-g-name]');
+  var typed=demo.querySelector('[data-wa-typed]'),composer=demo.querySelector('.wa-composer'),presence=demo.querySelector('.wa-presence');
+  var approve=demo.querySelector('[data-g-approve]'),foot=demo.querySelector('[data-g-foot]'),footText=demo.querySelector('[data-g-foot-text]');
+  var T={norte:'<span class="late">Lunes · no llega</span><span>Contado</span>',centro:'<span>Jueves</span><span>30 días</span>',sur:'<span>Mañana</span><span>15 días</span>'};
+  var run=0,current='centro';
+  var sleep=function(ms,id){return new Promise(function(ok,stop){setTimeout(function(){id===run?ok():stop()},ms)})};
+  var bottom=function(smooth){thread.scrollTo({top:thread.scrollHeight,behavior:smooth?'smooth':'auto'})};
+  var fresh=function(k,on){rows[k].classList.toggle('has-new',on);tabs[k].classList.toggle('has-new',on)};
+  var setOpen=function(k){
+    current=k;
+    ids.forEach(function(j){var on=j===k;chats[j].el.hidden=!on;rows[j].classList.toggle('is-open',on);tabs[j].classList.toggle('is-open',on)});
+    avatar.textContent=label[k].charAt(0);avatar.setAttribute('data-who',k);who.textContent=label[k];
+  };
+  var open=async function(k,id){
+    if(k===current)return;
+    box.classList.add('is-leaving');
+    await sleep(170,id);
+    setOpen(k);fresh(k,false);
+    box.classList.remove('is-leaving');box.classList.add('is-entering');bottom(false);
+    void box.offsetWidth;box.classList.remove('is-entering');
+    await sleep(340,id);
+  };
+  var row=function(k,o){
+    var r=rows[k];r.classList.remove('is-idle','is-best');if(o.cls)r.classList.add(o.cls);
+    r.querySelector('[data-price]').innerHTML='<span class="g-old">'+(o.old||'')+'</span><span class="g-now">'+(o.price||'—')+'</span>';
+    r.querySelector('[data-terms]').innerHTML=o.terms||'<span>Sin cotización</span>';
+    var c=r.querySelector('[data-chip]');c.textContent=o.chip;c.className='g-chip'+(o.chipCls?' '+o.chipCls:'');
+  };
+  var status=function(text,done){footText.textContent=text;foot.classList.toggle('is-done',!!done)};
+  var reveal=function(k,i){chats[k].msgs[i].classList.remove('pending');if(k===current){bottom(true);setTimeout(function(){bottom(true)},420)}};
+  var typing=async function(ms,id){
+    var c=chats[current],next=c.msgs.filter(function(m){return m.classList.contains('pending')})[0]||null;
+    var li=document.createElement('li');li.className='wa-msg in typing-bubble';li.innerHTML='<div class="bubble"><i></i><i></i><i></i></div>';
+    c.el.insertBefore(li,next);presence.textContent='escribiendo…';presence.classList.add('typing');bottom(true);
+    try{await sleep(ms,id)}finally{li.remove();presence.textContent='en línea';presence.classList.remove('typing')}
+  };
+  var write=async function(text,id){
+    if(!composer.offsetParent){await sleep(700,id);return}
+    composer.classList.add('has-text');
+    try{for(var i=2;i<=text.length;i+=2){typed.textContent=text.slice(0,i);await sleep(30,id)}typed.textContent=text;await sleep(380,id)}
+    finally{typed.textContent='';composer.classList.remove('has-text')}
+  };
+  var reset=function(){
+    demo.classList.add('wa-live');
+    box.classList.remove('is-leaving','is-entering');
+    approve.classList.remove('is-on','is-pressed');
+    ids.forEach(function(k){
+      chats[k].msgs.forEach(function(m){m.classList.add('pending')});
+      fresh(k,false);row(k,{cls:'is-idle',chip:'En espera'});
+    });
+    setOpen('norte');thread.scrollTop=0;
+    status('Pedido nuevo: 40 rodamientos 6205');
+  };
+  var play=async function(){
+    var id=++run;
+    try{
+      reset();
+      await sleep(900,id);
+      reveal('norte',0);row('norte',{chip:'Consultado',chipCls:'busy'});status('Consultando proveedores por WhatsApp');
+      await sleep(900,id);
+      await open('centro',id);reveal('centro',0);row('centro',{chip:'Consultado',chipCls:'busy'});
+      await sleep(850,id);
+      await open('sur',id);reveal('sur',0);row('sur',{chip:'Consultado',chipCls:'busy'});status('3 proveedores consultados');
+      await sleep(1000,id);
+      await typing(1000,id);reveal('sur',1);row('sur',{price:'$431.000',terms:T.sur,chip:'Cotizó',chipCls:'ok'});status('1 de 3 cotizaciones');
+      await sleep(1300,id);
+      chats.norte.msgs[1].classList.remove('pending');fresh('norte',true);
+      await sleep(800,id);
+      await open('norte',id);row('norte',{price:'$398.000',terms:T.norte,chip:'Cotizó',chipCls:'ok'});status('2 de 3 cotizaciones');
+      await sleep(1500,id);
+      await open('centro',id);
+      await sleep(500,id);
+      reveal('centro',1);row('centro',{chip:'Recordatorio',chipCls:'busy'});status('Centro no respondió: recordatorio enviado');
+      await sleep(900,id);
+      await typing(1100,id);reveal('centro',2);row('centro',{price:'$412.000',terms:T.centro,chip:'Cotizó',chipCls:'ok'});status('3 de 3 cotizaciones');
+      await sleep(1400,id);
+      await write('Tengo otra oferta en $398.000. ¿Podés mejorar manteniendo el jueves?',id);
+      reveal('centro',3);row('centro',{price:'$412.000',terms:T.centro,chip:'Negociando',chipCls:'busy'});status('Negociando con Centro');
+      await sleep(500,id);
+      await typing(1300,id);reveal('centro',4);
+      row('centro',{cls:'is-best',old:'$412.000',price:'$389.000',terms:T.centro,chip:'Recomendado',chipCls:'best'});
+      status('Cuadro listo: falta tu aprobación');approve.classList.add('is-on');
+      await sleep(2100,id);
+      approve.classList.add('is-pressed');
+      await sleep(420,id);
+      approve.classList.remove('is-on','is-pressed');status('Aprobado · orden OC-0187 emitida',true);
+      await sleep(800,id);
+      reveal('centro',5);
+      await sleep(700,id);
+      await typing(1000,id);reveal('centro',6);status('Aprobado · entrega confirmada para el jueves',true);
+      await sleep(6500,id);
+      play();
+    }catch(e){}
+  };
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){if(e[0].isIntersecting){play()}else{run++}},{threshold:.3}).observe(demo);
+  }else{play()}
+})();
+</script>
+</body>
+</html>
