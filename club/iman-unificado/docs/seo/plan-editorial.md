@@ -103,3 +103,11 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Search Console: cuatro prioridades indexadas; sitemap Correcto y leído el 5/10. Error transitorio inicial resuelto; sin reenvíos.
 - Build sobre HEAD ffb58ba y esta actualización: 44 pruebas aprobadas, 25 HTML, 20 URLs de sitemap; cero errores, advertencias u observaciones.
 - Carrusel publicado y verificado: https://www.instagram.com/estudio.iman/p/DeJxZPIEax9/ .
+
+## Ejecución del 8 de octubre de 2026
+
+- Ampliación de Wallet/email: identificación frente a autorización de canje, prueba simultánea en dos cajas, manejo de espera y falta de conexión. Sin nueva URL.
+- Fuente: documentación oficial de códigos rotativos de Google Wallet consultada hoy. Se separa la vigencia del código del estado comercial del premio.
+- Search Console: las cuatro páginas principales indexadas; sitemap Correcto y leído hoy. Sin solicitudes ni cambios de DNS.
+- Carrusel práctico de seis láminas y pregunta específica en cierre y descripción. Publicación bloqueada por perfil no disponible; archivos y estado en `social/2026-10-08-canje-en-caja/`.
+- Validación aislada sobre HEAD 0cb6ccc: 44 pruebas aprobadas; 26 HTML, 21 URLs de sitemap y cero errores, advertencias u observaciones. Panel regenerado sin métricas privadas.

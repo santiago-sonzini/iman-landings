@@ -1,0 +1,11 @@
+El cliente muestra su tarjeta del club. Pero ¿ese premio todavía está disponible?
+
+Antes de entregarlo, caja necesita identificar el beneficio, consultar su estado actual y recibir confirmación de que el canje quedó registrado. Una captura de pantalla no cambia después de usar el premio.
+
+Probá el recorrido con tu equipo: dos cajas intentan canjear el mismo beneficio al mismo tiempo. Solo una debería poder confirmarlo. También definí qué hacer cuando no hay conexión o una operación queda pendiente: repetirla sin consultar puede generar otro problema.
+
+El ejemplo del café es hipotético. Este control depende del sistema que implementes; tener una tarjeta en Wallet no lo resuelve por sí solo.
+
+Si caja no puede validar un premio, ¿quién lo resuelve en tu comercio: el encargado, vos o todavía no está definido? Contá tu rubro y cómo lo harían.
+
+#Fidelizacion #Comercios #AtencionAlCliente

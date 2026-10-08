@@ -1,5 +1,13 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 8 de octubre de 2026
+
+Las cuatro inspecciones prioritarias confirman «La URL está en Google» y «La página está indexada». El sitemap continúa Correcto, con última lectura el 8/10/2026; informa 21 URLs descubiertas, frente a las 20 de ayer. Descubrimiento no equivale a indexación. El resumen del dominio no muestra un cambio en los totales de indexación respecto del seguimiento anterior. No se enviaron solicitudes ni se modificó DNS.
+
+Evidencia y conteos: `docs/seo/private/2026-10-08-search-console/`, fuera de Git y del sitio público. Se amplió la guía existente Wallet/email con validación del canje, dos intentos simultáneos y contingencia en caja. Fuente primaria: Google Wallet, códigos rotativos, consultada el 8/10 (actualización indicada 7/10). Las reglas de caja se presentan como un requisito de implementación, no como una función automática de Wallet.
+
+Carrusel de seis láminas preparado en `social/2026-10-08-canje-en-caja/`. Persiste el bloqueo del 7/10: @estudio.iman no está disponible y la sesión visible corresponde a la cuenta personal. No publicado; tampoco se envió el borrador anterior. Falta recuperar el acceso al perfil correcto o confirmar su usuario actual.
+
 ## Seguimiento del 7 de octubre de 2026
 
 Las inspecciones de inicio, Fidelización, Comercios y Automatizaciones confirman «La URL está en Google» y «La página está indexada». El sitemap continúa Correcto y su última lectura es del 7/10/2026. El informe global de la propiedad avanzó; sus conteos y ejemplos quedan en evidencia privada porque abarcan también subdominios y URLs antiguas, no solo el sitemap actual.
