@@ -75,6 +75,16 @@ test('the short /wa link opens WhatsApp with the Instagram message, on www and f
   assert.equal(apex.headers.get('location'),'https://www.iman.ar/wa');
 });
 
+test('the short /gauss/wa link opens WhatsApp with a message that names Gauss',async()=>{
+  for(const path of ['/gauss/wa','/gauss/wa/']){
+    const response=await worker.fetch(new Request('https://www.iman.ar'+path),{});
+    assert.equal(response.status,302);
+    const target=new URL(response.headers.get('location'));
+    assert.equal(target.origin+target.pathname,'https://wa.me/5493535189997');
+    assert.match(target.searchParams.get('text'),/quiero info de Gauss/);
+  }
+});
+
 test('the short /agenda link sends people to the booking page',async()=>{
   for(const path of ['/agenda','/agenda/']){
     const response=await worker.fetch(new Request('https://www.iman.ar'+path),{});

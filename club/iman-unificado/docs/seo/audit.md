@@ -2,9 +2,9 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-08T17:50:46.053600+00:00
+Generada: 2026-10-08T18:00:23.060772+00:00
 
-27 HTML · 21 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
+27 HTML · 22 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
 ## Hallazgos
 
@@ -21,6 +21,7 @@ Sin hallazgos en los controles implementados.
 | /comercios/ | Sí | 1 | 6 |
 | /contacto/ | Sí | 1 | 22 |
 | /fidelizacion/ | Sí | 1 | 8 |
+| /gauss/ | Sí | 1 | 1 |
 | /privacidad/ | Sí | 1 | 23 |
 | /recursos/ | Sí | 1 | 22 |
 | /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 2 |

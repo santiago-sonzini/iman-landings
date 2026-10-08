@@ -28,6 +28,8 @@ async function startChat(lead,env){
 const handleContact=createContactHandler({sendMail,startChat});
 const handleNewsletter=createNewsletterHandler({sendMail});
 const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, vengo de Instagram y quiero info');
+// Short link for Gauss (iman.ar/gauss/wa): "quiero info" is what the assistant recognizes as a lead, and it names the product.
+const WHATSAPP_GAUSS='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, quiero info de Gauss para las compras de mi empresa.');
 const AGENDA='https://agenda.iman.ar/';
 
 export default {
@@ -39,6 +41,7 @@ export default {
     }
     // Short link for the Instagram bio (iman.ar/wa): opens WhatsApp with the message the assistant recognizes as a lead.
     if(url.pathname==='/wa'||url.pathname==='/wa/')return Response.redirect(WHATSAPP_FROM_INSTAGRAM,302);
+    if(url.pathname==='/gauss/wa'||url.pathname==='/gauss/wa/')return Response.redirect(WHATSAPP_GAUSS,302);
     // Short link to book a call (iman.ar/agenda): the booking page lives with the assistant, on its own subdomain.
     if(url.pathname==='/agenda'||url.pathname==='/agenda/')return Response.redirect(AGENDA,302);
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);

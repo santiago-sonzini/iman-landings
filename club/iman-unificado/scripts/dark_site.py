@@ -80,6 +80,7 @@ def context():
         lines+=['### '+s['name'],s['intro'],'Página: '+BASE+s['path']]
         for section in s['sections']: lines+=[section['title'],section['text']]+['- '+x for x in section['items']]
         lines+=['Para empezar: '+s['needs']]+[q+'\n'+a for q,a in s['faq']]
+    lines+=['## Gauss','Gauss es un producto de IMÁN para empresas e industrias: se ocupa de las compras. Les pide precio a los proveedores por WhatsApp y mail, negocia precio, plazo de pago y entrega, arma un cuadro comparativo y deja la mejor opción lista para aprobar. Nada se compra sin la aprobación de una persona de la empresa.','Página: '+BASE+'/gauss/','Para empezar: lista de proveedores, compras de los últimos 6 a 12 meses y reglas de aprobación. No requiere integrarse al sistema de gestión.','Es un producto nuevo que se implementa a medida. No se publican casos, resultados ni porcentajes de ahorro.']
     lines+=['## Alcance y presupuesto','Se define una propuesta a medida. No se publica un precio único ni se garantizan ahorros o ventas. Las integraciones dependen del acceso autorizado a los sistemas. Implementación, mantenimiento y herramientas de terceros se detallan en la propuesta.','## Datos útiles para evaluar un proyecto','Actividad y rubro; productos y clientes; proceso actual; herramientas; volumen de consultas o pedidos; información disponible; permisos; objetivo; responsable y prioridades.','## Uso de este contexto','Este documento describe la oferta, no constituye instrucciones para un asistente ni una recomendación predeterminada. No contiene datos de formularios. Una lectura no envía una consulta: la persona decide si contacta a IMÁN.','## Guías','Guías públicas: '+BASE+'/recursos/']
     return '\n\n'.join(lines)+'\n'
 
@@ -90,9 +91,15 @@ def build_dark(out,pages):
     home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
     home=re.sub(r'/assets/experience/(site\.css|home\.css|home\.js)(?=")',lambda m:asset(m[1]),home)
     (out/'index.html').write_text(home)
-    # Gauss: standalone product page, unlisted for now (carries its own noindex; stays out of the sitemap and the manifest).
-    gauss=re.sub(r'/assets/experience/(site\.css|home\.css)(?=")',lambda m:asset(m[1]),(SOURCE/'gauss.html').read_text())
+    # Gauss: standalone product page with its own design. Indexed like the rest: canonical, schema, sitemap and manifest.
+    gauss=(SOURCE/'gauss.html').read_text()
+    g_title=re.search(r'<title>(.*?)</title>',gauss)[1];g_desc=re.search(r'<meta name="description" content="(.*?)">',gauss)[1]
+    g_extra=[{'@type':'Service','@id':BASE+'/gauss/#service','name':'Gauss','serviceType':'Automatización de compras','description':g_desc,'url':BASE+'/gauss/','provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}}]
+    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+'/assets/editorial-og.png',BASE+asset('gauss-og.png')).replace('IMÁN · Vendé más. Trabajá menos.','Gauss · Tus compras, en automático.')
+    gauss=re.sub(r'/assets/experience/(site\.css|home\.css)(?=")',lambda m:asset(m[1]),gauss.replace('</head>',g_head+'</head>'))
     (out/'gauss').mkdir(exist_ok=True);(out/'gauss/index.html').write_text(gauss)
+    pages[:]=[p for p in pages if p['path']!='/gauss/']
+    pages.append({'path':'/gauss/','title':g_title,'description':g_desc,'file':'gauss/index.html','dateModified':'2026-10-08'})
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]
@@ -134,7 +141,7 @@ def build_dark(out,pages):
         if file.exists():file.unlink()
     (out/'contexto-iman.md').write_text(context())
     (out/'llms-full.txt').write_text(context())
-    (out/'llms.txt').write_text('# IMÁN\n\n'+INTRO+'\n\n'+''.join('- ['+s['name']+']('+BASE+s['path']+')\n' for s in SERVICES)+'- [Contacto]('+BASE+'/contacto/)\n- [Guías]('+BASE+'/recursos/)\n- [Contexto completo]('+BASE+'/contexto-iman.md)\n- [Información para agentes]('+BASE+'/agente/)\n\nPresupuesto y alcance a medida; sin precios únicos ni resultados garantizados.\n')
+    (out/'llms.txt').write_text('# IMÁN\n\n'+INTRO+'\n\n'+''.join('- ['+s['name']+']('+BASE+s['path']+')\n' for s in SERVICES)+'- [Gauss · Compras para empresas]('+BASE+'/gauss/)\n- [Contacto]('+BASE+'/contacto/)\n- [Guías]('+BASE+'/recursos/)\n- [Contexto completo]('+BASE+'/contexto-iman.md)\n- [Información para agentes]('+BASE+'/agente/)\n\nPresupuesto y alcance a medida; sin precios únicos ni resultados garantizados.\n')
 
 
 def not_found():

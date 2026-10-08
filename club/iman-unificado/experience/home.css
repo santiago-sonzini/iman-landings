@@ -78,14 +78,13 @@ body.home{height:auto;min-height:100%;overflow-x:hidden;overflow-y:visible;text-
 .plus::before,.plus::after{content:'';position:absolute;left:0;top:5px;width:11px;height:1px;background:currentColor;transition:transform .35s}
 .plus::after{transform:rotate(90deg)}
 .service-card.is-current .plus::after{transform:rotate(0)}
-/* Gauss: a separate product, so it sits apart as a full-width fourth row under the three services. */
+/* Four across on desktop: Gauss is a separate product, but it sits level with the three services. */
 @media(min-width:1001px){
-  .service-wide,.service-wide:first-child{grid-column:1/-1;grid-template-columns:auto 1fr auto;align-items:center;padding:clamp(11px,1.7vh,17px) 0;border-left:0;border-top:1px solid var(--line)}
-  .service-wide .service-index{line-height:1.4}
-  .service-wide .service-text{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 18px}
-  .service-wide .service-text h2{margin:0}
-  .service-wide .service-text p{max-width:none}
-  .service-wide .service-more{margin:0}
+  .service-strip{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .service-card{grid-template-columns:auto 1fr;gap:0 12px;padding-left:clamp(14px,1.6vw,26px);padding-right:clamp(14px,1.6vw,26px)}
+  .service-card:first-child{padding-left:0}
+  .service-text h2{font-size:clamp(16px,1.6vw,25px)}
+  .service-more{grid-column:2;justify-self:start;margin-top:8px}
 }
 
 /* ── Demo stage ── */

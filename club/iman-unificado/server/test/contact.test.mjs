@@ -241,13 +241,13 @@ test('a failing assistant never breaks the inquiry',async()=>{
   assert.ok(logs.includes('contact_whatsapp_failed'));
 });
 
-test('a Gauss inquiry is accepted and delivered, but the assistant is not asked to write',async()=>{
+test('a Gauss inquiry is accepted, delivered and passed to the assistant like any other',async()=>{
   const calls=[];
   const {handle,sent}=setup({startChat:async lead=>{calls.push(lead);return 'enviado';}});
   const response=await handle(request({servicio:undefined,servicios:['Gauss · Compras','WhatsApp e IA']}),env);
   assert.equal(response.status,200);
-  assert.equal((await response.json()).whatsapp,undefined);
-  assert.equal(calls.length,0);
+  assert.equal((await response.json()).whatsapp,'enviado');
+  assert.deepEqual(calls[0].servicios,['WhatsApp e IA','Gauss · Compras']);
   assert.ok(sent[0].text.includes('Gauss · Compras'));
 });
 

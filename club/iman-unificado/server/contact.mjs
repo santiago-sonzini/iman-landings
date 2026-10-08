@@ -1,8 +1,6 @@
 import { AGENDA_URL, confirmationEmail, ownerEmail } from './email.mjs';
 
 export const SERVICES = new Set(['WhatsApp e IA', 'Fidelización y email marketing', 'Catálogos y ERP', 'IMAN Fidelización', 'IMAN Comercios · Catálogos', 'IMAN Automatizaciones', 'IMAN Agentes', 'IMAN Turnos', 'Gauss · Compras', 'Quiero que me orienten']);
-// The WhatsApp assistant only knows the IMÁN services: a Gauss inquiry is answered by a person.
-const HUMAN_ONLY = 'Gauss · Compras';
 const MAX_BYTES = 12_000;
 const DAY = 86_400_000;
 const LIMITS = {nombre:100,negocio:120,rubro:120,ciudad:120,email:254,whatsapp:50,servicio:80,comentario:2000,sitio_web_empresa:200,source:1000,url:1000,origen:1000,requestId:80,utm_source:120,utm_medium:120,utm_campaign:180,utm_content:180,utm_term:180};
@@ -182,7 +180,7 @@ export function createContactHandler({sendMail, startChat = null, now = Date.now
       catch {confirmationSent=false;report('contact_confirmation_delivery_failed');}
       // With a WhatsApp number, the IMAN assistant writes to them right away (server to server; see worker.mjs).
       let whatsapp = null;
-      if (lead.whatsapp && startChat && !lead.servicios.includes(HUMAN_ONLY)) {
+      if (lead.whatsapp && startChat) {
         try { whatsapp = await startChat(lead, env); }
         catch { report('contact_whatsapp_failed'); }
       }

@@ -5,15 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#11141b">
 <meta name="color-scheme" content="dark">
-<!-- Página no listada: sin indexar y fuera del sitemap hasta decidir el lanzamiento. -->
-<meta name="robots" content="noindex, nofollow">
-<title>Gauss · Tus compras, en automático | de IMÁN</title>
+<title>Gauss: automatización de compras para empresas | IMÁN</title>
 <meta name="description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Para empresas e industrias de Argentina.">
 <meta property="og:title" content="Gauss · Tus compras, en automático">
 <meta property="og:description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
-<meta property="og:url" content="https://www.iman.ar/gauss/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2311141b'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23eef0f4'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/assets/experience/libre-baskerville-italic.ttf" as="font" type="font/ttf" crossorigin>
@@ -142,6 +139,10 @@
 .g-faq summary::after{content:'+';flex:none;font:20px/1 var(--mono);color:var(--gold);transition:transform .3s}
 .g-faq details[open] summary::after{transform:rotate(45deg)}
 .g-faq details p{margin:0 0 22px;max-width:640px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+.g-wa{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:30;display:inline-flex;align-items:center;gap:9px;padding:11px 17px 11px 13px;border:1px solid #94a4bc55;border-radius:999px;background:#151a23f2;box-shadow:0 18px 40px -18px #000;font:500 13px/1 system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .35s,transform .35s,border-color .25s}
+.g-wa.is-on{opacity:1;transform:none;pointer-events:auto}
+.g-wa:hover,.g-wa:focus-visible{border-color:#00a884}
+.g-wa svg{width:20px;height:20px;color:#00a884}
 .g-origin{margin:0;font:10px/1.7 var(--mono);letter-spacing:.04em;color:#7f8a9c;text-align:center}
 
 /* Scroll reveal, only when motion is allowed. */
@@ -299,7 +300,7 @@
 <p class="hero-brief">Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Nada se compra sin tu sí.</p>
 <div class="hero-actions">
 <a class="cta cta-solid" href="/contacto/?servicio=gauss"><span class="cta-label">Quiero verlo con mis compras <span aria-hidden="true">→</span></span></a>
-<a class="ghost-link" href="#como">Ver cómo funciona <span aria-hidden="true">▸</span></a>
+<a class="ghost-link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa." target="_blank" rel="noopener">Escribinos por WhatsApp <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 
@@ -419,13 +420,15 @@
 <p class="kicker">Hablemos de tus compras</p>
 <h2 id="closing-title">Probalo con <em>una compra real.</em></h2>
 <p>Elegí algo que tengas que comprar este mes y te mostramos cómo lo resolvería Gauss.</p>
-<div class="hero-actions centered"><a class="cta cta-solid" href="/contacto/?servicio=gauss"><span class="cta-label">Quiero verlo con mis compras <span aria-hidden="true">→</span></span></a><a class="ghost-link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20ver%20Gauss%20con%20mis%20compras" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+<div class="hero-actions centered"><a class="cta cta-solid" href="/contacto/?servicio=gauss"><span class="cta-label">Quiero verlo con mis compras <span aria-hidden="true">→</span></span></a><a class="ghost-link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa." target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
 </section>
 </main>
 
+<a class="g-wa" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa." target="_blank" rel="noopener" data-g-wa><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>WhatsApp</a>
+
 <footer class="reading-footer">
 <a href="/gauss/">gauss</a>
-<nav aria-label="Más"><a href="/">IMÁN</a><a href="/servicios/">Servicios</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav>
+<nav aria-label="Más"><a href="/">IMÁN</a><a href="/servicios/">Servicios</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa.">WhatsApp</a></nav>
 <p class="g-origin">Gauss: la unidad con la que se mide la fuerza de un imán.</p>
 <span>Un producto de IMÁN. Hecho en Argentina.</span>
 </footer>
@@ -476,6 +479,14 @@
       if('IntersectionObserver' in window){new IntersectionObserver(function(e){var on=e[0].isIntersecting;if(on&&!fieldOn){fieldOn=true;requestAnimationFrame(loop)}else if(!on){fieldOn=false}}).observe(cv)}
       document.addEventListener('visibilitychange',function(){if(document.hidden){fieldOn=false}else if(!fieldOn){fieldOn=true;requestAnimationFrame(loop)}});
     }
+  }
+
+  /* WhatsApp pill: appears once the hero's own buttons are out of view, so it never covers the demo. */
+  var pill=document.querySelector('[data-g-wa]'),pitch=document.querySelector('.g-pitch');
+  if(pill&&pitch){
+    var pitchSeen=false,place=function(){pill.classList.toggle('is-on',window.scrollY>window.innerHeight*.6&&!pitchSeen)};
+    if('IntersectionObserver' in window){new IntersectionObserver(function(e){pitchSeen=e[0].isIntersecting;place()}).observe(pitch)}
+    window.addEventListener('scroll',place,{passive:true});place();
   }
 
   /* Demo player: the static markup is the finished purchase; with motion it is replayed step by step,

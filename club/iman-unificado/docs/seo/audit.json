@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-08T17:50:46.053600+00:00",
+  "generated_at": "2026-10-08T18:00:23.060772+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
     "html": 27,
-    "indexable_html": 21,
-    "sitemap_urls": 21,
+    "indexable_html": 22,
+    "sitemap_urls": 22,
     "error": 0,
     "warning": 0,
     "notice": 0
@@ -164,12 +164,19 @@
     },
     {
       "path": "/gauss/",
-      "title": "Gauss · Tus compras, en automático | de IMÁN",
-      "noindex": true,
-      "in_sitemap": false,
+      "title": "Gauss: automatización de compras para empresas | IMÁN",
+      "noindex": false,
+      "in_sitemap": true,
       "click_depth": 1,
       "incoming_pages": 1,
-      "schema_types": []
+      "schema_types": [
+        "ContactPoint",
+        "Country",
+        "Organization",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ]
     },
     {
       "path": "/privacidad/",
