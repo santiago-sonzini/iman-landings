@@ -29,9 +29,11 @@ la tilde y revela la palabra. Un destello pequeño cierra la transformación y e
 logo se acomoda en la barra superior. La secuencia dura aproximadamente 2,9
 segundos y usa Web Animations nativa, sin dependencias. La barra acompaña el scroll.
 
-La preferencia de movimiento reducido, un enlace con ancla o volver desde otra
-página omiten la entrada. Teclado, scroll, un cambio de tamaño o de pestaña la
-terminan de inmediato. Sin JavaScript, con error de imagen o con un script
+La entrada también se muestra al abrir o recargar una URL con ancla, como
+`/V1/#demos`, y conserva esa sección al terminar. El scroll automático del
+navegador no la cancela. La preferencia de movimiento reducido o volver desde
+otra página la omiten. Teclado, rueda, interacción táctil, un cambio de tamaño
+o de pestaña la terminan de inmediato. Sin JavaScript, con error de imagen o con un script
 interrumpido, el contenido queda disponible; hay un límite de tiempo de respaldo.
 
 ## Detalles de color e interacción

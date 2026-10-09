@@ -28,7 +28,7 @@
 (() => {
   const root = document.documentElement;
   const navigation = performance.getEntriesByType('navigation')[0];
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || location.hash ||
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches ||
       navigation?.type === 'back_forward' || document.hidden || !Element.prototype.animate) return;
   root.classList.add('intro-pending');
   // Even an interrupted download or a script error must never hide the page.
@@ -716,12 +716,14 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
       active.forEach(animation => animation.cancel());
       overlay?.remove();
     };
-    if (!root.classList.contains('intro-pending') || !target || scrollY > 8 || reduceMotion.matches) {
+    if (!root.classList.contains('intro-pending') || !target || reduceMotion.matches) {
       finish();
       return;
     }
     const listen = (element, event, callback = finish) => element.addEventListener(event, callback, {signal:listeners.signal, passive:true});
-    ['resize', 'orientationchange', 'pagehide', 'scroll', 'pointerdown', 'wheel', 'touchstart'].forEach(event => listen(window, event));
+    // Native hash navigation and scroll restoration must not cancel the entrance.
+    // User intent still exits immediately through wheel, touch, pointer or keyboard.
+    ['resize', 'orientationchange', 'pagehide', 'pointerdown', 'wheel', 'touchstart'].forEach(event => listen(window, event));
     listen(document, 'keydown');
     listen(document, 'visibilitychange', () => { if (document.hidden) finish(); });
     listen(reduceMotion, 'change', () => { if (reduceMotion.matches) finish(); });
