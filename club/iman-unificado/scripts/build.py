@@ -257,6 +257,12 @@ worker_bundle=ROOT/'server/dist/_worker.js'
 if worker_bundle.exists():
     shutil.copy2(worker_bundle,OUT/'_worker.js')
     OUT.joinpath('_routes.json').write_text(json.dumps({'version':1,'include':['/*'],'exclude':[]},indent=2))
+# Optional identity comparisons are additive: no changes to the original home,
+# shared experience assets, canonical page list, backend, or existing routes.
+for variant in ('V1', 'V2'):
+    shutil.copytree(ROOT/'variants'/variant, OUT/variant, dirs_exist_ok=True)
+shutil.copytree(ROOT/'variants/assets', OUT/'assets/identity-variants', dirs_exist_ok=True)
+
 with zipfile.ZipFile(ROOT/'iman-cloudflare.zip','w',zipfile.ZIP_DEFLATED) as z:
     for f in sorted(OUT.rglob('*')):
         if f.is_file() and not f.name.startswith('.'):z.write(f,f.relative_to(OUT))
