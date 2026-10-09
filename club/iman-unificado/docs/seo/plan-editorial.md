@@ -111,3 +111,9 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Search Console: las cuatro páginas principales indexadas; sitemap Correcto y leído hoy. Sin solicitudes ni cambios de DNS.
 - Carrusel práctico de seis láminas y pregunta específica en cierre y descripción. Publicación bloqueada por perfil no disponible; archivos y estado en `social/2026-10-08-canje-en-caja/`.
 - Validación aislada sobre HEAD 0cb6ccc: 44 pruebas aprobadas; 26 HTML, 21 URLs de sitemap y cero errores, advertencias u observaciones. Panel regenerado sin métricas privadas.
+
+## Ejecución del 9 de octubre de 2026
+
+- Mejorada la bienvenida del club dentro de la guía Wallet/email: guardar tarjeta, explicar participación y recuperar acceso. Ejemplo hipotético y fuente oficial Google Wallet.
+- Validación aislada sobre HEAD 47867c3: 46 pruebas; 27 HTML, 22 URLs de sitemap, cero errores, advertencias u observaciones.
+- Automatización actualizada por instrucción del usuario: desde hoy solo SEO y conversión web. Instagram sale del alcance; se conservan los archivos históricos.

@@ -1,5 +1,13 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 9 de octubre de 2026
+
+Las cuatro inspecciones prioritarias confirman «La URL está en Google» y «La página está indexada». El resumen del dominio conserva los totales del seguimiento anterior. El sitemap continúa Correcto, con última lectura el 8/10 y 21 URLs descubiertas; el sitemap local actual tiene 22 URLs. Esa diferencia no prueba un fallo ni justifica reenviarlo. No se reenviaron solicitudes ni se modificó DNS. Evidencia privada en `docs/seo/private/2026-10-09-search-console/`.
+
+Se amplió la sección de email de la guía Wallet/email con una bienvenida concreta: acción principal, instrucciones de uso, acceso al pase correcto y recuperación. Fuente primaria: distribución de tarjetas por email de Google Wallet, consultada hoy. Sin nueva URL.
+
+Santiago confirmó hoy que ya no tiene Instagram. Se actualizó la automatización para continuar únicamente con SEO y conversión web, sin revisar perfiles, preparar carruseles ni publicar allí. El material preliminar de hoy no se incorpora a la entrega ni se publica. Los borradores históricos se conservan.
+
 ## Seguimiento del 8 de octubre de 2026
 
 Las cuatro inspecciones prioritarias confirman «La URL está en Google» y «La página está indexada». El sitemap continúa Correcto, con última lectura el 8/10/2026; informa 21 URLs descubiertas, frente a las 20 de ayer. Descubrimiento no equivale a indexación. El resumen del dominio no muestra un cambio en los totales de indexación respecto del seguimiento anterior. No se enviaron solicitudes ni se modificó DNS.
