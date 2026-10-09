@@ -22,18 +22,22 @@ Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado
 
 ## Entrada del logo
 
-Al abrir cada versión, el logo original se arma en el centro, recibe un destello
-suave y se acomoda en la barra superior en aproximadamente dos segundos. La barra
-acompaña el scroll. La secuencia usa Web Animations nativa, sin dependencias.
+Al abrir cada versión, la palabra aparece en el centro y un haz de luz fino
+revela lentamente la tilde original. Un destello pequeño cierra el trazo y el
+logo se acomoda en la barra superior. La secuencia dura aproximadamente 2,7
+segundos y usa Web Animations nativa, sin dependencias. La barra acompaña el scroll.
 
 La preferencia de movimiento reducido, un enlace con ancla o volver desde otra
 página omiten la entrada. Teclado, scroll, un cambio de tamaño o de pestaña la
 terminan de inmediato. Sin JavaScript, con error de imagen o con un script
 interrumpido, el contenido queda disponible; hay un límite de tiempo de respaldo.
 
-Ambas versiones usan color en el título, botones con hover, líneas permanentes de
-los cuatro servicios, pestañas, enlaces, indicadores y cierre. Se conservan los
-logos propios de cada versión y las marcas originales de las demos.
+## Detalles de color e interacción
+
+Los acentos suaves, de azul acero, lavanda y champán, aparecen en el titular,
+números, enlaces, indicadores y líneas finas. Los botones usan un reflejo plateado
+neutro, con hover sutil. El resto de los títulos mantiene el gris. Se conservan
+los logos propios de cada versión y las marcas originales de las demos.
 
 Las tarjetas de servicios se pueden activar desde todo el bloque: las primeras
 tres seleccionan su demo y Gauss conserva el enlace a su página. El enlace real
