@@ -34,3 +34,7 @@ interrumpido, el contenido queda disponible; hay un límite de tiempo de respald
 Ambas versiones usan color en el título, botones con hover, líneas permanentes de
 los cuatro servicios, pestañas, enlaces, indicadores y cierre. Se conservan los
 logos propios de cada versión y las marcas originales de las demos.
+
+Las tarjetas de servicios se pueden activar desde todo el bloque: las primeras
+tres seleccionan su demo y Gauss conserva el enlace a su página. El enlace real
+mantiene teclado, apertura en otra pestaña y funcionamiento sin JavaScript.

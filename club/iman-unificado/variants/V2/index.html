@@ -464,6 +464,13 @@ html[data-variant] :focus-visible{outline-color:#70d1e3}
 @media(forced-colors:active){html[data-variant] .home h1 em,html[data-variant] .stage-head h2 em,html[data-variant] .demo-copy h3 em,html[data-variant] .closing h2 em{-webkit-text-fill-color:currentColor;background:none}html[data-variant] .cta-solid,html[data-variant] .header-contact,html[data-variant] .stage-tabs button[aria-selected=true]{border:1px solid ButtonText;color:ButtonText}}
 @media print{html[data-variant] .home h1 em,html[data-variant] .stage-head h2 em,html[data-variant] .demo-copy h3 em,html[data-variant] .closing h2 em{color:#101010;-webkit-text-fill-color:currentColor;background:none}}
 
+/* The existing link covers its entire service card, including touch and keyboard focus. */
+html[data-variant] .service-card{cursor:pointer}
+html[data-variant] .service-card .service-more{position:static}
+html[data-variant] .service-card .service-more::before{content:'';position:absolute;inset:0;z-index:2;border-radius:inherit}
+html[data-variant] .service-card:focus-within{outline:2px solid var(--service-accent);outline-offset:-3px}
+html[data-variant] .service-card .service-more:focus-visible{outline:none}
+
 </style>
 </head>
 <body class="home">
@@ -508,17 +515,17 @@ html[data-variant] :focus-visible{outline-color:#70d1e3}
 <article class="service-card" role="listitem" data-service="whatsapp">
 <span class="service-index">01</span>
 <div class="service-text"><h2>Automatizaciones</h2><p>Tu WhatsApp atiende, ordena y da seguimiento con IA.</p></div>
-<a class="service-more" href="/automatizaciones/" data-open="whatsapp" aria-controls="demo-whatsapp">Más info <span class="plus" aria-hidden="true"></span></a>
+<a class="service-more" href="/automatizaciones/" data-open="whatsapp" aria-controls="demo-whatsapp" aria-label="Ver demo de Automatizaciones">Más info <span class="plus" aria-hidden="true"></span></a>
 </article>
 <article class="service-card" role="listitem" data-service="fidelizacion">
 <span class="service-index">02</span>
 <div class="service-text"><h2>Fidelización</h2><p>Un club con tu marca: puntos, Wallet y email para que vuelvan.</p></div>
-<a class="service-more" href="/fidelizacion/" data-open="fidelizacion" aria-controls="demo-fidelizacion">Más info <span class="plus" aria-hidden="true"></span></a>
+<a class="service-more" href="/fidelizacion/" data-open="fidelizacion" aria-controls="demo-fidelizacion" aria-label="Ver demo de Fidelización">Más info <span class="plus" aria-hidden="true"></span></a>
 </article>
 <article class="service-card" role="listitem" data-service="catalogos">
 <span class="service-index">03</span>
 <div class="service-text"><h2>Catálogos</h2><p>Tu catálogo online, con pedidos por WhatsApp y conexión al ERP.</p></div>
-<a class="service-more" href="/comercios/" data-open="catalogos" aria-controls="demo-catalogos">Más info <span class="plus" aria-hidden="true"></span></a>
+<a class="service-more" href="/comercios/" data-open="catalogos" aria-controls="demo-catalogos" aria-label="Ver demo de Catálogos">Más info <span class="plus" aria-hidden="true"></span></a>
 </article>
 <article class="service-card" role="listitem" data-service="gauss">
 <span class="service-index">04</span>
@@ -808,6 +815,7 @@ html[data-variant] :focus-visible{outline-color:#70d1e3}
     syncPlayers();
   }
   document.querySelectorAll('[data-open]').forEach(link => link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     select(link.dataset.open, {scroll: true});
     history.replaceState(null, '', '#demos');
