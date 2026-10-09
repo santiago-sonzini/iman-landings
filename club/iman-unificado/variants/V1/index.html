@@ -416,6 +416,54 @@ html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
 @media(prefers-reduced-motion:reduce){.brand-intro{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
 @media print{.brand-intro{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
 
+/* Both identities share the expressive color details; only their wordmarks differ. */
+html[data-variant] .home h1 em,html[data-variant] .stage-head h2 em,html[data-variant] .demo-copy h3 em,html[data-variant] .closing h2 em{color:#b9a3ee;background:var(--field);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+html[data-variant] .kicker{color:#70d1e3}
+html[data-variant] .kicker::before{width:6px;height:6px;background:var(--field);box-shadow:0 0 12px #70d1e34d}
+html[data-variant] .live-dot{background:#70d1e3;box-shadow:0 0 10px #70d1e344}
+html[data-variant] .cta-solid,html[data-variant] .header-contact{background:var(--field);background-size:160% 100%;background-position:0 50%;color:#101014;border:1px solid #b9a3ee80;box-shadow:0 4px 20px #b9a3ee10;transition:background-position .45s,box-shadow .3s,transform .3s,border-color .3s}
+html[data-variant] .cta-solid:hover,html[data-variant] .cta-solid:focus-visible,html[data-variant] .header-contact:hover,html[data-variant] .header-contact:focus-visible{background-position:100% 50%;border-color:#f0cead;box-shadow:0 7px 24px #b9a3ee38,0 0 18px #70d1e31f;transform:translateY(-3px);color:#101014}
+html[data-variant] .cta-solid:active,html[data-variant] .header-contact:active{transform:translateY(0);box-shadow:0 2px 10px #b9a3ee20}
+html[data-variant] .cta-label>span{transition:transform .3s}
+html[data-variant] .cta:hover .cta-label>span,html[data-variant] .cta:focus-visible .cta-label>span{transform:translateX(4px)}
+html[data-variant] .header-contact{font-weight:550}
+html[data-variant] .header-nav a:not(.header-contact):hover,html[data-variant] .header-nav a:not(.header-contact):focus-visible{color:#70d1e3;text-decoration:underline;text-decoration-color:#b9a3ee;text-underline-offset:7px}
+html[data-variant] .ghost-link{position:relative;color:#d2bdf4;text-decoration:none;transition:color .25s}
+html[data-variant] .ghost-link::after{content:'';position:absolute;left:0;right:0;bottom:5px;height:1px;background:var(--field);opacity:.65;transform:scaleX(.65);transform-origin:left;transition:transform .3s,opacity .3s}
+html[data-variant] .ghost-link:hover,html[data-variant] .ghost-link:focus-visible{color:#70d1e3}
+html[data-variant] .ghost-link:hover::after,html[data-variant] .ghost-link:focus-visible::after{transform:scaleX(1);opacity:1}
+html[data-variant] .service-card{--service-accent:#70d1e3;--service-wash:#70d1e307;--service-line:linear-gradient(90deg,#70d1e3,#b9a3ee);background:linear-gradient(160deg,var(--service-wash),transparent 85%);transition:background .3s,box-shadow .3s}
+html[data-variant] .service-card[data-service="fidelizacion"]{--service-accent:#c3a6f1;--service-wash:#b9a3ee0b;--service-line:linear-gradient(90deg,#b9a3ee,#f0cead)}
+html[data-variant] .service-card[data-service="catalogos"]{--service-accent:#f0cead;--service-wash:#f0cead09;--service-line:linear-gradient(90deg,#f0cead,#70d1e3)}
+html[data-variant] .service-card[data-service="gauss"]{--service-accent:#8fd6e3;--service-wash:#70d1e307;--service-line:linear-gradient(90deg,#70d1e3,#b9a3ee,#f0cead)}
+html[data-variant] .service-card::after,html[data-variant] .service-card.is-current::after{height:2px;background:var(--service-line);transform:scaleX(1);opacity:.85;transition:opacity .3s,box-shadow .3s}
+html[data-variant] .service-card:hover::after,html[data-variant] .service-card:focus-within::after{opacity:1;box-shadow:0 0 15px color-mix(in srgb,var(--service-accent) 38%,transparent)}
+html[data-variant] .service-card:hover,html[data-variant] .service-card:focus-within{background:linear-gradient(150deg,color-mix(in srgb,var(--service-accent) 9%,transparent),transparent 85%)}
+html[data-variant] .service-index,html[data-variant] .service-more{color:var(--service-accent)}
+html[data-variant] .service-more{border-color:color-mix(in srgb,var(--service-accent) 55%,transparent);transition:color .25s,border-color .25s,gap .25s}
+html[data-variant] .service-more:hover,html[data-variant] .service-more:focus-visible{color:#f2f2f4;border-color:var(--service-accent);gap:15px}
+html[data-variant] .service-text h2{transition:color .3s}
+html[data-variant] .service-card:hover h2,html[data-variant] .service-card:focus-within h2{color:var(--service-accent)}
+html[data-variant] .stage-tabs{border-color:#b9a3ee45;box-shadow:0 0 25px #b9a3ee07}
+html[data-variant] .stage-tabs button{transition:background .3s,color .3s,box-shadow .3s}
+html[data-variant] .stage-tabs button span{color:#c3a6f1}
+html[data-variant] .stage-tabs button[aria-selected=true]{background:var(--field);color:#101014;box-shadow:0 2px 10px #b9a3ee26}
+html[data-variant] .stage-tabs button[aria-selected=true] span{color:#363041}
+html[data-variant] .stage-tabs button:not([aria-selected=true]):hover,html[data-variant] .stage-tabs button:not([aria-selected=true]):focus-visible{color:#70d1e3;background:#70d1e30c}
+html[data-variant] .checks li::before{border-color:#70d1e3}
+html[data-variant] .checks li:nth-child(2)::before{border-color:#b9a3ee}
+html[data-variant] .checks li:nth-child(3)::before{border-color:#f0cead}
+html[data-variant] .toast-icon.pts-icon{background:var(--field);color:#101014}
+html[data-variant] .device-caption a{color:#70d1e3;text-decoration-color:#b9a3ee}
+html[data-variant] .closing{border-top-color:#b9a3ee40}
+html[data-variant] .closing::before{content:'';position:absolute;top:-1px;left:12%;right:12%;height:1px;background:var(--field);opacity:.7}
+html[data-variant] .home .reading-footer{border-top-color:#b9a3ee30}
+html[data-variant] .reading-footer nav a{transition:color .2s}
+html[data-variant] .reading-footer nav a:hover,html[data-variant] .reading-footer nav a:focus-visible{color:#70d1e3;text-decoration:underline;text-decoration-color:#b9a3ee;text-underline-offset:6px}
+html[data-variant] :focus-visible{outline-color:#70d1e3}
+@media(forced-colors:active){html[data-variant] .home h1 em,html[data-variant] .stage-head h2 em,html[data-variant] .demo-copy h3 em,html[data-variant] .closing h2 em{-webkit-text-fill-color:currentColor;background:none}html[data-variant] .cta-solid,html[data-variant] .header-contact,html[data-variant] .stage-tabs button[aria-selected=true]{border:1px solid ButtonText;color:ButtonText}}
+@media print{html[data-variant] .home h1 em,html[data-variant] .stage-head h2 em,html[data-variant] .demo-copy h3 em,html[data-variant] .closing h2 em{color:#101010;-webkit-text-fill-color:currentColor;background:none}}
+
 </style>
 </head>
 <body class="home">

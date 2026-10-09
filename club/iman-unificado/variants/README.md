@@ -2,8 +2,8 @@
 
 Dos landings estáticas e independientes para comparar los PDFs de identidad:
 
-- `/V1/`: logo blanco con degradado sólo en la tilde.
-- `/V2/`: logo completo en cian, lavanda y durazno, más acentos puntuales.
+- `/V1/`: logo blanco con degradado sólo en la tilde; detalles de interfaz a color.
+- `/V2/`: logo completo en cian, lavanda y durazno; los mismos detalles a color.
 
 Cada carpeta tiene su `index.html`, con CSS y JavaScript incluidos. Los logos y
 las fuentes se copian desde `assets/` a `/assets/identity-variants/`. Las capturas
@@ -30,3 +30,7 @@ La preferencia de movimiento reducido, un enlace con ancla o volver desde otra
 página omiten la entrada. Teclado, scroll, un cambio de tamaño o de pestaña la
 terminan de inmediato. Sin JavaScript, con error de imagen o con un script
 interrumpido, el contenido queda disponible; hay un límite de tiempo de respaldo.
+
+Ambas versiones usan color en el título, botones con hover, líneas permanentes de
+los cuatro servicios, pestañas, enlaces, indicadores y cierre. Se conservan los
+logos propios de cada versión y las marcas originales de las demos.
