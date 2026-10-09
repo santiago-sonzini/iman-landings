@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#121212">
 <meta name="color-scheme" content="dark">
-<title>IMÁN — Vendé más. Trabajá menos. · V1</title>
+<title>IMÁN — Vendé más. Ganá tiempo. · V1</title>
 <meta name="description" content="Automatización por WhatsApp e IA, fidelización y email marketing, catálogos y ERP para pymes y mayoristas de Argentina.">
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://www.iman.ar/">
-<meta property="og:title" content="IMÁN — Vendé más. Trabajá menos. · V1">
+<meta property="og:title" content="IMÁN — Vendé más. Ganá tiempo. · V1">
 <meta property="og:description" content="Vendé más sin invertir en publicidad: WhatsApp con IA, club de clientes y catálogos conectados.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
@@ -27,16 +27,21 @@
 <script>
 (() => {
   const root = document.documentElement;
-  const navigation = performance.getEntriesByType('navigation')[0];
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches ||
-      navigation?.type === 'back_forward' || document.hidden || !Element.prototype.animate) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !Element.prototype.animate) {
+    window.imanIntroState = 'done';
+    return;
+  }
+  // A browser may preload this page in a hidden tab. Never cover that page while
+  // waiting: the bottom script starts the entrance when it first becomes visible.
+  window.imanIntroState = document.hidden ? 'waiting' : 'pending';
+  if (document.hidden) return;
   root.classList.add('intro-pending');
-  // Even an interrupted download or a script error must never hide the page.
   window.imanIntroFallback = setTimeout(() => {
+    window.imanIntroState = 'done';
     root.classList.remove('intro-pending', 'intro-revealing');
     root.classList.add('is-ready');
     document.querySelector('.brand-intro')?.remove();
-  }, 4200);
+  }, 4300);
 })();
 </script>
 <style>
@@ -393,9 +398,8 @@ html[data-variant="V2"]{--paper:#101010}html[data-variant="V2"] .home h1 em{colo
 @media print{body.home{background:#fff;color:#101010}.site-header,.hero-devices,.demo-visual,.stage-tabs{display:none!important}.hero,.demo{display:block}.demo[hidden]{display:block}.demo{break-inside:avoid;margin:30px 0}.service-strip{display:grid}.stage,.closing{padding:30px var(--gutter)}.home h1 em{-webkit-text-fill-color:currentColor!important;background:none!important}}
 
 html:not(.js) .stage-tabs{display:none}html:not(.js) .demo{margin-bottom:90px}html:not(.js) .wa-thread{overflow-y:auto}
-/* A full-screen color field becomes the accent, then the logo docks in the navigation. */
-:root{--intro-field:linear-gradient(118deg,#70c9db 0%,#a4bee0 24%,#b9a3ee 51%,#d0b6d5 73%,#f0cead 100%)}
-.intro-pending:not(.intro-revealing)::before{content:"";position:fixed;inset:0;z-index:99;background:var(--intro-field);pointer-events:none}
+/* Fine magnetic field lines gather into the original accent, then the logo docks. */
+.intro-pending:not(.intro-revealing)::before{content:'';position:fixed;inset:0;z-index:99;background:var(--paper);pointer-events:none}
 .home .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0c}
 html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
 .intro-pending .site-header .identity{visibility:hidden}
@@ -403,48 +407,37 @@ html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
 .intro-pending:not(.intro-revealing) .float-card{animation-play-state:paused}
 .intro-pending .site-header{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .intro-revealing .site-header{background:color-mix(in srgb,var(--paper) 92%,transparent);border-color:#ffffff0c;transition:background .5s,border-color .5s}
-.intro-revealing .header-nav,.intro-revealing main,.intro-revealing .reading-footer{animation:intro-content-in .4s both}
-.intro-revealing.is-ready .hero .line>span,.intro-revealing.is-ready .hero .line>em{transition-duration:.85s}
+.intro-revealing .header-nav,.intro-revealing main,.intro-revealing .reading-footer{animation:intro-content-in .38s both}
+.intro-revealing.is-ready .hero .line>span,.intro-revealing.is-ready .hero .line>em{transition-duration:.8s}
 .brand-intro{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout style}
 .intro-backdrop{position:absolute;inset:0;background:var(--paper)}
-.intro-color-field{position:absolute;inset:0;background:linear-gradient(155deg,#ffffff12,transparent 35%,#ffffff16 53%,transparent 72%),var(--intro-field);transform-origin:0 0;will-change:transform,clip-path}
+.intro-magnetic-field{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.intro-magnetic-field path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0}
+.intro-magnetic-glow{position:absolute;width:190px;height:160px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#b9a3ee0c,transparent 70%);opacity:0}
 .intro-flight{position:absolute;top:0;left:0;transform-origin:0 0;will-change:transform}
-.intro-word,.intro-accent,.intro-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:none}
+.intro-word,.intro-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:none}
 .intro-word{clip-path:polygon(0 0,45% 0,45% 25%,100% 25%,100% 100%,0 100%);opacity:0}
 .intro-logo{visibility:hidden}
-.intro-accent{clip-path:inset(0 27% 75% 45%);opacity:0}
-.intro-spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 7px #fff9,0 0 15px #cfc9e04d;transform:translate(-50%,-50%);opacity:0}
+.intro-accent-focus{position:absolute;top:0;left:0;overflow:hidden;transform-origin:0 0;opacity:0;will-change:transform,opacity}
+.intro-accent-focus img{position:absolute;display:block;max-width:none}
 @keyframes intro-content-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){html:has(body.home){scroll-padding-top:90px}.stage{scroll-margin-top:0}}
 @media(prefers-reduced-motion:reduce){.brand-intro,.intro-pending::before{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
 @media print{.brand-intro,.intro-pending::before{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
 
 /* Soft metallic accents: cool blue, lavender and champagne, without saturated fills. */
-html[data-variant] .home h1 em{color:#b1a9c4;background:linear-gradient(108deg,#8fa7b3 0%,#bdccd1 24%,#a99fba 51%,#c7c1cd 72%,#bdad9b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 html[data-variant] .kicker{color:#a7afb9}
 html[data-variant] .kicker::before{width:4px;height:4px;background:var(--field);box-shadow:none}
 html[data-variant] .live-dot{background:#a7b7ba;box-shadow:none}
-html[data-variant] .cta-solid{background:linear-gradient(115deg,#dfe3e6 0%,#f4f3f6 32%,#d8d6e0 62%,#e7e1da 100%);background-size:160% 100%;background-position:0 50%;color:#141416;border:1px solid #e2dfe8;box-shadow:inset 0 1px 0 #ffffff70;transition:background-position .5s,border-color .3s,box-shadow .3s,transform .3s}
-html[data-variant] .cta-solid:hover,html[data-variant] .cta-solid:focus-visible{background-position:100% 50%;color:#141416;border-color:#b9acd0;box-shadow:0 0 15px #b9a3ee14;transform:translateY(-1px)}
-html[data-variant] .cta-solid:active{transform:translateY(0);box-shadow:none}
-html[data-variant] .header-contact{background:transparent;color:#e5e5e8;border:1px solid #48494c;box-shadow:none;transition:color .25s,border-color .3s,background .3s}
-html[data-variant] .header-contact:hover,html[data-variant] .header-contact:focus-visible{background:#b9a3ee06;color:#e2dced;border-color:#9e95af;box-shadow:none;transform:none}
-html[data-variant] .header-nav a:not(.header-contact):hover,html[data-variant] .header-nav a:not(.header-contact):focus-visible{color:#c3b8d6}
 html[data-variant] .ghost-link{color:#bbb5c6;text-decoration:underline;text-decoration-color:#68636f;text-underline-offset:6px;transition:color .25s,text-decoration-color .25s}
 html[data-variant] .ghost-link:hover,html[data-variant] .ghost-link:focus-visible{color:#c4bbd6;text-decoration-color:#a99bbd}
 html[data-variant] .service-card{--service-accent:#a5bac0;--service-line:linear-gradient(90deg,#70d1e3,#b9a3ee);background:transparent;transition:background .3s}
 html[data-variant] .service-card[data-service="fidelizacion"]{--service-accent:#b7abcd;--service-line:linear-gradient(90deg,#b9a3ee,#f0cead)}
 html[data-variant] .service-card[data-service="catalogos"]{--service-accent:#c7b6a6;--service-line:linear-gradient(90deg,#f0cead,#70d1e3)}
 html[data-variant] .service-card[data-service="gauss"]{--service-accent:#a5bac0;--service-line:linear-gradient(90deg,#70d1e3,#b9a3ee,#f0cead)}
-html[data-variant] .service-card:hover,html[data-variant] .service-card:focus-within{background:#ffffff02}
 html[data-variant] .service-index{color:var(--service-accent)}
 html[data-variant] .service-more{color:var(--service-accent);border-color:color-mix(in srgb,var(--service-accent) 40%,transparent);transition:color .25s,border-color .25s}
 html[data-variant] .service-more:hover,html[data-variant] .service-more:focus-visible,html[data-variant] .service-card:hover .service-more{color:var(--service-accent);border-color:var(--service-accent)}
-html[data-variant] .stage-tabs{border-color:#333438;box-shadow:none}
-html[data-variant] .stage-tabs button span{color:#92969d}
-html[data-variant] .stage-tabs button[aria-selected=true]{background:linear-gradient(115deg,#e1e4e6,#eeeaf1 45%,#d8d4dc);color:#17161a;box-shadow:none}
-html[data-variant] .stage-tabs button[aria-selected=true] span{color:#56505f}
-html[data-variant] .stage-tabs button:not([aria-selected=true]):hover,html[data-variant] .stage-tabs button:not([aria-selected=true]):focus-visible{color:#c3b6d6;background:#b9a3ee05}
 html[data-variant] .checks li::before{border-color:#9bafb5}
 html[data-variant] .checks li:nth-child(2)::before{border-color:#afa2c2}
 html[data-variant] .checks li:nth-child(3)::before{border-color:#bfb09e}
@@ -452,8 +445,7 @@ html[data-variant] .toast-icon.pts-icon{background:#e5e1eb;color:#19181d}
 html[data-variant] .device-caption a{color:#abbec5;text-decoration-color:#777382}
 html[data-variant] .reading-footer nav a:hover,html[data-variant] .reading-footer nav a:focus-visible{color:#c5b9d9}
 html[data-variant] :focus-visible{outline-color:#b7abcd}
-@media(forced-colors:active){html[data-variant] .home h1 em{-webkit-text-fill-color:currentColor;background:none}}
-@media print{html[data-variant] .home h1 em{color:#101010;-webkit-text-fill-color:currentColor;background:none}}
+
 
 /* The existing link covers its entire service card, including touch and keyboard focus. */
 html[data-variant] .service-card{cursor:pointer}
@@ -462,34 +454,35 @@ html[data-variant] .service-card .service-more::before{content:'';position:absol
 html[data-variant] .service-card:focus-within{outline:2px solid var(--service-accent);outline-offset:-3px}
 html[data-variant] .service-card .service-more:focus-visible{outline:none}
 
-/* Metallic edges on controls; services carry only a fine animated top line. */
-@property --edge-angle{syntax:'<angle>';initial-value:125deg;inherits:false}
-@keyframes edge-orbit{to{--edge-angle:485deg}}
-html[data-variant] .cta-solid,html[data-variant] .header-contact,html[data-variant] .stage-tabs,html[data-variant] .stage-tabs button{position:relative;isolation:isolate}
-html[data-variant] .cta-solid,html[data-variant] .header-contact{border-color:transparent}
-html[data-variant] .cta-solid::after,html[data-variant] .header-contact::after,html[data-variant] .stage-tabs::after,html[data-variant] .stage-tabs button::after{content:'';position:absolute;inset:-1px;height:auto;padding:1.5px;border-radius:inherit;background:conic-gradient(from var(--edge-angle),#89bdcb,#b4a1ce 22%,#dfc0a1 45%,#e4e3ed 51%,#a6a1c5 62%,#83b8c9 83%,#89bdcb);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0);pointer-events:none;transform:none;opacity:.72;transition:opacity .3s;box-shadow:none;z-index:1}
-html[data-variant] .cta-solid::after{padding:2px;opacity:1;animation:edge-orbit 8s linear infinite}
-html[data-variant] .cta-solid:hover::after,html[data-variant] .cta-solid:focus-visible::after,html[data-variant] .header-contact:hover::after,html[data-variant] .header-contact:focus-visible::after{opacity:1;animation:edge-orbit 3s linear infinite}
-html[data-variant] .header-contact::after{opacity:.85}
-html[data-variant] .stage-tabs{border-color:transparent;background:#191919}
-html[data-variant] .stage-tabs::after{inset:0;opacity:.64}
-html[data-variant] .stage-tabs button::after{inset:0;opacity:0;padding:1.5px}
-html[data-variant] .stage-tabs button[aria-selected=true]::after{opacity:1;animation:edge-orbit 8s linear infinite}
-html[data-variant] .stage-tabs button:hover::after,html[data-variant] .stage-tabs button:focus-visible::after{opacity:.9}
-@media(prefers-reduced-motion:reduce){html[data-variant] .cta-solid::after,html[data-variant] .header-contact::after,html[data-variant] .stage-tabs button::after{animation:none!important}}
-@media(forced-colors:active){html[data-variant] .cta-solid,html[data-variant] .header-contact,html[data-variant] .stage-tabs,html[data-variant] .stage-tabs button[aria-selected=true]{border:1px solid ButtonText}html[data-variant] .cta-solid::after,html[data-variant] .header-contact::after,html[data-variant] .stage-tabs::after,html[data-variant] .stage-tabs button::after{display:none}}
-
-@keyframes service-light{0%,12%{background-position:220% 0,0 0}68%,100%{background-position:-120% 0,0 0}}
+/* Color follows interaction: quiet surfaces, directional reveals. */
+:root{--accent-fill:linear-gradient(110deg,#70d1e3 0%,#b9a3ee 52%,#f0cead 100%);--accent-type:linear-gradient(108deg,#82c7d6 0%,#a5c4dd 24%,#b9a3ee 52%,#d7b9d1 75%,#e6c5a6 100%)}
+html[data-variant] .home h1 em,html[data-variant] .closing h2 em{color:#b9a3ee;background:var(--accent-type);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+html[data-variant] .closing h2 em{width:fit-content;max-width:100%;margin-inline:auto}
+html[data-variant] .cta-solid{position:relative;isolation:isolate;overflow:hidden;background:#101010;background-size:auto;color:#f2f2f4;border:1px solid #53535c;box-shadow:none;transition:border-color .35s;transform:none}
+html[data-variant] .cta-solid::before,html[data-variant] .cta-solid::after{content:none}
+html[data-variant] .cta-solid:hover,html[data-variant] .cta-solid:focus-visible{background:#101010;color:#f2f2f4;border-color:#b9a3ee;box-shadow:none;transform:none}
+html[data-variant] .cta-solid .cta-sweep{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:inherit;background:var(--accent-fill);color:#121214;clip-path:polygon(0 100%,0 100%,0 100%);transition:clip-path .55s cubic-bezier(.22,.7,.25,1);pointer-events:none;z-index:1}
+html[data-variant] .cta-solid:hover .cta-sweep,html[data-variant] .cta-solid:focus-visible .cta-sweep{clip-path:polygon(0 100%,0 -100%,200% 100%)}
+html[data-variant] .header-contact{background:transparent;color:#e5e5e8;border:1px solid #48494c;box-shadow:none;transition:color .25s,border-color .3s}
+html[data-variant] .header-contact:hover,html[data-variant] .header-contact:focus-visible{background:transparent;color:#d4c8e7;border-color:#a79bbd;transform:none;box-shadow:none}
 html[data-variant] .service-strip{gap:0 22px;border:0}
 html[data-variant] .service-card,html[data-variant] .service-card:first-child,html[data-variant] .service-card:nth-child(odd),html[data-variant] .service-card:nth-child(even){padding:26px 0;border:0;border-radius:0;background:transparent}
-html[data-variant] .service-card::after,html[data-variant] .service-card.is-current::after{content:'';position:absolute;inset:-1px 0 auto;height:1.5px;padding:0;border:0;border-radius:0;background:linear-gradient(105deg,transparent 38%,#e5dfecaa 50%,transparent 62%) 220% 0/220% 100% no-repeat,var(--service-line);opacity:.5;transform:none;box-shadow:none;pointer-events:none;animation:service-light 6.5s ease-in-out infinite;transition:opacity .3s}
-html[data-variant] .service-card:nth-child(2)::after{animation-delay:-1.6s}
-html[data-variant] .service-card:nth-child(3)::after{animation-delay:-3.2s}
-html[data-variant] .service-card:nth-child(4)::after{animation-delay:-4.8s}
-html[data-variant] .service-card:hover::after,html[data-variant] .service-card:focus-within::after,html[data-variant] .service-card.is-current::after{opacity:.8}
-@media(max-width:600px){html[data-variant] .service-strip{gap:0 20px}html[data-variant] .service-card,html[data-variant] .service-card:first-child,html[data-variant] .service-card:nth-child(odd),html[data-variant] .service-card:nth-child(even){padding:20px 0}}
-@media(prefers-reduced-motion:reduce){html[data-variant] .service-card::after{animation:none!important;background:var(--service-line)}}
-@media(forced-colors:active){html[data-variant] .service-card::after{background:CanvasText;animation:none}}
+html[data-variant] .service-card::after,html[data-variant] .service-card.is-current::after{content:'';position:absolute;inset:-1px 0 auto;height:1.5px;padding:0;border:0;border-radius:0;background:var(--accent-fill);opacity:1;transform:scaleX(0);transform-origin:left;box-shadow:none;pointer-events:none;animation:none;transition:transform .55s cubic-bezier(.22,.7,.25,1)}
+html[data-variant] .service-card:is(:hover,:focus-within)::after{transform:scaleX(1)}
+html[data-variant] .service-card:hover,html[data-variant] .service-card:focus-within{background:transparent}
+html[data-variant] .stage-tabs{display:flex;align-items:center;position:relative;isolation:isolate;gap:20px;padding:0;background:transparent;border:0;border-bottom:1px solid #333338;border-radius:0;box-shadow:none;overflow:visible}
+html[data-variant] .stage-tabs::after{content:none}
+html[data-variant] .stage-tabs button{position:relative;min-height:48px;padding:0 8px;gap:0;border:0;border-radius:0;background:transparent;color:#96969e;font-size:12px;font-weight:450;box-shadow:none;transition:color .25s;isolation:isolate}
+html[data-variant] .stage-tabs button::after{content:'';position:absolute;left:8px;right:8px;bottom:-1px;top:auto;height:2px;padding:0;border-radius:0;background:var(--accent-fill);opacity:0;transform:scaleX(0);transform-origin:left;mask:none;-webkit-mask:none;box-shadow:none;animation:none;pointer-events:none;transition:opacity .25s,transform .4s cubic-bezier(.22,.7,.25,1)}
+html[data-variant] .stage-tabs button[aria-selected=true]{background:transparent;color:#f2f2f4;box-shadow:none}
+html[data-variant] .stage-tabs button[aria-selected=true]::after{opacity:1;transform:scaleX(1)}
+html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus-visible){background:transparent;color:#ded8e9}
+html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus-visible)::after{opacity:.5;transform:scaleX(1)}
+@media(max-width:600px){html[data-variant] .service-strip{gap:0 20px}html[data-variant] .service-card,html[data-variant] .service-card:first-child,html[data-variant] .service-card:nth-child(odd),html[data-variant] .service-card:nth-child(even){padding:20px 0}html[data-variant] .stage-tabs{width:100%;gap:8px;margin-top:8px}html[data-variant] .stage-tabs button{flex:1;padding:0 4px;min-height:47px;font-size:11px}html[data-variant] .stage-tabs button::after{left:4px;right:4px}}
+@media(max-width:370px){html[data-variant] .stage-tabs button{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html[data-variant] .service-card::after,html[data-variant] .stage-tabs button::after,html[data-variant] .cta-solid .cta-sweep{transition:none}}
+@media(forced-colors:active){html[data-variant] .home h1 em,html[data-variant] .closing h2 em{-webkit-text-fill-color:currentColor;background:none}html[data-variant] .cta-solid{color:ButtonText;background:ButtonFace;border-color:ButtonText}html[data-variant] .cta-sweep{display:none!important}html[data-variant] .service-card::after,html[data-variant] .stage-tabs button::after{background:Highlight}}
+@media print{html[data-variant] .home h1 em,html[data-variant] .closing h2 em{color:#101010;-webkit-text-fill-color:currentColor;background:none}html[data-variant] .cta-sweep{display:none!important}}
 
 </style>
 </head>
@@ -504,10 +497,10 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <section class="hero" aria-labelledby="hero-title">
 <div class="hero-copy">
 <p class="kicker">Tecnología a medida para pymes</p>
-<h1 id="hero-title"><span class="line"><span>Vendé más.</span></span><span class="line"><em>Trabajá menos.</em></span></h1>
+<h1 id="hero-title"><span class="line"><span>Vendé más.</span></span><span class="line"><em>Ganá tiempo.</em></span></h1>
 <p class="hero-brief">Más ventas sin invertir en publicidad: automatizamos tu WhatsApp, armamos el club de tus clientes y conectamos tu catálogo con la gestión.</p>
 <div class="hero-actions">
-<a class="cta cta-solid" href="/contacto/"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span></a>
+<a class="cta cta-solid" href="/contacto/"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span><span class="cta-sweep" aria-hidden="true"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span></span></a>
 <a class="ghost-link" href="#demos" data-open="fidelizacion">Ver demos en vivo <span aria-hidden="true">▸</span></a>
 </div>
 </div>
@@ -560,9 +553,9 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <p class="kicker">Demos en vivo</p>
 <h2 id="demos-title">Mirá cómo <em>funciona.</em></h2>
 <div class="stage-tabs" role="tablist" aria-label="Elegí un servicio">
-<button role="tab" id="tab-whatsapp" aria-controls="demo-whatsapp" aria-selected="false" tabindex="-1" data-tab="whatsapp"><span>01</span>Automatizaciones</button>
-<button role="tab" id="tab-fidelizacion" aria-controls="demo-fidelizacion" aria-selected="true" data-tab="fidelizacion"><span>02</span>Fidelización</button>
-<button role="tab" id="tab-catalogos" aria-controls="demo-catalogos" aria-selected="false" tabindex="-1" data-tab="catalogos"><span>03</span>Catálogos</button>
+<button role="tab" id="tab-whatsapp" aria-controls="demo-whatsapp" aria-selected="false" tabindex="-1" data-tab="whatsapp">Automatizaciones</button>
+<button role="tab" id="tab-fidelizacion" aria-controls="demo-fidelizacion" aria-selected="true" data-tab="fidelizacion">Fidelización</button>
+<button role="tab" id="tab-catalogos" aria-controls="demo-catalogos" aria-selected="false" tabindex="-1" data-tab="catalogos">Catálogos</button>
 </div>
 </div>
 
@@ -577,7 +570,7 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <li>Pedidos, turnos y consultas ordenados solos.</li>
 <li>Conectado a tu caja, planilla o CRM.</li>
 </ul>
-<div class="demo-actions"><a class="cta cta-solid" href="/automatizaciones/#consulta"><span class="cta-label">Quiero automatizar</span></a><a class="ghost-link" href="/automatizaciones/">Ver el servicio completo</a></div>
+<div class="demo-actions"><a class="cta cta-solid" href="/automatizaciones/#consulta"><span class="cta-label">Quiero automatizar</span><span class="cta-sweep" aria-hidden="true"><span class="cta-label">Quiero automatizar</span></span></a><a class="ghost-link" href="/automatizaciones/">Ver el servicio completo</a></div>
 </div>
 <div class="demo-visual wa-visual">
 <div class="phone wa-phone">
@@ -633,7 +626,7 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <li>Tarjeta en Apple Wallet y Google Wallet.</li>
 <li>Campañas de recompra y reactivación, hechas con vos.</li>
 </ul>
-<div class="demo-actions"><a class="cta cta-solid" href="/fidelizacion/#consulta"><span class="cta-label">Quiero mi club</span></a><a class="ghost-link" href="https://cafe.iman.ar/" target="_blank" rel="noopener">Abrir cafe.iman.ar <span aria-hidden="true">↗</span></a></div>
+<div class="demo-actions"><a class="cta cta-solid" href="/fidelizacion/#consulta"><span class="cta-label">Quiero mi club</span><span class="cta-sweep" aria-hidden="true"><span class="cta-label">Quiero mi club</span></span></a><a class="ghost-link" href="https://cafe.iman.ar/" target="_blank" rel="noopener">Abrir cafe.iman.ar <span aria-hidden="true">↗</span></a></div>
 </div>
 <div class="demo-visual club-visual">
 <div class="phone club-phone">
@@ -666,7 +659,7 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <li>Pedido completo por WhatsApp, sin reconstruir mensajes.</li>
 <li>Productos, listas y stock conectados con tu ERP.</li>
 </ul>
-<div class="demo-actions"><a class="cta cta-solid" href="/comercios/#consulta"><span class="cta-label">Quiero mi catálogo</span></a><a class="ghost-link" href="https://template-eccomerce.vercel.app/demo/grano-norte" target="_blank" rel="noopener">Abrir la demo <span aria-hidden="true">↗</span></a></div>
+<div class="demo-actions"><a class="cta cta-solid" href="/comercios/#consulta"><span class="cta-label">Quiero mi catálogo</span><span class="cta-sweep" aria-hidden="true"><span class="cta-label">Quiero mi catálogo</span></span></a><a class="ghost-link" href="https://template-eccomerce.vercel.app/demo/grano-norte" target="_blank" rel="noopener">Abrir la demo <span aria-hidden="true">↗</span></a></div>
 </div>
 <div class="demo-visual shop-visual">
 <div class="browser shop-browser">
@@ -687,7 +680,7 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
 <p class="kicker">Hablemos de tu negocio</p>
 <h2 id="closing-title">Un próximo paso. <em>A tu medida.</em></h2>
 <p>Contanos cómo trabajás hoy. Podés combinar los servicios.</p>
-<div class="hero-actions centered"><a class="cta cta-solid" href="/contacto/"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span></a><a class="ghost-link" href="https://wa.me/5493535189997" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+<div class="hero-actions centered"><a class="cta cta-solid" href="/contacto/"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span><span class="cta-sweep" aria-hidden="true"><span class="cta-label">Contanos tu idea <span aria-hidden="true">→</span></span></span></a><a class="ghost-link" href="https://wa.me/5493535189997" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
 </section>
 </main>
 <footer class="reading-footer"><a class="footer-identity" href="/V1/" aria-label="IMÁN, inicio"><img src="/assets/identity-variants/logo-v1.png" width="270" height="110" alt="IMÁN"></a><nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a href="/recursos/">Guías</a><a href="/agente/">Para agentes</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav><span>Hecho en Argentina.</span></footer>
@@ -700,7 +693,30 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   if (!reduceMotion.matches) root.classList.add('motion-enabled');
-  // The color field contracts into the original accent; the real logo stays accessible.
+  // A hidden preload stays readable and waits for visibility before consuming its intro.
+  function scheduleBrandEntrance() {
+    if (window.imanIntroState === 'done' || reduceMotion.matches || !Element.prototype.animate) {
+      root.classList.remove('intro-pending', 'intro-revealing');
+      root.classList.add('is-ready');
+      return;
+    }
+    if (!document.hidden) { enterBrand(); return; }
+    window.imanIntroState = 'waiting';
+    clearTimeout(window.imanIntroFallback);
+    root.classList.remove('intro-pending', 'intro-revealing');
+    root.classList.add('is-ready');
+    const waiting = new AbortController();
+    const skip = () => { waiting.abort(); window.imanIntroState = 'done'; };
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) return;
+      waiting.abort();
+      if (reduceMotion.matches) { window.imanIntroState = 'done'; return; }
+      enterBrand();
+    }, {signal:waiting.signal});
+    reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) skip(); }, {signal:waiting.signal});
+    window.addEventListener('pagehide', skip, {signal:waiting.signal, once:true});
+  }
+
   async function enterBrand() {
     const target = document.querySelector('.site-header .identity img');
     const active = [];
@@ -709,6 +725,7 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
     const finish = () => {
       if (finished) return;
       finished = true;
+      window.imanIntroState = 'done';
       clearTimeout(window.imanIntroFallback);
       listeners.abort();
       root.classList.remove('intro-pending', 'intro-revealing');
@@ -716,19 +733,19 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
       active.forEach(animation => animation.cancel());
       overlay?.remove();
     };
-    if (!root.classList.contains('intro-pending') || !target || reduceMotion.matches) {
-      finish();
-      return;
-    }
+    if (!target || reduceMotion.matches || window.imanIntroState === 'done') { finish(); return; }
+    if (document.hidden) { scheduleBrandEntrance(); return; }
+    window.imanIntroState = 'pending';
+    root.classList.remove('is-ready', 'intro-revealing');
+    root.classList.add('intro-pending');
     const listen = (element, event, callback = finish) => element.addEventListener(event, callback, {signal:listeners.signal, passive:true});
-    // Native hash navigation and scroll restoration must not cancel the entrance.
-    // User intent still exits immediately through wheel, touch, pointer or keyboard.
+    // Native anchor navigation and restored scrolling do not cancel the entrance.
     ['resize', 'orientationchange', 'pagehide', 'pointerdown', 'wheel', 'touchstart'].forEach(event => listen(window, event));
     listen(document, 'keydown');
     listen(document, 'visibilitychange', () => { if (document.hidden) finish(); });
     listen(reduceMotion, 'change', () => { if (reduceMotion.matches) finish(); });
     clearTimeout(window.imanIntroFallback);
-    window.imanIntroFallback = setTimeout(finish, 4000);
+    window.imanIntroFallback = setTimeout(finish, 3900);
     const animate = (element, frames, options) => {
       const animation = element.animate(frames, {...options, fill:'both'});
       active.push(animation);
@@ -736,28 +753,36 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
       return animation;
     };
     try {
-      await Promise.race([target.decode(), sleep(550)]);
-      if (finished) return;
-      if (!target.complete || !target.naturalWidth) { finish(); return; }
+      // Start the field immediately. A slow logo download must not consume the intro.
+      if (target.complete && !target.naturalWidth) { finish(); return; }
+      target.decode().catch(finish);
       const bounds = target.getBoundingClientRect();
-      if (!bounds.width || bounds.top < 0) { finish(); return; }
-      const width = Math.min(510, innerWidth * .68);
-      // Use the artwork's own proportions so the morph meets its exact accent.
-      const v1 = root.dataset.variant === 'V1';
-      const artwork = v1
-        ? {width:1751, height:710, left:999, top:8, right:1208, bottom:164, upperLeft:1114, lowerRight:1093}
-        : {width:506, height:206, left:302.269531, top:.382812, right:346.316406, bottom:38.367188, upperLeft:320.363281, lowerRight:321.253906};
+      if (!bounds.width) { finish(); return; }
+      const artwork = {width:1751, height:710, left:999, top:8, right:1208, bottom:164};
+      const viewportWidth = innerWidth, viewportHeight = innerHeight;
+      const width = Math.min(510, viewportWidth * .68);
       const height = width * artwork.height / artwork.width;
-      const x = (innerWidth - width) / 2;
-      const y = innerHeight * .46 - height / 2;
+      const x = (viewportWidth - width) / 2;
+      const y = viewportHeight * .46 - height / 2;
+      const centerX = viewportWidth * .5, centerY = viewportHeight * .43;
+      const accentWidth = Math.min(100, viewportWidth * .23);
+      const accentHeight = accentWidth * (artwork.bottom-artwork.top) / (artwork.right-artwork.left);
+      const accentX = centerX-accentWidth/2, accentY = centerY-accentHeight/2;
       overlay = document.createElement('div');
       overlay.className = 'brand-intro';
       overlay.setAttribute('aria-hidden', 'true');
       const backdrop = document.createElement('div');
       backdrop.className = 'intro-backdrop';
+      const field = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      field.classList.add('intro-magnetic-field');
+      field.setAttribute('viewBox', `0 0 ${viewportWidth} ${viewportHeight}`);
+      field.setAttribute('focusable', 'false');
+      const glow = document.createElement('div');
+      glow.className = 'intro-magnetic-glow';
+      Object.assign(glow.style, {left:centerX+'px',top:centerY+'px'});
       const flight = document.createElement('div');
       flight.className = 'intro-flight';
-      Object.assign(flight.style, {width:width+'px', height:height+'px', transform:`translate3d(${x}px,${y}px,0)`});
+      Object.assign(flight.style, {width:width+'px',height:height+'px',transform:`translate3d(${x}px,${y}px,0)`});
       const image = className => {
         const img = target.cloneNode();
         img.className = className;
@@ -766,59 +791,79 @@ html[data-variant] .service-card:hover::after,html[data-variant] .service-card:f
         return img;
       };
       const word = image('intro-word');
-      const accent = image('intro-accent');
       const logo = image('intro-logo');
-      const field = document.createElement('div');
-      field.className = 'intro-color-field';
-      const spark = document.createElement('span');
-      spark.className = 'intro-spark';
-      spark.style.left = ((artwork.upperLeft + artwork.right) / 2 / artwork.width * 100) + '%';
-      spark.style.top = (artwork.top / artwork.height * 100) + '%';
-      flight.append(word, accent, logo, spark);
-      overlay.append(backdrop, flight, field);
+      const focus = document.createElement('div');
+      focus.className = 'intro-accent-focus';
+      Object.assign(focus.style, {width:accentWidth+'px',height:accentHeight+'px',transform:`translate3d(${accentX}px,${accentY}px,0)`});
+      const accentImage = image('');
+      const cropScale = accentWidth/(artwork.right-artwork.left);
+      Object.assign(accentImage.style, {width:artwork.width*cropScale+'px',height:artwork.height*cropScale+'px',left:-artwork.left*cropScale+'px',top:-artwork.top*cropScale+'px'});
+      focus.append(accentImage);
+      flight.append(word, logo);
+      overlay.append(backdrop, glow, field, flight, focus);
       document.body.append(overlay);
-      const unit = width / artwork.width;
-      const accentX = x + artwork.left * unit;
-      const accentY = y + artwork.top * unit;
-      const accentWidth = (artwork.right - artwork.left) * unit;
-      const accentHeight = (artwork.bottom - artwork.top) * unit;
-      const shape = `polygon(${(artwork.upperLeft-artwork.left)/(artwork.right-artwork.left)*100}% 0,100% 0,${(artwork.lowerRight-artwork.left)/(artwork.right-artwork.left)*100}% 100%,0 100%)`;
-      const transform = (left, top, w, h) => `translate3d(${left}px,${top}px,0) scale(${w/innerWidth},${h/innerHeight})`;
-      // Scale the gradient itself, not just its mask: all three colors travel into the accent.
-      animate(field, [
-        {transform:transform(0,0,innerWidth,innerHeight),clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)'},
-        {transform:transform(accentX-accentWidth*1.8,accentY-accentHeight*1.4,accentWidth*4.6,accentHeight*3.8),clipPath:shape,offset:.7},
-        {transform:transform(accentX,accentY,accentWidth,accentHeight),clipPath:shape}
-      ], {duration:1500,delay:220,easing:'cubic-bezier(.65,0,.22,1)'});
-      animate(word, [{opacity:0,filter:'blur(3px)',transform:'translateY(8px)'},{opacity:1,filter:'blur(0)',transform:'translateY(0)'}], {duration:720,delay:690,easing:'cubic-bezier(.2,.7,.2,1)'});
-      // Hand off to the exact PDF artwork at the same position, with a small light glint.
-      animate(accent, [{opacity:0},{opacity:1}], {duration:140,delay:1680,easing:'ease-out'});
-      animate(field, [{opacity:1},{opacity:0}], {duration:140,delay:1720,easing:'ease-out'});
-      animate(spark, [{opacity:0,transform:'translate(-50%,-50%) scale(.6)'},{opacity:.85,transform:'translate(-50%,-50%) scale(1)',offset:.35},{opacity:0,transform:'translate(-50%,-50%) scale(.6)'}], {duration:350,delay:1770,easing:'ease-out'});
-      await sleep(2100);
+
+      // Fourteen thin cubic curves flow in from both sides; short highlights travel
+      // along them toward the exact accent, with no external animation dependency.
+      const colors = ['#70d1e3','#b9a3ee','#f0cead'];
+      for (let side=0; side<2; side++) {
+        const direction = side ? 1 : -1;
+        for (let i=0; i<7; i++) {
+          const spread = (i-3)/3;
+          const startX = side ? viewportWidth*1.06 : -viewportWidth*.06;
+          const startY = centerY + spread*viewportHeight*.58;
+          const controlX = centerX + direction*viewportWidth*.3;
+          const turnX = centerX + direction*viewportWidth*.13;
+          const endX = centerX + direction*accentWidth*.09;
+          const endY = centerY + spread*accentHeight*.13;
+          const d = `M ${startX} ${startY} C ${controlX} ${startY}, ${turnX} ${centerY+spread*viewportHeight*.12}, ${endX} ${endY}`;
+          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+          path.setAttribute('d',d);
+          path.setAttribute('stroke',colors[(i+side)%3]);
+          path.setAttribute('stroke-width','.8');
+          field.append(path);
+          const length = path.getTotalLength();
+          path.style.strokeDasharray = length+' '+length;
+          const delay = i*22 + side*12;
+          animate(path,[{strokeDashoffset:length,opacity:0},{opacity:.42,offset:.16},{strokeDashoffset:0,opacity:.52,offset:.78},{strokeDashoffset:0,opacity:0}],{duration:1250,delay,easing:'cubic-bezier(.3,0,.3,1)'});
+          const light = path.cloneNode();
+          light.setAttribute('stroke-width','1.3');
+          light.style.strokeDasharray = `12 ${length}`;
+          field.append(light);
+          animate(light,[{strokeDashoffset:length,opacity:0},{opacity:.85,offset:.14},{opacity:.85,offset:.84},{strokeDashoffset:0,opacity:0}],{duration:1120,delay:delay+110,easing:'cubic-bezier(.35,0,.3,1)'});
+        }
+      }
+      animate(glow,[{opacity:0},{opacity:1,offset:.65},{opacity:0}],{duration:1500,easing:'ease-in-out'});
+      animate(focus,[{opacity:0,filter:'blur(4px)'},{opacity:1,filter:'blur(0px)'}],{duration:550,delay:720,easing:'ease-out'});
+      animate(word,[{opacity:0,filter:'blur(2px)'},{opacity:1,filter:'blur(0px)'}],{duration:500,delay:1600,easing:'ease-out'});
+      await sleep(1450);
       if (finished) return;
-      word.remove();
-      accent.remove();
-      field.remove();
-      spark.remove();
+      const logoScale = width/artwork.width;
+      const placedWidth = (artwork.right-artwork.left)*logoScale;
+      const placeAccent = animate(focus,[
+        {transform:`translate3d(${accentX}px,${accentY}px,0) scale(1)`},
+        {transform:`translate3d(${x+artwork.left*logoScale}px,${y+artwork.top*logoScale}px,0) scale(${placedWidth/accentWidth})`}
+      ],{duration:620,easing:'cubic-bezier(.65,0,.24,1)'});
+      await placeAccent.finished;
+      if (finished) return;
+      await sleep(110);
+      if (finished) return;
+      focus.remove(); field.remove(); glow.remove(); word.remove();
       logo.style.visibility = 'visible';
       const destination = target.getBoundingClientRect();
-      // The final clone adopts the header image's box before docking.
-      animate(backdrop, [{opacity:1},{opacity:1,offset:.44},{opacity:0}], {duration:800,easing:'ease-in-out'});
-      const landing = animate(flight, [
+      animate(backdrop,[{opacity:1},{opacity:1,offset:.4},{opacity:0}],{duration:760,easing:'ease-in-out'});
+      const landing = animate(flight,[
         {transform:`translate3d(${x}px,${y}px,0) scale(1,1)`},
         {transform:`translate3d(${destination.left}px,${destination.top}px,0) scale(${destination.width/width},${destination.height/height})`}
-      ], {duration:800,easing:'cubic-bezier(.76,0,.24,1)'});
-      await sleep(410);
+      ],{duration:760,easing:'cubic-bezier(.76,0,.24,1)'});
+      await sleep(360);
       if (finished) return;
-      root.classList.add('intro-revealing', 'is-ready');
+      root.classList.add('intro-revealing','is-ready');
       await landing.finished;
       finish();
-    } catch {
-      finish();
-    }
+    } catch { finish(); }
   }
-  enterBrand();
+  scheduleBrandEntrance();
 
   // ── Services → demo stage. Without JS every "Más info" is a link to its service page.
   const stage = document.getElementById('demos');

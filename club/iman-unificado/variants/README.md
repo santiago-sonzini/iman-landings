@@ -24,27 +24,30 @@ Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado
 
 ## Entrada del logo
 
-Al abrir V1, un degradado a pantalla completa se contrae hasta formar
-la tilde y revela la palabra. Un destello pequeño cierra la transformación y el
-logo se acomoda en la barra superior. La secuencia dura aproximadamente 2,9
-segundos y usa Web Animations nativa, sin dependencias. La barra acompaña el scroll.
+Al abrir V1, líneas finas de cian, lavanda y durazno convergen como un campo
+magnético y forman la tilde original. La tilde se coloca sobre la palabra blanca,
+y el logo completo se acomoda en la barra. La secuencia dura aproximadamente
+3 segundos y usa SVG y Web Animations nativa, sin dependencias.
 
-La entrada también se muestra al abrir o recargar una URL con ancla, como
-`/V1/#demos`, y conserva esa sección al terminar. El scroll automático del
-navegador no la cancela. La preferencia de movimiento reducido o volver desde
-otra página la omiten. Teclado, rueda, interacción táctil, un cambio de tamaño
-o de pestaña la terminan de inmediato. Sin JavaScript, con error de imagen o con un script
-interrumpido, el contenido queda disponible; hay un límite de tiempo de respaldo.
+La entrada funciona al abrir y recargar URLs con ancla, como `/V1/#demos`, y
+conserva esa sección al terminar. Una precarga en pestaña oculta espera a que
+se muestre antes de empezar. Movimiento reducido omite la entrada. Teclado,
+rueda, interacción táctil o un cambio de tamaño la terminan de inmediato.
+Sin JavaScript o ante errores de imagen/script, el contenido queda disponible;
+un respaldo de tiempo evita dejar la página oculta.
 
 ## Detalles de color e interacción
 
-Los acentos suaves, de azul acero, lavanda y champán, aparecen en el titular,
-números, enlaces e indicadores. Los botones usan un reflejo plateado neutro. Los
-contornos de botones y pestañas llevan entre 1,5 y 2 px de color metálico, con un
-reflejo lento. Las tarjetas llevan únicamente una línea superior de 1,5 px con
-un brillo suave que la recorre; no tienen contorno. Movimiento reducido deja
-estos detalles estáticos. El resto de los títulos mantiene el gris. Se conservan
-el logo blanco elegido y las marcas originales de las demos.
+El titular usa “Vendé más. Ganá tiempo.”; “Ganá tiempo” y “A tu medida” llevan el
+mismo degradado cian, lavanda y durazno. Las tarjetas no muestran línea en reposo:
+al hacer hover o enfocar su enlace, la línea superior se dibuja de izquierda a
+derecha. No hay animaciones continuas en los controles.
+
+Los CTA parten de fondo negro y texto blanco. En hover/foco, el degradado avanza
+en diagonal desde abajo a la izquierda hacia arriba a la derecha; el texto
+oscuro se revela dentro del mismo plano para mantener el contraste. Las pestañas
+son texto sobre fondo transparente, con una línea de color bajo la seleccionada.
+Se mantienen los enlaces, navegación por teclado y marcas de las demos.
 
 Las tarjetas de servicios se pueden activar desde todo el bloque: las primeras
 tres seleccionan su demo y Gauss conserva el enlace a su página. El enlace real
