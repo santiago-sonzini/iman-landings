@@ -24,8 +24,9 @@ Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado
 
 ## Entrada del logo
 
-Al abrir V1, líneas finas de cian, lavanda y durazno convergen como un campo
-magnético y forman la tilde original. La tilde se coloca sobre la palabra blanca,
+Al abrir V1, la silueta inclinada de la tilde aparece delineada. Líneas finas de
+cian, lavanda y durazno entran por su borde inferior siguiendo esa inclinación
+y llenan la tilde de abajo hacia arriba. La tilde se coloca sobre la palabra blanca,
 y el logo completo se acomoda en la barra. La secuencia dura aproximadamente
 3 segundos y usa SVG y Web Animations nativa, sin dependencias.
 

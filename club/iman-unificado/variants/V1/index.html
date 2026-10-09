@@ -418,7 +418,10 @@ html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
 .intro-word,.intro-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:none}
 .intro-word{clip-path:polygon(0 0,45% 0,45% 25%,100% 25%,100% 100%,0 100%);opacity:0}
 .intro-logo{visibility:hidden}
-.intro-accent-focus{position:absolute;top:0;left:0;overflow:hidden;transform-origin:0 0;opacity:0;will-change:transform,opacity}
+.intro-accent-focus{position:absolute;top:0;left:0;overflow:visible;transform-origin:0 0;will-change:transform}
+.intro-accent-outline{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:.32}
+.intro-accent-outline polygon{fill:none;stroke:#c9bfd8;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.intro-accent-ink{position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0 0 0);will-change:clip-path}
 .intro-accent-focus img{position:absolute;display:block;max-width:none}
 @keyframes intro-content-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){html:has(body.home){scroll-padding-top:90px}.stage{scroll-margin-top:0}}
@@ -451,7 +454,7 @@ html[data-variant] :focus-visible{outline-color:#b7abcd}
 html[data-variant] .service-card{cursor:pointer}
 html[data-variant] .service-card .service-more{position:static}
 html[data-variant] .service-card .service-more::before{content:'';position:absolute;inset:0;z-index:2;border-radius:inherit}
-html[data-variant] .service-card:focus-within{outline:2px solid var(--service-accent);outline-offset:-3px}
+html[data-variant] .service-card:has(.service-more:focus-visible){outline:2px solid var(--service-accent);outline-offset:-3px}
 html[data-variant] .service-card .service-more:focus-visible{outline:none}
 
 /* Color follows interaction: quiet surfaces, directional reveals. */
@@ -795,10 +798,22 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
       const focus = document.createElement('div');
       focus.className = 'intro-accent-focus';
       Object.assign(focus.style, {width:accentWidth+'px',height:accentHeight+'px',transform:`translate3d(${accentX}px,${accentY}px,0)`});
+      // The accent already has its final slant before any color arrives. Its thin
+      // outline makes the destination explicit; the original PNG fills it upward.
+      const outline = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      outline.classList.add('intro-accent-outline');
+      outline.setAttribute('viewBox','0 0 209 156');
+      outline.setAttribute('focusable','false');
+      const contour = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      contour.setAttribute('points','115,0 209,0 94,156 0,156');
+      outline.append(contour);
+      const ink = document.createElement('div');
+      ink.className = 'intro-accent-ink';
       const accentImage = image('');
       const cropScale = accentWidth/(artwork.right-artwork.left);
       Object.assign(accentImage.style, {width:artwork.width*cropScale+'px',height:artwork.height*cropScale+'px',left:-artwork.left*cropScale+'px',top:-artwork.top*cropScale+'px'});
-      focus.append(accentImage);
+      ink.append(accentImage);
+      focus.append(outline,ink);
       flight.append(word, logo);
       overlay.append(backdrop, glow, field, flight, focus);
       document.body.append(overlay);
@@ -813,10 +828,13 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
           const startX = side ? viewportWidth*1.06 : -viewportWidth*.06;
           const startY = centerY + spread*viewportHeight*.58;
           const controlX = centerX + direction*viewportWidth*.3;
-          const turnX = centerX + direction*viewportWidth*.13;
-          const endX = centerX + direction*accentWidth*.09;
-          const endY = centerY + spread*accentHeight*.13;
-          const d = `M ${startX} ${startY} C ${controlX} ${startY}, ${turnX} ${centerY+spread*viewportHeight*.12}, ${endX} ${endY}`;
+          // Distribute arrivals across the lower edge. Every final tangent rises
+          // up and right along the accent's slant instead of meeting at its center.
+          const endX = accentX + ((i*2+side)/13)*accentWidth*.45;
+          const endY = accentY + accentHeight;
+          const turnX = endX-accentWidth*.55;
+          const turnY = endY+accentHeight;
+          const d = `M ${startX} ${startY} C ${controlX} ${startY}, ${turnX} ${turnY}, ${endX} ${endY}`;
           const path = document.createElementNS('http://www.w3.org/2000/svg','path');
           path.setAttribute('d',d);
           path.setAttribute('stroke',colors[(i+side)%3]);
@@ -825,16 +843,20 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
           const length = path.getTotalLength();
           path.style.strokeDasharray = length+' '+length;
           const delay = i*22 + side*12;
-          animate(path,[{strokeDashoffset:length,opacity:0},{opacity:.42,offset:.16},{strokeDashoffset:0,opacity:.52,offset:.78},{strokeDashoffset:0,opacity:0}],{duration:1250,delay,easing:'cubic-bezier(.3,0,.3,1)'});
+          const arrival = 450+(i/6)*750+side*50;
+          const travel = arrival-delay;
+          animate(path,[{strokeDashoffset:length,opacity:0},{opacity:.4,offset:.12},{strokeDashoffset:0,opacity:.5,offset:travel/(travel+160)},{strokeDashoffset:0,opacity:0}],{duration:travel+160,delay,easing:'cubic-bezier(.3,0,.3,1)'});
           const light = path.cloneNode();
           light.setAttribute('stroke-width','1.3');
           light.style.strokeDasharray = `12 ${length}`;
           field.append(light);
-          animate(light,[{strokeDashoffset:length,opacity:0},{opacity:.85,offset:.14},{opacity:.85,offset:.84},{strokeDashoffset:0,opacity:0}],{duration:1120,delay:delay+110,easing:'cubic-bezier(.35,0,.3,1)'});
+          animate(light,[{strokeDashoffset:length,opacity:0},{opacity:.85,offset:.12},{opacity:.85,offset:.94},{strokeDashoffset:0,opacity:0}],{duration:travel,delay,easing:'cubic-bezier(.35,0,.3,1)'});
         }
       }
       animate(glow,[{opacity:0},{opacity:1,offset:.65},{opacity:0}],{duration:1500,easing:'ease-in-out'});
-      animate(focus,[{opacity:0,filter:'blur(4px)'},{opacity:1,filter:'blur(0px)'}],{duration:550,delay:720,easing:'ease-out'});
+      animate(ink,[{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:900,delay:450,easing:'linear'});
+      // Remove the guide during the last part of the fill, before the exact-artwork handoff.
+      animate(outline,[{opacity:.32},{opacity:0}],{duration:150,delay:1200,easing:'ease-out'});
       animate(word,[{opacity:0,filter:'blur(2px)'},{opacity:1,filter:'blur(0px)'}],{duration:500,delay:1600,easing:'ease-out'});
       await sleep(1450);
       if (finished) return;
