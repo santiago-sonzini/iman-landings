@@ -19,3 +19,14 @@ de generar el ZIP. Las variantes llevan `noindex,follow`, canonical a la portada
 original y su propia imagen para compartir. No se agregan al sitemap.
 
 Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado`.
+
+## Entrada del logo
+
+Al abrir cada versión, el logo original se arma en el centro, recibe un destello
+suave y se acomoda en la barra superior en aproximadamente dos segundos. La barra
+acompaña el scroll. La secuencia usa Web Animations nativa, sin dependencias.
+
+La preferencia de movimiento reducido, un enlace con ancla o volver desde otra
+página omiten la entrada. Teclado, scroll, un cambio de tamaño o de pestaña la
+terminan de inmediato. Sin JavaScript, con error de imagen o con un script
+interrumpido, el contenido queda disponible; hay un límite de tiempo de respaldo.

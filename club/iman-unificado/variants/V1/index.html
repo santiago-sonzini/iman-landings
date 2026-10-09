@@ -23,6 +23,22 @@
 <link rel="icon" type="image/svg+xml" href="/assets/identity-variants/favicon-v1.svg">
 <link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/experience/shots/cafe-desktop.webp" as="image" fetchpriority="high">
+<link rel="preload" href="/assets/identity-variants/logo-v1.png" as="image" fetchpriority="high">
+<script>
+(() => {
+  const root = document.documentElement;
+  const navigation = performance.getEntriesByType('navigation')[0];
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || location.hash ||
+      navigation?.type === 'back_forward' || document.hidden || !Element.prototype.animate) return;
+  root.classList.add('intro-pending');
+  // Even an interrupted download or a script error must never hide the page.
+  window.imanIntroFallback = setTimeout(() => {
+    root.classList.remove('intro-pending', 'intro-revealing');
+    root.classList.add('is-ready');
+    document.querySelector('.brand-intro')?.remove();
+  }, 4200);
+})();
+</script>
 <style>
 @font-face{font-family:Inter;src:url('/assets/identity-variants/fonts/inter-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('/assets/identity-variants/fonts/geist-mono-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
@@ -377,6 +393,29 @@ html[data-variant="V2"]{--paper:#101010}html[data-variant="V2"] .home h1 em{colo
 @media print{body.home{background:#fff;color:#101010}.site-header,.hero-devices,.demo-visual,.stage-tabs{display:none!important}.hero,.demo{display:block}.demo[hidden]{display:block}.demo{break-inside:avoid;margin:30px 0}.service-strip{display:grid}.stage,.closing{padding:30px var(--gutter)}.home h1 em{-webkit-text-fill-color:currentColor!important;background:none!important}}
 
 html:not(.js) .stage-tabs{display:none}html:not(.js) .demo{margin-bottom:90px}html:not(.js) .wa-thread{overflow-y:auto}
+/* A short wordmark entrance, then the same mark settles into the navigation. */
+.home .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0c}
+html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
+.intro-pending .site-header .identity{visibility:hidden}
+.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:hidden;opacity:0}
+.intro-pending:not(.intro-revealing) .float-card{animation-play-state:paused}
+.intro-pending .site-header{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.intro-revealing .site-header{background:color-mix(in srgb,var(--paper) 92%,transparent);border-color:#ffffff0c;transition:background .5s,border-color .5s}
+.intro-revealing .header-nav,.intro-revealing main,.intro-revealing .reading-footer{animation:intro-content-in .4s both}
+.intro-revealing.is-ready .hero .line>span,.intro-revealing.is-ready .hero .line>em{transition-duration:.85s}
+.brand-intro{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout style}
+.intro-backdrop{position:absolute;inset:0;background:var(--paper)}
+.intro-halo{position:absolute;inset:-30%;background:radial-gradient(ellipse 35% 38% at 50% 49%,#ffffff0c,transparent 78%);opacity:0}
+.intro-flight{position:absolute;top:0;left:0;transform-origin:0 0;will-change:transform}
+.intro-piece,.intro-logo,.intro-sheen{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:none}
+.intro-piece{opacity:0;will-change:transform,opacity;transform-origin:50% 65%}
+.intro-logo{visibility:hidden}
+.intro-sheen{background:linear-gradient(110deg,transparent 37%,#fff7 48%,transparent 60%);background-size:260% 100%;background-position:150% 0;mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;opacity:0}
+@keyframes intro-content-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:600px){html:has(body.home){scroll-padding-top:90px}.stage{scroll-margin-top:0}}
+@media(prefers-reduced-motion:reduce){.brand-intro{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
+@media print{.brand-intro{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
+
 </style>
 </head>
 <body class="home">
@@ -586,7 +625,115 @@ html:not(.js) .stage-tabs{display:none}html:not(.js) .demo{margin-bottom:90px}ht
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   if (!reduceMotion.matches) root.classList.add('motion-enabled');
-  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('is-ready')));
+  // The decorative clone animates; the real logo remains the accessible home link.
+  async function enterBrand() {
+    const target = document.querySelector('.site-header .identity img');
+    const active = [];
+    const listeners = new AbortController();
+    let overlay, finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      clearTimeout(window.imanIntroFallback);
+      listeners.abort();
+      root.classList.remove('intro-pending', 'intro-revealing');
+      root.classList.add('is-ready');
+      active.forEach(animation => animation.cancel());
+      overlay?.remove();
+    };
+    if (!root.classList.contains('intro-pending') || !target || scrollY > 8 || reduceMotion.matches) {
+      finish();
+      return;
+    }
+    const listen = (element, event, callback = finish) => element.addEventListener(event, callback, {signal:listeners.signal, passive:true});
+    ['resize', 'orientationchange', 'pagehide', 'scroll', 'pointerdown', 'wheel', 'touchstart'].forEach(event => listen(window, event));
+    listen(document, 'keydown');
+    listen(document, 'visibilitychange', () => { if (document.hidden) finish(); });
+    listen(reduceMotion, 'change', () => { if (reduceMotion.matches) finish(); });
+    // The early fallback also releases the screen if anything here unexpectedly stalls.
+    clearTimeout(window.imanIntroFallback);
+    window.imanIntroFallback = setTimeout(finish, 3500);
+    const animate = (element, frames, options) => {
+      const animation = element.animate(frames, {...options, fill:'both'});
+      active.push(animation);
+      // Cancellation is an ordinary fast exit, not an unhandled rejection.
+      animation.finished.catch(() => {});
+      return animation;
+    };
+    try {
+      await Promise.race([target.decode(), sleep(550)]);
+      if (finished) return;
+      if (!target.complete || !target.naturalWidth) { finish(); return; }
+      const bounds = target.getBoundingClientRect();
+      if (!bounds.width || bounds.top < 0) { finish(); return; }
+      const width = Math.min(510, innerWidth * .68);
+      const height = width * bounds.height / bounds.width;
+      const x = (innerWidth - width) / 2;
+      const y = innerHeight * .46 - height / 2;
+      overlay = document.createElement('div');
+      overlay.className = 'brand-intro';
+      overlay.setAttribute('aria-hidden', 'true');
+      const backdrop = document.createElement('div');
+      backdrop.className = 'intro-backdrop';
+      const halo = document.createElement('div');
+      halo.className = 'intro-halo';
+      const flight = document.createElement('div');
+      flight.className = 'intro-flight';
+      Object.assign(flight.style, {width:width+'px', height:height+'px', transform:`translate3d(${x}px,${y}px,0)`});
+      const image = className => {
+        const img = target.cloneNode();
+        img.className = className;
+        img.alt = '';
+        img.removeAttribute('id');
+        return img;
+      };
+      // Each exact letter is clipped from the original artwork, never retyped.
+      const cuts = [0, 7.4, 49.3, 74.7, 100];
+      const pieces = cuts.slice(0, -1).map((left, index) => {
+        const piece = image('intro-piece');
+        piece.style.clipPath = `inset(0 ${100-cuts[index+1]}% 0 ${left}%)`;
+        flight.append(piece);
+        return piece;
+      });
+      const logo = image('intro-logo');
+      const sheen = document.createElement('span');
+      sheen.className = 'intro-sheen';
+      sheen.style.maskImage = `url("${target.currentSrc || target.src}")`;
+      sheen.style.webkitMaskImage = sheen.style.maskImage;
+      flight.append(logo, sheen);
+      overlay.append(backdrop, halo, flight);
+      document.body.append(overlay);
+      animate(halo, [{opacity:0,transform:'scale(.72)'},{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.1)'}], {duration:1500,easing:'ease-out'});
+      pieces.forEach((piece, index) => {
+        const spread = [-24, -9, 9, 24][index];
+        animate(piece, [
+          {opacity:0,transform:`translate3d(${spread}px,14px,0)`,filter:'blur(5px)'},
+          {opacity:1,transform:'translate3d(0,0,0)',filter:'blur(0px)'}
+        ], {duration:640,delay:index*55,easing:'cubic-bezier(.16,1,.3,1)'});
+      });
+      animate(sheen, [{opacity:0,backgroundPosition:'150% 0'},{opacity:.65,offset:.35},{opacity:0,backgroundPosition:'-100% 0'}], {duration:660,delay:380,easing:'ease-in-out'});
+      await sleep(1020);
+      if (finished) return;
+      pieces.forEach(piece => piece.remove());
+      sheen.remove();
+      logo.style.visibility = 'visible';
+      const destination = target.getBoundingClientRect();
+      animate(backdrop, [{opacity:1},{opacity:1,offset:.45},{opacity:0}], {duration:880,easing:'ease-in-out'});
+      const landing = animate(flight, [
+        {transform:`translate3d(${x}px,${y}px,0) scale(1)`},
+        {transform:`translate3d(${destination.left}px,${destination.top}px,0) scale(${destination.width/width})`}
+      ], {duration:880,easing:'cubic-bezier(.76,0,.24,1)'});
+      // Reveal the copy once the traveling logo has cleared the headline.
+      await sleep(470);
+      if (finished) return;
+      root.classList.add('intro-revealing', 'is-ready');
+      await landing.finished;
+      finish();
+    } catch {
+      finish();
+    }
+  }
+  enterBrand();
 
   // ── Services → demo stage. Without JS every "Más info" is a link to its service page.
   const stage = document.getElementById('demos');
