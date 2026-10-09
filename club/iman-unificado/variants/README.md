@@ -22,9 +22,9 @@ Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado
 
 ## Entrada del logo
 
-Al abrir cada versión, la palabra aparece en el centro y un haz de luz fino
-revela lentamente la tilde original. Un destello pequeño cierra el trazo y el
-logo se acomoda en la barra superior. La secuencia dura aproximadamente 2,7
+Al abrir cada versión, un degradado a pantalla completa se contrae hasta formar
+la tilde y revela la palabra. Un destello pequeño cierra la transformación y el
+logo se acomoda en la barra superior. La secuencia dura aproximadamente 2,9
 segundos y usa Web Animations nativa, sin dependencias. La barra acompaña el scroll.
 
 La preferencia de movimiento reducido, un enlace con ancla o volver desde otra
@@ -35,8 +35,11 @@ interrumpido, el contenido queda disponible; hay un límite de tiempo de respald
 ## Detalles de color e interacción
 
 Los acentos suaves, de azul acero, lavanda y champán, aparecen en el titular,
-números, enlaces, indicadores y líneas finas. Los botones usan un reflejo plateado
-neutro, con hover sutil. El resto de los títulos mantiene el gris. Se conservan
+números, enlaces e indicadores. Los botones usan un reflejo plateado neutro. Los
+contornos de botones y pestañas llevan entre 1,5 y 2 px de color metálico, con un
+reflejo lento. Las tarjetas llevan únicamente una línea superior de 1,5 px con
+un brillo suave que la recorre; no tienen contorno. Movimiento reducido deja
+estos detalles estáticos. El resto de los títulos mantiene el gris. Se conservan
 los logos propios de cada versión y las marcas originales de las demos.
 
 Las tarjetas de servicios se pueden activar desde todo el bloque: las primeras
