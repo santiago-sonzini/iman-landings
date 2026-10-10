@@ -117,3 +117,10 @@ Las rutas nuevas del CSV son propuestas y deben coincidir con las que finalmente
 - Mejorada la bienvenida del club dentro de la guía Wallet/email: guardar tarjeta, explicar participación y recuperar acceso. Ejemplo hipotético y fuente oficial Google Wallet.
 - Validación aislada sobre HEAD 47867c3: 46 pruebas; 27 HTML, 22 URLs de sitemap, cero errores, advertencias u observaciones.
 - Automatización actualizada por instrucción del usuario: desde hoy solo SEO y conversión web. Instagram sale del alcance; se conservan los archivos históricos.
+
+## Ejecución del 10 de octubre de 2026
+
+- Guía de catálogos actualizada: selección de variantes conservada hasta el pedido por WhatsApp, ejemplo hipotético y cuatro controles. Enlace interno al alcance de integración ERP y CTA existentes.
+- Fuente primaria: datos estructurados de variantes de Google Search, consultada hoy. No se promete visibilidad ni se aplica marcado de producto a esta guía.
+- Las cuatro páginas prioritarias siguen indexadas; sitemap Correcto, sin reenvíos. Evidencia privada.
+- Validación aislada sobre HEAD 9849ae0: 46 pruebas aprobadas, 29 HTML, 22 URLs de sitemap; auditoría sin errores, advertencias u observaciones. Panel local regenerado sin métricas privadas.

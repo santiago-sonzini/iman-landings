@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-09T13:54:57.406317+00:00",
+  "generated_at": "2026-10-10T13:07:46.213497+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
-  "public": "/private/tmp/iman-daily-20261009/public",
+  "public": "/private/tmp/iman-daily-20261010/public",
   "counts": {
-    "html": 27,
+    "html": 29,
     "indexable_html": 22,
     "sitemap_urls": 22,
     "error": 0,
@@ -44,12 +44,30 @@
       ]
     },
     {
+      "path": "/V1/",
+      "title": "IMÁN — Vendé más. Ganá tiempo. · V1",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 1,
+      "schema_types": []
+    },
+    {
+      "path": "/V2/",
+      "title": "IMÁN · Identidad blanca",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 0,
+      "schema_types": []
+    },
+    {
       "path": "/agente/",
       "title": "Contexto de IMÁN para personas y agentes",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -79,7 +97,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 10,
+      "incoming_pages": 11,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -115,7 +133,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 6,
+      "incoming_pages": 7,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -134,7 +152,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -149,7 +167,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 8,
+      "incoming_pages": 9,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -168,7 +186,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 1,
+      "incoming_pages": 2,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -184,7 +202,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 23,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -199,7 +217,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -294,7 +312,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 2,
-      "incoming_pages": 1,
+      "incoming_pages": 2,
       "schema_types": [
         "Article",
         "ContactPoint",
@@ -374,7 +392,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 22,
+      "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
         "Country",

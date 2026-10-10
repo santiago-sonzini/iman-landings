@@ -1,5 +1,11 @@
 # Search Console: configuración confirmada
 
+## Seguimiento del 10 de octubre de 2026
+
+Inicio, Fidelización, Comercios y Automatizaciones confirman «La URL está en Google» y «La página está indexada». El sitemap sigue Correcto, leído el 8/10, con 21 URLs descubiertas frente a 22 del sitemap actual. Sin cambios en los totales del dominio ni evidencia nueva de fallo; no se reenviaron solicitudes ni se modificó DNS. Evidencia privada: `docs/seo/private/2026-10-10-search-console/`.
+
+Se actualizó la guía de catálogos con selección de talle/color, persistencia hasta WhatsApp y cuatro pruebas prácticas. Ejemplo hipotético y documentación primaria de variantes de Google Search consultada hoy. No se creó una URL nueva ni se añadió marcado de productos a la guía. Validación: 46 pruebas aprobadas, 29 HTML, 22 URLs de sitemap y auditoría sin errores, advertencias u observaciones. Continúa únicamente el trabajo web.
+
 ## Seguimiento del 9 de octubre de 2026
 
 Las cuatro inspecciones prioritarias confirman «La URL está en Google» y «La página está indexada». El resumen del dominio conserva los totales del seguimiento anterior. El sitemap continúa Correcto, con última lectura el 8/10 y 21 URLs descubiertas; el sitemap local actual tiene 22 URLs. Esa diferencia no prueba un fallo ni justifica reenviarlo. No se reenviaron solicitudes ni se modificó DNS. Evidencia privada en `docs/seo/private/2026-10-09-search-console/`.

@@ -16,3 +16,4 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-10-07 | integrar-catalogo-con-erp | Cómo integrar un catálogo online con el ERP o sistema de gestión: qué sincronizar primero y en qué dirección (aprender/evaluar) | Nuevo |
 | 2026-10-08 | wallet-email-notificaciones-fidelizacion | Validar el canje en caja: estado vigente, doble intento y contingencia | Actualización de guía existente |
 | 2026-10-09 | wallet-email-notificaciones-fidelizacion | Bienvenida al club: guardar tarjeta, instrucciones y recuperación del acceso | Actualización de guía existente |
+| 2026-10-10 | catalogo-digital-pedidos-whatsapp-mayorista | Conservar talle y color desde la ficha hasta el pedido de WhatsApp | Actualización de guía existente |
