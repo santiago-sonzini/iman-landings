@@ -398,7 +398,7 @@ html[data-variant="V2"]{--paper:#101010}html[data-variant="V2"] .home h1 em{colo
 @media print{body.home{background:#fff;color:#101010}.site-header,.hero-devices,.demo-visual,.stage-tabs{display:none!important}.hero,.demo{display:block}.demo[hidden]{display:block}.demo{break-inside:avoid;margin:30px 0}.service-strip{display:grid}.stage,.closing{padding:30px var(--gutter)}.home h1 em{-webkit-text-fill-color:currentColor!important;background:none!important}}
 
 html:not(.js) .stage-tabs{display:none}html:not(.js) .demo{margin-bottom:90px}html:not(.js) .wa-thread{overflow-y:auto}
-/* Fine magnetic field lines gather into the original accent, then the logo docks. */
+/* Aligned magnetic filaments become the accent; one continuous logo movement. */
 .intro-pending:not(.intro-revealing)::before{content:'';position:fixed;inset:0;z-index:99;background:var(--paper);pointer-events:none}
 .home .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0c}
 html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
@@ -412,17 +412,15 @@ html:has(body.home){scroll-padding-top:110px}.stage{scroll-margin-top:0}
 .brand-intro{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout style}
 .intro-backdrop{position:absolute;inset:0;background:var(--paper)}
 .intro-magnetic-field{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.intro-magnetic-field path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0}
-.intro-magnetic-glow{position:absolute;width:190px;height:160px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#b9a3ee0c,transparent 70%);opacity:0}
+.intro-magnetic-field path{fill:none;stroke-linecap:round;opacity:0}
 .intro-flight{position:absolute;top:0;left:0;transform-origin:0 0;will-change:transform}
 .intro-word,.intro-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:none}
 .intro-word{clip-path:polygon(0 0,45% 0,45% 25%,100% 25%,100% 100%,0 100%);opacity:0}
-.intro-logo{visibility:hidden}
+.intro-logo{opacity:0}
 .intro-accent-focus{position:absolute;top:0;left:0;overflow:visible;transform-origin:0 0;will-change:transform}
-.intro-accent-outline{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:.32}
-.intro-accent-outline polygon{fill:none;stroke:#c9bfd8;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
-.intro-accent-ink{position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0 0 0);will-change:clip-path}
-.intro-accent-focus img{position:absolute;display:block;max-width:none}
+.intro-accent-art{display:block;width:100%;height:100%;overflow:visible}
+.intro-accent-outline{fill:none;stroke:#c9bfd8;stroke-width:.7;vector-effect:non-scaling-stroke;stroke-linejoin:round;opacity:.18}
+.intro-accent-solid{opacity:0}
 @keyframes intro-content-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){html:has(body.home){scroll-padding-top:90px}.stage{scroll-margin-top:0}}
 @media(prefers-reduced-motion:reduce){.brand-intro,.intro-pending::before{display:none!important}.intro-pending .site-header .identity,.intro-pending:not(.intro-revealing) .header-nav,.intro-pending:not(.intro-revealing) main,.intro-pending:not(.intro-revealing) .reading-footer{visibility:visible;opacity:1}}
@@ -749,8 +747,10 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
     listen(reduceMotion, 'change', () => { if (reduceMotion.matches) finish(); });
     clearTimeout(window.imanIntroFallback);
     window.imanIntroFallback = setTimeout(finish, 3900);
+    const started = document.timeline.currentTime;
     const animate = (element, frames, options) => {
       const animation = element.animate(frames, {...options, fill:'both'});
+      animation.startTime = started;
       active.push(animation);
       animation.finished.catch(() => {});
       return animation;
@@ -763,26 +763,37 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
       if (!bounds.width) { finish(); return; }
       const artwork = {width:1751, height:710, left:999, top:8, right:1208, bottom:164};
       const viewportWidth = innerWidth, viewportHeight = innerHeight;
-      const width = Math.min(510, viewportWidth * .68);
+      const width = Math.min(480, viewportWidth * .8);
       const height = width * artwork.height / artwork.width;
       const x = (viewportWidth - width) / 2;
-      const y = viewportHeight * .46 - height / 2;
-      const centerX = viewportWidth * .5, centerY = viewportHeight * .43;
-      const accentWidth = Math.min(100, viewportWidth * .23);
-      const accentHeight = accentWidth * (artwork.bottom-artwork.top) / (artwork.right-artwork.left);
-      const accentX = centerX-accentWidth/2, accentY = centerY-accentHeight/2;
+      const y = viewportHeight * .47 - height / 2;
+      const logoScale = width/artwork.width;
+      const placedWidth = (artwork.right-artwork.left)*logoScale;
+      const placedHeight = (artwork.bottom-artwork.top)*logoScale;
+      const accentScale = 1.45;
+      const accentWidth = placedWidth*accentScale;
+      const accentHeight = placedHeight*accentScale;
+      const axisLength = Math.hypot(115,156);
+      const axisX = 115/axisLength, axisY = -156/axisLength;
+      // The small settling move follows the same axis as the accent itself.
+      const localX = artwork.left*logoScale-(accentWidth-placedWidth)/2-axisX*30;
+      const localY = artwork.top*logoScale-(accentHeight-placedHeight)/2-axisY*30;
+      const accentX = x+localX, accentY = y+localY;
+      const cropScale = accentWidth/(artwork.right-artwork.left);
+      const svg = (tag, attributes = {}) => {
+        const element = document.createElementNS('http://www.w3.org/2000/svg',tag);
+        Object.entries(attributes).forEach(([name,value]) => element.setAttribute(name,value));
+        return element;
+      };
       overlay = document.createElement('div');
       overlay.className = 'brand-intro';
       overlay.setAttribute('aria-hidden', 'true');
       const backdrop = document.createElement('div');
       backdrop.className = 'intro-backdrop';
-      const field = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      const field = svg('svg',{viewBox:`0 0 ${viewportWidth} ${viewportHeight}`,focusable:'false'});
       field.classList.add('intro-magnetic-field');
-      field.setAttribute('viewBox', `0 0 ${viewportWidth} ${viewportHeight}`);
-      field.setAttribute('focusable', 'false');
-      const glow = document.createElement('div');
-      glow.className = 'intro-magnetic-glow';
-      Object.assign(glow.style, {left:centerX+'px',top:centerY+'px'});
+      const threads = svg('g',{transform:`translate(${accentX} ${accentY}) scale(${cropScale})`});
+      field.append(threads);
       const flight = document.createElement('div');
       flight.className = 'intro-flight';
       Object.assign(flight.style, {width:width+'px',height:height+'px',transform:`translate3d(${x}px,${y}px,0)`});
@@ -797,88 +808,87 @@ html[data-variant] .stage-tabs button:not([aria-selected=true]):is(:hover,:focus
       const logo = image('intro-logo');
       const focus = document.createElement('div');
       focus.className = 'intro-accent-focus';
-      Object.assign(focus.style, {width:accentWidth+'px',height:accentHeight+'px',transform:`translate3d(${accentX}px,${accentY}px,0)`});
-      // The accent already has its final slant before any color arrives. Its thin
-      // outline makes the destination explicit; the original PNG fills it upward.
-      const outline = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      Object.assign(focus.style, {width:placedWidth+'px',height:placedHeight+'px',transform:`translate3d(${localX}px,${localY}px,0) scale(${accentScale})`});
+      const art = svg('svg',{viewBox:'0 0 209 156',focusable:'false'});
+      art.classList.add('intro-accent-art');
+      const defs = svg('defs');
+      const mask = svg('mask',{id:'iman-intro-ink',maskUnits:'userSpaceOnUse',x:0,y:0,width:209,height:156,'mask-type':'alpha'});
+      const feather = svg('filter',{id:'iman-intro-feather',x:'-10%',y:'-10%',width:'120%',height:'120%'});
+      feather.append(svg('feGaussianBlur',{stdDeviation:'1.2'}));
+      const fibers = svg('g',{filter:'url(#iman-intro-feather)'});
+      mask.append(fibers);
+      defs.append(mask,feather);
+      const accentImage = () => svg('image',{href:target.currentSrc||target.src,x:-artwork.left,y:-artwork.top,width:artwork.width,height:artwork.height});
+      const ink = accentImage();
+      ink.classList.add('intro-accent-ink');
+      ink.setAttribute('mask','url(#iman-intro-ink)');
+      const solid = accentImage();
+      solid.classList.add('intro-accent-solid');
+      // Both images are cropped by the viewBox, including the exact PNG alpha.
+      art.style.overflow = 'hidden';
+      const outline = svg('polygon',{points:'115,0 209,0 94,156 0,156'});
       outline.classList.add('intro-accent-outline');
-      outline.setAttribute('viewBox','0 0 209 156');
-      outline.setAttribute('focusable','false');
-      const contour = document.createElementNS('http://www.w3.org/2000/svg','polygon');
-      contour.setAttribute('points','115,0 209,0 94,156 0,156');
-      outline.append(contour);
-      const ink = document.createElement('div');
-      ink.className = 'intro-accent-ink';
-      const accentImage = image('');
-      const cropScale = accentWidth/(artwork.right-artwork.left);
-      Object.assign(accentImage.style, {width:artwork.width*cropScale+'px',height:artwork.height*cropScale+'px',left:-artwork.left*cropScale+'px',top:-artwork.top*cropScale+'px'});
-      ink.append(accentImage);
-      focus.append(outline,ink);
-      flight.append(word, logo);
-      overlay.append(backdrop, glow, field, flight, focus);
+      art.append(defs,outline,ink,solid);
+      focus.append(art);
+      flight.append(word,focus,logo);
+      overlay.append(backdrop,field,flight);
       document.body.append(overlay);
 
-      // Fourteen thin cubic curves flow in from both sides; short highlights travel
-      // along them toward the exact accent, with no external animation dependency.
+      // Eight ordered filaments fan out along a common axis. Each path continues
+      // into a lane of the accent mask, so its arrival and color fill are one motion.
       const colors = ['#70d1e3','#b9a3ee','#f0cead'];
-      for (let side=0; side<2; side++) {
-        const direction = side ? 1 : -1;
-        for (let i=0; i<7; i++) {
-          const spread = (i-3)/3;
-          const startX = side ? viewportWidth*1.06 : -viewportWidth*.06;
-          const startY = centerY + spread*viewportHeight*.58;
-          const controlX = centerX + direction*viewportWidth*.3;
-          // Distribute arrivals across the lower edge. Every final tangent rises
-          // up and right along the accent's slant instead of meeting at its center.
-          const endX = accentX + ((i*2+side)/13)*accentWidth*.45;
-          const endY = accentY + accentHeight;
-          const turnX = endX-accentWidth*.55;
-          const turnY = endY+accentHeight;
-          const d = `M ${startX} ${startY} C ${controlX} ${startY}, ${turnX} ${turnY}, ${endX} ${endY}`;
-          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-          path.setAttribute('d',d);
-          path.setAttribute('stroke',colors[(i+side)%3]);
-          path.setAttribute('stroke-width','.8');
-          field.append(path);
-          const length = path.getTotalLength();
-          path.style.strokeDasharray = length+' '+length;
-          const delay = i*22 + side*12;
-          const arrival = 450+(i/6)*750+side*50;
-          const travel = arrival-delay;
-          animate(path,[{strokeDashoffset:length,opacity:0},{opacity:.4,offset:.12},{strokeDashoffset:0,opacity:.5,offset:travel/(travel+160)},{strokeDashoffset:0,opacity:0}],{duration:travel+160,delay,easing:'cubic-bezier(.3,0,.3,1)'});
-          const light = path.cloneNode();
-          light.setAttribute('stroke-width','1.3');
-          light.style.strokeDasharray = `12 ${length}`;
-          field.append(light);
-          animate(light,[{strokeDashoffset:length,opacity:0},{opacity:.85,offset:.12},{opacity:.85,offset:.94},{strokeDashoffset:0,opacity:0}],{duration:travel,delay,easing:'cubic-bezier(.35,0,.3,1)'});
-        }
+      const reach = Math.max(viewportWidth*.62,viewportHeight*.62)/cropScale;
+      const spreadWidth = Math.min(viewportWidth*.7,viewportHeight*.7)/cropScale;
+      for (let i=0; i<8; i++) {
+        const base = (i+.5)*94/8;
+        const spread = (i/7-.5)*spreadWidth;
+        const startX = base-axisX*reach-axisY*spread;
+        const startY = 156-axisY*reach+axisX*spread;
+        const c1X = startX+axisX*reach*.48;
+        const c1Y = startY+axisY*reach*.48;
+        const c2X = base-axisX*reach*.19;
+        const c2Y = 156-axisY*reach*.19;
+        const incoming = `M ${startX} ${startY} C ${c1X} ${c1Y}, ${c2X} ${c2Y}, ${base} 156`;
+        const d = `${incoming} L ${base+115} 0`;
+        const path = svg('path',{d,stroke:colors[Math.floor(i/3)%3],'stroke-width':.7/cropScale});
+        threads.append(path);
+        const length = path.getTotalLength();
+        const delay = Math.abs(i-3.5)*24;
+        const duration = 1120;
+        const easing = 'cubic-bezier(.16,.5,.3,1)';
+        path.style.strokeDasharray = `${length} ${length}`;
+        animate(path,[{strokeDashoffset:length,opacity:0},{opacity:.25,offset:.16},{opacity:.2,offset:.7},{strokeDashoffset:0,opacity:0}],{duration,delay,easing});
+        const light = svg('path',{d,stroke:colors[Math.floor(i/3)%3],'stroke-width':1.1/cropScale});
+        const tail = 18/cropScale;
+        light.style.strokeDasharray = `${tail} ${length+tail}`;
+        threads.append(light);
+        animate(light,[{strokeDashoffset:tail,opacity:0},{opacity:.68,offset:.1},{opacity:.68,offset:.8},{strokeDashoffset:tail-length,opacity:0}],{duration,delay,easing});
+        const fiber = svg('path',{d,fill:'none',stroke:'white','stroke-width':94/8*156/axisLength+1.4,'stroke-linecap':'round'});
+        fiber.style.strokeDasharray = `${length} ${length}`;
+        fibers.append(fiber);
+        animate(fiber,[{strokeDashoffset:length},{strokeDashoffset:0}],{duration,delay,easing});
       }
-      animate(glow,[{opacity:0},{opacity:1,offset:.65},{opacity:0}],{duration:1500,easing:'ease-in-out'});
-      animate(ink,[{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:900,delay:450,easing:'linear'});
-      // Remove the guide during the last part of the fill, before the exact-artwork handoff.
-      animate(outline,[{opacity:.32},{opacity:0}],{duration:150,delay:1200,easing:'ease-out'});
-      animate(word,[{opacity:0,filter:'blur(2px)'},{opacity:1,filter:'blur(0px)'}],{duration:500,delay:1600,easing:'ease-out'});
-      await sleep(1450);
-      if (finished) return;
-      const logoScale = width/artwork.width;
-      const placedWidth = (artwork.right-artwork.left)*logoScale;
-      const placeAccent = animate(focus,[
-        {transform:`translate3d(${accentX}px,${accentY}px,0) scale(1)`},
-        {transform:`translate3d(${x+artwork.left*logoScale}px,${y+artwork.top*logoScale}px,0) scale(${placedWidth/accentWidth})`}
-      ],{duration:620,easing:'cubic-bezier(.65,0,.24,1)'});
-      await placeAccent.finished;
-      if (finished) return;
-      await sleep(110);
-      if (finished) return;
-      focus.remove(); field.remove(); glow.remove(); word.remove();
-      logo.style.visibility = 'visible';
+      animate(solid,[{opacity:0},{opacity:1}],{duration:120,delay:1100,easing:'ease-out'});
+      animate(outline,[{opacity:.18},{opacity:0}],{duration:230,delay:920,easing:'ease-out'});
+      animate(word,[
+        {opacity:0,transform:'translateY(6px)'},
+        {opacity:1,transform:'translateY(0)'}
+      ],{duration:420,delay:1200,easing:'cubic-bezier(.2,0,.2,1)'});
+      animate(focus,[
+        {transform:`translate3d(${localX}px,${localY}px,0) scale(${accentScale})`},
+        {transform:`translate3d(${artwork.left*logoScale}px,${artwork.top*logoScale}px,0) scale(1)`}
+      ],{duration:600,delay:1240,easing:'cubic-bezier(.4,0,.2,1)'});
+      // The shared flight starts before the local settle ends. Keep the underlay
+      // opaque until the exact PNG covers it, avoiding a brightness dip at handoff.
+      const handoff = animate(logo,[{opacity:0},{opacity:1}],{duration:80,delay:1840});
+      handoff.finished.then(() => { word.remove(); focus.remove(); }, () => {});
       const destination = target.getBoundingClientRect();
-      animate(backdrop,[{opacity:1},{opacity:1,offset:.4},{opacity:0}],{duration:760,easing:'ease-in-out'});
+      animate(backdrop,[{opacity:1},{opacity:0}],{duration:800,delay:1720,easing:'cubic-bezier(.4,0,.2,1)'});
       const landing = animate(flight,[
         {transform:`translate3d(${x}px,${y}px,0) scale(1,1)`},
         {transform:`translate3d(${destination.left}px,${destination.top}px,0) scale(${destination.width/width},${destination.height/height})`}
-      ],{duration:760,easing:'cubic-bezier(.76,0,.24,1)'});
-      await sleep(360);
+      ],{duration:800,delay:1720,easing:'cubic-bezier(.65,0,.2,1)'});
+      await sleep(Math.max(0,1900-(document.timeline.currentTime-started)));
       if (finished) return;
       root.classList.add('intro-revealing','is-ready');
       await landing.finished;

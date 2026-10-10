@@ -24,11 +24,14 @@ Publicación: el flujo existente de Cloudflare Pages, rama `codex/iman-unificado
 
 ## Entrada del logo
 
-Al abrir V1, la silueta inclinada de la tilde aparece delineada. Líneas finas de
-cian, lavanda y durazno entran por su borde inferior siguiendo esa inclinación
-y llenan la tilde de abajo hacia arriba. La tilde se coloca sobre la palabra blanca,
-y el logo completo se acomoda en la barra. La secuencia dura aproximadamente
-3 segundos y usa SVG y Web Animations nativa, sin dependencias.
+Al abrir V1, la silueta inclinada de la tilde aparece delineada. Ocho líneas finas
+de cian, lavanda y durazno llegan desde un abanico inferior izquierdo, sin cruces.
+Cada recorrido continúa dentro de una máscara sobre el PNG original: la luz que
+llega llena la tilde siguiendo su inclinación. Una guía tenue desaparece al llenarse.
+La tilde hace un ajuste corto mientras aparece la palabra blanca; el traslado a la
+barra comienza antes de que termine ese ajuste. Todo comparte una misma línea de
+tiempo, con proporciones consistentes entre escritorio y celular. La secuencia
+dura aproximadamente 2,5 segundos y usa SVG y Web Animations nativa, sin dependencias.
 
 La entrada funciona al abrir y recargar URLs con ancla, como `/V1/#demos`, y
 conserva esa sección al terminar. Una precarga en pestaña oculta espera a que
