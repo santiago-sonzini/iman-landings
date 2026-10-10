@@ -2,7 +2,7 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-10T15:09:07.824361+00:00
+Generada: 2026-10-10T15:12:11.393051+00:00
 
 29 HTML · 22 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 

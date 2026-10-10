@@ -156,7 +156,12 @@ def build_dark(out,pages):
     for p in guides:
         file=out/p['file'];raw=file.read_text();match=re.search(r'<article class="article">(.*?)</article>',raw,re.S)
         if match:
-            body='<section class="reading-hero"><p class="eyebrow">GUÍAS DE IMÁN</p><h1>'+e(p['title'].split(' | ')[0])+'</h1><p class="reading-intro">'+e(p['description'])+'</p></section><div class="legacy-reading"><article class="archive-article">'+match[1].replace('/#contacto','/contacto/')+'</article></div><div class="document-links">'+button('Conversemos sobre tu negocio','/contacto/')+'</div>'
+            article_html=match[1].replace('/#contacto','/contacto/')
+            # A returning browser must fetch the new palette instead of a cached diagram.
+            for diagram in ['editorial-catalogo.svg','editorial-wallet.svg','editorial-compras.svg']:
+                version=hashlib.md5((ROOT/'assets'/diagram).read_bytes()).hexdigest()[:8]
+                article_html=article_html.replace(f'src="/assets/{diagram}"',f'src="/assets/{diagram}?v={version}"')
+            body='<section class="reading-hero"><p class="eyebrow">GUÍAS DE IMÁN</p><h1>'+e(p['title'].split(' | ')[0])+'</h1><p class="reading-intro">'+e(p['description'])+'</p></section><div class="legacy-reading"><article class="archive-article">'+article_html+'</article></div><div class="document-links">'+button('Conversemos sobre tu negocio','/contacto/')+'</div>'
             graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',raw,re.S)[1])['@graph']
             article_schemas=[s for s in graph if s.get('@type')=='Article']
             for article in article_schemas:
