@@ -1,10 +1,10 @@
 [
   {
     "path": "/",
-    "title": "IMÁN — Vendé más. Trabajá menos.",
+    "title": "IMÁN — Vendé más. Ganá tiempo.",
     "description": "IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.",
     "file": "index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/turnos/landing/",
@@ -105,62 +105,62 @@
     "title": "Gauss: automatización de compras para empresas | IMÁN",
     "description": "Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Para empresas e industrias de Argentina.",
     "file": "gauss/index.html",
-    "dateModified": "2026-10-08"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/automatizaciones/",
     "title": "WhatsApp e IA para negocios de Argentina | IMÁN",
     "description": "Automatización de WhatsApp con IA para negocios de Argentina. Ordená consultas, calificá oportunidades y conectá la atención con tu operación.",
     "file": "automatizaciones/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/fidelizacion/",
     "title": "Fidelización y email marketing para negocios de Argentina | IMÁN",
     "description": "Fidelización y email marketing como servicio para pymes de Argentina. Campañas segmentadas, recompra y programas con la identidad de tu negocio.",
     "file": "fidelizacion/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/comercios/",
     "title": "Catálogos y ERP para negocios de Argentina | IMÁN",
     "description": "Catálogos digitales e integración con ERP para mayoristas y distribuidoras de Argentina. Productos, pedidos y gestión conectados con automatizaciones a medida.",
     "file": "comercios/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/servicios/",
     "title": "Automatización, fidelización y ERP | IMÁN",
     "description": "IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.",
     "file": "servicios/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/contacto/",
     "title": "Contanos sobre tu negocio | IMÁN",
     "description": "Consultá por WhatsApp e IA, fidelización y email marketing, catálogos y ERP. Podés combinar servicios en una misma consulta.",
     "file": "contacto/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/agente/",
     "title": "Contexto de IMÁN para personas y agentes",
     "description": "Información pública de los tres servicios de IMÁN, alcance, requisitos y contacto. Versión Markdown para lectura y asistentes.",
     "file": "agente/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/agentes/",
     "title": "Agentes de IA y automatización a medida | IMÁN",
     "description": "Asistentes con información del negocio, herramientas y límites definidos. Integrados al servicio de automatización de IMÁN.",
     "file": "agentes/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   },
   {
     "path": "/privacidad/",
     "title": "Privacidad y contacto | IMÁN",
     "description": "Cómo se utilizan los datos de las consultas recibidas en IMÁN y cómo pedir su corrección o eliminación.",
     "file": "privacidad/index.html",
-    "dateModified": "2026-10-01"
+    "dateModified": "2026-10-10"
   }
 ]

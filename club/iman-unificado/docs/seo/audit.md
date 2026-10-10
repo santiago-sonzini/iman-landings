@@ -2,7 +2,7 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-10T13:07:46.213497+00:00
+Generada: 2026-10-10T15:09:07.824361+00:00
 
 29 HTML · 22 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
@@ -17,11 +17,11 @@ Sin hallazgos en los controles implementados.
 | / | Sí | 0 | 23 |
 | /agente/ | Sí | 1 | 23 |
 | /agentes/ | Sí | 2 | 1 |
-| /automatizaciones/ | Sí | 1 | 11 |
-| /comercios/ | Sí | 1 | 7 |
-| /contacto/ | Sí | 1 | 23 |
-| /fidelizacion/ | Sí | 1 | 9 |
-| /gauss/ | Sí | 1 | 2 |
+| /automatizaciones/ | Sí | 1 | 10 |
+| /comercios/ | Sí | 1 | 6 |
+| /contacto/ | Sí | 1 | 24 |
+| /fidelizacion/ | Sí | 1 | 8 |
+| /gauss/ | Sí | 1 | 24 |
 | /privacidad/ | Sí | 1 | 24 |
 | /recursos/ | Sí | 1 | 23 |
 | /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 2 |
@@ -34,8 +34,8 @@ Sin hallazgos en los controles implementados.
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
 | /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 2 |
-| /servicios/ | Sí | 1 | 23 |
-| /turnos/landing/ | Sí | 2 | 4 |
+| /servicios/ | Sí | 1 | 24 |
+| /turnos/landing/ | Sí | 2 | 3 |
 
 ## Verificaciones que requieren el sitio publicado
 

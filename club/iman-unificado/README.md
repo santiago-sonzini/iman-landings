@@ -1,5 +1,13 @@
 # IMAN
 
+## Identidad V1 — octubre de 2026
+
+V1 es la identidad elegida para todo el sitio de IMÁN: logo blanco con tilde de color, Inter/Geist Mono, fondo neutro y acentos cian, lavanda y champagne. La portada canónica se toma de `variants/V1/index.html`, incluyendo la entrada magnética del logo, las tarjetas completas y los botones con barrido diagonal. `/V1/` sigue disponible para los enlaces de revisión; `/V2/` redirige a V1.
+
+`experience/identity-v1.css` y `identity-v1.js` unifican las páginas de servicios, contacto, guías, Gauss y las demos corporativas. Los correos y pantallas del newsletter comparten la misma marca. Las demostraciones con marca de cada negocio conservan su identidad propia. El contenido, las rutas y el comportamiento de los formularios se mantienen.
+
+Validar con `bash scripts/build-ci.sh`. Los previews para compartir se generan con `node scripts/render-brand-previews.cjs` (requiere Playwright/Chromium) y se guardan en `variants/assets/`. Las secciones siguientes documentan versiones anteriores.
+
 ## Experiencia IMÁN — septiembre de 2026
 
 La interfaz aprobada se mantiene en `experience/` y se integra con las páginas, el SEO y el backend existentes mediante `scripts/dark_site.py`. `scripts/build.py` genera `public/`, que es la salida conectada a Cloudflare Pages.

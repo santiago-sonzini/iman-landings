@@ -8,14 +8,18 @@ SOURCE=ROOT/'experience'
 BASE='https://www.iman.ar'
 SERVICES=json.loads((SOURCE/'services.json').read_text())
 INTRO='IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.'
-DATE='2026-10-01'
+DATE='2026-10-10'
+HOME_TITLE='IMÁN — Vendé más. Ganá tiempo.'
+BRAND_LOGO='/assets/identity-variants/logo-v1.png'
+BRAND_ICON='/assets/identity-variants/favicon-v1.svg'
+BRAND_SHARE='/assets/identity-variants/share-site-v1.png'
 
 def schemas(path,title,desc,extra=()):
-    graph=[{'@type':'Organization','@id':BASE+'/#organization','name':'IMÁN','alternateName':'Iman','url':BASE+'/','logo':BASE+'/assets/experience/iman-simbolo.svg','description':INTRO,'areaServed':{'@type':'Country','name':'Argentina'},'contactPoint':{'@type':'ContactPoint','telephone':'+54-9-353-518-9997','contactType':'sales','availableLanguage':'es'}},{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'IMÁN','inLanguage':'es-AR'},{'@type':'WebPage','@id':BASE+path+'#webpage','url':BASE+path,'name':title,'description':desc,'inLanguage':'es-AR','isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#organization'}}]+list(extra)
+    graph=[{'@type':'Organization','@id':BASE+'/#organization','name':'IMÁN','alternateName':'Iman','url':BASE+'/','logo':BASE+BRAND_LOGO,'description':INTRO,'areaServed':{'@type':'Country','name':'Argentina'},'contactPoint':{'@type':'ContactPoint','telephone':'+54-9-353-518-9997','contactType':'sales','availableLanguage':'es'}},{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'IMÁN','inLanguage':'es-AR'},{'@type':'WebPage','@id':BASE+path+'#webpage','url':BASE+path,'name':title,'description':desc,'inLanguage':'es-AR','isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#organization'}}]+list(extra)
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('</','<\\/')+'</script>'
 
 def seo(path,title,desc,extra=()):
-    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}/assets/editorial-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Vendé más. Trabajá menos."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
+    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}{BRAND_SHARE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Vendé más. Ganá tiempo."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
 
 def asset(name):
     # Cloudflare keeps /assets/* cached for hours: the content hash in the URL makes a new version show up at once.
@@ -25,6 +29,23 @@ def asset(name):
 
 def button(label,url):
     return f'<a class="cta" href="{e(url,quote=True)}"><span class="cta-label">{e(label)}</span></a>'
+
+def identity_head():
+    return f'<link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{asset("identity-v1.css")}"><script src="{asset("identity-v1.js")}" defer></script>'
+
+def logo_link(class_name='identity'):
+    return f'<a class="{class_name}" href="/" aria-label="IMÁN, inicio"><img src="{BRAND_LOGO}" width="270" height="110" alt="IMÁN"></a>'
+
+def production_home():
+    """Use the chosen V1 as the canonical home, retaining its review URL separately."""
+    home=(ROOT/'variants/V1/index.html').read_text()
+    home=home.replace(' · V1','').replace('href="/V1/"','href="/"')
+    home=home.replace('content="noindex,follow"','content="index,follow,max-image-preview:large"')
+    home=home.replace('content="https://www.iman.ar/V1/"',f'content="{BASE}/"')
+    home=home.replace('https://www.iman.ar/assets/identity-variants/share-v1.png',BASE+BRAND_SHARE)
+    home=home.replace('content="IMÁN · Identidad visual V1"','content="IMÁN · Vendé más. Ganá tiempo."')
+    home=home.replace('<section class="closing" aria-labelledby="closing-title">','<section class="closing" id="contacto" aria-labelledby="closing-title">')
+    return home.replace('</head>',schemas('/',HOME_TITLE,INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
 
 def actions():
     # The two ways to start a conversation: book a call, or write on WhatsApp (the assistant recognizes "quiero info").
@@ -44,10 +65,10 @@ def demo(s):
     return hero+f'<section class="demo" aria-labelledby="demo-title"><p class="eyebrow">QUÉ PASA EN EL VIDEO</p><h2 id="demo-title">De la consulta<br><em>a la visita agendada.</em></h2><ol class="demo-steps">{items}</ol><p class="demo-note">Demostración con datos de ejemplo: el asistente se arma con la información y las reglas de cada negocio. Foto del vehículo: Just a Man / Wikimedia Commons, CC BY 4.0.</p>{actions()}</section>'
 
 def footer():
-    return '<footer class="reading-footer"><a href="/">IMÁN</a><nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/recursos/">Guías</a><a href="/agente/">Para agentes</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav><span>Hecho en Argentina.</span></footer>'
+    return '<footer class="reading-footer">'+logo_link('footer-identity')+'<nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a href="/recursos/">Guías</a><a href="/agente/">Para agentes</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav><span>Hecho en Argentina.</span></footer>'
 
 def shell(path,title,desc,body,extra=()):
-    return f'''<!doctype html><html lang="es-AR" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11141b"><meta name="color-scheme" content="dark"><title>{e(title)}</title><meta name="description" content="{e(desc,quote=True)}"><meta property="og:title" content="{e(title,quote=True)}"><meta property="og:description" content="{e(desc,quote=True)}"><meta property="og:type" content="website"><meta property="og:locale" content="es_AR">{seo(path,title,desc,extra)}<link rel="icon" href="/assets/experience/iman-simbolo.svg" type="image/svg+xml"><link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="{asset('site.css')}"><link rel="stylesheet" href="{asset('reading.css')}"><script src="{asset('form.js')}" defer></script><script src="{asset('demo.js')}" defer></script><script src="{asset('pixel.js')}" defer></script></head><body class="reading"><a class="skip" href="#contenido">Saltar al contenido</a><header class="site-header"><a class="identity" href="/" aria-label="IMÁN, inicio"><span class="wordmark">imán</span></a><a class="header-contact" href="/contacto/">Hablemos</a></header><main id="contenido">{body}</main>{footer()}</body></html>'''
+    return f'''<!doctype html><html lang="es-AR" data-theme="dark" data-identity="v1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#121212"><meta name="color-scheme" content="dark"><title>{e(title)}</title><meta name="description" content="{e(desc,quote=True)}"><meta property="og:title" content="{e(title,quote=True)}"><meta property="og:description" content="{e(desc,quote=True)}"><meta property="og:type" content="website"><meta property="og:locale" content="es_AR">{seo(path,title,desc,extra)}<link rel="icon" href="{BRAND_ICON}" type="image/svg+xml"><link rel="stylesheet" href="{asset('site.css')}"><link rel="stylesheet" href="{asset('reading.css')}">{identity_head()}<script src="{asset('form.js')}" defer></script><script src="{asset('demo.js')}" defer></script><script src="{asset('pixel.js')}" defer></script></head><body class="reading"><a class="skip" href="#contenido">Saltar al contenido</a><header class="site-header">{logo_link()}<nav class="header-nav" aria-label="Principal"><a href="/servicios/">Servicios</a><a href="/recursos/">Guías</a><a class="header-contact" href="/contacto/">Hablemos</a></nav></header><main id="contenido">{body}</main>{footer()}</body></html>'''
 
 def form(selected=''):
     fields=''
@@ -87,19 +108,28 @@ def context():
 def build_dark(out,pages):
     dest=out/'assets/experience';dest.mkdir(parents=True,exist_ok=True)
     shutil.copytree(SOURCE/'assets',dest,dirs_exist_ok=True)
-    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js']:shutil.copy2(SOURCE/name,dest/name)
-    home=(SOURCE/'home.html').read_text().replace('</head>',seo('/','IMÁN — Vendé más. Trabajá menos.',INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
-    home=re.sub(r'/assets/experience/(site\.css|home\.css|home\.js)(?=")',lambda m:asset(m[1]),home)
-    (out/'index.html').write_text(home)
-    # Gauss: standalone product page with its own design. Indexed like the rest: canonical, schema, sitemap and manifest.
+    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js','identity-v1.css','identity-v1.js','purchases-demo.css','purchases-demo.js']:shutil.copy2(SOURCE/name,dest/name)
+    (out/'index.html').write_text(production_home())
+    purchase_title='Ejemplo de automatización de compras mayoristas | IMÁN'
+    purchase_desc='Ejemplo interactivo con datos ficticios para comparar propuestas de proveedores por presupuesto y entrega. No realiza pedidos ni pagos.'
+    purchase_body=(SOURCE/'purchases-demo.html').read_text()+'<span id="contacto" aria-hidden="true"></span>'+form('whatsapp')
+    purchase=shell('/automatizaciones/compras-demo/',purchase_title,purchase_desc,purchase_body)
+    purchase=purchase.replace('index,follow,max-image-preview:large','noindex,follow')
+    # Keep the demo's existing manual newsletter signup and booking option.
+    purchase=purchase.replace(identity_head(),'<link rel="stylesheet" href="/assets/newsletter.css">'+identity_head())
+    purchase=purchase.replace('</head>',f'<link rel="stylesheet" href="{asset("purchases-demo.css")}"><script src="{asset("purchases-demo.js")}" defer></script><script src="/assets/newsletter.js" defer></script></head>')
+    purchase=purchase.replace('</nav><span>Hecho en Argentina.</span>','<a href="#newsletter-title" data-newsletter-open>Recibir ideas</a></nav><span>Hecho en Argentina.</span>')
+    purchase=purchase.replace('</body>',(ROOT/'templates/newsletter.html').read_text()+'</body>')
+    (out/'automatizaciones/compras-demo/index.html').write_text(purchase)
+    # Gauss keeps its product demo while sharing the chosen V1 identity.
     gauss=(SOURCE/'gauss.html').read_text()
     g_title=re.search(r'<title>(.*?)</title>',gauss)[1];g_desc=re.search(r'<meta name="description" content="(.*?)">',gauss)[1]
     g_extra=[{'@type':'Service','@id':BASE+'/gauss/#service','name':'Gauss','serviceType':'Automatización de compras','description':g_desc,'url':BASE+'/gauss/','provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}}]
-    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+'/assets/editorial-og.png',BASE+asset('gauss-og.png')).replace('IMÁN · Vendé más. Trabajá menos.','Gauss · Tus compras, en automático.')
+    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+BRAND_SHARE,BASE+'/assets/identity-variants/share-gauss-v1.png').replace('IMÁN · Vendé más. Ganá tiempo.','Gauss · Tus compras, en automático.')+identity_head()
     gauss=re.sub(r'/assets/experience/(site\.css|home\.css)(?=")',lambda m:asset(m[1]),gauss.replace('</head>',g_head+'</head>'))
     (out/'gauss').mkdir(exist_ok=True);(out/'gauss/index.html').write_text(gauss)
     pages[:]=[p for p in pages if p['path']!='/gauss/']
-    pages.append({'path':'/gauss/','title':g_title,'description':g_desc,'file':'gauss/index.html','dateModified':'2026-10-08'})
+    pages.append({'path':'/gauss/','title':g_title,'description':g_desc,'file':'gauss/index.html','dateModified':DATE})
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]
@@ -120,7 +150,7 @@ def build_dark(out,pages):
         pages[:]=[p for p in pages if p['path']!=path]
         pages.append({'path':path,'title':title,'description':desc,'file':str(file.relative_to(out)),'dateModified':DATE})
     for p in pages:
-        if p['path']=='/':p.update(title='IMÁN — Vendé más. Trabajá menos.',description=INTRO,dateModified=DATE)
+        if p['path']=='/':p.update(title=HOME_TITLE,description=INTRO,dateModified=DATE)
     # Preserve indexed guides with the approved typography and their original article data.
     guides=[p for p in pages if p['path'].startswith('/recursos/') and p['path']!='/recursos/']
     for p in guides:
@@ -128,7 +158,10 @@ def build_dark(out,pages):
         if match:
             body='<section class="reading-hero"><p class="eyebrow">GUÍAS DE IMÁN</p><h1>'+e(p['title'].split(' | ')[0])+'</h1><p class="reading-intro">'+e(p['description'])+'</p></section><div class="legacy-reading"><article class="archive-article">'+match[1].replace('/#contacto','/contacto/')+'</article></div><div class="document-links">'+button('Conversemos sobre tu negocio','/contacto/')+'</div>'
             graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',raw,re.S)[1])['@graph']
-            file.write_text(shell(p['path'],p['title'],p['description'],body,[s for s in graph if s.get('@type')=='Article']))
+            article_schemas=[s for s in graph if s.get('@type')=='Article']
+            for article in article_schemas:
+                if article.get('image')==BASE+'/assets/og.png':article['image']=BASE+BRAND_SHARE
+            file.write_text(shell(p['path'],p['title'],p['description'],body,article_schemas))
     index=next(p for p in pages if p['path']=='/recursos/')
     resource_body='<section class="reading-hero"><p class="eyebrow">GUÍAS DE IMÁN</p><h1>Antes de hacer,<br><em>entender.</em></h1><p class="reading-intro">Ideas para pensar tu próximo proyecto.</p></section><div class="legacy-reading">'+''.join('<a class="resource-entry" href="'+p['path']+'"><h2>'+e(p['title'].split(' | ')[0])+'</h2><p>'+e(p['description'])+'</p><span>LEER LA GUÍA</span></a>' for p in guides)+'<p><a href="/turnos/landing/">Proyectos de turnos y reservas</a></p></div>'
     (out/index['file']).write_text(shell('/recursos/',index['title'],index['description'],resource_body))

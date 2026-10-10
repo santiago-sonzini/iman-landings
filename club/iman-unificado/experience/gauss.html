@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#11141b">
+<meta name="theme-color" content="#121212">
 <meta name="color-scheme" content="dark">
 <title>Gauss: automatización de compras para empresas | IMÁN</title>
 <meta name="description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Para empresas e industrias de Argentina.">
@@ -11,9 +11,8 @@
 <meta property="og:description" content="Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2311141b'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23eef0f4'%3EG%3C/text%3E%3C/svg%3E">
-<link rel="preload" href="/assets/experience/playfair-display-sc.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="/assets/experience/libre-baskerville-italic.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="icon" href="/assets/identity-variants/favicon-v1.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/experience/site.css">
 <link rel="stylesheet" href="/assets/experience/home.css">
 <script>document.documentElement.classList.add('motion-enabled')</script>
@@ -215,9 +214,103 @@
 @media(prefers-reduced-motion:reduce){
   .motion-enabled .g-reveal{opacity:1;transform:none}
 }
+
+/* Gauss belongs to the V1 family; product conversations retain their familiar WhatsApp UI. */
+body.gauss{
+  --paper:#121212;--ink:#f2f2f4;--muted:#a9adb4;--blue:#a5bac0;--gold:#b7abcd;
+  --display:Inter,Arial,sans-serif;--serif:Inter,Arial,sans-serif;--mono:'Geist Mono',monospace;
+  --line:#2a2b30;--panel:#1a1b1e;
+  --g-accent:linear-gradient(108deg,#82c7d6 0%,#a5c4dd 24%,#b9a3ee 52%,#d7b9d1 75%,#e6c5a6 100%);
+  --g-line:linear-gradient(110deg,#70d1e3,#b9a3ee 52%,#f0cead);
+  background:var(--paper);font-family:var(--display);font-size:15px;line-height:1.6;
+}
+body.gauss::after{display:none}
+body.gauss .g-brand{align-items:center;gap:18px}
+body.gauss .wordmark{font:550 35px/1 var(--display);letter-spacing:-.065em}
+body.gauss .g-by{display:inline-flex;align-items:center;gap:8px;padding:8px 0;font:10px/1 var(--mono);letter-spacing:0;text-transform:none;color:var(--muted)}
+body.gauss .g-by img{display:block;width:57px;height:auto;max-width:none;opacity:.85;transition:opacity .25s}
+body.gauss .g-by:hover img,body.gauss .g-by:focus-visible img{opacity:1}
+body.gauss .g-field{opacity:.6}
+body.gauss .g-visual::before{background:radial-gradient(closest-side,#b9a3ee0e,#b9a3ee00)}
+body.gauss :is(h1,h2,h3){font-family:var(--display);font-weight:450;letter-spacing:-.06em}
+body.gauss :is(h1,h2,h3) em{font-family:var(--display);font-style:normal;font-weight:inherit;font-size:inherit;letter-spacing:inherit;color:#afb2bb;background:none;-webkit-text-fill-color:currentColor}
+body.gauss h1.g-h1{font-size:clamp(40px,min(4.55vw,8.9vh),84px);line-height:1.06;letter-spacing:-.065em}
+body.gauss h1.g-h1 em,body.gauss .closing h2 em{color:#b9a3ee;background:var(--g-accent);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+body.gauss .closing h2 em{display:block;width:fit-content;max-width:100%;margin-inline:auto}
+body.gauss .g-section h2{font-size:clamp(34px,4vw,58px);line-height:1.1}
+body.gauss .g-lead{color:var(--muted)}
+body.gauss .kicker{color:#a7afb9;font-size:10px;letter-spacing:.09em}
+body.gauss .kicker::before{width:4px;height:4px;background:var(--g-line)}
+body.gauss .closing .kicker::after{display:none}
+body.gauss .g-board{background:#1a1b1eed;border-color:#35363b}
+body.gauss .g-row{background:#141415;border-color:#34353a}
+body.gauss .g-row.is-best{background:#b9a3ee0b;border-color:#a99bbb80}
+body.gauss .g-name i{background:#b8bbc326}
+body.gauss .g-chip{border-color:#4b4b53}
+body.gauss .g-chip.busy{border-color:#96919e}
+body.gauss .g-chip.best{background:#d5cedf;border-color:#d5cedf;color:#201c27}
+body.gauss .g-approve{background:linear-gradient(115deg,#c9dadd,#d5cedf 55%,#ded2c4);color:#1b1a1e}
+body.gauss .g-approve.is-on{animation:g-pop .35s cubic-bezier(.2,.8,.2,1) backwards,g-v1-ring 1.5s .4s infinite}
+@keyframes g-v1-ring{0%{box-shadow:0 0 0 0 #b9a3ee55}70%,100%{box-shadow:0 0 0 9px #b9a3ee00}}
+body.gauss .g-visual .wa-avatar[data-who=centro]{background:#625c64}
+body.gauss .g-visual .wa-notice span{color:#c5bfcd}
+body.gauss .g-strip{gap:0 24px;border:0}
+body.gauss .g-strip .service-card,body.gauss .g-strip .service-card:first-child{padding:26px 0;border:0;background:transparent;cursor:default}
+body.gauss .g-strip .service-card::after{height:1.5px;background:var(--g-line);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.22,.7,.25,1);animation:none}
+body.gauss .g-strip .service-card:hover::after{transform:scaleX(1)}
+body.gauss .g-strip .service-index{color:#a5bac0}
+body.gauss .g-strip .service-card:nth-child(2) .service-index{color:#b7abcd}
+body.gauss .g-strip .service-card:nth-child(3) .service-index{color:#c7b6a6}
+body.gauss .service-text h2{font-weight:450;font-size:clamp(20px,1.8vw,26px);letter-spacing:-.045em}
+body.gauss .g-steps h3{font-weight:450;font-size:clamp(21px,1.9vw,27px);letter-spacing:-.04em}
+body.gauss .g-steps li::before{color:#a5bac0}
+body.gauss .g-steps li:nth-child(3n + 2)::before{color:#b7abcd}
+body.gauss .g-steps li:nth-child(3n)::before{color:#c7b6a6}
+body.gauss .g-rules{gap:0 30px;background:none;border:0}
+body.gauss .g-rules li{padding:24px 0 28px;background:none;border-top:1px solid var(--line)}
+body.gauss .g-rules b,body.gauss .g-stages b{font-family:var(--display);font-weight:450;letter-spacing:-.04em}
+body.gauss .g-needs li::before{border-color:#a5bac0}
+body.gauss .g-needs li:nth-child(2)::before{border-color:#b7abcd}
+body.gauss .g-needs li:nth-child(3)::before{border-color:#c7b6a6}
+body.gauss .g-where{background:#19191b;border-color:#35363b;border-radius:10px}
+body.gauss .g-tags li{border-color:#404047;color:#c4c3ca}
+body.gauss .g-stages li{border-top-color:#3b3b41}
+body.gauss .g-stages li::before{border-color:#67636f}
+body.gauss .g-stages li.now{border-top-color:#a99bbb}
+body.gauss .g-stages li.now::before{background:#b7abcd;border-color:#b7abcd;box-shadow:0 0 12px #b9a3ee24}
+body.gauss .g-stages .now small{color:#b7abcd}
+body.gauss .g-faq summary{font-family:var(--display);font-weight:450;letter-spacing:-.025em;transition:color .2s}
+body.gauss .g-faq summary::after{color:#b7abcd}
+body.gauss .g-faq summary:hover{color:#d3c6e3}
+body.gauss .g-wa{background:#1a1b1ef2;border-color:#44454b;font-family:var(--display)}
+body.gauss .g-origin{color:#92939d}
+body.gauss .reading-footer{border-color:var(--line)}
+body.gauss .reading-footer>.g-footer-brand{display:flex;align-items:center;gap:20px}
+body.gauss .g-footer-brand>.wordmark{font-size:30px}
+body.gauss .g-footer-brand .g-by{padding-left:20px;border-left:1px solid #35363b}
+body.gauss .g-footer-brand .g-by img{width:64px}
+@media(max-width:1000px){
+  body.gauss h1.g-h1{font-size:clamp(33px,9.6vw,54px)}
+  body.gauss .g-strip .service-card,body.gauss .g-strip .service-card:first-child{padding:19px 0}
+  body.gauss .g-stages{border-left-color:#3b3b41}
+  body.gauss .g-stages li.now{border-top-color:transparent}
+}
+@media(max-width:640px){
+  body.gauss .g-brand{gap:12px}
+  body.gauss .wordmark{font-size:30px}
+  body.gauss .g-by{gap:6px;font-size:9px}
+  body.gauss .g-by img{width:49px}
+  body.gauss .g-section h2{font-size:clamp(32px,8.6vw,44px)}
+  body.gauss .g-rules{gap:0}
+  body.gauss .reading-footer>.g-footer-brand{gap:16px}
+  body.gauss .g-footer-brand .g-by{padding-left:16px}
+}
+@media(prefers-reduced-motion:reduce){body.gauss .g-strip .service-card::after{transition:none}}
+@media(forced-colors:active){body.gauss h1.g-h1 em,body.gauss .closing h2 em{background:none;-webkit-text-fill-color:currentColor}body.gauss .g-strip .service-card::after{background:Highlight}}
+@media print{body.gauss h1.g-h1 em,body.gauss .closing h2 em{background:none;color:inherit;-webkit-text-fill-color:currentColor}}
 </style>
 </head>
-<body class="home">
+<body class="home gauss">
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
 <div class="g-top">
@@ -225,8 +318,8 @@
 
 <header class="site-header">
 <div class="g-brand">
-<a class="identity" href="/gauss/" aria-label="Gauss, inicio"><span class="wordmark">gauss</span></a>
-<a class="g-by" href="/" aria-label="Gauss es un producto de IMÁN">de <b>imán</b></a>
+<a class="identity" href="/gauss/" aria-label="Gauss, inicio"><span class="wordmark">Gauss</span></a>
+<a class="g-by" href="/" aria-label="Gauss es un producto de IMÁN">de <img src="/assets/identity-variants/logo-v1.png" width="1751" height="710" alt="IMÁN"></a>
 </div>
 <nav class="header-nav" aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#erp">ERP para agentes</a><a class="header-contact" href="/contacto/?servicio=gauss">Hablemos</a></nav>
 </header>
@@ -427,7 +520,7 @@
 <a class="g-wa" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa." target="_blank" rel="noopener" data-g-wa><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>WhatsApp</a>
 
 <footer class="reading-footer">
-<a href="/gauss/">gauss</a>
+<div class="g-footer-brand"><a class="wordmark" href="/gauss/" aria-label="Gauss, inicio">Gauss</a><a class="g-by" href="/" aria-label="Gauss es un producto de IMÁN">de <img src="/assets/identity-variants/logo-v1.png" width="1751" height="710" alt="IMÁN" loading="lazy"></a></div>
 <nav aria-label="Más"><a href="/">IMÁN</a><a href="/servicios/">Servicios</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20las%20compras%20de%20mi%20empresa.">WhatsApp</a></nav>
 <p class="g-origin">Gauss: la unidad con la que se mide la fuerza de un imán.</p>
 <span>Un producto de IMÁN. Hecho en Argentina.</span>

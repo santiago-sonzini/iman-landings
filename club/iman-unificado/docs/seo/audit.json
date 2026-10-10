@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-10T13:07:46.213497+00:00",
+  "generated_at": "2026-10-10T15:09:07.824361+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
-  "public": "/private/tmp/iman-daily-20261010/public",
+  "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
     "html": 29,
     "indexable_html": 22,
@@ -15,7 +15,7 @@
   "pages": [
     {
       "path": "/",
-      "title": "IMÁN — Vendé más. Trabajá menos.",
+      "title": "IMÁN — Vendé más. Ganá tiempo.",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
@@ -97,7 +97,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 11,
+      "incoming_pages": 10,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -112,16 +112,14 @@
     },
     {
       "path": "/automatizaciones/compras-demo/",
-      "title": "Ejemplo de automatización de compras mayoristas | IMAN",
+      "title": "Ejemplo de automatización de compras mayoristas | IMÁN",
       "noindex": true,
       "in_sitemap": false,
       "click_depth": 3,
       "incoming_pages": 1,
       "schema_types": [
-        "BreadcrumbList",
         "ContactPoint",
         "Country",
-        "ListItem",
         "Organization",
         "WebPage",
         "WebSite"
@@ -133,7 +131,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 7,
+      "incoming_pages": 6,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -152,7 +150,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 23,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -167,7 +165,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 9,
+      "incoming_pages": 8,
       "schema_types": [
         "Answer",
         "ContactPoint",
@@ -186,7 +184,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 2,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -392,7 +390,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 23,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -416,7 +414,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 2,
-      "incoming_pages": 4,
+      "incoming_pages": 3,
       "schema_types": [
         "ContactPoint",
         "Country",

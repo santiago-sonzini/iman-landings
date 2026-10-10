@@ -257,8 +257,8 @@ worker_bundle=ROOT/'server/dist/_worker.js'
 if worker_bundle.exists():
     shutil.copy2(worker_bundle,OUT/'_worker.js')
     OUT.joinpath('_routes.json').write_text(json.dumps({'version':1,'include':['/*'],'exclude':[]},indent=2))
-# Optional identity comparisons are additive: no changes to the original home,
-# shared experience assets, canonical page list, backend, or existing routes.
+# Keep the V1 review URL and the retired V2 redirect available. The approved
+# V1 identity is also used by the canonical home and shared production shell.
 for variant in ('V1', 'V2'):
     shutil.copytree(ROOT/'variants'/variant, OUT/variant, dirs_exist_ok=True)
 shutil.copytree(ROOT/'variants/assets', OUT/'assets/identity-variants', dirs_exist_ok=True)

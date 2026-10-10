@@ -1,0 +1,34 @@
+<div class="purchase-demo">
+  <section class="reading-hero purchase-hero" aria-labelledby="purchase-title">
+    <nav class="purchase-breadcrumbs" aria-label="Ruta de navegación"><a href="/">IMÁN</a><span aria-hidden="true">/</span><span>IMÁN Automatizaciones · Ejemplo</span></nav>
+    <p class="eyebrow">IMÁN Automatizaciones · Ejemplo</p>
+    <h1 id="purchase-title">Una compra.<br>Varias propuestas.<br><em>Tus reglas primero.</em></h1>
+    <p class="reading-intro">Explorá cómo un proceso puede comparar proveedores según presupuesto y entrega. Este ejemplo usa datos ficticios y no envía pedidos ni ejecuta pagos.</p>
+    <div class="cta-row"><a class="cta" href="#consulta"><span class="cta-label">Evaluar mi proceso de compras <span aria-hidden="true">↗</span></span></a><a class="cta" href="https://agenda.iman.ar/"><span class="cta-label">Agendá una llamada</span></a></div>
+    <p class="purchase-note">Te contactamos personalmente y armamos una propuesta para tu negocio.</p>
+  </section>
+
+  <section class="purchase-workbench" aria-labelledby="purchase-conditions-title">
+    <div class="purchase-controls">
+      <p class="eyebrow">Definí las condiciones</p>
+      <h2 id="purchase-conditions-title">Un pedido de<br><em>100 unidades.</em></h2>
+      <div class="field"><label for="presupuesto">Presupuesto máximo del pedido (ARS)</label><input type="number" id="presupuesto" min="0" max="10000000" step="1000" value="130000" aria-describedby="purchase-help"></div>
+      <div class="field"><label for="plazo">Entrega máxima</label><select id="plazo" aria-describedby="purchase-help"><option value="1">1 día</option><option value="2" selected>2 días</option><option value="5">5 días</option></select></div>
+      <p class="purchase-help" id="purchase-help">El ejemplo ordena por total, entre las ofertas que cumplen presupuesto y plazo. No representa precios reales.</p>
+      <noscript><p>Activá JavaScript para comparar las ofertas al cambiar las condiciones. El resultado que se muestra corresponde a $ 130.000 y 2 días.</p></noscript>
+    </div>
+    <div class="purchase-proposals">
+      <p class="eyebrow">Propuestas ilustrativas</p>
+      <div class="demo-offers">
+        <div class="demo-offer" data-price="118000" data-days="5" data-name="Proveedor A"><strong>Proveedor A</strong><span>$ 118.000 · 5 días</span><small class="offer-status">Supera el plazo</small></div>
+        <div class="demo-offer recommended" data-price="126000" data-days="2" data-name="Proveedor B"><strong>Proveedor B</strong><span>$ 126.000 · 2 días</span><small class="offer-status">Cumple tus condiciones</small></div>
+        <div class="demo-offer" data-price="139000" data-days="1" data-name="Proveedor C"><strong>Proveedor C</strong><span>$ 139.000 · 1 día</span><small class="offer-status">Fuera de presupuesto</small></div>
+      </div>
+      <div class="demo-result" role="status" aria-live="polite" aria-atomic="true">
+        <strong id="resultado">Proveedor B cumple las condiciones.</strong>
+        <p id="motivo">Es la opción de menor total que cumple el presupuesto y el plazo.</p>
+        <p class="purchase-approval">Siguiente paso: revisión de una persona autorizada.</p>
+      </div>
+    </div>
+  </section>
+</div>
