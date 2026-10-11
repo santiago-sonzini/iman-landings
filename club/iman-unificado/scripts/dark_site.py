@@ -9,7 +9,7 @@ BASE='https://www.iman.ar'
 SERVICES=json.loads((SOURCE/'services.json').read_text())
 INTRO='IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.'
 DATE='2026-10-10'
-HOME_TITLE='IMÁN — Vendé más. Ganá tiempo.'
+HOME_TITLE='IMÁN — Tu negocio, en automático.'
 BRAND_LOGO='/assets/identity-variants/logo-v1.png'
 BRAND_ICON='/assets/identity-variants/favicon-v1.svg'
 BRAND_SHARE='/assets/identity-variants/share-site-v1.png'
@@ -19,7 +19,7 @@ def schemas(path,title,desc,extra=()):
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('</','<\\/')+'</script>'
 
 def seo(path,title,desc,extra=()):
-    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}{BRAND_SHARE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Vendé más. Ganá tiempo."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
+    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}{BRAND_SHARE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Tu negocio, en automático."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
 
 def asset(name):
     # Cloudflare keeps /assets/* cached for hours: the content hash in the URL makes a new version show up at once.
@@ -124,7 +124,7 @@ def build_dark(out,pages):
     gauss=(SOURCE/'gauss.html').read_text()
     g_title=re.search(r'<title>(.*?)</title>',gauss)[1];g_desc=re.search(r'<meta name="description" content="(.*?)">',gauss)[1]
     g_extra=[{'@type':'Service','@id':BASE+'/gauss/#service','name':'Gauss','serviceType':'Automatización de compras','description':g_desc,'url':BASE+'/gauss/','provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}}]
-    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+BRAND_SHARE,BASE+'/assets/identity-variants/share-gauss-v1.png').replace('IMÁN · Vendé más. Ganá tiempo.','Gauss · Tus compras, en automático.')
+    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+BRAND_SHARE,BASE+'/assets/identity-variants/share-gauss-v1.png').replace('IMÁN · Tu negocio, en automático.','Gauss · Tus compras, en automático.')
     gauss=versioned(gauss.replace('</head>',g_head+'</head>'))
     (out/'gauss').mkdir(exist_ok=True);(out/'gauss/index.html').write_text(gauss)
     pages[:]=[p for p in pages if p['path']!='/gauss/']
