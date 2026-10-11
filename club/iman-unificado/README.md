@@ -1,5 +1,17 @@
 # IMAN
 
+## Identidad V3 — 11 de octubre de 2026
+
+V3 es la identidad V1 en blanco: Inter y Geist Mono, negro #121212 y el degradado cian, lavanda y champagne del logo usado como resaltador. Reemplaza a V1 en todo el sitio.
+
+- `experience/v3.css` y `v3.js`: sistema compartido (barra flotante, botones, marcos de celular y navegador, chat de WhatsApp, pie, retícula de limaduras).
+- `experience/home-v3.html`: la portada. El hero muestra la captura real de cafe.iman.ar, siguen las tres demos y después los cuatro servicios.
+- `experience/gauss.html`: Gauss sobre el mismo sistema, con la palabra Gauss en el degradado.
+- `experience/reading-v3.css`: servicios, contacto, guías, privacidad, agente, 404 y la demo de compras. `scripts/dark_site.py` genera esas páginas con `shell()`.
+- El logo es `logo-v1.png` usado como máscara: tinta sobre blanco, blanco sobre negro, la tilde conserva el degradado.
+- `site.css`, `reading.css` e `identity-v1.*` ya no se cargan; `/V1/` queda como página de revisión anterior.
+- Pendiente: los correos y las pantallas del newsletter siguen con la identidad oscura, igual que las imágenes para compartir.
+
 ## Identidad V1 — octubre de 2026
 
 V1 es la identidad elegida para todo el sitio de IMÁN: logo blanco con tilde de color, Inter/Geist Mono, fondo neutro y acentos cian, lavanda y champagne. La portada canónica se toma de `variants/V1/index.html`, incluyendo la entrada magnética del logo, las tarjetas completas y los botones con barrido diagonal. `/V1/` sigue disponible para los enlaces de revisión; `/V2/` redirige a V1.

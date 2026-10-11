@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>IMÁN — Vendé más. Ganá tiempo.</title>
+<meta name="description" content="Automatización por WhatsApp e IA, fidelización y email marketing, catálogos y ERP para pymes y mayoristas de Argentina.">
+<meta property="og:title" content="IMÁN — Vendé más. Ganá tiempo.">
+<meta property="og:description" content="Vendé más sin invertir en publicidad: WhatsApp con IA, club de clientes y catálogos conectados.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" type="image/svg+xml" href="/assets/identity-variants/favicon-v1.svg">
+<link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/experience/v3.css">
+<script>document.documentElement.classList.add('motion')</script>
+<style>
+/* Home: the title next to a real demo, the three live demos, then the services and the closing. */
+.hero{position:relative;overflow:hidden;padding:calc(58px + clamp(26px,6vh,72px)) var(--gutter) clamp(44px,8vh,92px)}
+.hero-in{position:relative;display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);grid-template-rows:1fr auto auto 1fr;grid-template-areas:". visual" "title visual" "pitch visual" ". visual";column-gap:clamp(24px,4vw,72px);max-width:var(--max);margin:0 auto}
+.hero-title{grid-area:title}
+.hero-pitch{grid-area:pitch;padding-top:22px}
+.hero h1{margin-top:18px;font-size:clamp(44px,5.7vw,94px)}
+.hero h1 .ln{display:block;width:fit-content}
+.hero h1 .hl{margin:.06em 0 0 -.1em}
+.hero .lead{margin-bottom:26px}
+
+/* The club IMÁN built for Verde Café, on a computer and on a phone */
+.devices{grid-area:visual;position:relative;align-self:center;margin:0;padding:18px 0 52px}
+.devices .browser{width:84%}
+.devices .phone{position:absolute;right:0;bottom:30px;width:25.5%;min-width:128px;padding:5px;border-radius:26px}
+.devices .phone-screen{border-radius:21px}
+.toast{position:absolute;display:flex;align-items:center;gap:9px;padding:8px 14px 8px 8px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 18px 30px -18px #000;font:12px/1.3 var(--sans);white-space:nowrap}
+.toast b{display:block;font-weight:600}
+.toast small{font-size:11px;color:var(--muted)}
+.toast-ic{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#25d366;color:#fff;font:700 11px/1 var(--sans)}
+.toast-ic svg{width:17px;height:17px}
+.toast-wa{left:5%;bottom:74px}
+.toast-pts{right:30%;top:0}
+.toast-pts .toast-ic{background:#16233f}
+.device-caption{position:absolute;left:0;bottom:8px;display:flex;align-items:center;gap:8px;font:500 10.5px/1.4 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.device-caption a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* Services, below the demos */
+.svc-sec{padding-top:clamp(56px,9vh,104px);padding-bottom:clamp(56px,9vh,104px)}
+.svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.svc{position:relative;display:grid;grid-template-columns:auto 1fr;align-content:start;gap:4px 12px;padding:22px 22px 24px;border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease),box-shadow .35s}
+.svc:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px var(--line),0 30px 44px -36px #121212}
+.svc-i{font:500 10.5px/2.6 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.svc h3{font-size:clamp(21px,1.8vw,26px);line-height:1.12;letter-spacing:-.045em}
+.svc p{grid-column:2;font-size:14px;line-height:1.55;color:var(--muted)}
+.svc-more{grid-column:2;justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:12px;font:500 13.5px/1 var(--sans)}
+.svc-more::after{content:'';position:absolute;inset:0;border-radius:22px}
+.svc-more i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font:500 14px/1 var(--mono);font-style:normal;transition:transform .3s var(--ease),background .2s,color .2s}
+.svc:hover .svc-more i{transform:rotate(90deg);background:var(--grad);color:var(--ink)}
+.svc[data-service=gauss]:hover .svc-more i{transform:translateX(3px)}
+
+/* Demos */
+.stage-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 30px;margin-bottom:clamp(34px,6vh,62px)}
+.stage h2{margin-top:16px;font-size:clamp(36px,4.9vw,70px)}
+.tabs{display:inline-flex;gap:3px;padding:5px;border-radius:999px;background:#ffffff10;box-shadow:inset 0 0 0 1px var(--line-d)}
+.tabs button{height:42px;padding:0 18px;border-radius:999px;font:600 13.5px/1 var(--sans);color:var(--muted-d);white-space:nowrap;transition:background .25s,color .25s}
+.tabs button:hover{color:#fff}
+.tabs button[aria-selected=true]{background:#fff;color:var(--ink)}
+.demo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:clamp(28px,5vw,84px)}
+.demo[hidden]{display:none}
+.demo-copy h3{margin:14px 0 16px;font-size:clamp(30px,3.5vw,52px)}
+.demo-copy>p:not(.label){max-width:46ch;margin-bottom:22px;color:var(--muted-d)}
+.demo-copy .checks{margin-bottom:30px}
+.demo-visual{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,26px);min-height:590px}
+.wa-visual .phone{flex:none;width:278px}
+.log{flex:0 1 300px;min-width:0}
+.log li{display:grid;grid-template-columns:18px 1fr;gap:1px 10px;padding:10px 14px;border-top:1px solid var(--line);transition:opacity .45s}
+.log li:first-child{border-top:0}
+.log li::before{content:'';grid-row:1/3;align-self:center;width:18px;height:18px;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.2 2.3 4.6-5' fill='none' stroke='%23121212' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat,var(--grad)}
+.log li span{font-weight:600}
+.log li small{font:10.5px/1.5 var(--mono);color:var(--muted)}
+.wa-live .log li:not(.done){opacity:.34}
+.wa-live .log li:not(.done)::before{background:#1212121c}
+.club-visual .phone{flex:none;width:272px}
+.club-bar{position:absolute;left:9px;right:9px;bottom:9px;display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:14px;background:#16233f;color:#fff;font:11.5px/1.2 system-ui,sans-serif;box-shadow:0 10px 20px -10px #000}
+.club-bar-text{flex:1;display:grid;gap:5px}
+.club-bar-text i{display:block;overflow:hidden;height:4px;border-radius:9px;background:#ffffff2e}
+.club-bar-text i em{display:block;width:39%;height:100%;border-radius:9px;background:#ef6a4f}
+.wallet-pass{position:absolute;right:calc(50% - 292px);bottom:70px;width:212px;padding:16px;border-radius:16px;background:#16233f;color:#fff;font:11.5px/1.3 system-ui,sans-serif;box-shadow:0 34px 50px -24px #000;transform:rotate(4deg)}
+.pass-top{display:flex;align-items:flex-start;justify-content:space-between;font-size:9.5px;letter-spacing:.08em;text-align:right;color:#c9d2e6}
+.pass-top b{font:800 20px/1 var(--display);letter-spacing:-.02em;color:#fff}
+.pass-points{margin:16px 0 12px}
+.wallet-pass small{display:block;font-size:8.5px;letter-spacing:.12em;color:#9fb0d0}
+.pass-points b{font:700 42px/1 var(--display);color:#ef6a4f}
+.pass-row{display:flex;justify-content:space-between;gap:10px}
+.pass-row span:last-child{text-align:right}
+.pass-qr{width:82px;height:82px;margin:14px auto 8px;border:5px solid #fff;border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' shape-rendering='crispEdges'%3E%3Cpath fill='%2316233f' d='M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z'/%3E%3Cpath fill='%23fff' d='M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z'/%3E%3Cpath fill='%2316233f' d='M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 0h1v2H8zM10 1h2v1h-2zM9 3h1v2H9zM11 3h2v1h-2zM8 6h2v1H8zM12 5h1v3h-1zM0 8h2v1H0zM3 8h1v2H3zM5 9h3v1H5zM9 8h2v2H9zM13 9h2v1h-2zM16 8h1v2h-1zM18 8h3v1h-3zM1 10h1v2H1zM4 11h2v1H4zM7 11h1v2H7zM10 11h3v1h-3zM14 11h1v2h-1zM17 10h2v2h-2zM20 10h1v3h-1zM0 12h1v1H0zM8 13h2v1H8zM11 13h2v2h-2zM15 14h2v1h-2zM18 13h1v2h-1zM8 15h1v3H8zM10 16h2v1h-2zM13 16h1v2h-1zM15 16h3v1h-3zM19 16h2v2h-2zM9 19h3v1H9zM13 19h2v2h-2zM16 18h2v2h-2zM19 19h1v2h-1zM10 20h1v1h-1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.pass-wallet{font-size:9px;color:#9fb0d0;text-align:center}
+.push{position:absolute;top:44px;left:calc(50% - 286px);display:flex;gap:10px;width:292px;padding:11px 13px;border-radius:16px;background:#fffdf9f5;color:var(--ink);font:12.5px/1.35 system-ui,sans-serif;box-shadow:0 24px 40px -22px #000}
+.push-app{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#ef6a4f}
+.push-body b{display:flex;justify-content:space-between;font-weight:600}
+.push-body small{font-weight:400;color:var(--muted)}
+.shop-visual{display:block;padding:10px 0 58px}
+.shop-browser{width:min(100%,570px)}
+.shop-phone{position:absolute;right:0;bottom:44px;width:196px;padding:6px;border-radius:30px}
+.shop-phone .phone-screen{border-radius:24px}
+.order-bar{position:absolute;left:7px;right:7px;bottom:7px;display:flex;align-items:center;justify-content:space-between;padding:7px 7px 7px 12px;border-radius:12px;background:#1d1a17;color:#fff;font:11px/1.2 system-ui,sans-serif}
+.order-main small{display:block;color:#c9c4bb}
+.order-wa{padding:6px 10px;border-radius:999px;background:#25d366;color:#05310f;font-size:10.5px;font-weight:700}
+.demo-note{position:absolute;left:0;bottom:0;font:10.5px/1.5 var(--mono);color:var(--muted-d)}
+
+/* Closing */
+.closing{margin-top:clamp(6px,1vw,14px);text-align:center}
+.closing .wrap{display:grid;justify-items:center}
+.closing h2{margin:20px 0 18px;font-size:clamp(40px,6.6vw,96px)}
+.closing h2 .hl{background:var(--ink);color:#fff}
+.closing .lead{margin-bottom:30px}
+.closing .actions{justify-content:center}
+
+@media(max-width:1020px){
+  /* Small screens: title, then the demo, then the text and the button. */
+  .hero-in{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"title" "visual" "pitch";max-width:600px}
+  .hero h1{font-size:clamp(40px,11.4vw,64px)}
+  .devices{padding:22px 0 46px}
+  .devices .browser{width:88%}
+  .devices .phone{width:30%;bottom:26px}
+  .toast-wa{left:3%;bottom:62px}
+  .toast-pts{right:auto;left:38%;top:6px}
+  .hero-pitch{padding-top:18px}
+  .svcs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .demo{grid-template-columns:1fr}
+  .demo-visual{min-height:0;padding-top:8px}
+  .club-visual{min-height:600px}
+  .stage-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .hero{padding-top:calc(54px + 22px)}
+  .hero h1{margin-top:14px}
+  .toast{gap:7px;padding:6px 10px 6px 6px;border-radius:12px;font-size:10.5px}
+  .toast small{font-size:9.5px}
+  .toast-ic{width:26px;height:26px;border-radius:8px}
+  .svcs{gap:10px}
+  .svc{grid-template-columns:1fr;padding:15px 14px 17px;border-radius:18px}
+  .svc-i{line-height:1.4}
+  .svc h3{font-size:17.5px}
+  .svc p,.svc-more{grid-column:1}
+  .svc p{font-size:13px}
+  .tabs{align-self:stretch}
+  .tabs button{flex:1;padding:0 8px;font-size:12.5px}
+  .wa-visual{flex-direction:column}
+  .wa-visual .phone{width:min(100%,290px)}
+  .log{flex:none;width:100%}
+  .club-visual{min-height:0;padding-bottom:150px}
+  .club-visual .phone{width:min(74%,260px);margin-right:auto}
+  .wallet-pass{right:0;bottom:0;width:186px;padding:13px}
+  .pass-points b{font-size:34px}
+  .pass-qr{width:62px;height:62px;margin:10px auto 6px}
+  .push{top:26px;left:auto;right:0;width:min(86%,290px)}
+  .shop-phone{width:138px;padding:4px;border-radius:22px;bottom:40px}
+  .shop-phone .phone-screen{border-radius:18px}
+  .order-bar{left:5px;right:5px;bottom:5px;padding:5px 5px 5px 8px;font-size:9px}
+  .order-wa{padding:5px 7px;font-size:8.5px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="nav">
+<div class="nav-in">
+<a class="nav-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>
+<nav class="nav-links" aria-label="Principal"><a href="#servicios">Servicios</a><a href="#demos">Demos</a><a href="/gauss/">Gauss</a><a class="nav-cta" href="/contacto/"><i aria-hidden="true"></i>Hablemos</a></nav>
+</div>
+</header>
+
+<main id="contenido">
+<section class="hero" aria-labelledby="hero-title">
+<canvas class="filings" data-field=".62,.3,.96,.72" data-field-narrow=".1,.3,.94,.6" data-gain=".5" aria-hidden="true"></canvas>
+<div class="hero-in">
+<div class="hero-title">
+<p class="kick">Tecnología a medida para pymes</p>
+<h1 id="hero-title"><span class="ln">Vendé más.</span><span class="ln hl">Ganá tiempo.</span></h1>
+</div>
+
+<figure class="devices" aria-label="Captura de cafe.iman.ar, un club de clientes hecho por IMÁN, en computadora y celular">
+<div class="browser">
+<div class="browser-bar"><i></i><i></i><i></i><span>cafe.iman.ar</span></div>
+<div class="browser-screen"><img class="page-scroll" style="--end:-56%" src="/assets/experience/shots/cafe-desktop.webp" width="1280" height="1822" alt="" fetchpriority="high"></div>
+</div>
+<div class="phone">
+<div class="phone-screen"><img src="/assets/experience/shots/cafe-mobile.webp" width="600" height="1298" alt=""></div>
+</div>
+<div class="toast toast-wa" aria-hidden="true"><span class="toast-ic"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></span><span><b>Pedido #1042 confirmado</b><small>Flat white + 2 medialunas · 9:15</small></span></div>
+<div class="toast toast-pts" aria-hidden="true"><span class="toast-ic">+35</span><span><b>Sumaste 35 puntos</b><small>Te faltan 55 para tu regalo</small></span></div>
+<figcaption class="device-caption"><span class="live-dot"></span>Hecho por IMÁN · <a href="https://cafe.iman.ar/" target="_blank" rel="noopener">cafe.iman.ar ↗</a></figcaption>
+</figure>
+
+<div class="hero-pitch">
+<p class="lead">Más ventas sin invertir en publicidad: automatizamos tu WhatsApp, armamos el club de tus clientes y conectamos tu catálogo con la gestión.</p>
+<div class="actions" data-pill-after>
+<a class="btn btn-ink" href="/contacto/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="link" href="#demos" data-open="fidelizacion">Ver demos en vivo</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec sheet dark dots stage" id="demos" aria-labelledby="demos-title">
+<div class="wrap">
+<div class="stage-head rv">
+<div>
+<p class="kick">Demos en vivo</p>
+<h2 id="demos-title">Mirá cómo <span class="hl">funciona.</span></h2>
+</div>
+<div class="tabs" role="tablist" aria-label="Elegí un servicio">
+<button role="tab" id="tab-whatsapp" aria-controls="demo-whatsapp" aria-selected="false" tabindex="-1" data-tab="whatsapp">Automatizaciones</button>
+<button role="tab" id="tab-fidelizacion" aria-controls="demo-fidelizacion" aria-selected="true" data-tab="fidelizacion">Fidelización</button>
+<button role="tab" id="tab-catalogos" aria-controls="demo-catalogos" aria-selected="false" tabindex="-1" data-tab="catalogos">Catálogos</button>
+</div>
+</div>
+
+<!-- 01 · WhatsApp conversation played by the script below; the static markup is the full conversation. -->
+<div class="demo" id="demo-whatsapp" role="tabpanel" aria-labelledby="tab-whatsapp" hidden>
+<div class="demo-copy">
+<p class="label">01 · WhatsApp e IA</p>
+<h3>Tu WhatsApp, <span class="dim">en automático.</span></h3>
+<p>Un asistente responde con la información de tu negocio, toma el pedido y lo deja cargado. Tu equipo interviene cuando hace falta una persona.</p>
+<ul class="checks">
+<li>Respuestas con tus precios, horarios y stock.</li>
+<li>Pedidos, turnos y consultas ordenados solos.</li>
+<li>Conectado a tu caja, planilla o CRM.</li>
+</ul>
+<div class="actions"><a class="btn btn-light" href="/automatizaciones/#consulta">Quiero automatizar <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="/automatizaciones/">Ver el servicio completo</a></div>
+</div>
+<div class="demo-visual wa-visual" data-wa-demo>
+<div class="phone">
+<div class="phone-screen" aria-label="Conversación de ejemplo por WhatsApp entre una clienta y Verde Café"><div class="wa">
+<div class="wa-status" aria-hidden="true"><span>9:41</span><span class="wa-status-icons"><i></i><i></i><i></i></span></div>
+<div class="wa-header">
+<span class="wa-back" aria-hidden="true">‹</span>
+<span class="wa-avatar" aria-hidden="true">V</span>
+<span class="wa-contact"><b>Verde Café</b><small class="wa-presence">en línea</small></span>
+</div>
+<div class="wa-thread">
+<p class="wa-day"><span>Hoy</span></p>
+<p class="wa-notice"><span>🔒 Demo ilustrativa: una conversación de ejemplo.</span></p>
+<ol class="wa-messages" data-wa-thread>
+<li class="wa-msg out" data-delay="700" data-type="Hola! ¿Puedo pedir para retirar?"><div class="bubble">Hola! ¿Puedo pedir para retirar?<span class="meta">09:02<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in" data-delay="2000" data-log="0,1"><div class="bubble">¡Hola Sofi! ☕ Claro. ¿Lo de siempre?<br><b>Flat white + 2 medialunas · $6.100</b><span class="meta">09:02</span></div></li>
+<li class="wa-msg in" data-delay="0" data-with-prev><div class="wa-buttons"><span>Sí, lo de siempre</span><span>Ver la carta</span></div></li>
+<li class="wa-msg out" data-delay="1400" data-press="Sí, lo de siempre"><div class="bubble">Sí, lo de siempre<span class="meta">09:03<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in" data-delay="2200" data-log="2,3"><div class="bubble">Listo ✅ Pedido <b>#1042</b> para retirar a las <b>9:15</b>.<span class="meta">09:03</span></div></li>
+<li class="wa-msg in" data-delay="900" data-log="4"><div class="bubble">Sumaste <b>35 puntos</b> 🎁 Te faltan 55 para tu café de regalo.<span class="meta">09:03</span></div></li>
+<li class="wa-msg out" data-delay="1600" data-type="Genial, gracias!!"><div class="bubble">Genial, gracias!!<span class="meta">09:03<i class="ticks read"></i></span></div></li>
+<li class="wa-msg in" data-delay="1500" data-log="5"><div class="bubble">¡Te esperamos! Si querés cambiar el horario, escribime por acá.<span class="meta">09:04</span></div></li>
+</ol>
+</div>
+<div class="wa-composer" aria-hidden="true">
+<span class="wa-input"><span class="wa-typed" data-wa-typed></span><span class="wa-placeholder">Mensaje</span></span>
+<span class="wa-send"><svg class="mic" viewBox="0 0 24 24"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11Z"/></svg><svg class="plane" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21 23 12 2 3v7l15 2-15 2Z"/></svg></span>
+</div>
+</div></div>
+</div>
+<aside class="ui log" aria-label="Lo que pasa detrás de la conversación">
+<p class="ui-head"><span><i class="live-dot"></i> &nbsp;Detrás de escena</span><span>Verde Café</span></p>
+<ol data-wa-log>
+<li><span>Mensaje recibido</span><small>WhatsApp · 09:02</small></li>
+<li><span>Clienta reconocida</span><small>Sofía M. · Club Café · 12 visitas</small></li>
+<li><span>Pedido cargado en caja</span><small>#1042 · $6.100</small></li>
+<li><span>Aviso a barra</span><small>Retira 9:15</small></li>
+<li><span>+35 puntos acreditados</span><small>Wallet actualizada</small></li>
+<li><span>Conversación resuelta</span><small>Sin intervención del equipo</small></li>
+</ol>
+</aside>
+</div>
+</div>
+
+<!-- 02 · Club de Verde Café, captura real de cafe.iman.ar -->
+<div class="demo" id="demo-fidelizacion" role="tabpanel" aria-labelledby="tab-fidelizacion">
+<div class="demo-copy">
+<p class="label">02 · Fidelización y email</p>
+<h3>Aumentá tus ventas <span class="dim">sin invertir en publicidad.</span></h3>
+<p>Un club de clientes con tu marca: puntos, beneficios semanales, tarjeta en el celular y campañas por email. Sin descargar ninguna app.</p>
+<ul class="checks">
+<li>Web del club con tu identidad, como cafe.iman.ar.</li>
+<li>Tarjeta en Apple Wallet y Google Wallet.</li>
+<li>Campañas de recompra y reactivación, hechas con vos.</li>
+</ul>
+<div class="actions"><a class="btn btn-light" href="/fidelizacion/#consulta">Quiero mi club <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://cafe.iman.ar/" target="_blank" rel="noopener">Abrir cafe.iman.ar ↗</a></div>
+</div>
+<div class="demo-visual club-visual">
+<div class="phone">
+<div class="phone-screen"><img class="page-scroll" style="--end:-54%" src="/assets/experience/shots/cafe-mobile-scroll.webp" width="600" height="2846" alt="Inicio de cafe.iman.ar en el celular: beneficios de la semana, productos y horarios" loading="lazy">
+<div class="club-bar" aria-hidden="true"><span>🎁</span><span class="club-bar-text"><b>Tu próximo regalo</b><i><em></em></i></span><b>35 / 90 pts</b></div>
+</div>
+</div>
+<div class="wallet-pass" aria-label="Tarjeta del club en Wallet, ejemplo">
+<div class="pass-top"><b>CAFÉ</b><span>CLUB CAFÉ<br>Nueva Córdoba</span></div>
+<div class="pass-points"><small>PUNTOS</small><b>35</b></div>
+<div class="pass-row"><span><small>SOCIA</small>Sofía M.</span><span><small>PRÓXIMO REGALO</small>Café de especialidad</span></div>
+<div class="pass-qr" aria-hidden="true"></div>
+<p class="pass-wallet">Apple Wallet · Google Wallet</p>
+</div>
+<div class="push" aria-hidden="true">
+<span class="push-app">☕</span>
+<span class="push-body"><b>Verde Café <small>ahora</small></b>¡Sumaste 35 puntos! Esta semana tenés 2×1 en cafés.</span>
+</div>
+</div>
+</div>
+
+<!-- 03 · Catálogo mayorista/minorista, render de la demo de Grano Norte -->
+<div class="demo" id="demo-catalogos" role="tabpanel" aria-labelledby="tab-catalogos" hidden>
+<div class="demo-copy">
+<p class="label">03 · Catálogos y ERP</p>
+<h3>Catálogo y gestión. <span class="dim">Todo conectado.</span></h3>
+<p>Una tienda con tu marca para vender por mayor y por menor. El cliente arma el pedido y llega completo a tu WhatsApp y a tu sistema.</p>
+<ul class="checks">
+<li>Precios, mínimos y condiciones por tipo de cliente.</li>
+<li>Pedido completo por WhatsApp, sin reconstruir mensajes.</li>
+<li>Productos, listas y stock conectados con tu ERP.</li>
+</ul>
+<div class="actions"><a class="btn btn-light" href="/comercios/#consulta">Quiero mi catálogo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://template-eccomerce.vercel.app/demo/grano-norte" target="_blank" rel="noopener">Abrir la demo ↗</a></div>
+</div>
+<div class="demo-visual shop-visual">
+<div class="browser shop-browser">
+<div class="browser-bar"><i></i><i></i><i></i><span>grano norte · demo de catálogo</span></div>
+<div class="browser-screen"><img class="page-scroll" style="--end:-61.9%" src="/assets/experience/shots/grano-desktop.webp" width="1280" height="2100" alt="Demo de catálogo para una distribuidora de café mayorista y minorista, en computadora" loading="lazy"></div>
+</div>
+<div class="phone shop-phone">
+<div class="phone-screen"><img class="page-scroll slow" style="--end:-73.7%" src="/assets/experience/shots/grano-mobile-scroll.webp" width="600" height="4940" alt="La misma demo de catálogo en el celular" loading="lazy">
+<div class="order-bar" aria-hidden="true"><span class="order-main"><b>Tu pedido</b><small>2 productos</small></span><span class="order-wa">WhatsApp</span></div>
+</div>
+</div>
+<p class="demo-note">Demo conceptual: la distribuidora que abastece a Verde Café. Precios ficticios.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec svc-sec" id="servicios" aria-label="Servicios">
+<div class="wrap">
+<p class="kick rv">Servicios</p>
+<div class="svcs rv" role="list">
+<article class="svc" role="listitem" data-service="whatsapp">
+<span class="svc-i">01</span>
+<h3>Automatizaciones</h3>
+<p>Tu WhatsApp atiende, ordena y da seguimiento con IA.</p>
+<a class="svc-more" href="/automatizaciones/" data-open="whatsapp" aria-controls="demo-whatsapp" aria-label="Ver demo de Automatizaciones">Más info <i aria-hidden="true">+</i></a>
+</article>
+<article class="svc" role="listitem" data-service="fidelizacion">
+<span class="svc-i">02</span>
+<h3>Fidelización</h3>
+<p>Un club con tu marca: puntos, Wallet y email para que vuelvan.</p>
+<a class="svc-more" href="/fidelizacion/" data-open="fidelizacion" aria-controls="demo-fidelizacion" aria-label="Ver demo de Fidelización">Más info <i aria-hidden="true">+</i></a>
+</article>
+<article class="svc" role="listitem" data-service="catalogos">
+<span class="svc-i">03</span>
+<h3>Catálogos</h3>
+<p>Tu catálogo online, con pedidos por WhatsApp y conexión al ERP.</p>
+<a class="svc-more" href="/comercios/" data-open="catalogos" aria-controls="demo-catalogos" aria-label="Ver demo de Catálogos">Más info <i aria-hidden="true">+</i></a>
+</article>
+<article class="svc" role="listitem" data-service="gauss">
+<span class="svc-i">04</span>
+<h3>Gauss</h3>
+<p>Tus compras en automático: pide precios, negocia y compara.</p>
+<a class="svc-more" href="/gauss/">Ver Gauss <i aria-hidden="true">→</i></a>
+</article>
+</div>
+</div>
+</section>
+
+<section class="sec sheet tint dots closing" id="contacto" aria-labelledby="closing-title">
+<div class="wrap rv">
+<p class="kick">El próximo paso</p>
+<h2 id="closing-title">Lo viste funcionar. <span class="hl">Ahora en tu negocio.</span></h2>
+<p class="lead">Te lo mostramos andando con tus productos, tus clientes y tu WhatsApp.</p>
+<div class="actions"><a class="btn btn-ink" href="/contacto/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://wa.me/5493535189997" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+</div>
+</section>
+</main>
+
+<a class="wa-pill" href="https://wa.me/5493535189997" target="_blank" rel="noopener" data-wa-pill><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Hablá con IMÁN</a>
+
+<footer class="foot dark dots">
+<a class="foot-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>
+<nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a href="/recursos/">Guías</a><a href="/agente/">Para agentes</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav>
+<span>Hecho en Argentina.</span>
+</footer>
+
+<script src="/assets/experience/v3.js"></script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Tabs */
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]')),stage=document.getElementById('demos');
+  var listeners=[];
+  var select=function(name,focus){
+    tabs.forEach(function(t){
+      var on=t.getAttribute('data-tab')===name;
+      t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    listeners.forEach(function(fn){fn(name)});
+  };
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t.getAttribute('data-tab'))});
+    t.addEventListener('keydown',function(e){
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+      e.preventDefault();select(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length].getAttribute('data-tab'),true);
+    });
+  });
+  [].slice.call(document.querySelectorAll('[data-open]')).forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(e.metaKey||e.ctrlKey||e.shiftKey)return;
+      e.preventDefault();select(a.getAttribute('data-open'));
+      stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+  });
+
+  /* WhatsApp demo: replays the conversation and ticks the log as each step happens. */
+  var demo=document.querySelector('[data-wa-demo]');
+  if(!demo||reduce)return;
+  var list=demo.querySelector('[data-wa-thread]'),msgs=[].slice.call(list.children);
+  var steps=[].slice.call(demo.querySelectorAll('[data-wa-log] li'));
+  var thread=demo.querySelector('.wa-thread'),composer=demo.querySelector('.wa-composer'),typed=demo.querySelector('[data-wa-typed]'),presence=demo.querySelector('.wa-presence');
+  var run=0,visible=false,active=false;
+  var sleep=function(ms,id){return new Promise(function(ok,stop){setTimeout(function(){id===run?ok():stop()},ms)})};
+  var bottom=function(){thread.scrollTo({top:thread.scrollHeight,behavior:'smooth'});setTimeout(function(){thread.scrollTo({top:thread.scrollHeight,behavior:'smooth'})},420)};
+  var play=async function(){
+    var id=++run;
+    try{
+      demo.classList.add('wa-live');
+      msgs.forEach(function(m){m.classList.add('pending')});steps.forEach(function(s){s.classList.remove('done')});
+      [].slice.call(demo.querySelectorAll('.pressed')).forEach(function(b){b.classList.remove('pressed')});
+      thread.scrollTop=0;
+      for(var i=0;i<msgs.length;i++){
+        var m=msgs[i];
+        if(m.hasAttribute('data-with-prev')){m.classList.remove('pending');bottom();continue}
+        await sleep(Number(m.getAttribute('data-delay'))||900,id);
+        var text=m.getAttribute('data-type'),press=m.getAttribute('data-press');
+        if(text){
+          composer.classList.add('has-text');
+          try{for(var c=2;c<=text.length;c+=2){typed.textContent=text.slice(0,c);await sleep(34,id)}typed.textContent=text;await sleep(380,id)}
+          finally{typed.textContent='';composer.classList.remove('has-text')}
+        }else if(press){
+          [].slice.call(demo.querySelectorAll('.wa-buttons span')).forEach(function(b){if(b.textContent===press)b.classList.add('pressed')});
+          await sleep(420,id);
+        }else{
+          var dots=document.createElement('li');dots.className='wa-msg in typing-bubble';dots.innerHTML='<div class="bubble"><i></i><i></i><i></i></div>';
+          list.insertBefore(dots,m);presence.textContent='escribiendo…';presence.classList.add('typing');bottom();
+          try{await sleep(900,id)}finally{dots.remove();presence.textContent='en línea';presence.classList.remove('typing')}
+        }
+        m.classList.remove('pending');bottom();
+        (m.getAttribute('data-log')||'').split(',').filter(Boolean).forEach(function(n,k){setTimeout(function(){if(id===run)steps[Number(n)].classList.add('done')},300+k*480)});
+      }
+      await sleep(6500,id);play();
+    }catch(e){}
+  };
+  var sync=function(){if(visible&&active){play()}else{run++}};
+  listeners.push(function(name){active=name==='whatsapp';sync()});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){visible=e[0].isIntersecting;sync()},{threshold:.25}).observe(demo)}else{visible=true}
+})();
+</script>
+</body>
+</html>
