@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="light">
 <title>Informe de ejemplo · Gauss para estudios contables | IMÁN</title>
 <meta name="description" content="Así ve el informe del mes el cliente de un estudio contable que trabaja con Gauss: ventas, compras, IVA estimado, a quién le compra y le vende, y clientes que dejaron de comprar. Ejemplo con datos ficticios.">
-<meta property="og:title" content="Gauss · El informe del mes, en una web">
+<meta property="og:title" content="Gauss · El informe del mes, como lo ve tu cliente">
 <meta property="og:description" content="Así ve el informe del mes el cliente de un estudio contable que trabaja con Gauss. Ejemplo con datos ficticios.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/assets/experience/v3.css">
 <style>
 /* The month's report as the firm's client sees it on a web page. A demo: every figure here is fictional,
-   and the sections and wording follow the real page of the app (web/vistas/InformeVista.tsx and Publico.tsx there).
+   and the sections and wording follow the real screen of the client's app (web/vistas/InformeVista.tsx and Portal.tsx there).
    The firm's name is a placeholder ("Tu estudio"); the real page also lets the client pick the month. */
 body{background:var(--paper-2)}
 .d-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;padding:9px var(--gutter);background:var(--ink);color:#fff;font:500 10.5px/1.5 var(--mono);letter-spacing:.06em;text-align:center}
@@ -80,7 +80,7 @@ body{background:var(--paper-2)}
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
-<p class="d-bar"><span>Ejemplo · datos inventados</span>Así ve el informe el cliente de tu estudio.<a href="../">Volver a Gauss</a><a href="https://app.gauss.iman.ar/demo">Abrir la demo de la app</a></p>
+<p class="d-bar"><span>Ejemplo · datos inventados</span>Así ve el informe el cliente de tu estudio.<a href="../">Volver a Gauss</a><a href="https://app.gauss.iman.ar/demo">Abrir la demo</a></p>
 
 <main class="rp" id="contenido">
 <div class="rp-top">
@@ -169,7 +169,7 @@ body{background:var(--paper-2)}
 <section class="card mt ask" aria-labelledby="pedir-title">
 <div>
 <h2 id="pedir-title" data-ask-title tabindex="-1">¿Necesitás uno actualizado?</h2>
-<p data-ask-text>Pedilo acá. Tu estudio lo revisa y aparece en esta misma página.</p>
+<p data-ask-text>Pedilo acá. Tu estudio lo revisa y aparece en esta misma pantalla.</p>
 </div>
 <button class="btn btn-ink" type="button" data-ask>Pedir informe <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
 <p class="ask-status" role="status" aria-live="polite" data-ask-status hidden>Esto es un ejemplo: no se envió nada.</p>
@@ -184,7 +184,7 @@ body{background:var(--paper-2)}
   var ask=document.querySelector('[data-ask]');
   if(ask)ask.addEventListener('click',function(){
     var titulo=document.querySelector('[data-ask-title]');titulo.textContent='Pedido enviado';
-    document.querySelector('[data-ask-text]').textContent='Tu estudio ya lo sabe. Cuando lo apruebe, lo ves en esta misma página.';
+    document.querySelector('[data-ask-text]').textContent='Tu estudio ya lo sabe. Cuando lo apruebe, te avisamos y lo ves acá.';
     document.querySelector('[data-ask-status]').hidden=false;ask.remove();titulo.focus();
   });
 })();

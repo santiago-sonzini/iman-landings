@@ -158,6 +158,14 @@
 .r-wrap .sticker{position:absolute;left:50%;top:-12px;z-index:1;transform:translateX(-50%) rotate(-4deg)}
 
 /* The firm's panel: a capture of the demo's home, and what it holds */
+/* The clients' app: what the firm writes, and the phone that gets it hanging off its corner */
+.g-app{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:center;gap:clamp(30px,6vw,90px)}
+.g-app h2{margin:18px 0 18px}
+.g-app .checks{margin:26px 0 30px}
+.g-app-vis{position:relative;padding:0 9% clamp(64px,8.4vw,116px) 0}
+.g-app-vis .sticker{position:absolute;left:18px;top:-11px;z-index:2}
+.g-app-vis .phone{position:absolute;right:0;bottom:0;z-index:1;width:min(36%,208px);padding:6px;border-radius:30px}
+.g-app-vis .phone-screen{border-radius:24px}
 .g-panel .g-head{max-width:760px;margin-bottom:clamp(24px,4vh,40px)}
 .g-shot{position:relative}
 .g-shot .sticker{position:absolute;right:22px;top:-11px;z-index:1}
@@ -241,7 +249,10 @@
   .up-drop span{display:none}
   .g-pitch{max-width:560px;margin:0 auto;padding:24px 0 8px}
   .g-strip{grid-template-columns:1fr;max-width:560px;margin:22px auto 0}
-  .g-split,.g-why,.g-rep{grid-template-columns:1fr}
+  .g-split,.g-why,.g-rep,.g-app{grid-template-columns:1fr}
+  .g-app-vis{order:2;max-width:560px;margin-top:34px;padding:0 min(7%,39px) min(34%,190px) 0}
+  .g-app-vis .sticker{top:-26px}
+  .g-app-vis .phone{width:42%}
   .g-split>header{position:static}
   .g-caps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .g-feats{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -290,16 +301,16 @@
 <h1 id="hero-title"><span class="ln">Tu cartera,</span><span class="ln hl">al día.</span></h1>
 </div>
 
-<figure class="g-visual" data-g-demo aria-label="Ejemplo ilustrativo: un cliente sube sus papeles desde su link, Gauss los lee y los controla, avisa qué falta y deja el informe del mes listo para aprobar">
+<figure class="g-visual" data-g-demo aria-label="Ejemplo ilustrativo: un cliente sube sus papeles desde su app, Gauss los lee y los controla, avisa qué falta y deja el informe del mes listo para aprobar">
 <div class="phone">
 <div class="phone-screen"><div class="up">
 <div class="up-status" aria-hidden="true"><span>9:41</span><span class="up-sig"><i></i><i></i><i></i></span></div>
-<p class="up-bar" aria-hidden="true">app.gauss.iman.ar/subir</p>
+<p class="up-bar" aria-hidden="true">app.gauss.iman.ar/c</p>
 <div class="up-page" data-g-page>
 <p class="up-studio"><i aria-hidden="true">TE</i>Tu estudio</p>
 <p class="up-kick">Tus papeles</p>
 <p class="up-title">Hola, Luis.</p>
-<p class="up-notice" data-g-notice><b>Mail de tu estudio</b><span>Ya está tu informe de septiembre.</span></p>
+<p class="up-notice" data-g-notice><b>Aviso de tu estudio</b><span>Ya está tu informe de septiembre.</span></p>
 <p class="up-drop" data-g-drop><b>Sacar foto o elegir archivos</b><span>Llegan directo a tu estudio.</span></p>
 <div class="up-card">
 <p class="up-card-title" data-g-count>Llegaron 3 archivos</p>
@@ -328,7 +339,7 @@
 </div>
 
 <div class="g-pitch" data-pill-after>
-<p class="lead">Subís los papeles de tus clientes, o los suben ellos desde un link. Gauss los lee, los ordena y te avisa qué falta. Con eso arma el informe del mes de cada uno, que sale cuando lo aprobás.</p>
+<p class="lead">Subís los papeles de tus clientes, o los suben ellos desde su celular. Gauss los lee, los ordena y te avisa qué falta. Con eso arma el informe del mes de cada uno, que sale cuando lo aprobás.</p>
 <div class="actions">
 <a class="btn btn-ink" href="https://app.gauss.iman.ar/demo">Probar la demo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 <a class="link" href="https://app.gauss.iman.ar/">Crear mi cuenta gratis ↗</a>
@@ -351,7 +362,7 @@
 <h2 id="sistema-title">Tu sistema queda como está. <span class="hl">Gauss trabaja al lado.</span></h2>
 <p class="lead">Los sistemas de estudio liquidan impuestos. Lo que pasa antes sigue siendo a mano: pedir los papeles, bajarlos del chat, cargarlos y reclamar lo que falta. Gauss se ocupa de esa parte.</p>
 <ul class="g-points">
-<li><b>Tu cliente lo hace desde el celular.</b><span>Abre su link, saca la foto o elige el PDF. Sin contraseñas ni nada que aprender.</span></li>
+<li><b>Tu cliente lo hace desde el celular.</b><span>Abre su link, entra con su mail y saca la foto o elige el PDF. Sin contraseñas ni nada que aprender.</span></li>
 <li><b>Vos no cambiás de sistema.</b><span>Seguís liquidando donde liquidás. Gauss te deja la planilla de cada cliente y cada mes, lista para abrir en Excel.</span></li>
 <li><b>El reclamo ya está escrito.</b><span>Gauss sabe qué papeles manda cada cliente por mes y te deja listo el mensaje para pedir lo que falta, con su link.</span></li>
 </ul>
@@ -383,9 +394,9 @@
 <div class="vig" aria-hidden="true"><p class="vig-line"><b>Harinas del Sur</b><small>$184.300</small></p><p class="vig-line"><b>Lácteos La Paz</b><small>$96.450</small></p><p class="vig-line"><b>Envases Río</b><small>$41.200</small></p></div></li>
 <li class="rv"><div><h3>Controla</h3><p>Cruza cada factura con los archivos de ARCA de ese mes, revisa que el extracto cierre con el saldo y suma impuestos, comisiones y retenciones por concepto.</p></div>
 <div class="vig" aria-hidden="true"><p class="vig-line best"><b>Extracto</b><small>cierra con el saldo</small></p><p class="vig-line late"><b>Factura 1182</b><small>no figura en ARCA</small></p></div></li>
-<li class="rv"><div><h3>Te avisa qué falta</h3><p>Te deja el mensaje redactado para cada cliente, con su link de carga. Lo mandás vos: por mail desde Gauss o desde tu WhatsApp.</p></div>
+<li class="rv"><div><h3>Te avisa qué falta</h3><p>Te deja el mensaje redactado para cada cliente, con su link. Lo mandás vos desde Gauss, y le llega por mail y como aviso en su app, o lo mandás desde tu WhatsApp.</p></div>
 <div class="vig" aria-hidden="true"><div class="bubble out">Luis, me falta el resumen de la tarjeta de septiembre.</div></div></li>
-<li class="rv"><div><h3>Aprobás</h3><p>El informe del mes queda listo. Lo revisás y lo aprobás: tu cliente ya lo ve en su página. Si elegís enviarlo, le llega el mail con el link, y si responde, te llega a vos.</p></div>
+<li class="rv"><div><h3>Aprobás</h3><p>El informe del mes queda listo. Lo revisás y lo aprobás: tu cliente ya lo ve en su app. Si elegís enviarlo, le llega el mail con el link, y si responde, te llega a vos.</p></div>
 <div class="vig" aria-hidden="true"><p class="vig-line"><b>Informe</b><small>septiembre · Don Luis</small></p><span class="vig-done">Enviado por mail</span></div></li>
 </ol>
 </div>
@@ -395,8 +406,8 @@
 <div class="wrap g-rep">
 <div class="rv">
 <p class="kick">El informe</p>
-<h2 id="informe-title">Lo aprobás y tu cliente <span class="hl">lo ve en una web.</span></h2>
-<p class="lead">Cada cliente tiene su página con el nombre de tu estudio. Entra desde el celular y ve los informes que aprobaste, mes por mes; cuando le mandás uno, le llega el link por mail. Si necesita uno actualizado, lo pide ahí y te llega el pedido.</p>
+<h2 id="informe-title">Lo aprobás y tu cliente <span class="hl">lo ve en su celular.</span></h2>
+<p class="lead">Cada cliente entra a su app, con el nombre de tu estudio, y ve los informes que aprobaste, mes por mes. Cuando le mandás uno, le llega el mail con el link. Si necesita uno actualizado, lo pide ahí y te llega el pedido.</p>
 <ul class="checks">
 <li>Ventas y compras del mes, y las ventas de los últimos seis meses.</li>
 <li>El IVA estimado del mes en curso, si ya cargaste sus comprobantes.</li>
@@ -408,7 +419,33 @@
 </div>
 <div class="r-wrap rv">
 <span class="sticker">captura de la demo · datos inventados</span>
-<div class="phone"><div class="phone-screen"><img class="page-scroll slow" style="--end:-66.13%" src="/assets/experience/shots/gauss-informe-mobile.webp" width="600" height="3740" alt="El informe de septiembre de un cliente de la demo, visto en el celular: ventas, compras e IVA estimado del mes, el IVA del mes en curso, las ventas de los últimos seis meses, a quién le compra y a quién le vende, un cliente que dejó de comprarle y el botón para pedir un informe actualizado" loading="lazy"></div></div>
+<div class="phone"><div class="phone-screen"><img class="page-scroll slow" style="--end:-67%" src="/assets/experience/shots/gauss-informe-mobile.webp" width="600" height="3838" alt="El informe de septiembre de un cliente de la demo, visto en el celular: ventas, compras e IVA estimado del mes, el IVA del mes en curso, las ventas de los últimos seis meses, a quién le compra y a quién le vende, un cliente que dejó de comprarle y el botón para pedir un informe actualizado" loading="lazy"></div></div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="app" aria-labelledby="app-title">
+<div class="wrap g-app">
+<div class="g-app-vis rv">
+<span class="sticker">capturas de la demo · datos inventados</span>
+<div class="browser">
+<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.gauss.iman.ar/demo/avisos</span></div>
+<div class="browser-screen"><img class="page-scroll slow" style="--end:-29.52%" src="/assets/experience/shots/gauss-avisos-desktop.webp" width="1800" height="1660" alt="La sección Avisos de Gauss en la demo: 9 clientes reciben los avisos en la app y 5 por mail, el formulario para escribir un aviso nuevo y los avisos ya enviados, con cuántos clientes vieron cada uno" loading="lazy"></div>
+</div>
+<div class="phone"><div class="phone-screen"><img src="/assets/experience/shots/gauss-app-mobile.webp" width="600" height="1266" alt="La app de un cliente de la demo en el celular: el nombre del estudio, un aviso nuevo sobre el cierre de septiembre, el botón para sacar una foto o elegir archivos, los papeles que le pide el estudio y las secciones Papeles, Informes y Avisos" loading="lazy"></div></div>
+</div>
+<div class="rv">
+<p class="kick">La app de tus clientes</p>
+<h2 id="app-title">Un aviso tuyo, <span class="hl">en su celular.</span></h2>
+<p class="lead">El link que le mandás a cada cliente abre una app con el nombre de tu estudio. Tu cliente entra con su mail, sube sus papeles, ve sus informes y recibe tus avisos. Si quiere, la instala en la pantalla del celular desde el navegador, sin pasar por ninguna tienda.</p>
+<ul class="checks">
+<li>Entra con su mail y un código, sin contraseña. Ves quién entró y le quitás el acceso cuando quieras.</li>
+<li>Con el mail que le cargaste ve todo. Con otro mail solo sube papeles, hasta que lo habilitás.</li>
+<li>Escribís el aviso una vez y elegís a quién: a toda la cartera o a algunos clientes.</li>
+<li>Al que activó los avisos le llega la notificación al celular; al que no, un mail. Antes de mandarlo ves a quién no hay cómo avisarle, y después quién lo vio en su app.</li>
+<li>Los pedidos de papeles, los informes y los recordatorios de honorarios que salen de Gauss también le aparecen ahí.</li>
+</ul>
+<div class="actions"><a class="btn btn-ink" href="https://app.gauss.iman.ar/demo/avisos">Verlo en la demo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
 </div>
 </div>
 </section>
@@ -446,7 +483,7 @@
 </header>
 <ul class="g-caps rv">
 <li><b>No presenta nada.</b><span>No liquida ni presenta declaraciones. Eso sigue en tu sistema y con tu firma.</span></li>
-<li><b>No manda nada por su cuenta.</b><span>Los informes salen cuando los aprobás y los reclamos cuando los mandás. El recordatorio automático de honorarios viene apagado.</span></li>
+<li><b>No manda nada por su cuenta.</b><span>Los informes salen cuando los aprobás, y los reclamos y los avisos cuando los mandás. El recordatorio automático de honorarios viene apagado.</span></li>
 <li><b>No entra a tu WhatsApp.</b><span>No se conecta a tu teléfono ni lee tus chats. Trabaja con lo que subís vos o suben tus clientes.</span></li>
 <li><b>No pide tu clave fiscal.</b><span>Trabaja con los archivos de comprobantes que ya bajás de ARCA.</span></li>
 <li><b>Te muestra lo dudoso.</b><span>Lo que no se llega a leer o no cierra queda para revisar. Las facturas las corregís a mano; un extracto lo volvés a leer o lo das por bueno.</span></li>
@@ -466,7 +503,7 @@
 <ul class="g-needs">
 <li><div><b>Tu lista de clientes</b><span>La pegás desde tu Excel: nombre, CUIT, tipo y mail. Después marcás qué papeles manda cada uno por mes.</span></div></li>
 <li><div><b>Los comprobantes de ARCA</b><span>Los archivos de emitidos y recibidos de Mis Comprobantes, tal como los bajás. De ahí sale la base de cada informe.</span></div></li>
-<li><div><b>El link de cada cliente</b><span>Se lo mandás una vez. Desde ahí sube sus papeles todos los meses.</span></div></li>
+<li><div><b>El link de cada cliente</b><span>Se lo mandás una vez. Entra con su mail y desde ahí sube sus papeles todos los meses.</span></div></li>
 </ul>
 <div class="g-where">
 <p><b>Dónde rinde primero:</b> los clientes que mandan todo por chat, tarde y de a pedazos.</p>
@@ -484,12 +521,13 @@
 </header>
 <div class="g-faq rv">
 <details><summary>¿Reemplaza mi sistema contable?</summary><p>No. Seguís liquidando donde liquidás hoy. Gauss se ocupa de lo anterior: recibir, leer, ordenar y controlar los papeles, y te deja la planilla de cada cliente y cada mes para abrir en Excel.</p></details>
-<details><summary>¿Mis clientes tienen que instalar algo?</summary><p>No. Abren su link desde el celular y suben la foto o el PDF. El informe lo ven en una página web.</p></details>
+<details><summary>¿Mis clientes tienen que instalar algo?</summary><p>No hace falta. Abren su link desde el celular, entran con su mail y suben la foto o el PDF; ahí mismo ven sus informes. Si quieren, instalan la app desde el navegador y activan los avisos para que les lleguen al celular. En iPhone, los avisos al celular solo llegan con la app instalada. Al que no los activa, tus avisos le llegan por mail.</p></details>
+<details><summary>¿Cómo le llegan mis avisos a un cliente?</summary><p>Si activó los avisos en su celular, cada aviso le llega ahí como notificación; si en un día no lo vio en la app, Gauss le manda ese mismo aviso por mail. Si no los activó, le llega al mail que tenés cargado para ese cliente. En el texto de un aviso no se pueden poner links: tu cliente abre lo que necesita desde la app. Desde cada mail puede pedir que no le lleguen más por esa vía.</p></details>
 <details><summary>¿Qué archivos lee?</summary><p>Los de Mis Comprobantes de ARCA (CSV, Excel o ZIP), fotos y PDF de facturas y tickets, y extractos de banco y resúmenes de tarjeta. Lo que no se llega a leer queda marcado para que lo mires.</p></details>
 <details><summary>¿Necesita mi clave fiscal?</summary><p>No. Gauss trabaja con los archivos de comprobantes que ya bajás de ARCA.</p></details>
-<details><summary>¿Puede mandarle algo a un cliente sin que yo lo vea?</summary><p>No. Los informes salen cuando los aprobás y los reclamos de papeles cuando los mandás. El recordatorio automático de honorarios viene apagado: lo prendés vos si lo querés.</p></details>
+<details><summary>¿Puede mandarle algo a un cliente sin que yo lo vea?</summary><p>No. Los informes salen cuando los aprobás, y los reclamos de papeles y los avisos cuando los mandás. El recordatorio automático de honorarios viene apagado: lo prendés vos si lo querés.</p></details>
 <details><summary>¿Se conecta con mi WhatsApp?</summary><p>No. Gauss no entra a tu teléfono ni lee tus chats. Si querés reclamar un papel por WhatsApp, te deja el mensaje escrito y lo mandás vos, desde tu número.</p></details>
-<details><summary>¿Qué pasa con el secreto profesional?</summary><p>Cada estudio ve solo lo suyo y los datos se usan únicamente para armar tus fichas e informes. Las fotos y los PDF se leen con un servicio de inteligencia artificial: está detallado en la <a class="link" href="https://app.gauss.iman.ar/privacidad">página de privacidad</a>. Si el link de un cliente se filtra, generás uno nuevo y el anterior deja de andar.</p></details>
+<details><summary>¿Qué pasa con el secreto profesional?</summary><p>Cada estudio ve solo lo suyo y los datos se usan únicamente para armar tus fichas e informes. Las fotos y los PDF se leen con un servicio de inteligencia artificial: está detallado en la <a class="link" href="https://app.gauss.iman.ar/privacidad">página de privacidad</a>. Para entrar con el link de un cliente hay que poner un mail y el código que llega ahí, y vos ves quién entró. Solo quien entra con el mail que cargaste para ese cliente ve sus informes y tus avisos; cualquier otro solo puede subir papeles, hasta que lo habilites. Le quitás el acceso a quien quieras y, si el link se filtró, generás uno nuevo.</p></details>
 <details><summary>¿Qué vencimientos muestra?</summary><p>IVA y monotributo de cada cliente, con el calendario general de ARCA y los feriados nacionales. Para el IVA hace falta el CUIT cargado. No contempla prórrogas ni días no laborables, y Gauss no presenta ni paga nada: marcás lo que ya hiciste.</p></details>
 <details><summary>¿Puede entrar mi equipo?</summary><p>Sí. Sumás a cada persona con su mail y entra con el código que le llega ahí, sin contraseña.</p></details>
 <details><summary>¿Puedo probarlo sin registrarme?</summary><p>Sí. La <a class="link" href="https://app.gauss.iman.ar/demo">demo</a> abre un estudio de ejemplo con 14 clientes y datos inventados. Tocás lo que quieras: es una copia solo tuya y se borra sola. Ahí no se leen fotos ni PDF nuevos y no sale ningún mail: para eso está tu cuenta.</p></details>
@@ -523,7 +561,7 @@
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Demo player: the static markup is the finished month; with motion it is replayed step by step,
-     the client's files coming in from their link while the month's file fills in on the board. */
+     the client's files coming in from their app while the month's file fills in on the board. */
   var demo=document.querySelector('[data-g-demo]');
   if(!demo||reduce)return;
   var page=demo.querySelector('[data-g-page]'),files=[].slice.call(demo.querySelectorAll('.up-file'));
@@ -543,7 +581,7 @@
     var c=r.querySelector('[data-chip]');c.textContent=o.chip;c.className='g-chip'+(o.chipCls?' '+o.chipCls:'');
   };
   var status=function(text,done){footText.textContent=text;foot.classList.toggle('is-done',!!done)};
-  /* A mail from the firm shows up on the client's phone. */
+  /* What the firm sends shows up in the client's app as a notice. */
   var say=function(text){noticeText.textContent=text;notice.classList.add('is-on');page.scrollTo({top:0,behavior:'smooth'})};
   var hush=function(){notice.classList.remove('is-on')};
   /* The client picks a file: the box is pressed and the file shows as received. */
