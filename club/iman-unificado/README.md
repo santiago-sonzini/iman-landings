@@ -2,13 +2,13 @@
 
 ## Gauss para estudios contables — 13 de octubre de 2026
 
-Landing de Gauss para estudios contables, publicada en **https://gauss.iman.ar/**, y la página web donde el cliente del estudio ve y pide su informe (`/informe/`). La landing de compras (`experience/gauss.html`, `/gauss/`) no cambia.
+Landing de Gauss para estudios contables, publicada en **https://gauss.iman.ar/**, y un informe de ejemplo (`/informe/`): copia estática de la página donde el cliente del estudio ve y pide su informe en la app (`app.gauss.iman.ar`). La landing de compras (`experience/gauss.html`, `/gauss/`) no cambia.
 
-- `experience/gauss-estudios.html`: la landing. La demo del hero es un cliente mandando papeles por WhatsApp mientras se llena la ficha del mes; sigue el mismo sistema que `gauss.html`.
-- `experience/gauss-informe.html`: el informe de ejemplo, con selector de mes y el botón «Pedir el informe». Es una demo: los datos son ficticios y el pedido no se envía a ningún lado.
+- `experience/gauss-estudios.html`: la landing. Describe la app real (`app.gauss.iman.ar`, código en `club/gauss-app/`): los papeles entran por carga de archivos, no por WhatsApp. La demo del hero es un cliente subiendo papeles desde su link mientras se llena la ficha del mes; el panel y el informe se muestran con capturas reales de la demo (`experience/assets/shots/gauss-desktop.webp` y `gauss-informe-mobile.webp`, recortadas a 1800×2582 y 600×3740 de los PNG que `node scripts/capture-demos.mjs gauss` deja en `club/tmp/demo-captures/`; si cambia el alto hay que recalcular `--end` en la landing).
+- `experience/gauss-informe.html`: el informe de ejemplo, con las mismas secciones y textos que el informe real de la app y el botón «Pedir informe». Es una demo: los datos son ficticios y el pedido no se envía a ningún lado.
 - `build_dark` las emite a `public/gauss/estudios/` y `public/gauss/estudios/informe/`, sin listar (`noindex`, fuera del sitemap y de `docs/pages.json`), con canonical a `gauss.iman.ar`.
 - `server/worker.mjs` (`GAUSS_PAGES`): en `gauss.iman.ar`, `/` y `/informe/` sirven esas dos páginas, `/assets/` pasa tal cual y cualquier otra ruta va a `www.iman.ar`. `gauss.iman.ar` es un dominio más del proyecto en Cloudflare Pages.
-- Los botones llevan a `/contacto/?servicio=estudios`: el formulario y `server/contact.mjs` suman la opción «Gauss · Estudios contables».
+- Los botones llevan a la demo (`https://app.gauss.iman.ar/demo`) y al alta (`https://app.gauss.iman.ar/`), con dirección completa porque en `gauss.iman.ar` cualquier otra ruta va a `www.iman.ar`. El formulario y `server/contact.mjs` conservan la opción «Gauss · Estudios contables» (`/contacto/?servicio=estudios`), aunque la landing ya no la enlaza.
 - Ver en local: `python3 scripts/build.py` y la vista previa `iman` → `http://127.0.0.1:8791/gauss/estudios/`.
 - Imagen para compartir: `variants/assets/share-gauss-estudios-v1.png`, definida en `scripts/render-brand-previews.cjs`.
 - El asistente de WhatsApp conoce el producto: bloque «Gauss para estudios contables» en su `negocio.md`.

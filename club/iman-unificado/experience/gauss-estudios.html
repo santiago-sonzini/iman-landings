@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
 <title>Gauss para estudios contables: tu cartera, al día | IMÁN</title>
-<meta name="description" content="Gauss recibe los papeles de tus clientes por WhatsApp y mail, los ordena, te avisa qué falta y arma el informe del mes de cada uno. Vos revisás y aprobás. Para estudios contables de Argentina.">
+<meta name="description" content="Gauss lee los papeles de tus clientes, los ordena, te avisa qué falta y arma el informe del mes de cada uno. Los subís vos o los suben ellos desde un link. Gratis, para estudios contables de Argentina.">
 <meta property="og:title" content="Gauss · Tu cartera, al día">
-<meta property="og:description" content="Gauss recibe los papeles de tus clientes por WhatsApp y mail, los ordena, te avisa qué falta y arma el informe del mes de cada uno.">
+<meta property="og:description" content="Gauss lee los papeles de tus clientes, los ordena, te avisa qué falta y arma el informe del mes de cada uno. Probalo en la demo, sin registrarte.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" href="/assets/identity-variants/favicon-v1.svg" type="image/svg+xml">
@@ -16,8 +16,9 @@
 <link rel="stylesheet" href="/assets/experience/v3.css">
 <script>document.documentElement.classList.add('motion')</script>
 <style>
-/* Gauss for accounting firms. Same family as gauss.html: the demo comes first. The client's WhatsApp on one side,
-   the month's file filling in on the other. Served at gauss.iman.ar (and at /gauss/estudios/ on the main site). */
+/* Gauss for accounting firms. Same family as gauss.html: the demo comes first. The client's upload page on one side,
+   the month's file filling in on the other. Served at gauss.iman.ar (and at /gauss/estudios/ on the main site).
+   Buttons go to the app (app.gauss.iman.ar) and to its demo; the captures further down are taken from that demo. */
 .g-lock{align-items:baseline;gap:9px}
 .g-word{padding-right:.05em;font:600 24px/1 var(--display);letter-spacing:-.06em;background:linear-gradient(100deg,#49b6cd 0%,#9a83ea 55%,#e0a676 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .dark .g-word{background-image:var(--grad)}
@@ -31,22 +32,49 @@
 .g-title h1 .hl{margin:.06em 0 0 -.1em}
 .g-pitch{grid-area:pitch;padding:24px 0 clamp(12px,3vh,40px)}
 .g-pitch .lead{margin-bottom:26px}
+.g-note{margin-top:16px;font-size:12.5px;line-height:1.5;color:var(--muted)}
 .g-strip{grid-area:strip;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px;padding:22px 0 28px;border-top:1px solid var(--line)}
 .g-strip article{display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
 .g-strip span{font:500 10.5px/2.5 var(--mono);letter-spacing:.08em;color:var(--muted)}
 .g-strip h2{font-size:clamp(19px,1.7vw,24px);letter-spacing:-.045em;line-height:1.15}
 .g-strip p{grid-column:2;font-size:13.5px;line-height:1.5;color:var(--muted)}
 
-/* Demo: the client sends papers by WhatsApp while the month's file fills in. */
+/* Demo: the client uploads papers from their link while the month's file fills in. */
 .g-visual{grid-area:visual;position:relative;align-self:center;display:flex;align-items:center;justify-content:center;gap:clamp(16px,2.2vw,34px);min-width:0;padding:clamp(10px,2vh,24px) 0}
 .g-visual .phone{flex:none;width:clamp(236px,calc((100svh - 330px) * .462),296px)}
-.wa-avatar{background:#8c7a5b}
-.g-op{display:flex;align-items:center;gap:6px;margin-left:auto;padding:4px 9px;border-radius:999px;background:var(--ink);color:#fff;font:9.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.wa-photo{display:block;width:156px;height:104px;margin:-2px -5px 5px;border-radius:7px;background:linear-gradient(#0000 0 14px,#12121226 14px 15px,#0000 15px 100%) 14px 12px/62% 100% no-repeat,repeating-linear-gradient(#0000 0 9px,#1212121a 9px 10px) 14px 34px/78% 52px no-repeat,linear-gradient(#12121233,#12121233) right 14px bottom 12px/34% 2px no-repeat,#fbfaf6;box-shadow:inset 0 0 0 1px #0b141a14}
-.wa-doc{display:flex;align-items:center;gap:8px;margin:-1px -4px 5px;padding:8px 10px;border-radius:7px;background:#0b141a0d;font-size:12.5px}
-.wa-msg.out .wa-doc{background:#0b141a12}
-.wa-doc i{flex:none;padding:5px 5px 4px;border-radius:5px;background:#d9534f;color:#fff;font:700 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.04em}
-.wa-doc small{display:block;font-size:10.5px;color:#667781}
+.up{display:flex;flex-direction:column;height:100%;background:linear-gradient(180deg,#e9f1f6,#f5f5f7 44%);color:var(--ink);font:12.5px/1.4 var(--sans)}
+.up-status{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 4px;font:600 11.5px/1 system-ui,sans-serif}
+.up-sig{display:flex;align-items:flex-end;gap:2px}
+.up-sig i{width:3px;border-radius:1px;background:var(--ink)}
+.up-sig i:nth-child(1){height:5px}
+.up-sig i:nth-child(2){height:7px}
+.up-sig i:nth-child(3){height:9px}
+.up-bar{overflow:hidden;margin:5px 12px 0;padding:5px 12px;border-radius:999px;background:#1212120f;font:10px/1.4 var(--mono);color:var(--muted);text-align:center;white-space:nowrap;text-overflow:ellipsis}
+.up-page{flex:1;display:flex;flex-direction:column;gap:9px;overflow:hidden auto;min-height:0;padding:14px 12px 10px;scrollbar-width:none}
+.up-page::-webkit-scrollbar{display:none}
+.up-studio{display:flex;align-items:center;gap:8px;font:600 12.5px/1.2 var(--sans);letter-spacing:-.02em}
+.up-studio i{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--grad);font:600 9.5px/1 var(--mono);font-style:normal}
+.up-kick{align-self:flex-start;padding:3px 9px;border-radius:999px;background:var(--ink);color:#fff;font:500 8.5px/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase}
+.up-title{font:500 23px/1.08 var(--display);letter-spacing:-.045em}
+.up-notice{display:none;padding:9px 11px;border-radius:12px;background:var(--ink);color:#fff;font-size:11.5px;line-height:1.4;box-shadow:0 14px 24px -16px #000}
+.up-notice.is-on{display:block;animation:g-pop .35s var(--ease) backwards}
+.up-notice b{display:block;margin-bottom:2px;font:500 8.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted-d)}
+.up-drop{display:grid;justify-items:center;gap:3px;padding:15px 10px;border-radius:13px;background:#ffffffb3;box-shadow:inset 0 0 0 1.5px #12121233;text-align:center;transition:transform .15s,background .3s,box-shadow .3s}
+.up-drop b{font:500 13.5px/1.25 var(--display);letter-spacing:-.03em}
+.up-drop span{font-size:10.5px;color:var(--muted)}
+.up-drop.is-press{transform:scale(.97);background:var(--grad-soft);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.up-card{padding:11px 12px 5px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.up-card.is-empty{display:none}
+.up-card-title{font:500 14px/1.2 var(--display);letter-spacing:-.035em}
+.up-files{margin-top:4px}
+.up-file{display:grid;grid-template-columns:26px minmax(0,1fr) auto;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:11.5px}
+.up-file:first-child{border-top:0}
+.up-file.pending{display:none}
+.up-file i{display:grid;place-items:center;height:22px;border-radius:5px;background:#d9534f;color:#fff;font:700 8px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.04em}
+.up-file i.foto{background:linear-gradient(#0000 0 5px,#12121233 5px 6px,#0000 6px 100%) 4px 0/58% 100% no-repeat,repeating-linear-gradient(#0000 0 3px,#1212121f 3px 4px) 4px 9px/70% 9px no-repeat,#fbfaf6;box-shadow:inset 0 0 0 1px #12121226}
+.up-file span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.up-file em{padding:2px 7px;border-radius:999px;box-shadow:inset 0 0 0 1px #12121266;font:9px/1.5 var(--mono);font-style:normal;white-space:nowrap}
+.up-foot{margin-top:auto;padding-top:4px;font:9px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted);text-align:center}
 .g-board{flex:1 1 300px;min-width:0;max-width:350px}
 .g-board-item{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 14px 12px;font-size:14px;font-weight:600}
 .g-board-item small{display:block;margin-top:2px;font-size:11.5px;font-weight:400;color:var(--muted)}
@@ -92,7 +120,7 @@
 .g-inbox{position:relative}
 .g-inbox .sticker{position:absolute;right:18px;bottom:-11px;z-index:1}
 .g-in{display:grid;grid-template-columns:54px 1fr;gap:2px 12px;padding:13px 14px;border-top:1px solid var(--line)}
-.g-in:first-of-type{border-top:0}
+.ui-head+.g-in{border-top:0}
 .g-in i{grid-row:1/3;align-self:center;padding:5px 0;border-radius:7px;background:var(--paper-2);font:500 9.5px/1.4 var(--mono);font-style:normal;letter-spacing:.06em;text-align:center}
 .g-in b{font-weight:600}
 .g-in b small{margin-left:6px;font-size:11.5px;font-weight:400;color:var(--muted)}
@@ -119,43 +147,24 @@
 .vig-tags{display:flex;flex-wrap:wrap;gap:5px}
 .vig-tags span{padding:4px 9px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:10px/1.4 var(--mono)}
 .vig-done{justify-self:start;padding:4px 10px;border-radius:999px;background:var(--ink);color:#fff;font:10px/1.5 var(--mono)}
+.vig-drop{padding:13px 10px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #12121233;font:500 12.5px/1.3 var(--sans);letter-spacing:-.02em;text-align:center}
 
-/* The report: what the firm's client sees on a web page */
+/* The report: what the firm's client sees on a web page, as captured from the demo */
 .tint h2 .hl{background:var(--ink);color:#fff}
 .g-rep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(30px,6vw,90px)}
 .g-rep h2{margin:18px 0 18px}
 .g-rep .checks{margin:26px 0 30px}
-.r-wrap{position:relative}
-.r-wrap .sticker{position:absolute;right:18px;top:-11px;z-index:1}
-.r-screen{padding:16px 16px 18px;font:13px/1.45 var(--sans)}
-.r-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.r-top b{font:500 10px/1.4 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
-.r-top span{padding:3px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font:10px/1.5 var(--mono)}
-.r-name{margin-bottom:12px;font:500 22px/1.15 var(--display);letter-spacing:-.045em}
-.r-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.r-tile{padding:10px 11px;border-radius:11px;background:var(--paper-2)}
-.r-tile small{display:block;font-size:11px;color:var(--muted)}
-.r-tile b{display:block;margin-top:2px;font:600 16px/1.2 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.r-tile em{display:block;margin-top:2px;font-size:10.5px;font-style:normal;line-height:1.35;color:var(--muted)}
-.r-tile.is-key{background:var(--grad)}
-.r-tile.is-key small,.r-tile.is-key em{color:#33343a}
-.r-bars{display:grid;grid-template-columns:repeat(6,1fr);align-items:end;gap:8px;height:84px;margin:14px 0 6px;padding:0 2px}
-.r-bars i{display:block;border-radius:5px 5px 2px 2px;background:#1212121f}
-.r-bars i.now{background:var(--ink)}
-.r-months{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;font:10px/1.4 var(--mono);color:var(--muted);text-align:center}
-.r-note{display:flex;align-items:flex-start;gap:9px;margin-top:12px;padding:10px 11px;border-radius:11px;box-shadow:inset 0 0 0 1px var(--line);font-size:12px;line-height:1.45}
-.r-note .live-dot{margin-top:5px}
-.r-ask{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
-.r-ask span:last-child{flex:none;padding:7px 14px;border-radius:999px;background:var(--ink);color:#fff;font:600 11.5px/1.3 var(--sans)}
+.r-wrap{position:relative;justify-self:center;width:min(310px,78vw)}
+.r-wrap .sticker{position:absolute;left:50%;top:-12px;z-index:1;transform:translateX(-50%) rotate(-4deg)}
 
-/* The firm's panel: the short list for today */
-.q-row{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:13px 14px;border-top:1px solid var(--line)}
-.q-row:first-of-type{border-top:0}
-.q-row i{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--paper-2);font:600 14px/1 var(--sans);font-style:normal;font-variant-numeric:tabular-nums}
-.q-row b{font-weight:600}
-.q-row b small{display:block;font-size:11.5px;font-weight:400;color:var(--muted)}
-.q-row>span{padding:6px 13px;border-radius:999px;box-shadow:inset 0 0 0 1px #12121233;font:600 11.5px/1.3 var(--sans);white-space:nowrap}
-.q-row>span.go{background:var(--ink);color:#fff;box-shadow:none}
+/* The firm's panel: a capture of the demo's home, and what it holds */
+.g-panel .g-head{max-width:760px;margin-bottom:clamp(24px,4vh,40px)}
+.g-shot{position:relative}
+.g-shot .sticker{position:absolute;right:22px;top:-11px;z-index:1}
+.g-feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:clamp(18px,3vh,28px) 0 30px}
+.g-feats li{padding:16px 18px 18px;border-radius:16px;background:var(--paper-2)}
+.g-feats b{display:block;margin-bottom:5px;font:500 18px/1.2 var(--display);letter-spacing:-.035em}
+.g-feats span{display:block;font-size:13.5px;line-height:1.55;color:var(--muted)}
 
 /* Rules */
 .g-caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -196,6 +205,10 @@
 @media(max-width:1180px) and (min-width:1001px){
   .g-chip{grid-column:1/-1;justify-self:start;padding:2px 7px}
   .g-terms{grid-column:1/-1}
+  .g-name i{display:none}
+  .g-board-foot{height:78px;flex-wrap:wrap;align-content:center;gap:6px 10px}
+  .g-board-foot [data-g-foot-text]{flex:1 1 calc(100% - 17px)}
+  .g-approve{margin-left:17px}
 }
 @media(max-width:1000px){
   :root{--g-head:76px}
@@ -218,39 +231,39 @@
   .g-terms{font-size:11px}
   .g-chip{padding:1px 7px;font-size:9.5px}
   .g-board-foot{height:38px;margin-top:8px;padding:0 12px;font-size:11px}
-  .g-board-foot [data-g-foot-text]{-webkit-line-clamp:1}
   .g-approve{padding:5px 13px}
   .g-visual .phone{order:2;flex:1 1 0;display:flex;flex-direction:column;overflow:hidden;width:auto;min-height:0;padding:0;border-radius:14px;background:none;box-shadow:0 0 0 1px #12121226}
   .g-visual .phone-screen{flex:1;display:flex;flex-direction:column;min-height:0;aspect-ratio:auto;border-radius:14px}
-  .g-visual .wa{flex:1;min-height:0;height:auto;font-size:13px}
-  .g-visual .wa-status,.g-visual .wa-composer{display:none}
-  .g-visual .wa-header{padding:6px 10px 7px 4px}
-  .g-visual .wa-avatar{width:30px;height:30px;font-size:13px}
-  .g-visual .wa-notice{margin-bottom:6px}
-  .wa-photo{width:132px;height:74px}
+  .g-visual .up{flex:1;min-height:0;height:auto}
+  .g-visual .up-status,.g-visual .up-bar,.g-visual .up-kick,.g-visual .up-title{display:none}
+  .g-visual .up-page{gap:7px;padding:10px}
+  .up-drop{padding:9px 10px}
+  .up-drop span{display:none}
   .g-pitch{max-width:560px;margin:0 auto;padding:24px 0 8px}
   .g-strip{grid-template-columns:1fr;max-width:560px;margin:22px auto 0}
   .g-split,.g-why,.g-rep{grid-template-columns:1fr}
   .g-split>header{position:static}
   .g-caps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-feats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-shot .sticker{top:-26px}
 }
 @media(max-width:1000px) and (max-height:700px){.g-title .kick{display:none}}
 @media(max-width:1000px) and (max-height:620px){
   .g-board-item small{display:none}
+  .g-name i{display:none}
   .g-row{grid-template-columns:1fr auto auto}
   .g-terms{display:none}
   .g-chip{order:2}
   .g-price{order:3}
 }
+@media(max-width:340px){.nav .g-by{display:none}}
 @media(max-width:640px){
   .g-word{font-size:22px}
   .g-by{--logo-w:42px;font-size:11px}
   .g-caps{grid-template-columns:1fr}
   .g-steps li{grid-template-columns:34px minmax(0,1fr);gap:4px 10px}
   .g-steps .vig{grid-column:2;margin-top:10px}
-  .r-tile b{font-size:14.5px}
-  .q-row{grid-template-columns:30px 1fr auto;gap:10px;padding:12px}
-  .q-row i{width:30px;height:30px;font-size:13px}
+  .g-feats{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -263,7 +276,7 @@
 <a class="g-word" href="./" aria-label="Gauss, inicio">Gauss</a>
 <a class="g-by" href="https://www.iman.ar/" aria-label="Gauss es un producto de IMÁN">de <span class="logo" aria-hidden="true"></span></a>
 </div>
-<nav class="nav-links" aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#informe">El informe</a><a class="nav-cta" href="https://www.iman.ar/contacto/?servicio=estudios"><i aria-hidden="true"></i>Hablemos</a></nav>
+<nav class="nav-links" aria-label="Principal"><a href="#como">Cómo funciona</a><a href="#informe">El informe</a><a href="https://app.gauss.iman.ar/">Entrar</a><a class="nav-cta" href="https://app.gauss.iman.ar/demo"><i aria-hidden="true"></i>Probar la demo</a></nav>
 </div>
 </header>
 
@@ -277,57 +290,55 @@
 <h1 id="hero-title"><span class="ln">Tu cartera,</span><span class="ln hl">al día.</span></h1>
 </div>
 
-<figure class="g-visual" data-g-demo aria-label="Ejemplo ilustrativo: un cliente manda sus papeles por WhatsApp, Gauss los lee y los controla, avisa qué falta y deja el informe del mes listo para aprobar">
+<figure class="g-visual" data-g-demo aria-label="Ejemplo ilustrativo: un cliente sube sus papeles desde su link, Gauss los lee y los controla, avisa qué falta y deja el informe del mes listo para aprobar">
 <div class="phone">
-<div class="phone-screen"><div class="wa">
-<div class="wa-status" aria-hidden="true"><span>9:41</span><span class="wa-status-icons"><i></i><i></i><i></i></span></div>
-<div class="wa-header">
-<span class="wa-back" aria-hidden="true">‹</span>
-<span class="wa-avatar" aria-hidden="true">L</span>
-<span class="wa-contact"><b>Luis</b><small class="wa-presence">en línea</small></span>
-<span class="g-op" title="Gauss lee este chat. No escribe."><i class="live-dot"></i>Gauss lee</span>
-</div>
-<div class="wa-thread">
-<p class="wa-notice"><span>🔒 Demo ilustrativa: datos de ejemplo.</span></p>
-<ol class="wa-messages" data-g-chat>
-<li class="wa-msg in"><div class="bubble"><span class="wa-photo" role="img" aria-label="Foto de una factura en papel"></span>Te paso la factura de la harina<span class="meta">09:12</span></div></li>
-<li class="wa-msg in"><div class="bubble"><span class="wa-doc"><i>PDF</i><span>Extracto_sep.pdf<small>3 páginas</small></span></span>Y el extracto del banco<span class="meta">09:13</span></div></li>
-<li class="wa-msg out"><div class="bubble">Recibido, Luis. Me falta el resumen de la tarjeta de septiembre.<span class="meta">09:40<i class="ticks read"></i></span></div></li>
-<li class="wa-msg in"><div class="bubble"><span class="wa-doc"><i>PDF</i><span>Tarjeta_sep.pdf<small>2 páginas</small></span></span>Ahí va<span class="meta">10:05</span></div></li>
-<li class="wa-msg in"><div class="bubble">Me llegó el informe al mail. Gracias 🙌<span class="meta">11:48</span></div></li>
+<div class="phone-screen"><div class="up">
+<div class="up-status" aria-hidden="true"><span>9:41</span><span class="up-sig"><i></i><i></i><i></i></span></div>
+<p class="up-bar" aria-hidden="true">app.gauss.iman.ar/subir</p>
+<div class="up-page" data-g-page>
+<p class="up-studio"><i aria-hidden="true">TE</i>Tu estudio</p>
+<p class="up-kick">Tus papeles</p>
+<p class="up-title">Hola, Luis.</p>
+<p class="up-notice" data-g-notice><b>Mail de tu estudio</b><span>Ya está tu informe de septiembre.</span></p>
+<p class="up-drop" data-g-drop><b>Sacar foto o elegir archivos</b><span>Llegan directo a tu estudio.</span></p>
+<div class="up-card">
+<p class="up-card-title" data-g-count>Llegaron 3 archivos</p>
+<ol class="up-files">
+<li class="up-file"><i class="foto" aria-hidden="true"></i><span>Factura.jpg</span><em>Recibido</em></li>
+<li class="up-file"><i aria-hidden="true">PDF</i><span>Extracto.pdf</span><em>Recibido</em></li>
+<li class="up-file"><i aria-hidden="true">PDF</i><span>Tarjeta.pdf</span><em>Recibido</em></li>
 </ol>
 </div>
-<div class="wa-composer" aria-hidden="true">
-<span class="wa-input"><span class="wa-typed" data-wa-typed></span><span class="wa-placeholder">Mensaje</span></span>
-<span class="wa-send"><svg class="mic" viewBox="0 0 24 24"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11Z"/></svg><svg class="plane" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21 23 12 2 3v7l15 2-15 2Z"/></svg></span>
+<p class="up-foot">Ejemplo ilustrativo · datos inventados</p>
 </div>
 </div></div>
 </div>
 
 <div class="ui g-board">
-<p class="ui-head"><span>Ficha de septiembre</span><span>Demo · datos ficticios</span></p>
-<p class="g-board-item"><span>Panadería Don Luis<small>Responsable inscripto · septiembre</small></span><em class="g-demo">Demo</em></p>
+<p class="ui-head"><span>Ficha de septiembre</span><span>Datos inventados</span></p>
+<p class="g-board-item"><span>Panadería Don Luis<small>Septiembre · archivos de ARCA cargados</small></span><em class="g-demo">Ejemplo</em></p>
 <ol class="g-rows">
 <li class="g-row" data-g-row="factura"><span class="g-name"><i>F</i>Factura de compra</span><span class="g-price" data-price>$184.300</span><span class="g-terms" data-terms>Harinas del Sur · figura en ARCA</span><span class="g-chip ok" data-chip>Leída</span></li>
 <li class="g-row" data-g-row="extracto"><span class="g-name"><i>E</i>Extracto del banco</span><span class="g-price" data-price>214 mov.</span><span class="g-terms" data-terms>Cierra con el saldo</span><span class="g-chip ok" data-chip>Controlado</span></li>
-<li class="g-row" data-g-row="tarjeta"><span class="g-name"><i>T</i>Resumen de tarjeta</span><span class="g-price" data-price>38 mov.</span><span class="g-terms" data-terms>Cierra con el saldo</span><span class="g-chip ok" data-chip>Controlado</span></li>
+<li class="g-row" data-g-row="tarjeta"><span class="g-name"><i>T</i>Resumen de tarjeta</span><span class="g-price" data-price>38 mov.</span><span class="g-terms" data-terms>Impuestos y percepciones sumados</span><span class="g-chip ok" data-chip>Leído</span></li>
 </ol>
-<p class="g-board-foot is-done" data-g-foot><span class="live-dot"></span><span data-g-foot-text>Aprobado · informe enviado por mail</span><span class="g-approve" data-g-approve aria-hidden="true">Aprobar</span></p>
+<p class="g-board-foot is-done" data-g-foot><span class="live-dot"></span><span data-g-foot-text>Aprobado · informe enviado por mail</span><span class="g-approve" data-g-approve aria-hidden="true">Aprobar y enviar</span></p>
 </div>
 </figure>
 </div>
 
 <div class="g-pitch" data-pill-after>
-<p class="lead">Gauss recibe los papeles de tus clientes por WhatsApp y mail, los lee, los ordena y te avisa qué falta. Con eso arma el informe del mes de cada uno. Nada sale sin tu aprobación.</p>
+<p class="lead">Subís los papeles de tus clientes, o los suben ellos desde un link. Gauss los lee, los ordena y te avisa qué falta. Con eso arma el informe del mes de cada uno, que sale cuando lo aprobás.</p>
 <div class="actions">
-<a class="btn btn-ink" href="https://www.iman.ar/contacto/?servicio=estudios">Quiero verlo con un cliente mío <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-<a class="link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20mi%20estudio%20contable." target="_blank" rel="noopener">Escribinos por WhatsApp ↗</a>
+<a class="btn btn-ink" href="https://app.gauss.iman.ar/demo">Probar la demo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="link" href="https://app.gauss.iman.ar/">Crear mi cuenta gratis ↗</a>
 </div>
+<p class="g-note">La demo abre sin registrarte, con un estudio de ejemplo y datos inventados. Para leer tus propios papeles está tu cuenta.</p>
 </div>
 
 <div class="g-strip" role="list" aria-label="Qué hace Gauss en un estudio contable">
-<article role="listitem"><span>01</span><h2>Recibe</h2><p>Fotos, PDFs y audios, por WhatsApp o mail. Cada papel va a la ficha de su cliente.</p></article>
-<article role="listitem"><span>02</span><h2>Controla</h2><p>Lee cada comprobante, lo cruza con ARCA y con el banco, y marca lo que no cierra.</p></article>
+<article role="listitem"><span>01</span><h2>Recibe</h2><p>PDF, fotos y los archivos de ARCA. Los subís vos, o tu cliente desde su link.</p></article>
+<article role="listitem"><span>02</span><h2>Controla</h2><p>Lee cada factura, la cruza con los archivos de ARCA de ese mes, revisa que el extracto cierre y marca lo que no coincide.</p></article>
 <article role="listitem"><span>03</span><h2>Vos aprobás</h2><p>El informe de cada cliente queda listo. Sale cuando das el sí.</p></article>
 </div>
 </section>
@@ -340,18 +351,18 @@
 <h2 id="sistema-title">Tu sistema queda como está. <span class="hl">Gauss trabaja al lado.</span></h2>
 <p class="lead">Los sistemas de estudio liquidan impuestos. Lo que pasa antes sigue siendo a mano: pedir los papeles, bajarlos del chat, cargarlos y reclamar lo que falta. Gauss se ocupa de esa parte.</p>
 <ul class="g-points">
-<li><b>Tu cliente no instala nada.</b><span>Manda la foto o el PDF por WhatsApp o por mail, como hace hoy.</span></li>
-<li><b>Vos no cambiás de sistema.</b><span>Seguís liquidando donde liquidás. Gauss te deja un Excel por cliente con todo cargado.</span></li>
-<li><b>Nada queda sin reclamar.</b><span>Sabe qué papeles manda cada cliente por mes y te deja listo el mensaje para pedir lo que falta.</span></li>
+<li><b>Tu cliente lo hace desde el celular.</b><span>Abre su link, saca la foto o elige el PDF. Sin contraseñas ni nada que aprender.</span></li>
+<li><b>Vos no cambiás de sistema.</b><span>Seguís liquidando donde liquidás. Gauss te deja la planilla de cada cliente y cada mes, lista para abrir en Excel.</span></li>
+<li><b>El reclamo ya está escrito.</b><span>Gauss sabe qué papeles manda cada cliente por mes y te deja listo el mensaje para pedir lo que falta, con su link.</span></li>
 </ul>
 </div>
-<div class="g-inbox rv" aria-label="Ejemplo ilustrativo: Gauss lee lo que mandan los clientes en cualquier formato">
-<span class="sticker">sin app · sin portal</span>
+<div class="g-inbox rv" role="group" aria-label="Ejemplo ilustrativo: Gauss lee lo que entra, sea una foto, un PDF o un archivo de ARCA">
+<span class="sticker">desde el celular · sin contraseña</span>
 <div class="ui">
-<p class="ui-head"><span>Lo que mandan tus clientes</span><span>Demo</span></p>
-<p class="g-in"><i>FOTO</i><b>Factura en papel<small>Don Luis</small></b><span>Gauss leyó <em>Harinas del Sur · $184.300 · IVA $31.986</em></span></p>
-<p class="g-in"><i>PDF</i><b>Extracto_sep.pdf<small>Don Luis</small></b><span>Gauss leyó <em>214 movimientos · cierra con el saldo</em></span></p>
-<p class="g-in"><i>AUDIO</i><b>Nota de voz · 0:22<small>Taller Rossi</small></b><span>Gauss entendió <em>pregunta cuánto paga de IVA</em></span></p>
+<p class="ui-head"><span>Lo que entra</span><span>Ejemplo · datos inventados</span></p>
+<p class="g-in"><i>FOTO</i><b>Factura en papel<small>Don Luis</small></b><span>Gauss leyó <em>Harinas del Sur · $184.300 · IVA $17.513</em></span></p>
+<p class="g-in"><i>PDF</i><b>Extracto.pdf<small>Don Luis</small></b><span>Gauss leyó <em>214 movimientos · cierra con el saldo</em></span></p>
+<p class="g-in"><i>ARCA</i><b>Mis Comprobantes Recibidos<small>Don Luis</small></b><span>Gauss cargó <em>31 comprobantes de septiembre</em></span></p>
 <p class="g-inbox-foot">Tres formatos, una misma ficha.</p>
 </div>
 </div>
@@ -363,18 +374,18 @@
 <header class="rv">
 <p class="kick">Cómo funciona</p>
 <h2 id="como-title">De la foto de la factura <span class="dim">al informe aprobado.</span></h2>
-<p class="lead">Tus clientes no cambian nada: mandan los papeles como siempre.</p>
+<p class="lead">Tus clientes hacen su parte desde el celular, sin contraseñas.</p>
 </header>
 <ol class="g-steps">
-<li class="rv"><div><h3>Tu cliente manda</h3><p>Fotos de facturas, extractos en PDF, audios con preguntas. Por WhatsApp o por mail.</p></div>
-<div class="vig" aria-hidden="true"><div class="bubble">Te paso la factura de la harina</div><p class="vig-tags"><span>Foto</span><span>PDF</span><span>Audio</span><span>Mail</span></p></div></li>
-<li class="rv"><div><h3>Gauss lee y ordena</h3><p>Saca fecha, CUIT, importe e IVA de cada comprobante y lo guarda en la ficha de ese cliente y de ese mes.</p></div>
+<li class="rv"><div><h3>Llegan los papeles</h3><p>Arrastrás los archivos al cliente que corresponde, o le mandás su link y los sube él desde el celular.</p></div>
+<div class="vig" aria-hidden="true"><p class="vig-drop">Arrastrá los archivos acá</p><p class="vig-tags"><span>Foto</span><span>PDF</span><span>ARCA</span></p></div></li>
+<li class="rv"><div><h3>Gauss lee y ordena</h3><p>Saca fecha, CUIT, importe e IVA de cada factura y la guarda en la ficha de ese cliente y de ese mes. Lo dudoso queda para revisar.</p></div>
 <div class="vig" aria-hidden="true"><p class="vig-line"><b>Harinas del Sur</b><small>$184.300</small></p><p class="vig-line"><b>Lácteos La Paz</b><small>$96.450</small></p><p class="vig-line"><b>Envases Río</b><small>$41.200</small></p></div></li>
-<li class="rv"><div><h3>Controla</h3><p>Cruza las facturas con ARCA y revisa que el extracto cierre con el saldo. Lo que no coincide te lo marca.</p></div>
-<div class="vig" aria-hidden="true"><p class="vig-line best"><b>Extracto</b><small>cierra con el saldo</small></p><p class="vig-line late"><b>Factura 1182</b><small>no está en ARCA</small></p></div></li>
-<li class="rv"><div><h3>Te avisa qué falta</h3><p>Te deja el mensaje redactado para cada cliente. Lo mandás desde tu WhatsApp con un toque.</p></div>
+<li class="rv"><div><h3>Controla</h3><p>Cruza cada factura con los archivos de ARCA de ese mes, revisa que el extracto cierre con el saldo y suma impuestos, comisiones y retenciones por concepto.</p></div>
+<div class="vig" aria-hidden="true"><p class="vig-line best"><b>Extracto</b><small>cierra con el saldo</small></p><p class="vig-line late"><b>Factura 1182</b><small>no figura en ARCA</small></p></div></li>
+<li class="rv"><div><h3>Te avisa qué falta</h3><p>Te deja el mensaje redactado para cada cliente, con su link de carga. Lo mandás vos: por mail desde Gauss o desde tu WhatsApp.</p></div>
 <div class="vig" aria-hidden="true"><div class="bubble out">Luis, me falta el resumen de la tarjeta de septiembre.</div></div></li>
-<li class="rv"><div><h3>Aprobás</h3><p>El informe del mes queda listo. Lo revisás y sale por mail a tu cliente, con el nombre de tu estudio.</p></div>
+<li class="rv"><div><h3>Aprobás</h3><p>El informe del mes queda listo. Lo revisás y lo aprobás: tu cliente ya lo ve en su página. Si elegís enviarlo, le llega el mail con el link, y si responde, te llega a vos.</p></div>
 <div class="vig" aria-hidden="true"><p class="vig-line"><b>Informe</b><small>septiembre · Don Luis</small></p><span class="vig-done">Enviado por mail</span></div></li>
 </ol>
 </div>
@@ -384,54 +395,45 @@
 <div class="wrap g-rep">
 <div class="rv">
 <p class="kick">El informe</p>
-<h2 id="informe-title">Tu cliente lo pide y <span class="hl">lo ve en una web.</span></h2>
-<p class="lead">Cada cliente tiene su página con el nombre de tu estudio. Entra desde el celular, pide el informe del mes y lo ve ahí mismo. También le llega por mail.</p>
+<h2 id="informe-title">Lo aprobás y tu cliente <span class="hl">lo ve en una web.</span></h2>
+<p class="lead">Cada cliente tiene su página con el nombre de tu estudio. Entra desde el celular y ve los informes que aprobaste, mes por mes; cuando le mandás uno, le llega el link por mail. Si necesita uno actualizado, lo pide ahí y te llega el pedido.</p>
 <ul class="checks">
-<li>Ventas y compras del mes, comparadas con los meses anteriores.</li>
-<li>El IVA estimado antes del cierre, para que el vencimiento no lo sorprenda.</li>
-<li>La caja de los próximos 30 días contra lo que vence.</li>
-<li>Los clientes que dejaron de comprarle y a quién le compra más.</li>
-<li>Para monotributistas, cuánto falta para pasar de categoría.</li>
+<li>Ventas y compras del mes, y las ventas de los últimos seis meses.</li>
+<li>El IVA estimado del mes en curso, si ya cargaste sus comprobantes.</li>
+<li>A quién le compra y a quién le vende más.</li>
+<li>Los clientes que dejaron de comprarle.</li>
+<li>Para monotributistas, lo facturado en 12 meses y cuánto queda hasta el tope de su categoría.</li>
 </ul>
 <div class="actions"><a class="btn btn-ink" href="informe/">Ver un informe de ejemplo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
 </div>
-<div class="r-wrap rv" aria-label="Ejemplo ilustrativo: el informe del mes que ve el cliente del estudio en una página web">
-<span class="sticker">demo · datos ficticios</span>
-<div class="browser">
-<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>informe · Panadería Don Luis</span></div>
-<div class="r-screen">
-<p class="r-top"><b>Tu estudio</b><span>Septiembre 2026</span></p>
-<p class="r-name">Panadería Don Luis</p>
-<div class="r-tiles">
-<p class="r-tile"><small>Ventas</small><b>$14,8 M</b><em>6% más que agosto</em></p>
-<p class="r-tile"><small>Compras</small><b>$8,9 M</b><em>31 facturas</em></p>
-<p class="r-tile is-key"><small>IVA de octubre</small><b>$1,02 M</b><em>estimado al día 13</em></p>
-</div>
-<div class="r-bars" aria-hidden="true"><i style="height:78%"></i><i style="height:81%"></i><i style="height:77%"></i><i style="height:82%"></i><i style="height:84%"></i><i class="now" style="height:89%"></i></div>
-<p class="r-months" aria-hidden="true"><span>abr</span><span>may</span><span>jun</span><span>jul</span><span>ago</span><span>sep</span></p>
-<p class="r-note"><span class="live-dot"></span><span>3 clientes que te compraban todos los meses no compran hace 60 días.</span></p>
-<p class="r-ask"><span>¿Necesitás el de octubre al día de hoy?</span><span>Pedir informe</span></p>
-</div>
-</div>
+<div class="r-wrap rv">
+<span class="sticker">captura de la demo · datos inventados</span>
+<div class="phone"><div class="phone-screen"><img class="page-scroll slow" style="--end:-66.13%" src="/assets/experience/shots/gauss-informe-mobile.webp" width="600" height="3740" alt="El informe de septiembre de un cliente de la demo, visto en el celular: ventas, compras e IVA estimado del mes, el IVA del mes en curso, las ventas de los últimos seis meses, a quién le compra y a quién le vende, un cliente que dejó de comprarle y el botón para pedir un informe actualizado" loading="lazy"></div></div>
 </div>
 </div>
 </section>
 
 <section class="sec" aria-labelledby="panel-title">
-<div class="wrap g-split">
-<header class="rv">
+<div class="wrap g-panel">
+<header class="g-head rv">
 <p class="kick">Tu panel</p>
 <h2 id="panel-title">Cada mañana, <span class="dim">lo que hay que mirar.</span></h2>
-<p class="lead">Gauss hace el trabajo de fondo y te deja una lista corta: lo que necesita tu criterio. El resto de la cartera ya está en orden.</p>
+<p class="lead">Gauss hace el trabajo de fondo y te muestra cómo viene el cierre: qué entró, qué falta, qué vence y qué necesita tu criterio.</p>
 </header>
-<div class="ui rv" aria-label="Ejemplo ilustrativo: la lista de pendientes del día en el panel del estudio">
-<p class="ui-head"><span>Para revisar hoy</span><span>Demo · datos ficticios</span></p>
-<p class="q-row"><i>3</i><b>Informes listos para mandar<small>Don Luis, Taller Rossi y uno más</small></b><span class="go">Aprobar</span></p>
-<p class="q-row"><i>2</i><b>Facturas que no figuran en ARCA<small>Ferretería Norte</small></b><span>Ver</span></p>
-<p class="q-row"><i>1</i><b>Extracto que no cierra con el saldo<small>Taller Rossi · diferencia de $18.400</small></b><span>Ver</span></p>
-<p class="q-row"><i>3</i><b>Consultas que necesitan tu respuesta<small>Las repetidas ya tienen respuesta redactada</small></b><span>Responder</span></p>
-<p class="g-inbox-foot">Además: un Excel por cliente, listo para bajar.</p>
+<div class="g-shot rv">
+<span class="sticker">captura de la demo · datos inventados</span>
+<div class="browser">
+<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.gauss.iman.ar/demo</span></div>
+<div class="browser-screen"><img class="page-scroll slow" style="--end:-54.69%" src="/assets/experience/shots/gauss-desktop.webp" width="1800" height="2582" alt="El inicio de Gauss en la demo: el cierre de septiembre con 7 de 14 informes aprobados, los archivos recibidos por día, el calendario de octubre con lo que entró y lo que vence, la lista para revisar hoy y la cartera con el estado de cada cliente" loading="lazy"></div>
 </div>
+</div>
+<ul class="g-feats rv">
+<li><b>El cierre del mes</b><span>Cuántos informes ya aprobaste y qué le falta a cada cliente para cerrar.</span></li>
+<li><b>El calendario</b><span>Qué entró cada día y qué vence: IVA y monotributo de toda tu cartera.</span></li>
+<li><b>La cartera</b><span>Cliente por cliente: papeles, ARCA, informe, vencimiento y honorario.</span></li>
+<li><b>La cobranza</b><span>Quién pagó el honorario del mes, quién debe y el recordatorio listo para mandar.</span></li>
+</ul>
+<div class="actions rv"><a class="btn btn-ink" href="https://app.gauss.iman.ar/demo">Abrir la demo <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
 </div>
 </section>
 
@@ -444,11 +446,11 @@
 </header>
 <ul class="g-caps rv">
 <li><b>No presenta nada.</b><span>No liquida ni presenta declaraciones. Eso sigue en tu sistema y con tu firma.</span></li>
-<li><b>No manda nada solo.</b><span>Cada informe y cada mensaje espera tu aprobación.</span></li>
-<li><b>Solo lee tu WhatsApp.</b><span>No escribe desde tu número. Lo que sale, sale por mail o lo mandás vos.</span></li>
+<li><b>No manda nada por su cuenta.</b><span>Los informes salen cuando los aprobás y los reclamos cuando los mandás. El recordatorio automático de honorarios viene apagado.</span></li>
+<li><b>No entra a tu WhatsApp.</b><span>No se conecta a tu teléfono ni lee tus chats. Trabaja con lo que subís vos o suben tus clientes.</span></li>
 <li><b>No pide tu clave fiscal.</b><span>Trabaja con los archivos de comprobantes que ya bajás de ARCA.</span></li>
-<li><b>No adivina.</b><span>Lo que no puede leer o no cierra te lo marca para que lo mires.</span></li>
-<li><b>Los datos son de tu estudio.</b><span>Se usan solo para armar tus fichas e informes. Los chats personales no se guardan.</span></li>
+<li><b>Te muestra lo dudoso.</b><span>Lo que no se llega a leer o no cierra queda para revisar. Las facturas las corregís a mano; un extracto lo volvés a leer o lo das por bueno.</span></li>
+<li><b>Los datos son de tu estudio.</b><span>Los bajás en planillas cuando quieras. Si cerrás la cuenta, se borran.</span></li>
 </ul>
 </div>
 </section>
@@ -457,14 +459,14 @@
 <div class="wrap g-split">
 <header class="rv">
 <p class="kick">Para arrancar</p>
-<h2 id="arranque-title">Empieza <span class="dim">con lo que ya tenés.</span></h2>
-<p class="lead">Lo implementamos nosotros. Las primeras semanas revisás todo lo que Gauss prepara, cliente por cliente.</p>
+<h2 id="arranque-title">Empezás <span class="dim">con lo que ya tenés.</span></h2>
+<p class="lead">Creás la cuenta con tu mail y cargás el primer cliente en minutos. Sin instalación y sin tarjeta.</p>
 </header>
 <div class="rv">
 <ul class="g-needs">
-<li><div><b>Tu lista de clientes</b><span>Nombre, CUIT, mail y qué papeles manda cada uno por mes.</span></div></li>
-<li><div><b>Los comprobantes de ARCA</b><span>Los archivos de emitidos y recibidos que ya bajás. De ahí sale la base de cada informe.</span></div></li>
-<li><div><b>Tu WhatsApp y tu mail</b><span>Se conectan escaneando un código, como WhatsApp Web. Gauss solo lee.</span></div></li>
+<li><div><b>Tu lista de clientes</b><span>La pegás desde tu Excel: nombre, CUIT, tipo y mail. Después marcás qué papeles manda cada uno por mes.</span></div></li>
+<li><div><b>Los comprobantes de ARCA</b><span>Los archivos de emitidos y recibidos de Mis Comprobantes, tal como los bajás. De ahí sale la base de cada informe.</span></div></li>
+<li><div><b>El link de cada cliente</b><span>Se lo mandás una vez. Desde ahí sube sus papeles todos los meses.</span></div></li>
 </ul>
 <div class="g-where">
 <p><b>Dónde rinde primero:</b> los clientes que mandan todo por chat, tarde y de a pedazos.</p>
@@ -481,23 +483,27 @@
 <h2 id="faq-title">Lo que seguro <span class="dim">te preguntás.</span></h2>
 </header>
 <div class="g-faq rv">
-<details><summary>¿Reemplaza mi sistema contable?</summary><p>No. Seguís liquidando donde liquidás hoy. Gauss se ocupa de lo anterior: recibir, leer, ordenar y controlar los papeles, y te deja un Excel por cliente con todo cargado.</p></details>
-<details><summary>¿Mis clientes tienen que instalar algo?</summary><p>No. Mandan los papeles por WhatsApp o por mail, como siempre. El informe lo ven en una página web, desde el celular.</p></details>
+<details><summary>¿Reemplaza mi sistema contable?</summary><p>No. Seguís liquidando donde liquidás hoy. Gauss se ocupa de lo anterior: recibir, leer, ordenar y controlar los papeles, y te deja la planilla de cada cliente y cada mes para abrir en Excel.</p></details>
+<details><summary>¿Mis clientes tienen que instalar algo?</summary><p>No. Abren su link desde el celular y suben la foto o el PDF. El informe lo ven en una página web.</p></details>
+<details><summary>¿Qué archivos lee?</summary><p>Los de Mis Comprobantes de ARCA (CSV, Excel o ZIP), fotos y PDF de facturas y tickets, y extractos de banco y resúmenes de tarjeta. Lo que no se llega a leer queda marcado para que lo mires.</p></details>
 <details><summary>¿Necesita mi clave fiscal?</summary><p>No. Gauss trabaja con los archivos de comprobantes que ya bajás de ARCA.</p></details>
-<details><summary>¿Puede mandarle algo a un cliente sin que yo lo vea?</summary><p>No. Cada informe y cada mensaje espera tu aprobación.</p></details>
-<details><summary>¿Cómo se conecta con mi WhatsApp?</summary><p>Escaneás un código desde tu teléfono, como cuando abrís WhatsApp Web. Gauss solo lee los chats de tus clientes: no escribe desde tu número.</p></details>
-<details><summary>¿Qué pasa con el secreto profesional?</summary><p>Los datos de tus clientes se usan solo para armar sus fichas e informes, y los chats personales no se guardan.</p></details>
-<details><summary>¿Cuánto cuesta?</summary><p>Depende de la cantidad de clientes y de lo que quieras que haga Gauss. Lo vemos en una llamada de 30 minutos.</p></details>
+<details><summary>¿Puede mandarle algo a un cliente sin que yo lo vea?</summary><p>No. Los informes salen cuando los aprobás y los reclamos de papeles cuando los mandás. El recordatorio automático de honorarios viene apagado: lo prendés vos si lo querés.</p></details>
+<details><summary>¿Se conecta con mi WhatsApp?</summary><p>No. Gauss no entra a tu teléfono ni lee tus chats. Si querés reclamar un papel por WhatsApp, te deja el mensaje escrito y lo mandás vos, desde tu número.</p></details>
+<details><summary>¿Qué pasa con el secreto profesional?</summary><p>Cada estudio ve solo lo suyo y los datos se usan únicamente para armar tus fichas e informes. Las fotos y los PDF se leen con un servicio de inteligencia artificial: está detallado en la <a class="link" href="https://app.gauss.iman.ar/privacidad">página de privacidad</a>. Si el link de un cliente se filtra, generás uno nuevo y el anterior deja de andar.</p></details>
+<details><summary>¿Qué vencimientos muestra?</summary><p>IVA y monotributo de cada cliente, con el calendario general de ARCA y los feriados nacionales. Para el IVA hace falta el CUIT cargado. No contempla prórrogas ni días no laborables, y Gauss no presenta ni paga nada: marcás lo que ya hiciste.</p></details>
+<details><summary>¿Puede entrar mi equipo?</summary><p>Sí. Sumás a cada persona con su mail y entra con el código que le llega ahí, sin contraseña.</p></details>
+<details><summary>¿Puedo probarlo sin registrarme?</summary><p>Sí. La <a class="link" href="https://app.gauss.iman.ar/demo">demo</a> abre un estudio de ejemplo con 14 clientes y datos inventados. Tocás lo que quieras: es una copia solo tuya y se borra sola. Ahí no se leen fotos ni PDF nuevos y no sale ningún mail: para eso está tu cuenta.</p></details>
+<details><summary>¿Cuánto cuesta?</summary><p>Hoy es gratis. Si en algún momento pasa a ser pago, avisamos antes, para que puedas decidir y bajar tus datos.</p></details>
 </div>
 </div>
 </section>
 
 <section class="sec sheet tint dots closing" aria-labelledby="closing-title">
 <div class="wrap rv">
-<p class="kick">Un cliente real</p>
+<p class="kick">Gratis, sin tarjeta</p>
 <h2 id="closing-title">Probalo con <span class="hl">un cliente real.</span></h2>
-<p class="lead">Elegí un cliente, pasanos sus comprobantes del mes y te mostramos su informe armado.</p>
-<div class="actions"><a class="btn btn-ink" href="https://www.iman.ar/contacto/?servicio=estudios">Quiero verlo con un cliente mío <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20mi%20estudio%20contable." target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+<p class="lead">Creá tu cuenta, subí los archivos de Mis Comprobantes de un cliente y mirá su informe armado.</p>
+<div class="actions"><a class="btn btn-ink" href="https://app.gauss.iman.ar/">Crear mi cuenta gratis <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://app.gauss.iman.ar/demo">Probar la demo antes</a></div>
 </div>
 </section>
 </main>
@@ -506,7 +512,7 @@
 
 <footer class="foot dark dots">
 <div class="nav-brand g-lock"><a class="g-word" href="./" aria-label="Gauss, inicio">Gauss</a><a class="g-by" href="https://www.iman.ar/" aria-label="Gauss es un producto de IMÁN">de <span class="logo" aria-hidden="true"></span></a></div>
-<nav aria-label="Más"><a href="https://www.iman.ar/">IMÁN</a><a href="https://www.iman.ar/gauss/">Gauss para compras</a><a href="informe/">Informe de ejemplo</a><a href="https://www.iman.ar/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20mi%20estudio%20contable.">WhatsApp</a></nav>
+<nav aria-label="Más"><a href="https://www.iman.ar/">IMÁN</a><a href="https://www.iman.ar/gauss/">Gauss para compras</a><a href="https://app.gauss.iman.ar/demo">Demo</a><a href="https://app.gauss.iman.ar/">Entrar</a><a href="informe/">Informe de ejemplo</a><a href="https://app.gauss.iman.ar/privacidad">Privacidad</a><a href="https://app.gauss.iman.ar/terminos">Términos</a><a href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info%20de%20Gauss%20para%20mi%20estudio%20contable.">WhatsApp</a></nav>
 <span>Un producto de IMÁN. Hecho en Argentina.</span>
 <p class="g-origin">Gauss: la unidad con la que se mide la fuerza de un imán.</p>
 </footer>
@@ -517,19 +523,18 @@
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Demo player: the static markup is the finished month; with motion it is replayed step by step,
-     the client's messages coming in while the file fills in on the board. */
+     the client's files coming in from their link while the month's file fills in on the board. */
   var demo=document.querySelector('[data-g-demo]');
-  if(!demo)return;
-  var thread=demo.querySelector('.wa-thread');
-  if(reduce){thread.scrollTop=thread.scrollHeight;return}
-  var chat=demo.querySelector('[data-g-chat]'),msgs=[].slice.call(chat.querySelectorAll('.wa-msg'));
+  if(!demo||reduce)return;
+  var page=demo.querySelector('[data-g-page]'),files=[].slice.call(demo.querySelectorAll('.up-file'));
+  var drop=demo.querySelector('[data-g-drop]'),card=demo.querySelector('.up-card'),count=demo.querySelector('[data-g-count]');
+  var notice=demo.querySelector('[data-g-notice]'),noticeText=notice.querySelector('span');
   var ids=['factura','extracto','tarjeta'],rows={};
   ids.forEach(function(k){rows[k]=demo.querySelector('[data-g-row="'+k+'"]')});
-  var typed=demo.querySelector('[data-wa-typed]'),composer=demo.querySelector('.wa-composer'),presence=demo.querySelector('.wa-presence');
   var approve=demo.querySelector('[data-g-approve]'),foot=demo.querySelector('[data-g-foot]'),footText=demo.querySelector('[data-g-foot-text]');
   var run=0;
   var sleep=function(ms,id){return new Promise(function(ok,stop){setTimeout(function(){id===run?ok():stop()},ms)})};
-  var bottom=function(smooth){thread.scrollTo({top:thread.scrollHeight,behavior:smooth?'smooth':'auto'})};
+  var bottom=function(){page.scrollTo({top:page.scrollHeight,behavior:'smooth'})};
   var focus=function(k){ids.forEach(function(j){rows[j].classList.toggle('is-open',j===k)})};
   var row=function(k,o){
     var r=rows[k];r.classList.toggle('is-idle',!!o.idle);
@@ -538,25 +543,28 @@
     var c=r.querySelector('[data-chip]');c.textContent=o.chip;c.className='g-chip'+(o.chipCls?' '+o.chipCls:'');
   };
   var status=function(text,done){footText.textContent=text;foot.classList.toggle('is-done',!!done)};
-  var reveal=function(i){msgs[i].classList.remove('pending');bottom(true);setTimeout(function(){bottom(true)},420)};
-  var typing=async function(ms,id){
-    var next=msgs.filter(function(m){return m.classList.contains('pending')})[0]||null;
-    var li=document.createElement('li');li.className='wa-msg in typing-bubble';li.innerHTML='<div class="bubble"><i></i><i></i><i></i></div>';
-    chat.insertBefore(li,next);presence.textContent='escribiendo…';presence.classList.add('typing');bottom(true);
-    try{await sleep(ms,id)}finally{li.remove();presence.textContent='en línea';presence.classList.remove('typing')}
+  /* A mail from the firm shows up on the client's phone. */
+  var say=function(text){noticeText.textContent=text;notice.classList.add('is-on');page.scrollTo({top:0,behavior:'smooth'})};
+  var hush=function(){notice.classList.remove('is-on')};
+  /* The client picks a file: the box is pressed and the file shows as received. */
+  var upload=async function(i,id){
+    drop.classList.add('is-press');
+    try{await sleep(420,id)}finally{drop.classList.remove('is-press')}
+    files[i].classList.remove('pending');card.classList.remove('is-empty');
+    count.textContent=i?'Llegaron '+(i+1)+' archivos':'Llegó 1 archivo';
+    bottom();
   };
-  var write=async function(text,id){
-    if(!composer.offsetParent){await sleep(700,id);return}
-    composer.classList.add('has-text');
-    try{for(var i=2;i<=text.length;i+=2){typed.textContent=text.slice(0,i);await sleep(30,id)}typed.textContent=text;await sleep(380,id)}
-    finally{typed.textContent='';composer.classList.remove('has-text')}
+  /* The firm presses a button on the board: nothing leaves without that. */
+  var press=async function(label,id){
+    approve.textContent=label;approve.classList.add('is-on');
+    try{await sleep(1900,id);approve.classList.add('is-pressed');await sleep(420,id)}
+    finally{approve.classList.remove('is-on','is-pressed')}
   };
   var reset=function(){
-    demo.classList.add('wa-live');
-    approve.classList.remove('is-on','is-pressed');
-    msgs.forEach(function(m){m.classList.add('pending')});
-    ids.forEach(function(k){row(k,{idle:true,chip:'En espera'})});
-    focus(null);thread.scrollTop=0;
+    hush();approve.classList.remove('is-on','is-pressed');
+    files.forEach(function(f){f.classList.add('pending')});card.classList.add('is-empty');
+    ids.forEach(function(k){row(k,{idle:true,chip:'Falta'})});
+    focus(null);page.scrollTop=0;
     status('Septiembre: esperando los papeles');
   };
   var play=async function(){
@@ -564,29 +572,27 @@
     try{
       reset();
       await sleep(1000,id);
-      await typing(900,id);reveal(0);focus('factura');row('factura',{terms:'Leyendo la foto…',chip:'Leyendo',chipCls:'busy'});status('Llegó una foto: leyendo la factura');
+      await upload(0,id);focus('factura');row('factura',{terms:'Leyendo la foto…',chip:'Leyendo',chipCls:'busy'});status('Llegó una foto: leyendo la factura');
       await sleep(1400,id);
       row('factura',{value:'$184.300',terms:'Harinas del Sur · figura en ARCA',chip:'Leída',chipCls:'ok'});status('1 de 3 papeles');
       await sleep(900,id);
-      reveal(1);focus('extracto');row('extracto',{terms:'Controlando el saldo…',chip:'Leyendo',chipCls:'busy'});status('Llegó un PDF: leyendo el extracto');
+      await upload(1,id);focus('extracto');row('extracto',{terms:'Controlando el saldo…',chip:'Leyendo',chipCls:'busy'});status('Llegó un PDF: leyendo el extracto');
       await sleep(1500,id);
       row('extracto',{value:'214 mov.',terms:'Cierra con el saldo',chip:'Controlado',chipCls:'ok'});status('2 de 3 papeles');
       await sleep(1100,id);
-      focus('tarjeta');row('tarjeta',{terms:'<span class="late">No llegó</span>',chip:'Falta',chipCls:'late'});status('Falta 1 papel: mensaje listo para mandar');
-      await sleep(1600,id);
-      await write('Recibido, Luis. Me falta el resumen de la tarjeta de septiembre.',id);
-      reveal(2);row('tarjeta',{terms:'<span class="late">No llegó</span>',chip:'Reclamado',chipCls:'busy'});status('Reclamo enviado desde tu WhatsApp');
-      await sleep(1300,id);
-      await typing(1200,id);reveal(3);row('tarjeta',{terms:'Controlando el saldo…',chip:'Leyendo',chipCls:'busy'});status('Llegó el resumen de la tarjeta');
+      focus('tarjeta');row('tarjeta',{terms:'<span class="late">No llegó</span>',chip:'Falta',chipCls:'late'});status('Falta 1 papel: el reclamo ya está redactado');
+      await press('Reclamar',id);
+      row('tarjeta',{terms:'<span class="late">No llegó</span>',chip:'Reclamado',chipCls:'busy'});status('Reclamo enviado por mail, con su link');
+      say('Para cerrar septiembre falta el resumen de la tarjeta.');
+      await sleep(2400,id);
+      hush();await upload(2,id);row('tarjeta',{terms:'Leyendo el resumen…',chip:'Leyendo',chipCls:'busy'});status('Llegó el resumen de la tarjeta');
       await sleep(1400,id);
-      row('tarjeta',{value:'38 mov.',terms:'Cierra con el saldo',chip:'Controlado',chipCls:'ok'});focus(null);
-      status('Informe listo: falta tu aprobación');approve.classList.add('is-on');
-      await sleep(2100,id);
-      approve.classList.add('is-pressed');
-      await sleep(420,id);
-      approve.classList.remove('is-on','is-pressed');status('Aprobado · informe enviado por mail',true);
+      row('tarjeta',{value:'38 mov.',terms:'Impuestos y percepciones sumados',chip:'Leído',chipCls:'ok'});focus(null);
+      status('Informe listo: falta tu aprobación');
+      await press('Aprobar y enviar',id);
+      status('Aprobado · informe enviado por mail',true);
       await sleep(1100,id);
-      await typing(1000,id);reveal(4);
+      say('Ya está tu informe de septiembre.');
       await sleep(6500,id);
       play();
     }catch(e){}
