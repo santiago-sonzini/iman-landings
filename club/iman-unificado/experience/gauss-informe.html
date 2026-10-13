@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>Informe de ejemplo · Gauss para estudios contables | IMÁN</title>
+<meta name="description" content="Así ve el informe del mes el cliente de un estudio contable que trabaja con Gauss: ventas, compras, IVA estimado, caja a 30 días y clientes que dejaron de comprar. Ejemplo con datos ficticios.">
+<meta property="og:title" content="Gauss · El informe del mes, en una web">
+<meta property="og:description" content="Así ve el informe del mes el cliente de un estudio contable que trabaja con Gauss. Ejemplo con datos ficticios.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" href="/assets/identity-variants/favicon-v1.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/experience/v3.css">
+<style>
+/* The month's report as the firm's client sees it on a web page. A demo: every figure here is fictional.
+   The firm's name is a placeholder ("Tu estudio"); the client picks a month and can ask for a new report. */
+body{background:var(--paper-2)}
+.d-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;padding:9px var(--gutter);background:var(--ink);color:#fff;font:500 10.5px/1.5 var(--mono);letter-spacing:.06em;text-align:center}
+.d-bar a{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
+.d-bar span{color:var(--muted-d)}
+.rp{max-width:980px;margin:0 auto;padding:clamp(20px,4vw,44px) var(--gutter) 60px}
+.rp-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:clamp(22px,4vw,40px)}
+.rp-studio{display:flex;align-items:center;gap:10px;font:600 15px/1.2 var(--sans);letter-spacing:-.02em}
+.rp-studio i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--grad);font:600 12px/1 var(--mono);font-style:normal}
+.rp-months{display:flex;gap:4px;padding:4px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.rp-months button{height:32px;padding:0 14px;border-radius:999px;font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--muted);transition:background .2s,color .2s}
+.rp-months button[aria-pressed=true]{background:var(--ink);color:#fff}
+.rp-head h1{margin:16px 0 8px;font-size:clamp(34px,5.4vw,60px)}
+.rp-head .lead{max-width:none}
+.card{padding:clamp(16px,2.4vw,24px);border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.card h2{margin-bottom:4px;font-size:clamp(19px,1.9vw,23px);letter-spacing:-.04em;line-height:1.2}
+.card>.sub{margin-bottom:16px;font-size:13px;color:var(--muted)}
+.grid{display:grid;gap:12px;margin-top:12px}
+.mt{margin-top:12px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(22px,3.4vw,34px)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tile small{display:block;font-size:13px;color:var(--muted)}
+.tile b{display:block;margin:4px 0 4px;font:600 clamp(22px,2.7vw,30px)/1.1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.tile em{font-size:12.5px;font-style:normal;color:var(--muted)}
+.tile.is-key{background:var(--grad);box-shadow:none}
+.tile.is-key small,.tile.is-key em{color:#33343a}
+.next{background:var(--ink);color:#f2f2f4;box-shadow:none}
+.next .sub{color:var(--muted-d)}
+.next .big{margin:2px 0 10px;font:600 clamp(22px,2.7vw,30px)/1.15 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.next .big span{padding:.02em .2em .06em;border-radius:.2em;background:var(--grad);color:var(--ink)}
+.next p{font-size:13.5px;line-height:1.6;color:var(--muted-d)}
+.next p b{font-weight:500;color:#fff}
+.rows{display:grid}
+.rows li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+.rows li:first-child{border-top:0}
+.rows span small{display:block;font-size:12px;color:var(--muted)}
+.rows b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rows .total{border-top:1.5px solid var(--ink);font-weight:600}
+.rows .left b{padding:2px 8px;border-radius:7px;background:var(--grad)}
+.bars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:end;gap:clamp(8px,2vw,22px);height:170px;padding-top:22px}
+.bars li{position:relative;border-radius:8px 8px 3px 3px;background:#12121221;transition:background .3s}
+.bars li.now{background:var(--ink)}
+.bars li span{position:absolute;left:0;right:0;top:-20px;font:500 11px/1 var(--mono);color:var(--muted);text-align:center}
+.bars li.now span{color:var(--ink)}
+.bar-months{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,2vw,22px);margin-top:8px;font:10.5px/1.4 var(--mono);letter-spacing:.04em;color:var(--muted);text-align:center}
+.share li{display:grid;grid-template-columns:1fr auto;gap:5px 12px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+.share li:first-child{border-top:0}
+.share b{font-weight:600;font-variant-numeric:tabular-nums}
+.share i{grid-column:1/-1;display:block;height:6px;border-radius:999px;background:linear-gradient(var(--ink),var(--ink)) 0 0/var(--w) 100% no-repeat,#1212121a}
+.todo{counter-reset:t;display:grid;gap:10px}
+.todo li{counter-increment:t;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:14.5px;line-height:1.55}
+.todo li::before{content:counter(t);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--grad);font:600 12px/1 var(--mono)}
+.ask{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px}
+.ask h2{margin-bottom:4px}
+.ask p{font-size:13.5px;color:var(--muted)}
+.ask-status{flex-basis:100%;padding:12px 14px;border-radius:12px;background:var(--paper-2);font-size:13.5px;line-height:1.55}
+.ask-status small{display:block;font:10.5px/1.6 var(--mono);color:var(--muted)}
+.rp-foot{margin-top:26px;font-size:12.5px;line-height:1.7;color:var(--muted)}
+.rp-foot a{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;color:var(--ink)}
+@media(max-width:760px){
+  .rp-top{flex-wrap:wrap}
+  .g3,.g2{grid-template-columns:1fr}
+  .bars{height:140px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<p class="d-bar"><span>Demo · datos ficticios</span>Así ve el informe el cliente de tu estudio.<a href="../">Volver a Gauss</a></p>
+
+<main class="rp" id="contenido">
+<div class="rp-top">
+<p class="rp-studio"><i aria-hidden="true">TE</i>Tu estudio</p>
+<div class="rp-months" role="group" aria-label="Elegir el mes del informe">
+<button type="button" data-month="jul" aria-pressed="false">jul</button>
+<button type="button" data-month="ago" aria-pressed="false">ago</button>
+<button type="button" data-month="sep" aria-pressed="true">sep</button>
+</div>
+</div>
+
+<header class="rp-head">
+<p class="kick">Informe del mes</p>
+<h1>Panadería Don Luis</h1>
+<p class="lead"><span data-f="name">Septiembre 2026</span> · Responsable inscripto</p>
+</header>
+
+<section class="grid g3" aria-label="Resumen del mes">
+<p class="card tile"><small>Ventas del mes</small><b data-f="ventas">$14.820.000</b><em data-f="vd">6% más que agosto, sin inflación</em></p>
+<p class="card tile"><small>Compras del mes</small><b data-f="compras">$8.940.000</b><em data-f="cn">31 facturas de 14 proveedores</em></p>
+<p class="card tile is-key"><small>IVA del mes</small><b data-f="iva">$1.020.000</b><em data-f="ivan">Vence el 20 de octubre</em></p>
+</section>
+
+<section class="grid g2" aria-label="Lo que viene">
+<div class="card next">
+<h2>IVA de octubre</h2>
+<p class="sub">Estimado con lo facturado hasta el día 13</p>
+<p class="big">Entre <span>$980.000</span> y <span>$1.090.000</span></p>
+<p>Hasta hoy llevás <b>$612.000</b>. Vence el 20 de noviembre.</p>
+<p>El mes pasado estimamos $1.000.000 y fue <b>$1.020.000</b>.</p>
+</div>
+<div class="card">
+<h2>Caja a 30 días</h2>
+<p class="sub">Tu saldo de hoy contra lo que vence</p>
+<ul class="rows">
+<li><span>Saldo en cuenta</span><b>$3.240.000</b></li>
+<li><span>IVA de septiembre<small>Vence el 20 de octubre</small></span><b>−$1.020.000</b></li>
+<li><span>Cargas sociales<small>Vencen el 9 de noviembre</small></span><b>−$1.480.000</b></li>
+<li><span>Cuota del plan de pagos<small>Vence el 16 de octubre</small></span><b>−$310.000</b></li>
+<li class="total left"><span>Te queda, sin contar las ventas que entren</span><b>$430.000</b></li>
+</ul>
+</div>
+</section>
+
+<section class="card mt" aria-labelledby="ventas-title">
+<h2 id="ventas-title">Ventas de los últimos seis meses</h2>
+<p class="sub">En millones de pesos de septiembre, para comparar sin inflación</p>
+<ol class="bars" aria-label="Ventas por mes, en millones de pesos">
+<li data-bar="abr" style="height:88%"><span>13,1</span></li>
+<li data-bar="may" style="height:92%"><span>13,6</span></li>
+<li data-bar="jun" style="height:87%"><span>12,9</span></li>
+<li data-bar="jul" style="height:93%"><span>13,8</span></li>
+<li data-bar="ago" style="height:94%"><span>14,0</span></li>
+<li data-bar="sep" class="now" style="height:100%"><span>14,8</span></li>
+</ol>
+<p class="bar-months" aria-hidden="true"><span>abr</span><span>may</span><span>jun</span><span>jul</span><span>ago</span><span>sep</span></p>
+</section>
+
+<section class="grid g2">
+<div class="card">
+<h2>A quién le comprás</h2>
+<p class="sub">Septiembre · $8.940.000 en total</p>
+<ul class="share">
+<li><span>Harinas del Sur</span><b>$3.120.000</b><i style="--w:35%"></i></li>
+<li><span>Lácteos La Paz</span><b>$1.870.000</b><i style="--w:21%"></i></li>
+<li><span>Distribuidora Centro</span><b>$1.240.000</b><i style="--w:14%"></i></li>
+<li><span>Envases Río</span><b>$690.000</b><i style="--w:8%"></i></li>
+<li><span>Otros 10 proveedores</span><b>$2.020.000</b><i style="--w:23%"></i></li>
+</ul>
+</div>
+<div class="card">
+<h2>Clientes que dejaron de comprarte</h2>
+<p class="sub">Te compraban todos los meses y no lo hacen hace más de 60 días</p>
+<ul class="rows">
+<li><span>Café Central<small>Compraba cada semana · último pedido hace 64 días</small></span><b>$410.000 por mes</b></li>
+<li><span>Hotel del Parque<small>Compraba cada semana · último pedido hace 62 días</small></span><b>$350.000 por mes</b></li>
+<li><span>Colegio San José<small>Compraba cada 15 días · último pedido hace 71 días</small></span><b>$280.000 por mes</b></li>
+</ul>
+</div>
+</section>
+
+<section class="card mt" aria-labelledby="mirar-title">
+<h2 id="mirar-title">Para mirar este mes</h2>
+<p class="sub">Lo que surge de tus números</p>
+<ol class="todo">
+<li>El IVA de septiembre vence el 20 de octubre: son $1.020.000 y tu caja lo cubre.</li>
+<li>Tres clientes dejaron de comprarte. Entre los tres sumaban $1.040.000 por mes.</li>
+<li>Harinas del Sur es el 35% de tus compras. Conviene tener un segundo precio.</li>
+</ol>
+</section>
+
+<section class="card mt ask" aria-labelledby="pedir-title">
+<div>
+<h2 id="pedir-title">¿Necesitás el de octubre al día de hoy?</h2>
+<p>Pedilo acá. Tu estudio lo revisa y lo ves en esta misma página.</p>
+</div>
+<button class="btn btn-ink" type="button" data-ask>Pedir el informe de octubre <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+<p class="ask-status" role="status" aria-live="polite" data-ask-status hidden>Pedido enviado a tu estudio. Cuando lo apruebe, lo ves acá y te llega por mail.<small>Esta es una demo: no se envió nada.</small></p>
+</section>
+
+<p class="rp-foot">Informe preparado por Tu estudio con <a href="../">Gauss</a>. Las proyecciones son estimaciones con los datos cargados hasta hoy; la liquidación la hace tu estudio. Todos los nombres e importes de esta página son ficticios.</p>
+</main>
+
+<script>
+(function(){
+  /* Month picker: the three summary figures and the highlighted bar follow the chosen month. */
+  var M={
+    jul:{name:'Julio 2026',ventas:'$13.800.000',vd:'7% más que junio, sin inflación',compras:'$8.310.000',cn:'29 facturas de 13 proveedores',iva:'$950.000',ivan:'Venció el 20 de agosto'},
+    ago:{name:'Agosto 2026',ventas:'$14.000.000',vd:'1% más que julio, sin inflación',compras:'$8.520.000',cn:'30 facturas de 14 proveedores',iva:'$980.000',ivan:'Venció el 21 de septiembre'},
+    sep:{name:'Septiembre 2026',ventas:'$14.820.000',vd:'6% más que agosto, sin inflación',compras:'$8.940.000',cn:'31 facturas de 14 proveedores',iva:'$1.020.000',ivan:'Vence el 20 de octubre'}
+  };
+  var buttons=[].slice.call(document.querySelectorAll('[data-month]'));
+  buttons.forEach(function(b){b.addEventListener('click',function(){
+    var k=b.getAttribute('data-month'),m=M[k];
+    buttons.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    Object.keys(m).forEach(function(f){var el=document.querySelector('[data-f="'+f+'"]');if(el)el.textContent=m[f]});
+    [].forEach.call(document.querySelectorAll('[data-bar]'),function(li){li.classList.toggle('now',li.getAttribute('data-bar')===k)});
+  })});
+
+  /* Asking for a new report. In the demo nothing is sent: it only shows what the client would read. */
+  var ask=document.querySelector('[data-ask]'),status=document.querySelector('[data-ask-status]');
+  if(ask)ask.addEventListener('click',function(){status.hidden=false;ask.disabled=true;ask.style.opacity='.5';ask.style.pointerEvents='none'});
+})();
+</script>
+</body>
+</html>

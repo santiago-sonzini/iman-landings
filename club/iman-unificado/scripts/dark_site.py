@@ -6,10 +6,11 @@ import hashlib, json, re, shutil
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'experience'
 BASE='https://www.iman.ar'
+GAUSS_SITE='https://gauss.iman.ar'
 SERVICES=json.loads((SOURCE/'services.json').read_text())
 INTRO='IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.'
 DATE='2026-10-10'
-HOME_TITLE='IMÁN — Tu negocio, en automático.'
+HOME_TITLE='IMÁN — Lo que vale un cliente que vuelve.'
 BRAND_LOGO='/assets/identity-variants/logo-v1.png'
 BRAND_ICON='/assets/identity-variants/favicon-v1.svg'
 BRAND_SHARE='/assets/identity-variants/share-site-v1.png'
@@ -19,7 +20,7 @@ def schemas(path,title,desc,extra=()):
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('</','<\\/')+'</script>'
 
 def seo(path,title,desc,extra=()):
-    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}{BRAND_SHARE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Tu negocio, en automático."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
+    return f'''<link rel="canonical" href="{BASE}{path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="IMÁN"><meta property="og:image" content="{BASE}{BRAND_SHARE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="IMÁN · Lo que vale un cliente que vuelve."><meta name="twitter:card" content="summary_large_image">{schemas(path,title,desc,extra)}'''
 
 def asset(name):
     # Cloudflare keeps /assets/* cached for hours: the content hash in the URL makes a new version show up at once.
@@ -78,6 +79,8 @@ def form(selected=''):
     choices=''.join(f'<label class="service-choice"><input type="checkbox" name="servicios" value="{e(s["name"],quote=True)}" data-id="{s["id"]}" {"checked" if selected==s["id"] else ""}><span>{e(s["name"])}</span></label>' for s in SERVICES)
     # Gauss is a separate product with its own landing (/gauss/): one more choice here, not a fourth service page.
     choices+=f'<label class="service-choice"><input type="checkbox" name="servicios" value="Gauss · Compras" data-id="gauss" {"checked" if selected=="gauss" else ""}><span>Gauss · Compras</span></label>'
+    # Same for Gauss for accounting firms (gauss.iman.ar): its buttons arrive with /contacto/?servicio=estudios.
+    choices+=f'<label class="service-choice"><input type="checkbox" name="servicios" value="Gauss · Estudios contables" data-id="estudios" {"checked" if selected=="estudios" else ""}><span>Gauss · Estudios contables</span></label>'
     return f'''<section class="inquiry" id="consulta" aria-labelledby="inquiry-title"><p class="eyebrow">EL PRÓXIMO PASO</p><h2 id="inquiry-title">Te lo mostramos<br><em>en tu negocio.</em></h2><p class="intro-small">Dejanos tus datos y coordinamos una demostración.</p><form id="inquiry-form" action="/api/contacto" method="post"><fieldset class="service-choices"><legend>¿Qué te interesa?</legend><p id="services-help">Podés elegir uno o varios, sea cual sea tu rubro.</p><div>{choices}</div><small class="field-error" id="services-error"></small></fieldset><div class="form-grid">{fields}</div><label class="field other-industry" for="rubro_otro" hidden><span>¿Cuál es tu rubro?</span><input id="rubro_otro" name="rubro_otro" maxlength="120" disabled></label><label class="field" for="comentario"><span>Tu consulta</span><textarea id="comentario" name="comentario" rows="4" minlength="10" maxlength="2000" required placeholder="Qué necesitás, qué herramientas usás o qué te gustaría resolver."></textarea></label><div class="honey" aria-hidden="true"><label>Dejar vacío<input name="sitio_web_empresa" tabindex="-1" autocomplete="off"></label></div><label class="consent"><input type="checkbox" name="consentimiento" required><span>Acepto que IMÁN me contacte sobre esta consulta y me envíe una confirmación por email. <a href="/privacidad/">Privacidad</a>.</span></label><button class="cta" type="submit" disabled><span class="cta-label">Enviar consulta</span></button><p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p><p class="form-error" role="alert" hidden></p><noscript><p>Activá JavaScript para enviar el formulario, o <a href="https://wa.me/5493535189997">escribinos por WhatsApp</a>.</p></noscript><p class="form-note">Esta consulta no te suscribe a publicidad. También podés <a href="https://wa.me/5493535189997">escribirnos por WhatsApp</a>.</p></form><div class="inquiry-success" hidden tabindex="-1"><h3>Ya tenemos<br><em>un punto de partida.</em></h3><p data-success-message></p><p>Vamos a revisar tu consulta y contactarte para definir el próximo paso.</p><a class="more-link" href="/">Volver a IMÁN</a></div></section>'''
 
 def service_body(s):
@@ -107,7 +110,7 @@ def context():
 def build_dark(out,pages):
     dest=out/'assets/experience';dest.mkdir(parents=True,exist_ok=True)
     shutil.copytree(SOURCE/'assets',dest,dirs_exist_ok=True)
-    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js','identity-v1.css','identity-v1.js','v3.css','v3.js','reading-v3.css','purchases-demo.css','purchases-demo.js']:shutil.copy2(SOURCE/name,dest/name)
+    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js','identity-v1.css','identity-v1.js','v3.css','v3.js','reading-v3.css','purchases-demo.css','purchases-demo.js','diagnostico.js']:shutil.copy2(SOURCE/name,dest/name)
     (out/'index.html').write_text(production_home())
     purchase_title='Ejemplo de automatización de compras mayoristas | IMÁN'
     purchase_desc='Ejemplo interactivo con datos ficticios para comparar propuestas de proveedores por presupuesto y entrega. No realiza pedidos ni pagos.'
@@ -124,11 +127,25 @@ def build_dark(out,pages):
     gauss=(SOURCE/'gauss.html').read_text()
     g_title=re.search(r'<title>(.*?)</title>',gauss)[1];g_desc=re.search(r'<meta name="description" content="(.*?)">',gauss)[1]
     g_extra=[{'@type':'Service','@id':BASE+'/gauss/#service','name':'Gauss','serviceType':'Automatización de compras','description':g_desc,'url':BASE+'/gauss/','provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}}]
-    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+BRAND_SHARE,BASE+'/assets/identity-variants/share-gauss-v1.png').replace('IMÁN · Tu negocio, en automático.','Gauss · Tus compras, en automático.')
+    g_head=seo('/gauss/',g_title,g_desc,g_extra).replace(BASE+BRAND_SHARE,BASE+'/assets/identity-variants/share-gauss-v1.png').replace('IMÁN · Lo que vale un cliente que vuelve.','Gauss · Tus compras, en automático.')
     gauss=versioned(gauss.replace('</head>',g_head+'</head>'))
     (out/'gauss').mkdir(exist_ok=True);(out/'gauss/index.html').write_text(gauss)
     pages[:]=[p for p in pages if p['path']!='/gauss/']
     pages.append({'path':'/gauss/','title':g_title,'description':g_desc,'file':'gauss/index.html','dateModified':DATE})
+    # The diagnosis is a hand-written conversion landing on V3: eight questions, then a plan built from the answers and a call.
+    # Unlisted for now: noindex, outside the sitemap and docs/pages.json.
+    diag=(SOURCE/'diagnostico.html').read_text()
+    d_title=re.search(r'<title>(.*?)</title>',diag)[1];d_desc=re.search(r'<meta name="description" content="(.*?)">',diag)[1]
+    d_head=seo('/diagnostico/',d_title,d_desc).replace('index,follow,max-image-preview:large','noindex,follow')
+    diag=versioned(diag.replace('</head>',d_head+f'<script src="{asset("pixel.js")}" defer></script></head>')).replace('/assets/experience/diagnostico.js"',asset('diagnostico.js')+'"')
+    (out/'diagnostico').mkdir(exist_ok=True);(out/'diagnostico/index.html').write_text(diag)
+    # Gauss for accounting firms: a hand-written landing and the report page the firm's client sees, both on V3.
+    # They are served at gauss.iman.ar: the worker maps that host to this folder (GAUSS_PAGES in server/worker.mjs).
+    # Unlisted for now: noindex, outside the sitemap and docs/pages.json.
+    for source,folder,path in [('gauss-estudios.html','gauss/estudios','/'),('gauss-informe.html','gauss/estudios/informe','/informe/')]:
+        firm_head=f'<link rel="canonical" href="{GAUSS_SITE}{path}"><meta name="robots" content="noindex,follow"><meta property="og:url" content="{GAUSS_SITE}{path}"><meta property="og:site_name" content="Gauss"><meta property="og:image" content="{BASE}/assets/identity-variants/share-gauss-estudios-v1.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Gauss · Tu cartera, al día."><meta name="twitter:card" content="summary_large_image">'
+        (out/folder).mkdir(parents=True,exist_ok=True)
+        (out/folder/'index.html').write_text(versioned((SOURCE/source).read_text().replace('</head>',firm_head+'</head>')))
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]

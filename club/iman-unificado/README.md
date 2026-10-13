@@ -1,5 +1,31 @@
 # IMAN
 
+## Gauss para estudios contables — 13 de octubre de 2026 (local, sin publicar)
+
+Landing de Gauss para estudios contables, pensada para `gauss.iman.ar`, y la página web donde el cliente del estudio ve y pide su informe. La landing de compras (`experience/gauss.html`, `/gauss/`) no cambia.
+
+- `experience/gauss-estudios.html`: la landing. La demo del hero es un cliente mandando papeles por WhatsApp mientras se llena la ficha del mes; sigue el mismo sistema que `gauss.html`.
+- `experience/gauss-informe.html`: el informe de ejemplo, con selector de mes y el botón «Pedir el informe». Es una demo: los datos son ficticios y el pedido no se envía a ningún lado.
+- `build_dark` las emite a `public/gauss/estudios/` y `public/gauss/estudios/informe/`, sin listar (`noindex`, fuera del sitemap y de `docs/pages.json`), con canonical a `gauss.iman.ar`.
+- `server/worker.mjs` (`GAUSS_PAGES`): en `gauss.iman.ar`, `/` y `/informe/` sirven esas dos páginas, `/assets/` pasa tal cual y cualquier otra ruta va a `www.iman.ar`. Falta agregar `gauss.iman.ar` como dominio del proyecto en Cloudflare Pages.
+- Los botones llevan a `/contacto/?servicio=estudios`: el formulario y `server/contact.mjs` suman la opción «Gauss · Estudios contables».
+- Ver en local: `python3 scripts/build.py` y la vista previa `iman` → `http://127.0.0.1:8791/gauss/estudios/`.
+- Pendiente: imagen para compartir propia y sumar el producto a lo que sabe el asistente de WhatsApp.
+
+## Diagnóstico — 12 de octubre de 2026 (local, sin publicar)
+
+`/diagnostico/` es una landing de conversión: un onboarding de ocho preguntas que termina en un plan armado con las respuestas y en la llamada.
+
+- Preguntas: rubro, problema, cómo lo resuelve hoy, volumen, qué le cuesta, para cuándo lo quiere, cuánto piensa invertir por mes y el nombre del negocio (opcional).
+- Plan: titular y diagnóstico con sus respuestas, la solución principal con su demo (conversación de WhatsApp del rubro, club con Wallet, catálogo o cuadro de Gauss), el alcance ajustado al presupuesto y las soluciones que la acompañan.
+- Cierre: «Agendar la llamada» (agenda.iman.ar), WhatsApp con el diagnóstico escrito en el mensaje y «Prefiero que me escriban ustedes», que manda el diagnóstico a `/api/contacto` como una consulta más.
+- `experience/diagnostico.html` tiene la página y los estilos; `experience/diagnostico.js`, las tablas (rubros, problemas, soluciones, precios de referencia, conversaciones de ejemplo) y la lógica. Para cambiar textos o precios se editan las tablas del principio.
+- Gauss aparece en todos los planes de los rubros que compran a varios proveedores (gastronomía, comercio, mayorista, industria; en «otro», con pedidos o carga manual): `gauss` y `gaussEn` en `RUBROS`. Es la solución principal cuando el problema es de compras.
+- El campo de limaduras reacciona al puntero: `data-field-mouse` en el `<canvas>` lo activa en `v3.js` (el puntero es un tercer polo). La home y Gauss no lo llevan.
+- Los precios «desde» son los que cotiza el asistente de WhatsApp. `/diagnostico/?rubro=autos` saltea la primera pregunta (ids en `RUBROS`), para anuncios por rubro.
+- Sin listar: `noindex`, fuera del sitemap y de `docs/pages.json`. La emite `build_dark` en `scripts/dark_site.py`.
+- Para probar el formulario en la vista previa hay que entrar por `http://127.0.0.1:8791`: con `localhost` el servidor local responde «Origen no permitido».
+
 ## Identidad V3 — 11 de octubre de 2026
 
 V3 es la identidad V1 en blanco: Inter y Geist Mono, negro #121212 y el degradado cian, lavanda y champagne del logo usado como resaltador. Reemplaza a V1 en todo el sitio.

@@ -92,3 +92,20 @@ test('the short /agenda link sends people to the booking page',async()=>{
     assert.equal(response.headers.get('location'),'https://agenda.iman.ar/');
   }
 });
+
+test('gauss.iman.ar serves the accounting-firm landing and its report page, and sends everything else to www',async()=>{
+  const seen=[];
+  const env={ASSETS:{fetch:async request=>{seen.push(new URL(request.url).pathname);return new Response('page');}}};
+  const home=await worker.fetch(new Request('https://gauss.iman.ar/'),env);
+  assert.equal(home.status,200);assert.equal(home.headers.get('x-robots-tag'),'noindex, nofollow');
+  await worker.fetch(new Request('https://gauss.iman.ar/informe/'),env);
+  await worker.fetch(new Request('https://gauss.iman.ar/assets/experience/v3.css'),env);
+  assert.deepEqual(seen,['/gauss/estudios/','/gauss/estudios/informe/','/assets/experience/v3.css']);
+  const bare=await worker.fetch(new Request('https://gauss.iman.ar/informe'),env);
+  assert.equal(bare.status,308);assert.equal(bare.headers.get('location'),'https://gauss.iman.ar/informe/');
+  const other=await worker.fetch(new Request('https://gauss.iman.ar/contacto/?servicio=estudios'),env);
+  assert.equal(other.status,302);assert.equal(other.headers.get('location'),'https://www.iman.ar/contacto/?servicio=estudios');
+  // The main site keeps serving its own paths as they are.
+  seen.length=0;await worker.fetch(new Request('https://www.iman.ar/gauss/'),env);
+  assert.deepEqual(seen,['/gauss/']);
+});

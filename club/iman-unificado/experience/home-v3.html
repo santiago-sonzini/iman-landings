@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
-<title>IMÁN — Tu negocio, en automático.</title>
+<title>IMÁN — Lo que vale un cliente que vuelve.</title>
 <meta name="description" content="Automatización por WhatsApp e IA, fidelización y email marketing, catálogos y ERP para pymes y mayoristas de Argentina.">
-<meta property="og:title" content="IMÁN — Tu negocio, en automático.">
-<meta property="og:description" content="Vendé más sin invertir en publicidad: WhatsApp con IA, club de clientes y catálogos conectados.">
+<meta property="og:title" content="IMÁN — Lo que vale un cliente que vuelve.">
+<meta property="og:description" content="No traemos clientes. Hacemos que vuelvan: WhatsApp con IA, club de clientes y catálogos conectados.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" type="image/svg+xml" href="/assets/identity-variants/favicon-v1.svg">
@@ -25,6 +25,7 @@
 .hero h1 .ln{display:block;width:fit-content}
 .hero h1 .hl{margin:.06em 0 0 -.1em}
 .hero .lead{margin-bottom:26px}
+.hero .lead b{font-weight:500;color:var(--ink)}
 
 /* The club IMÁN built for Verde Café, on a computer and on a phone */
 .devices{grid-area:visual;position:relative;align-self:center;margin:0;padding:18px 0 52px}
@@ -42,9 +43,22 @@
 .device-caption{position:absolute;left:0;bottom:8px;display:flex;align-items:center;gap:8px;font:500 10.5px/1.4 var(--mono);letter-spacing:.06em;color:var(--muted)}
 .device-caption a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 
+/* The promise: the owner's sum, in the mono face */
+.promise{padding-top:clamp(34px,5vh,64px)}
+.promise-head,.svc-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 40px}
+.promise-head h2,.svc-head h2{margin-top:16px;font-size:clamp(34px,4.4vw,62px)}
+.promise-head .lead,.svc-head .lead{max-width:44ch}
+.svc-head .hl{white-space:nowrap}
+.formula{display:flex;flex-wrap:wrap;gap:.1em .62em;margin:clamp(40px,8vh,92px) 0;font:400 clamp(21px,3.75vw,50px)/1.25 var(--mono);letter-spacing:-.03em}
+.formula span{white-space:nowrap}
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px clamp(18px,2vw,28px)}
+.term{padding-top:20px;border-top:1px solid var(--line)}
+.term h3{font-size:clamp(20px,1.7vw,24px);letter-spacing:-.04em}
+.term p{max-width:36ch;margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+
 /* Services, below the demos */
 .svc-sec{padding-top:clamp(56px,9vh,104px);padding-bottom:clamp(56px,9vh,104px)}
-.svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(28px,5vh,48px)}
 .svc{position:relative;display:grid;grid-template-columns:auto 1fr;align-content:start;gap:4px 12px;padding:22px 22px 24px;border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease),box-shadow .35s}
 .svc:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px var(--line),0 30px 44px -36px #121212}
 .svc-i{font:500 10.5px/2.6 var(--mono);letter-spacing:.08em;color:var(--muted)}
@@ -128,7 +142,7 @@
   .demo{grid-template-columns:1fr}
   .demo-visual{min-height:0;padding-top:8px}
   .club-visual{min-height:600px}
-  .stage-head{align-items:flex-start;flex-direction:column}
+  .stage-head,.promise-head,.svc-head{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:640px){
   .hero{padding-top:calc(54px + 22px)}
@@ -136,6 +150,7 @@
   .toast{gap:7px;padding:6px 10px 6px 6px;border-radius:12px;font-size:10.5px}
   .toast small{font-size:9.5px}
   .toast-ic{width:26px;height:26px;border-radius:8px}
+  .terms{grid-template-columns:1fr}
   .svcs{gap:10px}
   .svc{grid-template-columns:1fr;padding:15px 14px 17px;border-radius:18px}
   .svc-i{line-height:1.4}
@@ -175,8 +190,8 @@
 <canvas class="filings" data-field=".62,.3,.96,.72" data-field-narrow=".1,.3,.94,.6" data-gain=".5" aria-hidden="true"></canvas>
 <div class="hero-in">
 <div class="hero-title">
-<p class="kick">Tecnología a medida para pymes</p>
-<h1 id="hero-title"><span class="ln">Tu negocio,</span><span class="ln hl">en automático.</span></h1>
+<p class="kick">Sistemas de clientes con IA</p>
+<h1 id="hero-title"><span class="ln">Lo que vale</span><span class="ln">un cliente</span><span class="ln hl">que vuelve.</span></h1>
 </div>
 
 <figure class="devices" aria-label="Captura de cafe.iman.ar, un club de clientes hecho por IMÁN, en computadora y celular">
@@ -193,11 +208,29 @@
 </figure>
 
 <div class="hero-pitch">
-<p class="lead">Más ventas sin invertir en publicidad: automatizamos tu WhatsApp, armamos el club de tus clientes y conectamos tu catálogo con la gestión.</p>
+<p class="lead"><b>No traemos clientes. Hacemos que vuelvan.</b> Atención, club y datos con IA para tu negocio.</p>
 <div class="actions" data-pill-after>
-<a class="btn btn-ink" href="/contacto/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="btn btn-ink" href="/diagnostico/">Quiero verlo en mi negocio<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 <a class="link" href="#demos" data-open="fidelizacion">Ver demos en vivo</a>
 </div>
+</div>
+</div>
+</section>
+
+<section class="sec promise" id="promesa" aria-labelledby="promise-title">
+<div class="wrap">
+<div class="promise-head rv">
+<div>
+<p class="kick">La promesa</p>
+<h2 id="promise-title">Para el dueño,<br>una cuenta <span class="hl">simple.</span></h2>
+</div>
+<p class="lead">Un imán no persigue. No sale a buscar ni paga para que lo miren: mantiene unido y hace volver. Eso es lo que hacemos por cada negocio.</p>
+</div>
+<p class="formula rv" aria-label="Ventas igual a clientes por frecuencia por ticket"><span>ventas =</span> <span>clientes</span> <span>× frecuencia</span> <span>× ticket</span></p>
+<div class="terms rv" role="list">
+<div class="term" role="listitem"><h3>Clientes</h3><p>Los que vienen traen a otros: referidos y reseñas, sin pagar pauta.</p></div>
+<div class="term" role="listitem"><h3>Frecuencia</h3><p>Vuelven más seguido porque los invitás en el momento justo.</p></div>
+<div class="term" role="listitem"><h3>Ticket</h3><p>Consumen más en cada visita: recomendaciones, combos, otra ronda.</p></div>
 </div>
 </div>
 </section>
@@ -220,7 +253,7 @@
 <div class="demo" id="demo-whatsapp" role="tabpanel" aria-labelledby="tab-whatsapp" hidden>
 <div class="demo-copy">
 <p class="label">01 · WhatsApp e IA</p>
-<h3>Tu WhatsApp, <span class="dim">en automático.</span></h3>
+<h3>Tu WhatsApp responde <span class="dim">mientras dormís.</span></h3>
 <p>Un asistente responde con la información de tu negocio, toma el pedido y lo deja cargado. Tu equipo interviene cuando hace falta una persona.</p>
 <ul class="checks">
 <li>Respuestas con tus precios, horarios y stock.</li>
@@ -276,11 +309,11 @@
 <div class="demo" id="demo-fidelizacion" role="tabpanel" aria-labelledby="tab-fidelizacion">
 <div class="demo-copy">
 <p class="label">02 · Fidelización y email</p>
-<h3>Aumentá tus ventas <span class="dim">sin invertir en publicidad.</span></h3>
-<p>Un club de clientes con tu marca: puntos, beneficios semanales, tarjeta en el celular y campañas por email. Sin descargar ninguna app.</p>
+<h3>Clientes que vuelven solos, <span class="dim">sin pagar publicidad.</span></h3>
+<p>Un club con tu marca: puntos, beneficios semanales y campañas por email. Cero apps para descargar: navegador, WhatsApp y Wallet.</p>
 <ul class="checks">
-<li>Web del club con tu identidad, como cafe.iman.ar.</li>
-<li>Tarjeta en Apple Wallet y Google Wallet.</li>
+<li>Tu audiencia, no la del algoritmo.</li>
+<li>Cada cliente, con nombre e historia.</li>
 <li>Campañas de recompra y reactivación, hechas con vos.</li>
 </ul>
 <div class="actions"><a class="btn btn-light" href="/fidelizacion/#consulta">Quiero mi club <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://cafe.iman.ar/" target="_blank" rel="noopener">Abrir cafe.iman.ar ↗</a></div>
@@ -334,9 +367,15 @@
 </div>
 </section>
 
-<section class="sec svc-sec" id="servicios" aria-label="Servicios">
+<section class="sec svc-sec" id="servicios" aria-labelledby="svc-title">
 <div class="wrap">
-<p class="kick rv">Servicios</p>
+<div class="svc-head rv">
+<div>
+<p class="kick">Servicios</p>
+<h2 id="svc-title">Un estudio, <span class="hl">no una agencia.</span></h2>
+</div>
+<p class="lead">IA cuando aporta. Personas cuando hace falta.</p>
+</div>
 <div class="svcs rv" role="list">
 <article class="svc" role="listitem" data-service="whatsapp">
 <span class="svc-i">01</span>
@@ -347,7 +386,7 @@
 <article class="svc" role="listitem" data-service="fidelizacion">
 <span class="svc-i">02</span>
 <h3>Fidelización</h3>
-<p>Un club con tu marca: puntos, Wallet y email para que vuelvan.</p>
+<p>Un club con tu marca: puntos, Wallet y email para que vuelvan solos.</p>
 <a class="svc-more" href="/fidelizacion/" data-open="fidelizacion" aria-controls="demo-fidelizacion" aria-label="Ver demo de Fidelización">Más info <i aria-hidden="true">+</i></a>
 </article>
 <article class="svc" role="listitem" data-service="catalogos">
@@ -368,10 +407,10 @@
 
 <section class="sec sheet tint dots closing" id="contacto" aria-labelledby="closing-title">
 <div class="wrap rv">
-<p class="kick">El próximo paso</p>
-<h2 id="closing-title">Lo viste funcionar. <span class="hl">Ahora en tu negocio.</span></h2>
-<p class="lead">Te lo mostramos andando con tus productos, tus clientes y tu WhatsApp.</p>
-<div class="actions"><a class="btn btn-ink" href="/contacto/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://wa.me/5493535189997" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
+<p class="kick">Próximo paso</p>
+<h2 id="closing-title">Empezamos por un flujo <span class="hl">concreto.</span></h2>
+<p class="lead">Lo viste funcionar. Te lo mostramos andando en tu negocio y medimos el antes y el después.</p>
+<div class="actions"><a class="btn btn-ink" href="/diagnostico/">Quiero verlo en mi negocio<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://wa.me/5493535189997" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div>
 </div>
 </section>
 </main>

@@ -251,6 +251,13 @@ test('a Gauss inquiry is accepted, delivered and passed to the assistant like an
   assert.ok(sent[0].text.includes('Gauss · Compras'));
 });
 
+test('an inquiry from Gauss for accounting firms is accepted and names that product',async()=>{
+  const {handle,sent}=setup({startChat:async()=>'enviado'});
+  const response=await handle(request({servicio:undefined,servicios:['Gauss · Estudios contables']}),env);
+  assert.equal(response.status,200);
+  assert.ok(sent[0].text.includes('Gauss · Estudios contables'));
+});
+
 test('without a WhatsApp number the assistant is not called',async()=>{
   const calls=[];
   const {handle}=setup({startChat:async lead=>{calls.push(lead);return 'enviado';}});

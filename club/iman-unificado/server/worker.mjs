@@ -31,6 +31,10 @@ const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURICompo
 // Short link for Gauss (iman.ar/gauss/wa): "quiero info" is what the assistant recognizes as a lead, and it names the product.
 const WHATSAPP_GAUSS='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, quiero info de Gauss para las compras de mi empresa.');
 const AGENDA='https://agenda.iman.ar/';
+// gauss.iman.ar is a small site of its own: the landing for accounting firms and the report page their clients see.
+// Both pages are built under /gauss/estudios/; anything else asked on that host belongs to www.
+const GAUSS_HOST='gauss.iman.ar';
+const GAUSS_PAGES=new Map([['/','/gauss/estudios/'],['/informe/','/gauss/estudios/informe/']]);
 
 export default {
   async fetch(request,env) {
@@ -47,7 +51,14 @@ export default {
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
-    const asset=await env.ASSETS.fetch(request);
+    let assetRequest=request;
+    if(url.hostname===GAUSS_HOST){
+      if(url.pathname==='/informe')return Response.redirect(url.origin+'/informe/'+url.search,308);
+      const page=GAUSS_PAGES.get(url.pathname);
+      if(page)assetRequest=new Request(new URL(page+url.search,url),request);
+      else if(!url.pathname.startsWith('/assets/')&&url.pathname!=='/robots.txt')return Response.redirect('https://www.iman.ar'+url.pathname+url.search,302);
+    }
+    const asset=await env.ASSETS.fetch(assetRequest);
     if(url.hostname!=='www.iman.ar'){
       if(url.pathname==='/robots.txt') return new Response('User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain','X-Robots-Tag':'noindex, nofollow','Cache-Control':'no-store'}});
       const response=new Response(asset.body,asset);

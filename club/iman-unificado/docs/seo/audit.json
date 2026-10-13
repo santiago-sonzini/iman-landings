@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-11T19:53:19.061260+00:00",
+  "generated_at": "2026-10-13T12:14:06.834375+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
-    "html": 29,
+    "html": 32,
     "indexable_html": 22,
     "sitemap_urls": 22,
     "error": 0,
@@ -15,11 +15,11 @@
   "pages": [
     {
       "path": "/",
-      "title": "IMÁN — Tu negocio, en automático.",
+      "title": "IMÁN — Lo que vale un cliente que vuelve.",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
-      "incoming_pages": 23,
+      "incoming_pages": 25,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -150,7 +150,22 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 24,
+      "incoming_pages": 25,
+      "schema_types": [
+        "ContactPoint",
+        "Country",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/diagnostico/",
+      "title": "Diagnóstico: el plan para tu negocio, en un minuto | IMÁN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": 1,
+      "incoming_pages": 1,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -184,7 +199,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 24,
+      "incoming_pages": 26,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -195,12 +210,30 @@
       ]
     },
     {
+      "path": "/gauss/estudios/",
+      "title": "Gauss para estudios contables: tu cartera, al día | IMÁN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 1,
+      "schema_types": []
+    },
+    {
+      "path": "/gauss/estudios/informe/",
+      "title": "Informe de ejemplo · Gauss para estudios contables | IMÁN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": null,
+      "incoming_pages": 1,
+      "schema_types": []
+    },
+    {
       "path": "/privacidad/",
       "title": "Privacidad y contacto | IMÁN",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 24,
+      "incoming_pages": 26,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -215,7 +248,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 23,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -390,7 +423,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 24,
+      "incoming_pages": 25,
       "schema_types": [
         "ContactPoint",
         "Country",

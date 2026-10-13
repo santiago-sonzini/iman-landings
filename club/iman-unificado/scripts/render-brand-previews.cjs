@@ -1,5 +1,5 @@
 // Render the native V1 layouts without redrawing the original logo.
-// Requires Playwright with Chromium: node scripts/render-brand-previews.cjs
+// Requires Playwright with Chromium: node scripts/render-brand-previews.cjs [file.png ...]
 const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('playwright');
@@ -28,14 +28,16 @@ const styles = `
 `;
 const layouts = [
   ['share-site-v1.png', `<header><img class="logo" src="${logo}" alt="IMÁN"><span class="note">TECNOLOGÍA PARA TU NEGOCIO</span></header><h1>Vendé más.<br><span class="accent">Ganá tiempo.</span></h1><p>WhatsApp e IA · Fidelización · Catálogos y ERP</p><footer><span>Hecho a tu medida.</span><span>iman.ar</span></footer>`],
-  ['share-gauss-v1.png', `<header><span class="product">Gauss</span><span class="endorsement">UN PRODUCTO DE <img src="${logo}" alt="IMÁN"></span></header><h1>Tus compras,<br><span class="accent">en automático.</span></h1><p>Proveedores, propuestas y negociación.<br>La decisión sigue siendo tuya.</p><footer><span>COMPRAS PARA EMPRESAS</span><span>iman.ar/gauss</span></footer>`]
+  ['share-gauss-v1.png', `<header><span class="product">Gauss</span><span class="endorsement">UN PRODUCTO DE <img src="${logo}" alt="IMÁN"></span></header><h1>Tus compras,<br><span class="accent">en automático.</span></h1><p>Proveedores, propuestas y negociación.<br>La decisión sigue siendo tuya.</p><footer><span>COMPRAS PARA EMPRESAS</span><span>iman.ar/gauss</span></footer>`],
+  ['share-gauss-estudios-v1.png', `<header><span class="product">Gauss</span><span class="endorsement">UN PRODUCTO DE <img src="${logo}" alt="IMÁN"></span></header><h1>Tu cartera,<br><span class="accent">al día.</span></h1><p>Papeles, controles e informes de cada cliente.<br>La firma sigue siendo tuya.</p><footer><span>PARA ESTUDIOS CONTABLES</span><span>gauss.iman.ar</span></footer>`]
 ];
 
 (async () => {
   const browser = await chromium.launch({headless:true});
   try {
     const page = await browser.newPage({viewport:{width:1200,height:630},deviceScaleFactor:1});
-    for (const [name, body] of layouts) {
+    const only = process.argv.slice(2);
+    for (const [name, body] of layouts.filter(([name]) => !only.length || only.includes(name))) {
       await page.setContent(`<!doctype html><html lang="es-AR"><meta charset="utf-8"><style>${styles}</style><body class="${name.includes('gauss')?'gauss':''}">${body}</body></html>`);
       await page.evaluate(() => Promise.all([document.fonts.ready, ...[...document.images].map(img => img.decode())]));
       await page.screenshot({path:path.join(assets,name)});

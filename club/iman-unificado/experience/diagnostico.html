@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>Diagnóstico: el plan para tu negocio, en un minuto | IMÁN</title>
+<meta name="description" content="Ocho preguntas sobre tu negocio y te mostramos qué automatizar primero, cómo queda andando y desde qué inversión. Después, una llamada de 30 minutos.">
+<meta property="og:title" content="El plan para tu negocio, en un minuto · IMÁN">
+<meta property="og:description" content="Ocho preguntas y te mostramos qué automatizar primero, cómo queda andando y desde qué inversión.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" type="image/svg+xml" href="/assets/identity-variants/favicon-v1.svg">
+<link rel="preload" href="/assets/identity-variants/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/experience/v3.css">
+<script>document.documentElement.classList.add('motion','js')</script>
+<style>
+/* Diagnosis: eight questions on the first screen, then a landing built from the answers (experience/diagnostico.js). */
+[hidden]{display:none!important}
+.sr{position:absolute;overflow:hidden;width:1px;height:1px;clip-path:inset(50%);white-space:nowrap}
+.top{position:relative;overflow:hidden}
+
+/* The questions */
+.quiz{position:relative;display:flex;flex-direction:column;max-width:calc(900px + 2*var(--gutter));min-height:100svh;margin:0 auto;padding:calc(58px + clamp(16px,3.5vh,40px)) var(--gutter) clamp(28px,6vh,64px)}
+.q-bar{display:flex;align-items:center;gap:14px;min-height:36px}
+.q-back{flex:none;display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px 0 11px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:500 13px/1 var(--sans);transition:background .2s}
+.q-back:hover{background:var(--paper-2)}
+.q-meter{flex:1;overflow:hidden;height:4px;border-radius:9px;background:#12121214}
+.q-meter i{display:block;width:12.5%;height:100%;border-radius:9px;background:var(--grad);transition:width .55s var(--ease)}
+.q-count{flex:none;font:500 10.5px/1 var(--mono);letter-spacing:.11em;color:var(--muted)}
+.q-count b{font-weight:500;color:var(--ink)}
+.q-intro{padding-top:clamp(18px,4vh,48px)}
+.q-intro h1{max-width:12em;margin:16px 0 14px;font-size:clamp(36px,5.4vw,66px)}
+.q-intro h1 .hl,.res h2 .hl,.closing h2 .hl{display:inline-block;margin-top:.06em;white-space:nowrap}
+.q-step{padding-top:clamp(26px,6vh,64px)}
+.is-first .q-step{padding-top:clamp(22px,4vh,40px)}
+.q-step h2{max-width:19em;font-size:clamp(26px,3.3vw,42px);letter-spacing:-.045em;line-height:1.08}
+.q-step h2:focus,.res h2:focus{outline:0}
+.q-hint{margin-top:9px;font-size:15px;color:var(--muted)}
+.q-opts{display:grid;gap:9px;max-width:660px;margin-top:22px}
+.q-opts.tiles{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none}
+.q-opt{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:13px;min-height:62px;padding:11px 18px 11px 13px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--line),0 14px 26px -24px #121212;text-align:left;transition:transform .25s var(--ease),box-shadow .25s,background .2s,color .2s}
+@media(hover:hover){.q-opt:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px var(--ink),0 18px 30px -22px #121212}}
+.q-key{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--paper-2);font:500 11px/1 var(--mono);color:var(--muted);transition:background .2s,color .2s}
+.q-opt b{display:block;font:500 16px/1.25 var(--sans);letter-spacing:-.015em}
+.q-opt small{display:block;margin-top:3px;font-size:13px;line-height:1.4;color:var(--muted)}
+.q-opt[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.q-opt[aria-pressed=true] small{color:var(--muted-d)}
+.q-opt[aria-pressed=true] .q-key{background:var(--grad);color:var(--ink)}
+.tiles .q-opt{grid-template-columns:1fr;align-content:start;gap:10px;min-height:104px;padding:12px 16px 14px}
+.q-text{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;max-width:620px;margin-top:22px}
+.q-text input{flex:1 1 260px;min-width:0;min-height:54px;padding:0 18px;border:1px solid #12121233;border-radius:16px;background:#fff;color:var(--ink);font:400 17px/1.3 var(--sans)}
+.q-text input:focus{border-color:var(--ink);outline:2px solid var(--ink);outline-offset:1px}
+.q-text ::placeholder{color:#8b8e96}
+.q-next{margin-top:22px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;background-size:100% 100%,100% 100%;color:#fff}
+.btn:disabled .arr{transform:none;background:var(--grad);color:var(--ink)}
+.motion .q-step.is-in,.motion .q-build{animation:q-in .45s var(--ease) both}
+@keyframes q-in{from{opacity:0;transform:translateY(14px)}}
+.q-build{flex:1;display:grid;align-content:center;gap:22px;padding:clamp(30px,8vh,90px) 0}
+.q-build h2{font-size:clamp(34px,5vw,60px)}
+.q-build li{opacity:.28;transition:opacity .35s}
+.q-build li.on{opacity:1}
+html:not(.js) :is(.q-bar,.q-step){display:none}
+.q-nojs{max-width:52ch;margin-top:26px;color:var(--muted)}
+.q-nojs a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* The plan opens where the questions were: the promise on the left, the answers as a card on the right */
+.res{position:relative;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:clamp(26px,5vw,84px);max-width:calc(var(--max) + 2*var(--gutter));margin:0 auto;padding:calc(58px + clamp(30px,7vh,84px)) var(--gutter) clamp(44px,8vh,92px)}
+.res h2{margin:18px 0;font-size:clamp(38px,min(4.8vw,9vh),68px)}
+.res .lead{max-width:50ch;margin-bottom:26px}
+.ficha{max-width:440px;justify-self:end;width:100%}
+.ficha dl{margin:0}
+.ficha dl>div{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid var(--line)}
+.ficha dl>div:first-child{border-top:0}
+.ficha dt{font:500 10px/1.95 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.ficha dd{margin:0;font-size:13.5px;font-weight:500;line-height:1.45}
+.ficha-edit{display:block;width:100%;padding:13px;border-top:1px solid var(--line);background:var(--card);font:500 13px/1 var(--sans);text-align:center;transition:background .2s}
+.ficha-edit:hover{background:var(--paper-2)}
+
+/* What we found: the problem in their words, what it costs, what changes */
+.found{padding-top:clamp(30px,5vh,60px)}
+.found-head,.plan-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 40px}
+.found-head h2{max-width:15em;margin-top:16px;font-size:clamp(30px,3.9vw,54px)}
+.found-head .lead{max-width:40ch}
+.found-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px clamp(18px,2vw,28px);margin-top:clamp(30px,5vh,54px)}
+.found-col{padding-top:18px;border-top:1px solid var(--line)}
+.found-col .label{display:block;margin-bottom:12px}
+.found-col h3{font-size:clamp(20px,1.7vw,24px);letter-spacing:-.04em;line-height:1.15}
+.found-col>p:not(.label){max-width:36ch;margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+.costs{display:grid;gap:11px}
+.costs li{display:grid;grid-template-columns:22px 1fr;gap:11px;align-items:start;font-size:15px;line-height:1.45}
+.costs li::before{content:'';width:22px;height:22px;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.4 6h5.2' fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat,var(--late)}
+
+/* The plan: the main solution with its demo, then the scope for their budget and what goes with it */
+.plan h2{margin-top:16px;font-size:clamp(34px,4.6vw,64px)}
+.plan-head{margin-bottom:clamp(34px,6vh,62px)}
+.p-price{padding:13px 18px;border-radius:16px;background:#ffffff10;box-shadow:inset 0 0 0 1px var(--line-d);font-size:15px;line-height:1.4}
+.p-price b{font:500 clamp(19px,1.8vw,24px)/1.2 var(--display);letter-spacing:-.035em}
+.p-price small{display:block;margin-top:3px;font:10.5px/1.5 var(--mono);color:var(--muted-d)}
+.demo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:clamp(28px,5vw,84px)}
+.demo-copy h3{margin:14px 0 16px;font-size:clamp(28px,3.3vw,48px)}
+.demo-copy>p:not(.label){max-width:46ch;margin-bottom:22px;color:var(--muted-d)}
+.demo-copy .checks{margin-bottom:28px}
+.visual{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,26px);min-height:580px;padding-bottom:44px}
+.demo-note{position:absolute;left:0;right:0;bottom:0;font:10.5px/1.5 var(--mono);color:var(--muted-d);text-align:center}
+.demo-note a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.wa-visual .phone{flex:none;width:278px}
+.log{flex:0 1 300px;min-width:0}
+.log li{display:grid;grid-template-columns:18px 1fr;gap:1px 10px;padding:10px 14px;border-top:1px solid var(--line);transition:opacity .45s}
+.log li:first-child{border-top:0}
+.log li::before{content:'';grid-row:1/3;align-self:center;width:18px;height:18px;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.2 2.3 4.6-5' fill='none' stroke='%23121212' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat,var(--grad)}
+.log li span{font-weight:600}
+.log li small{font:10.5px/1.5 var(--mono);color:var(--muted)}
+.wa-live .log li:not(.done){opacity:.34}
+.wa-live .log li:not(.done)::before{background:#1212121c}
+.club-visual .phone{flex:none;width:252px}
+.club-side{display:grid;justify-items:start;gap:22px;min-width:0}
+.push{display:flex;gap:10px;width:min(100%,292px);padding:11px 13px;border-radius:16px;background:#fffdf9f5;color:var(--ink);font:12.5px/1.35 system-ui,sans-serif;box-shadow:0 24px 40px -22px #000}
+.push-app{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--ink);color:#fff;font:600 15px/1 var(--sans)}
+.push-body b{display:flex;justify-content:space-between;gap:10px;font-weight:600}
+.push-body small{font-weight:400;color:var(--muted)}
+.wallet-pass{width:212px;margin-left:18px;padding:16px;border-radius:16px;background:var(--grad);color:var(--ink);font:11.5px/1.3 system-ui,sans-serif;box-shadow:0 34px 50px -24px #000;transform:rotate(3deg)}
+.pass-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;font-size:9.5px;letter-spacing:.08em}
+.pass-top b{overflow:hidden;font:700 15px/1.15 var(--display);letter-spacing:-.02em;text-transform:uppercase;text-overflow:ellipsis}
+.pass-points{margin:16px 0 12px}
+.wallet-pass small{display:block;font-size:8.5px;letter-spacing:.12em;color:#1212129e}
+.pass-points b{font:600 42px/1 var(--display);letter-spacing:-.04em}
+.pass-row{display:flex;justify-content:space-between;gap:10px}
+.pass-row span:last-child{text-align:right}
+.pass-qr{width:76px;height:76px;margin:14px auto 8px;border:5px solid #fff;border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' shape-rendering='crispEdges'%3E%3Cpath fill='%23121212' d='M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z'/%3E%3Cpath fill='%23fff' d='M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z'/%3E%3Cpath fill='%23121212' d='M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 0h1v2H8zM10 1h2v1h-2zM9 3h1v2H9zM11 3h2v1h-2zM8 6h2v1H8zM12 5h1v3h-1zM0 8h2v1H0zM3 8h1v2H3zM5 9h3v1H5zM9 8h2v2H9zM13 9h2v1h-2zM16 8h1v2h-1zM18 8h3v1h-3zM1 10h1v2H1zM4 11h2v1H4zM7 11h1v2H7zM10 11h3v1h-3zM14 11h1v2h-1zM17 10h2v2h-2zM20 10h1v3h-1zM0 12h1v1H0zM8 13h2v1H8zM11 13h2v2h-2zM15 14h2v1h-2zM18 13h1v2h-1zM8 15h1v3H8zM10 16h2v1h-2zM13 16h1v2h-1zM15 16h3v1h-3zM19 16h2v2h-2zM9 19h3v1H9zM13 19h2v2h-2zM16 18h2v2h-2zM19 19h1v2h-1zM10 20h1v1h-1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.pass-wallet{font-size:9px;color:#1212129e;text-align:center}
+.shop-visual{display:block;padding:10px 0 58px}
+.shop-browser{width:min(100%,570px)}
+.shop-phone{position:absolute;right:0;bottom:44px;width:196px;padding:6px;border-radius:30px}
+.shop-phone .phone-screen{border-radius:24px}
+.order-bar{position:absolute;left:7px;right:7px;bottom:7px;display:flex;align-items:center;justify-content:space-between;padding:7px 7px 7px 12px;border-radius:12px;background:#1d1a17;color:#fff;font:11px/1.2 system-ui,sans-serif}
+.order-main small{display:block;color:#c9c4bb}
+.order-wa{padding:6px 10px;border-radius:999px;background:#25d366;color:#05310f;font-size:10.5px;font-weight:700}
+.shop-visual .demo-note{text-align:left}
+.board{width:min(100%,430px)}
+.board-item{padding:14px 14px 12px;font-size:14px;font-weight:600}
+.board-item small,.board-rows small{display:block;margin-top:2px;font-size:11.5px;font-weight:400;color:var(--muted)}
+.board-rows li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 12px;padding:12px 14px;border-top:1px solid var(--line)}
+.board-rows b{font-weight:600}
+.board-price{font:500 15px/1 var(--mono);letter-spacing:-.02em}
+.board-rows .best{background:var(--grad-soft)}
+.board-rows em{grid-column:1/-1;justify-self:start;padding:3px 8px;border-radius:999px;background:var(--ink);color:#fff;font:500 9.5px/1.5 var(--mono);font-style:normal;letter-spacing:.09em;text-transform:uppercase}
+.board-foot{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-top:1px solid var(--line);background:var(--card);font:10.5px/1.5 var(--mono);color:var(--muted)}
+.scope-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px;margin-top:clamp(40px,7vh,76px)}
+.scope{padding:24px 24px 26px;border-radius:22px;background:#fff;color:var(--ink)}
+.scope h3,.extra h3{margin:12px 0 10px;font-size:clamp(22px,2.1vw,29px);letter-spacing:-.045em;line-height:1.12}
+.scope>p:not(.label){font-size:14.5px;line-height:1.6;color:var(--muted)}
+.scope .checks{margin-top:18px}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+/* Three extras (Gauss joins the other two): the budget card narrows and they sit in one row. */
+.scope-grid.is-wide{grid-template-columns:minmax(0,1.25fr) minmax(0,3fr)}
+.is-wide .extras{grid-template-columns:repeat(3,minmax(0,1fr))}
+.is-wide :is(.scope,.extra){padding:22px 20px 20px}
+.is-wide :is(.scope,.extra) h3{font-size:clamp(20px,1.75vw,24px)}
+.extra{display:flex;flex-direction:column;align-items:flex-start;padding:24px 24px 20px;border-radius:22px;background:#ffffff0d;box-shadow:inset 0 0 0 1px var(--line-d)}
+.extra.is-in{background:#ffffff1a}
+.extra>p:not(.label){margin-bottom:18px;font-size:14.5px;line-height:1.6;color:var(--muted-d)}
+.extra-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;width:100%;margin-top:auto;font:10.5px/1.5 var(--mono);color:var(--muted-d)}
+
+/* Closing: the call */
+.closing{margin-top:clamp(6px,1vw,14px);text-align:center}
+.closing .wrap{display:grid;justify-items:center}
+.closing h2{margin:20px 0 18px;font-size:clamp(38px,6vw,88px)}
+.closing h2 .hl{background:var(--ink);color:#fff}
+.closing .lead{margin-bottom:30px}
+.closing .actions{justify-content:center}
+.call-meta{margin-top:18px;font:10.5px/1.6 var(--mono);letter-spacing:.04em;color:#3f4047}
+.call-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:980px;margin-top:clamp(34px,6vh,60px);text-align:left}
+.call-list li{padding:20px 22px 22px;border-radius:20px;background:#ffffffa8;box-shadow:inset 0 0 0 1px #1212121a}
+.call-list b{display:block;margin-bottom:5px;font:500 19px/1.2 var(--display);letter-spacing:-.04em}
+.call-list p{font-size:14px;line-height:1.5;color:#3f4047}
+.callme{width:100%;max-width:640px;margin-top:28px;text-align:left}
+.callme summary{width:fit-content;margin:0 auto;padding:8px 2px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;font:500 14.5px/1.2 var(--sans);letter-spacing:-.01em;list-style:none;cursor:pointer}
+.callme summary::-webkit-details-marker{display:none}
+.callme form,.callme-ok{margin-top:20px;padding:clamp(18px,3vw,26px);border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px #1212121a}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0;font:500 12.5px/1.4 var(--sans)}
+.fld input{width:100%;min-height:50px;padding:0 14px;border:1px solid #12121226;border-radius:13px;background:#fff;color:var(--ink);font:400 16px/1.3 var(--sans)}
+.fld input:focus{border-color:var(--ink);outline:2px solid var(--ink);outline-offset:1px}
+.honey{position:absolute;left:-9999px;overflow:hidden;width:1px;height:1px}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:16px 0 18px;font-size:12.5px;line-height:1.55;color:#3f4047}
+.consent input{flex:none;width:17px;height:17px;margin:1px 0 0;accent-color:var(--c2)}
+.consent a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.f-status{margin-top:12px;font-size:13px;color:#3f4047}
+.f-error{margin-top:14px;padding:12px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px #a3271f66;font-size:13px;line-height:1.6;color:#a3271f}
+.callme-ok h3{margin-bottom:10px;font-size:clamp(24px,3vw,34px)}
+.callme-ok p{margin-bottom:18px;color:#3f4047}
+.callme-ok:focus{outline:0}
+.wa-pill.is-off{opacity:0;transform:translateY(12px);pointer-events:none}
+
+@media(max-width:1020px){
+  .res{grid-template-columns:1fr;max-width:calc(640px + 2*var(--gutter))}
+  .res h2{font-size:clamp(36px,9.6vw,60px)}
+  .ficha{justify-self:start;max-width:none}
+  .demo,.scope-grid,.scope-grid.is-wide{grid-template-columns:1fr}
+  /* Stacked under the budget card: two side by side and the third across, so none is left alone in half a row. */
+  .is-wide .extras{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .is-wide .extra:nth-child(3){grid-column:1/-1}
+  .visual{min-height:0;padding-top:8px}
+  .found-head,.plan-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){
+  .quiz{padding-top:calc(54px + 6px)}
+  .res{padding-top:calc(54px + 30px)}
+  .q-intro{padding-top:14px}
+  .q-intro h1{margin:12px 0 10px}
+  .q-intro .lead{font-size:15px;line-height:1.5}
+  .q-opts.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* On a phone the rubros are plain tiles: no key hints, no detail line, so the eight fit on the first screen. */
+  .tiles .q-opt{align-content:center;min-height:58px;padding:10px 14px}
+  .tiles .q-opt :is(small,.q-key){display:none}
+  .tiles .q-opt b{font-size:15px}
+  .found-grid,.call-list,.fgrid,.is-wide .extras{grid-template-columns:1fr}
+  .wa-visual{flex-direction:column}
+  .wa-visual .phone{width:min(100%,290px)}
+  .log{flex:none;width:100%}
+  .club-visual{flex-direction:column}
+  .club-visual .phone{width:min(74%,250px)}
+  .club-side{justify-items:center;margin-top:-64px}
+  .wallet-pass{margin-left:0}
+  .shop-phone{width:138px;padding:4px;border-radius:22px;bottom:40px}
+  .shop-phone .phone-screen{border-radius:18px}
+  .order-bar{left:5px;right:5px;bottom:5px;padding:5px 5px 5px 8px;font-size:9px}
+  .order-wa{padding:5px 7px;font-size:8.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .q-opt,.q-meter i{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="nav">
+<div class="nav-in">
+<a class="nav-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>
+<nav class="nav-links" aria-label="Principal"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a class="nav-cta" href="https://agenda.iman.ar/"><i aria-hidden="true"></i>Agendar llamada</a></nav>
+</div>
+</header>
+
+<main id="contenido">
+<div class="top">
+<canvas class="filings" data-field=".7,.16,.98,.82" data-field-narrow=".1,.3,.94,.6" data-gain=".42" data-field-mouse aria-hidden="true"></canvas>
+
+<section class="quiz is-first" id="quiz" aria-labelledby="quiz-title">
+<div class="q-bar">
+<button class="q-back" type="button" data-back hidden><span aria-hidden="true">←</span> Atrás</button>
+<div class="q-meter" role="progressbar" aria-label="Avance del diagnóstico" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1"><i data-meter></i></div>
+<span class="q-count" aria-hidden="true"><b data-count>01</b> / 08</span>
+</div>
+<div class="q-intro" data-intro>
+<p class="kick">Diagnóstico · 1 minuto</p>
+<h1 id="quiz-title">El plan para tu negocio, <span class="hl">en un minuto.</span></h1>
+<p class="lead">Ocho preguntas. Te mostramos qué automatizar primero, cómo queda andando y desde qué inversión.</p>
+</div>
+<div class="q-step" data-step></div>
+<div class="q-build" data-build hidden aria-live="polite">
+<h2>Armando <span class="hl">tu plan.</span></h2>
+<ul class="checks"><li>Leyendo tus respuestas.</li><li>Eligiendo la solución.</li><li>Ajustando el alcance a tu presupuesto.</li></ul>
+</div>
+<noscript><p class="q-nojs">El diagnóstico necesita JavaScript. También podés <a href="https://agenda.iman.ar/">agendar una llamada</a> o <a href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info">escribirnos por WhatsApp</a>.</p></noscript>
+</section>
+
+<section class="res" id="plan" aria-labelledby="res-title" hidden>
+<div>
+<p class="kick" data-f="kick">Tu diagnóstico</p>
+<h2 id="res-title" tabindex="-1" data-f="titulo"></h2>
+<p class="lead" data-f="bajada"></p>
+<div class="actions" data-pill-after>
+<a class="btn btn-ink" href="https://agenda.iman.ar/">Agendar la llamada <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="link" href="#solucion">Ver el plan</a>
+</div>
+</div>
+<aside class="ui ficha" aria-label="Tus respuestas">
+<p class="ui-head"><span><i class="live-dot"></i> &nbsp;Diagnóstico</span><span data-f="ficha-nombre">Tu negocio</span></p>
+<dl data-f="ficha"></dl>
+<button class="ficha-edit" type="button" data-restart>Cambiar respuestas</button>
+</aside>
+</section>
+</div>
+
+<div id="detalle" hidden>
+<section class="sec found" aria-labelledby="found-title">
+<div class="wrap">
+<div class="found-head rv">
+<div>
+<p class="kick">Lo que encontramos</p>
+<h2 id="found-title" data-f="found-titulo"></h2>
+</div>
+<p class="lead" data-f="found-bajada"></p>
+</div>
+<div class="found-grid rv">
+<div class="found-col"><p class="label">Hoy</p><h3 data-f="hoy-h"></h3><p data-f="hoy-p"></p></div>
+<div class="found-col"><p class="label">Lo que te cuesta</p><ul class="costs" data-f="cuesta"></ul></div>
+<div class="found-col"><p class="label">Lo que cambia</p><ul class="checks" data-f="cambia"></ul></div>
+</div>
+</div>
+</section>
+
+<section class="sec sheet dark dots plan" id="solucion" aria-labelledby="plan-title">
+<div class="wrap">
+<div class="plan-head rv">
+<div>
+<p class="kick">Tu plan</p>
+<h2 id="plan-title">Esto ponemos <span class="hl">a trabajar.</span></h2>
+</div>
+<p class="p-price" data-f="precio"></p>
+</div>
+
+<div class="demo">
+<div class="demo-copy">
+<p class="label" data-f="sol-label"></p>
+<h3 data-f="sol-h"></h3>
+<p data-f="sol-p"></p>
+<ul class="checks" data-f="sol-checks"></ul>
+<div class="actions"><a class="btn btn-light" href="https://agenda.iman.ar/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="/servicios/" data-sol-link>Ver el servicio completo</a></div>
+</div>
+
+<!-- WhatsApp and automation: a conversation from their line of business, played by diagnostico.js -->
+<div class="visual wa-visual" data-visual="whatsapp" data-wa-demo hidden>
+<div class="phone">
+<div class="phone-screen" aria-label="Conversación de ejemplo por WhatsApp entre un cliente y un negocio"><div class="wa">
+<div class="wa-status" aria-hidden="true"><span>9:41</span><span class="wa-status-icons"><i></i><i></i><i></i></span></div>
+<div class="wa-header">
+<span class="wa-back" aria-hidden="true">‹</span>
+<span class="wa-avatar" aria-hidden="true" data-f="wa-avatar"></span>
+<span class="wa-contact"><b data-f="wa-name"></b><small class="wa-presence">en línea</small></span>
+</div>
+<div class="wa-thread">
+<p class="wa-day"><span>Hoy</span></p>
+<p class="wa-notice"><span>🔒 Demo ilustrativa: una conversación de ejemplo.</span></p>
+<ol class="wa-messages" data-wa-thread></ol>
+</div>
+<div class="wa-composer" aria-hidden="true">
+<span class="wa-input"><span class="wa-typed" data-wa-typed></span><span class="wa-placeholder">Mensaje</span></span>
+<span class="wa-send"><svg class="mic" viewBox="0 0 24 24"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11Z"/></svg><svg class="plane" viewBox="0 0 24 24"><path fill="currentColor" d="M2 21 23 12 2 3v7l15 2-15 2Z"/></svg></span>
+</div>
+</div></div>
+</div>
+<aside class="ui log" aria-label="Lo que pasa detrás de la conversación">
+<p class="ui-head"><span><i class="live-dot"></i> &nbsp;Detrás de escena</span><span data-f="wa-log-name"></span></p>
+<ol data-wa-log></ol>
+</aside>
+<p class="demo-note" data-f="wa-note"></p>
+</div>
+
+<!-- Club: the real capture of cafe.iman.ar, with a pass and a push written for their line of business -->
+<div class="visual club-visual" data-visual="club" hidden>
+<div class="phone">
+<div class="phone-screen"><img class="page-scroll" style="--end:-54%" src="/assets/experience/shots/cafe-mobile-scroll.webp" width="600" height="2846" alt="Inicio de cafe.iman.ar en el celular, un club de clientes hecho por IMÁN" loading="lazy"></div>
+</div>
+<div class="club-side">
+<div class="push" aria-hidden="true">
+<span class="push-app" data-f="push-ic"></span>
+<span class="push-body"><b><span data-f="push-name"></span> <small>ahora</small></b><span data-f="push-text"></span></span>
+</div>
+<div class="wallet-pass" aria-label="Tarjeta del club en Wallet, ejemplo">
+<div class="pass-top"><b data-f="pass-name"></b><span>CLUB</span></div>
+<div class="pass-points"><small>PUNTOS</small><b>35</b></div>
+<div class="pass-row"><span><small>SOCIA</small>Sofía M.</span><span><small>PRÓXIMO BENEFICIO</small><span data-f="pass-premio"></span></span></div>
+<div class="pass-qr" aria-hidden="true"></div>
+<p class="pass-wallet">Apple Wallet · Google Wallet</p>
+</div>
+</div>
+<p class="demo-note">En el celular, cafe.iman.ar: un club hecho por IMÁN. La tarjeta y el aviso son un ejemplo.</p>
+</div>
+
+<!-- Catalog: the Grano Norte demo -->
+<div class="visual shop-visual" data-visual="catalogo" hidden>
+<div class="browser shop-browser">
+<div class="browser-bar"><i></i><i></i><i></i><span>grano norte · demo de catálogo</span></div>
+<div class="browser-screen"><img class="page-scroll" style="--end:-61.9%" src="/assets/experience/shots/grano-desktop.webp" width="1280" height="2100" alt="Demo de catálogo para una distribuidora mayorista y minorista, en computadora" loading="lazy"></div>
+</div>
+<div class="phone shop-phone">
+<div class="phone-screen"><img class="page-scroll slow" style="--end:-73.7%" src="/assets/experience/shots/grano-mobile-scroll.webp" width="600" height="4940" alt="La misma demo de catálogo en el celular" loading="lazy">
+<div class="order-bar" aria-hidden="true"><span class="order-main"><b>Tu pedido</b><small>2 productos</small></span><span class="order-wa">WhatsApp</span></div>
+</div>
+</div>
+<p class="demo-note">Demo: Grano Norte, una distribuidora de café. Precios ficticios. <a href="https://template-eccomerce.vercel.app/demo/grano-norte" target="_blank" rel="noopener">Abrir la demo ↗</a></p>
+</div>
+
+<!-- Gauss: the comparison board, with sample data -->
+<div class="visual" data-visual="gauss" hidden>
+<div class="ui board" aria-label="Cuadro comparativo de proveedores, ejemplo">
+<p class="ui-head"><span><i class="live-dot"></i> &nbsp;Cuadro comparativo</span><span>Ejemplo</span></p>
+<div class="board-item">Guantes de nitrilo · 200 cajas<small>3 proveedores consultados por WhatsApp y mail</small></div>
+<ol class="board-rows">
+<li class="best"><span><b>Proveedor A</b><small>Pago a 30 días · entrega en 48 h</small></span><span class="board-price">$4.120</span><em>Mejor opción según tus reglas</em></li>
+<li><span><b>Proveedor B</b><small>Contado · entrega en 24 h</small></span><span class="board-price">$4.300</span></li>
+<li><span><b>Proveedor C</b><small>Pago a 15 días · entrega en 6 días</small></span><span class="board-price">$4.050</span></li>
+</ol>
+<p class="board-foot"><span>Lista para aprobar</span><span>Nada se compra sin vos</span></p>
+</div>
+<p class="demo-note">Datos de ejemplo. <a href="/gauss/">Ver Gauss andando</a></p>
+</div>
+</div>
+
+<div class="scope-grid rv">
+<article class="scope">
+<p class="label">Con tu presupuesto</p>
+<h3 data-f="alcance-titulo"></h3>
+<p data-f="alcance-nota"></p>
+<ul class="checks" data-f="alcance-lista"></ul>
+</article>
+<div class="extras" data-f="extras"></div>
+</div>
+</div>
+</section>
+
+<section class="sec sheet tint dots closing" id="llamada" aria-labelledby="closing-title">
+<div class="wrap rv">
+<p class="kick">Próximo paso</p>
+<h2 id="closing-title">Lo viste en papel. <span class="hl">Ahora andando.</span></h2>
+<p class="lead" data-f="cierre"></p>
+<div class="actions">
+<a class="btn btn-ink" href="https://agenda.iman.ar/">Agendar la llamada <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info" target="_blank" rel="noopener" data-wa-link>Mandar mi diagnóstico por WhatsApp</a>
+</div>
+<p class="call-meta">30 minutos por videollamada con Santiago, fundador de IMÁN.</p>
+<ul class="call-list">
+<li><b>Lo ves andando.</b><p>Una demo con un negocio como el tuyo.</p></li>
+<li><b>Sale el primer flujo.</b><p>Qué se automatiza primero y qué sigue en manos de tu equipo.</p></li>
+<li><b>Te llevás los números.</b><p>Alcance, tiempos e inversión, por escrito.</p></li>
+</ul>
+<details class="callme">
+<summary>Prefiero que me escriban ustedes</summary>
+<form id="callme-form" action="/api/contacto" method="post">
+<div class="fgrid">
+<label class="fld" for="f-nombre"><span>Tu nombre</span><input id="f-nombre" name="nombre" autocomplete="name" maxlength="100" required></label>
+<label class="fld" for="f-negocio"><span>Nombre del negocio</span><input id="f-negocio" name="negocio" autocomplete="organization" maxlength="120" required></label>
+<label class="fld" for="f-email"><span>Tu email</span><input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+<label class="fld" for="f-whatsapp"><span>WhatsApp · te escribimos al instante</span><input id="f-whatsapp" name="whatsapp" type="tel" autocomplete="tel" maxlength="50"></label>
+</div>
+<div class="honey" aria-hidden="true"><label>Dejar vacío<input name="sitio_web_empresa" tabindex="-1" autocomplete="off"></label></div>
+<label class="consent"><input type="checkbox" name="consentimiento" required><span>Acepto que IMÁN me contacte por este diagnóstico y me envíe una confirmación por email. <a href="/privacidad/">Privacidad</a>.</span></label>
+<button class="btn btn-ink" type="submit"><span data-submit-label>Enviar mi diagnóstico</span> <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+<p class="f-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<p class="f-error" role="alert" hidden></p>
+</form>
+<div class="callme-ok" tabindex="-1" hidden>
+<h3>Ya tenemos tu diagnóstico.</h3>
+<p data-ok-message></p>
+<a class="btn btn-ink" href="https://agenda.iman.ar/">Elegir un horario <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div>
+</details>
+</div>
+</section>
+</div>
+</main>
+
+<a class="wa-pill" href="https://agenda.iman.ar/" data-wa-pill hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>Agendar la llamada</a>
+
+<footer class="foot dark dots">
+<a class="foot-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>
+<nav aria-label="Más sobre IMÁN"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a href="/recursos/">Guías</a><a href="/privacidad/">Privacidad</a><a href="https://wa.me/5493535189997">WhatsApp</a></nav>
+<span>Hecho en Argentina.</span>
+</footer>
+
+<script src="/assets/experience/v3.js"></script>
+<script src="/assets/experience/diagnostico.js"></script>
+</body>
+</html>

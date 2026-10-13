@@ -2,9 +2,9 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-11T19:53:19.061260+00:00
+Generada: 2026-10-13T12:14:06.834375+00:00
 
-29 HTML · 22 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
+32 HTML · 22 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
 ## Hallazgos
 
@@ -14,16 +14,16 @@ Sin hallazgos en los controles implementados.
 
 | URL | Sitemap | Clics desde inicio | Páginas que enlazan |
 | --- | --- | --- | --- |
-| / | Sí | 0 | 23 |
+| / | Sí | 0 | 25 |
 | /agente/ | Sí | 1 | 23 |
 | /agentes/ | Sí | 2 | 1 |
 | /automatizaciones/ | Sí | 1 | 10 |
 | /comercios/ | Sí | 1 | 6 |
-| /contacto/ | Sí | 1 | 24 |
+| /contacto/ | Sí | 1 | 25 |
 | /fidelizacion/ | Sí | 1 | 8 |
-| /gauss/ | Sí | 1 | 24 |
-| /privacidad/ | Sí | 1 | 24 |
-| /recursos/ | Sí | 1 | 23 |
+| /gauss/ | Sí | 1 | 26 |
+| /privacidad/ | Sí | 1 | 26 |
+| /recursos/ | Sí | 1 | 24 |
 | /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 2 |
 | /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 1 |
 | /recursos/automatizar-procesos/ | Sí | 2 | 4 |
@@ -34,7 +34,7 @@ Sin hallazgos en los controles implementados.
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
 | /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 2 |
-| /servicios/ | Sí | 1 | 24 |
+| /servicios/ | Sí | 1 | 25 |
 | /turnos/landing/ | Sí | 2 | 3 |
 
 ## Verificaciones que requieren el sitio publicado
