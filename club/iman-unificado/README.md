@@ -1,18 +1,19 @@
 # IMAN
 
-## Gauss para estudios contables — 13 de octubre de 2026 (local, sin publicar)
+## Gauss para estudios contables — 13 de octubre de 2026
 
-Landing de Gauss para estudios contables, pensada para `gauss.iman.ar`, y la página web donde el cliente del estudio ve y pide su informe. La landing de compras (`experience/gauss.html`, `/gauss/`) no cambia.
+Landing de Gauss para estudios contables, publicada en **https://gauss.iman.ar/**, y la página web donde el cliente del estudio ve y pide su informe (`/informe/`). La landing de compras (`experience/gauss.html`, `/gauss/`) no cambia.
 
 - `experience/gauss-estudios.html`: la landing. La demo del hero es un cliente mandando papeles por WhatsApp mientras se llena la ficha del mes; sigue el mismo sistema que `gauss.html`.
 - `experience/gauss-informe.html`: el informe de ejemplo, con selector de mes y el botón «Pedir el informe». Es una demo: los datos son ficticios y el pedido no se envía a ningún lado.
 - `build_dark` las emite a `public/gauss/estudios/` y `public/gauss/estudios/informe/`, sin listar (`noindex`, fuera del sitemap y de `docs/pages.json`), con canonical a `gauss.iman.ar`.
-- `server/worker.mjs` (`GAUSS_PAGES`): en `gauss.iman.ar`, `/` y `/informe/` sirven esas dos páginas, `/assets/` pasa tal cual y cualquier otra ruta va a `www.iman.ar`. Falta agregar `gauss.iman.ar` como dominio del proyecto en Cloudflare Pages.
+- `server/worker.mjs` (`GAUSS_PAGES`): en `gauss.iman.ar`, `/` y `/informe/` sirven esas dos páginas, `/assets/` pasa tal cual y cualquier otra ruta va a `www.iman.ar`. `gauss.iman.ar` es un dominio más del proyecto en Cloudflare Pages.
 - Los botones llevan a `/contacto/?servicio=estudios`: el formulario y `server/contact.mjs` suman la opción «Gauss · Estudios contables».
 - Ver en local: `python3 scripts/build.py` y la vista previa `iman` → `http://127.0.0.1:8791/gauss/estudios/`.
-- Pendiente: imagen para compartir propia y sumar el producto a lo que sabe el asistente de WhatsApp.
+- Imagen para compartir: `variants/assets/share-gauss-estudios-v1.png`, definida en `scripts/render-brand-previews.cjs`.
+- El asistente de WhatsApp conoce el producto: bloque «Gauss para estudios contables» en su `negocio.md`.
 
-## Diagnóstico — 12 de octubre de 2026 (local, sin publicar)
+## Diagnóstico — 12 de octubre de 2026 (publicado el 13)
 
 `/diagnostico/` es una landing de conversión: un onboarding de ocho preguntas que termina en un plan armado con las respuestas y en la llamada.
 
