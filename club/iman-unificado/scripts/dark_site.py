@@ -6,7 +6,6 @@ import hashlib, json, re, shutil
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'experience'
 BASE='https://www.iman.ar'
-GAUSS_SITE='https://gauss.iman.ar'
 SERVICES=json.loads((SOURCE/'services.json').read_text())
 INTRO='IMÁN desarrolla automatización de WhatsApp con IA, fidelización y email marketing, y catálogos conectados con ERP para pymes, mayoristas y distribuidoras de Argentina.'
 DATE='2026-10-10'
@@ -139,13 +138,6 @@ def build_dark(out,pages):
     d_head=seo('/diagnostico/',d_title,d_desc).replace('index,follow,max-image-preview:large','noindex,follow')
     diag=versioned(diag.replace('</head>',d_head+f'<script src="{asset("pixel.js")}" defer></script></head>')).replace('/assets/experience/diagnostico.js"',asset('diagnostico.js')+'"')
     (out/'diagnostico').mkdir(exist_ok=True);(out/'diagnostico/index.html').write_text(diag)
-    # Gauss for accounting firms: a hand-written landing and the report page the firm's client sees, both on V3.
-    # They are served at gauss.iman.ar: the worker maps that host to this folder (GAUSS_PAGES in server/worker.mjs).
-    # Unlisted for now: noindex, outside the sitemap and docs/pages.json.
-    for source,folder,path in [('gauss-estudios.html','gauss/estudios','/'),('gauss-informe.html','gauss/estudios/informe','/informe/')]:
-        firm_head=f'<link rel="canonical" href="{GAUSS_SITE}{path}"><meta name="robots" content="noindex,follow"><meta property="og:url" content="{GAUSS_SITE}{path}"><meta property="og:site_name" content="Gauss"><meta property="og:image" content="{BASE}/assets/identity-variants/share-gauss-estudios-v1.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Gauss · Tu cartera, al día."><meta name="twitter:card" content="summary_large_image">'
-        (out/folder).mkdir(parents=True,exist_ok=True)
-        (out/folder/'index.html').write_text(versioned((SOURCE/source).read_text().replace('</head>',firm_head+'</head>')))
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]

@@ -1,9 +1,6 @@
-// Captures the live demos shown on the site (cafe.iman.ar, the Grano Norte catalog, the Gauss demo for accounting firms) via Chrome DevTools.
+// Captures the live demos shown on the site (cafe.iman.ar, the Grano Norte catalog) via Chrome DevTools.
 // Usage: node scripts/capture-demos.mjs [name]  → club/tmp/demo-captures/*.png; the cropped WebP used by the home live in experience/assets/shots/
 // CATALOG_URL points the catalog shots at another host, e.g. a local run of the template before it is deployed.
-// GAUSS_URL does the same for the Gauss app. Its demo builds a throwaway firm on the first visit, so those shots wait longer;
-// `then` is an expression evaluated in the page that returns the address to capture instead (the client's app as the firm previews it:
-// nobody signs into a made-up client, and its id is new each time); `hide` takes page chrome out of the picture, like the preview's own bar.
 import {spawn} from 'node:child_process';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {writeFileSync,mkdirSync} from 'node:fs';
@@ -13,8 +10,6 @@ const PORT=9334, OUT=new URL('../../tmp/demo-captures/',import.meta.url).pathnam
 mkdirSync(OUT,{recursive:true});
 const ONLY=process.argv[2];
 const CATALOG=process.env.CATALOG_URL||'https://template-eccomerce.vercel.app/demo/grano-norte';
-const GAUSS=process.env.GAUSS_URL||'https://app.gauss.iman.ar';
-const appDeCliente=ver=>`fetch('/api/v1/clientes',{headers:{'X-Gauss-Demo':'1'}}).then(r=>r.json()).then(d=>location.origin+'/demo/clientes/'+d.items.find(c=>c.nombre.startsWith('Panader')).id+'/app${ver}')`;
 const SHOTS=[
   {name:'cafe-mobile',url:'https://cafe.iman.ar/',w:390,h:844,mobile:true},
   {name:'cafe-club-mobile',url:'https://cafe.iman.ar/club',w:390,h:844,mobile:true},
@@ -25,12 +20,6 @@ const SHOTS=[
   {name:'grano-mobile-long',url:CATALOG,w:390,h:3400,mobile:true},
   {name:'grano-desktop',url:CATALOG,w:1440,h:900,mobile:false},
   {name:'grano-mobile',url:CATALOG,w:390,h:844,mobile:true},
-  {name:'gauss-desktop-long',url:GAUSS+'/demo',w:1440,h:2700,mobile:false,dsf:1.25,wait:8000},
-  {name:'gauss-clientes-desktop',url:GAUSS+'/demo/clientes',w:1440,h:1300,mobile:false,dsf:1.25,wait:8000},
-  {name:'gauss-mobile-long',url:GAUSS+'/demo',w:390,h:3400,mobile:true,wait:8000},
-  {name:'gauss-informe-mobile-long',url:GAUSS+'/demo',w:390,h:3600,mobile:true,wait:8000,then:appDeCliente('?ver=informe'),hide:'.vista-bar,.app-tabs'},
-  {name:'gauss-app-mobile',url:GAUSS+'/demo',w:390,h:823,mobile:true,wait:8000,then:appDeCliente(''),hide:'.vista-bar'},
-  {name:'gauss-avisos-desktop',url:GAUSS+'/demo/avisos',w:1440,h:1500,mobile:false,dsf:1.25,wait:8000},
 ];
 const chrome=spawn(CHROME,['--headless=old','--disable-gpu','--hide-scrollbars',`--remote-debugging-port=${PORT}`,'--remote-allow-origins=*',`--user-data-dir=/tmp/iman_demo_cap_${Date.now()}`,'about:blank'],{stdio:'ignore'});
 let ver;for(let i=0;i<60&&!ver;i++){try{ver=await (await fetch(`http://127.0.0.1:${PORT}/json/version`)).json()}catch{await sleep(200)}}
@@ -48,13 +37,6 @@ for(const s of SHOTS.filter(x=>!ONLY||x.name.startsWith(ONLY))){
   if(s.mobile)await send('Emulation.setUserAgentOverride',{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'},sessionId);
   const loaded=next('Page.loadEventFired',sessionId);
   await send('Page.navigate',{url:s.url},sessionId);await loaded;await sleep(s.wait||4500);
-  if(s.then){
-    const {result}=await send('Runtime.evaluate',{expression:s.then,awaitPromise:true,returnByValue:true},sessionId);
-    if(!result||typeof result.value!=='string'){console.error('no address for',s.name);await send('Target.closeTarget',{targetId});continue}
-    const again=next('Page.loadEventFired',sessionId);
-    await send('Page.navigate',{url:result.value},sessionId);await again;await sleep(4500);
-  }
-  if(s.hide){await send('Runtime.evaluate',{expression:`document.querySelectorAll(${JSON.stringify(s.hide)}).forEach(e=>e.style.display='none');scrollTo(0,0)`},sessionId);await sleep(600)}
   if(s.anchor){await send('Runtime.evaluate',{expression:`[...document.querySelectorAll('h1,h2,h3')].find(h=>h.textContent.includes(${JSON.stringify(s.anchor)}))?.scrollIntoView({block:'start'});scrollBy(0,-90)`},sessionId);await sleep(2500)}
   if(s.scroll){await send('Runtime.evaluate',{expression:`scrollTo(0,${s.scroll})`},sessionId);await sleep(2500)}
   const {data}=await send('Page.captureScreenshot',{format:'png'},sessionId);

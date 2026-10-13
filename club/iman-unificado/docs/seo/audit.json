@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-13T19:10:44.857951+00:00",
+  "generated_at": "2026-10-13T23:34:56.337454+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
-    "html": 32,
+    "html": 30,
     "indexable_html": 22,
     "sitemap_urls": 22,
     "error": 0,
@@ -19,7 +19,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
-      "incoming_pages": 25,
+      "incoming_pages": 24,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -199,7 +199,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 26,
+      "incoming_pages": 25,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -208,24 +208,6 @@
         "WebPage",
         "WebSite"
       ]
-    },
-    {
-      "path": "/gauss/estudios/",
-      "title": "Gauss para estudios contables: tu cartera, al día | IMÁN",
-      "noindex": true,
-      "in_sitemap": false,
-      "click_depth": null,
-      "incoming_pages": 1,
-      "schema_types": []
-    },
-    {
-      "path": "/gauss/estudios/informe/",
-      "title": "Informe de ejemplo · Gauss para estudios contables | IMÁN",
-      "noindex": true,
-      "in_sitemap": false,
-      "click_depth": null,
-      "incoming_pages": 1,
-      "schema_types": []
     },
     {
       "path": "/privacidad/",
