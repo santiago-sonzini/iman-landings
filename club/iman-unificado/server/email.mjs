@@ -60,3 +60,35 @@ export function newsletterWelcomeEmail(person,unsubscribeURL){
   const ideas=[['Dale un motivo para volver.','Ofrecé un beneficio concreto en la próxima compra, con una condición fácil de entender.'],['Elegí el momento.','Separá a quienes compraron hace poco de quienes hace tiempo no vuelven antes de mandar el mismo mensaje a todos.'],['Medí la segunda compra.','Mirá cuántos clientes regresan y qué propuesta los trae de nuevo.']];
   return {subject:'Bienvenido a IMAN · Tres ideas para que tus clientes vuelvan',text:`Hola, ${person.nombre}.\n\nTu suscripción está confirmada. Para empezar:\n\n${ideas.map(([h,p],i)=>`${i+1}. ${h} ${p}`).join('\n\n')}\n\nLeé la guía: ${resourceURL}\n\nSantiago · IMAN\n\nPodés darte de baja: ${unsubscribeURL}`,html:frame('Tu suscripción está confirmada. Empezamos con tres ideas.',eyebrow('IDEAS / BIENVENIDO A IMAN')+heading('Hagamos que<br>vuelvan.')+paragraph(`Hola, ${E(person.nombre)}. Tu suscripción está confirmada. Para empezar, tres ideas que podés llevar a tu comercio:`)+ideas.map(([h,p],i)=>`<div style="border-bottom:1px solid #303034;padding:20px 0">${eyebrow('0'+(i+1))}<h2 style="color:#f2f2f2;font-size:19px;font-weight:400;margin:0 0 12px">${h}</h2>${paragraph(p)}</div>`).join('')+button('Leer la guía completa',resourceURL)+paragraph('Gracias por sumarte.<br>Santiago · IMAN'),`Recibís este mensaje porque confirmaste tu suscripción. <a href="${E(unsubscribeURL)}" style="color:#c7bcdf">Darte de baja</a>.`)};
 }
+const utc=t=>new Date(t*1000).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+export const googleCalendarURL=(title,booking)=>'https://calendar.google.com/calendar/render?'+new URLSearchParams({action:'TEMPLATE',text:title,dates:`${utc(booking.inicio)}/${utc(booking.fin)}`,details:`Link de Google Meet: ${booking.meet}`,location:booking.meet});
+// The notice each person of the team gets when a call is booked from the diagnosis: when, the Meet, the answers and how to reach them.
+export function teamBookingEmail(lead,booking){
+  const cuando=booking.cuando.charAt(0).toUpperCase()+booking.cuando.slice(1);
+  // The diagnosis travels as "Clave: valor" lines; the first one only says where it was made.
+  const answers=lead.comentario.split('\n').slice(1).map(line=>line.split(/:\s(.*)/s)).filter(([k,v])=>k&&v);
+  const contact=[['Nombre',lead.nombre],['Email',lead.email],['WhatsApp',lead.whatsapp||'No indicado'],['Página',lead.source||'No indicada'],...Object.entries(lead.utm||{})];
+  const phone=(lead.whatsapp||'').replace(/\D/g,'');
+  const table=rows=>`<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 28px">${rows.map(([k,v])=>`<tr><td style="padding:12px 0;border-bottom:1px solid ${LINE};vertical-align:top;width:104px;font-family:'Courier New',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${ACCENT}">${E(k)}</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;line-height:1.6;color:${INK};word-break:break-word">${E(v)}</td></tr>`).join('')}</table>`;
+  const calendar=googleCalendarURL(`Llamada con ${lead.nombre} · ${lead.negocio}`,booking);
+  const minutes=Math.round((booking.fin-booking.inicio)/60);
+  const why={sin_whatsapp:'el número no tiene WhatsApp',telefono_invalido:'el número no es válido',whatsapp_desconectado:'el WhatsApp de IMÁN está desconectado'};
+  const whatsapp=booking.whatsapp==='enviado'
+    ?(booking.mail?'Ya le confirmamos por WhatsApp y por mail.':'Ya le confirmamos por WhatsApp; el mail de confirmación no salió.')
+    :`${booking.mail?'Le confirmamos por mail.':'El mail de confirmación no salió.'} Por WhatsApp no le escribimos: ${why[booking.whatsapp]||'no se pudo'}.`;
+  return {
+    subject:`Llamada agendada · ${lead.negocio} · ${booking.cuando}`,
+    text:`${lead.negocio} agendó una llamada desde el diagnóstico.\n\nCuándo: ${cuando} (hora de Argentina), ${minutes} minutos.\nMeet: ${booking.meet}\nAgregar a Google Calendar: ${calendar}\n\n${whatsapp}\n\nDiagnóstico\n${answers.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nContacto\n${contact.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nRespondé este correo para escribirle a ${lead.nombre}.`,
+    html:frame(`${cuando} · ${lead.nombre} · ${lead.negocio}`,
+      eyebrow('Llamada agendada desde el diagnóstico')
+      +heading(`${E(lead.negocio)}<br><em style="font-style:normal;color:#c7bcdf">agendó una llamada.</em>`)
+      +box(eyebrow('Cuándo')+`<p style="margin:0 0 6px;font-family:${TITLE_FONT};font-size:24px;line-height:1.25;letter-spacing:-.5px;color:${INK}">${E(cuando)}</p><p style="margin:0;font-family:${SANS};font-size:13px;line-height:1.6;color:${MUTED}">Hora de Argentina · ${minutes} minutos · Google Meet</p>`)
+      +button('Entrar a la videollamada',booking.meet)
+      +paragraph(`<a href="${E(calendar)}" style="color:${INK};text-decoration:underline">Agregar a Google Calendar</a> · ${E(whatsapp)}`)
+      +eyebrow('Su diagnóstico')+table(answers)
+      +eyebrow('Contacto')+table(contact)
+      +button(`Responder a ${E(lead.nombre)}`,'mailto:'+lead.email)
+      +(phone.length>=8?button('Escribir por WhatsApp','https://wa.me/'+phone,false):''),
+      'Aviso interno de una llamada agendada en iman.ar/diagnostico/.')
+  };
+}

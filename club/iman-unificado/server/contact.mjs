@@ -8,12 +8,12 @@ const EMAIL = /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:
 const single = value => typeof value === 'string' ? value.replace(/[\x00-\x1f\x7f]/g, ' ').replace(/\s+/g, ' ').trim() : '';
 const multiline = value => typeof value === 'string' ? value.replace(/\r\n?/g,'\n').replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g,'').trim() : '';
 
-function reply(body, status = 200, headers = {}) {
+export function reply(body, status = 200, headers = {}) {
   return Response.json(body, {status, headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Robots-Tag':'noindex, nofollow',...headers}});
 }
-const failure = (code, error, status, headers) => reply({ok:false,code,error},status,headers);
+export const failure = (code, error, status, headers) => reply({ok:false,code,error},status,headers);
 
-async function readJSON(request) {
+export async function readJSON(request) {
   const length = Number(request.headers.get('content-length'));
   if (length > MAX_BYTES) throw Object.assign(new Error('too_large'), {status:413});
   if (!request.body) throw new Error('empty_body');
@@ -38,7 +38,7 @@ async function readJSON(request) {
   return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(data));
 }
 
-function parseLead(body, origin) {
+export function parseLead(body, origin) {
   if (!body || Array.isArray(body) || typeof body !== 'object') return null;
   for (const [key, limit] of Object.entries(LIMITS)) {
     if (body[key] !== undefined && (typeof body[key] !== 'string' || body[key].length > limit)) return null;
@@ -70,7 +70,7 @@ function parseLead(body, origin) {
   return lead;
 }
 
-async function digest(value, secret) {
+export async function digest(value, secret) {
   const key = await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']);
   return [...new Uint8Array(await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(value)))].map(byte=>byte.toString(16).padStart(2,'0')).join('');
 }
@@ -85,6 +85,25 @@ export function mailConfig(env) {
 
 export const definitelyNotSent = error => ['E_VALIDATION_ERROR','E_FIELD_MISSING','E_TOO_MANY_RECIPIENTS','E_SENDER_NOT_VERIFIED','E_RECIPIENT_NOT_ALLOWED','E_RECIPIENT_SUPPRESSED','E_SENDER_DOMAIN_NOT_AVAILABLE','E_CONTENT_TOO_LARGE','E_RATE_LIMIT_EXCEEDED','E_DAILY_LIMIT_EXCEEDED','E_HEADER_NOT_ALLOWED','E_HEADER_USE_API_FIELD','E_HEADER_VALUE_INVALID','E_HEADER_VALUE_TOO_LONG','E_HEADER_NAME_INVALID','E_HEADERS_TOO_LARGE','E_HEADERS_TOO_MANY'].includes(error?.code);
 
+// Fixed-window counters in D1 (or in memory for tests). Returns 0, or the seconds to wait when a limit is exceeded.
+export async function countHits(db, buckets, items, now) {
+  for (const {key,limit,duration} of items) {
+    const period = Math.floor(now()/duration);
+    const bucket = `${key}:${period}`;
+    const expires = (period+1)*duration;
+    let hits;
+    if (db) {
+      const result = await db.prepare('INSERT INTO contact_rate_limits (bucket,hits,expires_at) VALUES (?,1,?) ON CONFLICT(bucket) DO UPDATE SET hits=hits+1 RETURNING hits').bind(bucket,expires).first();
+      hits = result.hits;
+    } else {
+      hits = (buckets.get(bucket)?.hits || 0)+1;
+      buckets.set(bucket,{hits,expires});
+    }
+    if (hits > limit) return Math.max(1,Math.ceil((expires-now())/1000));
+  }
+  return 0;
+}
+
 export function createContactHandler({sendMail, startChat = null, now = Date.now, report = code => console.error(code), allowInMemory = false} = {}) {
   const requests = new Map();
   const buckets = new Map();
@@ -94,23 +113,7 @@ export function createContactHandler({sendMail, startChat = null, now = Date.now
     for (const [key, item] of buckets) if (item.expires <= cutoff) buckets.delete(key);
   }
 
-  async function rateLimit(db, items) {
-    for (const {key,limit,duration} of items) {
-      const period = Math.floor(now()/duration);
-      const bucket = `${key}:${period}`;
-      const expires = (period+1)*duration;
-      let hits;
-      if (db) {
-        const result = await db.prepare('INSERT INTO contact_rate_limits (bucket,hits,expires_at) VALUES (?,1,?) ON CONFLICT(bucket) DO UPDATE SET hits=hits+1 RETURNING hits').bind(bucket,expires).first();
-        hits = result.hits;
-      } else {
-        hits = (buckets.get(bucket)?.hits || 0)+1;
-        buckets.set(bucket,{hits,expires});
-      }
-      if (hits > limit) return Math.max(1,Math.ceil((expires-now())/1000));
-    }
-    return 0;
-  }
+  const rateLimit = (db, items) => countHits(db, buckets, items, now);
 
   return async function handleContact(request, env = {}) {
     if (request.method !== 'POST') return failure('method_not_allowed','Método no permitido.',405,{'Allow':'POST'});

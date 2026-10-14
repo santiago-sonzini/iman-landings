@@ -1,3 +1,4 @@
+import { createBookingHandler } from './booking.mjs';
 import { createContactHandler } from './contact.mjs';
 import { createNewsletterHandler } from './newsletter.mjs';
 
@@ -14,18 +15,39 @@ async function sendMail(message,config) {
   if(!response.ok || !result.messageId)throw Object.assign(new Error('mail_delivery_failed'),{code:result.code});
   return result;
 }
-// Asks the WhatsApp assistant (bot on agenda.iman.ar) to write first to someone who left their number. The token is a
-// Pages secret shared only with the bot, so nobody can make it message arbitrary numbers. Returns the bot's outcome.
-async function startChat(lead,env){
+// The WhatsApp assistant's bot, on agenda.iman.ar. The token is a Pages secret shared only with the bot, so nobody can
+// make it message arbitrary numbers.
+const bot=env=>{
   const url=typeof env.BOT_URL==='string'?env.BOT_URL.replace(/\/$/,''):'', token=typeof env.BOT_TOKEN==='string'?env.BOT_TOKEN:'';
-  if(!url||!token)return null;
-  const response=await fetch(`${url}/api/consulta`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+  return url&&token?{url,headers:{'Authorization':`Bearer ${token}`}}:null;
+};
+// Asks the assistant to write first to someone who left their number. Returns the bot's outcome.
+async function startChat(lead,env){
+  const b=bot(env);
+  if(!b)return null;
+  const response=await fetch(`${b.url}/api/consulta`,{method:'POST',headers:{...b.headers,'Content-Type':'application/json'},
     body:JSON.stringify({nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,ciudad:lead.ciudad,servicios:lead.servicios,comentario:lead.comentario}),
     signal:AbortSignal.timeout(6000)});
   if(!response.ok)throw new Error(`bot_${response.status}`);
   return (await response.json()).resultado||null;
 }
+// The agenda of the diagnosis: the bot's free times and its booking (bot/reservas.py, /api/reserva-web).
+const agenda={
+  async slots(env){
+    const b=bot(env);if(!b)return null;
+    const response=await fetch(`${b.url}/api/horarios`,{headers:b.headers,signal:AbortSignal.timeout(8000)});
+    if(!response.ok)throw new Error(`bot_${response.status}`);
+    return response.json();
+  },
+  async book(payload,env){
+    const b=bot(env);if(!b)return {status:0,body:{}};
+    const response=await fetch(`${b.url}/api/reserva-web`,{method:'POST',headers:{...b.headers,'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(20000)});
+    let body={};try{body=await response.json();}catch{}
+    return {status:response.status,body};
+  }
+};
 const handleContact=createContactHandler({sendMail,startChat});
+const handleBooking=createBookingHandler({sendMail,agenda});
 const handleNewsletter=createNewsletterHandler({sendMail});
 const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, vengo de Instagram y quiero info');
 // Short link for Gauss (iman.ar/gauss/wa): "quiero info" is what the assistant recognizes as a lead, and it names the product.
@@ -45,6 +67,7 @@ export default {
     // Short link to book a call (iman.ar/agenda): the booking page lives with the assistant, on its own subdomain.
     if(url.pathname==='/agenda'||url.pathname==='/agenda/')return Response.redirect(AGENDA,302);
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);
+    if(url.pathname==='/api/agenda'||url.pathname==='/api/agenda/')return handleBooking(request,env);
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
     const asset=await env.ASSETS.fetch(request);

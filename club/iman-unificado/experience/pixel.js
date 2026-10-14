@@ -2,6 +2,7 @@
 //   PageView  every page
 //   Contact   a tap on WhatsApp or on the booking link, or a sent inquiry (content_name says which)
 //   Lead      an inquiry sent through the form
+//   Schedule  a call booked in the agenda of the diagnosis
 // Nothing typed in the form is sent to Meta, and the pixel does not load when the browser asks not to be tracked.
 (() => {
   'use strict';
@@ -26,4 +27,6 @@
   },true);
   // form.js announces a sent inquiry with this event.
   addEventListener('iman:consulta',()=>{contact('formulario');fbq('track','Lead',{content_category:page});});
+  // diagnostico.js announces a call booked in its own agenda; the agenda page on agenda.iman.ar sends its own Schedule.
+  addEventListener('iman:agenda',()=>{contact('agenda');fbq('track','Schedule',{content_category:page});});
 })();

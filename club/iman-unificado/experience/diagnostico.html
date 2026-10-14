@@ -166,12 +166,50 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 
 /* Closing: the call */
 .closing{margin-top:clamp(6px,1vw,14px);text-align:center}
-.closing .wrap{display:grid;justify-items:center}
+/* minmax(0,1fr): the row of days scrolls inside the agenda instead of widening the column. */
+.closing .wrap{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center}
 .closing h2{margin:20px 0 18px;font-size:clamp(38px,6vw,88px)}
 .closing h2 .hl{background:var(--ink);color:#fff}
 .closing .lead{margin-bottom:30px}
 .closing .actions{justify-content:center}
-.call-meta{margin-top:18px;font:10.5px/1.6 var(--mono);letter-spacing:.04em;color:#3f4047}
+/* The agenda, inside the closing: a day, a time, their details. The booking carries the diagnosis (diagnostico.js). */
+.booker{width:100%;max-width:780px;padding:clamp(18px,3vw,28px);border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px #1212121a,0 34px 60px -46px #121212;text-align:left;scroll-margin-top:84px}
+.bk-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.bk-head h3{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.045em;line-height:1.1}
+.bk-head h3:focus,.bk-done:focus{outline:0}
+.bk-head p{max-width:44ch;margin-top:6px;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.bk-steps{display:flex;gap:6px;font:500 10px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.bk-steps li{padding:7px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);transition:background .25s,color .25s}
+.bk-steps li.ok{background:var(--paper-2);color:var(--ink);box-shadow:none}
+.bk-steps li.on{background:var(--ink);color:#fff;box-shadow:none}
+.bk-pick,.bk-form,.bk-off{padding-top:20px}
+.bk-days{display:flex;gap:8px;overflow-x:auto;margin:0 calc(-1*clamp(18px,3vw,28px));padding:2px clamp(18px,3vw,28px) 6px;scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-inline:clamp(18px,3vw,28px)}
+.bk-days::-webkit-scrollbar{display:none}
+.bk-d{flex:none;width:64px;padding:10px 0 9px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);text-align:center;scroll-snap-align:start;transition:background .2s,color .2s,box-shadow .2s}
+.bk-d small{display:block;font:500 10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.bk-d b{display:block;margin:2px 0 1px;font:500 23px/1.1 var(--display);letter-spacing:-.04em}
+.bk-d[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.bk-d[aria-pressed=true] small{color:var(--muted-d)}
+.bk-day{margin:16px 0 10px;font:500 15px/1.3 var(--sans);letter-spacing:-.015em}
+.bk-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.bk-t{min-height:48px;border-radius:13px;background:#fff;box-shadow:inset 0 0 0 1px #12121238;font:500 15px/1 var(--mono);letter-spacing:-.02em;transition:background .2s,color .2s,box-shadow .2s,transform .25s var(--ease)}
+.bk-t:enabled{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:none}
+.bk-t:disabled{background:var(--paper-2);box-shadow:none;color:#a3a6ad;text-decoration:line-through;text-decoration-color:#12121240;cursor:default}
+@media(hover:hover){.bk-d:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}.bk-d[aria-pressed=true]:hover{box-shadow:none}.bk-t:enabled:hover{transform:translateY(-2px);background:linear-gradient(var(--ink),var(--ink)) padding-box,var(--grad) border-box;color:#fff}}
+.bk-wait{padding-top:16px;font-size:14px;color:var(--muted)}
+.bk-pick.is-loading .bk-days{min-height:76px;border-radius:16px;background:linear-gradient(90deg,var(--paper-2) 0 64px,transparent 64px 72px) 0 2px/72px 72px repeat-x;opacity:.8}
+.bk-chosen{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin-bottom:18px;padding:13px 16px;border-radius:14px;background:var(--grad-soft);font:500 15px/1.35 var(--sans);letter-spacing:-.01em}
+.bk-done{display:grid;justify-items:center;padding:28px 0 8px;text-align:center}
+.bk-check{width:54px;height:54px;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.2 2.3 4.6-5' fill='none' stroke='%23121212' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/24px no-repeat,var(--grad)}
+.bk-done h3{margin:16px 0 8px;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.05em}
+.bk-when{font:500 18px/1.35 var(--sans);letter-spacing:-.015em}
+.bk-done p:not(.bk-when){max-width:46ch;margin-top:8px;font-size:14.5px;line-height:1.55;color:#3f4047}
+.bk-done .actions{justify-content:center;margin-top:22px}
+.bk-off p{margin-bottom:16px;color:#3f4047}
+.bk-note{margin-bottom:16px;padding:12px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px #a3271f66;font-size:13.5px;line-height:1.55;color:#a3271f}
+.call-alt{margin-top:18px;font-size:14.5px}
+.is-booked :is(.call-alt,.callme){display:none}
+.motion .bk-in{animation:q-in .4s var(--ease) both}
 .call-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:980px;margin-top:clamp(34px,6vh,60px);text-align:left}
 .call-list li{padding:20px 22px 22px;border-radius:20px;background:#ffffffa8;box-shadow:inset 0 0 0 1px #1212121a}
 .call-list b{display:block;margin-bottom:5px;font:500 19px/1.2 var(--display);letter-spacing:-.04em}
@@ -218,6 +256,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
   .tiles .q-opt :is(small,.q-key){display:none}
   .tiles .q-opt b{font-size:15px}
   .found-grid,.call-list,.fgrid,.is-wide .extras{grid-template-columns:1fr}
+  .bk-times{grid-template-columns:repeat(3,minmax(0,1fr))}
   .wa-visual{flex-direction:column}
   .wa-visual .phone{width:min(100%,290px)}
   .log{flex:none;width:100%}
@@ -231,7 +270,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
   .order-wa{padding:5px 7px;font-size:8.5px}
 }
 @media(prefers-reduced-motion:reduce){
-  .q-opt,.q-meter i{transition:none}
+  .q-opt,.q-meter i,.bk-d,.bk-t{transition:none}
 }
 </style>
 </head>
@@ -241,7 +280,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 <header class="nav">
 <div class="nav-in">
 <a class="nav-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>
-<nav class="nav-links" aria-label="Principal"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a class="nav-cta" href="https://agenda.iman.ar/"><i aria-hidden="true"></i>Agendar llamada</a></nav>
+<nav class="nav-links" aria-label="Principal"><a href="/servicios/">Servicios</a><a href="/gauss/">Gauss</a><a class="nav-cta" href="https://agenda.iman.ar/" data-book><i aria-hidden="true"></i>Agendar llamada</a></nav>
 </div>
 </header>
 
@@ -274,7 +313,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 <h2 id="res-title" tabindex="-1" data-f="titulo"></h2>
 <p class="lead" data-f="bajada"></p>
 <div class="actions" data-pill-after>
-<a class="btn btn-ink" href="https://agenda.iman.ar/">Agendar la llamada <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="btn btn-ink" href="https://agenda.iman.ar/" data-book>Agendar la llamada <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 <a class="link" href="#solucion">Ver el plan</a>
 </div>
 </div>
@@ -320,7 +359,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 <h3 data-f="sol-h"></h3>
 <p data-f="sol-p"></p>
 <ul class="checks" data-f="sol-checks"></ul>
-<div class="actions"><a class="btn btn-light" href="https://agenda.iman.ar/">Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="/servicios/" data-sol-link>Ver el servicio completo</a></div>
+<div class="actions"><a class="btn btn-light" href="https://agenda.iman.ar/" data-book>Quiero verlo en mi negocio <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="/servicios/" data-sol-link>Ver el servicio completo</a></div>
 </div>
 
 <!-- WhatsApp and automation: a conversation from their line of business, played by diagnostico.js -->
@@ -419,11 +458,48 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 <p class="kick">Próximo paso</p>
 <h2 id="closing-title">Lo viste en papel. <span class="hl">Ahora andando.</span></h2>
 <p class="lead" data-f="cierre"></p>
-<div class="actions">
-<a class="btn btn-ink" href="https://agenda.iman.ar/">Agendar la llamada <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-<a class="link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info" target="_blank" rel="noopener" data-wa-link>Mandar mi diagnóstico por WhatsApp</a>
+<div class="booker" id="agenda" role="region" aria-labelledby="bk-title" data-booker>
+<div class="bk-head">
+<div>
+<h3 id="bk-title" tabindex="-1">Elegí día y horario</h3>
+<p>30 minutos por videollamada con Santiago, fundador de IMÁN. Hora de Argentina.</p>
 </div>
-<p class="call-meta">30 minutos por videollamada con Santiago, fundador de IMÁN.</p>
+<ol class="bk-steps" aria-hidden="true"><li class="on">Horario</li><li>Tus datos</li><li>Listo</li></ol>
+</div>
+<div class="bk-pick" data-bk-pick>
+<p class="bk-note" role="alert" data-bk-note hidden></p>
+<div class="bk-days" role="group" aria-label="Días" data-bk-days></div>
+<p class="bk-day" data-bk-day></p>
+<div class="bk-times" role="group" aria-label="Horarios" data-bk-times></div>
+<p class="bk-wait" data-bk-wait>Buscando horarios libres…</p>
+</div>
+<form class="bk-form" data-bk-form novalidate hidden>
+<p class="bk-chosen"><span data-bk-chosen></span><button class="link" type="button" data-bk-change>Cambiar</button></p>
+<div class="fgrid">
+<label class="fld" for="b-nombre"><span>Tu nombre</span><input id="b-nombre" name="nombre" autocomplete="name" maxlength="100" required></label>
+<label class="fld" for="b-negocio"><span>Nombre del negocio</span><input id="b-negocio" name="negocio" autocomplete="organization" maxlength="120" required></label>
+<label class="fld" for="b-email"><span>Tu email</span><input id="b-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+<label class="fld" for="b-whatsapp"><span>WhatsApp · ahí te llega el link</span><input id="b-whatsapp" name="whatsapp" type="tel" autocomplete="tel" maxlength="50" required></label>
+</div>
+<div class="honey" aria-hidden="true"><label>Dejar vacío<input name="sitio_web_empresa" tabindex="-1" autocomplete="off"></label></div>
+<label class="consent"><input type="checkbox" name="consentimiento" required><span>Acepto que IMÁN me escriba por email y WhatsApp por esta llamada. <a href="/privacidad/">Privacidad</a>.</span></label>
+<button class="btn btn-ink" type="submit"><span data-bk-label>Confirmar la llamada</span> <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+<p class="f-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<p class="f-error" role="alert" hidden></p>
+</form>
+<div class="bk-done" data-bk-done tabindex="-1" hidden>
+<span class="bk-check" aria-hidden="true"></span>
+<h3>Quedó agendada.</h3>
+<p class="bk-when" data-bk-when></p>
+<p data-bk-sent></p>
+<div class="actions"><a class="btn btn-ink" href="https://calendar.google.com/" target="_blank" rel="noopener" data-bk-cal>Agregar a Google Calendar <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a class="link" href="https://meet.google.com/" target="_blank" rel="noopener" data-bk-meet>Abrir el link de Meet</a></div>
+</div>
+<div class="bk-off" data-bk-off hidden>
+<p data-bk-off-text>La agenda no cargó acá. Elegí el horario en la página de la agenda.</p>
+<a class="btn btn-ink" href="https://agenda.iman.ar/" data-bk-off-link><span data-bk-off-label>Abrir la agenda</span> <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div>
+</div>
+<p class="call-alt"><a class="link" href="https://wa.me/5493535189997?text=Hola%2C%20quiero%20info" target="_blank" rel="noopener" data-wa-link>Prefiero mandar mi diagnóstico por WhatsApp</a></p>
 <ul class="call-list">
 <li><b>Lo ves andando.</b><p>Una demo con un negocio como el tuyo.</p></li>
 <li><b>Sale el primer flujo.</b><p>Qué se automatiza primero y qué sigue en manos de tu equipo.</p></li>
@@ -447,7 +523,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 <div class="callme-ok" tabindex="-1" hidden>
 <h3>Ya tenemos tu diagnóstico.</h3>
 <p data-ok-message></p>
-<a class="btn btn-ink" href="https://agenda.iman.ar/">Elegir un horario <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a class="btn btn-ink" href="https://agenda.iman.ar/" data-book>Elegir un horario <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 </div>
 </details>
 </div>
@@ -455,7 +531,7 @@ html:not(.js) :is(.q-bar,.q-step){display:none}
 </div>
 </main>
 
-<a class="wa-pill" href="https://agenda.iman.ar/" data-wa-pill hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>Agendar la llamada</a>
+<a class="wa-pill" href="https://agenda.iman.ar/" data-wa-pill data-book hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>Agendar la llamada</a>
 
 <footer class="foot dark dots">
 <a class="foot-brand" href="/" aria-label="IMÁN, inicio"><span class="logo" aria-hidden="true"></span></a>

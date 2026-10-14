@@ -363,17 +363,18 @@
       return `<article class="extra${dentro?' is-in':''}"><p class="label">${dentro?'Entra en tu presupuesto':'También te sirve'}</p><h3>${s.nombre}</h3><p>${s.texto}</p><div class="extra-foot"><span>${s.desde===null?'A medida':'Desde '+money(s.desde)+' por mes'}</span><a class="link" href="${s.url}">Ver más</a></div></article>`;
     }).join(''));
 
-    // The same summary travels three ways: the card above, the WhatsApp message and the inquiry IMÁN receives.
+    // The same summary travels four ways: the card above, the WhatsApp message, the booked call and the inquiry IMÁN receives.
     const lineas=[...(nombre?[['Negocio',nombre]]:[]),...rows].map(([k,v])=>`${k}: ${v}`);
     comentario=['Diagnóstico hecho en iman.ar/diagnostico/',...lineas].join('\n').slice(0,2000);
     set('cierre',cuando.cierre);
     $('[data-wa-link]').href=WA+'?text='+encodeURIComponent(['Hola, quiero info. Hice el diagnóstico en iman.ar:',...lineas].join('\n'));
-    const business=form.elements.negocio;if(nombre&&!business.value)business.value=nombre;
+    $$('#callme-form,[data-bk-form]').forEach(f=>{const business=f.elements.negocio;if(nombre&&!business.value)business.value=nombre});
     form.dataset.rubro=rubroT;form.dataset.servicios=JSON.stringify([...new Set([f.sol,...sc.incluye].map(id=>SOL[id].servicio))]);
   }
   function openPlan(focus){
     fillPlan();
-    quiz.hidden=true;res.hidden=false;detail.hidden=false;pill.hidden=false;
+    quiz.hidden=true;res.hidden=false;detail.hidden=false;pill.hidden=booker.booked();
+    $$('[data-book]').forEach(a=>a.setAttribute('href','#agenda'));booker.sync();
     window.scrollTo(0,0);dispatchEvent(new Event('resize'));   // the filings canvas takes the new height
     if(focus)$('#res-title').focus({preventScroll:true});
     chat.sync();
@@ -381,6 +382,7 @@
   function closePlan(){
     if(res.hidden)return;
     quiz.hidden=false;res.hidden=true;detail.hidden=true;pill.hidden=true;
+    $$('[data-book]').forEach(a=>a.setAttribute('href',AGENDA));
     chat.sync();dispatchEvent(new Event('resize'));
   }
   // The floating booking button steps aside while the closing, with its own button, is on screen.
@@ -432,6 +434,11 @@
 
   /* ---------- "Prefiero que me escriban": the diagnosis goes to /api/contacto, as the site's inquiry form does ---------- */
 
+  const utm=()=>{
+    const params=new URLSearchParams(location.search),found={};
+    for(const key of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'])if(params.has(key))found[key]=params.get(key).slice(0,key==='utm_source'||key==='utm_medium'?120:180);
+    return found;
+  };
   const form=$('#callme-form'),ok=$('.callme-ok'),submit=$('[type=submit]',form),label=$('[data-submit-label]',form),status=$('.f-status',form),error=$('.f-error',form);
   let pending=false,previous='',requestId='';
   form.addEventListener('submit',async e=>{
@@ -441,8 +448,7 @@
     const data=new FormData(form),payload={};
     for(const field of ['nombre','negocio','email','whatsapp','sitio_web_empresa'])payload[field]=String(data.get(field)||'').trim();
     Object.assign(payload,{rubro:form.dataset.rubro,servicios:JSON.parse(form.dataset.servicios),comentario,consentimiento:data.get('consentimiento')==='on',source:location.pathname});
-    const params=new URLSearchParams(location.search);
-    for(const key of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'])if(params.has(key))payload[key]=params.get(key).slice(0,key==='utm_source'||key==='utm_medium'?120:180);
+    Object.assign(payload,utm());
     const body=JSON.stringify(payload);
     if(body!==previous){previous=body;requestId=crypto.randomUUID()}
     pending=true;submit.disabled=true;form.setAttribute('aria-busy','true');label.textContent='Enviando…';status.textContent='Estamos enviando tu diagnóstico.';
@@ -459,6 +465,124 @@
       error.textContent=problem.name==='AbortError'?'El envío tardó más de lo esperado y no podemos confirmarlo todavía. Podés reintentar sin duplicar la consulta.':problem.message;error.hidden=false;
     }finally{clearTimeout(timeout);pending=false;submit.disabled=false;form.removeAttribute('aria-busy');label.textContent='Enviar mi diagnóstico';status.textContent=''}
   });
+
+  /* ---------- The agenda: the free times come from /api/agenda, and the booking carries the diagnosis ---------- */
+  // server/booking.mjs asks the WhatsApp assistant's agenda (agenda.iman.ar) and books there; the client gets the Meet by
+  // mail and WhatsApp, and the team gets the answers by email. A booking is remembered so the plan reopens on it.
+
+  const booker=(()=>{
+    const box=$('[data-booker]'),pick=$('[data-bk-pick]',box),daysEl=$('[data-bk-days]',box),timesEl=$('[data-bk-times]',box),dayEl=$('[data-bk-day]',box);
+    const wait=$('[data-bk-wait]',box),note=$('[data-bk-note]',box),bform=$('[data-bk-form]',box),done=$('[data-bk-done]',box),off=$('[data-bk-off]',box);
+    const steps=$$('.bk-steps li',box),submit=$('[type=submit]',bform),label=$('[data-bk-label]',bform),status=$('.f-status',bform),error=$('.f-error',bform);
+    const SAVED='iman.diagnostico.agenda',fine=matchMedia('(pointer:fine)').matches;
+    let days=[],day=0,slot=null,loading=null,sending=false,previous='',requestId='',booked=null;
+    try{const b=JSON.parse(localStorage.getItem(SAVED));if(b&&b.fin*1000>Date.now()&&b.cuando)booked=b}catch(e){}
+
+    function show(view,focus){
+      const panes={pick,form:bform,done,off},n={pick:0,form:1,done:2,off:0}[view];
+      for(const [k,el] of Object.entries(panes))el.hidden=k!==view;
+      steps.forEach((li,i)=>{li.classList.toggle('on',i===n);li.classList.toggle('ok',i<n)});
+      panes[view].classList.remove('bk-in');void panes[view].offsetWidth;panes[view].classList.add('bk-in');
+      if(focus)focus.focus({preventScroll:true});
+    }
+    function unavailable(free){
+      $('[data-bk-off-text]',off).textContent=free?'No quedan horarios libres en los próximos días. Escribinos por WhatsApp y lo coordinamos.':'La agenda no cargó acá. Elegí el horario en la página de la agenda.';
+      $('[data-bk-off-label]',off).textContent=free?'Escribir por WhatsApp':'Abrir la agenda';
+      const link=$('[data-bk-off-link]',off);link.href=free?$('[data-wa-link]').href:AGENDA;
+      if(free){link.target='_blank';link.rel='noopener'}
+      show('off');
+    }
+    const drawDays=()=>{
+      daysEl.innerHTML=days.map((d,i)=>`<button class="bk-d" type="button" data-d="${i}" aria-pressed="${i===day}" aria-label="${esc(d.largo)}"><small>${esc(d.dia)}</small><b>${esc(String(d.numero))}</b><small>${esc(d.mes)}</small></button>`).join('');
+    };
+    const drawTimes=()=>{
+      const d=days[day];dayEl.textContent=d.largo;
+      timesEl.innerHTML=d.horarios.map((h,i)=>`<button class="bk-t" type="button" data-t="${i}"${h.libre?'':' disabled'} aria-label="${esc(d.largo)} a las ${esc(h.hora)}${h.libre?'':', no disponible'}">${esc(h.hora)}</button>`).join('');
+    };
+    // Asked once, when the agenda comes near the screen (or someone goes to it); asked again when a time gets taken.
+    const load=()=>loading||(loading=(async()=>{
+      pick.classList.add('is-loading');wait.hidden=false;daysEl.innerHTML=timesEl.innerHTML=dayEl.textContent='';
+      let data=null;
+      try{const r=await fetch('/api/agenda',{headers:{Accept:'application/json'},cache:'no-store'});data=await r.json()}catch(e){}
+      pick.classList.remove('is-loading');wait.hidden=true;
+      const was=days[day]&&days[day].fecha;   // asked again after a time got taken: stay on the day they were looking at
+      days=(data&&data.disponible&&Array.isArray(data.dias)?data.dias:[]).filter(d=>d.horarios.some(h=>h.libre));
+      if(booked)return;
+      if(!days.length){unavailable(Boolean(data&&data.disponible));return}
+      day=Math.max(0,days.findIndex(d=>d.fecha===was));drawDays();drawTimes();
+    })());
+
+    daysEl.addEventListener('click',e=>{
+      const b=e.target.closest('.bk-d');if(!b)return;
+      day=Number(b.dataset.d);$$('.bk-d',daysEl).forEach((x,i)=>x.setAttribute('aria-pressed',String(i===day)));drawTimes();
+    });
+    timesEl.addEventListener('click',e=>{
+      const b=e.target.closest('.bk-t');if(!b||b.disabled)return;
+      const d=days[day],h=d.horarios[Number(b.dataset.t)];
+      slot={inicio:h.inicio,hora:h.hora,largo:d.largo};note.hidden=true;error.hidden=true;
+      $('[data-bk-chosen]',bform).textContent=`${d.largo} a las ${h.hora}`;
+      // With a mouse the cursor goes to the first empty field; on a phone that would open the keyboard over the time chosen.
+      show('form',fine&&($$('.fld input',bform).find(i=>!i.value)||submit));
+      if(!fine)box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+    $('[data-bk-change]',bform).addEventListener('click',()=>{show('pick',$('.bk-d[aria-pressed=true]',daysEl))});
+
+    const utc=t=>new Date(t*1000).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+    const calendar=b=>'https://calendar.google.com/calendar/render?'+new URLSearchParams({action:'TEMPLATE',text:'Videollamada con Santiago · IMÁN',dates:`${utc(b.inicio)}/${utc(b.fin)}`,details:b.meet?`Link de Google Meet: ${b.meet}`:'',location:b.meet||''});
+    function confirmed(b,focus){
+      booked=b;pill.hidden=true;
+      // Booked: the agenda becomes their call, and the other ways to get in touch step aside.
+      $('#bk-title').textContent='Tu llamada con IMÁN';$('#llamada').classList.add('is-booked');
+      $('[data-bk-when]',done).textContent=`${cap(b.cuando)}, hora de Argentina.`;
+      $('[data-bk-sent]',done).textContent=(b.whatsapp?'Te mandamos el link de Meet por mail y por WhatsApp.':'Te mandamos el link de Meet por mail.')+' Llegamos a la llamada con tu diagnóstico leído.';
+      $('[data-bk-cal]',done).href=calendar(b);
+      const meet=$('[data-bk-meet]',done);meet.hidden=!b.meet;if(b.meet)meet.href=b.meet;
+      show('done',focus&&done);
+    }
+
+    bform.addEventListener('submit',async e=>{
+      e.preventDefault();
+      if(sending||!slot||!bform.reportValidity())return;
+      error.hidden=true;
+      const data=new FormData(bform),payload={};
+      for(const field of ['nombre','negocio','email','whatsapp','sitio_web_empresa'])payload[field]=String(data.get(field)||'').trim();
+      Object.assign(payload,{inicio:slot.inicio,rubro:form.dataset.rubro,servicios:JSON.parse(form.dataset.servicios),comentario,consentimiento:data.get('consentimiento')==='on',source:location.pathname},utm());
+      const body=JSON.stringify(payload);
+      if(body!==previous){previous=body;requestId=crypto.randomUUID()}
+      sending=true;submit.disabled=true;bform.setAttribute('aria-busy','true');label.textContent='Agendando…';status.textContent='Estamos reservando tu horario.';
+      const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),30000);
+      try{
+        const response=await fetch('/api/agenda',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':requestId},body,signal:controller.signal});
+        let result;try{result=await response.json()}catch(x){throw new Error('No pudimos confirmar la reserva. Probá otra vez o escribinos por WhatsApp.')}
+        if(response.status===409&&result.code==='slot_taken'){
+          // Someone else got it first: back to the times, asked again.
+          slot=null;loading=null;show('pick');note.textContent=result.error;note.hidden=false;await load();return;
+        }
+        if(!response.ok||result.ok!==true)throw new Error(result.error||'No pudimos confirmar la reserva. Probá otra vez o escribinos por WhatsApp.');
+        const b={inicio:result.inicio||slot.inicio,fin:result.fin||slot.inicio+1800,meet:result.meet||'',cuando:result.cuando||`${slot.largo} a las ${slot.hora}`,whatsapp:result.whatsapp==='enviado'};
+        try{localStorage.setItem(SAVED,JSON.stringify(b))}catch(x){}
+        confirmed(b,true);
+        dispatchEvent(new CustomEvent('iman:agenda'));   // pixel.js counts it as a booked call
+      }catch(problem){
+        error.textContent=problem.name==='AbortError'?'La reserva tardó más de lo esperado. Antes de reintentar, fijate si te llegó el mail o el WhatsApp con el link: puede haber quedado agendada.':problem.message;error.hidden=false;
+      }finally{clearTimeout(timeout);sending=false;submit.disabled=false;bform.removeAttribute('aria-busy');label.textContent='Confirmar la llamada';status.textContent=''}
+    });
+
+    // Every "book a call" link on the plan lands here.
+    document.addEventListener('click',e=>{
+      const link=e.target.closest&&e.target.closest('a[data-book]');
+      if(!link||link.getAttribute('href')!=='#agenda')return;
+      e.preventDefault();
+      box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      $('#bk-title').focus({preventScroll:true});
+      if(!booked)load();
+    });
+    if('IntersectionObserver' in window)new IntersectionObserver(e=>{if(e[0].isIntersecting&&!detail.hidden&&!booked)load()},{rootMargin:'0px 0px 700px 0px'}).observe(box);
+    return {
+      booked:()=>Boolean(booked),
+      sync(){if(booked)confirmed(booked,false);else if(!('IntersectionObserver' in window))load()}
+    };
+  })();
 
   /* ---------- Start: a finished diagnosis reopens on its plan; ?rubro=autos skips the first question (for ads by rubro) ---------- */
 
