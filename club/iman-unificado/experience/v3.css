@@ -83,6 +83,10 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:500;letter-spacing:-.05
 .btn-ink{background-image:linear-gradient(var(--ink),var(--ink)),var(--grad);color:#fff}
 .btn-light{background-image:linear-gradient(#fff,#fff),var(--grad);color:var(--ink)}
 .btn-ink .arr,.btn-light .arr{background:var(--grad);color:var(--ink)}
+/* Second button next to a black one: outlined on white, the same sweep on hover */
+.btn-line{background-image:linear-gradient(#fff,#fff),var(--grad);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-line .arr{background:var(--ink);color:#fff}
+.btn-line:hover .arr{background:#fff;color:var(--ink)}
 .link{display:inline-flex;align-items:center;gap:7px;padding:8px 2px;font:500 14.5px/1.2 var(--sans);letter-spacing:-.01em;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;transition:opacity .2s}
 .link:hover{opacity:.62}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
