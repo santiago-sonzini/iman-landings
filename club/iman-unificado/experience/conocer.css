@@ -1,4 +1,4 @@
-/* IMÁN · Onboarding (conocer.js), shared by /conocer/ and the home, where it lives in a dark sheet (.cn-dark):
+/* IMÁN · Onboarding (conocer.js), shared by /conocer/ and the home, where it lives in a white sheet under IMÁN:
    the rubro, the client's data and budget (sent to IMÁN as soon as they are complete), then the agenda's free times. */
 [data-cn] [hidden]{display:none!important}
 .cn-bar{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:calc(940px + 2*var(--gutter));margin:0 auto;padding:max(16px,env(safe-area-inset-top)) var(--gutter) 0}
@@ -109,47 +109,3 @@
 }
 @media(prefers-reduced-motion:reduce){.cn-r,.cn-d,.cn-t,.cn-pills span{transition:none}}
 
-/* Dark: on the home the black button grows into a black sheet, and the onboarding lives in it */
-.cn-dark{color:#f2f2f4}
-.cn-dark .cn-hint,.cn-dark .cn-budget p,.cn-dark .cn-wait,.cn-dark .f-status{color:var(--muted-d)}
-.cn-dark .cn-steps{color:var(--muted-d)}
-.cn-dark .cn-steps li{background:#ffffff0d;box-shadow:inset 0 0 0 1px var(--line-d)}
-.cn-dark .cn-steps li.ok{background:#ffffff1f;color:#fff;box-shadow:none}
-.cn-dark .cn-steps li.on{background:#fff;color:var(--ink)}
-.cn-dark .cn-back{background:#ffffff0d;box-shadow:inset 0 0 0 1px var(--line-d);color:#fff}
-.cn-dark .cn-back:hover{background:#ffffff1f}
-.cn-dark .cn-r{background:#ffffff0b;box-shadow:inset 0 0 0 1px var(--line-d)}
-.cn-dark .cn-r small{color:var(--muted-d)}
-@media(hover:hover){.cn-dark .cn-r:hover{box-shadow:inset 0 0 0 1.5px #fff;background:#ffffff14}}
-.cn-dark .cn-r[aria-pressed=true]{background:#fff;color:var(--ink)}
-.cn-dark .cn-r[aria-pressed=true] small{color:var(--muted)}
-.cn-dark .cn-chip{background:#fff;color:var(--ink)}
-.cn-dark .cn-chip button{color:var(--muted)}
-.cn-dark :is(.fld input,.cn-other input){border-color:#ffffff2e;background:#ffffff0d;color:#fff}
-.cn-dark :is(.fld input,.cn-other input):focus{border-color:#fff;outline-color:#fff}
-.cn-dark ::placeholder{color:#8b8e96}
-.cn-dark .cn-pills span{background:#ffffff0b;box-shadow:inset 0 0 0 1px #ffffff2e}
-.cn-dark .cn-pills input:checked+span{background:#fff;color:var(--ink)}
-.cn-dark .cn-pills input:focus-visible+span{outline-color:#fff}
-@media(hover:hover){.cn-dark .cn-pills span:hover{box-shadow:inset 0 0 0 1.5px #fff}}
-.cn-dark .consent{color:var(--muted-d)}
-.cn-dark .consent a{color:#fff}
-.cn-dark :is(.f-error,.cn-note){box-shadow:inset 0 0 0 1px #ff9b8f73;color:#ffb3aa}
-/* The black button turns white on black; inside the pastel confirmation it stays black */
-.cn-dark .btn-ink{background-image:linear-gradient(#fff,#fff),var(--grad);color:var(--ink)}
-.cn-dark .cn-confirm .btn-ink{background-image:linear-gradient(var(--ink),var(--ink)),var(--grad);color:#fff}
-.cn-dark .cn-confirm .btn-ink:hover{color:var(--ink)}
-.cn-dark .cn-agenda{background:#ffffff08;box-shadow:inset 0 0 0 1px var(--line-d)}
-.cn-dark .cn-d{background:#ffffff0b;box-shadow:inset 0 0 0 1px var(--line-d)}
-.cn-dark .cn-d small{color:var(--muted-d)}
-.cn-dark .cn-d[aria-pressed=true]{background:#fff;color:var(--ink)}
-.cn-dark .cn-d[aria-pressed=true] small{color:var(--muted)}
-.cn-dark .cn-t{background:#ffffff0b;box-shadow:inset 0 0 0 1px #ffffff2e;color:#fff}
-.cn-dark .cn-t:enabled{background:linear-gradient(var(--deep),var(--deep)) padding-box,var(--grad) border-box}
-.cn-dark .cn-t:disabled{background:#ffffff06;color:#5d6068;text-decoration-color:#ffffff30}
-.cn-dark .cn-t[aria-pressed=true]{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;color:var(--ink)}
-@media(hover:hover){.cn-dark .cn-d:hover{box-shadow:inset 0 0 0 1.5px #fff}.cn-dark .cn-d[aria-pressed=true]:hover{box-shadow:none}.cn-dark .cn-t:enabled:hover{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;color:var(--ink)}}
-.cn-dark .is-loading .cn-days{background:linear-gradient(90deg,#ffffff12 0 64px,transparent 64px 72px) 0 2px/72px 72px repeat-x}
-.cn-dark .cn-done p:not(.cn-when){color:var(--muted-d)}
-/* The pastel pieces keep their ink text on the dark sheet */
-.cn-dark :is(.cn-saved,.cn-confirm){color:var(--ink)}
