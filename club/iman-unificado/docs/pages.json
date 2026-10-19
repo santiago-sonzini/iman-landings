@@ -101,6 +101,13 @@
     "dateModified": "2026-09-27"
   },
   {
+    "path": "/info/",
+    "title": "Qué hace IMÁN: demos y servicios | IMÁN",
+    "description": "Mirá andando lo que IMÁN hace en negocios como el tuyo: WhatsApp con IA, club de clientes, catálogos conectados y Gauss.",
+    "file": "info/index.html",
+    "dateModified": "2026-10-10"
+  },
+  {
     "path": "/gauss/",
     "title": "Gauss: automatización de compras para empresas | IMÁN",
     "description": "Gauss les pide precio a tus proveedores por WhatsApp y mail, negocia, compara y te deja la mejor opción lista para aprobar. Para empresas e industrias de Argentina.",

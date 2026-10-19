@@ -71,6 +71,8 @@ export function teamBookingEmail(lead,booking){
   const phone=(lead.whatsapp||'').replace(/\D/g,'');
   const table=rows=>`<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 28px">${rows.map(([k,v])=>`<tr><td style="padding:12px 0;border-bottom:1px solid ${LINE};vertical-align:top;width:104px;font-family:'Courier New',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${ACCENT}">${E(k)}</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;line-height:1.6;color:${INK};word-break:break-word">${E(v)}</td></tr>`).join('')}</table>`;
   const calendar=googleCalendarURL(`Llamada con ${lead.nombre} · ${lead.negocio}`,booking);
+  // Booked from the diagnosis or from the onboarding behind the home's "Conocer más" (/conocer/): the mail says which.
+  const diagnosis=lead.source==='/diagnostico/',from=diagnosis?'desde el diagnóstico':'desde el onboarding de la web',answersTitle=diagnosis?'Su diagnóstico':'Sus respuestas';
   const minutes=Math.round((booking.fin-booking.inicio)/60);
   const why={sin_whatsapp:'el número no tiene WhatsApp',telefono_invalido:'el número no es válido',whatsapp_desconectado:'el WhatsApp de IMÁN está desconectado'};
   const whatsapp=booking.whatsapp==='enviado'
@@ -78,17 +80,17 @@ export function teamBookingEmail(lead,booking){
     :`${booking.mail?'Le confirmamos por mail.':'El mail de confirmación no salió.'} Por WhatsApp no le escribimos: ${why[booking.whatsapp]||'no se pudo'}.`;
   return {
     subject:`Llamada agendada · ${lead.negocio} · ${booking.cuando}`,
-    text:`${lead.negocio} agendó una llamada desde el diagnóstico.\n\nCuándo: ${cuando} (hora de Argentina), ${minutes} minutos.\nMeet: ${booking.meet}\nAgregar a Google Calendar: ${calendar}\n\n${whatsapp}\n\nDiagnóstico\n${answers.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nContacto\n${contact.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nRespondé este correo para escribirle a ${lead.nombre}.`,
+    text:`${lead.negocio} agendó una llamada ${from}.\n\nCuándo: ${cuando} (hora de Argentina), ${minutes} minutos.\nMeet: ${booking.meet}\nAgregar a Google Calendar: ${calendar}\n\n${whatsapp}\n\n${answersTitle}\n${answers.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nContacto\n${contact.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nRespondé este correo para escribirle a ${lead.nombre}.`,
     html:frame(`${cuando} · ${lead.nombre} · ${lead.negocio}`,
-      eyebrow('Llamada agendada desde el diagnóstico')
+      eyebrow(`Llamada agendada ${from}`)
       +heading(`${E(lead.negocio)}<br><em style="font-style:normal;color:#c7bcdf">agendó una llamada.</em>`)
       +box(eyebrow('Cuándo')+`<p style="margin:0 0 6px;font-family:${TITLE_FONT};font-size:24px;line-height:1.25;letter-spacing:-.5px;color:${INK}">${E(cuando)}</p><p style="margin:0;font-family:${SANS};font-size:13px;line-height:1.6;color:${MUTED}">Hora de Argentina · ${minutes} minutos · Google Meet</p>`)
       +button('Entrar a la videollamada',booking.meet)
       +paragraph(`<a href="${E(calendar)}" style="color:${INK};text-decoration:underline">Agregar a Google Calendar</a> · ${E(whatsapp)}`)
-      +eyebrow('Su diagnóstico')+table(answers)
+      +eyebrow(answersTitle)+table(answers)
       +eyebrow('Contacto')+table(contact)
       +button(`Responder a ${E(lead.nombre)}`,'mailto:'+lead.email)
       +(phone.length>=8?button('Escribir por WhatsApp','https://wa.me/'+phone,false):''),
-      'Aviso interno de una llamada agendada en iman.ar/diagnostico/.')
+      `Aviso interno de una llamada agendada en iman.ar${lead.source||'/'}.`)
   };
 }

@@ -39,11 +39,12 @@ def logo_link(class_name='nav-brand'):
 
 def versioned(html):
     """Point the hand-written pages (home, Gauss) at the hashed copies of the shared V3 files."""
-    return re.sub(r'/assets/experience/(v3\.css|v3\.js)(?=")',lambda m:asset(m[1]),html)
+    return re.sub(r'/assets/experience/(v3\.css|v3\.js|conocer\.css|conocer\.js)(?=")',lambda m:asset(m[1]),html)
 
 def production_home():
-    """The home is experience/home-v3.html: the V1 identity on white. /V1/ stays as the earlier review page."""
-    home=versioned((SOURCE/'home-v3.html').read_text())
+    """The home is experience/home-iman.html: IMÁN, a background and "Conocer más", which opens the onboarding (/conocer/).
+    What the home used to show (demos, services) is /info/. /V1/ stays as the earlier review page."""
+    home=versioned((SOURCE/'home-iman.html').read_text())
     return home.replace('</head>',seo('/',HOME_TITLE,INTRO)+f'<script src="{asset("pixel.js")}" defer></script></head>')
 
 def actions():
@@ -109,8 +110,21 @@ def context():
 def build_dark(out,pages):
     dest=out/'assets/experience';dest.mkdir(parents=True,exist_ok=True)
     shutil.copytree(SOURCE/'assets',dest,dirs_exist_ok=True)
-    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js','identity-v1.css','identity-v1.js','v3.css','v3.js','reading-v3.css','purchases-demo.css','purchases-demo.js','diagnostico.js']:shutil.copy2(SOURCE/name,dest/name)
+    for name in ['site.css','home.css','home.js','reading.css','form.js','demo.js','pixel.js','identity-v1.css','identity-v1.js','v3.css','v3.js','reading-v3.css','purchases-demo.css','purchases-demo.js','diagnostico.js','conocer.js','conocer.css']:shutil.copy2(SOURCE/name,dest/name)
     (out/'index.html').write_text(production_home())
+    # The demos and services that were the home; its call buttons go to the onboarding.
+    info=(SOURCE/'info.html').read_text()
+    i_title=re.search(r'<title>(.*?)</title>',info)[1];i_desc=re.search(r'<meta name="description" content="(.*?)">',info)[1]
+    info=versioned(info.replace('</head>',seo('/info/',i_title,i_desc)+f'<script src="{asset("pixel.js")}" defer></script></head>'))
+    (out/'info').mkdir(exist_ok=True);(out/'info/index.html').write_text(info)
+    pages[:]=[p for p in pages if p['path']!='/info/']
+    pages.append({'path':'/info/','title':i_title,'description':i_desc,'file':'info/index.html','dateModified':DATE})
+    # The onboarding behind "Conocer más": rubro, data and budget, then the agenda. A form, like the diagnosis: unlisted.
+    know=(SOURCE/'conocer.html').read_text()
+    k_title=re.search(r'<title>(.*?)</title>',know)[1];k_desc=re.search(r'<meta name="description" content="(.*?)">',know)[1]
+    k_head=seo('/conocer/',k_title,k_desc).replace('index,follow,max-image-preview:large','noindex,follow')
+    know=versioned(know.replace('</head>',k_head+f'<script src="{asset("pixel.js")}" defer></script></head>'))
+    (out/'conocer').mkdir(exist_ok=True);(out/'conocer/index.html').write_text(know)
     purchase_title='Ejemplo de automatización de compras mayoristas | IMÁN'
     purchase_desc='Ejemplo interactivo con datos ficticios para comparar propuestas de proveedores por presupuesto y entrega. No realiza pedidos ni pagos.'
     purchase_body=(SOURCE/'purchases-demo.html').read_text()+'<span id="contacto" aria-hidden="true"></span>'+form('whatsapp')
@@ -187,7 +201,7 @@ def build_dark(out,pages):
         if file.exists():file.unlink()
     (out/'contexto-iman.md').write_text(context())
     (out/'llms-full.txt').write_text(context())
-    (out/'llms.txt').write_text('# IMÁN\n\n'+INTRO+'\n\n'+''.join('- ['+s['name']+']('+BASE+s['path']+')\n' for s in SERVICES)+'- [Gauss · Compras para empresas]('+BASE+'/gauss/)\n- [Contacto]('+BASE+'/contacto/)\n- [Guías]('+BASE+'/recursos/)\n- [Contexto completo]('+BASE+'/contexto-iman.md)\n- [Información para agentes]('+BASE+'/agente/)\n\nPresupuesto y alcance a medida; sin precios únicos ni resultados garantizados.\n')
+    (out/'llms.txt').write_text('# IMÁN\n\n'+INTRO+'\n\n'+''.join('- ['+s['name']+']('+BASE+s['path']+')\n' for s in SERVICES)+'- [Qué hace IMÁN: demos y servicios]('+BASE+'/info/)\n- [Gauss · Compras para empresas]('+BASE+'/gauss/)\n- [Contacto]('+BASE+'/contacto/)\n- [Guías]('+BASE+'/recursos/)\n- [Contexto completo]('+BASE+'/contexto-iman.md)\n- [Información para agentes]('+BASE+'/agente/)\n\nPresupuesto y alcance a medida; sin precios únicos ni resultados garantizados.\n')
 
 
 def not_found():

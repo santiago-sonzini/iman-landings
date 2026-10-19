@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-13T23:34:56.337454+00:00",
+  "generated_at": "2026-10-19T19:53:53.480591+00:00",
   "scope": "HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales",
   "site": "https://www.iman.ar",
   "public": "/Users/santiagosonzini/Desktop/landings/club/iman-unificado/public",
   "counts": {
-    "html": 30,
-    "indexable_html": 22,
-    "sitemap_urls": 22,
+    "html": 32,
+    "indexable_html": 23,
+    "sitemap_urls": 23,
     "error": 0,
     "warning": 0,
     "notice": 0
@@ -19,7 +19,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 0,
-      "incoming_pages": 24,
+      "incoming_pages": 26,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -66,7 +66,7 @@
       "title": "Contexto de IMÁN para personas y agentes",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
+      "click_depth": 2,
       "incoming_pages": 23,
       "schema_types": [
         "ContactPoint",
@@ -81,7 +81,7 @@
       "title": "Agentes de IA y automatización a medida | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 2,
+      "click_depth": 3,
       "incoming_pages": 1,
       "schema_types": [
         "ContactPoint",
@@ -96,7 +96,7 @@
       "title": "WhatsApp e IA para negocios de Argentina | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
+      "click_depth": 2,
       "incoming_pages": 10,
       "schema_types": [
         "Answer",
@@ -130,7 +130,7 @@
       "title": "Catálogos y ERP para negocios de Argentina | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
+      "click_depth": 2,
       "incoming_pages": 6,
       "schema_types": [
         "Answer",
@@ -145,12 +145,27 @@
       ]
     },
     {
+      "path": "/conocer/",
+      "title": "Conocé IMÁN: tu rubro, tus datos y una llamada | IMÁN",
+      "noindex": true,
+      "in_sitemap": false,
+      "click_depth": 2,
+      "incoming_pages": 1,
+      "schema_types": [
+        "ContactPoint",
+        "Country",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
       "path": "/contacto/",
       "title": "Hablemos de tu negocio | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
-      "incoming_pages": 24,
+      "click_depth": 2,
+      "incoming_pages": 12,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -165,7 +180,7 @@
       "noindex": true,
       "in_sitemap": false,
       "click_depth": 1,
-      "incoming_pages": 1,
+      "incoming_pages": 2,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -179,7 +194,7 @@
       "title": "Fidelización y email marketing para negocios de Argentina | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
+      "click_depth": 2,
       "incoming_pages": 8,
       "schema_types": [
         "Answer",
@@ -199,7 +214,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 25,
+      "incoming_pages": 26,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -210,12 +225,27 @@
       ]
     },
     {
+      "path": "/info/",
+      "title": "Qué hace IMÁN: demos y servicios | IMÁN",
+      "noindex": false,
+      "in_sitemap": true,
+      "click_depth": 1,
+      "incoming_pages": 1,
+      "schema_types": [
+        "ContactPoint",
+        "Country",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ]
+    },
+    {
       "path": "/privacidad/",
       "title": "Privacidad y contacto | IMÁN",
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 25,
+      "incoming_pages": 26,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -230,7 +260,7 @@
       "noindex": false,
       "in_sitemap": true,
       "click_depth": 1,
-      "incoming_pages": 24,
+      "incoming_pages": 25,
       "schema_types": [
         "ContactPoint",
         "Country",
@@ -404,7 +434,7 @@
       "title": "Automatización, fidelización y ERP | IMÁN",
       "noindex": false,
       "in_sitemap": true,
-      "click_depth": 1,
+      "click_depth": 2,
       "incoming_pages": 25,
       "schema_types": [
         "ContactPoint",
