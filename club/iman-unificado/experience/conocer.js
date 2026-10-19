@@ -1,5 +1,6 @@
 /* IMÁN · Conocer: the onboarding behind the home's "Conocer más". Three steps: the rubro, the client's data and budget,
-   and the agenda. The data reach IMÁN as soon as they are complete (/api/contacto: a mail to the team, and the WhatsApp
+   and the agenda. "Quiero ver más información antes", under the rubros, asks for the rubro first and then shows what IMÁN
+   does for that business, with the same form under it. The data reach IMÁN as soon as they are complete (/api/contacto: a mail to the team, and the WhatsApp
    assistant writes to them offering times), so nobody is lost if they don't book. Then the free times come from
    /api/agenda and the call is booked right there, with the same data (server/booking.mjs). */
 (() => {
@@ -30,6 +31,19 @@
     ['contable','Estudio contable','Contadores y asesores'],
     ['otro','Otro rubro','Escribilo vos']
   ];
+  // How each rubro names the business.
+  const LUGAR={gastronomia:'tu local',cafeteria:'tu cafetería',comercio:'tu comercio',indumentaria:'tu tienda',petshop:'tu pet shop',mayorista:'tu negocio',distribuidora:'tu distribuidora',barberia:'tu local',salud:'tu consultorio',gimnasio:'tu gimnasio',autos:'tu agencia',inmobiliaria:'tu inmobiliaria',industria:'tu empresa',contable:'tu estudio',otro:'tu negocio'};
+  // What IMÁN does, for "ver más información": each piece with what it is and three checks.
+  const SERV={
+    whatsapp:{t:'Atención por WhatsApp con IA',p:'Un asistente responde con la información de tu negocio, toma pedidos y consultas, y le pasa a tu equipo solo lo que necesita una persona.',c:['Responde en segundos, también de noche y los domingos.','Deja cargados los pedidos y los datos de cada cliente.','Cada conversación queda registrada.']},
+    turnos:{t:'Turnos por WhatsApp, solos',p:'El asistente ofrece los horarios libres, confirma, recuerda y reprograma. Tu agenda queda al día sin que nadie escriba.',c:['Se reserva a cualquier hora.','Recordatorio antes de cada turno.','Menos ausencias y horarios vacíos.']},
+    club:{t:'Club de clientes con tu marca',p:'Puntos, beneficios y campañas por email y Wallet. Sabés quién te compra y cada cuánto, y le das un motivo para volver.',c:['Sin apps: se suman con un QR.','Avisos cuando le toca volver.','Campañas de recompra, hechas con vos.']},
+    catalogo:{t:'Catálogo con pedidos',p:'Tus productos con precios al día, por mayor y por menor. El cliente arma el pedido y llega completo a tu WhatsApp y a tu sistema.',c:['Precios y mínimos por tipo de cliente.','Pedidos completos, sin reconstruir mensajes.','Conectado con tu sistema de gestión.']},
+    gestion:{t:'Gestión y compras con Gauss',p:'Gauss les pide precio a tus proveedores, compara y deja la compra lista para que la apruebes. Y conectamos planillas, caja y sistema para no cargar lo mismo dos veces.',c:['Un cuadro comparativo por cada compra.','Nada se compra sin tu aprobación.','Un dato se carga una vez y llega a todos lados.']},
+    estudios:{t:'Gauss para estudios contables',p:'Gauss lee los papeles de tus clientes, los ordena, te avisa qué falta y arma el informe del mes de cada uno.',c:['Tus clientes suben todo desde un link.','Te avisa qué papeles faltan.','El informe del mes, listo para mandar.']}
+  };
+  // For each rubro, those pieces in order: the first is where IMÁN would start.
+  const FOCO={gastronomia:['club','whatsapp','catalogo','gestion'],cafeteria:['club','whatsapp','catalogo','gestion'],comercio:['whatsapp','club','catalogo','gestion'],indumentaria:['whatsapp','club','catalogo','gestion'],petshop:['club','whatsapp','catalogo','gestion'],mayorista:['catalogo','whatsapp','club','gestion'],distribuidora:['catalogo','whatsapp','club','gestion'],barberia:['turnos','club','whatsapp'],salud:['turnos','club','whatsapp'],gimnasio:['turnos','club','whatsapp'],autos:['whatsapp','club','gestion'],inmobiliaria:['whatsapp','club','gestion'],industria:['gestion','catalogo','whatsapp'],contable:['estudios','whatsapp','gestion'],otro:['whatsapp','club','catalogo','gestion']};
   // Monthly budget, as in the diagnosis.
   const PRESUPUESTOS=['Hasta $50.000','Entre $50.000 y $150.000','Entre $150.000 y $400.000','Más de $400.000','Todavía no lo sé'];
 
@@ -42,7 +56,8 @@
   const ARROW='<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   // Progress lives in this tab only (sessionStorage): a reload keeps the step, closing the tab forgets the data.
   const KEY='iman.conocer.1';
-  const blank=()=>({rubro:'',otro:'',datos:{nombre:'',negocio:'',email:'',whatsapp:'',presupuesto:'',consentimiento:false},guardado:'',reserva:null});
+  // info: they asked to see more before booking, so the rubro leads to the information instead of straight to the form.
+  const blank=()=>({rubro:'',otro:'',info:false,datos:{nombre:'',negocio:'',email:'',whatsapp:'',presupuesto:'',consentimiento:false},guardado:'',reserva:null});
   let S=blank(),step='rubro',honey='';
   try{const saved=JSON.parse(sessionStorage.getItem(KEY));if(saved&&saved.datos){S=Object.assign(blank(),saved);step=saved.step||'rubro'}}catch(e){}
   const keep=()=>{try{sessionStorage.setItem(KEY,JSON.stringify(Object.assign({},S,{step})))}catch(e){}};
@@ -62,7 +77,7 @@
     const d=S.datos,b=d.presupuesto==='Todavía no lo sé'?d.presupuesto:d.presupuesto+' por mes';
     return Object.assign({nombre:d.nombre,negocio:d.negocio,email:d.email,whatsapp:d.whatsapp,sitio_web_empresa:honey,
       rubro:rubroT().slice(0,120),servicios:['Quiero que me orienten'],
-      comentario:['Onboarding en iman.ar/conocer/',`Rubro: ${rubroT()}`,`Presupuesto: ${b}`].join('\n'),
+      comentario:['Onboarding en iman.ar/conocer/',`Rubro: ${rubroT()}`,`Presupuesto: ${b}`,...(S.info?['Antes de agendar: pidió ver más información']:[])].join('\n'),
       consentimiento:true,source:location.pathname},utm());
   };
   const waLink=()=>WA+'?text='+encodeURIComponent(`Hola, quiero agendar una llamada.\nRubro: ${rubroT()}${S.datos.presupuesto?`\nPresupuesto: ${S.datos.presupuesto}`:''}`);
@@ -81,10 +96,11 @@
   /* ---------- Steps ---------- */
 
   const steps=$$('.cn-steps li'),back=$('[data-back]');
-  const INDEX={rubro:0,datos:1,horario:2,listo:3,luego:3};
-  const PREV={datos:'rubro',horario:'datos'};
+  const INDEX={rubro:0,info:1,datos:1,horario:2,listo:3,luego:3};
+  // Where the back button goes: from the times, to wherever the form was (the information or the form alone).
+  const prev=s=>({info:'rubro',datos:'rubro',horario:S.info?'info':'datos'})[s];
   // A step can only be shown once the ones before it are done.
-  const allowed=s=>s==='rubro'||(s==='datos'&&ready())||(s==='horario'&&ready()&&filled())||(s==='listo'&&S.reserva)||(s==='luego'&&filled());
+  const allowed=s=>s==='rubro'||((s==='datos'||s==='info')&&ready())||(s==='horario'&&ready()&&filled())||(s==='listo'&&S.reserva)||(s==='luego'&&filled());
 
   // Each step is an entry in the browser history (d counts how many this page added), so the back button goes one step back.
   const depth=()=>(history.state&&history.state.d)||0;
@@ -95,10 +111,10 @@
     if(step==='horario')slot=null;
     const n=INDEX[step];
     steps.forEach((li,i)=>{li.classList.toggle('on',i===n);li.classList.toggle('ok',i<n);if(i===n)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
-    back.hidden=!PREV[step];
+    back.hidden=!prev(step);
     view.innerHTML=VIEWS[step]();
     if(!reduce){view.classList.remove('is-in');void view.offsetWidth;view.classList.add('is-in')}
-    if(step==='datos'){fill();load()}
+    if(step==='datos'||step==='info'){fill();load()}
     if(step==='horario')drawAgenda();
     // A new step starts at the top of the onboarding, never above it (on the home that would be IMÁN).
     if(focus){if(root.getBoundingClientRect().top<0)root.scrollIntoView({block:'start'});$('#cn-title',view).focus({preventScroll:true})}
@@ -109,12 +125,32 @@
 <h1 id="cn-title" tabindex="-1">¿Qué negocio tenés?</h1>
 <p class="cn-hint">Elegí tu rubro. Preparamos la llamada con ejemplos de negocios como el tuyo.</p>
 <div class="cn-rubros" role="group" aria-labelledby="cn-title">${RUBROS.map(r=>`<button class="cn-r" type="button" data-r="${r[0]}" aria-pressed="${r[0]===S.rubro}"><b>${esc(r[1])}</b><small>${esc(r[2])}</small></button>`).join('')}</div>
-${S.rubro==='otro'?`<form class="cn-other" data-other novalidate><label class="sr" for="cn-otro">¿Cuál es tu rubro?</label><input id="cn-otro" maxlength="80" placeholder="¿Cuál? Por ejemplo: óptica, vivero, librería" value="${esc(S.otro)}" autocomplete="off" enterkeyhint="next"><button class="btn btn-ink" type="submit">Seguir ${ARROW}</button></form>`:''}`,
+${S.rubro==='otro'?`<form class="cn-other" data-other novalidate><label class="sr" for="cn-otro">¿Cuál es tu rubro?</label><input id="cn-otro" maxlength="80" placeholder="¿Cuál? Por ejemplo: óptica, vivero, librería" value="${esc(S.otro)}" autocomplete="off" enterkeyhint="next"><button class="btn btn-ink" type="submit">Seguir ${ARROW}</button></form>`:''}
+<div class="cn-more"><button class="btn btn-line" type="button" data-more>Quiero ver más información antes ${ARROW}</button>
+<p class="cn-need" role="alert" data-need hidden></p></div>`,
 
     datos:()=>`<p class="cn-chip">${esc(rubroT())}<button type="button" data-change>Cambiar</button></p>
 <h1 id="cn-title" tabindex="-1">¿Con quién hablamos?</h1>
 <p class="cn-hint">Con tus datos preparamos la llamada. En el paso siguiente elegís el horario; si ninguno te sirve, te escribimos para coordinar.</p>
-<form class="cn-form" data-form novalidate>
+<p class="cn-alt"><button class="link" type="button" data-more>Quiero ver más información antes</button></p>
+${FORM()}`,
+
+    // What IMÁN does for this rubro, how it works, and under it the same form to book the call.
+    info:()=>{const lugar=LUGAR[S.rubro]||'tu negocio',foco=FOCO[S.rubro]||FOCO.otro;return `<p class="cn-chip">${esc(rubroT())}<button type="button" data-change>Cambiar</button></p>
+<h1 id="cn-title" tabindex="-1">Esto hacemos en ${esc(lugar)}.</h1>
+<p class="cn-hint">No traemos clientes: hacemos que vuelvan. Atención, club y gestión con IA, armados con la información de tu negocio.</p>
+<div class="cn-serv">${foco.map((id,i)=>{const v=SERV[id];return `<article class="cn-s${i?'':' is-main'}"><p class="label">${i?'También':'Por dónde arrancaríamos'}</p><h3>${esc(v.t)}</h3><p>${esc(v.p)}</p><ul class="checks">${v.c.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></article>`}).join('')}</div>
+<section class="cn-how" aria-labelledby="cn-how"><h2 id="cn-how">Cómo trabajamos.</h2><ol>
+<li><b>Una llamada de 30 minutos.</b><span>Te mostramos andando lo que haríamos en ${esc(lugar)}.</span></li>
+<li><b>Arrancamos por un flujo.</b><span>El que más te cuesta hoy, armado con tu información y tus reglas.</span></li>
+<li><b>Medimos el antes y el después.</b><span>Y seguimos con lo próximo cuando el primero anda.</span></li>
+</ol><p class="cn-price">La inversión es a medida: después de la llamada te pasamos alcance, tiempos y costo por escrito. <a class="link" href="/info/#demos" target="_blank" rel="noopener">Ver demos en vivo</a></p></section>
+<section class="cn-book" aria-labelledby="cn-book"><h2 id="cn-book">Agendá 30 minutos para verlo en ${esc(lugar)}.</h2>
+<p class="cn-hint">Dejá tus datos y en el paso siguiente elegís el horario.</p>
+${FORM()}</section>`}
+  };
+  // The data and the budget: the same form on its own step and under the information.
+  function FORM(){return `<form class="cn-form" data-form novalidate>
 <div class="fgrid">
 <label class="fld" for="cn-nombre"><span>Tu nombre</span><input id="cn-nombre" name="nombre" autocomplete="name" maxlength="100" required></label>
 <label class="fld" for="cn-negocio"><span>Nombre del negocio</span><input id="cn-negocio" name="negocio" autocomplete="organization" maxlength="120" required></label>
@@ -128,8 +164,9 @@ ${S.rubro==='otro'?`<form class="cn-other" data-other novalidate><label class="s
 <button class="btn btn-ink" type="submit"><span data-label>Ver horarios</span> ${ARROW}</button>
 <p class="f-status" role="status" aria-live="polite" aria-atomic="true"></p>
 <p class="f-error" role="alert" hidden></p>
-</form>`,
+</form>`}
 
+  Object.assign(VIEWS,{
     horario:()=>`${S.guardado?`<p class="cn-saved">Listo, ${esc(S.datos.nombre.split(' ')[0])}: ya tenemos tus datos.</p>`:''}
 <h1 id="cn-title" tabindex="-1">Elegí día y horario.</h1>
 <p class="cn-hint">30 minutos por videollamada con Santiago, fundador de IMÁN. Hora de Argentina. El link de Meet te llega por mail y por WhatsApp.</p>
@@ -158,7 +195,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
 <p>${S.guardado?'Te escribimos por WhatsApp para encontrar un horario que te sirva.':'Mandanos tu rubro por WhatsApp y coordinamos el horario desde ahí.'}</p>
 <div class="actions">${S.guardado?`<a class="btn btn-ink" href="/info/">Mirá lo que hacemos ${ARROW}</a><a class="link" href="${esc(waLink())}" target="_blank" rel="noopener">O escribinos vos por WhatsApp</a>`:`<a class="btn btn-ink" href="${esc(waLink())}" target="_blank" rel="noopener">Escribir por WhatsApp ${ARROW}</a><a class="link" href="${AGENDA}">Elegir en la agenda</a>`}</div>
 <p class="cn-after"><button class="link" type="button" data-to="horario">Volver a los horarios</button></p></div>`
-  };
+  });
 
   /* ---------- Step 1: the rubro ---------- */
 
@@ -168,8 +205,9 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
       S.rubro=r.dataset.r;
       if(S.rubro==='otro'){render('rubro',{push:false,focus:false});$('#cn-otro',view).focus();return}
       $$('[data-r]',view).forEach(b=>b.setAttribute('aria-pressed',String(b===r)));
-      setTimeout(()=>render('datos'),reduce?0:180);
+      setTimeout(()=>render(S.info?'info':'datos'),reduce?0:180);
     }
+    else if(e.target.closest('[data-more]'))more();
     else if(e.target.closest('[data-change]'))render('rubro');
     else if(e.target.closest('[data-to]'))render(e.target.closest('[data-to]').dataset.to);
   });
@@ -177,10 +215,24 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     e.preventDefault();
     if(e.target.matches('[data-other]')){
       S.otro=$('#cn-otro',view).value.trim().slice(0,80);
-      if(S.otro)render('datos');else $('#cn-otro',view).focus();
+      if(S.otro)render(S.info?'info':'datos');else $('#cn-otro',view).focus();
     }
     else if(e.target.matches('[data-form]'))submitData(e.target);
   });
+
+  // "Quiero ver más información antes": with a rubro, straight to the information; without one, a notice that asks for it
+  // first, and the rubro they pick next opens the information.
+  function more(){
+    S.info=true;keep();
+    if(ready()){render('info');return}
+    const need=$('[data-need]',view),other=S.rubro==='otro';
+    need.textContent=other?'Escribí tu rubro primero, así te mostramos información para tu negocio.':'Seleccioná un rubro primero, así te mostramos información para tu negocio.';
+    need.hidden=false;
+    if(other){$('#cn-otro',view).focus();return}
+    const grid=$('.cn-rubros',view);
+    grid.classList.remove('is-asking');void grid.offsetWidth;grid.classList.add('is-asking');
+    grid.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  }
 
   /* ---------- Step 2: the data, sent to IMÁN as soon as they are complete ---------- */
 
@@ -310,7 +362,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
 
   /* ---------- History and start ---------- */
 
-  back.addEventListener('click',()=>{if(!PREV[step])return;if(depth()>0)history.back();else render(PREV[step],{push:false})});
+  back.addEventListener('click',()=>{if(!prev(step))return;if(depth()>0)history.back();else render(prev(step),{push:false})});
   addEventListener('popstate',e=>{if(e.state&&e.state.cn)render(e.state.cn,{push:false})});
   // ?rubro=barberia skips the first question; a booked call stays on its confirmation.
   const wanted=new URLSearchParams(location.search).get('rubro');
