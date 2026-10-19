@@ -75,6 +75,14 @@ export async function digest(value, secret) {
   return [...new Uint8Array(await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(value)))].map(byte=>byte.toString(16).padStart(2,'0')).join('');
 }
 
+// The team: everyone gets the notice of every inquiry and of every call booked from the diagnosis.
+// TEAM_EMAILS in Pages (comma separated) replaces it.
+export const TEAM = ['santisonzini1234@gmail.com','mateobreppe@gmail.com','joamonsech9@gmail.com'];
+export function team(env) {
+  const list = typeof env.TEAM_EMAILS === 'string' ? env.TEAM_EMAILS.split(',').map(s => s.trim().toLowerCase()).filter(s => EMAIL.test(s)) : [];
+  return list.length ? [...new Set(list)] : TEAM;
+}
+
 export function mailConfig(env) {
   const user = single(env.FROM_EMAIL) || 'hola@iman.ar';
   const pass = typeof env.CONTACT_HASH_SECRET === 'string' ? env.CONTACT_HASH_SECRET : '';
@@ -171,13 +179,18 @@ export function createContactHandler({sendMail, startChat = null, now = Date.now
         return result;
       }
       const common = {from:{name:'IMAN',address:config.user},headers:{'X-Auto-Response-Suppress':'All','Auto-Submitted':'auto-generated'}};
-      try {
-        await sendMail({...common,to:config.contact,replyTo:lead.email,...ownerEmail(lead)},config);
-      } catch (error) {
+      // One email per person in the team (the relay sends to a single recipient), and to CONTACT_EMAIL if it isn't in it.
+      // The inquiry counts as received when at least one of them was accepted.
+      const owners = [...new Set([config.contact.toLowerCase(),...team(env)])];
+      const notice = {...common,replyTo:lead.email,...ownerEmail(lead)};
+      const delivered = await Promise.allSettled(owners.map(to => sendMail({...notice,to},config)));
+      const failed = delivered.filter(s => s.status === 'rejected');
+      if (failed.length === owners.length) {
         // Do not expose provider errors (which may include private addresses).
         report('contact_owner_delivery_failed');
-        return await finish({ok:false,code:'delivery_failed',retryable:definitelyNotSent(error),error:'No pudimos confirmar el envío. Podés reservar una charla o escribirnos por WhatsApp.'},502);
+        return await finish({ok:false,code:'delivery_failed',retryable:failed.every(s => definitelyNotSent(s.reason)),error:'No pudimos confirmar el envío. Podés reservar una charla o escribirnos por WhatsApp.'},502);
       }
+      if (failed.length) report(failed.some(s => !definitelyNotSent(s.reason)) ? 'contact_team_delivery_unknown' : 'contact_team_delivery_failed');
       let confirmationSent = true;
       try { await sendMail({...common,to:lead.email,replyTo:config.contact,...confirmationEmail(lead)},config); }
       catch {confirmationSent=false;report('contact_confirmation_delivery_failed');}

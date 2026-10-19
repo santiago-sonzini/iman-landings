@@ -1,17 +1,12 @@
 // The call booked inside the diagnosis (/diagnostico/). The times and the booking live with the WhatsApp assistant
 // (agenda.iman.ar), asked server to server; the bot confirms to the client by mail and WhatsApp, and this sends the
 // notice with the answers to everyone in the team.
-import { countHits, definitelyNotSent, digest, failure, mailConfig, parseLead, readJSON, reply } from './contact.mjs';
+import { countHits, definitelyNotSent, digest, failure, mailConfig, parseLead, readJSON, reply, team } from './contact.mjs';
 import { teamBookingEmail } from './email.mjs';
 
-// Who gets the notice of every call booked from the diagnosis. TEAM_EMAILS in Pages (comma separated) replaces it.
-export const TEAM = ['santisonzini1234@gmail.com','mateobreppe@gmail.com','joamonsech9@gmail.com'];
-const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+// Who gets the notice of every call booked from the diagnosis: the same team as the inquiries (contact.mjs).
+export { TEAM } from './contact.mjs';
 const DAY = 86_400_000;
-const team = env => {
-  const list = typeof env.TEAM_EMAILS === 'string' ? env.TEAM_EMAILS.split(',').map(s => s.trim().toLowerCase()).filter(s => EMAIL.test(s)) : [];
-  return list.length ? [...new Set(list)] : TEAM;
-};
 const UNAVAILABLE = 'No pudimos confirmar la reserva. Probá de nuevo o elegí el horario en agenda.iman.ar.';
 
 // agenda: {slots(env) → the bot's /api/horarios or null when it isn't connected, book(payload, env) → {status, body}}.

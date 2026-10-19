@@ -15,7 +15,7 @@ const mailbox=path.resolve(root,'../../tmp/editorial-mailbox');await mkdir(mailb
 const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync(new URL('./schema.sql',import.meta.url),'utf8'));
 const db={prepare(sql){let values=[];const stmt={bind(...v){values=v;return stmt},async first(){return sqlite.prepare(sql).get(...values)||null},async run(){const r=sqlite.prepare(sql).run(...values);return {meta:{changes:Number(r.changes)}}}};return stmt},batch:items=>Promise.all(items.map(x=>x.run()))};
 let scenario='success';let emails=[];let sends=0;
-const capture=async message=>{sends++;await new Promise(resolve=>setTimeout(resolve,300));if(scenario==='failure'||(scenario==='partial'&&message.to!=='team@example.test'))throw Object.assign(new Error('test-only'),{code:'E_RECIPIENT_NOT_ALLOWED'});const id=emails.length;emails.push(message);await writeFile(path.join(mailbox,`email-${id}.html`),message.html);await writeFile(path.join(mailbox,`email-${id}.txt`),message.text);return {messageId:'local-'+id};};
+const capture=async message=>{sends++;await new Promise(resolve=>setTimeout(resolve,300));if(scenario==='failure'||(scenario==='partial'&&!env.TEAM_EMAILS.split(',').includes(message.to)))throw Object.assign(new Error('test-only'),{code:'E_RECIPIENT_NOT_ALLOWED'});const id=emails.length;emails.push(message);await writeFile(path.join(mailbox,`email-${id}.html`),message.html);await writeFile(path.join(mailbox,`email-${id}.txt`),message.text);return {messageId:'local-'+id};};
 const handle=createContactHandler({sendMail:capture});
 // A stand-in for the bot's agenda: weekdays 10 to 18 in Argentina, three times offered per day, a booked one is taken.
 const AR='America/Argentina/Buenos_Aires',taken=new Set();
@@ -45,7 +45,7 @@ const fakeAgenda={
   }
 };
 const booking=createBookingHandler({sendMail:capture,agenda:fakeAgenda});
-const env={CONTACT_DB:db,CONTACT_HASH_SECRET:'local-preview-not-a-secret-never-production',FROM_EMAIL:'hola@iman.ar',CONTACT_EMAIL:'team@example.test',EMAIL:{send(){}}};
+const env={CONTACT_DB:db,CONTACT_HASH_SECRET:'local-preview-not-a-secret-never-production',FROM_EMAIL:'hola@iman.ar',CONTACT_EMAIL:'santi@example.test',TEAM_EMAILS:'santi@example.test,mateo@example.test,joa@example.test',EMAIL:{send(){}}};
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.ttf':'font/ttf','.woff2':'font/woff2','.xml':'application/xml','.txt':'text/plain; charset=utf-8','.md':'text/plain; charset=utf-8'};
 const redirects=()=>new Map(readFileSync(path.join(root,'_redirects'),'utf8').trim().split('\n').map(line=>line.split(' ').slice(0,2)));
 const banner='<aside class="preview-note" style="padding:5px 24px;font:10px/1.5 monospace;color:#aeb6aa;background:#202020;text-align:center">VISTA PREVIA LOCAL · Los envíos quedan en el <a href="/__preview/" style="color:#75cedd">buzón de prueba</a>. No se envían emails reales.</aside>';
@@ -69,7 +69,7 @@ http.createServer(async(req,res)=>{
       const chunks=[];for await(const chunk of req)chunks.push(chunk);
       const headers=new Headers(req.headers);headers.set('CF-Connecting-IP','127.0.0.1');
       const request=new Request(url,{method:req.method,headers,...(req.method==='POST'?{body:Buffer.concat(chunks)}:{})});
-      const response=await booking(request,{...env,TEAM_EMAILS:'santi@example.test,mateo@example.test,joa@example.test'});res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
+      const response=await booking(request,env);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
     }
     if(url.pathname==='/api/contacto'){
       const chunks=[];for await(const chunk of req)chunks.push(chunk);

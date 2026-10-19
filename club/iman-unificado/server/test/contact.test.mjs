@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import { createContactHandler } from '../contact.mjs';
+import { createContactHandler, TEAM } from '../contact.mjs';
 import { confirmationEmail } from '../email.mjs';
 
-const env = {FROM_EMAIL:'hola@iman.ar',CONTACT_HASH_SECRET:'fake-test-secret-at-least-32-characters',EMAIL:{send:async()=>({messageId:'test'})},CONTACT_EMAIL:'sales@example.com'};
+// The team is just CONTACT_EMAIL here, so each inquiry sends one notice and one confirmation; the team has its own tests.
+const env = {FROM_EMAIL:'hola@iman.ar',CONTACT_HASH_SECRET:'fake-test-secret-at-least-32-characters',EMAIL:{send:async()=>({messageId:'test'})},CONTACT_EMAIL:'sales@example.com',TEAM_EMAILS:'sales@example.com'};
 const base = {nombre:'Sofía',negocio:'Almacén Central',email:'sofia@example.com',servicio:'IMAN Fidelización',consentimiento:true,whatsapp:'+54 9 353 111-2222',comentario:'Quiero mejorar la recompra',source:'/fidelizacion/?token=private',utm_source:'google'};
 function request(changes = {}, headers = {}) {
   return new Request('https://www.iman.ar/api/contacto',{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://www.iman.ar','CF-Connecting-IP':'192.0.2.10','Idempotency-Key':crypto.randomUUID(),...headers},body:JSON.stringify({...base,...changes})});
@@ -55,6 +56,31 @@ test('confirmation failure preserves accepted lead while reporting confirmationS
   const response=await handle(request(),env);
   assert.equal(response.status,200);
   assert.equal((await response.json()).confirmationSent,false);
+});
+test('each inquiry reaches the whole team, one email per person, before the client',async()=>{
+  const {handle,sent}=setup();
+  const {TEAM_EMAILS,...production}=env;
+  const response=await handle(request(),{...production,CONTACT_EMAIL:'santisonzini1234@gmail.com'});
+  assert.equal(response.status,200);
+  assert.deepEqual([...TEAM].sort(),['joamonsech9@gmail.com','mateobreppe@gmail.com','santisonzini1234@gmail.com']);
+  assert.equal(sent.length,4);
+  assert.deepEqual(sent.slice(0,3).map(m=>m.to).sort(),[...TEAM].sort());
+  for(const mail of sent.slice(0,3)){assert.equal(mail.replyTo,'sofia@example.com');assert.match(mail.subject,/Nueva consulta/);}
+  assert.equal(sent[3].to,'sofia@example.com');
+});
+test('CONTACT_EMAIL outside TEAM_EMAILS gets it too; TEAM_EMAILS ignores what is not an address',async()=>{
+  const {handle,sent}=setup();
+  await handle(request(),{...env,TEAM_EMAILS:'uno@example.com, no-es-mail ,Dos@Example.com'});
+  assert.deepEqual(sent.map(m=>m.to),['sales@example.com','uno@example.com','dos@example.com','sofia@example.com']);
+});
+test('a team email that fails does not lose the inquiry',async()=>{
+  const {handle,sent,logs}=setup({sendMail:async message=>{if(message.to==='mateobreppe@gmail.com')throw Object.assign(new Error('test'),{code:'E_RECIPIENT_NOT_ALLOWED'});sent.push(message);}});
+  const {TEAM_EMAILS,...production}=env;
+  const response=await handle(request(),{...production,CONTACT_EMAIL:'santisonzini1234@gmail.com'});
+  assert.equal(response.status,200);
+  assert.equal((await response.json()).confirmationSent,true);
+  assert.deepEqual(sent.map(m=>m.to),['santisonzini1234@gmail.com','joamonsech9@gmail.com','sofia@example.com']);
+  assert.deepEqual(logs,['contact_team_delivery_failed']);
 });
 test('missing mail config fails closed without attempting delivery',async()=>{
   const {handle,sent}=setup();
