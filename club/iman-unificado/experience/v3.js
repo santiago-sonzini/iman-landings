@@ -14,6 +14,8 @@
 
   /* Filings on paper: short strokes aligned by two poles, drifting slowly. The brand's own dotted grid.
      With data-field-mouse the pointer is a third pole: the filings turn toward it and lean in, and the two poles drift wider.
+     With no pointer to follow (a phone, or the mouse away from the page) that pole wanders the screen on its own, so the
+     field is always moving; a finger on the screen takes its place while it touches.
      With data-field-clear (a selector) there are no filings on those elements, following their shape: the mark as it is
      drawn, buttons and labels as pills, text line by line, all grown by data-field-pad. No box around them, and text
      never sits on the filings. With data-field-dots they are dots instead of strokes, bigger where the field is stronger. */
@@ -73,10 +75,13 @@
       var ax=W*(p[0]+sx*Math.sin(q/5200)),ay=H*(p[1]+sy*Math.cos(q/6100));
       var bx=W*(p[2]+sx*Math.cos(q/4700)),by=H*(p[3]+sy*Math.sin(q/5600));
       if(live){
-        var box=cv.getBoundingClientRect(),tx=px-box.left,ty=py-box.top;
+        // No pointer: the pole follows a slow figure across the whole screen, a little weaker than a hand.
+        var roam=!want,box=cv.getBoundingClientRect();
+        var tx=roam?W*(.5+.38*Math.sin(t/2300)):px-box.left,ty=roam?H*(.48+.32*Math.sin(t/1700+1.3)):py-box.top;
         if(pull<.02){cx=tx;cy=ty}   // the pole appears under the pointer instead of sweeping in from where it last was
-        cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;pull+=(want-pull)*.09;
-        busy=Math.abs(tx-cx)+Math.abs(ty-cy)>.5||Math.abs(want-pull)>.01;
+        cx+=(tx-cx)*(roam?.12:.2);cy+=(ty-cy)*(roam?.12:.2);pull+=((roam?.8:want)-pull)*.09;
+        // Every frame only while a hand moves it; roaming, 30 a second is enough.
+        busy=!roam&&(Math.abs(tx-cx)+Math.abs(ty-cy)>.5||Math.abs(want-pull)>.01);
       }
       if(clear)clearMap();
       var mw=map.width,mh=map.height;
