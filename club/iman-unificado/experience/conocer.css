@@ -61,6 +61,17 @@
 .cn-price .link{font-size:14px}
 .cn-book{margin-top:clamp(36px,6vh,64px);padding-top:clamp(28px,4.5vh,44px);border-top:1px solid var(--line)}
 .cn-book h2{max-width:18em}
+/* "Deslizá" at the side of the information: the brand's colors going up and down a line, until the form shows */
+.cn-scroll{position:fixed;z-index:20;right:clamp(10px,2.4vw,34px);top:50%;margin-top:-80px;display:grid;justify-items:center;gap:10px;padding:6px 2px;color:var(--ink);transition:opacity .35s,visibility .35s}
+.cn-scroll span{writing-mode:vertical-rl;transform:rotate(180deg);font:500 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.cn-scroll i{position:relative;overflow:hidden;width:3px;height:96px;border-radius:3px;background:#1212121a}
+.cn-scroll i::after{content:'';position:absolute;left:0;right:0;top:0;height:46%;border-radius:3px;background:linear-gradient(#82c7d6,#b9a3ee,#e6c5a6);animation:cue 1.5s ease-in-out infinite alternate}
+@keyframes cue{from{transform:translateY(-25%)}to{transform:translateY(140%)}}
+.cn-scroll svg{width:12px;height:12px;animation:cue-arrow 1.5s ease-in-out infinite alternate}
+@keyframes cue-arrow{to{transform:translateY(4px)}}
+.cn-scroll.is-off{opacity:0;visibility:hidden}
+.motion .cn-view.is-in>.cn-scroll{animation:cue-in .6s .5s both}
+@keyframes cue-in{from{opacity:0}}
 
 /* Step 2: the data and the budget */
 .cn-chip{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px 0 10px;border-radius:999px;background:var(--ink);color:#fff;font:500 12.5px/1 var(--sans)}
@@ -136,9 +147,11 @@
   .cn-serv{grid-template-columns:1fr}
   .cn-how ol{grid-template-columns:1fr}
   .cn-more .btn{flex:1 1 100%;justify-content:space-between;width:100%}
+  .cn-scroll{right:9px;margin-top:-66px;gap:8px}
+  .cn-scroll i{height:72px}
   .cn-times{grid-template-columns:repeat(3,minmax(0,1fr))}
   .cn-form>.btn,.cn-other .btn,.cn-confirm .btn,.cn-done .btn{flex:1 1 100%;justify-content:space-between}
   .cn-confirm{padding:14px}
 }
-@media(prefers-reduced-motion:reduce){.cn-r,.cn-d,.cn-t,.cn-pills span{transition:none}}
+@media(prefers-reduced-motion:reduce){.cn-r,.cn-d,.cn-t,.cn-pills span{transition:none}.cn-scroll i::after,.cn-scroll svg{animation:none}}
 

@@ -115,6 +115,7 @@
     view.innerHTML=VIEWS[step]();
     if(!reduce){view.classList.remove('is-in');void view.offsetWidth;view.classList.add('is-in')}
     if(step==='datos'||step==='info'){fill();load()}
+    cue();
     if(step==='horario')drawAgenda();
     // A new step starts at the top of the onboarding, never above it (on the home that would be IMÁN).
     if(focus){if(root.getBoundingClientRect().top<0)root.scrollIntoView({block:'start'});$('#cn-title',view).focus({preventScroll:true})}
@@ -147,7 +148,8 @@ ${FORM()}`,
 </ol><p class="cn-price">La inversión es a medida: después de la llamada te pasamos alcance, tiempos y costo por escrito. <a class="link" href="/info/#demos" target="_blank" rel="noopener">Ver demos en vivo</a></p></section>
 <section class="cn-book" aria-labelledby="cn-book"><h2 id="cn-book">Agendá 30 minutos para verlo en ${esc(lugar)}.</h2>
 <p class="cn-hint">Dejá tus datos y en el paso siguiente elegís el horario.</p>
-${FORM()}</section>`}
+${FORM()}</section>
+<button class="cn-scroll" type="button" data-scroll-cue aria-label="Bajar hasta agendar"><span aria-hidden="true">Deslizá</span><i aria-hidden="true"></i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`}
   };
   // The data and the budget: the same form on its own step and under the information.
   function FORM(){return `<form class="cn-form" data-form novalidate>
@@ -219,6 +221,16 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     }
     else if(e.target.matches('[data-form]'))submitData(e.target);
   });
+
+  // On the information, "Deslizá" stays at the side until the form comes into view; a tap takes them there.
+  let cueWatch=null;
+  function cue(){
+    if(cueWatch){cueWatch.disconnect();cueWatch=null}
+    const el=$('[data-scroll-cue]',view),book=$('.cn-book',view);
+    if(!el||!book)return;
+    el.addEventListener('click',()=>book.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}));
+    if('IntersectionObserver' in window){cueWatch=new IntersectionObserver(e=>el.classList.toggle('is-off',e[0].isIntersecting),{rootMargin:'0px 0px -15% 0px'});cueWatch.observe(book)}
+  }
 
   // "Quiero ver más información antes": with a rubro, straight to the information; without one, a notice that asks for it
   // first, and the rubro they pick next opens the information.
