@@ -12,15 +12,15 @@ El 22/10 Santiago pidió dejar solo esta página: se borró el portfolio de Blin
 
 Pensada para celular (pedido del 22/10: "resumí, bien visual, que no haya que deslizar tanto hasta el test"). El test arranca a unas 4 pantallas.
 
-1. Cabecera "blin. × imán" y portada ("Que te vean, que te compren y que vuelvan") con foto de Blin y el celular de We! Soft. Botones "Quiero mi plan" y "Mostrame cuánto sale". Sin globos de chat encima del celular (tapaban el nombre).
+1. Cabecera "blin. × imán" (sin la franja de fecha ni líneas, pedido del 22/10) y portada ("Que te vean, que te compren y que vuelvan") con foto de Blin y el celular de We! Soft. Botones "Quiero mi plan" y "Mostrame cuánto sale". Sin globos de chat encima del celular (tapaban el nombre).
 2. Banda roja: "Tu Instagram los trae. Tu WhatsApp los pierde." → "Quiero dejar de perder ventas".
-3. **Cómo funciona**: 6 cuadrados que giran en horizontal, un carrusel 3D (te ve → te escribe → elige → compra → vuelve → lo medimos). Avanza solo cada 3,8 s; se desliza, se toca o se usan las flechas.
+3. **Cómo funciona**: 6 cuadrados con esquinas redondeadas que giran en horizontal, un carrusel 3D (te ve → te escribe → elige → compra → vuelve → lo medimos). Gira solo y fluido: se queda quieto un rato en cada tarjeta y avanza con aceleración y freno suaves (`glide` en `giro.js`). Se arrastra con el dedo, sigue al dedo y al soltar se acomoda en la más cercana. Sin flechas.
 4. Banda oscura: "Seguidores tenés. ¿Clientes que vuelven?" → "Quiero que vuelvan".
-5. **Mega Plus** (el objetivo): mosaico de 10 fichas (4 de Blin en rojo, 6 de IMÁN en degradé) que se dan vuelta en ola y muestran el detalle; también al tocar. Topes en una línea, "¿Cuánto sale? Lo ves al final del test" y mención del **Estándar Plus**. **Sin precios.** En celular el mosaico va antes del botón.
+5. **Mega Plus** (el objetivo): un gráfico de anillo con las 10 cosas del plan (4 porciones rojas de Blin, 6 en los colores de IMÁN, cada una con su ícono). Se dibuja al aparecer y va resaltando cada porción, con su explicación en el centro; debajo, la referencia con los nombres, que también se toca. Topes en una línea, "¿Cuánto sale? Lo ves al final del test" y mención del **Estándar Plus**. **Sin precios.** En celular el mosaico va antes del botón.
 6. **El test**: 10 pantallas, una pregunta por pantalla. Las de una opción avanzan solas al tocar; "¿Dónde vendés?" y "¿Qué querés lograr?" llevan casillas y "Siguiente". Al final pide los datos y muestra el plan sugerido, con precio, y el otro plan.
 7. La letra chica (4 preguntas), después del test.
 
-El 22/10 probó, en este orden: un recorrido largo de 6 capítulos con escenario fijo (largo), tarjetas en grilla, y dos círculos que giraban iguales ("no pueden ser los dos iguales"). Quedó lo de arriba.
+El 22/10 probó, en este orden: un recorrido largo de 6 capítulos con escenario fijo (largo), tarjetas en grilla, dos círculos que giraban iguales ("no pueden ser los dos iguales"), y un mosaico que se daba vuelta para el Mega Plus ("no me gusta, hacelo como un gráfico"). Quedó lo de arriba.
 
 ## Archivos
 
@@ -28,10 +28,10 @@ El 22/10 probó, en este orden: un recorrido largo de 6 capítulos con escenario
 | --- | --- |
 | `index.html` | La página. |
 | `blin.css` / `blin.js` | Sistema: tipografías (Outfit, Newsreader, Archivo, Geist Mono), cabecera que se ajusta al ancho, barra fija, índice, objetos flotantes, sello, apariciones. |
-| `edicion.css` | Portada, bandas, carrusel, mosaico, letra chica, test y resultado. |
+| `edicion.css` | Portada, bandas, carrusel, anillo, letra chica, test y resultado. |
 | `paquetes.js` | **Única fuente de precios y contenidos** de los dos planes y los topes. |
 | `plan.js` | Test, recomendación, resultado y envío del lead. |
-| `giro.js` | El carrusel 3D de Cómo funciona y el mosaico que se da vuelta del Mega Plus (solo se mueven mientras se ven). |
+| `giro.js` | El carrusel 3D de Cómo funciona y el gráfico de anillo del Mega Plus (solo se mueven mientras se ven). |
 | `assets/` | Logo de IMÁN (máscara) y 4 capturas de la demo de We! Soft (wesoft.iman.ar, 22/10). |
 | `og.jpg` | Imagen para compartir (1200×630, sin precio). |
 

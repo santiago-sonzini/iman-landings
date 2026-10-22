@@ -48,27 +48,24 @@
 .punch.alt .punch-t i{display:table;padding:0 .08em .06em 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* ---------- Cómo funciona: cuadrados que giran en horizontal ---------- */
-@property --turn{syntax:'<angle>';inherits:true;initial-value:0deg}
 .how{overflow:hidden;padding-block:clamp(48px,6vw,88px)}
 .how .display{font-size:clamp(36px,5vw,72px)}
 .how .sec-head{margin-bottom:clamp(18px,3vw,36px)}
 .how-note{margin-top:14px;font:500 11.5px/1.4 var(--mono);color:var(--muted);text-align:center}
-.c3{--w:min(72vw,300px);--R:calc(var(--w) * .866 + 16px);position:relative;height:calc(var(--w) + 30px);perspective:1100px;perspective-origin:50% 40%;touch-action:pan-y;transition:--turn 1.15s cubic-bezier(.65,0,.2,1)}
+.c3{--w:min(72vw,300px);--R:calc(var(--w) * .866 + 18px);position:relative;height:calc(var(--w) + 34px);perspective:1100px;perspective-origin:50% 40%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.c3.dragging{cursor:grabbing}
 .c3-ring{position:absolute;left:50%;top:10px;width:var(--w);height:var(--w);margin-left:calc(var(--w) / -2);transform-style:preserve-3d;transform:translateZ(calc(var(--R) * -1)) rotateY(var(--turn))}
-.c3-card{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--rule);background:var(--white);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--R));opacity:.5;filter:saturate(.6);transition:opacity .6s,filter .6s,box-shadow .6s;cursor:pointer}
-.c3-card.on{opacity:1;filter:none;box-shadow:0 26px 60px rgba(0,0,0,.18);cursor:default}
-.c3-vis{position:relative;flex:0 0 50%;overflow:hidden;border-bottom:1px solid var(--rule)}
+.c3-card{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(18,18,18,.14);border-radius:24px;background:var(--white);box-shadow:0 22px 50px rgba(0,0,0,.14);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--R))}
+.c3-card img{-webkit-user-drag:none;pointer-events:none}
+.c3-vis{position:relative;flex:0 0 50%;overflow:hidden}
 .c3-body{display:flex;flex-direction:column;gap:5px;padding:12px 14px 14px}
 .c3-top{display:flex;align-items:center;gap:6px}
 .c3-n{margin-right:auto;font:400 24px/1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--ink)}
 .c3-card h3{margin:0;font:400 28px/1 var(--serif);letter-spacing:-.025em}
 .c3-card p{margin:0;font:400 13.5px/1.4 var(--sans);color:var(--ink-2)}
-.c3-ctrl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:8px}
-.c3-arrow{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--rule);border-radius:50%;font-size:17px;transition:background .25s,color .25s}
-.c3-arrow:hover{background:var(--ink);color:var(--paper)}
-.c3-dots{display:flex;gap:6px}
-.c3-dots button{width:7px;height:7px;border-radius:9px;background:rgba(18,18,18,.2);transition:width .4s var(--ease),background .4s}
-.c3-dots button.on{width:22px;background:var(--ink)}
+.c3-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.c3-dots i{width:7px;height:7px;border-radius:9px;background:rgba(18,18,18,.2);transition:width .4s var(--ease),background .4s}
+.c3-dots i.on{width:22px;background:var(--ink)}
 /* Lo que se ve arriba de cada cuadrado */
 .cv-reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .cv-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.55))}
@@ -96,7 +93,6 @@
 .vf-big b{font:400 30px/.9 var(--serif);letter-spacing:-.03em;color:var(--red)}
 .vf-big span{font:italic 400 14px/1.2 var(--serif)}
 @media (min-width:760px){.c3{--w:330px}}
-@media (prefers-reduced-motion:reduce){.c3{transition:none}}
 
 /* ---------- Mega Plus ---------- */
 .plus{position:relative;overflow:hidden;padding-block:clamp(56px,7vw,100px)}
@@ -112,28 +108,39 @@
 .plus-alt b{color:#fff;font-weight:600}
 .plus-alt .chip-blin{margin-right:6px;vertical-align:1px}
 .ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-/* Mosaico que se da vuelta en ola: al frente el nombre, atrás el detalle. */
-.flip-wrap{display:flex;flex-direction:column;gap:12px}
-.fg-h{display:flex;align-items:baseline;gap:12px;margin:6px 0 0}
-.fg-h .wm{font:800 32px/1 var(--word);letter-spacing:-.05em}
-.fg-h .wm .dot{color:var(--red-2)}
-.fg-h .iman-logo{height:28px;background-color:var(--paper)}
-.fg-h small{font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(242,240,235,.6)}
-.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.fg.iman{grid-template-columns:repeat(3,minmax(0,1fr))}
-.ft{display:block;padding:0;perspective:700px;text-align:left;color:inherit}
-.ft-in{display:grid;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.5,-.3,.3,1.3)}
-.ft.flip .ft-in{transform:rotateX(-180deg)}
-.ft-face{grid-area:1/1;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:104px;padding:14px;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.ft-front{background:#1d1d1d;border:1px solid rgba(255,255,255,.12)}
-.ft-front b{font:500 14px/1.2 var(--sans);color:#fff}
-.ft.b .ft-front .ic{color:#f2b8ad}
-.ft.i .ft-front{background:linear-gradient(#1d1d1d,#1d1d1d) padding-box,var(--grad) border-box;border:1px solid transparent}
-.ft.i .ft-front .ic{color:#c9b6f2}
-.ft-back{transform:rotateX(180deg);justify-content:center;font:400 13px/1.35 var(--sans)}
-.ft.b .ft-back{background:var(--red-2);color:#fff}
-.ft.i .ft-back{background:var(--grad);color:var(--ink)}
-@media (prefers-reduced-motion:reduce){.ft-in{transition:none}}
+/* Gráfico de anillo: las 10 cosas del plan, rojo Blin y degradé IMÁN. */
+.donut-wrap{display:grid;justify-items:center;gap:18px}
+.donut-fig{position:relative;width:min(84vw,340px);aspect-ratio:1}
+.donut{display:block;width:100%;height:100%;overflow:visible}
+.donut .seg{fill:none;stroke-width:36;transition:stroke-dasharray 1s var(--ease),stroke-width .5s var(--ease),opacity .45s}
+.donut .seg.on{stroke-width:48}
+.donut.has-on .seg:not(.on){opacity:.4}
+.donut .seg-ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;opacity:0;transition:opacity .5s}
+.donut.drawn .seg-ic{opacity:1}
+.donut .hit{fill:none;stroke:transparent;stroke-width:52;cursor:pointer}
+.donut-center{position:absolute;inset:25%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;pointer-events:none}
+.dc-who{min-height:20px}
+.dc-t{font:400 clamp(21px,5.6vw,28px)/1.02 var(--serif);letter-spacing:-.015em;color:#fff}
+.dc-p{margin:0;font:400 12.5px/1.35 var(--sans);color:rgba(242,240,235,.75)}
+.donut-center.swap>*{animation:capin .5s var(--ease) both}
+@keyframes capin{from{opacity:0;transform:translateY(8px)}}
+.donut-legend{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;width:100%}
+.dl-h{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0 0 8px}
+.dl-h .wm{font:800 28px/1 var(--word);letter-spacing:-.05em}
+.dl-h .wm .dot{color:var(--red-2)}
+.dl-h .iman-logo{height:24px;background-color:var(--paper)}
+.dl-h small{font:600 10.5px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(242,240,235,.6)}
+.donut-legend ul{list-style:none;display:grid;gap:2px;margin:0;padding:0}
+.donut-legend button{display:flex;align-items:center;gap:9px;width:100%;padding:6px 8px;border-radius:10px;font:500 14px/1.25 var(--sans);color:rgba(242,240,235,.85);text-align:left;transition:background .3s,color .3s}
+.donut-legend button.on{background:rgba(255,255,255,.1);color:#fff}
+.sw{flex:none;width:12px;height:12px;border-radius:4px;background:var(--c)}
+@media (min-width:1001px){
+  .donut-wrap{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:26px}
+  .donut-fig{width:300px}
+  .donut-wrap .limits-mini{grid-column:1/-1}
+  .donut-legend{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.donut .seg,.donut .seg-ic{transition:none}}
 .limits-mini{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;font:500 12.5px/1.4 var(--mono);color:rgba(242,240,235,.6)}
 .limits-mini b{font:400 20px/1 var(--serif);color:#fff}
 
@@ -261,7 +268,7 @@
   /* Celular: primero qué incluye (el círculo), después cuánto sale y el botón. */
   .plus-grid{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
   .plus-head{display:contents}
-  .flip-wrap{order:4;align-self:stretch;margin:4px 0}
+  .donut-wrap{order:4;align-self:stretch;margin:4px 0}
   .plus-teaser{order:5}
   .plus-head>.btn{order:6}
   .plus-alt{order:7}
