@@ -42,19 +42,5 @@ window.BLIN = (() => {
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // Tarjeta de plan para el resultado: lo de Blin y lo de IMÁN en dos grupos.
-  const planCard = (o, opts = {}) => `
-    <article class="plan${o.id === 'megaplus' ? ' plus' : ''}" data-plan="${o.id}">
-      ${opts.badge ? `<span class="plan-badge">${esc(opts.badge)}</span>` : ''}
-      <header><span class="plan-line">Blin × IMÁN</span><h3 class="plan-name">${esc(o.name)}</h3></header>
-      <p class="plan-tag">${esc(o.tag)}</p>
-      <div class="plan-price"><span>${money(o.price)}</span><small>por mes</small></div>
-      <h4 class="plan-g">De Blin · ${esc(blin[o.base].name)}</h4>
-      <ul class="plan-list">${blin[o.base].items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
-      <h4 class="plan-g iman">De IMÁN</h4>
-      <ul class="plan-list iman">${imanItems.map(i => `<li>${esc(i.t)}</li>`).join('')}</ul>
-      ${opts.action ? `<button class="btn ${o.id === 'megaplus' ? 'light' : 'line'} sm plan-act" type="button" data-choose="${o.id}">${esc(opts.action)}</button>` : ''}
-    </article>`;
-
-  return { money, esc, LIMITS, CUOTA_IMAN, blin, imanItems, offers, byId, planCard };
+  return { money, esc, LIMITS, CUOTA_IMAN, blin, imanItems, offers, byId };
 })();

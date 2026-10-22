@@ -7,7 +7,7 @@
     storageKey: 'blin.plan.3',   // subir el número si cambian las preguntas
   };
 
-  const { money, esc, LIMITS, blin, imanItems, offers, byId, planCard } = window.BLIN;
+  const { money, esc, LIMITS, blin, imanItems, offers, byId } = window.BLIN;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
@@ -207,6 +207,27 @@
     return `<h5>De Blin · ${esc(blin[o.base].name)}</h5><ul>${blinLis}</ul><h5>De IMÁN</h5><ul>${imanLis}</ul>`;
   }
 
+  // Comparación de los dos planes: precio arriba, solo lo que cambia, y lo de IMÁN igual en los dos.
+  const COMPARE = [
+    ['Redes que maneja Blin', '2', '1'],
+    ['Producción de contenido', '1 a 4 h', '1 a 3 h'],
+    ['Publicaciones por semana', '3', '2'],
+    ['Días con historias por semana', '5', '4'],
+    ['Campañas en Meta Ads', true, false],
+    ['Una pieza de diseño gráfico', true, false],
+    ['Asesoría digital', true, false],
+    ['Análisis de marca y métricas', true, true],
+    ['Todo IMÁN: asistente, carta, gestión, club, avisos, turnos y métricas', true, true],
+  ];
+  const cell = v => v === true ? '<svg class="ok" viewBox="0 0 24 24" aria-label="Sí"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' : v === false ? '<span class="no" aria-label="No">—</span>' : esc(v);
+  function compare(sug, chosen) {
+    const head = offers.map(o => `<div class="cmp-plan${o.id === 'megaplus' ? ' mp' : ''}${o.id === sug ? ' sug' : ''}">
+        ${o.id === sug ? '<span class="cmp-badge">Sugerido</span>' : ''}<b>${esc(o.name)}</b><span class="cmp-price">${money(o.price)}</span><small>por mes</small></div>`).join('');
+    const rows = COMPARE.map(([label, mega, est]) => `<span class="cmp-l">${esc(label)}</span><span class="cmp-v mp">${cell(mega)}</span><span class="cmp-v">${cell(est)}</span>`).join('');
+    const foot = offers.map(o => `<div class="cmp-act${o.id === 'megaplus' ? ' mp' : ''}"><button class="btn sm${o.id === chosen ? ' is-chosen' : o.id === 'megaplus' ? ' light' : ' line'}" type="button" data-choose="${o.id}">${o.id === chosen ? 'Elegido' : 'Elegir'}</button></div>`).join('');
+    return `<div class="cmp" role="table" aria-label="Comparación de los dos planes"><span class="cmp-corner"></span>${head}${rows}<span class="cmp-l cmp-last"></span>${foot}</div>`;
+  }
+
   function showResult(scroll) {
     const r = recommend(S.a);
     const chosen = byId[S.chosen] ? S.chosen : r.pick;
@@ -218,7 +239,7 @@
     result.hidden = false;
     result.innerHTML = `
       <div class="res">
-        <div class="res-main plus">
+        <div class="res-main mp">
           <span class="kicker"><svg class="flag"><use href="#flag"/></svg>${isSug ? 'Tu resultado' : 'Elegiste'}</span>
           <p class="res-for">${isSug ? 'El plan que sugerimos para' : 'Tu plan para'} ${esc(S.contact.negocio || 'tu marca')}</p>
           <h3 class="res-name">${nameHTML}</h3>
@@ -240,15 +261,8 @@
       </div>
       <div class="res-others" id="otros">
         <div class="res-others-head"><h3>Los dos planes</h3><p>Los dos traen todo IMÁN; cambia cuánto hace Blin en tus redes.</p></div>
-        <div class="plans two">${offers.map(x => planCard(x, {
-          badge: x.id === r.pick ? 'Sugerido para vos' : '',
-          action: x.id === chosen ? 'Elegido' : 'Elegir este',
-        })).join('')}</div>
+        ${compare(r.pick, chosen)}
       </div>`;
-    $$('.plan', result).forEach(el => {
-      el.classList.toggle('is-sug', el.dataset.plan === r.pick);
-      el.classList.toggle('is-chosen', el.dataset.plan === chosen);
-    });
     $('[data-bar]').style.width = '100%';
     if (scroll) result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
