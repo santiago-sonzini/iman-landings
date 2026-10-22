@@ -1,3 +1,4 @@
+import { createBlinHandler } from './blin.mjs';
 import { createBookingHandler } from './booking.mjs';
 import { createContactHandler } from './contact.mjs';
 import { createNewsletterHandler } from './newsletter.mjs';
@@ -46,7 +47,16 @@ const agenda={
     return {status:response.status,body};
   }
 };
+// Saves a lead from the Blin × IMÁN test (iman.ar/blin/) in the assistant's panel, without messaging them.
+async function sendLead(lead,env){
+  const b=bot(env);
+  if(!b)return null;
+  const response=await fetch(`${b.url}/api/lead`,{method:'POST',headers:{...b.headers,'Content-Type':'application/json'},body:JSON.stringify(lead),signal:AbortSignal.timeout(8000)});
+  if(!response.ok)throw new Error(`bot_${response.status}`);
+  return (await response.json()).resultado||'ok';
+}
 const handleContact=createContactHandler({sendMail,startChat});
+const handleBlin=createBlinHandler({sendLead});
 const handleBooking=createBookingHandler({sendMail,agenda});
 const handleNewsletter=createNewsletterHandler({sendMail});
 const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, vengo de Instagram y quiero info');
@@ -68,6 +78,7 @@ export default {
     if(url.pathname==='/agenda'||url.pathname==='/agenda/')return Response.redirect(AGENDA,302);
     if(url.pathname==='/api/contacto'||url.pathname==='/api/contacto/')return handleContact(request,env);
     if(url.pathname==='/api/agenda'||url.pathname==='/api/agenda/')return handleBooking(request,env);
+    if(url.pathname==='/api/blin'||url.pathname==='/api/blin/')return handleBlin(request,env);
     if(url.pathname==='/api/newsletter'||url.pathname.startsWith('/api/newsletter/'))return handleNewsletter(request,env);
     if(url.pathname.startsWith('/api/'))return Response.json({ok:false,error:'No encontrado.'},{status:404,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
     const asset=await env.ASSETS.fetch(request);

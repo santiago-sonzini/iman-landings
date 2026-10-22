@@ -24,6 +24,9 @@ if (ROOT/'legacy/turnos').exists():
     shutil.copytree(ROOT/'legacy/turnos',OUT/'turnos',dirs_exist_ok=True)
 if (ROOT/'legacy/urbase').exists():
     shutil.copytree(ROOT/'legacy/urbase',OUT/'urbase',dirs_exist_ok=True)
+# Partner pages (aliados/<name>/ → /<name>/): static, noindex, outside the sitemap. Their notes (LEEME.md) stay out.
+for partner in sorted((ROOT/'aliados').glob('*/')) if (ROOT/'aliados').exists() else []:
+    shutil.copytree(partner,OUT/partner.name,dirs_exist_ok=True,ignore=shutil.ignore_patterns('*.md'))
 e = html.escape
 previous_manifest = ROOT / 'docs/pages.json'
 if previous_manifest.exists():

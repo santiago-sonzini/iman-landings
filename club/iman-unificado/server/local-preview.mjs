@@ -6,6 +6,7 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {DatabaseSync} from 'node:sqlite';
+import {createBlinHandler} from './blin.mjs';
 import {createBookingHandler} from './booking.mjs';
 import {createContactHandler} from './contact.mjs';
 import {escapeHTML as E} from './email.mjs';
@@ -17,6 +18,7 @@ const db={prepare(sql){let values=[];const stmt={bind(...v){values=v;return stmt
 let scenario='success';let emails=[];let sends=0;
 const capture=async message=>{sends++;await new Promise(resolve=>setTimeout(resolve,300));if(scenario==='failure'||(scenario==='partial'&&!env.TEAM_EMAILS.split(',').includes(message.to)))throw Object.assign(new Error('test-only'),{code:'E_RECIPIENT_NOT_ALLOWED'});const id=emails.length;emails.push(message);await writeFile(path.join(mailbox,`email-${id}.html`),message.html);await writeFile(path.join(mailbox,`email-${id}.txt`),message.text);return {messageId:'local-'+id};};
 const handle=createContactHandler({sendMail:capture});
+const blin=createBlinHandler({sendLead:async lead=>{console.log('Lead de Blin × IMÁN (va al panel del bot):\n'+lead.detalle);return 'nuevo';}});
 // A stand-in for the bot's agenda: weekdays 10 to 18 in Argentina, three times offered per day, a booked one is taken.
 const AR='America/Argentina/Buenos_Aires',taken=new Set();
 const part=(t,o)=>new Intl.DateTimeFormat('es-AR',{timeZone:AR,...o}).format(new Date(t*1000));
@@ -70,6 +72,13 @@ http.createServer(async(req,res)=>{
       const headers=new Headers(req.headers);headers.set('CF-Connecting-IP','127.0.0.1');
       const request=new Request(url,{method:req.method,headers,...(req.method==='POST'?{body:Buffer.concat(chunks)}:{})});
       const response=await booking(request,env);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
+    }
+    // The Blin × IMÁN test: the real handler, with the bot replaced by the console.
+    if(url.pathname==='/api/blin'){
+      const chunks=[];for await(const chunk of req)chunks.push(chunk);
+      const headers=new Headers(req.headers);headers.set('CF-Connecting-IP','127.0.0.1');
+      const request=new Request(url,{method:req.method,headers,...(req.method==='POST'?{body:Buffer.concat(chunks)}:{})});
+      const response=await blin(request,{});res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
     }
     if(url.pathname==='/api/contacto'){
       const chunks=[];for await(const chunk of req)chunks.push(chunk);
