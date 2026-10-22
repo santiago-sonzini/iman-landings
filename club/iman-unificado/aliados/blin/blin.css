@@ -152,6 +152,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 /* ---------- Celular y tableta ---------- */
 @media (max-width:1000px){
   .bar nav{display:none}
+  .seal{display:none}
 }
 @media (max-width:640px){
   .mast{padding-top:14px}

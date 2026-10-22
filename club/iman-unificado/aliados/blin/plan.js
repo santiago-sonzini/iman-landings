@@ -1,4 +1,4 @@
-// Edición Blin × IMÁN: el recorrido con escenario fijo, las listas del Mega Plus y el test que sugiere un plan.
+// Blin × IMÁN: el test que sugiere un plan, el resultado y el envío del lead.
 (() => {
   // Adónde va lo que deja cada persona. Sin formEndpoint, el plan se manda por WhatsApp (el visitante toca enviar).
   const CONFIG = {
@@ -10,31 +10,6 @@
   const { money, esc, LIMITS, blin, imanItems, offers, byId, planCard } = window.BLIN;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-
-  /* ---------------- El recorrido: escenario fijo en escritorio ---------------- */
-  const stage = $('.stage-in'), chapters = $$('.chap');
-  if (stage && chapters.length) {
-    chapters.forEach((ch, i) => {
-      const v = document.createElement('div');
-      v.className = 'sv' + (i === 0 ? ' on' : '');
-      v.innerHTML = $('.ch-visual', ch).innerHTML;
-      stage.appendChild(v);
-    });
-    document.body.classList.add('js-stage');
-    const views = $$('.sv', stage), n = $('.stage-n'), t = $('.stage-t');
-    const show = i => {
-      views.forEach((v, j) => v.classList.toggle('on', j === i));
-      n.textContent = String(i + 1).padStart(2, '0');
-      t.textContent = $('h3', chapters[i]).textContent;
-    };
-    const chObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) show(+e.target.dataset.ch); }), { rootMargin: '-48% 0px -48% 0px' });
-    chapters.forEach(ch => chObs.observe(ch));
-  }
-
-  /* ---------------- Mega Plus: listas desde paquetes.js ---------------- */
-  const megaUl = $('[data-mega-items]'), imanUl = $('[data-iman-items]');
-  if (megaUl) megaUl.innerHTML = blin.mega.items.map(i => `<li><span>${esc(i)}</span></li>`).join('');
-  if (imanUl) imanUl.innerHTML = imanItems.map(i => `<li><span><b>${esc(i.t)}</b><span>${esc(i.d)}</span></span></li>`).join('');
 
   /* ---------------- El test ---------------- */
   const METAS = {
