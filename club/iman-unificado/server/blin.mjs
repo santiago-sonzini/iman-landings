@@ -1,7 +1,9 @@
-import { countHits, digest, failure, readJSON, reply } from './contact.mjs';
+import { countHits, digest, failure, mailConfig, readJSON, reply, team } from './contact.mjs';
+import { blinLeadEmail } from './email.mjs';
 
 // Leads from the Blin × IMÁN test (iman.ar/blin/): the answers go to the WhatsApp assistant's panel as a lead
-// (bot/reservas.py, /api/lead). Nobody is messaged automatically; the team follows up from the panel.
+// (bot/reservas.py, /api/lead), and each finished test emails the team, like the site's other inquiries.
+// The person is never messaged automatically; the team follows up.
 const PLANS = new Set(['Mega Plus', 'Estándar Plus']);
 const STAGES = new Set(['plan', 'eleccion']);
 const EMAIL = /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)+$/i;
@@ -44,7 +46,7 @@ export function describe(lead) {
   ].filter(Boolean).join('\n');
 }
 
-export function createBlinHandler({sendLead, now = Date.now, report = code => console.error(code)} = {}) {
+export function createBlinHandler({sendLead, sendMail = null, now = Date.now, report = code => console.error(code)} = {}) {
   const buckets = new Map();
   return async function handleBlin(request, env = {}) {
     if (request.method !== 'POST') return failure('method_not_allowed', 'Método no permitido.', 405, {'Allow': 'POST'});
@@ -64,14 +66,26 @@ export function createBlinHandler({sendLead, now = Date.now, report = code => co
       {key: 'blin:global', limit: 300, duration: 3_600_000},
     ], now);
     if (wait) return failure('rate_limited', 'Recibimos varios intentos. Probá en un rato.', 429, {'Retry-After': String(wait)});
+    const detalle = describe(lead);
+    let saved = null;
     try {
-      const result = await sendLead({nombre: lead.nombre, negocio: lead.negocio, email: lead.email, whatsapp: lead.whatsapp, rubro: lead.rubro,
-        plan: lead.plan, detalle: describe(lead), origen: 'blin', etapa: lead.etapa}, env);
-      if (!result) { report('blin_bot_missing'); return failure('unavailable', 'No pudimos guardar tus datos.', 503); }
-      return reply({ok: true, resultado: result});
-    } catch {
-      report('blin_bot_failed');
-      return failure('unavailable', 'No pudimos guardar tus datos.', 502);
-    }
+      saved = await sendLead({nombre: lead.nombre, negocio: lead.negocio, email: lead.email, whatsapp: lead.whatsapp, rubro: lead.rubro,
+        plan: lead.plan, detalle, origen: 'blin', etapa: lead.etapa}, env);
+      if (!saved) report('blin_bot_missing');
+    } catch { report('blin_bot_failed'); }
+    // One email per finished test (not again when they pick a plan), to each person in the team. If the bot failed,
+    // the email still carries the lead.
+    let mailed = false;
+    const config = sendMail && lead.etapa === 'plan' ? mailConfig(env) : null;
+    if (config) {
+      const owners = [...new Set([config.contact.toLowerCase(), ...team(env)])];
+      const notice = {from: {name: 'IMAN', address: config.user}, headers: {'X-Auto-Response-Suppress': 'All', 'Auto-Submitted': 'auto-generated'},
+        ...(lead.email ? {replyTo: lead.email} : {}), ...blinLeadEmail(lead, detalle)};
+      const sent = await Promise.allSettled(owners.map(to => sendMail({...notice, to}, config)));
+      mailed = sent.some(s => s.status === 'fulfilled');
+      if (!mailed) report('blin_mail_failed');
+    } else if (sendMail && lead.etapa === 'plan') report('blin_mail_config_missing');
+    if (!saved && !mailed) return failure('unavailable', 'No pudimos guardar tus datos.', 502);
+    return reply({ok: true, resultado: saved || 'solo_mail', mail: mailed});
   };
 }

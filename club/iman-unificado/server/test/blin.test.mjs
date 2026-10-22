@@ -18,7 +18,7 @@ test('a lead goes to the bot with the plan and the answers, only once per reques
   const {handle,sent} = setup();
   const response = await handle(request(),{});
   assert.equal(response.status,200);
-  assert.deepEqual(await response.json(),{ok:true,resultado:'nuevo'});
+  assert.deepEqual(await response.json(),{ok:true,resultado:'nuevo',mail:false});
   assert.equal(sent.length,1);
   assert.equal(sent[0].origen,'blin');
   assert.equal(sent[0].plan,'Mega Plus');
@@ -57,6 +57,51 @@ test('a bot that is down or missing is reported, not hidden', async () => {
   assert.equal((await down.handle(request(),{})).status,502);
   assert.deepEqual(down.logs,['blin_bot_failed']);
   const missing = setup(null);
-  assert.equal((await missing.handle(request(),{})).status,503);
+  assert.equal((await missing.handle(request(),{})).status,502);
   assert.deepEqual(missing.logs,['blin_bot_missing']);
+});
+
+// The team is CONTACT_EMAIL plus TEAM_EMAILS here: one email each per finished test.
+const mailEnv = {FROM_EMAIL:'hola@iman.ar',CONTACT_HASH_SECRET:'fake-test-secret-at-least-32-characters',EMAIL:{send:async()=>({messageId:'test'})},CONTACT_EMAIL:'sales@example.com',TEAM_EMAILS:'sales@example.com,mateo@example.com,joa@example.com'};
+function withMail({bot = 'nuevo', mailFails = false} = {}) {
+  const mails = [], logs = [];
+  const handle = createBlinHandler({
+    sendLead: async () => { if (bot instanceof Error) throw bot; return bot; },
+    sendMail: async message => { if (mailFails) throw new Error('mail_down'); mails.push(message); },
+    report: code => logs.push(code)});
+  return {mails, logs, handle};
+}
+
+test('each finished test emails each person in the team once, with the plan and the answers', async () => {
+  const {handle,mails} = withMail();
+  const response = await handle(request({email:'sofi@example.com'}),mailEnv);
+  assert.equal(response.status,200);
+  assert.deepEqual(await response.json(),{ok:true,resultado:'nuevo',mail:true});
+  assert.deepEqual(mails.map(m => m.to).sort(),['joa@example.com','mateo@example.com','sales@example.com']);
+  assert.equal(mails[0].subject,'Test Blin × IMÁN · Tienda Sol · Mega Plus');
+  assert.equal(mails[0].replyTo,'sofi@example.com');
+  assert.match(mails[0].text,/Le sugerimos: Mega Plus \(\$1\.000\.000 por mes\)/);
+  assert.match(mails[0].text,/https:\/\/wa\.me\/3534123456/);
+  assert.match(mails[0].html,/Escribir por WhatsApp/);
+});
+
+test('picking a plan afterwards does not send a second email', async () => {
+  const {handle,mails} = withMail({bot:'actualizado'});
+  assert.equal((await handle(request({etapa:'eleccion'}),mailEnv)).status,200);
+  assert.equal(mails.length,0);
+});
+
+test('if the bot is down, the email still carries the lead', async () => {
+  const {handle,mails,logs} = withMail({bot:new Error('bot_502')});
+  const response = await handle(request(),mailEnv);
+  assert.equal(response.status,200);
+  assert.deepEqual(await response.json(),{ok:true,resultado:'solo_mail',mail:true});
+  assert.equal(mails.length,3);
+  assert.deepEqual(logs,['blin_bot_failed']);
+});
+
+test('if both the bot and the email fail, it says so', async () => {
+  const {handle,logs} = withMail({bot:new Error('bot_502'),mailFails:true});
+  assert.equal((await handle(request(),mailEnv)).status,502);
+  assert.deepEqual(logs,['blin_bot_failed','blin_mail_failed']);
 });

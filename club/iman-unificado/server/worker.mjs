@@ -56,7 +56,7 @@ async function sendLead(lead,env){
   return (await response.json()).resultado||'ok';
 }
 const handleContact=createContactHandler({sendMail,startChat});
-const handleBlin=createBlinHandler({sendLead});
+const handleBlin=createBlinHandler({sendLead,sendMail});
 const handleBooking=createBookingHandler({sendMail,agenda});
 const handleNewsletter=createNewsletterHandler({sendMail});
 const WHATSAPP_FROM_INSTAGRAM='https://wa.me/5493535189997?text='+encodeURIComponent('Hola, vengo de Instagram y quiero info');

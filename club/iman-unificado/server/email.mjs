@@ -50,6 +50,27 @@ export function ownerEmail(lead){
       'Notificación interna de una consulta recibida en iman.ar.')
   };
 }
+// The notice each person of the team gets when someone finishes the Blin × IMÁN test (iman.ar/blin/).
+export function blinLeadEmail(lead,detail){
+  const who=lead.negocio||lead.nombre;
+  const phone=(lead.whatsapp||'').replace(/\D/g,'');
+  const fields=[['Nombre',lead.nombre],['Negocio',lead.negocio||'No indicado'],['WhatsApp',lead.whatsapp],['Email',lead.email||'No indicado'],['Instagram',lead.instagram||'No indicado']];
+  const answers=detail.split('\n').slice(1).map(line=>{const i=line.indexOf(': ');return i>0?[line.slice(0,i),line.slice(i+2)]:['',line];});
+  const rows=list=>`<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 28px">${list.map(([k,v])=>`<tr><td style="padding:13px 0;border-bottom:1px solid ${LINE};vertical-align:top;width:110px;font-family:'Courier New',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${ACCENT}">${E(k)}</td><td style="padding:13px 0 13px 12px;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;line-height:1.65;color:${INK};word-break:break-word">${E(v)}</td></tr>`).join('')}</table>`;
+  return {
+    subject:`Test Blin × IMÁN · ${who} · ${lead.plan}`,
+    text:`${detail}\n\n${fields.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nYa quedó como lead en el panel del asistente.${phone.length>=8?`\nWhatsApp: https://wa.me/${phone}`:''}`,
+    html:frame(`${lead.nombre} · ${who} · ${lead.plan}`,
+      eyebrow('Test de Blin × IMÁN · iman.ar/blin')
+      +heading(`${E(who)}<br><em style="font-style:normal;color:#c7bcdf">${E(lead.plan)}</em>`)
+      +rows(fields)
+      +box(eyebrow('Sus respuestas')+rows(answers))
+      +(phone.length>=8?button('Escribir por WhatsApp','https://wa.me/'+phone):'')
+      +(lead.email?button(`Responder a ${E(lead.nombre)}`,'mailto:'+lead.email,false):'')
+      +paragraph('Ya quedó como lead en el panel del asistente.'),
+      'Notificación interna de un test hecho en iman.ar/blin/.')
+  };
+}
 export function newsletterEmail(person,confirmationURL,unsubscribeURL){return {
   subject:'Un paso más para recibir ideas de IMAN',
   text:`Hola, ${person.nombre}.\n\nPediste recibir ideas para que tus clientes vuelvan. Confirmá tu email para sumarte:\n${confirmationURL}\n\nVas a recibir ideas de fidelización, comunicación y automatización para comercios. Podés darte de baja cuando quieras. Este enlace vence en 48 horas.\n\nSi no lo solicitaste, ignorá este correo: no te vamos a suscribir. También podés cancelar la solicitud:\n${unsubscribeURL}\n\nIMAN · https://www.iman.ar/`,
