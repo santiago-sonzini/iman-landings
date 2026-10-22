@@ -20,3 +20,6 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-10-22 | software-a-medida-para-pymes | Cuándo una pyme necesita software a medida y cómo empezar sin cambiar de sistema (evaluar) | Nuevo · grupo software y automatización |
 | 2026-10-22 | zapier-make-n8n-o-desarrollo-a-medida | Zapier, Make, n8n o desarrollo a medida: cómo cobra cada uno y cuándo alcanza (evaluar) | Nuevo · grupo software y automatización |
 | 2026-10-22 | como-elegir-empresa-de-software-y-automatizacion | Qué preguntarle a una empresa de software y automatización antes de contratar (contratar) | Nuevo · grupo software y automatización |
+
+Indexación pedida en Search Console (una vez por URL, no repetir):
+- 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
