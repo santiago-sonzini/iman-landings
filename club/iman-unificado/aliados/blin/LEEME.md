@@ -63,7 +63,7 @@ Los números se cambian en `LIMITS` (`paquetes.js`) y en los textos de `index.ht
 
 ## El test y la recomendación
 
-- Preguntas: rubro, dónde vende (casillas), qué quiere lograr (casillas, hasta 5, marcado Blin / IMÁN), quién maneja las redes, en cuántas redes, consultas por día, productos, inversión (rangos que no delatan los precios: hasta $500.000, $500.000–$900.000, $900.000–$1.300.000, más, o "que me recomienden"), cuándo arranca y datos (nombre, negocio y WhatsApp obligatorios; email e Instagram opcionales).
+- Preguntas: rubro, dónde vende (casillas), qué quiere lograr (casillas, todas las que quiera, marcado Blin / IMÁN), quién maneja las redes, en cuántas redes, consultas por día, productos, inversión (rangos que no delatan los precios: hasta $500.000, $500.000–$900.000, $900.000–$1.300.000, más, o "que me recomienden"), cuándo arranca y datos (nombre, negocio y WhatsApp obligatorios; email e Instagram opcionales).
 - `recommend` en `plan.js`: **Mega Plus** si la inversión llega a $900.000 o más. **Estándar Plus** si es menor. Si deja que le recomendemos, Mega Plus cuando pide dos redes, Meta Ads o tres objetivos de marca; si no, Estándar Plus. Si queda en Estándar Plus pero pidió cosas del Mega, una nota se lo marca como el paso siguiente.
 - Resultado: plan sugerido con precio, por qué, qué incluye (resalta lo que pidió), notas, y "Los dos planes" para comparar y elegir el otro.
 - Se guarda en `localStorage` (`blin.plan.3`): si vuelve, abre en el resultado. Si cambian las preguntas, subir el número.

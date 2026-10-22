@@ -30,7 +30,7 @@
   const Q = [
     { id: 'rubro', q: '¿Qué tipo de negocio tenés?', opts: [['gastro', 'Gastronomía'], ['moda', 'Moda e indumentaria'], ['calzado', 'Calzado y accesorios'], ['belleza', 'Belleza y estética'], ['salud', 'Salud y bienestar'], ['comercio', 'Comercio o almacén'], ['mayorista', 'Distribuidora o mayorista'], ['eventos', 'Eventos y entretenimiento'], ['servicios', 'Servicios profesionales'], ['otro', 'Otro rubro']] },
     { id: 'canales', multi: true, q: '¿Dónde vendés hoy?', hint: 'Marcá todas las que correspondan.', opts: [['local', 'Local a la calle'], ['whatsapp', 'WhatsApp'], ['redes', 'Instagram o Facebook'], ['web', 'Tienda online'], ['turnos', 'Con turnos o reservas'], ['mayorista', 'Venta mayorista']] },
-    { id: 'metas', multi: true, max: 5, q: '¿Qué querés lograr en los próximos meses?', hint: 'Marcá hasta cinco.', legend: true, opts: Object.entries(METAS).map(([k, m]) => [k, m.t, m.side]) },
+    { id: 'metas', multi: true, q: '¿Qué querés lograr en los próximos meses?', hint: 'Marcá todas las que quieras.', legend: true, opts: Object.entries(METAS).map(([k, m]) => [k, m.t, m.side]) },
     { id: 'estado', q: '¿Quién maneja tus redes hoy?', opts: [['nadie', 'Nadie, están paradas'], ['yo', 'Yo, cuando puedo'], ['equipo', 'Alguien del equipo'], ['agencia', 'Una agencia']] },
     { id: 'plataformas', q: '¿En cuántas redes querés estar?', opts: [['1', 'En una'], ['2', 'En dos'], ['3', 'En tres o más']] },
     { id: 'consultas', q: '¿Cuántas consultas te llegan por WhatsApp por día?', opts: [['10', 'Menos de 10'], ['30', '10 a 30'], ['80', '30 a 80'], ['mas', 'Más de 80']] },
