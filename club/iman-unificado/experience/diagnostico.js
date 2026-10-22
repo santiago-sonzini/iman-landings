@@ -17,14 +17,19 @@
     gauss:{servicio:'Gauss · Compras',nombre:'Gauss',corto:'Gauss para tus compras',desde:null,url:'/gauss/',texto:'Les pide precio a tus proveedores, negocia y compara. Vos aprobás.'}
   };
 
-  // Monthly budget brackets. "tope" is what the scope is fitted to; null means not defined yet.
+  // Monthly budget brackets, in pesos (ARS). "tope" is what the scope is fitted to; null means not defined yet.
+  // "n" are the amounts in the label, shown in dollars too.
   const PRESUPUESTOS=[
-    {id:'b1',t:'Hasta $50.000',tope:50000},
-    {id:'b2',t:'Entre $50.000 y $150.000',tope:150000},
-    {id:'b3',t:'Entre $150.000 y $400.000',tope:400000},
-    {id:'b4',t:'Más de $400.000',tope:Infinity},
-    {id:'b0',t:'Todavía no lo definí',tope:null}
+    {id:'b1',t:'Hasta ARS 50.000',tope:50000,n:[50000]},
+    {id:'b2',t:'Entre ARS 50.000 y 150.000',tope:150000,n:[50000,150000]},
+    {id:'b3',t:'Entre ARS 150.000 y 400.000',tope:400000,n:[150000,400000]},
+    {id:'b4',t:'Más de ARS 400.000',tope:Infinity,n:[400000]},
+    {id:'b0',t:'Todavía no lo definí',tope:null,n:[]}
   ];
+  // The official dollar, selling: today's (dolarapi.com) once it answers; until then, or if it fails, the one of 20/10/2026.
+  let DOLAR=1545;
+  const usd=b=>b.n.length?'≈ USD '+b.n.map(n=>{const v=n/DOLAR;return v<100?Math.round(v):Math.round(v/10)*10}).join('–'):'';
+  fetch('https://dolarapi.com/v1/dolares/oficial').then(r=>r.json()).then(d=>{if(d.venta>0)DOLAR=d.venta}).catch(()=>{});
 
   // Buying intent: how soon they want it running. "cierre" is the line above the booking button.
   const CUANDO=[
@@ -228,7 +233,7 @@
     ()=>({q:'¿Qué te está costando?',hint:'Marcá todo lo que aplique.',many:true,opts:fam().costos.map(c=>[c[0]]),on:i=>A.costos.includes(i),
       pick(i){A.costos=A.costos.includes(i)?A.costos.filter(x=>x!==i):[...A.costos,i].sort((a,b)=>a-b)},ready:()=>A.costos.length>0}),
     ()=>({q:'¿Para cuándo lo querés andando?',opts:CUANDO.map(c=>[c.t,c.d]),on:i=>CUANDO[i].id===A.cuando,pick(i){A.cuando=CUANDO[i].id;return true}}),
-    ()=>({q:'¿Cuánto pensás invertir por mes?',hint:'Sirve para ajustar el alcance. No te compromete a nada.',opts:PRESUPUESTOS.map(b=>[b.t]),on:i=>PRESUPUESTOS[i].id===A.presupuesto,pick(i){A.presupuesto=PRESUPUESTOS[i].id;return true}}),
+    ()=>({q:'¿Cuánto pensás invertir por mes?',hint:'En pesos argentinos (ARS); en dólares, al oficial de hoy. Sirve para ajustar el alcance y no te compromete a nada.',opts:PRESUPUESTOS.map(b=>[b.t,usd(b)]),on:i=>PRESUPUESTOS[i].id===A.presupuesto,pick(i){A.presupuesto=PRESUPUESTOS[i].id;return true}}),
     ()=>({q:'¿Cómo se llama tu negocio?',hint:'Para ponerle nombre al plan.',text:{label:'Nombre del negocio',ph:'Nombre del negocio',value:A.negocio,max:60,go:'Ver mi plan',skip:'Seguir sin nombre',auto:'organization',set(v){A.negocio=v}}})
   ];
 
@@ -321,7 +326,7 @@
     const hoy=f.hoy[1][A.hoy],vol=f.vol[1][A.vol],cuando=CUANDO.find(c=>c.id===A.cuando),budget=PRESUPUESTOS.find(b=>b.id===A.presupuesto);
     const nombre=A.negocio,rubroT=r.id==='otro'&&A.otro?A.otro:r.t,sc=alcance(f,r,budget,p[0]);
     const planT=[main.nombre,...sc.incluye.filter(id=>id!==f.sol).map(id=>SOL[id].nombre)].join(' + ');
-    const rows=[['Rubro',rubroT],['Problema',p[1]],['Hoy',hoy[0]],['Volumen',`${vol} ${f.unidad}`],['Me cuesta',A.costos.map(i=>f.costos[i][0]).join(' · ')],['Cuándo',cuando.t],['Inversión',budget.t+(budget.tope===null?'':' por mes')],['Plan',planT]];
+    const rows=[['Rubro',rubroT],['Problema',p[1]],['Hoy',hoy[0]],['Volumen',`${vol} ${f.unidad}`],['Me cuesta',A.costos.map(i=>f.costos[i][0]).join(' · ')],['Cuándo',cuando.t],['Inversión',budget.t+(budget.tope===null?'':` por mes (${usd(budget)})`)],['Plan',planT]];
 
     set('kick',nombre?`Plan para ${esc(nombre)}`:`Tu diagnóstico · ${esc(rubroT)}`);
     set('titulo',f.titulo);

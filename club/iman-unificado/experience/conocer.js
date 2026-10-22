@@ -44,14 +44,28 @@
   };
   // For each rubro, those pieces in order: the first is where IMÁN would start.
   const FOCO={gastronomia:['club','whatsapp','catalogo','gestion'],cafeteria:['club','whatsapp','catalogo','gestion'],comercio:['whatsapp','club','catalogo','gestion'],indumentaria:['whatsapp','club','catalogo','gestion'],petshop:['club','whatsapp','catalogo','gestion'],mayorista:['catalogo','whatsapp','club','gestion'],distribuidora:['catalogo','whatsapp','club','gestion'],barberia:['turnos','club','whatsapp'],salud:['turnos','club','whatsapp'],gimnasio:['turnos','club','whatsapp'],autos:['whatsapp','club','gestion'],inmobiliaria:['whatsapp','club','gestion'],industria:['gestion','catalogo','whatsapp'],contable:['estudios','whatsapp','gestion'],otro:['whatsapp','club','catalogo','gestion']};
-  // Monthly budget, as in the diagnosis.
-  const PRESUPUESTOS=['Hasta $50.000','Entre $50.000 y $150.000','Entre $150.000 y $400.000','Más de $400.000','Todavía no lo sé'];
+  // Monthly budget, as in the diagnosis: in pesos (ARS), with what it is in dollars. "n" are the amounts in the label.
+  const PRESUPUESTOS=[
+    {t:'Hasta ARS 50.000',n:[50000]},
+    {t:'Entre ARS 50.000 y 150.000',n:[50000,150000]},
+    {t:'Entre ARS 150.000 y 400.000',n:[150000,400000]},
+    {t:'Más de ARS 400.000',n:[400000]},
+    {t:'Todavía no lo sé',n:[]}
+  ];
+  // The official dollar, selling: today's (dolarapi.com) once it answers; until then, or if it fails, the one of 20/10/2026.
+  let DOLAR=1545;
+  const usd=b=>b.n.length?'≈ USD '+b.n.map(n=>{const v=n/DOLAR;return v<100?Math.round(v):Math.round(v/10)*10}).join('–'):'';
+  const budget=t=>PRESUPUESTOS.find(b=>b.t===t);
 
   /* ---------- Helpers and state ---------- */
 
   const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+  fetch('https://dolarapi.com/v1/dolares/oficial').then(r=>r.json()).then(d=>{
+    if(!(d.venta>0))return;
+    DOLAR=d.venta;$$('[data-usd]').forEach(el=>{el.textContent=usd(PRESUPUESTOS[el.dataset.usd])});
+  }).catch(()=>{});
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ARROW='<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   // Progress lives in this tab only (sessionStorage): a reload keeps the step, closing the tab forgets the data.
@@ -60,6 +74,8 @@
   const blank=()=>({rubro:'',otro:'',info:false,datos:{nombre:'',negocio:'',email:'',whatsapp:'',presupuesto:'',consentimiento:false},guardado:'',reserva:null});
   let S=blank(),step='rubro',honey='';
   try{const saved=JSON.parse(sessionStorage.getItem(KEY));if(saved&&saved.datos){S=Object.assign(blank(),saved);step=saved.step||'rubro'}}catch(e){}
+  // A budget saved with the old labels ($ without ARS) is asked again.
+  if(!budget(S.datos.presupuesto))S.datos.presupuesto='';
   const keep=()=>{try{sessionStorage.setItem(KEY,JSON.stringify(Object.assign({},S,{step})))}catch(e){}};
 
   const rubro=()=>RUBROS.find(r=>r[0]===S.rubro);
@@ -73,14 +89,15 @@
   };
   // What IMÁN receives, in the inquiry and in the booked call. The answers travel as "Clave: valor" lines (the team's
   // mail and the WhatsApp assistant read them that way); the first line says where they come from.
+  const budgetT=()=>{const b=budget(S.datos.presupuesto);return !b?'':b.n.length?`${b.t} por mes (${usd(b)})`:b.t};
   const lead=()=>{
-    const d=S.datos,b=d.presupuesto==='Todavía no lo sé'?d.presupuesto:d.presupuesto+' por mes';
+    const d=S.datos,b=budgetT();
     return Object.assign({nombre:d.nombre,negocio:d.negocio,email:d.email,whatsapp:d.whatsapp,sitio_web_empresa:honey,
       rubro:rubroT().slice(0,120),servicios:['Quiero que me orienten'],
       comentario:['Onboarding en iman.ar/conocer/',`Rubro: ${rubroT()}`,`Presupuesto: ${b}`,...(S.info?['Antes de agendar: pidió ver más información']:[])].join('\n'),
       consentimiento:true,source:location.pathname},utm());
   };
-  const waLink=()=>WA+'?text='+encodeURIComponent(`Hola, quiero agendar una llamada.\nRubro: ${rubroT()}${S.datos.presupuesto?`\nPresupuesto: ${S.datos.presupuesto}`:''}`);
+  const waLink=()=>WA+'?text='+encodeURIComponent(`Hola, quiero agendar una llamada.\nRubro: ${rubroT()}${S.datos.presupuesto?`\nPresupuesto: ${budgetT()}`:''}`);
   // The same body gets the same key, so a retry never sends the inquiry twice.
   const keys={};
   const key=body=>keys[body]||(keys[body]=crypto.randomUUID());
@@ -159,8 +176,8 @@ ${FORM()}</section>
 <label class="fld" for="cn-email"><span>Tu email</span><input id="cn-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
 <label class="fld" for="cn-whatsapp"><span>WhatsApp · ahí te llega el link</span><input id="cn-whatsapp" name="whatsapp" type="tel" autocomplete="tel" maxlength="50" pattern="[0-9\\+\\(\\)\\.\\s\\-]{6,50}" title="Con código de área. Solo números, espacios y +" required></label>
 </div>
-<fieldset class="cn-budget"><legend>¿Cuánto pensás invertir por mes?</legend><p>Sirve para ajustar la propuesta. No te compromete a nada.</p>
-<div class="cn-pills">${PRESUPUESTOS.map((p,i)=>`<label><input type="radio" name="presupuesto" value="${esc(p)}"${i?'':' required'}><span>${esc(p)}</span></label>`).join('')}</div></fieldset>
+<fieldset class="cn-budget"><legend>¿Cuánto pensás invertir por mes?</legend><p>En pesos argentinos (ARS); en dólares, al oficial de hoy. Sirve para ajustar la propuesta y no te compromete a nada.</p>
+<div class="cn-pills">${PRESUPUESTOS.map((b,i)=>`<label><input type="radio" name="presupuesto" value="${esc(b.t)}"${i?'':' required'}><span>${esc(b.t)}${b.n.length?`<small data-usd="${i}">${usd(b)}</small>`:''}</span></label>`).join('')}</div></fieldset>
 <div class="honey" aria-hidden="true"><label>Dejar vacío<input name="sitio_web_empresa" tabindex="-1" autocomplete="off"></label></div>
 <label class="consent"><input type="checkbox" name="consentimiento" required><span>Acepto que IMÁN me contacte por email y WhatsApp para coordinar esta llamada. <a href="/privacidad/" target="_blank" rel="noopener">Privacidad</a>.</span></label>
 <button class="btn btn-ink" type="submit"><span data-label>Ver horarios</span> ${ARROW}</button>

@@ -89,7 +89,9 @@
 .cn-pills label{position:relative}
 .cn-pills input{position:absolute;opacity:0;pointer-events:none}
 .cn-pills span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #12121230;font:500 14.5px/1 var(--sans);letter-spacing:-.01em;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.cn-pills small{margin-left:8px;font:500 12px/1 var(--mono);letter-spacing:0;color:var(--muted)}
 .cn-pills input:checked+span{background:var(--ink);color:#fff;box-shadow:none}
+.cn-pills input:checked+span small{color:#ffffffa8}
 .cn-pills input:focus-visible+span{outline:2px solid var(--ink);outline-offset:3px}
 @media(hover:hover){.cn-pills span:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}}
 .honey{position:absolute;left:-9999px;overflow:hidden;width:1px;height:1px}
