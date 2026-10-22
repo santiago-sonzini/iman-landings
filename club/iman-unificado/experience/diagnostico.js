@@ -193,6 +193,26 @@
 
   const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // The times on the visitor's clock: whoever opens this from Lima picks Lima's 16:30, and the call is at 16:30 there
+  // (the bot gets the zone with the booking). On Argentina's clock, or one that reads the same, the days stay as the agenda
+  // sends them; abroad they are regrouped by local day, keeping the times from 8 to 21 there. h.ar keeps Argentina's time.
+  const ZONA=(()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){return ''}})();
+  let LOCAL=false;
+  const onYourClock=dias=>{
+    const all=dias.flatMap(d=>d.horarios);
+    LOCAL=all.some(h=>new Date(h.inicio*1000).getTimezoneOffset()!==180);
+    if(!LOCAL)return dias;
+    const D=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],L=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],M=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const two=n=>String(n).padStart(2,'0'),out={};
+    all.forEach(h=>{
+      const t=new Date(h.inicio*1000);if(t.getHours()<8||t.getHours()>=21)return;
+      const k=`${t.getFullYear()}-${two(t.getMonth()+1)}-${two(t.getDate())}`;
+      (out[k]=out[k]||{fecha:k,dia:D[t.getDay()],numero:t.getDate(),mes:M[t.getMonth()].slice(0,3),largo:`${L[t.getDay()]} ${t.getDate()} de ${M[t.getMonth()]}`,horarios:[]})
+        .horarios.push(Object.assign({},h,{hora:`${two(t.getHours())}:${two(t.getMinutes())}`,ar:h.hora}));
+    });
+    return Object.keys(out).sort().map(k=>(out[k].horarios.sort((a,b)=>a.inicio-b.inicio),out[k]));
+  };
+  const yourTime=h=>h.ar?`, tu hora (${h.ar} en Argentina)`:'';
   const money=n=>'$'+String(n).replace(/\B(?=(\d{3})+$)/g,'.');
   const low=s=>s.charAt(0).toLowerCase()+s.slice(1), cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
   const lista=items=>items.length<2?items.join(''):items.slice(0,-1).join(', ')+' y '+items[items.length-1];
@@ -511,7 +531,8 @@
       try{const r=await fetch('/api/agenda',{headers:{Accept:'application/json'},cache:'no-store'});data=await r.json()}catch(e){}
       pick.classList.remove('is-loading');wait.hidden=true;
       const was=days[day]&&days[day].fecha;   // asked again after a time got taken: stay on the day they were looking at
-      days=(data&&data.disponible&&Array.isArray(data.dias)?data.dias:[]).filter(d=>d.horarios.some(h=>h.libre));
+      days=onYourClock(data&&data.disponible&&Array.isArray(data.dias)?data.dias:[]).filter(d=>d.horarios.some(h=>h.libre));
+      const zone=$('[data-bk-zone]',box);if(zone)zone.textContent=LOCAL?'En tu hora local.':'Hora de Argentina.';
       if(booked)return;
       if(!days.length){unavailable(Boolean(data&&data.disponible));return}
       day=Math.max(0,days.findIndex(d=>d.fecha===was));drawDays();drawTimes();
@@ -524,8 +545,8 @@
     timesEl.addEventListener('click',e=>{
       const b=e.target.closest('.bk-t');if(!b||b.disabled)return;
       const d=days[day],h=d.horarios[Number(b.dataset.t)];
-      slot={inicio:h.inicio,hora:h.hora,largo:d.largo};note.hidden=true;error.hidden=true;
-      $('[data-bk-chosen]',bform).textContent=`${d.largo} a las ${h.hora}`;
+      slot={inicio:h.inicio,hora:h.hora,largo:d.largo,ar:h.ar};note.hidden=true;error.hidden=true;
+      $('[data-bk-chosen]',bform).textContent=`${d.largo} a las ${h.hora}${yourTime(h)}`;
       // With a mouse the cursor goes to the first empty field; on a phone that would open the keyboard over the time chosen.
       show('form',fine&&($$('.fld input',bform).find(i=>!i.value)||submit));
       if(!fine)box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
@@ -538,7 +559,7 @@
       booked=b;pill.hidden=true;
       // Booked: the agenda becomes their call, and the other ways to get in touch step aside.
       $('#bk-title').textContent='Tu llamada con IMÁN';$('#llamada').classList.add('is-booked');
-      $('[data-bk-when]',done).textContent=`${cap(b.cuando)}, hora de Argentina.`;
+      $('[data-bk-when]',done).textContent=`${cap(b.cuando)}${/\(hora de |tu hora/.test(b.cuando)?'.':', hora de Argentina.'}`;
       $('[data-bk-sent]',done).textContent=(b.whatsapp?'Te mandamos el link de Meet por mail y por WhatsApp.':'Te mandamos el link de Meet por mail.')+' Llegamos a la llamada con tu diagnóstico leído.';
       $('[data-bk-cal]',done).href=calendar(b);
       const meet=$('[data-bk-meet]',done);meet.hidden=!b.meet;if(b.meet)meet.href=b.meet;
@@ -551,7 +572,7 @@
       error.hidden=true;
       const data=new FormData(bform),payload={};
       for(const field of ['nombre','negocio','email','whatsapp','sitio_web_empresa'])payload[field]=String(data.get(field)||'').trim();
-      Object.assign(payload,{inicio:slot.inicio,rubro:form.dataset.rubro,servicios:JSON.parse(form.dataset.servicios),comentario,consentimiento:data.get('consentimiento')==='on',source:location.pathname},utm());
+      Object.assign(payload,{inicio:slot.inicio,zona:ZONA,rubro:form.dataset.rubro,servicios:JSON.parse(form.dataset.servicios),comentario,consentimiento:data.get('consentimiento')==='on',source:location.pathname},utm());
       const body=JSON.stringify(payload);
       if(body!==previous){previous=body;requestId=crypto.randomUUID()}
       sending=true;submit.disabled=true;bform.setAttribute('aria-busy','true');label.textContent='Agendando…';status.textContent='Estamos reservando tu horario.';
@@ -564,7 +585,7 @@
           slot=null;loading=null;show('pick');note.textContent=result.error;note.hidden=false;await load();return;
         }
         if(!response.ok||result.ok!==true)throw new Error(result.error||'No pudimos confirmar la reserva. Probá otra vez o escribinos por WhatsApp.');
-        const b={inicio:result.inicio||slot.inicio,fin:result.fin||slot.inicio+1800,meet:result.meet||'',cuando:result.cuando||`${slot.largo} a las ${slot.hora}`,whatsapp:result.whatsapp==='enviado'};
+        const b={inicio:result.inicio||slot.inicio,fin:result.fin||slot.inicio+1800,meet:result.meet||'',cuando:result.cuando||`${slot.largo} a las ${slot.hora}${yourTime(slot)}`,whatsapp:result.whatsapp==='enviado'};
         try{localStorage.setItem(SAVED,JSON.stringify(b))}catch(x){}
         confirmed(b,true);
         dispatchEvent(new CustomEvent('iman:agenda'));   // pixel.js counts it as a booked call

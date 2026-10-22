@@ -64,7 +64,10 @@ const utc=t=>new Date(t*1000).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,
 export const googleCalendarURL=(title,booking)=>'https://calendar.google.com/calendar/render?'+new URLSearchParams({action:'TEMPLATE',text:title,dates:`${utc(booking.inicio)}/${utc(booking.fin)}`,details:`Link de Google Meet: ${booking.meet}`,location:booking.meet});
 // The notice each person of the team gets when a call is booked from the diagnosis: when, the Meet, the answers and how to reach them.
 export function teamBookingEmail(lead,booking){
-  const cuando=booking.cuando.charAt(0).toUpperCase()+booking.cuando.slice(1);
+  // "jueves 22 de octubre a las 18:30 (16:30 en Perú)": Argentina's time, and the client's when they booked from abroad.
+  const [,ours,theirs]=booking.cuando.match(/^(.*?)(?: \(([^()]+ en [^()]+)\))?$/);
+  const cuando=ours.charAt(0).toUpperCase()+ours.slice(1);
+  const zone=theirs?`Hora de Argentina · ${theirs} para el cliente`:'Hora de Argentina';
   // The diagnosis travels as "Clave: valor" lines; the first one only says where it was made.
   const answers=lead.comentario.split('\n').slice(1).map(line=>line.split(/:\s(.*)/s)).filter(([k,v])=>k&&v);
   const contact=[['Nombre',lead.nombre],['Email',lead.email],['WhatsApp',lead.whatsapp||'No indicado'],['Página',lead.source||'No indicada'],...Object.entries(lead.utm||{})];
@@ -80,11 +83,11 @@ export function teamBookingEmail(lead,booking){
     :`${booking.mail?'Le confirmamos por mail.':'El mail de confirmación no salió.'} Por WhatsApp no le escribimos: ${why[booking.whatsapp]||'no se pudo'}.`;
   return {
     subject:`Llamada agendada · ${lead.negocio} · ${booking.cuando}`,
-    text:`${lead.negocio} agendó una llamada ${from}.\n\nCuándo: ${cuando} (hora de Argentina), ${minutes} minutos.\nMeet: ${booking.meet}\nAgregar a Google Calendar: ${calendar}\n\n${whatsapp}\n\n${answersTitle}\n${answers.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nContacto\n${contact.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nRespondé este correo para escribirle a ${lead.nombre}.`,
+    text:`${lead.negocio} agendó una llamada ${from}.\n\nCuándo: ${cuando} (hora de Argentina${theirs?`; ${theirs} para el cliente`:''}), ${minutes} minutos.\nMeet: ${booking.meet}\nAgregar a Google Calendar: ${calendar}\n\n${whatsapp}\n\n${answersTitle}\n${answers.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nContacto\n${contact.map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nRespondé este correo para escribirle a ${lead.nombre}.`,
     html:frame(`${cuando} · ${lead.nombre} · ${lead.negocio}`,
       eyebrow(`Llamada agendada ${from}`)
       +heading(`${E(lead.negocio)}<br><em style="font-style:normal;color:#c7bcdf">agendó una llamada.</em>`)
-      +box(eyebrow('Cuándo')+`<p style="margin:0 0 6px;font-family:${TITLE_FONT};font-size:24px;line-height:1.25;letter-spacing:-.5px;color:${INK}">${E(cuando)}</p><p style="margin:0;font-family:${SANS};font-size:13px;line-height:1.6;color:${MUTED}">Hora de Argentina · ${minutes} minutos · Google Meet</p>`)
+      +box(eyebrow('Cuándo')+`<p style="margin:0 0 6px;font-family:${TITLE_FONT};font-size:24px;line-height:1.25;letter-spacing:-.5px;color:${INK}">${E(cuando)}</p><p style="margin:0;font-family:${SANS};font-size:13px;line-height:1.6;color:${MUTED}">${E(zone)} · ${minutes} minutos · Google Meet</p>`)
       +button('Entrar a la videollamada',booking.meet)
       +paragraph(`<a href="${E(calendar)}" style="color:${INK};text-decoration:underline">Agregar a Google Calendar</a> · ${E(whatsapp)}`)
       +eyebrow(answersTitle)+table(answers)

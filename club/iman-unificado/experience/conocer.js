@@ -62,6 +62,26 @@
   const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+  // The times on the visitor's clock: whoever opens this from Lima picks Lima's 16:30, and the call is at 16:30 there
+  // (the bot gets the zone with the booking). On Argentina's clock, or one that reads the same, the days stay as the agenda
+  // sends them; abroad they are regrouped by local day, keeping the times from 8 to 21 there. h.ar keeps Argentina's time.
+  const ZONA=(()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){return ''}})();
+  let LOCAL=false;
+  const onYourClock=dias=>{
+    const all=dias.flatMap(d=>d.horarios);
+    LOCAL=all.some(h=>new Date(h.inicio*1000).getTimezoneOffset()!==180);
+    if(!LOCAL)return dias;
+    const D=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],L=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],M=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const two=n=>String(n).padStart(2,'0'),out={};
+    all.forEach(h=>{
+      const t=new Date(h.inicio*1000);if(t.getHours()<8||t.getHours()>=21)return;
+      const k=`${t.getFullYear()}-${two(t.getMonth()+1)}-${two(t.getDate())}`;
+      (out[k]=out[k]||{fecha:k,dia:D[t.getDay()],numero:t.getDate(),mes:M[t.getMonth()].slice(0,3),largo:`${L[t.getDay()]} ${t.getDate()} de ${M[t.getMonth()]}`,horarios:[]})
+        .horarios.push(Object.assign({},h,{hora:`${two(t.getHours())}:${two(t.getMinutes())}`,ar:h.hora}));
+    });
+    return Object.keys(out).sort().map(k=>(out[k].horarios.sort((a,b)=>a.inicio-b.inicio),out[k]));
+  };
+  const yourTime=h=>h.ar?`, tu hora (${h.ar} en Argentina)`:'';
   fetch('https://dolarapi.com/v1/dolares/oficial').then(r=>r.json()).then(d=>{
     if(!(d.venta>0))return;
     DOLAR=d.venta;$$('[data-usd]').forEach(el=>{el.textContent=usd(PRESUPUESTOS[el.dataset.usd])});
@@ -188,7 +208,7 @@ ${FORM()}</section>
   Object.assign(VIEWS,{
     horario:()=>`${S.guardado?`<p class="cn-saved">Listo, ${esc(S.datos.nombre.split(' ')[0])}: ya tenemos tus datos.</p>`:''}
 <h1 id="cn-title" tabindex="-1">Elegí día y horario.</h1>
-<p class="cn-hint">30 minutos por videollamada con Santiago, fundador de IMÁN. Hora de Argentina. El link de Meet te llega por mail y por WhatsApp.</p>
+<p class="cn-hint">30 minutos por videollamada con Santiago, fundador de IMÁN. <span data-zone>${LOCAL?'En tu hora local.':'Hora de Argentina.'}</span> El link de Meet te llega por mail y por WhatsApp.</p>
 <div class="cn-agenda${days.length?'':' is-loading'}" data-agenda>
 <p class="cn-note" role="alert" data-note hidden></p>
 <div class="cn-days" role="group" aria-label="Días" data-days></div>
@@ -203,7 +223,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
 
     listo:()=>{const b=S.reserva;return `<div class="cn-done"><span class="cn-check" aria-hidden="true"></span>
 <h1 id="cn-title" tabindex="-1">Quedó agendada.</h1>
-<p class="cn-when">${esc(cap(b.cuando))}, hora de Argentina.</p>
+<p class="cn-when">${esc(cap(b.cuando))}${/\(hora de |tu hora/.test(b.cuando)?'.':', hora de Argentina.'}</p>
 <p>${b.whatsapp?'Te mandamos el link de Meet por mail y por WhatsApp.':'Te mandamos el link de Meet por mail.'} Llegamos a la llamada con tu rubro y tus datos leídos.</p>
 <div class="actions"><a class="btn btn-ink" href="${esc(calendar(b))}" target="_blank" rel="noopener">Agregar a Google Calendar ${ARROW}</a>${b.meet?`<a class="link" href="${esc(b.meet)}" target="_blank" rel="noopener">Abrir el link de Meet</a>`:''}</div>
 <p class="cn-after"><a class="link" href="/info/">Mientras tanto, mirá lo que hacemos</a></p></div>`},
@@ -317,7 +337,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     let data=null;
     try{const r=await fetch('/api/agenda',{headers:{Accept:'application/json'},cache:'no-store'});data=await r.json()}catch(e){}
     const was=days[day]&&days[day].fecha;
-    days=(data&&data.disponible&&Array.isArray(data.dias)?data.dias:[]).filter(d=>d.horarios.some(h=>h.libre));
+    days=onYourClock(data&&data.disponible&&Array.isArray(data.dias)?data.dias:[]).filter(d=>d.horarios.some(h=>h.libre));
     day=Math.max(0,days.findIndex(d=>d.fecha===was));loaded=true;free=Boolean(data&&data.disponible);
     if(step==='horario')drawAgenda();
   })());
@@ -325,6 +345,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     const box=$('[data-agenda]',view);if(!box)return;
     if(!loaded){load();return}
     box.classList.remove('is-loading');const wait=$('.cn-wait',box);if(wait)wait.remove();
+    const zone=$('[data-zone]',view);if(zone)zone.textContent=LOCAL?'En tu hora local.':'Hora de Argentina.';
     if(!days.length){
       // No times here: the data already reached IMÁN, so the way out is WhatsApp or the agenda page.
       box.innerHTML=`<p class="cn-hint" style="margin:0 0 18px">${free?'No quedan horarios libres en los próximos días.':'La agenda no cargó acá.'} ${S.guardado?'Ya tenemos tus datos: te escribimos para coordinar.':''}</p><div class="actions"><a class="btn btn-ink" href="${esc(waLink())}" target="_blank" rel="noopener">Escribir por WhatsApp ${ARROW}</a>${free?'':`<a class="link" href="${AGENDA}">Abrir la agenda</a>`}</div>`;
@@ -342,9 +363,9 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     if(d){day=Number(d.dataset.d);$$('.cn-d',view).forEach((x,i)=>x.setAttribute('aria-pressed',String(i===day)));drawTimes()}
     else if(t&&!t.disabled){
       const dd=days[day],h=dd.horarios[Number(t.dataset.t)];
-      slot={inicio:h.inicio,hora:h.hora,largo:dd.largo};
+      slot={inicio:h.inicio,hora:h.hora,largo:dd.largo,ar:h.ar};
       $$('.cn-t',view).forEach(x=>x.setAttribute('aria-pressed',String(x===t)));
-      const confirm=$('[data-confirm]',view);confirm.hidden=false;$('[data-chosen]',view).textContent=`${dd.largo} a las ${h.hora}`;
+      const confirm=$('[data-confirm]',view);confirm.hidden=false;$('[data-chosen]',view).textContent=`${dd.largo} a las ${h.hora}${yourTime(h)}`;
       $('.f-error',view).hidden=true;
       confirm.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
     }
@@ -359,7 +380,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
     const label=$('[data-label]',button),status=$('.f-status',view),error=$('.f-error',view);
     error.hidden=true;sending=true;button.disabled=true;label.textContent='Agendando…';status.textContent='Estamos reservando tu horario.';
     try{
-      const {status:code,result}=await post('/api/agenda',Object.assign(lead(),{inicio:slot.inicio}),30000);
+      const {status:code,result}=await post('/api/agenda',Object.assign(lead(),{inicio:slot.inicio,zona:ZONA}),30000);
       if(code===409&&result.code==='slot_taken'){
         // Someone else got it first: the times are asked again.
         slot=null;loading=null;loaded=false;render('horario',{push:false,focus:false});await load();
@@ -367,7 +388,7 @@ ${days.length?'':'<p class="cn-wait">Buscando horarios libres…</p>'}
         return;
       }
       if(code!==200||result.ok!==true)throw new Error(result.error||'No pudimos confirmar la reserva. Probá otra vez o escribinos por WhatsApp.');
-      S.reserva={inicio:result.inicio||slot.inicio,fin:result.fin||slot.inicio+1800,meet:result.meet||'',cuando:result.cuando||`${slot.largo} a las ${slot.hora}`,whatsapp:result.whatsapp==='enviado'};
+      S.reserva={inicio:result.inicio||slot.inicio,fin:result.fin||slot.inicio+1800,meet:result.meet||'',cuando:result.cuando||`${slot.largo} a las ${slot.hora}${yourTime(slot)}`,whatsapp:result.whatsapp==='enviado'};
       render('listo');
       dispatchEvent(new CustomEvent('iman:agenda'));   // pixel.js counts it as a booked call
     }catch(problem){

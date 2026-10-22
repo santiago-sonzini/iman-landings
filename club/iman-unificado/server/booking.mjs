@@ -39,6 +39,8 @@ export function createBookingHandler({sendMail, agenda, now = Date.now, report =
     if (!lead) return failure('validation_failed','Revisá los datos y la autorización de contacto.',400);
     if (!lead.whatsapp) return failure('whatsapp_required','Dejanos tu WhatsApp para mandarte el link de la llamada.',400);
     const inicio = body.inicio;
+    // The visitor's time zone (the page shows the times on their clock): the bot says the call on that clock.
+    const zona = typeof body.zona === 'string' && /^[A-Za-z][A-Za-z0-9_+\-]*(\/[A-Za-z0-9_+\-]+){0,2}$/.test(body.zona) && body.zona.length <= 64 ? body.zona : '';
     if (typeof inicio !== 'number' || !Number.isFinite(inicio) || inicio*1000 < now() || inicio*1000 > now()+60*DAY) return failure('invalid_time','Elegí un horario de la agenda.',400);
     const config = mailConfig(env);
     if (!config || (!env.CONTACT_DB && !allowInMemory)) { report('booking_config_missing'); return failure('booking_unavailable',UNAVAILABLE,503); }
@@ -72,7 +74,7 @@ export function createBookingHandler({sendMail, agenda, now = Date.now, report =
 
       let booked;
       try {
-        booked = await agenda.book({inicio,nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,servicios:lead.servicios,comentario:lead.comentario},env);
+        booked = await agenda.book({inicio,nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,servicios:lead.servicios,comentario:lead.comentario,zona},env);
       } catch {
         booked = {status:0,body:{}};
       }
@@ -87,7 +89,7 @@ export function createBookingHandler({sendMail, agenda, now = Date.now, report =
       const result = {ok:true,cuando:b.cuando,inicio:b.inicio,fin:b.fin,meet:b.meet,whatsapp:b.whatsapp,mail:Boolean(b.mail)};
 
       // One email per person: the relay sends to a single recipient. A failed notice never undoes the booking.
-      const common = {from:{name:'IMAN',address:config.user},replyTo:lead.email,headers:{'X-Auto-Response-Suppress':'All','Auto-Submitted':'auto-generated'},...teamBookingEmail(lead,result)};
+      const common = {from:{name:'IMAN',address:config.user},replyTo:lead.email,headers:{'X-Auto-Response-Suppress':'All','Auto-Submitted':'auto-generated'},...teamBookingEmail(lead,{...result,cuando:b.cuando_equipo||b.cuando})};
       const sent = await Promise.allSettled(team(env).map(to => sendMail({...common,to},config)));
       const failed = sent.filter(s => s.status === 'rejected');
       if (failed.length) report(failed.some(s => !definitelyNotSent(s.reason)) ? 'booking_team_delivery_unknown' : 'booking_team_delivery_failed');
