@@ -1,5 +1,16 @@
 # IMAN
 
+## Software y automatización + fuente preferida de Google — 22 de octubre de 2026
+
+Objetivo: que IMÁN posicione para todo el rubro software y automatización, y que los lectores puedan sumarlo como fuente preferida en Google ([documentación](https://developers.google.com/search/docs/appearance/preferred-sources)).
+
+- **`/software-y-automatizacion/`**: la página del rubro (`hub()` y las tablas `HUB_*` en `scripts/dark_site.py`). Qué construye IMÁN con links a cada servicio, cómo trabaja, las guías del tema (`HUB_GUIDES`, se saltean las que no existen) y preguntas frecuentes con `FAQPage`, `Service` con `OfferCatalog` y `BreadcrumbList`. Está en la barra («Software»), en el pie de todas las páginas, en el pie de la home y en `/info/`.
+- **Fuente preferida**: `preferred_source()` arma la tarjeta «Seguí a IMÁN en Google» con el botón oficial (`<div google-add-preferred-source-btn data-lang="es-419">`) y debajo el enlace directo `https://www.google.com/preferences/source?q=iman.ar` por si el script no carga. Va al final de cada guía, en `/recursos/` y en la página del rubro. `shell()` carga `news.google.com/swg/js/v1/publisher.js` solo en las páginas que tienen el botón. El pie de todas las páginas suma «Seguinos en Google» con el enlace directo. El botón se dibuja en un shadow DOM: no ocultarlo con `:empty`, porque para CSS el div está vacío.
+- iman.ar ya figura en la herramienta de Google (comprobado el 22/10 en `google.com/preferences/source`) y en Search Console «IA generativa en la Búsqueda» está en **Incluir**, que es lo que pide Google para el Modo IA.
+- Home: el `<title>` pasó a «IMÁN · Software y automatización con IA para pymes» y la etiqueta de arriba a «Software y automatización con IA». La frase «Lo que vale un cliente que vuelve.» sigue en la portada y al compartir. `INTRO` (descripción de la organización, `/llms.txt`) ahora empieza por software y automatización; `Organization` suma `knowsAbout`, `slogan` y `sameAs` (Instagram @iman.solutions, TikTok @estudio.iman).
+- Tres guías nuevas del grupo: `software-a-medida-para-pymes`, `zapier-make-n8n-o-desarrollo-a-medida` y `como-elegir-empresa-de-software-y-automatizacion` (fuentes oficiales, sin precios ni casos inventados). Mapa en `docs/seo/keyword-map.csv`.
+- Google aclara que las fuentes que no se actualizan seguido pueden no estar disponibles: el grupo necesita guías nuevas con regularidad.
+
 ## Gauss para estudios contables — fuera de este repo desde el 13 de octubre de 2026
 
 La landing de **https://gauss.iman.ar/** y su informe de ejemplo (`/informe/`) ya no se generan acá. Viven en `~/Desktop/gauss-contadores/landing/` y se publican como un proyecto propio de Cloudflare (Worker `gauss-landing`, con una ruta sobre `gauss.iman.ar/*`). La app (`app.gauss.iman.ar`) está en `~/Desktop/gauss-contadores/app/`.

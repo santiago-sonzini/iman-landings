@@ -70,7 +70,7 @@
 .service-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:clamp(30px,5vh,60px)}
 .service-directory article{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:24px 24px 26px;border-radius:24px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease),box-shadow .35s}
 .service-directory article:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px var(--line),0 30px 44px -36px #121212}
-.service-directory h2{font-size:clamp(23px,2.1vw,29px);letter-spacing:-.045em;line-height:1.12}
+.service-directory :is(h2,h3){font-size:clamp(23px,2.1vw,29px);letter-spacing:-.045em;line-height:1.12}
 .service-directory p:not(.eyebrow){font-size:14.5px;line-height:1.6;color:var(--muted)}
 .service-directory .more-link{margin-top:auto}
 
@@ -145,8 +145,27 @@
 .purchase-demo .cta-row .cta:not(.solid){background:none;box-shadow:inset 0 0 0 1.5px #fff;color:#fff}
 .purchase-demo :is(h2,h3) em{color:#afb2bb}
 
+/* Software y automatización (dark_site.hub) */
+.hub-builds{margin-bottom:clamp(30px,5vh,60px)}
+.hub-builds>h2{margin:0 0 22px;font-size:clamp(30px,3.6vw,48px);text-align:center}
+.hub-guides li{align-items:start}
+.hub-guide{display:grid;gap:4px}
+.hub-guide b{font-weight:600;color:var(--ink);transition:opacity .2s}
+.hub-guide span{font-size:14px;line-height:1.55;color:var(--muted)}
+.hub-guide:hover b{opacity:.6}
+
+/* Google preferred source (dark_site.preferred_source): Google draws its own button; the link opens the same setting */
+.g-source{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px 44px;max-width:860px;margin:clamp(40px,7vh,72px) auto;padding:clamp(26px,3.4vw,40px);border-radius:28px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.g-source h2{margin:16px 0 10px;font-size:clamp(27px,3vw,40px)}
+.g-source p:not(.eyebrow){max-width:50ch;font-size:15px;line-height:1.65;color:var(--muted)}
+.g-source-act{display:grid;justify-items:start;gap:10px}
+.g-source-alt{font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.g-source-alt:hover{color:var(--ink)}
+.legacy-reading+.g-source{margin-top:clamp(30px,5vh,52px)}
+
 @media(max-width:860px){
   .service-directory{grid-template-columns:1fr}
+  .g-source{grid-template-columns:1fr}
   .reading-section{grid-template-columns:1fr}
   .reading-section>*{grid-column:1}
   .reading-section>.section-index{grid-row:auto;padding:0 0 12px}

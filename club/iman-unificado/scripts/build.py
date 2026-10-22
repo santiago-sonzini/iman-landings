@@ -14,7 +14,8 @@ PAGES = []
 CONTENT_ROUTES = {'/', '/fidelizacion/', '/comercios/', '/automatizaciones/',
                   '/automatizaciones/compras-demo/', '/turnos/', '/turnos/landing/',
                   '/recursos/', '/recursos/club-wallet/', '/recursos/recuperar-clientes/',
-                  '/recursos/automatizar-procesos/', '/nosotros/', '/informacion/', '/privacidad/'}
+                  '/recursos/automatizar-procesos/', '/nosotros/', '/informacion/', '/privacidad/',
+                  '/software-y-automatizacion/'}
 EDITORIAL_ARTICLES = load_articles(known_paths=CONTENT_ROUTES)
 for editorial_article in EDITORIAL_ARTICLES:
     if editorial_article['path'] in CONTENT_ROUTES:
@@ -193,7 +194,7 @@ cards = '<div class="guide-grid">' + ''.join(
     for item in all_articles) + '</div>'
 resource_intro = hero('Recursos','Ideas claras.<br><span class="serif purple">Decisiones mejores.</span>','Guías para entender qué puede aportar cada solución y cómo empezar con un alcance concreto.')
 resource_body = resource_intro+'<section class="section"><div class="wrap">'+cards+'<p class="proof-note">También podés seguir las nuevas guías desde tu lector de noticias. <a href="/recursos/feed.xml">Suscribirme al RSS de IMAN ↗</a></p></div></section>'
-page('/recursos/','Guías de Wallet, catálogos y automatización | IMAN','Guías prácticas de fidelización con Wallet y email, catálogos con pedidos por WhatsApp y automatización de compras para tu negocio.',resource_body)
+page('/recursos/','Guías de software, automatización con IA y fidelización | IMÁN','Guías prácticas de software a medida, automatización de procesos con IA, WhatsApp, integraciones con ERP y fidelización para pymes de Argentina.',resource_body,date_modified='2026-10-22')
 OUT.joinpath('recursos/feed.xml').write_text(build_rss(all_articles, site_url=BASE))
 
 about=hero('Qué es IMAN','Tecnología cercana.<br><span class="serif purple">Negocios que avanzan.</span>','IMAN es una marca argentina enfocada en fidelización con Wallet, notificaciones y email. Sus servicios de catálogos y automatización conectan esa relación con la operación comercial.')+features('Una misma forma<br><span class="serif">de trabajar.</span>',[('Partir del negocio','Entender cómo atendés, vendés y operás antes de elegir herramientas.'),('Definir algo concreto','Un alcance visible, reglas acordadas y un resultado que podamos revisar juntos.'),('Acompañar el uso','Diseñar la implementación alrededor del equipo que va a usarla todos los días.')])+'<section class="section"><div class="wrap">'+section_heading('Nuestra propuesta','De la relación con tu cliente<br><span class="serif">a la operación de tu negocio.</span>')+product_cards()+'</div></section>'

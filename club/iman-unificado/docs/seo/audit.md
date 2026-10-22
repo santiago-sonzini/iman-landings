@@ -2,9 +2,9 @@
 
 HTML local; no verifica HTTP, rendimiento, indexación ni ranking reales.
 
-Generada: 2026-10-19T21:12:52.749878+00:00
+Generada: 2026-10-22T12:33:45.870891+00:00
 
-32 HTML · 23 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
+36 HTML · 27 URLs en sitemap · 0 errores · 0 advertencias · 0 observaciones.
 
 ## Hallazgos
 
@@ -14,29 +14,33 @@ Sin hallazgos en los controles implementados.
 
 | URL | Sitemap | Clics desde inicio | Páginas que enlazan |
 | --- | --- | --- | --- |
-| / | Sí | 0 | 26 |
-| /agente/ | Sí | 2 | 23 |
+| / | Sí | 0 | 30 |
+| /agente/ | Sí | 2 | 27 |
 | /agentes/ | Sí | 3 | 1 |
-| /automatizaciones/ | Sí | 2 | 10 |
-| /comercios/ | Sí | 2 | 6 |
-| /contacto/ | Sí | 2 | 12 |
-| /fidelizacion/ | Sí | 2 | 8 |
-| /gauss/ | Sí | 1 | 26 |
-| /info/ | Sí | 1 | 1 |
-| /privacidad/ | Sí | 1 | 26 |
-| /recursos/ | Sí | 1 | 25 |
-| /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 2 |
-| /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 1 |
-| /recursos/automatizar-procesos/ | Sí | 2 | 4 |
+| /automatizaciones/ | Sí | 2 | 11 |
+| /comercios/ | Sí | 2 | 7 |
+| /contacto/ | Sí | 2 | 15 |
+| /fidelizacion/ | Sí | 2 | 9 |
+| /gauss/ | Sí | 1 | 30 |
+| /info/ | Sí | 1 | 2 |
+| /privacidad/ | Sí | 1 | 30 |
+| /recursos/ | Sí | 1 | 29 |
+| /recursos/agente-ia-whatsapp-comercio/ | Sí | 2 | 5 |
+| /recursos/automatizar-compras-comparar-proveedores/ | Sí | 2 | 2 |
+| /recursos/automatizar-procesos/ | Sí | 2 | 8 |
 | /recursos/catalogo-digital-pedidos-whatsapp-mayorista/ | Sí | 2 | 3 |
 | /recursos/club-wallet/ | Sí | 2 | 3 |
-| /recursos/integrar-catalogo-con-erp/ | Sí | 2 | 2 |
+| /recursos/como-elegir-empresa-de-software-y-automatizacion/ | Sí | 2 | 4 |
+| /recursos/integrar-catalogo-con-erp/ | Sí | 2 | 4 |
 | /recursos/programa-de-puntos-o-tarjeta-de-sellos/ | Sí | 2 | 2 |
 | /recursos/recuperar-clientes/ | Sí | 2 | 1 |
+| /recursos/software-a-medida-para-pymes/ | Sí | 2 | 4 |
 | /recursos/wallet-email-notificaciones-fidelizacion/ | Sí | 2 | 2 |
-| /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 2 |
-| /servicios/ | Sí | 2 | 25 |
-| /turnos/landing/ | Sí | 2 | 3 |
+| /recursos/whatsapp-business-app-o-api/ | Sí | 2 | 6 |
+| /recursos/zapier-make-n8n-o-desarrollo-a-medida/ | Sí | 2 | 4 |
+| /servicios/ | Sí | 2 | 29 |
+| /software-y-automatizacion/ | Sí | 1 | 27 |
+| /turnos/landing/ | Sí | 2 | 4 |
 
 ## Verificaciones que requieren el sitio publicado
 

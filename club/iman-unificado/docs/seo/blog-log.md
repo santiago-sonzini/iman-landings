@@ -17,3 +17,6 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-10-08 | wallet-email-notificaciones-fidelizacion | Validar el canje en caja: estado vigente, doble intento y contingencia | Actualización de guía existente |
 | 2026-10-09 | wallet-email-notificaciones-fidelizacion | Bienvenida al club: guardar tarjeta, instrucciones y recuperación del acceso | Actualización de guía existente |
 | 2026-10-10 | catalogo-digital-pedidos-whatsapp-mayorista | Conservar talle y color desde la ficha hasta el pedido de WhatsApp | Actualización de guía existente |
+| 2026-10-22 | software-a-medida-para-pymes | Cuándo una pyme necesita software a medida y cómo empezar sin cambiar de sistema (evaluar) | Nuevo · grupo software y automatización |
+| 2026-10-22 | zapier-make-n8n-o-desarrollo-a-medida | Zapier, Make, n8n o desarrollo a medida: cómo cobra cada uno y cuándo alcanza (evaluar) | Nuevo · grupo software y automatización |
+| 2026-10-22 | como-elegir-empresa-de-software-y-automatizacion | Qué preguntarle a una empresa de software y automatización antes de contratar (contratar) | Nuevo · grupo software y automatización |
