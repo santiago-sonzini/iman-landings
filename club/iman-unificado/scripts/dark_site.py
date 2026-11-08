@@ -124,8 +124,8 @@ def context():
     return '\n\n'.join(lines)+'\n'
 
 # The page for "software y automatización": what IMÁN builds, how, the guides of the topic and the questions people ask.
-HUB_TITLE='Software a medida y automatización de procesos con IA | IMÁN'
-HUB_DESC='Estudio argentino de software y automatización con IA para pymes: asistentes de WhatsApp, integraciones con ERP, catálogos y compras automáticas. Empezamos por un flujo concreto.'
+HUB_TITLE='Empresa de software a medida y automatización con IA | IMÁN'
+HUB_DESC='IMÁN es una empresa argentina de software a medida y automatización con IA para pymes: WhatsApp, integraciones con ERP, catálogos y compras automáticas.'
 HUB_DATE='2026-10-22'
 HUB_BUILDS=[('WhatsApp e IA','Asistentes que responden y venden.','Agentes de IA en WhatsApp que contestan con la información del negocio, califican consultas y derivan a una persona cuando hace falta.','/automatizaciones/','Ver WhatsApp e IA'),
     ('Integraciones y ERP','Tus sistemas, conectados.','Pedidos, precios y stock que viajan entre el catálogo, el sistema de gestión y las planillas sin volver a tipearlos.','/comercios/','Ver integraciones'),
@@ -149,7 +149,7 @@ def hub(pages):
     guides=''.join(f'<li><a class="hub-guide" href="{path}"><b>{e(titles[path]["title"].split(" | ")[0])}</b><span>{e(titles[path]["description"])}</span></a></li>' for path in HUB_GUIDES if path in titles)
     software_guide='<p><a class="more-link" href="/recursos/software-a-medida-para-pymes/">Cuándo conviene el software a medida</a></p>' if '/recursos/software-a-medida-para-pymes/' in titles else ''
     body=('<section class="reading-hero"><p class="eyebrow">SOFTWARE Y AUTOMATIZACIÓN</p><h1>Software a medida.<br><em>Procesos en automático.</em></h1>'
-        '<p class="reading-intro">IMÁN es un estudio argentino de software y automatización con IA para pymes, mayoristas y distribuidoras. Construimos la pieza que le falta a tu operación y la conectamos con lo que ya usás: WhatsApp, tu sistema de gestión, tus planillas y tu tienda.</p>'
+        '<p class="reading-intro">IMÁN es un estudio argentino de software a medida y automatización con IA para pymes, mayoristas y distribuidoras. Construimos la pieza que le falta a tu operación y la conectamos con lo que ya usás: WhatsApp, tu sistema de gestión, tus planillas y tu tienda.</p>'
         '<div class="cta-row"><a class="cta solid" href="/conocer/"><span class="cta-label">Agendá una llamada</span></a><a class="cta" href="/info/#demos"><span class="cta-label">Ver las demos</span></a></div></section>'
         '<section class="hub-builds" aria-labelledby="hub-builds-title"><h2 id="hub-builds-title">Lo que <em>construimos.</em></h2>'+cards+'</section>'
         '<article class="reading-content">'
@@ -216,7 +216,8 @@ def build_dark(out,pages):
     routes=[]
     for s in SERVICES:
         extra=[{'@type':'Service','@id':BASE+s['path']+'#service','name':s['name'],'description':s['description'],'url':BASE+s['path'],'provider':{'@id':BASE+'/#organization'},'areaServed':{'@type':'Country','name':'Argentina'}},{'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in s['faq']]}]
-        routes.append((s['path'],s['name']+' para negocios de Argentina | IMÁN',s['description'],service_body(s),extra))
+        # seoTitle (services.json) carries each page's main search phrase (campaign/seo-ia/servicios.json «objetivos»).
+        routes.append((s['path'],s.get('seoTitle') or s['name']+' para negocios de Argentina | IMÁN',s['description'],service_body(s),extra))
     cards='<div class="service-directory">'+''.join('<article id="servicio-'+s['id']+'"><p class="eyebrow">'+e(s['name'])+'</p><h2>'+e(s['title'])+'</h2><p>'+e(s['intro'])+'</p><a class="more-link" href="'+s['path']+'">Más información</a></article>' for s in SERVICES)+'</div>'
     intro='<section class="reading-hero"><p class="eyebrow">LOS SERVICIOS</p><h1>Todo empieza<br><em>con tu negocio.</em></h1><p class="reading-intro">Tres formas de conectar a tus clientes con una operación más simple.</p></section>'
     routes.append(('/servicios/','Automatización, fidelización y ERP | IMÁN','Los servicios de IMÁN para pymes: WhatsApp con IA, fidelización y email marketing, catálogos e integración con ERP. Se pueden combinar en un mismo proyecto.',intro+cards+form(),[]))
