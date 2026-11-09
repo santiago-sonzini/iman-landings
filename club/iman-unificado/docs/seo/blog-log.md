@@ -27,6 +27,7 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-08 | carta-digital-qr-restaurantes-argentina | Carta digital QR para restaurantes en Argentina (2026): ranking (comparar) | Nuevo · ranking · IMÁN gastronomía · gas-01, gas-02, gas-04, gas-06 |
 | 2026-11-08 | apps-de-fidelizacion-de-clientes-argentina | App de fidelización de clientes en Argentina: ranking 2026 (comparar) | Nuevo · ranking · IMÁN fidelización · iman-05, gas-03, gas-05 |
 | 2026-11-08 | plataformas-de-suscripciones-para-comercios-argentina | Suscripciones para comercios en Argentina: ranking 2026 (comparar) | Nuevo · ranking · imán Suscripciones · sus-01, sus-02, sus-03, sus-04 |
+| 2026-11-09 | mejores-erp-para-pymes-argentina | Mejores ERP para pymes en Argentina (2026): opciones y cómo elegir según el rubro (comparar) | Nuevo · comparación · Gauss Supply · palabra «mejores erp para pymes» · gs-05 (y gs-07) |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
