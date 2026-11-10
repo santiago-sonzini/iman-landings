@@ -74,7 +74,7 @@ export function createBookingHandler({sendMail, agenda, now = Date.now, report =
 
       let booked;
       try {
-        booked = await agenda.book({inicio,nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,servicios:lead.servicios,comentario:lead.comentario,zona},env);
+        booked = await agenda.book({inicio,nombre:lead.nombre,negocio:lead.negocio,email:lead.email,whatsapp:lead.whatsapp,rubro:lead.rubro,servicios:lead.servicios,comentario:lead.comentario,zona,utm:lead.utm,meta:lead.meta},env);
       } catch {
         booked = {status:0,body:{}};
       }

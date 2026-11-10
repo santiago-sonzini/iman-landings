@@ -67,6 +67,15 @@ export function parseLead(body, origin) {
     if (value !== undefined && (typeof value !== 'string' || value.length > LIMITS[key])) return null;
     if (value) lead.utm[key] = single(value);
   }
+  // Meta's ids, only with the «marketing» consent (purchase.js metaIds); they go to the bot with the booking.
+  if (body.meta !== undefined) {
+    if (typeof body.meta !== 'object' || !body.meta || Array.isArray(body.meta)) return null;
+    if (body.meta.consent === true) {
+      lead.meta = {consent:true};
+      if (/^fb\.1\.\d{13}\.[\w-]{10,500}$/.test(body.meta.fbc || '')) lead.meta.fbc = body.meta.fbc;
+      if (/^fb\.1\.\d{13}\.\d{6,20}$/.test(body.meta.fbp || '')) lead.meta.fbp = body.meta.fbp;
+    }
+  }
   return lead;
 }
 

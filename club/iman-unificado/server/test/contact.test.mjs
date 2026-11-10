@@ -291,3 +291,14 @@ test('without a WhatsApp number the assistant is not called',async()=>{
   assert.equal(response.status,200);
   assert.equal(calls.length,0);
 });
+
+// Meta's ids travel with a booking only with the «marketing» consent, and only in Meta's own formats (09/11/2026).
+test('meta ids: kept only with consent and only when they look like Meta\'s',async()=>{
+  const {parseLead}=await import('../contact.mjs');
+  const base={nombre:'Ana',negocio:'Bar',email:'ana@example.com',consentimiento:true,servicios:['Quiero que me orienten']};
+  const fbc='fb.1.1762740000000.IwAR0abcdefghijk',fbp='fb.1.1762740000000.1234567890';
+  assert.deepEqual(parseLead({...base,meta:{consent:true,fbc,fbp}},'https://iman.ar').meta,{consent:true,fbc,fbp});
+  assert.equal(parseLead({...base,meta:{consent:false,fbc,fbp}},'https://iman.ar').meta,undefined);
+  assert.deepEqual(parseLead({...base,meta:{consent:true,fbc:'javascript:alert(1)',fbp:'x'}},'https://iman.ar').meta,{consent:true});
+  assert.equal(parseLead({...base,meta:'x'},'https://iman.ar'),null);
+});
