@@ -29,6 +29,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-08 | plataformas-de-suscripciones-para-comercios-argentina | Suscripciones para comercios en Argentina: ranking 2026 (comparar) | Nuevo · ranking · imán Suscripciones · sus-01, sus-02, sus-03, sus-04 |
 | 2026-11-09 | mejores-erp-para-pymes-argentina | Mejores ERP para pymes en Argentina (2026): opciones y cómo elegir según el rubro (comparar) | Nuevo · comparación · Gauss Supply · palabra «mejores erp para pymes» · gs-05 (y gs-07) |
 | 2026-11-11 | mejor-ia-para-contadores | Mejor IA para contadores en Argentina (2026): opciones según la tarea y cómo elegir (comparar) | Nuevo · comparación · Gauss contadores · palabra «mejor ia para contadores» · gc-08 (y gc-02) |
+| 2026-11-13 | como-cobrar-con-mercado-pago | Cómo cobrar con Mercado Pago en un negocio: QR, Point, link de pago y suscripción mensual (aprender) | Nuevo · guía práctica · imán Suscripciones · palabra «cómo cobrar con mercado pago» · sus-01 (y sus-02, sus-03) |
+| 2026-11-13 | plataformas-de-suscripciones-para-comercios-argentina | Enlace a la guía nueva con el texto «cómo cobrar con Mercado Pago» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
