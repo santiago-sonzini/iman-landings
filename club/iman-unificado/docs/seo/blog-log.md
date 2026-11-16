@@ -31,6 +31,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-11 | mejor-ia-para-contadores | Mejor IA para contadores en Argentina (2026): opciones según la tarea y cómo elegir (comparar) | Nuevo · comparación · Gauss contadores · palabra «mejor ia para contadores» · gc-08 (y gc-02) |
 | 2026-11-13 | como-cobrar-con-mercado-pago | Cómo cobrar con Mercado Pago en un negocio: QR, Point, link de pago y suscripción mensual (aprender) | Nuevo · guía práctica · imán Suscripciones · palabra «cómo cobrar con mercado pago» · sus-01 (y sus-02, sus-03) |
 | 2026-11-13 | plataformas-de-suscripciones-para-comercios-argentina | Enlace a la guía nueva con el texto «cómo cobrar con Mercado Pago» | Actualización de guía existente |
+| 2026-11-16 | como-hacer-codigo-qr-carta-restaurante | Cómo hacer un código QR para la carta del restaurante: a dónde apuntarlo, cómo imprimirlo, qué da lo gratis y pedidos por WhatsApp (aprender) | Nuevo · guía práctica · IMÁN gastronomía · palabra «como hacer codigo qr para carta restaurante» · gas-04 (y gas-01, gas-02) |
+| 2026-11-16 | carta-digital-qr-restaurantes-argentina | Enlace a la guía nueva con el texto «cómo hacer un código QR para la carta del restaurante» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
