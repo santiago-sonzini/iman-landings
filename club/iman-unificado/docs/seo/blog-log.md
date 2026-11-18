@@ -33,6 +33,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-13 | plataformas-de-suscripciones-para-comercios-argentina | Enlace a la guía nueva con el texto «cómo cobrar con Mercado Pago» | Actualización de guía existente |
 | 2026-11-16 | como-hacer-codigo-qr-carta-restaurante | Cómo hacer un código QR para la carta del restaurante: a dónde apuntarlo, cómo imprimirlo, qué da lo gratis y pedidos por WhatsApp (aprender) | Nuevo · guía práctica · IMÁN gastronomía · palabra «como hacer codigo qr para carta restaurante» · gas-04 (y gas-01, gas-02) |
 | 2026-11-16 | carta-digital-qr-restaurantes-argentina | Enlace a la guía nueva con el texto «cómo hacer un código QR para la carta del restaurante» | Actualización de guía existente |
+| 2026-11-18 | que-es-control-de-stock | Qué es el control de stock y cómo llevarlo en una distribuidora: seis pasos, FIFO/FEFO, planilla de Excel y qué pedirle a un sistema (aprender) | Nuevo · guía práctica · Gauss Supply · palabra «qué es el control de stock» · gs-06 (y gs-02, gs-08) |
+| 2026-11-18 | erp-para-distribuidoras-argentina | Enlace a la guía nueva con el texto «qué es el control de stock» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
