@@ -35,6 +35,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-16 | carta-digital-qr-restaurantes-argentina | Enlace a la guía nueva con el texto «cómo hacer un código QR para la carta del restaurante» | Actualización de guía existente |
 | 2026-11-18 | que-es-control-de-stock | Qué es el control de stock y cómo llevarlo en una distribuidora: seis pasos, FIFO/FEFO, planilla de Excel y qué pedirle a un sistema (aprender) | Nuevo · guía práctica · Gauss Supply · palabra «qué es el control de stock» · gs-06 (y gs-02, gs-08) |
 | 2026-11-18 | erp-para-distribuidoras-argentina | Enlace a la guía nueva con el texto «qué es el control de stock» | Actualización de guía existente |
+| 2026-11-20 | mejores-software-contables-argentina | Los mejores software contables en Argentina (2026): Xubio, Colppy, Contabilium, Tango, Holistor, Onvio y Gauss como capa previa, y cómo elegir según quién lleva la contabilidad (comparar) | Nuevo · comparación · Gauss contadores · palabra «los mejores software contables» · gc-05 (y gc-04) |
+| 2026-11-20 | programas-para-estudios-contables-argentina | Enlace a la guía nueva con el texto «los mejores software contables en Argentina» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
