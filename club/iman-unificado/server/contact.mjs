@@ -200,9 +200,14 @@ export function createContactHandler({sendMail, startChat = null, now = Date.now
         return await finish({ok:false,code:'delivery_failed',retryable:failed.every(s => definitelyNotSent(s.reason)),error:'No pudimos confirmar el envío. Podés reservar una charla o escribirnos por WhatsApp.'},502);
       }
       if (failed.length) report(failed.some(s => !definitelyNotSent(s.reason)) ? 'contact_team_delivery_unknown' : 'contact_team_delivery_failed');
-      let confirmationSent = true;
-      try { await sendMail({...common,to:lead.email,replyTo:config.contact,...confirmationEmail(lead)},config); }
-      catch {confirmationSent=false;report('contact_confirmation_delivery_failed');}
+      // The diagnosis done after booking (supply.iman.ar/gracias/ since 23/11/2026) says so with ya_agendo: that person
+      // already has the booking's mail and the Mapa's, and «Recibimos tu consulta… elegí un horario» would ask them to book
+      // again. The team still gets its notice above, and the assistant joins it to their lead (bot on_inquiry).
+      let confirmationSent = body.ya_agendo !== true;
+      if (confirmationSent) {
+        try { await sendMail({...common,to:lead.email,replyTo:config.contact,...confirmationEmail(lead)},config); }
+        catch {confirmationSent=false;report('contact_confirmation_delivery_failed');}
+      }
       // With a WhatsApp number, the IMAN assistant writes to them right away (server to server; see worker.mjs).
       let whatsapp = null;
       if (lead.whatsapp && startChat) {

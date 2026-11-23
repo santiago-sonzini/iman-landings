@@ -41,6 +41,16 @@ test('accepted lead is delivered to owner before client; response links Calendly
   assert.doesNotMatch(sent[0].text,/token=private/);
   assert.equal(response.headers.get('cache-control'),'no-store');
 });
+test('a diagnosis sent after booking reaches the team and the assistant but sends no «elegí un horario» mail',async()=>{
+  const chats=[];
+  const {handle,sent}=setup({startChat:async lead=>{chats.push(lead);return 'ya_agendado';}});
+  const response=await handle(request({ya_agendo:true,comentario:'Funnel en supply.iman.ar\nDiagnóstico después de agendar la llamada'}),env);
+  assert.equal(response.status,200);
+  assert.deepEqual(await response.json(),{ok:true,confirmationSent:false,agendaUrl:'https://agenda.iman.ar',whatsapp:'ya_agendado'});
+  assert.deepEqual(sent.map(m=>m.to),['sales@example.com']);
+  assert.equal(chats.length,1);
+  assert.match(chats[0].comentario,/Diagnóstico después de agendar/);
+});
 test('owner failure is not success and sends no client confirmation',async()=>{
   let count=0;
   const {handle,logs}=setup({sendMail:async()=>{count++;throw new Error('private:password');}});
