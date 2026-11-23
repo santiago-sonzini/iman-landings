@@ -37,6 +37,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-18 | erp-para-distribuidoras-argentina | Enlace a la guía nueva con el texto «qué es el control de stock» | Actualización de guía existente |
 | 2026-11-20 | mejores-software-contables-argentina | Los mejores software contables en Argentina (2026): Xubio, Colppy, Contabilium, Tango, Holistor, Onvio y Gauss como capa previa, y cómo elegir según quién lleva la contabilidad (comparar) | Nuevo · comparación · Gauss contadores · palabra «los mejores software contables» · gc-05 (y gc-04) |
 | 2026-11-20 | programas-para-estudios-contables-argentina | Enlace a la guía nueva con el texto «los mejores software contables en Argentina» | Actualización de guía existente |
+| 2026-11-23 | mejor-chatbot-para-whatsapp | Mejor chatbot para WhatsApp en Argentina (2026): app gratis, Cliengo, Botmaker, Treble, n8n, Engee, Fluxter e IMÁN, y cómo elegir según lo que tiene que hacer el bot (comparar) | Nuevo · comparación · IMÁN software · palabra «mejor chatbot para whatsapp» · iman-01 (y iman-09) |
+| 2026-11-23 | empresas-bots-whatsapp-ia-argentina | Enlace a la guía nueva con el texto «mejor chatbot para WhatsApp» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
