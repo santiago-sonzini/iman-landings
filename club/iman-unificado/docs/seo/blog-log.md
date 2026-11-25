@@ -39,6 +39,8 @@ Una fila por pieza publicada o actualizada. Cada artículo responde una pregunta
 | 2026-11-20 | programas-para-estudios-contables-argentina | Enlace a la guía nueva con el texto «los mejores software contables en Argentina» | Actualización de guía existente |
 | 2026-11-23 | mejor-chatbot-para-whatsapp | Mejor chatbot para WhatsApp en Argentina (2026): app gratis, Cliengo, Botmaker, Treble, n8n, Engee, Fluxter e IMÁN, y cómo elegir según lo que tiene que hacer el bot (comparar) | Nuevo · comparación · IMÁN software · palabra «mejor chatbot para whatsapp» · iman-01 (y iman-09) |
 | 2026-11-23 | empresas-bots-whatsapp-ia-argentina | Enlace a la guía nueva con el texto «mejor chatbot para WhatsApp» | Actualización de guía existente |
+| 2026-11-25 | app-de-pedidos-gratis | App de pedidos gratis: qué resuelven WhatsApp Business, un formulario con planilla, AppSheet y el plan gratis de Odoo, y cuándo dejan de alcanzar a una distribuidora (aprender) | Nuevo · guía «lo gratis y cuándo deja de alcanzar» · Gauss Supply · palabra «app de pedidos gratis» · gs-01 (y gs-02) |
+| 2026-11-25 | erp-para-distribuidoras-argentina | Enlace a la guía nueva con el texto «app de pedidos gratis» | Actualización de guía existente |
 
 Indexación pedida en Search Console (una vez por URL, no repetir):
 - 2026-10-22: /software-y-automatizacion/, /recursos/software-a-medida-para-pymes/, /recursos/zapier-make-n8n-o-desarrollo-a-medida/, /recursos/como-elegir-empresa-de-software-y-automatizacion/
